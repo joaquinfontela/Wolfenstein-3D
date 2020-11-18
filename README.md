@@ -6,3 +6,4 @@
 | 104105 | Jonathan David Rosenblatt |
 | 103924 | Joaquín Fontela           |
 | 104348 | Joaquin Betz Rivera       |
+| 104429 | Thiago Kovnat             |
