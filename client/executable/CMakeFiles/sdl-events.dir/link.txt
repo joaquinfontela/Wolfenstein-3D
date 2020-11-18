@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11  -rdynamic CMakeFiles/sdl-events.dir/src/mainSdlEvents.cpp.o  -o sdl-events  libsdldemo.a -lSDL2 -lSDL2_image 

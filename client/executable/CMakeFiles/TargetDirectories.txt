@@ -1,8 +1,0 @@
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/install/strip.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/install/local.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/install.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/list_install_components.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/rebuild_cache.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/edit_cache.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/sdl-static.dir
-/home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/sdldemo.dir
