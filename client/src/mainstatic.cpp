@@ -6,7 +6,7 @@
 
 #define TEMP_HEIGHT 800
 #define TEMP_WIDTH 600
-#define IMG_PATH "../../media/"
+#define IMG_PATH "../media/"
 
 int main(int argc, char** argv){
     try {

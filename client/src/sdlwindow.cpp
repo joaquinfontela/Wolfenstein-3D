@@ -9,7 +9,7 @@
 #define SDL_INIT_ERROR "\nError on initialization: "
 #define SDL_WINDOW_INIT_ERROR "\nError on window initialization: "
 
-#define IMG_PATH "../../media/"
+#define IMG_PATH "../media/"
 
 SdlWindow::SdlWindow(int width, int height) :
                      width(width), height(height) {

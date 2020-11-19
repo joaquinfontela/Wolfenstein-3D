@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(qt-sdl)
+project(sdl)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
@@ -20,5 +20,3 @@ add_executable (sdl-static
 )
 
 target_link_libraries(sdl-static sdldemo SDL2 SDL2_image)
-
-install(FILES assets/cat.gif DESTINATION ${CMAKE_BINARY_DIR})
