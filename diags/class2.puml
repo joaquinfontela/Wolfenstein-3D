@@ -1,0 +1,80 @@
+@startuml
+left to right direction
+
+class Drawable
+
+class Player
+
+class Weapon
+
+interface Powerup
+
+class Scene
+
+class Editor
+
+class Game
+
+class Music
+
+class MusicPlayer
+
+class Editor
+
+class Server
+
+class Client
+
+class Pistol
+
+class Knife
+
+class Chaingun
+
+class Machinegun
+
+class Food
+
+class Medkit
+
+class Ammo
+
+class MachinegunDrop
+
+class ChaingunDrop
+
+class Key
+
+class Treasure
+
+class GameMap
+
+class Socket
+
+Player --> Weapon
+
+Server --> Game: "List of games"
+Game --> GameMap
+Game --> Editor
+Editor ..> GameMap
+Game --> Scene
+Game --> MusicPlayer
+MusicPlayer ..> Music
+
+Game --> Client: "List of clients"
+
+Game --> Player
+GameMap --> Powerup
+Game --> Weapon
+
+Client --+ Game: "Sends data"
+
+Weapon --|> Drawable
+Powerup --|> Drawable
+Player --|> Drawable
+
+Stage ..>  Drawable
+
+Server *-- Socket
+Client *-- Socket
+@enduml
