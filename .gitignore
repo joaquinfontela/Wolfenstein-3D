@@ -1,2 +1,6 @@
 *.o
 .vscode/
+CMakeCache.txt
+CMakeFiles/
+libsdldemo.a
+cmake_install.cmake
