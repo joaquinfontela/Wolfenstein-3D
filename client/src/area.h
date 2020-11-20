@@ -1,5 +1,5 @@
-#ifndef __AREA_H__
-#define __AREA_H_
+#ifndef AREA_H_
+#define AREA_H_
 
 class Area {
  public:
@@ -15,5 +15,5 @@ class Area {
   int height;
 };
 
-#endif
+#endif  // AREA_H_
 

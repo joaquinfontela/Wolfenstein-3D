@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11  -rdynamic CMakeFiles/sdl-static.dir/src/mainstatic.cpp.o  -o sdl-static  libsdldemo.a -lSDL2 -lSDL2_image 

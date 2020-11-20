@@ -1,5 +1,5 @@
-#ifndef __SDL_EXCEPTION_H__
-#define __SDL_EXCEPTION_H__
+#ifndef SDLEXCEPTION_H_
+#define SDLEXCEPTION_H_
 #include <string>
 #include <exception>
 
@@ -13,5 +13,5 @@ class SdlException : public std::exception {
   std::string description = ERROR_SDL;
 };
 
-#endif
+#endif  // SDLEXCEPTION_H_
 

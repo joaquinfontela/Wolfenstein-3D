@@ -1,5 +1,5 @@
-#ifndef __SDL_WINDOW_H__
-#define __SDL_WINDOW_H__
+#ifndef SDLWINDOW_H_
+#define SDLWINDOW_H_
 #include "area.h"
 
 class SDL_Window;
@@ -24,5 +24,5 @@ class SdlWindow {
   SDL_Renderer* renderer;
 };
 
-#endif
+#endif  // SDLWINDOW_H_
 
