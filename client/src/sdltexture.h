@@ -1,5 +1,5 @@
-#ifndef SDLTEXTURE_H_
-#define SDLTEXTURE_H_
+#ifndef __SDL_TEXTURE_H__
+#define __SDL_TEXTURE_H__
 #include <string>
 
 class SDL_Texture;
@@ -18,5 +18,5 @@ class SdlTexture {
   SDL_Texture* texture;
 };
 
-#endif  // SDLTEXTURE_H_
+#endif  
 
