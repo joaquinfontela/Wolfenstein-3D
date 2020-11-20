@@ -1,4 +1,0 @@
-/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/client/executable/CMakeFiles/rebuild_cache.dir
-/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/client/executable/CMakeFiles/edit_cache.dir
-/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/client/executable/CMakeFiles/sdldemo.dir
-/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/client/executable/CMakeFiles/sdl-static.dir
