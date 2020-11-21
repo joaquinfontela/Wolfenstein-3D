@@ -11,8 +11,7 @@
 
 #define IMG_PATH "../media/"
 
-SdlWindow::SdlWindow(int width, int height) :
-                     width(width), height(height) {
+SdlWindow::SdlWindow(int width, int height) {
   if (SDL_Init(SDL_INIT_VIDEO)) {
     throw SdlException(SDL_INIT_ERROR, SDL_GetError());
   }
@@ -25,16 +24,33 @@ SdlWindow::SdlWindow(int width, int height) :
   SDL_SetWindowIcon(this->window,icon);
 }
 
+SdlWindow& SdlWindow::operator=(SdlWindow&& other) {
+  if (this != &other){
+    this->window = other.window;
+    this->renderer = other.renderer;
+    other.window = nullptr;
+    other.renderer = nullptr;;
+  }
+  return *this;
+}
+
+SdlWindow::SdlWindow(SdlWindow&& other) {
+  this->window = other.window;
+  this->renderer = other.renderer;
+  other.window = nullptr;
+  other.renderer = nullptr;;
+}
+
 void SdlWindow::killRenderer(){
   if (!this->renderer) return;
   SDL_DestroyRenderer(this->renderer);
-  this->renderer = NULL;
+  this->renderer = nullptr;
 }
 
 void SdlWindow::killWindow(){
   if (!this->window) return;
   SDL_DestroyWindow(this->window);
-  this->window = NULL;
+  this->window = nullptr;
 }
 
 

@@ -1,73 +1,62 @@
 #include <SDL2/SDL.h>
-#include <iostream>
+
 #include <exception>
-#include "sdlwindow.h"
+#include <iostream>
+
+#include "sdldrawing.h"
 #include "sdltexture.h"
+#include "sdlwindow.h"
 
 #define TEMP_HEIGHT 800
 #define TEMP_WIDTH 600
 #define IMG_PATH "../media/"
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
   try {
     SdlWindow window(TEMP_HEIGHT, TEMP_WIDTH);
     window.fill();
-    SdlTexture im(IMG_PATH "hud.jpg", window);
-    SdlTexture gun(IMG_PATH "chaingun1.jpg", window);
 
-    Area srcArea(0, 0, TEMP_HEIGHT, TEMP_WIDTH);
-    Area destArea(0, 0, TEMP_HEIGHT, TEMP_WIDTH);
-    im.render(srcArea, destArea); 
-    window.render();
+    Drawing hud(IMG_PATH "hud.jpg", window);
 
-    Area srcArea2(0, 0, 100, 100);
-    Area destArea3(300, 290, 180, 180);
-    gun.render(srcArea2, destArea3); 
+    Area srcArea(0, 0, 100, 100);
+    Area destArea(300, 290, 180, 180);
+    Drawing gun(IMG_PATH "chaingun1.jpg", window, srcArea, destArea);
 
     window.render();
-
-    int x = 300; int y = 290;
-    int a = 180; int b = 180;
-    bool alive = true;
-    while (alive){
+    while (true) {
       SDL_Event event;
-      Area destArea2(x, y, a, b);
-      im.render(srcArea, destArea); 
-      gun.render(srcArea2, destArea2); 
       window.render();
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {
-        alive = false;
+        break;
       } else if (event.type == SDL_KEYDOWN) {
-        std::cout << "X: " << x << " Y: " << y;
-        SDL_KeyboardEvent& key = (SDL_KeyboardEvent&) event;
+        SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
         switch (key.keysym.sym) {
           case SDLK_LEFT:
             std::cout << " izq " << std::endl;
-            x -= 10; 
-            break; 
+            gun.moveLeft(10);
+            break;
           case SDLK_RIGHT:
             std::cout << " der " << std::endl;
-            x += 10; 
-            break; 
+            gun.moveRight(10);
+            break;
           case SDLK_UP:
             std::cout << " arriba" << std::endl;
-            y -= 10;
-            break; 
+            gun.moveUp(10);
+            break;
           case SDLK_DOWN:
             std::cout << " bajo " << std::endl;
-            y += 10; 
+            gun.moveDown(10);
             break;
         }
       } else if (event.type == SDL_MOUSEBUTTONDOWN) {
-        if (event.button.button == SDL_BUTTON_LEFT){
-            std::cout << " mouse izq " << std::endl;
-            a -= 10;
-            b -= 10;
-        } else { // Fix later, no necesariamente un click del mouse es izq o der.
-            std::cout << " mouse der" << std::endl;
-            a += 10;
-            b += 10;
+        if (event.button.button == SDL_BUTTON_LEFT) {
+          std::cout << " mouse izq " << std::endl;
+          gun.makeSmaller(10);
+        } else {  // Fix later, no necesariamente un click del mouse es izq o
+                  // der.
+          std::cout << " mouse der" << std::endl;
+          gun.makeBigger(10);
         }
       }
     }

@@ -5,6 +5,7 @@ add_library(sdldemo
   src/area.cpp
   src/sdltexture.cpp
   src/sdlexception.cpp
+  src/sdldrawing.cpp
   src/sdlwindow.cpp
 )
 include_directories(${PROJECT_BINARY_DIR})

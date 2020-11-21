@@ -190,6 +190,33 @@ src/mainstatic.cpp.s:
 	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.s
 .PHONY : src/mainstatic.cpp.s
 
+src/sdldrawing.o: src/sdldrawing.cpp.o
+
+.PHONY : src/sdldrawing.o
+
+# target to build an object file
+src/sdldrawing.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdldrawing.cpp.o
+.PHONY : src/sdldrawing.cpp.o
+
+src/sdldrawing.i: src/sdldrawing.cpp.i
+
+.PHONY : src/sdldrawing.i
+
+# target to preprocess a source file
+src/sdldrawing.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdldrawing.cpp.i
+.PHONY : src/sdldrawing.cpp.i
+
+src/sdldrawing.s: src/sdldrawing.cpp.s
+
+.PHONY : src/sdldrawing.s
+
+# target to generate assembly for a file
+src/sdldrawing.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdldrawing.cpp.s
+.PHONY : src/sdldrawing.cpp.s
+
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -287,6 +314,9 @@ help:
 	@echo "... src/mainstatic.o"
 	@echo "... src/mainstatic.i"
 	@echo "... src/mainstatic.s"
+	@echo "... src/sdldrawing.o"
+	@echo "... src/sdldrawing.i"
+	@echo "... src/sdldrawing.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"

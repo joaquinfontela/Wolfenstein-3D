@@ -1,5 +1,5 @@
-#ifndef __SDL_WINDOW_H__
-#define __SDL_WINDOW_H__
+#ifndef SDLWINDOW_H_
+#define SDLWINDOW_H_
 #include "area.h"
 
 class SDL_Window;
@@ -10,19 +10,19 @@ class SdlWindow {
  public:
   SdlWindow(int width, int height);
   ~SdlWindow();
+  SdlWindow(SdlWindow&& other);
+  SdlWindow& operator=(SdlWindow&& other);
   void fill(int r, int g, int b, int alpha);
   void fill();
   void fillTransparent(int r, int g, int b);
   void render();
   SDL_Renderer* getRenderer() const;
+
  private:
   void killRenderer();
   void killWindow();
-  int width;
-  int height;
   SDL_Window* window;
   SDL_Renderer* renderer;
 };
 
-#endif
-
+#endif  // SDLWINDOW_H_

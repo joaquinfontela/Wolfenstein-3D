@@ -1,5 +1,5 @@
-#ifndef __AREA_H__
-#define __AREA_H_
+#ifndef AREA_H_
+#define AREA_H_
 
 class Area {
  public:
@@ -8,6 +8,13 @@ class Area {
   int getY() const;
   int getWidth() const;
   int getHeight() const;
+  void moveLeft(int z);
+  void moveRight(int z);
+  void moveUp(int z);
+  void moveDown(int z);
+  void makeBigger(int z);
+  void makeSmaller(int z);
+
  private:
   int x;
   int y;
@@ -15,5 +22,4 @@ class Area {
   int height;
 };
 
-#endif
-
+#endif  // AREA_H_
