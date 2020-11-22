@@ -1,10 +1,12 @@
 #include <iostream>
+#include <mutex>
 #include <queue>
 
 template <class T>
 class NullPtrQueue {
  private:
   std::queue<T> q;
+  std::mutex m;
 
  public:
   NullPtrQueue();
@@ -24,11 +26,13 @@ NullPtrQueue<T>::~NullPtrQueue() {}
 
 template <class T>
 void NullPtrQueue<T>::push(T element) {
+  std::unique_lock<std::mutex> lock(m);
   q.push(element);
 }
 
 template <class T>
 T NullPtrQueue<T>::pop() {
+  std::unique_lock<std::mutex> lock(m);
   if (q.empty()) {
     return nullptr;
   }
