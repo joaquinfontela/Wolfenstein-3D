@@ -9,6 +9,7 @@ class Area;
 
 class SdlTexture {
  public:
+  SdlTexture() {}
   SdlTexture(const std::string& filename, const SdlWindow& window);
   ~SdlTexture();
   int render(const Area& src, const Area& dest) const;

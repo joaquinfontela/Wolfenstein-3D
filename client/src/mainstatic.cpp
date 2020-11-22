@@ -21,11 +21,16 @@ int main(int argc, char** argv) {
     Area srcArea(0, 0, 100, 100);
     Area destArea(300, 290, 180, 180);
     Drawing gun(IMG_PATH "chaingun1.jpg", window, srcArea, destArea);
-
+    hud.draw();
+    gun.draw();
     window.render();
-    while (true) {
+    SDL_Delay(5000);
+
+    while (false) {
       SDL_Event event;
       window.render();
+      hud.draw();
+      gun.draw();
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {
         break;

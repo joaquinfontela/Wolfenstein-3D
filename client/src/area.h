@@ -3,6 +3,7 @@
 
 class Area {
  public:
+  Area();
   Area(int x, int y, int width, int height);
   int getX() const;
   int getY() const;

@@ -1,5 +1,10 @@
 #include "area.h"
 
+#define TEMP_HEIGHT 800
+#define TEMP_WIDTH 600
+
+Area::Area() : x(0), y(0), width(TEMP_WIDTH), height(TEMP_HEIGHT) {}
+
 Area::Area(int x, int y, int width, int height)
     : x(x), y(y), width(width), height(height) {}
 

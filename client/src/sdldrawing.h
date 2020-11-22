@@ -10,9 +10,9 @@
 class Drawing {
  private:
   SdlWindow& window;
+  SdlTexture texture;
   Area srcArea;
   Area destArea;
-  SdlTexture texture;
 
  public:
   Drawing(std::string path, SdlWindow& window);

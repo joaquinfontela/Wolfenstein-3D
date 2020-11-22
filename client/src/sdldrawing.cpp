@@ -3,13 +3,7 @@
 #include "sdltexture.h"
 #include "sdlwindow.h"
 
-#define TEMP_HEIGHT 800
-#define TEMP_WIDTH 600
-
 Drawing::Drawing(std::string path, SdlWindow& window) : window(window) {
-  Area area(0, 0, TEMP_HEIGHT, TEMP_WIDTH);
-  srcArea = area;
-  destArea = area;
   SdlTexture t(path, this->window);
   this->texture = std::move(t);
 }
