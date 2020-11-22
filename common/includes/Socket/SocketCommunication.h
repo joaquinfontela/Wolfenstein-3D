@@ -9,6 +9,10 @@ class SocketCommunication {
   // Crea el socket con el file descriptor dado.
   SocketCommunication(int fd);
 
+  SocketCommunication(SocketCommunication&& other);
+
+  SocketCommunication& operator=(SocketCommunication&& other);
+
   // Conecta el socket al host y puerto dado.
   void connect(const std::string& hostname, const std::string& port);
 

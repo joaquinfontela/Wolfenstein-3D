@@ -1,4 +1,4 @@
-#include "SocketListener.h"
+#include "../includes/Socket/SocketListener.h"
 
 #include <netdb.h>
 #include <netinet/in.h>
@@ -11,8 +11,10 @@
 #include <iostream>
 #include <string>
 
-#include "SocketCommunication.h"
-#include "SocketException.h"
+#include "../includes/Socket/SocketCommunication.h"
+#include "../includes/Socket/SocketException.h"
+
+SocketListener::SocketListener() { this->fd = -1; }
 
 static int _getaddrinfo(struct addrinfo** serv_info, const char* hostname,
                         const char* port) {
@@ -76,9 +78,7 @@ SocketCommunication SocketListener::accept() {
     throw SocketException();
   }
 
-  SocketCommunication socket(fd);
-
-  return socket;
+  return std::move(SocketCommunication(fd));
 }
 
 void SocketListener::close() {
