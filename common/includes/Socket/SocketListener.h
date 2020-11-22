@@ -10,6 +10,7 @@ class SocketListener {
   int fd;
 
  public:
+  SocketListener();
   // Bindea el socket al puerto determinado.
   void bind(const std::string& port);
 

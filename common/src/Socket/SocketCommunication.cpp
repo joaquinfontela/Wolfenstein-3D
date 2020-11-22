@@ -1,4 +1,4 @@
-#include "SocketCommunication.h"
+#include "../includes/Socket/SocketCommunication.h"
 
 #include <netdb.h>
 #include <netinet/in.h>
@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-#include "SocketException.h"
+#include "../includes/Socket/SocketException.h"
 
 static int _getaddrinfo(struct addrinfo** serv_info, const char* hostname,
                         const char* port) {
@@ -28,6 +28,21 @@ static int _getaddrinfo(struct addrinfo** serv_info, const char* hostname,
   }
 
   return error;
+}
+
+SocketCommunication& SocketCommunication::operator=(
+    SocketCommunication&& other) {
+  if (this != &other) {
+    this->fd = other.fd;
+    other.fd = -1;
+  }
+
+  return *this;
+}
+
+SocketCommunication::SocketCommunication(SocketCommunication&& other) {
+  this->fd = other.fd;
+  other.fd = -1;
 }
 
 SocketCommunication::SocketCommunication(int fd) { this->fd = fd; }
@@ -126,8 +141,7 @@ void SocketCommunication::close() {
 }
 
 SocketCommunication::~SocketCommunication() {
-  if (this->fd == -1) {
-    return;
+  if (this->fd != -1) {
+    ::close(this->fd);
   }
-  ::close(this->fd);
 }
