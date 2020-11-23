@@ -51,6 +51,8 @@ bool NullPtrQueue<T>::isEmpty() {
   return q.empty();
 }
 
+//____________________________________________________
+
 template <>
 class NullPtrQueue<void*> {
  private:
@@ -82,6 +84,8 @@ void* NullPtrQueue<void*>::pop() {
 void* NullPtrQueue<void*>::front() { return q.front(); }
 
 bool NullPtrQueue<void*>::isEmpty() { return q.empty(); }
+
+//__________________________________________________
 
 template <class T>
 class NullPtrQueue<T*> : private NullPtrQueue<void*> {

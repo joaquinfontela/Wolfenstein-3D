@@ -1,7 +1,9 @@
 #include "NullPtrQueue.h"
+#include "WaitingQueue.h"
 
+/*
 int main() {
-  NullPtrQueue<int*> q;
+  WaitingQueue<int*> q;
   int five = 5;
   int six = 6;
   int eight = 8;
@@ -9,12 +11,8 @@ int main() {
   q.push(&six);
   q.push(&eight);
   for (int i = 0; i <= 4; i++) {
-    if (q.front()) {
-      std::cout << *(q.pop()) << std::endl;
-      continue;
-    }
-    std::cout << "NULL\n";
+    std::cout << *(q.pop()) << std::endl;
   }
-
   return 0;
 }
+*/
