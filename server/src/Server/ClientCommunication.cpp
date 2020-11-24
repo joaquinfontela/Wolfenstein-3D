@@ -23,7 +23,7 @@ void ClientCommunication::connectToLobby() {
   uint32_t opcode[1] = {0};
 
   try {
-    this->socket.receive(opcode, 1);
+    this->socket.receive(opcode, sizeof(opcode));
 
     // Compruebo que el opcode sea el del protocolo para conexion.
     if (opcode[0] == CONNECT_TO_LOBBY) {
