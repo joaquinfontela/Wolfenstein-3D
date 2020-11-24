@@ -18,11 +18,11 @@ class SocketCommunication {
 
   // Envia un mensaje de tamaño messageLength. Devuelve la cantidad de bytes
   // enviados.
-  int send(const char* message, unsigned int messageLength);
+  int send(const uint32_t* message, unsigned int messageLength);
 
   // Recibe un mensaje y lo almacena en el buffer. Devuelve la cantidad de bytes
   // leidos.
-  int receive(char* buffer, unsigned int bufLength);
+  int receive(uint32_t* buffer, unsigned int bufLength);
 
   // Cierra el canal de escritura del socket.
   void writeShutdown();

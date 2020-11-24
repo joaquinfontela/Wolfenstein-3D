@@ -3,12 +3,16 @@
 
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/Thread/Thread.h"
+#include "../Match/MatchList.h"
 
 class ClientCommunication : public Thread {
  private:
   SocketCommunication socket;
   unsigned int playerID;
+  MatchList& matchList;
   bool running;
+
+  void connectToLobby();
 
   // TODO -> Aca va una queue de comandos, cada vez que recibe un comando lo
   // pusheo aca.
@@ -16,8 +20,10 @@ class ClientCommunication : public Thread {
   // notificaciones a cada cliente por cada iteracion.
 
  public:
-  ClientCommunication(SocketCommunication peer, unsigned int id);
+  ClientCommunication(SocketCommunication peer, unsigned int id,
+                      MatchList& matches);
 
+  unsigned int ID();
   bool isAlive();
 
   void run();

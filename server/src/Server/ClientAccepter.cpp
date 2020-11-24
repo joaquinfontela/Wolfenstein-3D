@@ -2,16 +2,19 @@
 
 #include "../../../common/includes/Socket/SocketException.h"
 #include "../../../common/includes/Socket/SocketListener.h"
+#include "../../includes/Match/MatchList.h"
 #include "../../includes/Server/ClientCommunication.h"
 
-ClientAccepter::ClientAccepter(SocketListener& listener) : socket(listener) {}
+ClientAccepter::ClientAccepter(SocketListener& listener, MatchList& matches)
+    : socket(listener), matchList(matches) {}
 
 void ClientAccepter::run() {
   unsigned int playerID = 1;
+
   while (1) {
     try {
-      ClientCommunication* peer =
-          new ClientCommunication(std::move(this->socket.accept()), playerID);
+      ClientCommunication* peer = new ClientCommunication(
+          std::move(this->socket.accept()), playerID, matchList);
       playerID++;
       peer->start();
 
@@ -20,7 +23,9 @@ void ClientAccepter::run() {
       this->peers.push_back(peer);
       clientCleanup();
     } catch (SocketException& e) {
-      clientCleanup();
+      while (!this->peers.empty()) {
+        clientCleanup();
+      }
       break;
     }
   }
