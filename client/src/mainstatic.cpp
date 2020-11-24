@@ -4,13 +4,13 @@
 #include "sdlwindow.h"
 #include "sdltexture.h"
 
-#define TEMP_HEIGHT 800
-#define TEMP_WIDTH 600
+#define TEMP_HEIGHT 600
+#define TEMP_WIDTH 800
 #define IMG_PATH "../media/"
 
 int main(int argc, char** argv){
   try {
-    SdlWindow window(TEMP_HEIGHT, TEMP_WIDTH);
+    SdlWindow window(TEMP_WIDTH, TEMP_HEIGHT);
     window.fill();
     SdlTexture im(IMG_PATH "hud.jpg", window);
     SdlTexture gun(IMG_PATH "chaingun1.jpg", window);
