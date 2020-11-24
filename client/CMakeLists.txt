@@ -12,3 +12,7 @@ add_executable (sdl-static
   src/mainstatic.cpp  
 )
 target_link_libraries(sdl-static sdldemo SDL2 SDL2_image)
+add_executable (sdl-wall
+  src/mainwall.cpp  
+)
+target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image)

@@ -3,4 +3,5 @@
 CMakeCache.txt
 CMakeFiles/
 libsdldemo.a
+.swp
 cmake_install.cmake
