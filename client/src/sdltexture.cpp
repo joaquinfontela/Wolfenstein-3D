@@ -11,6 +11,7 @@
 #define SDL_TEXTURE_LOAD_ERROR "\nTexture loading error: "
 
 SdlTexture& SdlTexture::operator=(SdlTexture&& other) {
+  std::cout << "Llamando al = por movimiento de la textura.\n";
   if (this != &other) {
     this->renderer = other.renderer;
     this->texture = other.texture;
@@ -21,14 +22,22 @@ SdlTexture& SdlTexture::operator=(SdlTexture&& other) {
 }
 
 SdlTexture::SdlTexture(SdlTexture&& other) {
+  std::cout << "Llamando al constrcutor por movimiento de la textura.\n";
   this->renderer = other.renderer;
   this->texture = other.texture;
   other.renderer = nullptr;
   other.texture = nullptr;
 }
 
+void SdlTexture::setTexture(const std::string& filename,
+                            const SdlWindow& window) {
+  this->renderer = window.getRenderer();
+  this->texture = loadTexture(filename);
+}
+
 SdlTexture::SdlTexture(const std::string& filename, const SdlWindow& window)
     : renderer(window.getRenderer()) {
+  std::cout << "Llamando al constrcutor feo de la textura.\n";
   this->texture = loadTexture(filename);
 }
 

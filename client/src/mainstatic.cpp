@@ -20,13 +20,13 @@ int main(int argc, char** argv) {
 
     Area srcArea(0, 0, 100, 100);
     Area destArea(300, 290, 180, 180);
-    Drawing gun(IMG_PATH "chaingun1.jpg", window, srcArea, destArea);
+    // Drawing gun(IMG_PATH "chaingun1.jpg", window, srcArea, destArea);
     hud.draw();
-    gun.draw();
+    // gun.draw();
     window.render();
-    SDL_Delay(5000);
+    SDL_Delay(3000);
 
-    while (false) {
+    /*while (false) {
       SDL_Event event;
       window.render();
       hud.draw();
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
           gun.makeBigger(10);
         }
       }
-    }
+    }*/
 
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;

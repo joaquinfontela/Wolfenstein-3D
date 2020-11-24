@@ -1,19 +1,25 @@
 #include "sdldrawing.h"
 
+#include <iostream>
+
 #include "sdltexture.h"
 #include "sdlwindow.h"
 
 Drawing::Drawing(std::string path, SdlWindow& window) : window(window) {
-  SdlTexture t(path, this->window);
-  this->texture = std::move(t);
+  // std::cout << __LINE__ << " ";
+  // SdlTexture t(path, this->window);
+  // this->texture = std::move(t);;
+  this->texture.setTexture(path, window);
 }
 
 // Ojo que paso siempre por copia el area.
 // Puede que no siempre sea conveniente.
 Drawing::Drawing(std::string path, SdlWindow& window, Area a, Area b)
     : window(window), srcArea(a), destArea(b) {
-  SdlTexture t(path, this->window);
-  this->texture = std::move(t);
+  // std::cout << __LINE__ << " ";
+  // SdlTexture t(path, this->window);
+  // this->texture = std::move(t);
+  this->texture.setTexture(path, window);
 }
 
 void Drawing::moveLeft(int z) { this->destArea.moveLeft(z); }

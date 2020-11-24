@@ -11,6 +11,7 @@ class SdlTexture {
  public:
   SdlTexture() {}
   SdlTexture(const std::string& filename, const SdlWindow& window);
+  void setTexture(const std::string& filename, const SdlWindow& window);
   ~SdlTexture();
   int render(const Area& src, const Area& dest) const;
   SdlTexture& operator=(SdlTexture&& other);
