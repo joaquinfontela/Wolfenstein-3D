@@ -51,5 +51,5 @@ Código del render:
       // Hasta acá, (cx,cy) son las coordenadas de la primera intersección entre el rayo de visión y 
       // una celda de la matriz.
       
-      while (true): // En este ciclo voy a buscar intersecciones con paredes o jugadores.
+      while (true): // En este ciclo voy a buscar intersecciones con paredes.
 ```
