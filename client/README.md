@@ -32,7 +32,7 @@ Variables:
 
 Código del render:
 
-<br><p align="center"><img src="media/mapcalcs.png"/></p> 
+<br><p align="center"><img src="media/mapcalcs.PNG"/></p> 
 
 ```
   for _ in 0,30: // Que genere las imágenes 30 veces por segundo.
