@@ -1,4 +1,4 @@
-#include "../includes/Socket/SocketCommunication.h"
+#include "../../includes/Socket/SocketCommunication.h"
 
 #include <netdb.h>
 #include <netinet/in.h>
@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-#include "../includes/Socket/SocketException.h"
+#include "../../includes/Socket/SocketException.h"
 
 static int _getaddrinfo(struct addrinfo** serv_info, const char* hostname,
                         const char* port) {

@@ -1,4 +1,4 @@
-#include "../includes/Socket/SocketListener.h"
+#include "../../includes/Socket/SocketListener.h"
 
 #include <netdb.h>
 #include <netinet/in.h>
@@ -11,8 +11,8 @@
 #include <iostream>
 #include <string>
 
-#include "../includes/Socket/SocketCommunication.h"
-#include "../includes/Socket/SocketException.h"
+#include "../../includes/Socket/SocketCommunication.h"
+#include "../../includes/Socket/SocketException.h"
 
 SocketListener::SocketListener() { this->fd = -1; }
 

@@ -12,6 +12,7 @@
 #define PICK_KEY 8
 #define PICK_TREASURE 9
 #define PLAYER_DISCONNECT 10
+#define PLAYER_SCORE_UPDATE 11
 
 // Weapon ID definitions
 #define KNIFE 20

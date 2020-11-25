@@ -1,5 +1,6 @@
 #ifndef __SOCKET_COMMUNICATION_H__
 #define __SOCKET_COMMUNICATION_H__
+#include <string>
 
 class SocketCommunication {
  private:

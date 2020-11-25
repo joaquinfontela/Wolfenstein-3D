@@ -1,14 +1,11 @@
 #include "../../includes/Match/Match.h"
 
-#include "../Server/ClientCommunication.h"
+#include "../../../common/includes/Thread/Thread.h"
+#include "../../includes/Server/ClientCommunication.h"
 
-Match::Match(int lobbyID) {
-  this->lobbyID = lobbyID;
-  this->playerCount = 0;
-  this->running = true;
-}
+Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {}
 
-bool Match::hasID(int lobbyID) { return this->lobbyID = lobbyID; }
+bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }
 
 void Match::addPlayerToMatch(ClientCommunication* player) {
   this->playerCount++;
@@ -20,7 +17,8 @@ void Match::addPlayerToMatch(ClientCommunication* player) {
   // jugador.
 }
 
-void run() {
+void Match::run() {
+  running = false;
   // TODO -> Procesar los comandos del jugador para crear la notificacion
   // apropiada.
 

@@ -6,6 +6,9 @@
 #include "../Server/ClientCommunication.h"
 #include "Match.h"
 
+class ClientCommunication;
+class Match;
+
 class MatchList {
  private:
   std::map<int, Match*> matches;

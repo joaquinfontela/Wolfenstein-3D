@@ -3,7 +3,9 @@
 
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/Thread/Thread.h"
-#include "../Match/MatchList.h"
+#include "../../includes/Match/MatchList.h"
+
+class MatchList;
 
 class ClientCommunication : public Thread {
  private:

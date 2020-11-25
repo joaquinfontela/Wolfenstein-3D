@@ -1,5 +1,7 @@
 #include "../../includes/Server/ClientCommunication.h"
 
+#include <arpa/inet.h>
+
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/Socket/SocketException.h"
 #include "../../../common/includes/Thread/Thread.h"
@@ -15,7 +17,10 @@ ClientCommunication::ClientCommunication(SocketCommunication peer,
 
 bool ClientCommunication::isAlive() { return running; }
 
-void ClientCommunication::run() { connectToLobby(); }
+void ClientCommunication::run() {
+  connectToLobby();
+  running = false;
+}
 
 unsigned int ClientCommunication::ID() { return this->playerID; }
 void ClientCommunication::connectToLobby() {
@@ -25,10 +30,15 @@ void ClientCommunication::connectToLobby() {
   try {
     this->socket.receive(opcode, sizeof(opcode));
 
+    std::cout << "[SERVER] Client trying to join lobby" << std::endl;
+    std::cout << "[SERVER] Received opcode: " << opcode[0] << std::endl;
     // Compruebo que el opcode sea el del protocolo para conexion.
     if (opcode[0] == CONNECT_TO_LOBBY) {
       uint32_t lobbyID[1] = {0};
       this->socket.receive(lobbyID, sizeof(lobbyID));
+
+      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
+                << std::endl;
 
       this->matchList.joinOrCreate(this, lobbyID[0]);
 
