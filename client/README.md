@@ -30,7 +30,7 @@ Variables:
     SDL_Window window;
 ```
 
-Código del render:
+Código del cálculo de las coordenadas de la intersección del rayo con la pared.:
 
 <br><p align="center"><img src="media/mapcalcs.PNG"/></p> 
 
@@ -62,6 +62,11 @@ Código del render:
         cx += deltax;
 
       int distanceToWall = abs(x - cx)/cos(alpha) + abs(y - cy)/sin(alpha);
-      distanceToWall *= cos(alpha); // Ajustando el "fishbowl effect"
+      distanceToWall *= cos(pi/2 - alpha); // Ajustando el "fishbowl effect"
+
+      int p' = (p * W) / (distanceToWall * 2 * tan(pi/2 - FOV));
+      // p' representa la altura de la pared a renderizar en la columna de la actual iteración.
 
 ```
+
+Con p' ya podemos calcular dibujar la tira de 1xp' píxeles que representa un cachito de textura.
