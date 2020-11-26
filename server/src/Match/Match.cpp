@@ -1,6 +1,5 @@
 #include "../../includes/Match/Match.h"
 
-#include "../../../common/includes/Thread/Thread.h"
 #include "../../includes/Server/ClientCommunication.h"
 
 Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {}
@@ -17,7 +16,7 @@ void Match::addPlayerToMatch(ClientCommunication* player) {
   // jugador.
 }
 
-void Match::run() {
+void Match::start() {
   running = false;
   // TODO -> Procesar los comandos del jugador para crear la notificacion
   // apropiada.

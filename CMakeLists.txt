@@ -12,6 +12,8 @@ set(SOURCE_FILES_SERVER
         server/includes/Server/ClientAccepter.h
         server/includes/Server/ClientCommunication.h
         server/includes/Server/Server.h
+        server/includes/Model/Player/Player.h
+        server/includes/Model/Game/Game.h
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
@@ -25,8 +27,9 @@ set(SOURCE_FILES_SERVER
         server/src/Server/ClientCommunication.cpp 
         server/src/Match/MatchList.cpp   
         server/src/Match/Match.cpp
+        server/src/Model/Player/Player.cpp
+        server/src/Model/Game/Game.cpp
        
-
         )
 
 
