@@ -3,7 +3,15 @@
 #include "../server/includes/Model/Game/Game.h"
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
+#include "../common/includes/Socket/SocketException.h"
+#include "../common/includes/Socket/SocketCommunication.h"
 #include "CPPUnit.h"
+
+Test(SocketThrowsExcepctedException){
+
+  SocketCommunication socket(-1);
+  socket.connect("localhost", "8080");
+}
 
 Test(PlayerTakesDamageSuccesfully) {
   Player myPlayer(100, 2);
@@ -30,5 +38,6 @@ int main() {
   RUN_TEST(PlayerTakesFatalDamageAndDies);
   RUN_TEST(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
 
+  TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);
   TEST_PRINT_OVERALL();
 }

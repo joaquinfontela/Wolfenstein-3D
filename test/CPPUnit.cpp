@@ -22,6 +22,11 @@ void RUN_TEST(void (*test)()){
 		test();
 }
 
+void PRINT_EXCEPTION_THROWN(const char* test){
+	printf("In Test %s, Exception throwed: " ANSI_COLOR_GREEN "[OK] \n" ANSI_COLOR_RESET, test);
+	success_count++;
+}
+
 void TEST_PRINT_OVERALL(){
 
 	printf("\n-----------------" ANSI_COLOR_X "OVERALL" ANSI_COLOR_RESET "------------------------- \n");
@@ -33,13 +38,13 @@ void TEST_PRINT_OVERALL(){
 	
 }
 
-static void PRINT_SUCCESS(const char* test, int line){
+void PRINT_SUCCESS(const char* test, int line){
 
 	printf("In Test %s, Assertion in line %i: " ANSI_COLOR_GREEN "[OK] \n" ANSI_COLOR_RESET, test, line);
 	success_count++;
 }
 
-static void PRINT_FAILURE(const char* test, int line){
+void PRINT_FAILURE(const char* test, int line){
 
 	printf("In Test %s, Assertion in line %i: " ANSI_COLOR_RED "[FAILURE]\n" ANSI_COLOR_RESET, test, line);
 	failure_count++;

@@ -16,8 +16,13 @@
 #define TEST_ASSERT_EQUAL_CHAR_ARRAY(x, y, z, j)				CUNIT_ASSERT_EQUAL_CHAR_ARRAY(x, y, z, j, __func__, __LINE__)
 #define TEST_ASSERT_EQUAL_STRING_ARRAY(x, y, z, j)				CUNIT_ASSERT_EQUAL_STRING_ARRAY(x, y, z, j, __func__, __LINE__)
 
+#define TEST_ASSERT_THROWS(function, exception)                 try{RUN_TEST(function);}catch(exception& e){PRINT_SUCCESS(__func__, __LINE__);}
+
 
 void RUN_TEST(void (*test)());
+
+void PRINT_SUCCESS(const char* test, int line);
+void PRINT_FAILURE(const char* test, int line);
 
 void TEST_PRINT_OVERALL();
 
