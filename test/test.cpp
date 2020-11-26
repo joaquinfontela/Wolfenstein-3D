@@ -34,9 +34,13 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
 int main() {
-  RUN_TEST(PlayerTakesDamageSuccesfully);
-  RUN_TEST(PlayerTakesFatalDamageAndDies);
-  RUN_TEST(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+
+  TestSuit playerTests("Player Test");
+  playerTests.addTest(PlayerTakesDamageSuccesfully);
+  playerTests.addTest(PlayerTakesFatalDamageAndDies);
+  playerTests.addTest(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.run();
+
 
   TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);
   TEST_PRINT_OVERALL();

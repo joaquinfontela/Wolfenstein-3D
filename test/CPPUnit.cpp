@@ -3,6 +3,7 @@
 #include <string.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <iostream>
 
 static int success_count = 0;
 static int failure_count = 0;
@@ -14,7 +15,33 @@ static int failure_count = 0;
 
 extern char* strdup();
 
+TestSuit::TestSuit(std::string name){
+	this->name = name;
+	this->testAmount = 0;
+}
 
+void TestSuit::run(){
+	std::cout<<""<<std::endl;
+	std::string announcement = "################### Running Suit: " + this->name + " ###################\n" ;
+
+	printf(ANSI_COLOR_X"%s" ANSI_COLOR_RESET, announcement.c_str());
+	for(int i = 0; i < this->testAmount; i++){
+		RUN_TEST(this->tests[i]);
+	}
+
+	std::string endAnnouncement = "";
+	for(int i = 1; i < announcement.length(); i++){
+		endAnnouncement += "#";
+	}
+
+	printf(ANSI_COLOR_X"%s" ANSI_COLOR_RESET, endAnnouncement.c_str());
+	std::cout<<""<<std::endl;
+}
+
+void TestSuit::addTest(void (*test)(void)){
+	this->tests[this->testAmount] = test;
+	this->testAmount++;
+}
 
 void RUN_TEST(void (*test)()){
 
@@ -40,12 +67,14 @@ void TEST_PRINT_OVERALL(){
 
 void PRINT_SUCCESS(const char* test, int line){
 
+	printf(ANSI_COLOR_GREEN"-> " ANSI_COLOR_RESET);
 	printf("In Test %s, Assertion in line %i: " ANSI_COLOR_GREEN "[OK] \n" ANSI_COLOR_RESET, test, line);
 	success_count++;
 }
 
 void PRINT_FAILURE(const char* test, int line){
 
+	printf(ANSI_COLOR_RED"-> " ANSI_COLOR_RESET);
 	printf("In Test %s, Assertion in line %i: " ANSI_COLOR_RED "[FAILURE]\n" ANSI_COLOR_RESET, test, line);
 	failure_count++;
 }

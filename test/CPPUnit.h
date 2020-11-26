@@ -1,5 +1,6 @@
 #ifndef __CPPUNIT_H__
 #define __CPPUNIT_H__
+#include <string>
 
 #define Test(name) 												void name()
 
@@ -18,6 +19,19 @@
 
 #define TEST_ASSERT_THROWS(function, exception)                 try{RUN_TEST(function);}catch(exception& e){PRINT_SUCCESS(__func__, __LINE__);}
 
+class TestSuit{
+
+private:
+    std::string name;
+    void (*tests[256])(void);
+    unsigned int testAmount;
+
+public:
+
+    TestSuit(std::string suitName);
+    void addTest(void (*test)(void));
+    void run();
+};
 
 void RUN_TEST(void (*test)());
 
