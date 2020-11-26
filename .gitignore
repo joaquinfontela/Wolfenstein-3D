@@ -5,3 +5,6 @@ CMakeFiles/
 libsdldemo.a
 .swp
 cmake_install.cmake
+.idea/
+./cmake-build-debug
+

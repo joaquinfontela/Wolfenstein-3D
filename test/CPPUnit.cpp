@@ -27,7 +27,10 @@ void TEST_PRINT_OVERALL(){
 	printf("\n-----------------" ANSI_COLOR_X "OVERALL" ANSI_COLOR_RESET "------------------------- \n");
 
 	printf("Assertions Passed: " ANSI_COLOR_GREEN "[%i] \n" ANSI_COLOR_RESET, success_count);
-	printf("Assertions Failed: " ANSI_COLOR_RED "[%i] \n" ANSI_COLOR_RESET, failure_count);
+	if(failure_count > 0){
+		printf("Assertions Failed: " ANSI_COLOR_RED "[%i] \n" ANSI_COLOR_RESET, failure_count);
+	}
+	
 }
 
 static void PRINT_SUCCESS(const char* test, int line){
