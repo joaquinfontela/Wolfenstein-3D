@@ -11,9 +11,9 @@ class Match;
 
 class MatchList {
  private:
-  std::map<int, Match*> matches;
+  std::map<int, Match> matches;
 
-  void matchCleanup();
+  // void matchCleanup();
 
  public:
   MatchList();

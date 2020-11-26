@@ -10,17 +10,18 @@ MatchList::MatchList() {}
 
 void MatchList::joinOrCreate(ClientCommunication* player, int lobbyID) {
   if (this->matches.find(lobbyID) != this->matches.end()) {
-    this->matches[lobbyID]->addPlayerToMatch(player);
+    this->matches[lobbyID].addPlayerToMatch(player);
     return;
   }
 
-  Match* newMatch = new Match(lobbyID);
-  newMatch->addPlayerToMatch(player);
+  Match newMatch(lobbyID);
+  newMatch.addPlayerToMatch(player);
 
-  newMatch->start();
+  newMatch.start();
   this->matches.insert({lobbyID, newMatch});
 }
 
+/*
 void MatchList::matchCleanup() {
   std::map<int, Match*>::iterator it = this->matches.begin();
 
@@ -35,6 +36,7 @@ void MatchList::matchCleanup() {
     }
   }
 }
+*/
 
 MatchList::~MatchList() {
   while (!this->matches.empty()) {
