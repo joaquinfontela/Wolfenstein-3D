@@ -4,6 +4,8 @@
 
 Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {}
 
+Match::Match() {}
+
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }
 
 void Match::addPlayerToMatch(ClientCommunication* player) {

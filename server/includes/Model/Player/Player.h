@@ -3,8 +3,8 @@
 
 class Player {
  private:
-  unsigned int health;
-  unsigned int lifeRemaining;
+  int x, y;
+  unsigned int health, lifeRemaining;
   // Weapon* weapon;
   bool hasKey;
 

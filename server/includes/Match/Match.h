@@ -18,6 +18,7 @@ class Match {
   std::map<int, ClientCommunication*> players;
 
  public:
+  Match();
   explicit Match(int lobbyID);
   bool hasID(int lobbyID);
   void start();
