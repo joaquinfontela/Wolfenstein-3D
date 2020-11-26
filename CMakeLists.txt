@@ -30,6 +30,8 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
        
+        test/CPPUnit.h
+        test/CPPUnit.cpp
         )
 
 

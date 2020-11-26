@@ -258,6 +258,60 @@ server/src/Match/MatchList.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/MatchList.cpp.s
 .PHONY : server/src/Match/MatchList.cpp.s
 
+server/src/Model/Game/Game.o: server/src/Model/Game/Game.cpp.o
+
+.PHONY : server/src/Model/Game/Game.o
+
+# target to build an object file
+server/src/Model/Game/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.o
+.PHONY : server/src/Model/Game/Game.cpp.o
+
+server/src/Model/Game/Game.i: server/src/Model/Game/Game.cpp.i
+
+.PHONY : server/src/Model/Game/Game.i
+
+# target to preprocess a source file
+server/src/Model/Game/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.i
+.PHONY : server/src/Model/Game/Game.cpp.i
+
+server/src/Model/Game/Game.s: server/src/Model/Game/Game.cpp.s
+
+.PHONY : server/src/Model/Game/Game.s
+
+# target to generate assembly for a file
+server/src/Model/Game/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.s
+.PHONY : server/src/Model/Game/Game.cpp.s
+
+server/src/Model/Player/Player.o: server/src/Model/Player/Player.cpp.o
+
+.PHONY : server/src/Model/Player/Player.o
+
+# target to build an object file
+server/src/Model/Player/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.o
+.PHONY : server/src/Model/Player/Player.cpp.o
+
+server/src/Model/Player/Player.i: server/src/Model/Player/Player.cpp.i
+
+.PHONY : server/src/Model/Player/Player.i
+
+# target to preprocess a source file
+server/src/Model/Player/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.i
+.PHONY : server/src/Model/Player/Player.cpp.i
+
+server/src/Model/Player/Player.s: server/src/Model/Player/Player.cpp.s
+
+.PHONY : server/src/Model/Player/Player.s
+
+# target to generate assembly for a file
+server/src/Model/Player/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.s
+.PHONY : server/src/Model/Player/Player.cpp.s
+
 server/src/Server/ClientAccepter.o: server/src/Server/ClientAccepter.cpp.o
 
 .PHONY : server/src/Server/ClientAccepter.o
@@ -339,6 +393,33 @@ server/src/Server/Server.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/Server.cpp.s
 .PHONY : server/src/Server/Server.cpp.s
 
+test/CPPUnit.o: test/CPPUnit.cpp.o
+
+.PHONY : test/CPPUnit.o
+
+# target to build an object file
+test/CPPUnit.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.o
+.PHONY : test/CPPUnit.cpp.o
+
+test/CPPUnit.i: test/CPPUnit.cpp.i
+
+.PHONY : test/CPPUnit.i
+
+# target to preprocess a source file
+test/CPPUnit.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.i
+.PHONY : test/CPPUnit.cpp.i
+
+test/CPPUnit.s: test/CPPUnit.cpp.s
+
+.PHONY : test/CPPUnit.s
+
+# target to generate assembly for a file
+test/CPPUnit.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.s
+.PHONY : test/CPPUnit.cpp.s
+
 test/test.o: test/test.cpp.o
 
 .PHONY : test/test.o
@@ -390,6 +471,12 @@ help:
 	@echo "... server/src/Match/MatchList.o"
 	@echo "... server/src/Match/MatchList.i"
 	@echo "... server/src/Match/MatchList.s"
+	@echo "... server/src/Model/Game/Game.o"
+	@echo "... server/src/Model/Game/Game.i"
+	@echo "... server/src/Model/Game/Game.s"
+	@echo "... server/src/Model/Player/Player.o"
+	@echo "... server/src/Model/Player/Player.i"
+	@echo "... server/src/Model/Player/Player.s"
 	@echo "... server/src/Server/ClientAccepter.o"
 	@echo "... server/src/Server/ClientAccepter.i"
 	@echo "... server/src/Server/ClientAccepter.s"
@@ -399,6 +486,9 @@ help:
 	@echo "... server/src/Server/Server.o"
 	@echo "... server/src/Server/Server.i"
 	@echo "... server/src/Server/Server.s"
+	@echo "... test/CPPUnit.o"
+	@echo "... test/CPPUnit.i"
+	@echo "... test/CPPUnit.s"
 	@echo "... test/test.o"
 	@echo "... test/test.i"
 	@echo "... test/test.s"

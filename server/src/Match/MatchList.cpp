@@ -21,6 +21,7 @@ void MatchList::joinOrCreate(ClientCommunication* player, int lobbyID) {
   this->matches.insert({lobbyID, newMatch});
 }
 
+/*
 void MatchList::matchCleanup() {
   std::map<int, Match*>::iterator it = this->matches.begin();
 
@@ -35,9 +36,12 @@ void MatchList::matchCleanup() {
     }
   }
 }
+*/
 
 MatchList::~MatchList() {
+  /*
   while (!this->matches.empty()) {
     matchCleanup();
   }
+  */
 }

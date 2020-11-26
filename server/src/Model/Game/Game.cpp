@@ -10,7 +10,8 @@ void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
   unsigned int lifes = 2;
 
-  this->players[playerID] = Player(health, lifes);
+  Player newPlayer(health, lifes);
+  this->players[playerID] = newPlayer;
 }
 
 void Game::start() {

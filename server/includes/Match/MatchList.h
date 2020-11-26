@@ -13,7 +13,7 @@ class MatchList {
  private:
   std::map<int, Match*> matches;
 
-  void matchCleanup();
+ // void matchCleanup();
 
  public:
   MatchList();

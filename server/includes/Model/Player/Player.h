@@ -12,7 +12,7 @@ class Player {
 
  public:
   Player(unsigned int hp, unsigned int lifes);
-
+  Player() {}
   int takeDamage(unsigned int damage);
 
   // Devuelve cuanto daño hace un ataque con su arma.
@@ -22,6 +22,8 @@ class Player {
   // void equipWeapon(Weapon* weapon);
 
   void pickupKey();
+
+  int getHealth();
 };
 
 #endif
