@@ -39,7 +39,7 @@ void MatchList::matchCleanup() {
 */
 
 MatchList::~MatchList() {
-  while (!this->matches.empty()) {
-    matchCleanup();
-  }
+  // while (!this->matches.empty()) {
+  //   matchCleanup();
+  // }
 }
