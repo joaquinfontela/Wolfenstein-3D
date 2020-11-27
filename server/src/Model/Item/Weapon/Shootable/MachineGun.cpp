@@ -1,4 +1,4 @@
-#include "../../../../includes/Model/Weapon/Shootable/MachineGun.h"
+#include "../../../../../includes/Model/Item/StockableItem/Weapon/Shootable/MachineGun.h"
 
 MachineGun::MachineGun(int newAmmo) : Shootable(newAmmo) {}
 

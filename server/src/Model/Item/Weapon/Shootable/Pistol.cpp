@@ -1,4 +1,4 @@
-#include "../../../../includes/Model/Weapon/Shootable/Pistol.h"
+#include "../../../../../includes/Model/Item/StockableItem/Weapon/Shootable/Pistol.h"
 
 Pistol::Pistol(int newAmmo) : Shootable(newAmmo) {}
 
