@@ -1,4 +1,4 @@
-#include "../../../../../includes/Model/Item/StockableItem/Weapon/Shootable/RocketLauncher.h"
+#include "../../../../../../includes/Model/Item/StockableItem/Weapon/Shootable/RocketLauncher.h"
 
 RocketLauncher::RocketLauncher(int newAmmo) : Shootable(newAmmo) {}
 

@@ -25,6 +25,7 @@ class Player {
   void equipWeapon(Weapon* weapon);
 
   void pickupKey();
+  void pickUpAmmo();
 
   int getHealth();
   void addHealth(int health);
