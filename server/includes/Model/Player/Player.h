@@ -1,8 +1,8 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#include "../Item/StockableItem/StockableItem.h"
-#include "../Item/StockableItem/Weapon/Weapon.h"
+class Weapon;
+#include "../Item/Weapon/Weapon.h"
 
 class Player {
  private:
@@ -29,6 +29,8 @@ class Player {
 
   int getHealth();
   void addHealth(int health);
+
+  void addPoints(int points);
 };
 
 #endif
