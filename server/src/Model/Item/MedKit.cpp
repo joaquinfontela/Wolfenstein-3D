@@ -1,3 +1,3 @@
 #include "../../../includes/Model/Item/MedKit.h"
 
-void MedKit::pickUp(Player player) { player.addHealth(20); }
+void MedKit::pickUp(Player& player) { player.addHealth(20); }

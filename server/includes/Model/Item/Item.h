@@ -6,7 +6,7 @@ class Player;
 
 class Item {
  public:
-  virtual void pickUp(Player player) = 0;
+  virtual void pickUp(Player& player) = 0;
 };
 
 #endif

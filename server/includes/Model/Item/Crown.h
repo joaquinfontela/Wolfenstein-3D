@@ -5,7 +5,7 @@
 
 class Crown : public Item {
  public:
-  void pickUp(Player player) override;
+  void pickUp(Player& player) override;
 };
 
 #endif  // TP_FINAL_CROWN_H

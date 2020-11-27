@@ -5,7 +5,7 @@
 
 class Cup : public Item {
  public:
-  void pickUp(Player player) override;
+  void pickUp(Player& player) override;
 };
 
 #endif  // TP_FINAL_CUP_H

@@ -2,5 +2,5 @@
 
 class Cross : public Item {
  public:
-  void pickUp(Player player) override;
+  void pickUp(Player& player) override;
 };
