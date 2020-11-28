@@ -5,6 +5,8 @@
 
 class Cup : public Item {
  public:
+  Cup();
+  ~Cup();
   void pickUp(Player& player) override;
 };
 

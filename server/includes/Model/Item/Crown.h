@@ -5,6 +5,8 @@
 
 class Crown : public Item {
  public:
+  Crown();
+  ~Crown();
   void pickUp(Player& player) override;
 };
 

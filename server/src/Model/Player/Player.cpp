@@ -1,7 +1,7 @@
 #include "../../../includes/Model/Player/Player.h"
 
 Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), hasKey(false) {}
+    : health(hp), lifeRemaining(lifes), hasKey(false), score(0) {}
 
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
@@ -29,7 +29,10 @@ int Player::attack() {
 }
 
 void Player::pickupKey() { this->hasKey = true; }
+void Player::pickUpAmmo() {}
 
 int Player::getHealth() { return this->health; }
-
 void Player::addHealth(int health) { this->health += health; }
+
+void Player::addPoints(int points) { this->score += points; }
+int Player::getScore() { return this->score; }

@@ -304,6 +304,195 @@ server/src/Model/Game/Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.s
 .PHONY : server/src/Model/Game/Game.cpp.s
 
+server/src/Model/Item/Ammo.o: server/src/Model/Item/Ammo.cpp.o
+
+.PHONY : server/src/Model/Item/Ammo.o
+
+# target to build an object file
+server/src/Model/Item/Ammo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.o
+.PHONY : server/src/Model/Item/Ammo.cpp.o
+
+server/src/Model/Item/Ammo.i: server/src/Model/Item/Ammo.cpp.i
+
+.PHONY : server/src/Model/Item/Ammo.i
+
+# target to preprocess a source file
+server/src/Model/Item/Ammo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.i
+.PHONY : server/src/Model/Item/Ammo.cpp.i
+
+server/src/Model/Item/Ammo.s: server/src/Model/Item/Ammo.cpp.s
+
+.PHONY : server/src/Model/Item/Ammo.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Ammo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.s
+.PHONY : server/src/Model/Item/Ammo.cpp.s
+
+server/src/Model/Item/Blood.o: server/src/Model/Item/Blood.cpp.o
+
+.PHONY : server/src/Model/Item/Blood.o
+
+# target to build an object file
+server/src/Model/Item/Blood.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.o
+.PHONY : server/src/Model/Item/Blood.cpp.o
+
+server/src/Model/Item/Blood.i: server/src/Model/Item/Blood.cpp.i
+
+.PHONY : server/src/Model/Item/Blood.i
+
+# target to preprocess a source file
+server/src/Model/Item/Blood.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.i
+.PHONY : server/src/Model/Item/Blood.cpp.i
+
+server/src/Model/Item/Blood.s: server/src/Model/Item/Blood.cpp.s
+
+.PHONY : server/src/Model/Item/Blood.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Blood.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.s
+.PHONY : server/src/Model/Item/Blood.cpp.s
+
+server/src/Model/Item/Chest.o: server/src/Model/Item/Chest.cpp.o
+
+.PHONY : server/src/Model/Item/Chest.o
+
+# target to build an object file
+server/src/Model/Item/Chest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.o
+.PHONY : server/src/Model/Item/Chest.cpp.o
+
+server/src/Model/Item/Chest.i: server/src/Model/Item/Chest.cpp.i
+
+.PHONY : server/src/Model/Item/Chest.i
+
+# target to preprocess a source file
+server/src/Model/Item/Chest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.i
+.PHONY : server/src/Model/Item/Chest.cpp.i
+
+server/src/Model/Item/Chest.s: server/src/Model/Item/Chest.cpp.s
+
+.PHONY : server/src/Model/Item/Chest.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Chest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.s
+.PHONY : server/src/Model/Item/Chest.cpp.s
+
+server/src/Model/Item/Cross.o: server/src/Model/Item/Cross.cpp.o
+
+.PHONY : server/src/Model/Item/Cross.o
+
+# target to build an object file
+server/src/Model/Item/Cross.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.o
+.PHONY : server/src/Model/Item/Cross.cpp.o
+
+server/src/Model/Item/Cross.i: server/src/Model/Item/Cross.cpp.i
+
+.PHONY : server/src/Model/Item/Cross.i
+
+# target to preprocess a source file
+server/src/Model/Item/Cross.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.i
+.PHONY : server/src/Model/Item/Cross.cpp.i
+
+server/src/Model/Item/Cross.s: server/src/Model/Item/Cross.cpp.s
+
+.PHONY : server/src/Model/Item/Cross.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Cross.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.s
+.PHONY : server/src/Model/Item/Cross.cpp.s
+
+server/src/Model/Item/Crown.o: server/src/Model/Item/Crown.cpp.o
+
+.PHONY : server/src/Model/Item/Crown.o
+
+# target to build an object file
+server/src/Model/Item/Crown.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.o
+.PHONY : server/src/Model/Item/Crown.cpp.o
+
+server/src/Model/Item/Crown.i: server/src/Model/Item/Crown.cpp.i
+
+.PHONY : server/src/Model/Item/Crown.i
+
+# target to preprocess a source file
+server/src/Model/Item/Crown.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.i
+.PHONY : server/src/Model/Item/Crown.cpp.i
+
+server/src/Model/Item/Crown.s: server/src/Model/Item/Crown.cpp.s
+
+.PHONY : server/src/Model/Item/Crown.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Crown.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.s
+.PHONY : server/src/Model/Item/Crown.cpp.s
+
+server/src/Model/Item/Cup.o: server/src/Model/Item/Cup.cpp.o
+
+.PHONY : server/src/Model/Item/Cup.o
+
+# target to build an object file
+server/src/Model/Item/Cup.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.o
+.PHONY : server/src/Model/Item/Cup.cpp.o
+
+server/src/Model/Item/Cup.i: server/src/Model/Item/Cup.cpp.i
+
+.PHONY : server/src/Model/Item/Cup.i
+
+# target to preprocess a source file
+server/src/Model/Item/Cup.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.i
+.PHONY : server/src/Model/Item/Cup.cpp.i
+
+server/src/Model/Item/Cup.s: server/src/Model/Item/Cup.cpp.s
+
+.PHONY : server/src/Model/Item/Cup.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Cup.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.s
+.PHONY : server/src/Model/Item/Cup.cpp.s
+
+server/src/Model/Item/Food.o: server/src/Model/Item/Food.cpp.o
+
+.PHONY : server/src/Model/Item/Food.o
+
+# target to build an object file
+server/src/Model/Item/Food.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.o
+.PHONY : server/src/Model/Item/Food.cpp.o
+
+server/src/Model/Item/Food.i: server/src/Model/Item/Food.cpp.i
+
+.PHONY : server/src/Model/Item/Food.i
+
+# target to preprocess a source file
+server/src/Model/Item/Food.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.i
+.PHONY : server/src/Model/Item/Food.cpp.i
+
+server/src/Model/Item/Food.s: server/src/Model/Item/Food.cpp.s
+
+.PHONY : server/src/Model/Item/Food.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Food.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.s
+.PHONY : server/src/Model/Item/Food.cpp.s
+
 server/src/Model/Item/Item.o: server/src/Model/Item/Item.cpp.o
 
 .PHONY : server/src/Model/Item/Item.o
@@ -357,6 +546,33 @@ server/src/Model/Item/ItemDrop/ItemDrop.s: server/src/Model/Item/ItemDrop/ItemDr
 server/src/Model/Item/ItemDrop/ItemDrop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
 .PHONY : server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
+
+server/src/Model/Item/Key.o: server/src/Model/Item/Key.cpp.o
+
+.PHONY : server/src/Model/Item/Key.o
+
+# target to build an object file
+server/src/Model/Item/Key.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.o
+.PHONY : server/src/Model/Item/Key.cpp.o
+
+server/src/Model/Item/Key.i: server/src/Model/Item/Key.cpp.i
+
+.PHONY : server/src/Model/Item/Key.i
+
+# target to preprocess a source file
+server/src/Model/Item/Key.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.i
+.PHONY : server/src/Model/Item/Key.cpp.i
+
+server/src/Model/Item/Key.s: server/src/Model/Item/Key.cpp.s
+
+.PHONY : server/src/Model/Item/Key.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Key.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.s
+.PHONY : server/src/Model/Item/Key.cpp.s
 
 server/src/Model/Item/MedKit.o: server/src/Model/Item/MedKit.cpp.o
 
@@ -574,12 +790,36 @@ help:
 	@echo "... server/src/Model/Game/Game.o"
 	@echo "... server/src/Model/Game/Game.i"
 	@echo "... server/src/Model/Game/Game.s"
+	@echo "... server/src/Model/Item/Ammo.o"
+	@echo "... server/src/Model/Item/Ammo.i"
+	@echo "... server/src/Model/Item/Ammo.s"
+	@echo "... server/src/Model/Item/Blood.o"
+	@echo "... server/src/Model/Item/Blood.i"
+	@echo "... server/src/Model/Item/Blood.s"
+	@echo "... server/src/Model/Item/Chest.o"
+	@echo "... server/src/Model/Item/Chest.i"
+	@echo "... server/src/Model/Item/Chest.s"
+	@echo "... server/src/Model/Item/Cross.o"
+	@echo "... server/src/Model/Item/Cross.i"
+	@echo "... server/src/Model/Item/Cross.s"
+	@echo "... server/src/Model/Item/Crown.o"
+	@echo "... server/src/Model/Item/Crown.i"
+	@echo "... server/src/Model/Item/Crown.s"
+	@echo "... server/src/Model/Item/Cup.o"
+	@echo "... server/src/Model/Item/Cup.i"
+	@echo "... server/src/Model/Item/Cup.s"
+	@echo "... server/src/Model/Item/Food.o"
+	@echo "... server/src/Model/Item/Food.i"
+	@echo "... server/src/Model/Item/Food.s"
 	@echo "... server/src/Model/Item/Item.o"
 	@echo "... server/src/Model/Item/Item.i"
 	@echo "... server/src/Model/Item/Item.s"
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.o"
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.i"
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.s"
+	@echo "... server/src/Model/Item/Key.o"
+	@echo "... server/src/Model/Item/Key.i"
+	@echo "... server/src/Model/Item/Key.s"
 	@echo "... server/src/Model/Item/MedKit.o"
 	@echo "... server/src/Model/Item/MedKit.i"
 	@echo "... server/src/Model/Item/MedKit.s"

@@ -16,7 +16,15 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Game/Game.h
         server/includes/Model/Item/ItemDrop/ItemDrop.h
         server/includes/Model/Item/Item.h
+        server/includes/Model/Item/Ammo.h
+        server/includes/Model/Item/Blood.h
+        server/includes/Model/Item/Chest.h
+        server/includes/Model/Item/Cross.h
+        server/includes/Model/Item/Crown.h
+        server/includes/Model/Item/Cup.h
         server/includes/Model/Item/MedKit.h
+        server/includes/Model/Item/Food.h
+        server/includes/Model/Item/Key.h
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
@@ -34,6 +42,14 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Game/Game.cpp
         server/src/Model/Item/ItemDrop/ItemDrop.cpp
         server/src/Model/Item/Item.cpp
+        server/src/Model/Item/Ammo.cpp
+        server/src/Model/Item/Blood.cpp
+        server/src/Model/Item/Chest.cpp
+        server/src/Model/Item/Cross.cpp
+        server/src/Model/Item/Crown.cpp
+        server/src/Model/Item/Cup.cpp
+        server/src/Model/Item/Food.cpp
+        server/src/Model/Item/Key.cpp
         server/src/Model/Item/MedKit.cpp
        
         test/CPPUnit.h

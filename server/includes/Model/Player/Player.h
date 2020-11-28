@@ -6,6 +6,7 @@
 class Player {
  private:
   int x, y;
+  int score;
   unsigned int health, lifeRemaining;
   // Weapon* weapon;
   bool hasKey;
@@ -30,6 +31,7 @@ class Player {
   void addHealth(int health);
 
   void addPoints(int points);
+  int getScore();
 };
 
 #endif

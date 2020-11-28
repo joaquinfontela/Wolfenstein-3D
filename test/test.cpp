@@ -3,7 +3,13 @@
 #include "../common/includes/Socket/SocketCommunication.h"
 #include "../common/includes/Socket/SocketException.h"
 #include "../server/includes/Model/Game/Game.h"
+#include "../server/includes/Model/Item/Chest.h"
+#include "../server/includes/Model/Item/Cross.h"
+#include "../server/includes/Model/Item/Crown.h"
+#include "../server/includes/Model/Item/Cup.h"
+#include "../server/includes/Model/Item/Food.h"
 #include "../server/includes/Model/Item/ItemDrop/ItemDrop.h"
+#include "../server/includes/Model/Item/Key.h"
 #include "../server/includes/Model/Item/MedKit.h"
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
@@ -35,6 +41,15 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
 
+Test(PlayerPicksUpChestAndGets100Points) {
+  Player myPlayer(100, 1);
+  Chest myChest;
+  ItemDrop chestDrop(myChest);
+  chestDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 100);
+}
+
 Test(PlayerPickUpMedKitAndGets20OfHealth) {
   Player myPlayer(50, 1);
   MedKit medKit;
@@ -50,6 +65,8 @@ int main() {
   playerTests.addTest(PlayerTakesFatalDamageAndDies);
   playerTests.addTest(
       PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+
+  playerTests.addTest(PlayerPicksUpChestAndGets100Points);
   playerTests.addTest(PlayerPickUpMedKitAndGets20OfHealth);
   playerTests.run();
 

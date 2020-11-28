@@ -2,5 +2,7 @@
 
 class Key : public Item {
  public:
+  Key();
+  ~Key();
   void pickUp(Player& player) override;
 };

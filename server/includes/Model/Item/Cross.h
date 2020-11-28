@@ -2,5 +2,7 @@
 
 class Cross : public Item {
  public:
+  Cross();
+  ~Cross();
   void pickUp(Player& player) override;
 };

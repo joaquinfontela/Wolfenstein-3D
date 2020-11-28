@@ -5,6 +5,8 @@
 
 class Chest : public Item {
  public:
+  Chest();
+  ~Chest();
   void pickUp(Player& player) override;
 };
 
