@@ -14,6 +14,9 @@ set(SOURCE_FILES_SERVER
         server/includes/Server/Server.h
         server/includes/Model/Player/Player.h
         server/includes/Model/Game/Game.h
+        server/includes/Model/Item/ItemDrop/ItemDrop.h
+        server/includes/Model/Item/Item.h
+        server/includes/Model/Item/MedKit.h
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
@@ -29,6 +32,9 @@ set(SOURCE_FILES_SERVER
         server/src/Match/Match.cpp
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
+        server/src/Model/Item/ItemDrop/ItemDrop.cpp
+        server/src/Model/Item/Item.cpp
+        server/src/Model/Item/MedKit.cpp
        
         test/CPPUnit.h
         test/CPPUnit.cpp

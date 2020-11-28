@@ -31,3 +31,5 @@ int Player::attack() {
 void Player::pickupKey() { this->hasKey = true; }
 
 int Player::getHealth() { return this->health; }
+
+void Player::addHealth(int health) { this->health += health; }

@@ -2,5 +2,7 @@
 
 class MedKit : public Item {
  public:
+  MedKit();
+  ~MedKit();
   void pickUp(Player& player) override;
 };

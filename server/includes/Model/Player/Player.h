@@ -1,7 +1,6 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-class Weapon;
 #include "../Item/Weapon/Weapon.h"
 
 class Player {

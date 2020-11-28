@@ -1,14 +1,15 @@
 #include <iostream>
 
+#include "../common/includes/Socket/SocketCommunication.h"
+#include "../common/includes/Socket/SocketException.h"
 #include "../server/includes/Model/Game/Game.h"
+#include "../server/includes/Model/Item/ItemDrop/ItemDrop.h"
+#include "../server/includes/Model/Item/MedKit.h"
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
-#include "../common/includes/Socket/SocketException.h"
-#include "../common/includes/Socket/SocketCommunication.h"
 #include "CPPUnit.h"
 
-Test(SocketThrowsExcepctedException){
-
+Test(SocketThrowsExcepctedException) {
   SocketCommunication socket(-1);
   socket.connect("localhost", "8080");
 }
@@ -33,14 +34,24 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   myPlayer.takeDamage(100);
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
-int main() {
 
+Test(PlayerPickUpMedKitAndGets20OfHealth) {
+  Player myPlayer(50, 1);
+  MedKit medKit;
+  ItemDrop medKitDrop(medKit);
+  medKitDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 70);
+}
+
+int main() {
   TestSuit playerTests("Player Test");
   playerTests.addTest(PlayerTakesDamageSuccesfully);
   playerTests.addTest(PlayerTakesFatalDamageAndDies);
-  playerTests.addTest(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.addTest(
+      PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.addTest(PlayerPickUpMedKitAndGets20OfHealth);
   playerTests.run();
-
 
   TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);
   TEST_PRINT_OVERALL();

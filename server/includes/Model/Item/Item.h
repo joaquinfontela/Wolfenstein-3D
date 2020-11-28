@@ -1,11 +1,11 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-class Player;
 #include "../Player/Player.h"
 
 class Item {
  public:
+  virtual ~Item() = 0;
   virtual void pickUp(Player& player) = 0;
 };
 
