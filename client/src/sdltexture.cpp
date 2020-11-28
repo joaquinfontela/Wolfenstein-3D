@@ -55,11 +55,11 @@ int SdlTexture::render(const Area& src, const Area& dest) const {
   SDL_Rect sdlSrc = {src.getX(), src.getY(), src.getWidth(), src.getHeight()};
   SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
                       dest.getHeight()};
-  std::cout << "Voy a proyectar desde x: " << src.getX() << " y: " << src.getY()
-            << " w: " << src.getWidth() << " h: " << src.getHeight()
-            << std::endl;
-  std::cout << "Voy a proyectar hacia x: " << dest.getX()
-            << " y: " << dest.getY() << " w: " << dest.getWidth()
-            << " h: " << dest.getHeight() << std::endl;
   return SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);
+}
+
+int SdlTexture::renderAll(const Area& dest) const {
+  SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
+                      dest.getHeight()};
+  return SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);
 }

@@ -15,6 +15,7 @@ class Drawing {
   Area destArea;
 
  public:
+  Drawing(std::string path, SdlWindow& window, Area b);
   Drawing(std::string path, SdlWindow& window);
   Drawing(std::string path, SdlWindow& window, Area a, Area b);
   void moveLeft(int z);

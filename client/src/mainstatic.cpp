@@ -7,30 +7,26 @@
 #include "sdltexture.h"
 #include "sdlwindow.h"
 
-#define TEMP_HEIGHT 800
-#define TEMP_WIDTH 600
+#define HEIGHT 600
+#define WIDTH 800
 #define IMG_PATH "../media/"
 
 int main(int argc, char** argv) {
+
   try {
-    SdlWindow window(TEMP_HEIGHT, TEMP_WIDTH);
+    SdlWindow window(WIDTH, HEIGHT);
     window.fill();
 
-    Drawing hud(IMG_PATH "hud.jpg", window);
-
-    Area srcArea(0, 0, 100, 100);
-    Area destArea(300, 290, 180, 180);
-    // Drawing gun(IMG_PATH "chaingun1.jpg", window, srcArea, destArea);
-    hud.draw();
-    // gun.draw();
+    Area newDestArea(0, 0, 100, 100);
+    Drawing gun(IMG_PATH "chaingun1.jpg", window, newDestArea);
+    gun.draw();
     window.render();
-    SDL_Delay(3000);
 
-    /*while (false) {
+    while (true) {
       SDL_Event event;
-      window.render();
-      hud.draw();
+      window.fill();
       gun.draw();
+      window.render();
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {
         break;
@@ -64,7 +60,7 @@ int main(int argc, char** argv) {
           gun.makeBigger(10);
         }
       }
-    }*/
+    }
 
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;

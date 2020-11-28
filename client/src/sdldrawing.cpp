@@ -22,6 +22,14 @@ Drawing::Drawing(std::string path, SdlWindow& window, Area a, Area b)
   this->texture.setTexture(path, window);
 }
 
+Drawing::Drawing(std::string path, SdlWindow& window, Area b)
+    : window(window), destArea(b) {
+  // std::cout << __LINE__ << " ";
+  // SdlTexture t(path, this->window);
+  // this->texture = std::move(t);
+  this->texture.setTexture(path, window);
+}
+
 void Drawing::moveLeft(int z) { this->destArea.moveLeft(z); }
 
 void Drawing::moveRight(int z) { this->destArea.moveRight(z); }

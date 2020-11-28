@@ -20,9 +20,9 @@ void Area::moveLeft(int z) { x -= z; }
 
 void Area::moveRight(int z) { x += z; }
 
-void Area::moveUp(int z) { y += z; }
+void Area::moveUp(int z) { y -= z; }
 
-void Area::moveDown(int z) { y -= z; }
+void Area::moveDown(int z) { y += z; }
 
 void Area::makeBigger(int z) {
   width += z;

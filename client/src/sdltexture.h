@@ -13,6 +13,7 @@ class SdlTexture {
   SdlTexture(const std::string& filename, const SdlWindow& window);
   void setTexture(const std::string& filename, const SdlWindow& window);
   ~SdlTexture();
+  int renderAll(const Area& dest) const; 
   int render(const Area& src, const Area& dest) const;
   SdlTexture& operator=(SdlTexture&& other);
   SdlTexture(SdlTexture&& other);
