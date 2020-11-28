@@ -7,4 +7,4 @@ bool Weapon::canBePickedUpBy(Player& player) {
   return true;
 }
 
-void Weapon::pickUp(Player& player) { player.equipWeapon(*this); }
+void Weapon::pickUp(Player& player) { player.equipWeapon(this); }

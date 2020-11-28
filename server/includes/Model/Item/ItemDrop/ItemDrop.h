@@ -1,8 +1,8 @@
 #ifndef TP_FINAL_ITEMDROP_H
 #define TP_FINAL_ITEMDROP_H
 
+#include "../../Player/Player.h"
 #include "../Item.h"
-class Item;
 
 class ItemDrop {
  protected:

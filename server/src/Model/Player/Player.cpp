@@ -28,7 +28,7 @@ int Player::attack() {
   // cambio a cuchillo
 }
 
-void Player::equipWeapon(Weapon& weapon) {}
+void Player::equipWeapon(Item* weapon) {}
 
 void Player::pickupKey() { this->key = true; }
 bool Player::hasKey() { return key; }
