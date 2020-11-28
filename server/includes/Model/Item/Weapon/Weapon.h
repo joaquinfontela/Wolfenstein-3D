@@ -6,6 +6,7 @@ class Player;
 
 class Weapon {
  public:
+  virtual ~Weapon() = 0;
   virtual void attack() = 0;
   void pickUp(Player& player);
   bool canBePickedUpBy(Player& player);

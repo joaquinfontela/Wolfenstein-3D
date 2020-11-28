@@ -161,6 +161,7 @@ int main() {
   playerTests.addTest(PlayerCannotPickUpMedKitWhenHeHas100PointsOfHealth);
   playerTests.addTest(
       PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey);
+
   playerTests.run();
 
   TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);

@@ -2,4 +2,6 @@
 
 MiniGun::MiniGun(int newAmmo) : Shootable(newAmmo) {}
 
+MiniGun::~MiniGun() {}
+
 void MiniGun::shoot() { --ammo; }

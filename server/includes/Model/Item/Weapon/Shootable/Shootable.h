@@ -7,6 +7,7 @@ class Shootable : public Weapon {
 
  public:
   Shootable(int newAmmo);
+  virtual ~Shootable() = 0;
   void attack();
   bool outOfAmmo();
 };
