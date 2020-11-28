@@ -2,16 +2,17 @@
 #define TP_FINAL_ITEMDROP_H
 
 #include "../Item.h"
+class Item;
 
 class ItemDrop {
-protected:
-    Item& item;
-    bool canBePickedUpBy(Player& player);
-    void pickUp(Player& player);
+ protected:
+  Item& item;
+  bool canBePickedUpBy(Player& player);
+  void pickUp(Player& player);
 
-public:
-    ItemDrop(Item& anITem);
-    bool pickUpIfPossible(Player& player);
+ public:
+  ItemDrop(Item& anITem);
+  bool pickUpIfPossible(Player& player);
 };
 
-#endif //TP_FINAL_ITEMDROP_H
+#endif  // TP_FINAL_ITEMDROP_H

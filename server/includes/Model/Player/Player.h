@@ -2,6 +2,7 @@
 #define __PLAYER_H__
 
 #include "../Item/Weapon/Weapon.h"
+class Weapon;
 
 class Player {
  private:
@@ -22,7 +23,7 @@ class Player {
   // Si se queda sin balas, cambia de arma.
   int attack();
 
-  void equipWeapon(Weapon* weapon);
+  void equipWeapon(Weapon& weapon);
 
   void pickupKey();
   bool hasKey();

@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include "../Player/Player.h"
+class Player;
 
 class Item {
  public:

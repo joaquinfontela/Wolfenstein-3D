@@ -601,6 +601,33 @@ server/src/Model/Item/MedKit.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/MedKit.cpp.s
 .PHONY : server/src/Model/Item/MedKit.cpp.s
 
+server/src/Model/Item/Weapon/Weapon.o: server/src/Model/Item/Weapon/Weapon.cpp.o
+
+.PHONY : server/src/Model/Item/Weapon/Weapon.o
+
+# target to build an object file
+server/src/Model/Item/Weapon/Weapon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.o
+.PHONY : server/src/Model/Item/Weapon/Weapon.cpp.o
+
+server/src/Model/Item/Weapon/Weapon.i: server/src/Model/Item/Weapon/Weapon.cpp.i
+
+.PHONY : server/src/Model/Item/Weapon/Weapon.i
+
+# target to preprocess a source file
+server/src/Model/Item/Weapon/Weapon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.i
+.PHONY : server/src/Model/Item/Weapon/Weapon.cpp.i
+
+server/src/Model/Item/Weapon/Weapon.s: server/src/Model/Item/Weapon/Weapon.cpp.s
+
+.PHONY : server/src/Model/Item/Weapon/Weapon.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Weapon/Weapon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.s
+.PHONY : server/src/Model/Item/Weapon/Weapon.cpp.s
+
 server/src/Model/Player/Player.o: server/src/Model/Player/Player.cpp.o
 
 .PHONY : server/src/Model/Player/Player.o
@@ -823,6 +850,9 @@ help:
 	@echo "... server/src/Model/Item/MedKit.o"
 	@echo "... server/src/Model/Item/MedKit.i"
 	@echo "... server/src/Model/Item/MedKit.s"
+	@echo "... server/src/Model/Item/Weapon/Weapon.o"
+	@echo "... server/src/Model/Item/Weapon/Weapon.i"
+	@echo "... server/src/Model/Item/Weapon/Weapon.s"
 	@echo "... server/src/Model/Player/Player.o"
 	@echo "... server/src/Model/Player/Player.i"
 	@echo "... server/src/Model/Player/Player.s"

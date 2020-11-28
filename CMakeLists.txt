@@ -25,6 +25,7 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/MedKit.h
         server/includes/Model/Item/Food.h
         server/includes/Model/Item/Key.h
+        server/includes/Model/Item/Weapon/Weapon.h
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
@@ -51,6 +52,7 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Food.cpp
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/MedKit.cpp
+        server/src/Model/Item/Weapon/Weapon.cpp
        
         test/CPPUnit.h
         test/CPPUnit.cpp

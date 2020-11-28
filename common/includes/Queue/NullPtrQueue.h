@@ -1,3 +1,6 @@
+#ifndef NULL_PTR_QUEUE_H
+#define NULL_PTR_QUEUE_H
+
 #include <iostream>
 #include <mutex>
 #include <queue>
@@ -115,3 +118,5 @@ template <class T>
 bool NullPtrQueue<T*>::isEmpty() {
   return (T*)NullPtrQueue<void*>::isEmpty();
 }
+
+#endif
