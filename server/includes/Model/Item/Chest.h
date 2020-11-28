@@ -8,6 +8,7 @@ class Chest : public Item {
   Chest();
   ~Chest();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };
 
 #endif  // TP_FINAL_CHEST_H

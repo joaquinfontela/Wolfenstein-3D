@@ -5,4 +5,5 @@ class Food : public Item {
   Food();
   ~Food();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };

@@ -3,6 +3,7 @@
 #include "../common/includes/Socket/SocketCommunication.h"
 #include "../common/includes/Socket/SocketException.h"
 #include "../server/includes/Model/Game/Game.h"
+#include "../server/includes/Model/Item/Blood.h"
 #include "../server/includes/Model/Item/Chest.h"
 #include "../server/includes/Model/Item/Cross.h"
 #include "../server/includes/Model/Item/Crown.h"
@@ -39,6 +40,24 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
   myPlayer.takeDamage(100);
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
+}
+
+Test(PlayerWith10PointsOfHealthPicksUpBloodAndGetsOnePointOfHealth) {
+  Player myPlayer(10, 1);
+  Blood blood;
+  ItemDrop bloodDrop(blood);
+
+  TEST_ASSERT_TRUE(bloodDrop.pickUpIfPossible(myPlayer));
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
+}
+
+Test(PlayerWith11PointsOfHealthCannotPickUpBloodAndDoesNotGetExtraHealth) {
+  Player myPlayer(11, 1);
+  Blood blood;
+  ItemDrop bloodDrop(blood);
+
+  TEST_ASSERT_FALSE(bloodDrop.pickUpIfPossible(myPlayer));
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
 }
 
 Test(PlayerPicksUpChestAndGets100Points) {
@@ -95,6 +114,16 @@ Test(PlayerPicksUpMedKitAndGets20OfHealth) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 70);
 }
 
+Test(PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey) {
+  Player myPlayer(100, 1);
+  Key myKey;
+  ItemDrop keyDrop(myKey);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.hasKey(), 0);
+  keyDrop.pickUpIfPossible(myPlayer);
+  TEST_ASSERT_EQUAL_INT(myPlayer.hasKey(), 1);
+}
+
 int main() {
   TestSuit playerTests("Player Test");
   playerTests.addTest(PlayerTakesDamageSuccesfully);
@@ -102,12 +131,18 @@ int main() {
   playerTests.addTest(
       PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
 
+  playerTests.addTest(
+      PlayerWith10PointsOfHealthPicksUpBloodAndGetsOnePointOfHealth);
+  playerTests.addTest(
+      PlayerWith11PointsOfHealthCannotPickUpBloodAndDoesNotGetExtraHealth);
   playerTests.addTest(PlayerPicksUpChestAndGets100Points);
   playerTests.addTest(PlayerPicksUpCrossAndGets10Points);
   playerTests.addTest(PlayerPicksUpCupAndGets50Points);
   playerTests.addTest(PlayerPicksUpCrownAndGets200Points);
   playerTests.addTest(PlayerPicksUpFoodAndGets10OfHealth);
   playerTests.addTest(PlayerPicksUpMedKitAndGets20OfHealth);
+  playerTests.addTest(
+      PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey);
   playerTests.run();
 
   TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);

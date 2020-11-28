@@ -9,7 +9,7 @@ class Player {
   int score;
   unsigned int health, lifeRemaining;
   // Weapon* weapon;
-  bool hasKey;
+  bool key;
 
   int handleDeath();
 
@@ -25,9 +25,12 @@ class Player {
   void equipWeapon(Weapon* weapon);
 
   void pickupKey();
+  bool hasKey();
+
   void pickUpAmmo();
 
   int getHealth();
+  bool hasFullHealth();
   void addHealth(int health);
 
   void addPoints(int points);

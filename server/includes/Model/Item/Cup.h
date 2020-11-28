@@ -8,6 +8,7 @@ class Cup : public Item {
   Cup();
   ~Cup();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };
 
 #endif  // TP_FINAL_CUP_H

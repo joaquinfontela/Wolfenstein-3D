@@ -5,4 +5,5 @@ class Cross : public Item {
   Cross();
   ~Cross();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };

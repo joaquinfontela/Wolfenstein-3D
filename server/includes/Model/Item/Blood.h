@@ -5,4 +5,5 @@ class Blood : public Item {
   Blood();
   ~Blood();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };

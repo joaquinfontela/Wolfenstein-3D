@@ -5,4 +5,5 @@ class Ammo : public Item {
   Ammo();
   ~Ammo();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };

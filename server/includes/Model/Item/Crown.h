@@ -8,6 +8,7 @@ class Crown : public Item {
   Crown();
   ~Crown();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };
 
 #endif  // TP_FINAL_CROWN_H

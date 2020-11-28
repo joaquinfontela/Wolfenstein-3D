@@ -5,4 +5,5 @@ class Key : public Item {
   Key();
   ~Key();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };

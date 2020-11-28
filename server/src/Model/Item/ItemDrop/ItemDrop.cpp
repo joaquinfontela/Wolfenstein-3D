@@ -3,8 +3,7 @@
 ItemDrop::ItemDrop(Item &anItem) : item(anItem) {}
 
 bool ItemDrop::canBePickedUpBy(Player &player) {
-  // return item.canBePickedUpBy(player);
-  return true;
+  return item.canBePickedUpBy(player);
 }
 
 void ItemDrop::pickUp(Player &player) { item.pickUp(player); }

@@ -5,4 +5,5 @@ class MedKit : public Item {
   MedKit();
   ~MedKit();
   void pickUp(Player& player) override;
+  bool canBePickedUpBy(Player& player);
 };
