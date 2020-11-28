@@ -50,7 +50,43 @@ Test(PlayerPicksUpChestAndGets100Points) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 100);
 }
 
-Test(PlayerPickUpMedKitAndGets20OfHealth) {
+Test(PlayerPicksUpCrossAndGets10Points) {
+  Player myPlayer(100, 1);
+  Cross myCross;
+  ItemDrop crossDrop(myCross);
+  crossDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 10);
+}
+
+Test(PlayerPicksUpCupAndGets50Points) {
+  Player myPlayer(100, 1);
+  Cup myCup;
+  ItemDrop cupDrop(myCup);
+  cupDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 50);
+}
+
+Test(PlayerPicksUpCrownAndGets200Points) {
+  Player myPlayer(100, 1);
+  Crown myCrown;
+  ItemDrop crownDrop(myCrown);
+  crownDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 200);
+}
+
+Test(PlayerPicksUpFoodAndGets10OfHealth) {
+  Player myPlayer(50, 1);
+  Food myFood;
+  ItemDrop foodDrop(myFood);
+  foodDrop.pickUpIfPossible(myPlayer);
+
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 60);
+}
+
+Test(PlayerPicksUpMedKitAndGets20OfHealth) {
   Player myPlayer(50, 1);
   MedKit medKit;
   ItemDrop medKitDrop(medKit);
@@ -67,7 +103,11 @@ int main() {
       PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
 
   playerTests.addTest(PlayerPicksUpChestAndGets100Points);
-  playerTests.addTest(PlayerPickUpMedKitAndGets20OfHealth);
+  playerTests.addTest(PlayerPicksUpCrossAndGets10Points);
+  playerTests.addTest(PlayerPicksUpCupAndGets50Points);
+  playerTests.addTest(PlayerPicksUpCrownAndGets200Points);
+  playerTests.addTest(PlayerPicksUpFoodAndGets10OfHealth);
+  playerTests.addTest(PlayerPicksUpMedKitAndGets20OfHealth);
   playerTests.run();
 
   TEST_ASSERT_THROWS(SocketThrowsExcepctedException, SocketException);
