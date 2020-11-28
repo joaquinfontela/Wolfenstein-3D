@@ -1,3 +1,6 @@
+#ifndef WAITING_QUEUE_H
+#define WAITING_QUEUE_H
+
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
@@ -126,3 +129,5 @@ template <class T>
 bool WaitingQueue<T*>::isEmpty() {
   return (T*)WaitingQueue<void*>::isEmpty();
 }
+
+#endif
