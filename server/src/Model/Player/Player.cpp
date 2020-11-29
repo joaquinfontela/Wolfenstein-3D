@@ -1,7 +1,12 @@
 #include "../../../includes/Model/Player/Player.h"
 
+#include "../../../includes/Model/Item/Weapon/Weapon.h"
+
+#define MAX_AMMO 1000
+#define MAX_HEALTH 100
+
 Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), key(false), score(0) {}
+    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0) {}
 
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
@@ -28,16 +33,23 @@ int Player::attack() {
   // cambio a cuchillo
 }
 
-void Player::equipWeapon(Item* weapon) {}
+void Player::equipWeapon(Item* weapon) { this->weapon = (Weapon*)weapon; }
 
 void Player::pickupKey() { this->key = true; }
 bool Player::hasKey() { return key; }
 
-void Player::pickUpAmmo() {}
+bool Player::hasMaxAmmo() { return ammo < MAX_AMMO; }
+void Player::pickUpAmmo() {
+  ammo += 5;
+  if (ammo > 1000) ammo = 1000;
+}
 
 int Player::getHealth() { return this->health; }
 bool Player::hasFullHealth() { return this->health == 100; }
-void Player::addHealth(int health) { this->health += health; }
+void Player::addHealth(int health) {
+  this->health += health;
+  if (this->health > 100) this->health = 100;
+}
 
 void Player::addPoints(int points) { this->score += points; }
 int Player::getScore() { return this->score; }

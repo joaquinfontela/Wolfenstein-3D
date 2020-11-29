@@ -4,9 +4,6 @@ Ammo::Ammo() : Item() {}
 
 Ammo::~Ammo() {}
 
-bool Ammo::canBePickedUpBy(Player& player) {
-  // return ! player.hasMaxAmmo();
-  return true;
-}
+bool Ammo::canBePickedUpBy(Player& player) { return !player.hasMaxAmmo(); }
 
 void Ammo::pickUp(Player& player) { player.pickUpAmmo(); }

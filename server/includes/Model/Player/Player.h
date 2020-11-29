@@ -8,7 +8,7 @@ class Player {
  private:
   int x, y;
   int score;
-  unsigned int health, lifeRemaining;
+  unsigned int health, lifeRemaining, ammo;
   Item* weapon;
   bool key;
 
@@ -28,6 +28,7 @@ class Player {
   void pickupKey();
   bool hasKey();
 
+  bool hasMaxAmmo();
   void pickUpAmmo();
 
   int getHealth();

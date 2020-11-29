@@ -4,6 +4,6 @@ Key::Key() : Item() {}
 
 Key::~Key() {}
 
-bool Key::canBePickedUpBy(Player& player) { return true; }
+bool Key::canBePickedUpBy(Player& player) { return !player.hasKey(); }
 
 void Key::pickUp(Player& player) { player.pickupKey(); }
