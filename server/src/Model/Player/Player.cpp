@@ -15,8 +15,10 @@ int Player::handleDeath() {
   }
 
   this->lifeRemaining -= 1;
-  this->health = 100;  // Deberia restaurar la vida al maximo.
-  return 0;            // Devuelvo valor indicando que mi vida quedo en 0.
+  this->health = MAX_HEALTH;  // Deberia restaurar la vida al maximo.
+  this->ammo -= 10;
+  this->key = false;
+  return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 int Player::takeDamage(unsigned int damage) {
   if (damage >= this->health) {
@@ -41,14 +43,14 @@ bool Player::hasKey() { return key; }
 bool Player::hasMaxAmmo() { return ammo < MAX_AMMO; }
 void Player::pickUpAmmo() {
   ammo += 5;
-  if (ammo > 1000) ammo = 1000;
+  if (ammo > MAX_AMMO) ammo = MAX_AMMO;
 }
 
 int Player::getHealth() { return this->health; }
-bool Player::hasFullHealth() { return this->health == 100; }
+bool Player::hasFullHealth() { return this->health == MAX_HEALTH; }
 void Player::addHealth(int health) {
   this->health += health;
-  if (this->health > 100) this->health = 100;
+  if (this->health > MAX_HEALTH) this->health = MAX_HEALTH;
 }
 
 void Player::addPoints(int points) { this->score += points; }

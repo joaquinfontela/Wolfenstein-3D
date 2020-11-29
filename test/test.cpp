@@ -130,6 +130,14 @@ Test(PlayerCannotPickUpMedKitWhenHeHas100PointsOfHealth) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
 }
 
+Test(PlayerCannotSurpass100PointsOfHealth) {
+  Player myPlayer(90, 1);
+  MedKit myMedKit;
+  ItemDrop medKitDrop(myMedKit);
+  TEST_ASSERT_TRUE(medKitDrop.pickUpIfPossible(myPlayer));
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
+}
+
 Test(PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey) {
   Player myPlayer(100, 1);
   Key myKey;
@@ -159,6 +167,7 @@ int main() {
   playerTests.addTest(PlayerCannotPickUpFoodWhenHeHas100PointsOfHealth);
   playerTests.addTest(PlayerPicksUpMedKitAndGets20OfHealth);
   playerTests.addTest(PlayerCannotPickUpMedKitWhenHeHas100PointsOfHealth);
+  playerTests.addTest(PlayerCannotSurpass100PointsOfHealth);
   playerTests.addTest(
       PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey);
 
