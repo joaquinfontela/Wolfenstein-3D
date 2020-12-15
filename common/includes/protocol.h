@@ -1,5 +1,5 @@
 #ifndef __PROTOCOL_H__
-#define __PROTOCOL_H_
+#define __PROTOCOL_H__
 
 // Command definitions
 #define CONNECT_TO_LOBBY 1

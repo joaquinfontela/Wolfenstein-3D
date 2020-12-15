@@ -112,7 +112,7 @@ int SocketCommunication::receive(uint32_t* buffer, unsigned int bufLength) {
   int bytesAvailable = bufLength;
   int bytesReceived = 0;
 
-  while (bytesReceived < bytesAvailable) {
+  while (bytesReceived < bufLength) {
     int bytes = recv(this->fd, &buffer[bytesReceived], bytesAvailable, 0);
 
     if (bytes == -1) {
@@ -120,7 +120,7 @@ int SocketCommunication::receive(uint32_t* buffer, unsigned int bufLength) {
     }
 
     if (bytes == 0) {
-      break;
+      throw SocketException();
     }
 
     bytesReceived += bytes;

@@ -31,6 +31,7 @@ template <class T>
 void NullPtrQueue<T>::push(T element) {
   std::unique_lock<std::mutex> lock(m);
   q.push(element);
+
 }
 
 template <class T>
@@ -39,6 +40,7 @@ T NullPtrQueue<T>::pop() {
   if (q.empty()) {
     return nullptr;
   }
+
   T elementToReturn = q.front();
   q.pop();
   return elementToReturn;
@@ -53,3 +55,5 @@ template <class T>
 bool NullPtrQueue<T>::isEmpty() {
   return q.empty();
 }
+
+#endif
