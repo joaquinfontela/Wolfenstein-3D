@@ -13,6 +13,7 @@ class SdlTexture {
   ~SdlTexture();
   int render(const Area& src, const Area& dest) const;
   int renderAll(const Area& dest) const;
+  int renderHalfOfScreen() const;
 
  private:
   SDL_Texture* loadTexture(const std::string& filename);

@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sdl-wall
+# Target rules for targets named raycastingtest
 
 # Build rule for target.
-sdl-wall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sdl-wall
-.PHONY : sdl-wall
+raycastingtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raycastingtest
+.PHONY : raycastingtest
 
 # fast build rule for target.
-sdl-wall/fast:
-	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/build
-.PHONY : sdl-wall/fast
+raycastingtest/fast:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/build
+.PHONY : raycastingtest/fast
 
 #=============================================================================
 # Target rules for targets named sdl-static
@@ -148,6 +148,33 @@ sdldemo: cmake_check_build_system
 sdldemo/fast:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/build
 .PHONY : sdldemo/fast
+
+src/anglemanager.o: src/anglemanager.cpp.o
+
+.PHONY : src/anglemanager.o
+
+# target to build an object file
+src/anglemanager.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/anglemanager.cpp.o
+.PHONY : src/anglemanager.cpp.o
+
+src/anglemanager.i: src/anglemanager.cpp.i
+
+.PHONY : src/anglemanager.i
+
+# target to preprocess a source file
+src/anglemanager.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/anglemanager.cpp.i
+.PHONY : src/anglemanager.cpp.i
+
+src/anglemanager.s: src/anglemanager.cpp.s
+
+.PHONY : src/anglemanager.s
+
+# target to generate assembly for a file
+src/anglemanager.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/anglemanager.cpp.s
+.PHONY : src/anglemanager.cpp.s
 
 src/area.o: src/area.cpp.o
 
@@ -176,6 +203,33 @@ src/area.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/area.cpp.s
 .PHONY : src/area.cpp.s
 
+src/mainraycasting.o: src/mainraycasting.cpp.o
+
+.PHONY : src/mainraycasting.o
+
+# target to build an object file
+src/mainraycasting.cpp.o:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.o
+.PHONY : src/mainraycasting.cpp.o
+
+src/mainraycasting.i: src/mainraycasting.cpp.i
+
+.PHONY : src/mainraycasting.i
+
+# target to preprocess a source file
+src/mainraycasting.cpp.i:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.i
+.PHONY : src/mainraycasting.cpp.i
+
+src/mainraycasting.s: src/mainraycasting.cpp.s
+
+.PHONY : src/mainraycasting.s
+
+# target to generate assembly for a file
+src/mainraycasting.cpp.s:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.s
+.PHONY : src/mainraycasting.cpp.s
+
 src/mainstatic.o: src/mainstatic.cpp.o
 
 .PHONY : src/mainstatic.o
@@ -202,33 +256,6 @@ src/mainstatic.s: src/mainstatic.cpp.s
 src/mainstatic.cpp.s:
 	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.s
 .PHONY : src/mainstatic.cpp.s
-
-src/mainwall.o: src/mainwall.cpp.o
-
-.PHONY : src/mainwall.o
-
-# target to build an object file
-src/mainwall.cpp.o:
-	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.o
-.PHONY : src/mainwall.cpp.o
-
-src/mainwall.i: src/mainwall.cpp.i
-
-.PHONY : src/mainwall.i
-
-# target to preprocess a source file
-src/mainwall.cpp.i:
-	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.i
-.PHONY : src/mainwall.cpp.i
-
-src/mainwall.s: src/mainwall.cpp.s
-
-.PHONY : src/mainwall.s
-
-# target to generate assembly for a file
-src/mainwall.cpp.s:
-	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.s
-.PHONY : src/mainwall.cpp.s
 
 src/sdlexception.o: src/sdlexception.cpp.o
 
@@ -319,18 +346,21 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... sdl-wall"
+	@echo "... raycastingtest"
 	@echo "... sdl-static"
 	@echo "... sdldemo"
+	@echo "... src/anglemanager.o"
+	@echo "... src/anglemanager.i"
+	@echo "... src/anglemanager.s"
 	@echo "... src/area.o"
 	@echo "... src/area.i"
 	@echo "... src/area.s"
+	@echo "... src/mainraycasting.o"
+	@echo "... src/mainraycasting.i"
+	@echo "... src/mainraycasting.s"
 	@echo "... src/mainstatic.o"
 	@echo "... src/mainstatic.i"
 	@echo "... src/mainstatic.s"
-	@echo "... src/mainwall.o"
-	@echo "... src/mainwall.i"
-	@echo "... src/mainwall.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"
