@@ -8,8 +8,8 @@
 #include "../../../common/includes/protocol.h"
 #include "../../includes/Match/MatchList.h"
 
-ClientCommunication::ClientCommunication(SocketCommunication peer,
-                                         unsigned int id, MatchList& matches)
+ClientCommunication::ClientCommunication(SocketCommunication peer, uint32_t id,
+                                         MatchList& matches)
     : socket(std::move(peer)),
       playerID(id),
       running(true),
@@ -18,12 +18,14 @@ ClientCommunication::ClientCommunication(SocketCommunication peer,
 bool ClientCommunication::isAlive() { return running; }
 
 void ClientCommunication::run() {
-  connectToLobby();
+  if (connectToLobby()) {
+    this->handler->run();
+  }
   running = false;
 }
 
 unsigned int ClientCommunication::ID() { return this->playerID; }
-void ClientCommunication::connectToLobby() {
+bool ClientCommunication::connectToLobby() {
   // Armo un buffer para el opcode
   uint32_t opcode[1] = {0};
 
@@ -37,23 +39,29 @@ void ClientCommunication::connectToLobby() {
       uint32_t lobbyID[1] = {0};
       this->socket.receive(lobbyID, sizeof(lobbyID));
 
-      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
-                << std::endl;
-
-      this->matchList.joinOrCreate(this, lobbyID[0]);
-
       uint32_t responseOpcode = CONNECTED_OK;
       this->socket.send(&responseOpcode, sizeof(responseOpcode));
 
       uint32_t playerID = this->playerID;
-      this->socket.send(&playerID, sizeof(playerID));
+      int sent = this->socket.send(&playerID, sizeof(playerID));
+
+      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
+                << std::endl;
+
+      this->handler = this->matchList.joinOrCreate(this, lobbyID[0]);
+
+      return true;
 
       // TODO -> Crear notificacion de que se conecto un jugador y pasar su ID.
     } else {
       running = false;
+      return false;
     }
 
   } catch (SocketException& e) {
     running = false;
+    return false;
   }
 }
+
+SocketCommunication& ClientCommunication::getSock() { return this->socket; }

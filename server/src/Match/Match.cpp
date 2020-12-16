@@ -2,29 +2,35 @@
 
 #include "../../includes/Server/ClientCommunication.h"
 
-Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {}
+Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {
+  cont = true;
+  engine = new Engine(commands, cont, players);
+}
 
 Match::Match() {}
 
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }
 
-void Match::addPlayerToMatch(ClientCommunication* player) {
+void Match::forceShutdown() {
+  this->running = false;
+}
+
+ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   this->playerCount++;
 
   this->players[player->ID()] = player;
-  // TODO -> Agregarle al jugador la queue de comandos y de notificaciones de
-  // este match
-  // TODO -> Agregar a la lista de notificaciones a enviar que se añadio un
-  // jugador.
+  ConnectionHandler* playerHandler =
+      new ConnectionHandler(player->getSock(), this->commands, player->ID());
+
+  return playerHandler;
 }
 
-void Match::start() {
-  running = false;
-  // TODO -> Procesar los comandos del jugador para crear la notificacion
-  // apropiada.
-
-  // Deberia correr mientras haya jugadores vivos y/o hasta que se acabe el
-  // tiempo.
-}
+void Match::start() { engine->start(); }
 
 bool Match::hasEnded() { return !running; }
+
+Match::~Match() {
+  cont = false;
+  engine->join();
+  delete engine;
+}

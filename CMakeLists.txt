@@ -11,7 +11,9 @@ set(SOURCE_FILES_SERVER
         server/includes/Match/MatchList.h
         server/includes/Server/ClientAccepter.h
         server/includes/Server/ClientCommunication.h
+        server/includes/Server/ConnectionHandler.h
         server/includes/Server/Server.h
+        server/includes/Match/Engine.h
         server/includes/Model/Player/Player.h
         server/includes/Model/Game/Game.h
         server/includes/Model/Item/ItemDrop/ItemDrop.h
@@ -30,6 +32,14 @@ set(SOURCE_FILES_SERVER
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
         common/includes/protocol.h
+        server/includes/Control/Command/Command.h
+        server/includes/Control/Command/PlayerMove.h
+        server/includes/Control/Notification/Notification.h
+        server/includes/Control/Notification/PlayerConnected.h
+        server/includes/Control/Notification/PlayerUpdatePosition.h
+        server/includes/Control/Notification/PlayerDisconnect.h
+        
+
 
         common/src/Socket/SocketCommunication.cpp
         common/src/Socket/SocketListener.cpp
@@ -37,8 +47,10 @@ set(SOURCE_FILES_SERVER
         server/src/Server/Server.cpp
         server/src/Server/ClientAccepter.cpp
         server/src/Server/ClientCommunication.cpp 
+        server/src/Server/ConnectionHandler.cpp
         server/src/Match/MatchList.cpp   
         server/src/Match/Match.cpp
+        server/src/Match/Engine.cpp
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
         server/src/Model/Item/ItemDrop/ItemDrop.cpp
@@ -53,6 +65,10 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/MedKit.cpp
         server/src/Model/Item/Weapon/Weapon.cpp
+        server/src/Control/Command/PlayerMove.cpp
+        server/src/Control/Notification/PlayerConnected.cpp
+        server/src/Control/Notification/PlayerUpdatePosition.cpp
+        server/src/Control/Notification/PlayerDisconnect.cpp
        
         test/CPPUnit.h
         test/CPPUnit.cpp
@@ -60,3 +76,5 @@ set(SOURCE_FILES_SERVER
 
 
 add_executable(WolfensteinTest ${SOURCE_FILES_SERVER} test/test.cpp)
+add_executable(ServerMain ${SOURCE_FILES_SERVER} serverMain.cpp)
+

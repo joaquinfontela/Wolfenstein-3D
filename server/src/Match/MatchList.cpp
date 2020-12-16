@@ -8,26 +8,25 @@
 
 MatchList::MatchList() {}
 
-void MatchList::joinOrCreate(ClientCommunication* player, int lobbyID) {
+ConnectionHandler* MatchList::joinOrCreate(ClientCommunication* player,
+                                           int lobbyID) {
   if (this->matches.find(lobbyID) != this->matches.end()) {
-    this->matches[lobbyID].addPlayerToMatch(player);
-    return;
+    return this->matches[lobbyID]->addPlayerToMatch(player);
   }
 
-  Match newMatch(lobbyID);
-  newMatch.addPlayerToMatch(player);
+   Match* newMatch = new Match(lobbyID);
+  ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
 
-  newMatch.start();
-  this->matches.insert({lobbyID, newMatch});
+  newMatch->start();
+  this->matches[lobbyID] = newMatch;
+  return playerHandler;
 }
 
-/*
 void MatchList::matchCleanup() {
   std::map<int, Match*>::iterator it = this->matches.begin();
 
   while (it != this->matches.end()) {
     if (it->second->hasEnded()) {
-      it->second->join();
       delete it->second;
       it = this->matches.erase(it);
       std::cout << "[SERVER] Deleting match..." << std::endl;
@@ -36,10 +35,16 @@ void MatchList::matchCleanup() {
     }
   }
 }
-*/
+
+void MatchList::forceShutdown() {
+  for (iterator_t it = this->matches.begin(); it != this->matches.end(); ++it){
+    it->second->forceShutdown();
+  }
+}
 
 MatchList::~MatchList() {
-  // while (!this->matches.empty()) {
-  //   matchCleanup();
-  // }
+  this->forceShutdown();
+  while (!this->matches.empty()) {
+    matchCleanup();
+  }
 }

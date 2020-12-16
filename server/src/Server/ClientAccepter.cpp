@@ -9,7 +9,7 @@ ClientAccepter::ClientAccepter(SocketListener& listener, MatchList& matches)
     : socket(listener), matchList(matches) {}
 
 void ClientAccepter::run() {
-  unsigned int playerID = 1;
+  uint32_t playerID = 1;
 
   while (1) {
     try {

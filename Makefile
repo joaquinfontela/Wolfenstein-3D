@@ -123,6 +123,19 @@ WolfensteinTest/fast:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/build
 .PHONY : WolfensteinTest/fast
 
+#=============================================================================
+# Target rules for targets named ServerMain
+
+# Build rule for target.
+ServerMain: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ServerMain
+.PHONY : ServerMain
+
+# fast build rule for target.
+ServerMain/fast:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/build
+.PHONY : ServerMain/fast
+
 common/src/Socket/SocketCommunication.o: common/src/Socket/SocketCommunication.cpp.o
 
 .PHONY : common/src/Socket/SocketCommunication.o
@@ -130,6 +143,7 @@ common/src/Socket/SocketCommunication.o: common/src/Socket/SocketCommunication.c
 # target to build an object file
 common/src/Socket/SocketCommunication.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketCommunication.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketCommunication.cpp.o
 .PHONY : common/src/Socket/SocketCommunication.cpp.o
 
 common/src/Socket/SocketCommunication.i: common/src/Socket/SocketCommunication.cpp.i
@@ -139,6 +153,7 @@ common/src/Socket/SocketCommunication.i: common/src/Socket/SocketCommunication.c
 # target to preprocess a source file
 common/src/Socket/SocketCommunication.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketCommunication.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketCommunication.cpp.i
 .PHONY : common/src/Socket/SocketCommunication.cpp.i
 
 common/src/Socket/SocketCommunication.s: common/src/Socket/SocketCommunication.cpp.s
@@ -148,6 +163,7 @@ common/src/Socket/SocketCommunication.s: common/src/Socket/SocketCommunication.c
 # target to generate assembly for a file
 common/src/Socket/SocketCommunication.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketCommunication.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketCommunication.cpp.s
 .PHONY : common/src/Socket/SocketCommunication.cpp.s
 
 common/src/Socket/SocketListener.o: common/src/Socket/SocketListener.cpp.o
@@ -157,6 +173,7 @@ common/src/Socket/SocketListener.o: common/src/Socket/SocketListener.cpp.o
 # target to build an object file
 common/src/Socket/SocketListener.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketListener.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketListener.cpp.o
 .PHONY : common/src/Socket/SocketListener.cpp.o
 
 common/src/Socket/SocketListener.i: common/src/Socket/SocketListener.cpp.i
@@ -166,6 +183,7 @@ common/src/Socket/SocketListener.i: common/src/Socket/SocketListener.cpp.i
 # target to preprocess a source file
 common/src/Socket/SocketListener.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketListener.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketListener.cpp.i
 .PHONY : common/src/Socket/SocketListener.cpp.i
 
 common/src/Socket/SocketListener.s: common/src/Socket/SocketListener.cpp.s
@@ -175,6 +193,7 @@ common/src/Socket/SocketListener.s: common/src/Socket/SocketListener.cpp.s
 # target to generate assembly for a file
 common/src/Socket/SocketListener.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketListener.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketListener.cpp.s
 .PHONY : common/src/Socket/SocketListener.cpp.s
 
 common/src/Thread/Thread.o: common/src/Thread/Thread.cpp.o
@@ -184,6 +203,7 @@ common/src/Thread/Thread.o: common/src/Thread/Thread.cpp.o
 # target to build an object file
 common/src/Thread/Thread.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Thread/Thread.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Thread/Thread.cpp.o
 .PHONY : common/src/Thread/Thread.cpp.o
 
 common/src/Thread/Thread.i: common/src/Thread/Thread.cpp.i
@@ -193,6 +213,7 @@ common/src/Thread/Thread.i: common/src/Thread/Thread.cpp.i
 # target to preprocess a source file
 common/src/Thread/Thread.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Thread/Thread.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Thread/Thread.cpp.i
 .PHONY : common/src/Thread/Thread.cpp.i
 
 common/src/Thread/Thread.s: common/src/Thread/Thread.cpp.s
@@ -202,7 +223,158 @@ common/src/Thread/Thread.s: common/src/Thread/Thread.cpp.s
 # target to generate assembly for a file
 common/src/Thread/Thread.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Thread/Thread.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Thread/Thread.cpp.s
 .PHONY : common/src/Thread/Thread.cpp.s
+
+server/src/Control/Command/PlayerMove.o: server/src/Control/Command/PlayerMove.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerMove.o
+
+# target to build an object file
+server/src/Control/Command/PlayerMove.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerMove.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerMove.cpp.o
+.PHONY : server/src/Control/Command/PlayerMove.cpp.o
+
+server/src/Control/Command/PlayerMove.i: server/src/Control/Command/PlayerMove.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerMove.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerMove.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerMove.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerMove.cpp.i
+.PHONY : server/src/Control/Command/PlayerMove.cpp.i
+
+server/src/Control/Command/PlayerMove.s: server/src/Control/Command/PlayerMove.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerMove.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerMove.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerMove.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerMove.cpp.s
+.PHONY : server/src/Control/Command/PlayerMove.cpp.s
+
+server/src/Control/Notification/PlayerConnected.o: server/src/Control/Notification/PlayerConnected.cpp.o
+
+.PHONY : server/src/Control/Notification/PlayerConnected.o
+
+# target to build an object file
+server/src/Control/Notification/PlayerConnected.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerConnected.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerConnected.cpp.o
+.PHONY : server/src/Control/Notification/PlayerConnected.cpp.o
+
+server/src/Control/Notification/PlayerConnected.i: server/src/Control/Notification/PlayerConnected.cpp.i
+
+.PHONY : server/src/Control/Notification/PlayerConnected.i
+
+# target to preprocess a source file
+server/src/Control/Notification/PlayerConnected.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerConnected.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerConnected.cpp.i
+.PHONY : server/src/Control/Notification/PlayerConnected.cpp.i
+
+server/src/Control/Notification/PlayerConnected.s: server/src/Control/Notification/PlayerConnected.cpp.s
+
+.PHONY : server/src/Control/Notification/PlayerConnected.s
+
+# target to generate assembly for a file
+server/src/Control/Notification/PlayerConnected.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerConnected.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerConnected.cpp.s
+.PHONY : server/src/Control/Notification/PlayerConnected.cpp.s
+
+server/src/Control/Notification/PlayerDisconnect.o: server/src/Control/Notification/PlayerDisconnect.cpp.o
+
+.PHONY : server/src/Control/Notification/PlayerDisconnect.o
+
+# target to build an object file
+server/src/Control/Notification/PlayerDisconnect.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerDisconnect.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerDisconnect.cpp.o
+.PHONY : server/src/Control/Notification/PlayerDisconnect.cpp.o
+
+server/src/Control/Notification/PlayerDisconnect.i: server/src/Control/Notification/PlayerDisconnect.cpp.i
+
+.PHONY : server/src/Control/Notification/PlayerDisconnect.i
+
+# target to preprocess a source file
+server/src/Control/Notification/PlayerDisconnect.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerDisconnect.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerDisconnect.cpp.i
+.PHONY : server/src/Control/Notification/PlayerDisconnect.cpp.i
+
+server/src/Control/Notification/PlayerDisconnect.s: server/src/Control/Notification/PlayerDisconnect.cpp.s
+
+.PHONY : server/src/Control/Notification/PlayerDisconnect.s
+
+# target to generate assembly for a file
+server/src/Control/Notification/PlayerDisconnect.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerDisconnect.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerDisconnect.cpp.s
+.PHONY : server/src/Control/Notification/PlayerDisconnect.cpp.s
+
+server/src/Control/Notification/PlayerUpdatePosition.o: server/src/Control/Notification/PlayerUpdatePosition.cpp.o
+
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.o
+
+# target to build an object file
+server/src/Control/Notification/PlayerUpdatePosition.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.o
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.cpp.o
+
+server/src/Control/Notification/PlayerUpdatePosition.i: server/src/Control/Notification/PlayerUpdatePosition.cpp.i
+
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.i
+
+# target to preprocess a source file
+server/src/Control/Notification/PlayerUpdatePosition.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.i
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.cpp.i
+
+server/src/Control/Notification/PlayerUpdatePosition.s: server/src/Control/Notification/PlayerUpdatePosition.cpp.s
+
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.s
+
+# target to generate assembly for a file
+server/src/Control/Notification/PlayerUpdatePosition.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.s
+.PHONY : server/src/Control/Notification/PlayerUpdatePosition.cpp.s
+
+server/src/Match/Engine.o: server/src/Match/Engine.cpp.o
+
+.PHONY : server/src/Match/Engine.o
+
+# target to build an object file
+server/src/Match/Engine.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Engine.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Engine.cpp.o
+.PHONY : server/src/Match/Engine.cpp.o
+
+server/src/Match/Engine.i: server/src/Match/Engine.cpp.i
+
+.PHONY : server/src/Match/Engine.i
+
+# target to preprocess a source file
+server/src/Match/Engine.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Engine.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Engine.cpp.i
+.PHONY : server/src/Match/Engine.cpp.i
+
+server/src/Match/Engine.s: server/src/Match/Engine.cpp.s
+
+.PHONY : server/src/Match/Engine.s
+
+# target to generate assembly for a file
+server/src/Match/Engine.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Engine.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Engine.cpp.s
+.PHONY : server/src/Match/Engine.cpp.s
 
 server/src/Match/Match.o: server/src/Match/Match.cpp.o
 
@@ -211,6 +383,7 @@ server/src/Match/Match.o: server/src/Match/Match.cpp.o
 # target to build an object file
 server/src/Match/Match.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Match.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Match.cpp.o
 .PHONY : server/src/Match/Match.cpp.o
 
 server/src/Match/Match.i: server/src/Match/Match.cpp.i
@@ -220,6 +393,7 @@ server/src/Match/Match.i: server/src/Match/Match.cpp.i
 # target to preprocess a source file
 server/src/Match/Match.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Match.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Match.cpp.i
 .PHONY : server/src/Match/Match.cpp.i
 
 server/src/Match/Match.s: server/src/Match/Match.cpp.s
@@ -229,6 +403,7 @@ server/src/Match/Match.s: server/src/Match/Match.cpp.s
 # target to generate assembly for a file
 server/src/Match/Match.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/Match.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/Match.cpp.s
 .PHONY : server/src/Match/Match.cpp.s
 
 server/src/Match/MatchList.o: server/src/Match/MatchList.cpp.o
@@ -238,6 +413,7 @@ server/src/Match/MatchList.o: server/src/Match/MatchList.cpp.o
 # target to build an object file
 server/src/Match/MatchList.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/MatchList.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/MatchList.cpp.o
 .PHONY : server/src/Match/MatchList.cpp.o
 
 server/src/Match/MatchList.i: server/src/Match/MatchList.cpp.i
@@ -247,6 +423,7 @@ server/src/Match/MatchList.i: server/src/Match/MatchList.cpp.i
 # target to preprocess a source file
 server/src/Match/MatchList.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/MatchList.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/MatchList.cpp.i
 .PHONY : server/src/Match/MatchList.cpp.i
 
 server/src/Match/MatchList.s: server/src/Match/MatchList.cpp.s
@@ -256,6 +433,7 @@ server/src/Match/MatchList.s: server/src/Match/MatchList.cpp.s
 # target to generate assembly for a file
 server/src/Match/MatchList.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Match/MatchList.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Match/MatchList.cpp.s
 .PHONY : server/src/Match/MatchList.cpp.s
 
 server/src/Model/Game/Game.o: server/src/Model/Game/Game.cpp.o
@@ -265,6 +443,7 @@ server/src/Model/Game/Game.o: server/src/Model/Game/Game.cpp.o
 # target to build an object file
 server/src/Model/Game/Game.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Game/Game.cpp.o
 .PHONY : server/src/Model/Game/Game.cpp.o
 
 server/src/Model/Game/Game.i: server/src/Model/Game/Game.cpp.i
@@ -274,6 +453,7 @@ server/src/Model/Game/Game.i: server/src/Model/Game/Game.cpp.i
 # target to preprocess a source file
 server/src/Model/Game/Game.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Game/Game.cpp.i
 .PHONY : server/src/Model/Game/Game.cpp.i
 
 server/src/Model/Game/Game.s: server/src/Model/Game/Game.cpp.s
@@ -283,6 +463,7 @@ server/src/Model/Game/Game.s: server/src/Model/Game/Game.cpp.s
 # target to generate assembly for a file
 server/src/Model/Game/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Game/Game.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Game/Game.cpp.s
 .PHONY : server/src/Model/Game/Game.cpp.s
 
 server/src/Model/Item/Ammo.o: server/src/Model/Item/Ammo.cpp.o
@@ -292,6 +473,7 @@ server/src/Model/Item/Ammo.o: server/src/Model/Item/Ammo.cpp.o
 # target to build an object file
 server/src/Model/Item/Ammo.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Ammo.cpp.o
 .PHONY : server/src/Model/Item/Ammo.cpp.o
 
 server/src/Model/Item/Ammo.i: server/src/Model/Item/Ammo.cpp.i
@@ -301,6 +483,7 @@ server/src/Model/Item/Ammo.i: server/src/Model/Item/Ammo.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Ammo.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Ammo.cpp.i
 .PHONY : server/src/Model/Item/Ammo.cpp.i
 
 server/src/Model/Item/Ammo.s: server/src/Model/Item/Ammo.cpp.s
@@ -310,6 +493,7 @@ server/src/Model/Item/Ammo.s: server/src/Model/Item/Ammo.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Ammo.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Ammo.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Ammo.cpp.s
 .PHONY : server/src/Model/Item/Ammo.cpp.s
 
 server/src/Model/Item/Blood.o: server/src/Model/Item/Blood.cpp.o
@@ -319,6 +503,7 @@ server/src/Model/Item/Blood.o: server/src/Model/Item/Blood.cpp.o
 # target to build an object file
 server/src/Model/Item/Blood.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Blood.cpp.o
 .PHONY : server/src/Model/Item/Blood.cpp.o
 
 server/src/Model/Item/Blood.i: server/src/Model/Item/Blood.cpp.i
@@ -328,6 +513,7 @@ server/src/Model/Item/Blood.i: server/src/Model/Item/Blood.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Blood.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Blood.cpp.i
 .PHONY : server/src/Model/Item/Blood.cpp.i
 
 server/src/Model/Item/Blood.s: server/src/Model/Item/Blood.cpp.s
@@ -337,6 +523,7 @@ server/src/Model/Item/Blood.s: server/src/Model/Item/Blood.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Blood.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Blood.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Blood.cpp.s
 .PHONY : server/src/Model/Item/Blood.cpp.s
 
 server/src/Model/Item/Chest.o: server/src/Model/Item/Chest.cpp.o
@@ -346,6 +533,7 @@ server/src/Model/Item/Chest.o: server/src/Model/Item/Chest.cpp.o
 # target to build an object file
 server/src/Model/Item/Chest.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Chest.cpp.o
 .PHONY : server/src/Model/Item/Chest.cpp.o
 
 server/src/Model/Item/Chest.i: server/src/Model/Item/Chest.cpp.i
@@ -355,6 +543,7 @@ server/src/Model/Item/Chest.i: server/src/Model/Item/Chest.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Chest.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Chest.cpp.i
 .PHONY : server/src/Model/Item/Chest.cpp.i
 
 server/src/Model/Item/Chest.s: server/src/Model/Item/Chest.cpp.s
@@ -364,6 +553,7 @@ server/src/Model/Item/Chest.s: server/src/Model/Item/Chest.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Chest.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Chest.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Chest.cpp.s
 .PHONY : server/src/Model/Item/Chest.cpp.s
 
 server/src/Model/Item/Cross.o: server/src/Model/Item/Cross.cpp.o
@@ -373,6 +563,7 @@ server/src/Model/Item/Cross.o: server/src/Model/Item/Cross.cpp.o
 # target to build an object file
 server/src/Model/Item/Cross.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cross.cpp.o
 .PHONY : server/src/Model/Item/Cross.cpp.o
 
 server/src/Model/Item/Cross.i: server/src/Model/Item/Cross.cpp.i
@@ -382,6 +573,7 @@ server/src/Model/Item/Cross.i: server/src/Model/Item/Cross.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Cross.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cross.cpp.i
 .PHONY : server/src/Model/Item/Cross.cpp.i
 
 server/src/Model/Item/Cross.s: server/src/Model/Item/Cross.cpp.s
@@ -391,6 +583,7 @@ server/src/Model/Item/Cross.s: server/src/Model/Item/Cross.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Cross.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cross.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cross.cpp.s
 .PHONY : server/src/Model/Item/Cross.cpp.s
 
 server/src/Model/Item/Crown.o: server/src/Model/Item/Crown.cpp.o
@@ -400,6 +593,7 @@ server/src/Model/Item/Crown.o: server/src/Model/Item/Crown.cpp.o
 # target to build an object file
 server/src/Model/Item/Crown.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Crown.cpp.o
 .PHONY : server/src/Model/Item/Crown.cpp.o
 
 server/src/Model/Item/Crown.i: server/src/Model/Item/Crown.cpp.i
@@ -409,6 +603,7 @@ server/src/Model/Item/Crown.i: server/src/Model/Item/Crown.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Crown.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Crown.cpp.i
 .PHONY : server/src/Model/Item/Crown.cpp.i
 
 server/src/Model/Item/Crown.s: server/src/Model/Item/Crown.cpp.s
@@ -418,6 +613,7 @@ server/src/Model/Item/Crown.s: server/src/Model/Item/Crown.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Crown.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Crown.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Crown.cpp.s
 .PHONY : server/src/Model/Item/Crown.cpp.s
 
 server/src/Model/Item/Cup.o: server/src/Model/Item/Cup.cpp.o
@@ -427,6 +623,7 @@ server/src/Model/Item/Cup.o: server/src/Model/Item/Cup.cpp.o
 # target to build an object file
 server/src/Model/Item/Cup.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cup.cpp.o
 .PHONY : server/src/Model/Item/Cup.cpp.o
 
 server/src/Model/Item/Cup.i: server/src/Model/Item/Cup.cpp.i
@@ -436,6 +633,7 @@ server/src/Model/Item/Cup.i: server/src/Model/Item/Cup.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Cup.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cup.cpp.i
 .PHONY : server/src/Model/Item/Cup.cpp.i
 
 server/src/Model/Item/Cup.s: server/src/Model/Item/Cup.cpp.s
@@ -445,6 +643,7 @@ server/src/Model/Item/Cup.s: server/src/Model/Item/Cup.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Cup.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Cup.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Cup.cpp.s
 .PHONY : server/src/Model/Item/Cup.cpp.s
 
 server/src/Model/Item/Food.o: server/src/Model/Item/Food.cpp.o
@@ -454,6 +653,7 @@ server/src/Model/Item/Food.o: server/src/Model/Item/Food.cpp.o
 # target to build an object file
 server/src/Model/Item/Food.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Food.cpp.o
 .PHONY : server/src/Model/Item/Food.cpp.o
 
 server/src/Model/Item/Food.i: server/src/Model/Item/Food.cpp.i
@@ -463,6 +663,7 @@ server/src/Model/Item/Food.i: server/src/Model/Item/Food.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Food.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Food.cpp.i
 .PHONY : server/src/Model/Item/Food.cpp.i
 
 server/src/Model/Item/Food.s: server/src/Model/Item/Food.cpp.s
@@ -472,6 +673,7 @@ server/src/Model/Item/Food.s: server/src/Model/Item/Food.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Food.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Food.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Food.cpp.s
 .PHONY : server/src/Model/Item/Food.cpp.s
 
 server/src/Model/Item/Item.o: server/src/Model/Item/Item.cpp.o
@@ -481,6 +683,7 @@ server/src/Model/Item/Item.o: server/src/Model/Item/Item.cpp.o
 # target to build an object file
 server/src/Model/Item/Item.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Item.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Item.cpp.o
 .PHONY : server/src/Model/Item/Item.cpp.o
 
 server/src/Model/Item/Item.i: server/src/Model/Item/Item.cpp.i
@@ -490,6 +693,7 @@ server/src/Model/Item/Item.i: server/src/Model/Item/Item.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Item.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Item.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Item.cpp.i
 .PHONY : server/src/Model/Item/Item.cpp.i
 
 server/src/Model/Item/Item.s: server/src/Model/Item/Item.cpp.s
@@ -499,6 +703,7 @@ server/src/Model/Item/Item.s: server/src/Model/Item/Item.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Item.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Item.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Item.cpp.s
 .PHONY : server/src/Model/Item/Item.cpp.s
 
 server/src/Model/Item/ItemDrop/ItemDrop.o: server/src/Model/Item/ItemDrop/ItemDrop.cpp.o
@@ -508,6 +713,7 @@ server/src/Model/Item/ItemDrop/ItemDrop.o: server/src/Model/Item/ItemDrop/ItemDr
 # target to build an object file
 server/src/Model/Item/ItemDrop/ItemDrop.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.o
 .PHONY : server/src/Model/Item/ItemDrop/ItemDrop.cpp.o
 
 server/src/Model/Item/ItemDrop/ItemDrop.i: server/src/Model/Item/ItemDrop/ItemDrop.cpp.i
@@ -517,6 +723,7 @@ server/src/Model/Item/ItemDrop/ItemDrop.i: server/src/Model/Item/ItemDrop/ItemDr
 # target to preprocess a source file
 server/src/Model/Item/ItemDrop/ItemDrop.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.i
 .PHONY : server/src/Model/Item/ItemDrop/ItemDrop.cpp.i
 
 server/src/Model/Item/ItemDrop/ItemDrop.s: server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
@@ -526,6 +733,7 @@ server/src/Model/Item/ItemDrop/ItemDrop.s: server/src/Model/Item/ItemDrop/ItemDr
 # target to generate assembly for a file
 server/src/Model/Item/ItemDrop/ItemDrop.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
 .PHONY : server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
 
 server/src/Model/Item/Key.o: server/src/Model/Item/Key.cpp.o
@@ -535,6 +743,7 @@ server/src/Model/Item/Key.o: server/src/Model/Item/Key.cpp.o
 # target to build an object file
 server/src/Model/Item/Key.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Key.cpp.o
 .PHONY : server/src/Model/Item/Key.cpp.o
 
 server/src/Model/Item/Key.i: server/src/Model/Item/Key.cpp.i
@@ -544,6 +753,7 @@ server/src/Model/Item/Key.i: server/src/Model/Item/Key.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Key.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Key.cpp.i
 .PHONY : server/src/Model/Item/Key.cpp.i
 
 server/src/Model/Item/Key.s: server/src/Model/Item/Key.cpp.s
@@ -553,6 +763,7 @@ server/src/Model/Item/Key.s: server/src/Model/Item/Key.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Key.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Key.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Key.cpp.s
 .PHONY : server/src/Model/Item/Key.cpp.s
 
 server/src/Model/Item/MedKit.o: server/src/Model/Item/MedKit.cpp.o
@@ -562,6 +773,7 @@ server/src/Model/Item/MedKit.o: server/src/Model/Item/MedKit.cpp.o
 # target to build an object file
 server/src/Model/Item/MedKit.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/MedKit.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/MedKit.cpp.o
 .PHONY : server/src/Model/Item/MedKit.cpp.o
 
 server/src/Model/Item/MedKit.i: server/src/Model/Item/MedKit.cpp.i
@@ -571,6 +783,7 @@ server/src/Model/Item/MedKit.i: server/src/Model/Item/MedKit.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/MedKit.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/MedKit.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/MedKit.cpp.i
 .PHONY : server/src/Model/Item/MedKit.cpp.i
 
 server/src/Model/Item/MedKit.s: server/src/Model/Item/MedKit.cpp.s
@@ -580,6 +793,7 @@ server/src/Model/Item/MedKit.s: server/src/Model/Item/MedKit.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/MedKit.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/MedKit.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/MedKit.cpp.s
 .PHONY : server/src/Model/Item/MedKit.cpp.s
 
 server/src/Model/Item/Weapon/Weapon.o: server/src/Model/Item/Weapon/Weapon.cpp.o
@@ -589,6 +803,7 @@ server/src/Model/Item/Weapon/Weapon.o: server/src/Model/Item/Weapon/Weapon.cpp.o
 # target to build an object file
 server/src/Model/Item/Weapon/Weapon.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Weapon.cpp.o
 .PHONY : server/src/Model/Item/Weapon/Weapon.cpp.o
 
 server/src/Model/Item/Weapon/Weapon.i: server/src/Model/Item/Weapon/Weapon.cpp.i
@@ -598,6 +813,7 @@ server/src/Model/Item/Weapon/Weapon.i: server/src/Model/Item/Weapon/Weapon.cpp.i
 # target to preprocess a source file
 server/src/Model/Item/Weapon/Weapon.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Weapon.cpp.i
 .PHONY : server/src/Model/Item/Weapon/Weapon.cpp.i
 
 server/src/Model/Item/Weapon/Weapon.s: server/src/Model/Item/Weapon/Weapon.cpp.s
@@ -607,6 +823,7 @@ server/src/Model/Item/Weapon/Weapon.s: server/src/Model/Item/Weapon/Weapon.cpp.s
 # target to generate assembly for a file
 server/src/Model/Item/Weapon/Weapon.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Weapon.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Weapon.cpp.s
 .PHONY : server/src/Model/Item/Weapon/Weapon.cpp.s
 
 server/src/Model/Player/Player.o: server/src/Model/Player/Player.cpp.o
@@ -616,6 +833,7 @@ server/src/Model/Player/Player.o: server/src/Model/Player/Player.cpp.o
 # target to build an object file
 server/src/Model/Player/Player.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Player/Player.cpp.o
 .PHONY : server/src/Model/Player/Player.cpp.o
 
 server/src/Model/Player/Player.i: server/src/Model/Player/Player.cpp.i
@@ -625,6 +843,7 @@ server/src/Model/Player/Player.i: server/src/Model/Player/Player.cpp.i
 # target to preprocess a source file
 server/src/Model/Player/Player.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Player/Player.cpp.i
 .PHONY : server/src/Model/Player/Player.cpp.i
 
 server/src/Model/Player/Player.s: server/src/Model/Player/Player.cpp.s
@@ -634,6 +853,7 @@ server/src/Model/Player/Player.s: server/src/Model/Player/Player.cpp.s
 # target to generate assembly for a file
 server/src/Model/Player/Player.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Player/Player.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Player/Player.cpp.s
 .PHONY : server/src/Model/Player/Player.cpp.s
 
 server/src/Server/ClientAccepter.o: server/src/Server/ClientAccepter.cpp.o
@@ -643,6 +863,7 @@ server/src/Server/ClientAccepter.o: server/src/Server/ClientAccepter.cpp.o
 # target to build an object file
 server/src/Server/ClientAccepter.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientAccepter.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientAccepter.cpp.o
 .PHONY : server/src/Server/ClientAccepter.cpp.o
 
 server/src/Server/ClientAccepter.i: server/src/Server/ClientAccepter.cpp.i
@@ -652,6 +873,7 @@ server/src/Server/ClientAccepter.i: server/src/Server/ClientAccepter.cpp.i
 # target to preprocess a source file
 server/src/Server/ClientAccepter.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientAccepter.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientAccepter.cpp.i
 .PHONY : server/src/Server/ClientAccepter.cpp.i
 
 server/src/Server/ClientAccepter.s: server/src/Server/ClientAccepter.cpp.s
@@ -661,6 +883,7 @@ server/src/Server/ClientAccepter.s: server/src/Server/ClientAccepter.cpp.s
 # target to generate assembly for a file
 server/src/Server/ClientAccepter.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientAccepter.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientAccepter.cpp.s
 .PHONY : server/src/Server/ClientAccepter.cpp.s
 
 server/src/Server/ClientCommunication.o: server/src/Server/ClientCommunication.cpp.o
@@ -670,6 +893,7 @@ server/src/Server/ClientCommunication.o: server/src/Server/ClientCommunication.c
 # target to build an object file
 server/src/Server/ClientCommunication.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientCommunication.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientCommunication.cpp.o
 .PHONY : server/src/Server/ClientCommunication.cpp.o
 
 server/src/Server/ClientCommunication.i: server/src/Server/ClientCommunication.cpp.i
@@ -679,6 +903,7 @@ server/src/Server/ClientCommunication.i: server/src/Server/ClientCommunication.c
 # target to preprocess a source file
 server/src/Server/ClientCommunication.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientCommunication.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientCommunication.cpp.i
 .PHONY : server/src/Server/ClientCommunication.cpp.i
 
 server/src/Server/ClientCommunication.s: server/src/Server/ClientCommunication.cpp.s
@@ -688,7 +913,38 @@ server/src/Server/ClientCommunication.s: server/src/Server/ClientCommunication.c
 # target to generate assembly for a file
 server/src/Server/ClientCommunication.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ClientCommunication.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ClientCommunication.cpp.s
 .PHONY : server/src/Server/ClientCommunication.cpp.s
+
+server/src/Server/ConnectionHandler.o: server/src/Server/ConnectionHandler.cpp.o
+
+.PHONY : server/src/Server/ConnectionHandler.o
+
+# target to build an object file
+server/src/Server/ConnectionHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ConnectionHandler.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ConnectionHandler.cpp.o
+.PHONY : server/src/Server/ConnectionHandler.cpp.o
+
+server/src/Server/ConnectionHandler.i: server/src/Server/ConnectionHandler.cpp.i
+
+.PHONY : server/src/Server/ConnectionHandler.i
+
+# target to preprocess a source file
+server/src/Server/ConnectionHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ConnectionHandler.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ConnectionHandler.cpp.i
+.PHONY : server/src/Server/ConnectionHandler.cpp.i
+
+server/src/Server/ConnectionHandler.s: server/src/Server/ConnectionHandler.cpp.s
+
+.PHONY : server/src/Server/ConnectionHandler.s
+
+# target to generate assembly for a file
+server/src/Server/ConnectionHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/ConnectionHandler.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/ConnectionHandler.cpp.s
+.PHONY : server/src/Server/ConnectionHandler.cpp.s
 
 server/src/Server/Server.o: server/src/Server/Server.cpp.o
 
@@ -697,6 +953,7 @@ server/src/Server/Server.o: server/src/Server/Server.cpp.o
 # target to build an object file
 server/src/Server/Server.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/Server.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/Server.cpp.o
 .PHONY : server/src/Server/Server.cpp.o
 
 server/src/Server/Server.i: server/src/Server/Server.cpp.i
@@ -706,6 +963,7 @@ server/src/Server/Server.i: server/src/Server/Server.cpp.i
 # target to preprocess a source file
 server/src/Server/Server.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/Server.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/Server.cpp.i
 .PHONY : server/src/Server/Server.cpp.i
 
 server/src/Server/Server.s: server/src/Server/Server.cpp.s
@@ -715,7 +973,35 @@ server/src/Server/Server.s: server/src/Server/Server.cpp.s
 # target to generate assembly for a file
 server/src/Server/Server.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Server/Server.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Server/Server.cpp.s
 .PHONY : server/src/Server/Server.cpp.s
+
+serverMain.o: serverMain.cpp.o
+
+.PHONY : serverMain.o
+
+# target to build an object file
+serverMain.cpp.o:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/serverMain.cpp.o
+.PHONY : serverMain.cpp.o
+
+serverMain.i: serverMain.cpp.i
+
+.PHONY : serverMain.i
+
+# target to preprocess a source file
+serverMain.cpp.i:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/serverMain.cpp.i
+.PHONY : serverMain.cpp.i
+
+serverMain.s: serverMain.cpp.s
+
+.PHONY : serverMain.s
+
+# target to generate assembly for a file
+serverMain.cpp.s:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/serverMain.cpp.s
+.PHONY : serverMain.cpp.s
 
 test/CPPUnit.o: test/CPPUnit.cpp.o
 
@@ -724,6 +1010,7 @@ test/CPPUnit.o: test/CPPUnit.cpp.o
 # target to build an object file
 test/CPPUnit.cpp.o:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/test/CPPUnit.cpp.o
 .PHONY : test/CPPUnit.cpp.o
 
 test/CPPUnit.i: test/CPPUnit.cpp.i
@@ -733,6 +1020,7 @@ test/CPPUnit.i: test/CPPUnit.cpp.i
 # target to preprocess a source file
 test/CPPUnit.cpp.i:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/test/CPPUnit.cpp.i
 .PHONY : test/CPPUnit.cpp.i
 
 test/CPPUnit.s: test/CPPUnit.cpp.s
@@ -742,6 +1030,7 @@ test/CPPUnit.s: test/CPPUnit.cpp.s
 # target to generate assembly for a file
 test/CPPUnit.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/test/CPPUnit.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/test/CPPUnit.cpp.s
 .PHONY : test/CPPUnit.cpp.s
 
 test/test.o: test/test.cpp.o
@@ -778,8 +1067,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... WolfensteinTest"
 	@echo "... edit_cache"
+	@echo "... WolfensteinTest"
+	@echo "... ServerMain"
 	@echo "... common/src/Socket/SocketCommunication.o"
 	@echo "... common/src/Socket/SocketCommunication.i"
 	@echo "... common/src/Socket/SocketCommunication.s"
@@ -789,6 +1079,21 @@ help:
 	@echo "... common/src/Thread/Thread.o"
 	@echo "... common/src/Thread/Thread.i"
 	@echo "... common/src/Thread/Thread.s"
+	@echo "... server/src/Control/Command/PlayerMove.o"
+	@echo "... server/src/Control/Command/PlayerMove.i"
+	@echo "... server/src/Control/Command/PlayerMove.s"
+	@echo "... server/src/Control/Notification/PlayerConnected.o"
+	@echo "... server/src/Control/Notification/PlayerConnected.i"
+	@echo "... server/src/Control/Notification/PlayerConnected.s"
+	@echo "... server/src/Control/Notification/PlayerDisconnect.o"
+	@echo "... server/src/Control/Notification/PlayerDisconnect.i"
+	@echo "... server/src/Control/Notification/PlayerDisconnect.s"
+	@echo "... server/src/Control/Notification/PlayerUpdatePosition.o"
+	@echo "... server/src/Control/Notification/PlayerUpdatePosition.i"
+	@echo "... server/src/Control/Notification/PlayerUpdatePosition.s"
+	@echo "... server/src/Match/Engine.o"
+	@echo "... server/src/Match/Engine.i"
+	@echo "... server/src/Match/Engine.s"
 	@echo "... server/src/Match/Match.o"
 	@echo "... server/src/Match/Match.i"
 	@echo "... server/src/Match/Match.s"
@@ -843,9 +1148,15 @@ help:
 	@echo "... server/src/Server/ClientCommunication.o"
 	@echo "... server/src/Server/ClientCommunication.i"
 	@echo "... server/src/Server/ClientCommunication.s"
+	@echo "... server/src/Server/ConnectionHandler.o"
+	@echo "... server/src/Server/ConnectionHandler.i"
+	@echo "... server/src/Server/ConnectionHandler.s"
 	@echo "... server/src/Server/Server.o"
 	@echo "... server/src/Server/Server.i"
 	@echo "... server/src/Server/Server.s"
+	@echo "... serverMain.o"
+	@echo "... serverMain.i"
+	@echo "... serverMain.s"
 	@echo "... test/CPPUnit.o"
 	@echo "... test/CPPUnit.i"
 	@echo "... test/CPPUnit.s"
