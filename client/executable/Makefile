@@ -162,6 +162,33 @@ sdldemo/fast:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/build
 .PHONY : sdldemo/fast
 
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o
+
+# target to build an object file
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
+
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i
+
+# target to preprocess a source file
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
+
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s
+
+# target to generate assembly for a file
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
+
 src/anglemanager.o: src/anglemanager.cpp.o
 
 .PHONY : src/anglemanager.o
@@ -297,6 +324,33 @@ src/mainwall.cpp.s:
 	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.s
 .PHONY : src/mainwall.cpp.s
 
+src/raycaster.o: src/raycaster.cpp.o
+
+.PHONY : src/raycaster.o
+
+# target to build an object file
+src/raycaster.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.o
+.PHONY : src/raycaster.cpp.o
+
+src/raycaster.i: src/raycaster.cpp.i
+
+.PHONY : src/raycaster.i
+
+# target to preprocess a source file
+src/raycaster.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.i
+.PHONY : src/raycaster.cpp.i
+
+src/raycaster.s: src/raycaster.cpp.s
+
+.PHONY : src/raycaster.s
+
+# target to generate assembly for a file
+src/raycaster.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.s
+.PHONY : src/raycaster.cpp.s
+
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -417,6 +471,9 @@ help:
 	@echo "... sdl-wall"
 	@echo "... sdl-static"
 	@echo "... sdldemo"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s"
 	@echo "... src/anglemanager.o"
 	@echo "... src/anglemanager.i"
 	@echo "... src/anglemanager.s"
@@ -432,6 +489,9 @@ help:
 	@echo "... src/mainwall.o"
 	@echo "... src/mainwall.i"
 	@echo "... src/mainwall.s"
+	@echo "... src/raycaster.o"
+	@echo "... src/raycaster.i"
+	@echo "... src/raycaster.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"

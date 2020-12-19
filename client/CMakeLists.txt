@@ -7,7 +7,9 @@ add_library(sdldemo
   src/sdlexception.cpp
   src/sdlwindow.cpp
   src/anglemanager.cpp
+  src/raycaster.cpp
   src/texturemanager.cpp
+  ../common/src/Map/Map.cpp
 )
 include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-static
