@@ -27,14 +27,18 @@ int main(int argc, char** argv) {
     SdlWindow window(WIDTH, HEIGHT);
     SdlTexture im1(IMG_PATH "wall.png", window);
     SdlTexture im2(IMG_PATH "wall2.png", window);
+    SdlTexture im3(IMG_PATH "wall3.png", window);
+    SdlTexture im4(IMG_PATH "wall4.png", window);
     SdlTexture gun(IMG_PATH "chaingun2.png", window);
     SdlTexture back(IMG_PATH "hud.png", window);
   
     TextureManager manager;
     manager.loadTexture(1,&im1);
     manager.loadTexture(2,&im2);
-    manager.loadTexture(3,&gun);
-    manager.loadTexture(4,&back);
+    manager.loadTexture(3,&im3);
+    manager.loadTexture(4,&im4);
+    manager.loadTexture(5,&gun);
+    manager.loadTexture(6,&back);
     Map matrix("COMPLETAR CON EL YAML LATER");
     Raycaster caster(WIDTH, HEIGHT, manager, matrix);
 
@@ -101,8 +105,8 @@ int main(int argc, char** argv) {
       deltay = 0;
 
       caster.renderWithPerspective(x, y, viewAngle);
-      manager.renderAll(3,a);
-      manager.renderAll(4,b);
+      manager.renderAll(5,a);
+      manager.renderAll(6,b);
       window.render();
     }
 
