@@ -4,7 +4,7 @@
 #include <list>
 #include <queue>
 
-#include "../../../common/includes/Queue/NullPtrQueue.h"
+#include "../../../common/includes/Queue/WaitingQueue.h"
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/Thread/Thread.h"
 #include "../../includes/Control/Command/Command.h"

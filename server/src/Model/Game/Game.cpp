@@ -4,7 +4,7 @@
 
 #include "../../../includes/Model/Player/Player.h"
 
-Game::Game(std::string& mapFile, std::string& configFile) {}
+Game::Game(std::string mapFile, std::string configFile) : map(mapFile) {}
 
 void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
@@ -12,6 +12,11 @@ void Game::addPlayer(int playerID) {
 
   Player newPlayer(health, lifes);
   this->players[playerID] = newPlayer;
+}
+
+void Game::removePlayer(int playerID){
+
+  this->players.erase(playerID);
 }
 
 void Game::start() {

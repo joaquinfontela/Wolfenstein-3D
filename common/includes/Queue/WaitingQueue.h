@@ -12,6 +12,7 @@ class WaitingQueue {
   std::queue<T> q;
   std::mutex m;
   std::condition_variable accessManager;
+  bool shutdown = false;
 
  public:
   WaitingQueue();
@@ -21,6 +22,15 @@ class WaitingQueue {
   T pop();
   T front();
   bool isEmpty();
+
+  void requestShutdown(){
+    {
+      std::unique_lock<std::mutex> lock(m);
+      this->shutdown = true;
+    }
+
+    accessManager.notify_all();
+  }
 };
 
 template <class T>
@@ -39,7 +49,11 @@ void WaitingQueue<T>::push(T element) {
 template <class T>
 T WaitingQueue<T>::pop() {
   std::unique_lock<std::mutex> lock(m);
-  while (q.empty()) accessManager.wait(lock);
+  while (q.empty()){
+    accessManager.wait(lock);
+    if(shutdown)
+      return nullptr;
+  }
   T elementToReturn = q.front();
   q.pop();
   return elementToReturn;

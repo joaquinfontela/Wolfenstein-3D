@@ -1,16 +1,16 @@
-#ifndef __PLAYER_MOVE_H__
-#define __PLAYER_MOVE_H__
+#ifndef __PLAYER_DISCONNECTED_H__
+#define __PLAYER_DISCONNECTED_H__
 
 #include "../Notification/Notification.h"
 #include "Command.h"
 
-class PlayerMove : public Command {
+class PlayerDisconnected : public Command {
  private:
   int playerID;
-  int x, y;
+
 
  public:
-  PlayerMove(int playerID, int x, int y);
+  PlayerDisconnected(int playerID);
   void execute(WaitingQueue<Notification*>& notifications, Game& game);
 };
 

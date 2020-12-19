@@ -20,7 +20,10 @@ bool ClientCommunication::isAlive() { return running; }
 void ClientCommunication::run() {
   if (connectToLobby()) {
     this->handler->run();
+    delete this->handler;
   }
+
+
   running = false;
 }
 

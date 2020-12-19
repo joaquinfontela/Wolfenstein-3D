@@ -11,7 +11,10 @@ PlayerMove::PlayerMove(int ID, int x, int y) {
   this->y = y;
 }
 
-void PlayerMove::execute(NullPtrQueue<Notification*>& notifications) {
+void PlayerMove::execute(WaitingQueue<Notification*>& notifications, Game& game) {
+
+  // Aca se usaria la clase Game para validar movimientos y en caso de tener que informar algo hacerlo.
+  // La notificacion no deberia enviarse siempre, solo en el caso de que el movimiento que estoy intentando hacer sea valido.
   PlayerUpdatePosition* noti =
       new PlayerUpdatePosition(this->playerID, this->x, this->y);
   notifications.push(noti);

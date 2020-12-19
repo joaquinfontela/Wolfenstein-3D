@@ -5,21 +5,20 @@
 #include <string>
 
 #include "../Player/Player.h"
+#include "../../../../common/includes/Map/Map.h"
 
 class Game {
  private:
   std::map<int, Player> players;
+  Map map;
 
-  // Considerar crear una clase Map que pueda manejar la logica de las
-  // colisiones y que sepa su propio ID de mapa.
-  int map[10][10];
+  // Deberia tener una estructura que maneje los datos del configFile de YAML
 
  public:
-  Game(std::string& mapFile, std::string& configFile);
+  Game(std::string mapFile, std::string configFile);
   void addPlayer(int playerID);
-
+  void removePlayer(int playerID);
   void start();
-
   void end();
 };
 

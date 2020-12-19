@@ -7,6 +7,7 @@ class Item;
 class Player {
  private:
   int x, y;
+  double viewAngle;
   int score;
   unsigned int health, lifeRemaining, ammo;
   Item* weapon;

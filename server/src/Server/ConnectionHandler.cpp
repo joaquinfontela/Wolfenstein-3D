@@ -7,7 +7,7 @@
 #include "../../includes/Control/Command/PlayerMove.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
-                                     NullPtrQueue<Command*>& com, int playerID)
+                                     WaitingQueue<Command*>& com, int playerID)
     : socket(sock), commands(com), ID(playerID) {}
 
 void ConnectionHandler::run() {

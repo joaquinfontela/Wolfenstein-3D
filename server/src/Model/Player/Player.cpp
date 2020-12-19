@@ -6,7 +6,7 @@
 #define MAX_HEALTH 100
 
 Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0) {}
+    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), viewAngle(90.0) {}
 
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {

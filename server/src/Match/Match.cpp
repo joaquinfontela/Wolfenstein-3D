@@ -2,12 +2,11 @@
 
 #include "../../includes/Server/ClientCommunication.h"
 
-Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true) {
+Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true), game("MAPFILE", "CONFIGFILE") {
   cont = true;
-  engine = new Engine(commands, cont, players);
 }
 
-Match::Match() {}
+Match::Match() : game("MAPFILE", "CONFIGFILE") {}
 
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }
 
@@ -17,6 +16,7 @@ void Match::forceShutdown() {
 
 ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   this->playerCount++;
+  this->game.addPlayer(player->ID());
 
   this->players[player->ID()] = player;
   ConnectionHandler* playerHandler =
@@ -25,12 +25,17 @@ ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   return playerHandler;
 }
 
-void Match::start() { engine->start(); }
+void Match::start() {
+
+  engine = new Engine(commands, cont, players, this->game);
+  engine->start();
+  }
 
 bool Match::hasEnded() { return !running; }
 
 Match::~Match() {
   cont = false;
+  engine->requestShutdown();
   engine->join();
   delete engine;
 }

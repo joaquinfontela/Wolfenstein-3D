@@ -4,7 +4,9 @@
 #include <atomic>
 #include <thread>
 
-#include "../../../common/includes/Queue/NullPtrQueue.h"
+#include "../Model/Game/Game.h"
+#include "../../../common/includes/Queue/WaitingQueue.h"
+#include "../../../common/includes/Queue/WaitingQueue.h"
 #include "../../../common/includes/Thread/Thread.h"
 #include "../Control/Command/Command.h"
 #include "../Control/Notification/Notification.h"
@@ -15,12 +17,14 @@ class ClientCommunication;
 class Engine : public Thread {
  private:
   std::map<int, ClientCommunication*>& players;
-  NullPtrQueue<Command*>& commandQueue;
-  NullPtrQueue<Notification*> notifications;
+  WaitingQueue<Command*>& commandQueue;
+  WaitingQueue<Notification*> notifications;
   std::atomic<bool>& cont;
+  Game& thisGame;
 
  public:
-  Engine(NullPtrQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play);
+  Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game);
+  void requestShutdown();
   void run();
   void sendNotifications();
 };

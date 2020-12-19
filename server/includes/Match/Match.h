@@ -6,7 +6,8 @@
 #include <map>
 #include <queue>
 
-#include "../../../common/includes/Queue/NullPtrQueue.h"
+#include "../Model/Game/Game.h"
+#include "../../../common/includes/Queue/WaitingQueue.h"
 #include "../Control/Command/Command.h"
 #include "../Control/Notification/Notification.h"
 #include "../Server/ClientCommunication.h"
@@ -20,7 +21,8 @@ class Match {
  private:
   std::atomic<bool> cont;
   Engine* engine;
-  NullPtrQueue<Command*> commands;
+  WaitingQueue<Command*> commands;
+  Game game;
 
   int ID;
   unsigned int playerCount;

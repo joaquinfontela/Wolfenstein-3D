@@ -226,6 +226,36 @@ common/src/Thread/Thread.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Thread/Thread.cpp.s
 .PHONY : common/src/Thread/Thread.cpp.s
 
+server/src/Control/Command/PlayerDisconnected.o: server/src/Control/Command/PlayerDisconnected.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerDisconnected.o
+
+# target to build an object file
+server/src/Control/Command/PlayerDisconnected.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDisconnected.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDisconnected.cpp.o
+.PHONY : server/src/Control/Command/PlayerDisconnected.cpp.o
+
+server/src/Control/Command/PlayerDisconnected.i: server/src/Control/Command/PlayerDisconnected.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerDisconnected.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerDisconnected.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDisconnected.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDisconnected.cpp.i
+.PHONY : server/src/Control/Command/PlayerDisconnected.cpp.i
+
+server/src/Control/Command/PlayerDisconnected.s: server/src/Control/Command/PlayerDisconnected.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerDisconnected.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerDisconnected.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDisconnected.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDisconnected.cpp.s
+.PHONY : server/src/Control/Command/PlayerDisconnected.cpp.s
+
 server/src/Control/Command/PlayerMove.o: server/src/Control/Command/PlayerMove.cpp.o
 
 .PHONY : server/src/Control/Command/PlayerMove.o
@@ -1079,6 +1109,9 @@ help:
 	@echo "... common/src/Thread/Thread.o"
 	@echo "... common/src/Thread/Thread.i"
 	@echo "... common/src/Thread/Thread.s"
+	@echo "... server/src/Control/Command/PlayerDisconnected.o"
+	@echo "... server/src/Control/Command/PlayerDisconnected.i"
+	@echo "... server/src/Control/Command/PlayerDisconnected.s"
 	@echo "... server/src/Control/Command/PlayerMove.o"
 	@echo "... server/src/Control/Command/PlayerMove.i"
 	@echo "... server/src/Control/Command/PlayerMove.s"
