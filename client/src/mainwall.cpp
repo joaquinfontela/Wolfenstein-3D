@@ -1,69 +1,77 @@
 #include <SDL2/SDL.h>
-#include <iostream>
+
 #include <exception>
+#include <iostream>
+
+#include "../../common/includes/Socket/SocketCommunication.h"
+#include "../../common/includes/Map/Map.h"
+#include "../../common/includes/protocol.h"
+#include "commandexecuter.h"
+#include "commandsender.h"
+#include "player.h"
+#include "raycaster.h"
 #include "sdlwindow.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
 
-#define TEMP_HEIGHT 600
-#define TEMP_WIDTH 800
 #define IMG_PATH "../media/"
+#define ERROR -1
+#define HEIGHT 600
+#define WIDTH 800
+#define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
+  if (argc != 3) {
+    std::cerr << INVALID_ARGS_ERR << std::endl;
+  }
+  // Me creo a "window" en el main por si más objetos la quisieran usar.
+  SocketCommunication socket(-1);
+  socket.connect(argv[1], argv[2]);
+  uint32_t protocol = CONNECT_TO_LOBBY;
+  uint32_t id_ = 1;  // ID del lobby de la partida.
+  uint32_t id;
+  uint32_t opcode;
+
+  socket.send(&protocol, sizeof(protocol));
+  socket.send(&id_, sizeof(id_));
+  socket.receive(&opcode, sizeof(opcode));
+  socket.receive(&id, sizeof(id));
+  Player* self = new Player();
+
+//#########################################################  
+  SdlWindow window(WIDTH, HEIGHT);
+  SdlTexture im1(IMG_PATH "wall.png", window);
+  SdlTexture im2(IMG_PATH "wall2.png", window);
+  SdlTexture im3(IMG_PATH "wall3.png", window);
+  SdlTexture im4(IMG_PATH "wall4.png", window);
+  SdlTexture gun(IMG_PATH "chaingun2.png", window);
+  SdlTexture back(IMG_PATH "hud.png", window);
+  TextureManager manager;
+  manager.loadTexture(1,&im1);
+  manager.loadTexture(2,&im2);
+  manager.loadTexture(3,&im3);
+  manager.loadTexture(4,&im4);
+  manager.loadTexture(5,&gun);
+  manager.loadTexture(6,&back);
+  Map matrix("COMPLETAR CON EL YAML LATER");
+  Raycaster* caster = new Raycaster(WIDTH, HEIGHT, manager, matrix, self);
+//#########################################################  
+
+  int exitcode = 0;
+  CommandSender sender(socket);
+  CommandExecuter* worker = new CommandExecuter(self, id, socket);
 
   try {
-    SdlWindow window(TEMP_WIDTH, TEMP_HEIGHT);
-    SdlTexture im(IMG_PATH "bluesquare.jpg", window);
-    TextureManager manager;
-    manager.loadTexture(0,&im);
-
-    Area srcArea(0, 0, TEMP_HEIGHT, TEMP_WIDTH);
-
-    int w = 100; int h = 100;
-    int x = TEMP_WIDTH/2;
-    int y = TEMP_HEIGHT/2;
-    while (true){
-      SDL_Event event;
-      Area destArea(x, y, w, h);
-      window.fill();
-      manager.render(0, srcArea, destArea); 
-      window.render();
-      SDL_WaitEvent(&event);
-      if (event.type == SDL_QUIT) {
-        break;
-      } else if (event.type == SDL_KEYDOWN) {
-        std::cout << "X: " << x << " Y: " << y << " W: " << w << " H: " << h << std::endl;
-        SDL_KeyboardEvent& key = (SDL_KeyboardEvent&) event;
-        switch (key.keysym.sym) {
-          case SDLK_LEFT:
-            std::cout << " izq " << std::endl;
-            x += 10; 
-            break; 
-          case SDLK_RIGHT:
-            std::cout << " der " << std::endl;
-            x -= 10;
-            break; 
-          case SDLK_UP:
-            std::cout << " arriba" << std::endl;
-            w += 10;
-            h += 10;
-            x -= 5;
-            y -= 5; 
-            break; 
-          case SDLK_DOWN:
-            std::cout << " bajo " << std::endl;
-            w -= 10;
-            h -= 10;
-            x += 5;
-            y += 5; 
-            break;
-        }
-      }
-    }
-
+    worker->start();
+    sender.run();
+    caster->start();
   } catch (std::exception& e) {
-    std::cout << e.what() << std::endl;
-    return 1;
+    std::cerr << e.what() << std::endl;
+    exitcode = ERROR;
   }
-  return 0;
+  worker->join();
+  caster->join();
+  delete caster;
+  delete worker;
+  return exitcode;
 }

@@ -15,8 +15,12 @@
 #define PI 3.14159265359
 #define IMG_PATH "../media/"
 
-void Raycaster::renderWithPerspective(int x, int y, int viewAngle) {
+void Raycaster::run() {
   
+  int x = this->self->getX();
+  int y = this->self->getY();
+  int viewAngle = this->self->getAngle();
+
   double xBoxIntersection, yBoxIntersection;
   double dv, dh, dx, dy;
   double distanceOne = 0;
