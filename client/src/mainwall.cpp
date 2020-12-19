@@ -63,8 +63,8 @@ int main(int argc, char** argv) {
 
   try {
     worker->start();
-    sender.run();
     caster->start();
+    sender.run();
   } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
     exitcode = ERROR;
