@@ -3,6 +3,7 @@
 #include <exception>
 #include "sdlwindow.h"
 #include "sdltexture.h"
+#include "texturemanager.h"
 
 #define TEMP_HEIGHT 600
 #define TEMP_WIDTH 800
@@ -13,6 +14,8 @@ int main(int argc, char** argv){
   try {
     SdlWindow window(TEMP_WIDTH, TEMP_HEIGHT);
     SdlTexture im(IMG_PATH "bluesquare.jpg", window);
+    TextureManager manager;
+    manager.loadTexture(0,&im);
 
     Area srcArea(0, 0, TEMP_HEIGHT, TEMP_WIDTH);
 
@@ -23,7 +26,7 @@ int main(int argc, char** argv){
       SDL_Event event;
       Area destArea(x, y, w, h);
       window.fill();
-      im.render(srcArea, destArea); 
+      manager.render(0, srcArea, destArea); 
       window.render();
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {

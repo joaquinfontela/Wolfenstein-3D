@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "anglemanager.h"
+#include "texturemanager.h"
 #include "sdltexture.h"
 #include "sdlwindow.h"
 
@@ -160,6 +161,10 @@ int main(int argc, char** argv) {
     SdlTexture im2(IMG_PATH "wall2.png", window);
     SdlTexture gun(IMG_PATH "chaingun2.png", window);
     SdlTexture back(IMG_PATH "hud.png", window);
+  
+    TextureManager manager;
+    manager.loadTexture(2,&gun);
+    manager.loadTexture(3,&back);
 
     int y = 370;
     int x = 370;
@@ -169,6 +174,8 @@ int main(int argc, char** argv) {
     AngleManager angles;
 
     double viewAngle = angles.ANGLE270;
+    Area a = {.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT};
+    Area b = {.x = WIDTH/2 - 130, .y = HEIGHT/2 - 78, .w = 250, .h = 250};
 
     while (true) {
       SDL_Event event;
@@ -222,8 +229,8 @@ int main(int argc, char** argv) {
       deltay = 0;
 
       renderWithPerspective(x, y, viewAngle, &im1, &im2);
-      back.renderAll({.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT});
-      gun.renderAll({.x = WIDTH/2 - 130, .y = HEIGHT/2 - 78, .w = 250, .h = 250});
+      manager.renderAll(3,a);
+      manager.renderAll(2,b);
       window.render();
     }
 

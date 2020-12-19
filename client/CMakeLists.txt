@@ -7,12 +7,17 @@ add_library(sdldemo
   src/sdlexception.cpp
   src/sdlwindow.cpp
   src/anglemanager.cpp
+  src/texturemanager.cpp
 )
 include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-static
   src/mainstatic.cpp  
 )
+add_executable (sdl-wall
+  src/mainwall.cpp  
+)
 target_link_libraries(sdl-static sdldemo SDL2 SDL2_image SDL2_mixer pthread)
+target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer pthread)
 add_executable (raycastingtest
   src/mainraycasting.cpp  
 )

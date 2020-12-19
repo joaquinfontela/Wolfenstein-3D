@@ -124,6 +124,19 @@ raycastingtest/fast:
 .PHONY : raycastingtest/fast
 
 #=============================================================================
+# Target rules for targets named sdl-wall
+
+# Build rule for target.
+sdl-wall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sdl-wall
+.PHONY : sdl-wall
+
+# fast build rule for target.
+sdl-wall/fast:
+	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/build
+.PHONY : sdl-wall/fast
+
+#=============================================================================
 # Target rules for targets named sdl-static
 
 # Build rule for target.
@@ -257,6 +270,33 @@ src/mainstatic.cpp.s:
 	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.s
 .PHONY : src/mainstatic.cpp.s
 
+src/mainwall.o: src/mainwall.cpp.o
+
+.PHONY : src/mainwall.o
+
+# target to build an object file
+src/mainwall.cpp.o:
+	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.o
+.PHONY : src/mainwall.cpp.o
+
+src/mainwall.i: src/mainwall.cpp.i
+
+.PHONY : src/mainwall.i
+
+# target to preprocess a source file
+src/mainwall.cpp.i:
+	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.i
+.PHONY : src/mainwall.cpp.i
+
+src/mainwall.s: src/mainwall.cpp.s
+
+.PHONY : src/mainwall.s
+
+# target to generate assembly for a file
+src/mainwall.cpp.s:
+	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.s
+.PHONY : src/mainwall.cpp.s
+
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -338,6 +378,33 @@ src/sdlwindow.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdlwindow.cpp.s
 .PHONY : src/sdlwindow.cpp.s
 
+src/texturemanager.o: src/texturemanager.cpp.o
+
+.PHONY : src/texturemanager.o
+
+# target to build an object file
+src/texturemanager.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/texturemanager.cpp.o
+.PHONY : src/texturemanager.cpp.o
+
+src/texturemanager.i: src/texturemanager.cpp.i
+
+.PHONY : src/texturemanager.i
+
+# target to preprocess a source file
+src/texturemanager.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/texturemanager.cpp.i
+.PHONY : src/texturemanager.cpp.i
+
+src/texturemanager.s: src/texturemanager.cpp.s
+
+.PHONY : src/texturemanager.s
+
+# target to generate assembly for a file
+src/texturemanager.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/texturemanager.cpp.s
+.PHONY : src/texturemanager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -347,6 +414,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... raycastingtest"
+	@echo "... sdl-wall"
 	@echo "... sdl-static"
 	@echo "... sdldemo"
 	@echo "... src/anglemanager.o"
@@ -361,6 +429,9 @@ help:
 	@echo "... src/mainstatic.o"
 	@echo "... src/mainstatic.i"
 	@echo "... src/mainstatic.s"
+	@echo "... src/mainwall.o"
+	@echo "... src/mainwall.i"
+	@echo "... src/mainwall.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"
@@ -370,6 +441,9 @@ help:
 	@echo "... src/sdlwindow.o"
 	@echo "... src/sdlwindow.i"
 	@echo "... src/sdlwindow.s"
+	@echo "... src/texturemanager.o"
+	@echo "... src/texturemanager.i"
+	@echo "... src/texturemanager.s"
 .PHONY : help
 
 

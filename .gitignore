@@ -3,8 +3,8 @@
 CMakeCache.txt
 CMakeFiles/
 libsdldemo.a
-.swp
+*.swp
 cmake_install.cmake
 .idea/
 ./cmake-build-debug
-
+.gitignore
