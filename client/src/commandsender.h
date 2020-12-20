@@ -4,11 +4,12 @@
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
 #include "../../common/includes/Thread/Thread.h"
+#include "anglemanager.h"
 
-class CommandSender {
+class CommandSender : public Thread {
  public:
   CommandSender(SocketCommunication& s);
-  //~CommandSender() {}
+  void update(uint32_t deltax, uint32_t deltay, double viewAngle, AngleManager& angles);
   void run();
 
  private:

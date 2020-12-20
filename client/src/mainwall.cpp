@@ -13,6 +13,7 @@
 #include "sdlwindow.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
+#include <atomic>
 
 #define IMG_PATH "../media/"
 #define ERROR -1
@@ -54,24 +55,27 @@ int main(int argc, char** argv) {
   manager.loadTexture(5,&gun);
   manager.loadTexture(6,&back);
   Map matrix("COMPLETAR CON EL YAML LATER");
-  Raycaster* caster = new Raycaster(WIDTH, HEIGHT, manager, matrix, self);
+  std::atomic<bool> alive; 
+  alive = true;
+  Raycaster caster(WIDTH, HEIGHT, manager, matrix, self, alive);
 //#########################################################  
 
   int exitcode = 0;
-  CommandSender sender(socket);
+  CommandSender* sender = new CommandSender(socket);
   CommandExecuter* worker = new CommandExecuter(self, id, socket);
 
   try {
     worker->start();
-    caster->start();
-    sender.run();
+    sender->start();
+    caster.run();
   } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
     exitcode = ERROR;
   }
+  alive = false;
+  sender->join();
   worker->join();
-  caster->join();
-  delete caster;
+  delete sender;
   delete worker;
   return exitcode;
 }

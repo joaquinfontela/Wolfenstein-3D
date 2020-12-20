@@ -11,6 +11,7 @@
 // Cambiar por una excepción.
 
 void TextureManager::render(int img, Area srcArea, Area destArea) {
+  std::cout << "tengo : " << textures.size() << " texturas cargadas." << std::endl;
   std::map<int, SdlTexture*>::iterator it = this->textures.find(img);
   if (it != this->textures.end())
     it->second->render(srcArea, destArea);

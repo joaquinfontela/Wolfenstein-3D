@@ -7,14 +7,17 @@
 #include "player.h"
 #include "../../common/includes/Thread/Thread.h"
 
+#include <atomic>
+
 #define PI 3.14159265359
 
 class Raycaster : public Thread {
  public:
-  Raycaster(double width, double height, TextureManager& manager, Map& m, Player* p) : 
-          width(width) , height(height) , manager(manager) , matrix(m) , self(p) {}
+  Raycaster(double width, double height, TextureManager& manager, Map& m, Player* p, std::atomic<bool>& b) : 
+          alive(b), width(width) , height(height) , manager(manager) , matrix(m) , self(p) {}
   void run();
  private:
+  std::atomic<bool>& alive;
   double width;
   double height;
   TextureManager& manager;
