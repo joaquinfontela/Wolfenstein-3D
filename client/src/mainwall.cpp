@@ -2,6 +2,8 @@
 
 #include <exception>
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Map/Map.h"
@@ -39,8 +41,11 @@ int main(int argc, char** argv) {
   socket.receive(&id, sizeof(id));
   Player* self = new Player();
 
-//#########################################################  
+//#########################################################
   SdlWindow window(WIDTH, HEIGHT);
+  window.fillWolfenstein();
+  std::this_thread::sleep_for (std::chrono::seconds(4));
+
   SdlTexture im1(IMG_PATH "wall.png", window);
   SdlTexture im2(IMG_PATH "wall2.png", window);
   SdlTexture im3(IMG_PATH "wall3.png", window);
@@ -55,10 +60,10 @@ int main(int argc, char** argv) {
   manager.loadTexture(5,&gun);
   manager.loadTexture(6,&back);
   Map matrix("COMPLETAR CON EL YAML LATER");
-  std::atomic<bool> alive; 
+  std::atomic<bool> alive;
   alive = true;
   Raycaster caster(WIDTH, HEIGHT, manager, matrix, self, alive);
-//#########################################################  
+//#########################################################
 
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket);
