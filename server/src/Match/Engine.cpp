@@ -14,8 +14,9 @@ void Engine::run() {
     newCommand->execute(notifications, this->thisGame);
     delete newCommand;
   }
-  std::cout << "[ENGINE] Joining sender thread" << std::endl;
+
   t.join();
+    std::cout << "[ENGINE] Joining sender thread" << std::endl;
 }
 
 void Engine::requestShutdown(){
@@ -33,9 +34,11 @@ void Engine::sendNotifications() {
       ClientCommunication* c = it.second;
       try {
         newNotification->send(c->getSock());
-        delete newNotification;
       } catch (SocketException& e) {
+        // Deberia sacar del mapa al ClientCommunication que falla.
       }
     }
+
+    delete newNotification;
   }
 }
