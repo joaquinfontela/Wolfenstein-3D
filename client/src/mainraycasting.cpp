@@ -167,24 +167,31 @@ static void renderWithPerspective(int x, int y, int viewAngle,
 
    double diffX = testX - x;
    double diffY = testY - y;
-   int angleBetween = abs((atan2(diffY, diffX) * 180/3.1415) * WIDTH / 60 - viewAngle);
+   double anguloJugadorObjeto = atan2(diffY, diffX);
+   double diferenciaAngulo = ((viewAngle * 60/WIDTH) * 3.14159265359/180) - anguloJugadorObjeto;
+/*
+   int angleBetweenColumnar = abs(((atan2(diffY, diffX) * 180/3.1415) * WIDTH/60) - viewAngle);
+   double distanceToPlayer = distanceBetweenPoints(x, y, testX, testY) * angles.fFishTable[angleBetweenColumnar];
 
 
-   if(angleBetween < angles.ANGLE30){
+   if(angleBetweenColumnar < angles.ANGLE30){
 
-     double distanceToPlayer = distanceBetweenPoints(x, y, testX, testY);
+
      int spriteWidth = 168;
      int spriteHeight = ceil((64 / distanceToPlayer) * distanceToProyection);
-     int columnDisplacement = abs((angleBetween) - initAlpha);
-     //std::cout<<"Column Displacement: "<<columnDisplacement<<" Product of "<< angleBetween <<" - "<<initAlpha<<std::endl;
-     columnDisplacement = 180;
+     int columnDisplacement = abs(tan(angles.degreeToRadian(angleBetween, 180))) * distanceToPlayer;
+     std::cout<<"Column Displacement: "<<columnDisplacement<<std::endl;
 
-     double angleDifference = abs((atan2(diffY, diffX) * 180/3.14159265359) - (viewAngle * 60/WIDTH));
+     if(angleBetween > 0){
+        columnDisplacement += WIDTH/2;
+     }
 
-     int iterationRequired = angleDifference / (0.075);
-     std::cout<<iterationRequired<<std::endl;
+    // double angleDifference = abs((atan2(diffY, diffX) * 180/3.14159265359) - (viewAngle * 60/WIDTH));
 
-     columnDisplacement = iterationRequired;
+     //int iterationRequired = angleDifference / (0.075);
+     //std::cout<<iterationRequired<<std::endl;
+
+    // columnDisplacement = iterationRequired;
      for(int i = 0; i < spriteWidth; i++){
 
        //std::cout<<"Wall distance: "<<posTable[columnDisplacement]<<" ,Sprite Distance: "<<distanceToPlayer<<std::endl;
@@ -197,54 +204,70 @@ static void renderWithPerspective(int x, int y, int viewAngle,
 
      }
    }
+*/
 
-   /*
-   int altoTile = HEIGHT;
-   int alturaSprite = ((altoTile) / distanceToPlayer) * distanceToProyection;
-
-   int altoTextura = 288;
-   int anchoTextura = 168;
-
-  // std::cout<<distanceToPlayer<<std::endl;
-
-   int y0 = HEIGHT/2 - alturaSprite/2;
-   int y1 = y0 + alturaSprite;
-
-   int alturaTextura = y0 - y1;
-   int anchuraTextura = alturaTextura;
-
-   int anchuraColumna = alturaTextura / altoTextura;
-
-
-   int spriteAngle = (atan2(diffY, diffX) * WIDTH / 60) - viewAngle;
-   double x0 = angles.fTan(spriteAngle) * 500;
-
-   int x2 = WIDTH/2 + x0 - anchuraTextura/2;
-
-  // std::cout<<"y0: "<<y0<<", y1: "<<y1<<std::endl;
-   std::cout<<"Anchura columna: "<<anchuraColumna<<std::endl;
-
-
-
-   if(angleBetween < angles.ANGLE30){
-     std::cout<<"Deberia estar dibujando algo"<<std::endl;
-
-     // Hasta el ancho de la textura
-     for (int i = 0; i < 168; i++) {
-       for (int j = 0; j < anchuraColumna; j++) {
-         int x1 = x2 + ((i - 1) * 64) + j;
-         if (posTable[x1] > distanceToPlayer) {
-           Area srcArea(i, 0, 1, alturaTextura);
-           Area destArea(x1, y1, 1, altoTextura - 1);
-
-           std::cout<<"alturaTextura: "<<alturaTextura<<" altoTextura: "<<altoTextura<<std::endl;
-           img3->render(srcArea, destArea);
-         }
-         //std::cout<<"Distancia a pared: "<<posTable[x1]<<", distancia a Jugador: "<<distanceToPlayer<<std::endl;
-       }
-     }
+   if(diferenciaAngulo < -3.14159){
+     diferenciaAngulo += 2.0 * 3.14159;
    }
-   */
+   if(diferenciaAngulo > 3.14159){
+     diferenciaAngulo -= 2.0 * 3.14159;
+   }
+
+   diferenciaAngulo = abs(diferenciaAngulo);
+
+   if(diferenciaAngulo < 3.14159265359/6){
+     int altoTile = 64;
+
+     double distanceToPlayer = distanceBetweenPoints(testX, testY, x, y);
+     int alturaSprite = ((altoTile) / distanceToPlayer) * distanceToProyection;
+     std::cout<<"Altura Sprite: "<<alturaSprite<<std::endl;
+
+     int y0 = HEIGHT/2 - alturaSprite/2;
+     int y1 = y0 + alturaSprite;
+
+     std::cout<<y0<<std::endl<<y1<<std::endl;
+
+     int alturaTextura = y1 + y0;
+     int anchuraTextura = alturaTextura;
+
+     int altoTextura = 64;
+     int anchoTextura = 64;
+
+     int dx = testX - x;
+     int dy = testY - y;
+
+     double spriteAngle = atan2(dy, dx) - ((viewAngle * 60/WIDTH) * 3.14159265359/180);
+
+     int viewDist = HEIGHT;
+
+     int x0 = tan(spriteAngle) * viewDist;
+
+     int x2 = WIDTH/2 + x0 - anchuraTextura/2;
+
+     int anchuraColumna = alturaTextura / altoTextura;
+
+     std::cout<<"Anchura Columna: "<<anchuraColumna<<std::endl;
+
+       // Hasta el ancho de la textura
+     for (int i = 0; i < 168; i++) {
+        for (int j = 0; j < anchuraColumna; j++) {
+          int x1 = x2 + ((i - 1) * anchuraColumna) + j;
+
+          if (posTable[x1] > distanceToPlayer) {
+            Area srcArea(i, 0, 1, alturaTextura);
+            Area destArea(x1, y1, 1, altoTextura - 1);
+
+            std::cout<<"alturaTextura: "<<alturaTextura<<" altoTextura: "<<altoTextura<<std::endl;
+            img3->render(srcArea, destArea);
+          }
+           //std::cout<<"Distancia a pared: "<<posTable[x1]<<", distancia a Jugador: "<<distanceToPlayer<<std::endl;
+        }
+      }
+
+
+   }
+
+
 
 
 
