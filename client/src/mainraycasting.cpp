@@ -17,6 +17,9 @@
 #define DIMX 12
 #define DIMY 12
 
+static double distanceBetweenPoints(double x1, double y1, double x2, double y2){
+  return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
+}
 static void renderWithPerspective(int x, int y, int viewAngle,
                                   SdlTexture* img1, SdlTexture* img2, SdlTexture* img3) {
   int matrix[DIMX][DIMY] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -35,6 +38,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
   double distanceToProyection = floor((WIDTH / 2) / (tan((PI / 2) - PI / 3)));
   double testX = 384;
   double testY = 384;
+  double posTable[WIDTH];
 
 
 
@@ -52,6 +56,8 @@ static void renderWithPerspective(int x, int y, int viewAngle,
   if (alpha < 0) {
     alpha += angles.ANGLE360;
   }
+
+  int initAlpha = alpha;
 
   int firstHit, secondHit;
   for (int i = 0; i < WIDTH; i++) {
@@ -76,7 +82,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
         xIndex = floor(xBoxIntersection / 64);
         yIndex = floor(yGrid / 64);
 
-        std::cout<<"xInt: "<<xBoxIntersection<<" yInt: " << yGrid<<std::endl;
+
         if (xIndex >= DIMX || yIndex >= DIMY || xIndex < 0 || yIndex < 0) {
           distanceTwo = INT_MAX;
           break;
@@ -84,13 +90,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
           secondHit = matrix[xIndex][yIndex];
           distanceTwo = abs(xBoxIntersection - x) * abs(angles.fICosTable[alpha]);
           break;
-        }else if(xBoxIntersection - 10 < testX && xBoxIntersection + 10 > testX && yGrid - 10 < testY && yGrid + 10 > testY){
-          distanceTwo = abs(testX - x) * abs(angles.fICosTable[alpha]);
-          //std::cout << "PLAYER HIT"<<std::endl;
-          secondHit = 3;
-          break;
-        }
-        else {
+        }else {
           xBoxIntersection += dx;
           yGrid += dh;
         }
@@ -122,13 +122,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
           distanceOne =
               abs(yBoxIntersection - y) * abs(angles.fISinTable[alpha]);
           break;
-        }else if(yBoxIntersection - 10 < testY && yBoxIntersection +10 > testY && xGrid - 10 < testX && xGrid + 10 > testX){
-            distanceTwo = abs(testY - y) * abs(angles.fICosTable[alpha]) - 10;
-            std::cout << "PLAYER HIT"<<std::endl;
-            firstHit = 3;
-            break;
-          }
-         else {
+        } else {
           yBoxIntersection += dy;
           xGrid += dv;
         }
@@ -148,12 +142,12 @@ static void renderWithPerspective(int x, int y, int viewAngle,
       textureToUse = secondHit;
       distanceToWall = distanceTwo;
       offset = (int)xBoxIntersection % 64;
-      offset2 = (int)xBoxIntersection %128;
+
     } else {
       textureToUse = firstHit;
       distanceToWall = distanceOne;
       offset = (int)yBoxIntersection % 64;
-      offset2 = (int)yBoxIntersection %128;
+
     }
 
     int height = ceil(wallHeight);
@@ -161,17 +155,100 @@ static void renderWithPerspective(int x, int y, int viewAngle,
     if (textureToUse == 1){
       Area srcArea(offset, 0, 1, height);
       img1->render(srcArea, destArea);
-    } else if(textureToUse == 2){
+    } else{
       Area srcArea(offset, 0, 1, height);
       img2->render(srcArea, destArea);
-    }else{
-      Area srcArea(offset2, 0, 1, height);
-      img3->render(srcArea, destArea);
     }
 
+    posTable[i] = distanceToWall;
     alpha += 1;
     while (alpha >= angles.ANGLE360) alpha -= angles.ANGLE360;
   }
+
+   double diffX = testX - x;
+   double diffY = testY - y;
+   int angleBetween = abs((atan2(diffY, diffX) * 180/3.1415) * WIDTH / 60 - viewAngle);
+
+
+   if(angleBetween < angles.ANGLE30){
+
+     double distanceToPlayer = distanceBetweenPoints(x, y, testX, testY);
+     int spriteWidth = 168;
+     int spriteHeight = ceil((64 / distanceToPlayer) * distanceToProyection);
+     int columnDisplacement = abs((angleBetween) - initAlpha);
+     //std::cout<<"Column Displacement: "<<columnDisplacement<<" Product of "<< angleBetween <<" - "<<initAlpha<<std::endl;
+     columnDisplacement = 180;
+
+     double angleDifference = abs((atan2(diffY, diffX) * 180/3.14159265359) - (viewAngle * 60/WIDTH));
+
+     int iterationRequired = angleDifference / (0.075);
+     std::cout<<iterationRequired<<std::endl;
+
+     columnDisplacement = iterationRequired;
+     for(int i = 0; i < spriteWidth; i++){
+
+       //std::cout<<"Wall distance: "<<posTable[columnDisplacement]<<" ,Sprite Distance: "<<distanceToPlayer<<std::endl;
+       if(posTable[columnDisplacement + i] > distanceToPlayer){
+
+         Area destArea(columnDisplacement + i, (HEIGHT - spriteHeight) / 2, 1, spriteHeight);
+         Area srcArea(i, 0, 1, spriteHeight);
+         img3->render(srcArea, destArea);
+       }
+
+     }
+   }
+
+   /*
+   int altoTile = HEIGHT;
+   int alturaSprite = ((altoTile) / distanceToPlayer) * distanceToProyection;
+
+   int altoTextura = 288;
+   int anchoTextura = 168;
+
+  // std::cout<<distanceToPlayer<<std::endl;
+
+   int y0 = HEIGHT/2 - alturaSprite/2;
+   int y1 = y0 + alturaSprite;
+
+   int alturaTextura = y0 - y1;
+   int anchuraTextura = alturaTextura;
+
+   int anchuraColumna = alturaTextura / altoTextura;
+
+
+   int spriteAngle = (atan2(diffY, diffX) * WIDTH / 60) - viewAngle;
+   double x0 = angles.fTan(spriteAngle) * 500;
+
+   int x2 = WIDTH/2 + x0 - anchuraTextura/2;
+
+  // std::cout<<"y0: "<<y0<<", y1: "<<y1<<std::endl;
+   std::cout<<"Anchura columna: "<<anchuraColumna<<std::endl;
+
+
+
+   if(angleBetween < angles.ANGLE30){
+     std::cout<<"Deberia estar dibujando algo"<<std::endl;
+
+     // Hasta el ancho de la textura
+     for (int i = 0; i < 168; i++) {
+       for (int j = 0; j < anchuraColumna; j++) {
+         int x1 = x2 + ((i - 1) * 64) + j;
+         if (posTable[x1] > distanceToPlayer) {
+           Area srcArea(i, 0, 1, alturaTextura);
+           Area destArea(x1, y1, 1, altoTextura - 1);
+
+           std::cout<<"alturaTextura: "<<alturaTextura<<" altoTextura: "<<altoTextura<<std::endl;
+           img3->render(srcArea, destArea);
+         }
+         //std::cout<<"Distancia a pared: "<<posTable[x1]<<", distancia a Jugador: "<<distanceToPlayer<<std::endl;
+       }
+     }
+   }
+   */
+
+
+
+
 }
 
 int main(int argc, char** argv) {

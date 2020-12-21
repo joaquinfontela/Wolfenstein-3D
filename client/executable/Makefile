@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named raycastingtest
+
+# Build rule for target.
+raycastingtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raycastingtest
+.PHONY : raycastingtest
+
+# fast build rule for target.
+raycastingtest/fast:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/build
+.PHONY : raycastingtest/fast
+
+#=============================================================================
 # Target rules for targets named sdldemo
 
 # Build rule for target.
@@ -325,6 +338,33 @@ src/commandsender.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.s
 .PHONY : src/commandsender.cpp.s
 
+src/mainraycasting.o: src/mainraycasting.cpp.o
+
+.PHONY : src/mainraycasting.o
+
+# target to build an object file
+src/mainraycasting.cpp.o:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.o
+.PHONY : src/mainraycasting.cpp.o
+
+src/mainraycasting.i: src/mainraycasting.cpp.i
+
+.PHONY : src/mainraycasting.i
+
+# target to preprocess a source file
+src/mainraycasting.cpp.i:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.i
+.PHONY : src/mainraycasting.cpp.i
+
+src/mainraycasting.s: src/mainraycasting.cpp.s
+
+.PHONY : src/mainraycasting.s
+
+# target to generate assembly for a file
+src/mainraycasting.cpp.s:
+	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.s
+.PHONY : src/mainraycasting.cpp.s
+
 src/mainwall.o: src/mainwall.cpp.o
 
 .PHONY : src/mainwall.o
@@ -520,6 +560,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... raycastingtest"
 	@echo "... edit_cache"
 	@echo "... sdldemo"
 	@echo "... rebuild_cache"
@@ -545,6 +586,9 @@ help:
 	@echo "... src/commandsender.o"
 	@echo "... src/commandsender.i"
 	@echo "... src/commandsender.s"
+	@echo "... src/mainraycasting.o"
+	@echo "... src/mainraycasting.i"
+	@echo "... src/mainraycasting.s"
 	@echo "... src/mainwall.o"
 	@echo "... src/mainwall.i"
 	@echo "... src/mainwall.s"

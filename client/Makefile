@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/client
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,19 +124,6 @@ raycastingtest/fast:
 .PHONY : raycastingtest/fast
 
 #=============================================================================
-# Target rules for targets named sdl-wall
-
-# Build rule for target.
-sdl-wall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sdl-wall
-.PHONY : sdl-wall
-
-# fast build rule for target.
-sdl-wall/fast:
-	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/build
-.PHONY : sdl-wall/fast
-
-#=============================================================================
 # Target rules for targets named sdldemo
 
 # Build rule for target.
@@ -150,17 +137,17 @@ sdldemo/fast:
 .PHONY : sdldemo/fast
 
 #=============================================================================
-# Target rules for targets named sdl-static
+# Target rules for targets named sdl-wall
 
 # Build rule for target.
-sdl-static: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sdl-static
-.PHONY : sdl-static
+sdl-wall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sdl-wall
+.PHONY : sdl-wall
 
 # fast build rule for target.
-sdl-static/fast:
-	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/build
-.PHONY : sdl-static/fast
+sdl-wall/fast:
+	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/build
+.PHONY : sdl-wall/fast
 
 home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.o: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.cpp.o
 
@@ -188,6 +175,60 @@ home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.s: home/thi
 home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.cpp.s
 .PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.cpp.s
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.o: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.o
+
+# target to build an object file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.i: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.i
+
+# target to preprocess a source file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.s: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.s
+
+# target to generate assembly for a file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.o: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.o
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.o
+
+# target to build an object file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.o
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.o
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.i: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.i
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.i
+
+# target to preprocess a source file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.i
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.i
+
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.s: home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.s
+
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.s
+
+# target to generate assembly for a file
+home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.s
+.PHONY : home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.cpp.s
 
 src/anglemanager.o: src/anglemanager.cpp.o
 
@@ -243,6 +284,60 @@ src/area.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/area.cpp.s
 .PHONY : src/area.cpp.s
 
+src/commandexecuter.o: src/commandexecuter.cpp.o
+
+.PHONY : src/commandexecuter.o
+
+# target to build an object file
+src/commandexecuter.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.o
+.PHONY : src/commandexecuter.cpp.o
+
+src/commandexecuter.i: src/commandexecuter.cpp.i
+
+.PHONY : src/commandexecuter.i
+
+# target to preprocess a source file
+src/commandexecuter.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.i
+.PHONY : src/commandexecuter.cpp.i
+
+src/commandexecuter.s: src/commandexecuter.cpp.s
+
+.PHONY : src/commandexecuter.s
+
+# target to generate assembly for a file
+src/commandexecuter.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.s
+.PHONY : src/commandexecuter.cpp.s
+
+src/commandsender.o: src/commandsender.cpp.o
+
+.PHONY : src/commandsender.o
+
+# target to build an object file
+src/commandsender.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.o
+.PHONY : src/commandsender.cpp.o
+
+src/commandsender.i: src/commandsender.cpp.i
+
+.PHONY : src/commandsender.i
+
+# target to preprocess a source file
+src/commandsender.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.i
+.PHONY : src/commandsender.cpp.i
+
+src/commandsender.s: src/commandsender.cpp.s
+
+.PHONY : src/commandsender.s
+
+# target to generate assembly for a file
+src/commandsender.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.s
+.PHONY : src/commandsender.cpp.s
+
 src/mainraycasting.o: src/mainraycasting.cpp.o
 
 .PHONY : src/mainraycasting.o
@@ -270,33 +365,6 @@ src/mainraycasting.cpp.s:
 	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.s
 .PHONY : src/mainraycasting.cpp.s
 
-src/mainstatic.o: src/mainstatic.cpp.o
-
-.PHONY : src/mainstatic.o
-
-# target to build an object file
-src/mainstatic.cpp.o:
-	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.o
-.PHONY : src/mainstatic.cpp.o
-
-src/mainstatic.i: src/mainstatic.cpp.i
-
-.PHONY : src/mainstatic.i
-
-# target to preprocess a source file
-src/mainstatic.cpp.i:
-	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.i
-.PHONY : src/mainstatic.cpp.i
-
-src/mainstatic.s: src/mainstatic.cpp.s
-
-.PHONY : src/mainstatic.s
-
-# target to generate assembly for a file
-src/mainstatic.cpp.s:
-	$(MAKE) -f CMakeFiles/sdl-static.dir/build.make CMakeFiles/sdl-static.dir/src/mainstatic.cpp.s
-.PHONY : src/mainstatic.cpp.s
-
 src/mainwall.o: src/mainwall.cpp.o
 
 .PHONY : src/mainwall.o
@@ -323,6 +391,33 @@ src/mainwall.s: src/mainwall.cpp.s
 src/mainwall.cpp.s:
 	$(MAKE) -f CMakeFiles/sdl-wall.dir/build.make CMakeFiles/sdl-wall.dir/src/mainwall.cpp.s
 .PHONY : src/mainwall.cpp.s
+
+src/player.o: src/player.cpp.o
+
+.PHONY : src/player.o
+
+# target to build an object file
+src/player.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/player.cpp.o
+.PHONY : src/player.cpp.o
+
+src/player.i: src/player.cpp.i
+
+.PHONY : src/player.i
+
+# target to preprocess a source file
+src/player.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
+
+src/player.s: src/player.cpp.s
+
+.PHONY : src/player.s
+
+# target to generate assembly for a file
+src/player.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
 
 src/raycaster.o: src/raycaster.cpp.o
 
@@ -466,29 +561,40 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... raycastingtest"
-	@echo "... rebuild_cache"
-	@echo "... sdl-wall"
 	@echo "... edit_cache"
 	@echo "... sdldemo"
-	@echo "... sdl-static"
+	@echo "... rebuild_cache"
+	@echo "... sdl-wall"
 	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.o"
 	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.i"
 	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Map/Map.s"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.o"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.i"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Socket/SocketCommunication.s"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.o"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.i"
+	@echo "... home/thiago/Desktop/Fiuba/Taller1/tp-final-taller/common/src/Thread/Thread.s"
 	@echo "... src/anglemanager.o"
 	@echo "... src/anglemanager.i"
 	@echo "... src/anglemanager.s"
 	@echo "... src/area.o"
 	@echo "... src/area.i"
 	@echo "... src/area.s"
+	@echo "... src/commandexecuter.o"
+	@echo "... src/commandexecuter.i"
+	@echo "... src/commandexecuter.s"
+	@echo "... src/commandsender.o"
+	@echo "... src/commandsender.i"
+	@echo "... src/commandsender.s"
 	@echo "... src/mainraycasting.o"
 	@echo "... src/mainraycasting.i"
 	@echo "... src/mainraycasting.s"
-	@echo "... src/mainstatic.o"
-	@echo "... src/mainstatic.i"
-	@echo "... src/mainstatic.s"
 	@echo "... src/mainwall.o"
 	@echo "... src/mainwall.i"
 	@echo "... src/mainwall.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
 	@echo "... src/raycaster.o"
 	@echo "... src/raycaster.i"
 	@echo "... src/raycaster.s"
