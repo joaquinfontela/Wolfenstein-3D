@@ -44,7 +44,6 @@ int main(int argc, char** argv) {
 //#########################################################
   SdlWindow window(WIDTH, HEIGHT);
   window.fillWolfenstein();
-  std::this_thread::sleep_for (std::chrono::seconds(4));
 
   SdlTexture im1(IMG_PATH "wall.png", window);
   SdlTexture im2(IMG_PATH "wall2.png", window);
@@ -62,7 +61,7 @@ int main(int argc, char** argv) {
   Map matrix("COMPLETAR CON EL YAML LATER");
   std::atomic<bool> alive;
   alive = true;
-  Raycaster caster(WIDTH, HEIGHT, manager, matrix, self, alive);
+  Raycaster caster(WIDTH, HEIGHT, manager, matrix, self, alive, &window);
 //#########################################################
 
   int exitcode = 0;

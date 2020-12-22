@@ -30,7 +30,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
                             {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
                             {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
                             {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                            {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
+                            {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
                             {1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1},
                             {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1},
                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
@@ -167,31 +167,30 @@ static void renderWithPerspective(int x, int y, int viewAngle,
 
    double diffX = testX - x;
    double diffY = testY - y;
-   double anguloJugadorObjeto = atan2(diffY, diffX);
-   double diferenciaAngulo = ((viewAngle * 60/WIDTH) * 3.14159265359/180) - anguloJugadorObjeto;
-/*
-   int angleBetweenColumnar = abs(((atan2(diffY, diffX) * 180/3.1415) * WIDTH/60) - viewAngle);
+   double anguloJugadorObjeto = atan2(diffY, diffX) * 180/3.14159265359;
+   double angleBetween = ((viewAngle  * 60/WIDTH) - (anguloJugadorObjeto));
+
+   int angleBetweenColumnar = abs(((atan2(diffY, diffX) * 180/3.1415) * WIDTH/60));
    double distanceToPlayer = distanceBetweenPoints(x, y, testX, testY) * angles.fFishTable[angleBetweenColumnar];
 
-
+   std::cout<<"Angle between: "<<angleBetween<<std::endl;
    if(angleBetweenColumnar < angles.ANGLE30){
 
 
      int spriteWidth = 168;
      int spriteHeight = ceil((64 / distanceToPlayer) * distanceToProyection);
-     int columnDisplacement = abs(tan(angles.degreeToRadian(angleBetween, 180))) * distanceToPlayer;
-     std::cout<<"Column Displacement: "<<columnDisplacement<<std::endl;
+     int columnDisplacement = (tan(atan2(diffY, diffX))) * distanceToPlayer;
 
-     if(angleBetween > 0){
-        columnDisplacement += WIDTH/2;
-     }
 
-    // double angleDifference = abs((atan2(diffY, diffX) * 180/3.14159265359) - (viewAngle * 60/WIDTH));
+     double angleDifference = abs((atan2(diffY, diffX) * 180/3.14159265359) - (viewAngle * 60/WIDTH));
 
      //int iterationRequired = angleDifference / (0.075);
      //std::cout<<iterationRequired<<std::endl;
 
-    // columnDisplacement = iterationRequired;
+     spriteWidth = spriteHeight;
+
+     //columnDisplacement = iterationRequired;
+     //std::cout<<"Column Displacement: "<<columnDisplacement<<std::endl;
      for(int i = 0; i < spriteWidth; i++){
 
        //std::cout<<"Wall distance: "<<posTable[columnDisplacement]<<" ,Sprite Distance: "<<distanceToPlayer<<std::endl;
@@ -204,7 +203,8 @@ static void renderWithPerspective(int x, int y, int viewAngle,
 
      }
    }
-*/
+
+   /*
 
    if(diferenciaAngulo < -3.14159){
      diferenciaAngulo += 2.0 * 3.14159;
@@ -266,7 +266,7 @@ static void renderWithPerspective(int x, int y, int viewAngle,
 
 
    }
-
+*/
 
 
 
@@ -292,7 +292,7 @@ int main(int argc, char** argv) {
     int xmouse = 0;
     AngleManager angles;
 
-    double viewAngle = angles.ANGLE270;
+    double viewAngle = angles.ANGLE180;
 
     while (true) {
       SDL_Event event;

@@ -16,6 +16,7 @@ add_library(sdldemo
   ../common/src/Socket/SocketCommunication.cpp
   ../common/src/Thread/Thread.cpp
   ../common/src/Map/Map.cpp
+
 )
 include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-wall
@@ -24,5 +25,10 @@ add_executable (sdl-wall
 add_executable (raycastingtest
   src/mainraycasting.cpp  
 )
+
+add_executable (raycastinglord
+  src/raycastingLord.cpp  
+)
 target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer)
 target_link_libraries(raycastingtest sdldemo SDL2 SDL2_image SDL2_mixer)
+target_link_libraries(raycastinglord sdldemo SDL2 SDL2_image SDL2_mixer)

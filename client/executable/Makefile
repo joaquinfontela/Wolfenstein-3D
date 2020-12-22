@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named raycastinglord
+
+# Build rule for target.
+raycastinglord: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raycastinglord
+.PHONY : raycastinglord
+
+# fast build rule for target.
+raycastinglord/fast:
+	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/build
+.PHONY : raycastinglord/fast
+
+#=============================================================================
 # Target rules for targets named raycastingtest
 
 # Build rule for target.
@@ -446,6 +459,33 @@ src/raycaster.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.s
 .PHONY : src/raycaster.cpp.s
 
+src/raycastingLord.o: src/raycastingLord.cpp.o
+
+.PHONY : src/raycastingLord.o
+
+# target to build an object file
+src/raycastingLord.cpp.o:
+	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.o
+.PHONY : src/raycastingLord.cpp.o
+
+src/raycastingLord.i: src/raycastingLord.cpp.i
+
+.PHONY : src/raycastingLord.i
+
+# target to preprocess a source file
+src/raycastingLord.cpp.i:
+	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.i
+.PHONY : src/raycastingLord.cpp.i
+
+src/raycastingLord.s: src/raycastingLord.cpp.s
+
+.PHONY : src/raycastingLord.s
+
+# target to generate assembly for a file
+src/raycastingLord.cpp.s:
+	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.s
+.PHONY : src/raycastingLord.cpp.s
+
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -560,6 +600,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... raycastinglord"
 	@echo "... raycastingtest"
 	@echo "... edit_cache"
 	@echo "... sdldemo"
@@ -598,6 +639,9 @@ help:
 	@echo "... src/raycaster.o"
 	@echo "... src/raycaster.i"
 	@echo "... src/raycaster.s"
+	@echo "... src/raycastingLord.o"
+	@echo "... src/raycastingLord.i"
+	@echo "... src/raycastingLord.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"

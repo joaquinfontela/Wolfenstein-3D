@@ -1,5 +1,6 @@
 #ifndef RAYCASTER_H_
 #define RAYCASTER_H_
+#include "sdlwindow.h"
 
 #include "texturemanager.h"
 #include "anglemanager.h"
@@ -13,8 +14,8 @@
 
 class Raycaster : public Thread {
  public:
-  Raycaster(double width, double height, TextureManager& manager, Map& m, Player* p, std::atomic<bool>& b) : 
-          alive(b), width(width) , height(height) , manager(manager) , matrix(m) , self(p) {}
+  Raycaster(double width, double height, TextureManager& manager, Map& m, Player* p, std::atomic<bool>& b, SdlWindow* window) :
+          alive(b), width(width) , height(height) , manager(manager) , matrix(m) , self(p), window(window) {}
   void run();
  private:
   std::atomic<bool>& alive;
@@ -25,6 +26,7 @@ class Raycaster : public Thread {
   Player* self;
   double distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   AngleManager angles;
+  SdlWindow* window;
 };
 
 #endif  // RAYCASTER_H_

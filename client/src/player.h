@@ -12,7 +12,7 @@ class Player {
   int getX();
   int getY();
   int getAngle();
-  Player() : x(370), y(370), viewAngle(0) {}
+  Player() : x(370), y(370), viewAngle(90 * 60/800) {}
   void goTo(uint32_t x, uint32_t y, uint32_t angle);
 };
 

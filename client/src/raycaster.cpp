@@ -16,7 +16,7 @@
 #define IMG_PATH "../media/"
 
 void Raycaster::run() {
-  while (alive) {  
+  while (alive) {
     int x = this->self->getX();
     int y = this->self->getY();
     int viewAngle = this->self->getAngle();
@@ -129,7 +129,9 @@ void Raycaster::run() {
       this->manager.render(textureToUse, srcArea, destArea);
       alpha += 1;
       while (alpha >= angles.ANGLE360) alpha -= angles.ANGLE360;
-    }    
+      this->window->render();  
+
+    }
+
   }
 }
-
