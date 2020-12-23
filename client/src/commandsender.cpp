@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include <time.h>
-
+#include <atomic>
 #include <iostream>
 #include "anglemanager.h"
 #include "../../common/includes/protocol.h"
@@ -13,8 +13,8 @@
 #define DIMX 10
 #define DIMY 13
 
-CommandSender::CommandSender(SocketCommunication& s) : 
-        socket(s), x(370), y(370) {}
+CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) : 
+        socket(s), x(370), y(370), alive(alive) {}
 
 void CommandSender::update(uint32_t deltax, uint32_t deltay, double viewAngle, AngleManager& angles) {
   double theta = viewAngle - angles.ANGLE270;
@@ -43,6 +43,7 @@ void CommandSender::run() {
         socket.readShutdown();
         socket.writeShutdown();
         socket.close();
+        this->alive = false;
         std::cout << "ESTOY MATANDO AL SENDER DE INFORMACIÓN." << std::endl;
         deltax = 0;
         deltay = 0;

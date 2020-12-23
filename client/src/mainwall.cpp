@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 //#########################################################
 
   int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket);
+  CommandSender* sender = new CommandSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(self, id, socket);
 
   try {

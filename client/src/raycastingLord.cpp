@@ -214,7 +214,7 @@ int main(int argc, char** argv) {
     while (true) {
       SDL_Event event;
       window.fillWolfenstein();
-      renderWithPerspective(posX, posY, dirX, dirY, planeX, planeY, &im1, matrix, &im2, &im2);
+      renderWithPerspective(posX, posY, dirX, dirY, planeX, planeY, &im1, matrix, &im2, &guard);
       back.renderAll({.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT});
       gun.renderAll({.x = WIDTH/2 - 130, .y = HEIGHT/2 - 78, .w = 250, .h = 250});
       window.render();

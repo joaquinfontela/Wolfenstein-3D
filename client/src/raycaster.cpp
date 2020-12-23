@@ -16,10 +16,13 @@
 #define IMG_PATH "../media/"
 
 void Raycaster::run() {
+  int inc = 0;
   while (alive) {
+    inc++;
     int x = this->self->getX();
     int y = this->self->getY();
     int viewAngle = this->self->getAngle();
+    x += inc; y += inc;
 
     double xBoxIntersection, yBoxIntersection;
     double dv, dh, dx, dy;
@@ -125,13 +128,10 @@ void Raycaster::run() {
       int height = ceil(wallHeight);
       Area srcArea(offset, 0, 1, height);
       Area destArea(i, (HEIGHT - height) / 2, 1, height);
-      std::cout << "tengo que renderizar." << std::endl;
       this->manager.render(textureToUse, srcArea, destArea);
       alpha += 1;
       while (alpha >= angles.ANGLE360) alpha -= angles.ANGLE360;
-      this->window->render();  
-
     }
-
+    this->window->render();  
   }
 }
