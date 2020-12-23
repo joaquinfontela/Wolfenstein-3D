@@ -31,9 +31,9 @@ void CommandSender::update(uint32_t deltax, uint32_t deltay, double viewAngle, A
 void CommandSender::run() {
   while (true) {
     try {
-      int deltax = 0;
-      int deltay = 0;
-      int xmouse = 0;
+      uint32_t deltax = 0;
+      uint32_t deltay = 0;
+      uint32_t xmouse = 0;
       AngleManager angles;
       double viewAngle = angles.ANGLE270;
 
