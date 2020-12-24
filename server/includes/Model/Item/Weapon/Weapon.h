@@ -9,7 +9,7 @@ class Player;
 class Weapon : public Item {
  public:
   virtual ~Weapon() = 0;
-  virtual void attack() = 0;
+  virtual unsigned int attack() = 0;
   void pickUp(Player& player);
   bool canBePickedUpBy(Player& player);
 };

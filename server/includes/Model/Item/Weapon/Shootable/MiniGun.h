@@ -4,5 +4,5 @@ class MiniGun : public Shootable {
  public:
   MiniGun(int newAmmo);
   ~MiniGun();
-  void shoot();
+  unsigned int shoot();
 };
