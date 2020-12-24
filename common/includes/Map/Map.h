@@ -5,7 +5,7 @@
 
 class Map {
  public:
-  Map(const std::string& s) : dimx(12), dimy(12) {}
+  Map(const std::string& s) : dimx(10), dimy(13) {}
   int matrix[10][13] = {{1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {2, 0, 2, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
                         {2, 0, 2, 0, 0, 0, 1, 0, 4, 4, 4, 0, 1},

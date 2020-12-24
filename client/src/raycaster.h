@@ -25,7 +25,6 @@ class Raycaster : public Thread {
   Map& matrix;
   Player* self;
   double distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
-  AngleManager angles;
   SdlWindow* window;
 };
 

@@ -4,16 +4,18 @@
 #include <cstdint>
 
 class Player {
- private:
-  uint32_t x;
-  uint32_t y;
-  uint32_t viewAngle;
- public:
-  int getX();
-  int getY();
-  int getAngle();
-  Player() : x(370), y(370), viewAngle(90 * 60/800) {}
-  void goTo(uint32_t x, uint32_t y, uint32_t angle);
+
+public:
+
+  double dirX;
+  double dirY;
+  double posX;
+  double posY;
+  double planeX;
+  double planeY;
+
+  Player(double posX, double posY, double dirX, double dirY) : posX(posX), posY(posY), dirX(dirX), dirY(dirY), planeX(0), planeY(0.66){}
+
 };
 
 #endif  // PLAYER_H_

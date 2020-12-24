@@ -1,137 +1,161 @@
-#include <SDL2/SDL.h>
-#include <math.h>
-
-#include <climits>
-#include <exception>
-#include <iostream>
-
-#include "anglemanager.h"
-#include "texturemanager.h"
-#include "sdltexture.h"
-#include "sdlwindow.h"
 #include "raycaster.h"
 
-#define EPSILON 0.0001
-#define PI 3.14159265359
-#define IMG_PATH "../media/"
 
-void Raycaster::run() {
-  while (alive) {
-    int x = this->self->getX();
-    int y = this->self->getY();
-    int viewAngle = this->self->getAngle();
 
-    double xBoxIntersection, yBoxIntersection;
-    double dv, dh, dx, dy;
-    double distanceOne = 0;
-    double distanceTwo = 0;
+void Raycaster::run(){
 
-    int xGrid, yGrid;
-    int xIndex, yIndex;
-    int alpha = viewAngle - angles.ANGLE30;
+  while(alive){
 
-    if (alpha < 0) {
-      alpha += angles.ANGLE360;
-    }
 
-    int firstHit, secondHit;
-    for (int i = 0; i < this->width; i++) {
-      std::cout << "Casting ray at angle: " << (alpha * 60) / WIDTH
-                << " in column: " << i << std::endl;
+    double dirX = self->dirX;
+    double dirY = self->dirY;
+    double posX = self->posX;
+    double posY = self->posY;
+    double planeX = self->planeX;
+    double planeY = self->planeY;
 
-      if (alpha > angles.ANGLE0 && alpha < angles.ANGLE180) {
-        yGrid = floor(y / 64) * 64 + 64;
-        dh = 64;
-        xBoxIntersection = angles.fITanTable[alpha] * (yGrid - y) + x;
-      } else {
-        yGrid = floor(y / 64) * 64 - 1;
-        dh = -64;
-        xBoxIntersection = angles.fITanTable[alpha] * (yGrid - y) + x;
+
+    double zBuffer[this->width];
+    for(int x = 0; x < this->width; x++){
+
+
+       double cameraX = 2 * x / (double)this->width - 1;
+       double rayDirX = dirX + planeX * cameraX;
+       double rayDirY = dirY + planeY * cameraX;
+
+       int mapX = int(posX);
+       int mapY = int(posY);
+
+       double sideDistX;
+       double sideDistY;
+
+       double deltaDistX = std::abs(1 / rayDirX);
+       double deltaDistY = std::abs(1 / rayDirY);
+       double perpWallDist;
+
+       int stepX;
+       int stepY;
+
+       int hit = 0;
+       int side;
+
+       if(rayDirX < 0){
+         stepX = -1;
+         sideDistX = (posX - mapX) * deltaDistX;
+       }
+       else{
+         stepX = 1;
+         sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+       }
+       if(rayDirY < 0){
+         stepY = -1;
+         sideDistY = (posY - mapY) * deltaDistY;
+       }
+       else{
+         stepY = 1;
+         sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+       }
+
+       while (hit == 0){
+         if(sideDistX < sideDistY){
+           sideDistX += deltaDistX;
+           mapX += stepX;
+           side = 0;
+         }
+         else{
+           sideDistY += deltaDistY;
+           mapY += stepY;
+           side = 1;
+         }
+
+         if(mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapX < 0){
+           mapX = INT_MAX;
+           mapY = INT_MAX;
+         }
+
+
+         if(matrix[mapX][mapY] > 0) hit = 1;
+       }
+
+       if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
+       else          perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
+
+
+       int lineHeight = (int) (this->height/ perpWallDist);
+       int offset = 0;
+
+
+      int texNum = matrix[mapX][mapY];
+
+
+      double wallX;
+      if (side == 0) wallX = posY + perpWallDist * rayDirY;
+      else           wallX = posX + perpWallDist * rayDirX;
+      wallX -= floor((wallX));
+
+
+      int texX = int(wallX * double(64));
+      if(side == 0 && rayDirX > 0) texX = 64 - texX - 1;
+      if(side == 1 && rayDirY < 0) texX = 64 - texX - 1;
+
+       if(side == 0)
+          offset = int(sideDistX) % 64;
+       else
+          offset = int(sideDistY) % 64;
+       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+
+       Area srcArea(texX, 0, 1, lineHeight);
+
+       if(texNum == 1)
+        img1->render(srcArea, destArea);
+       else
+        img2->render(srcArea, destArea);
+
+
+      zBuffer[x] = perpWallDist;
       }
 
-      if (alpha == angles.ANGLE0 || alpha == angles.ANGLE180) {
-        distanceTwo = INT_MAX;
-      } else {
-        dx = angles.fXStepTable[alpha];
-        while (true) {
-          xIndex = floor(xBoxIntersection / 64);
-          yIndex = floor(yGrid / 64);
+    /*
+      // Sprite Casting
 
-          if (xIndex >= matrix.dimx || yIndex >= matrix.dimy || xIndex < 0 || yIndex < 0) {
-            distanceTwo = INT_MAX;
-            break;
-          } else if (matrix.matrix[xIndex][yIndex] != 0) {
-            secondHit = matrix.matrix[xIndex][yIndex];
-            distanceTwo =
-                abs(xBoxIntersection - x) * abs(angles.fICosTable[alpha]);
-            break;
-          } else {
-            xBoxIntersection += dx;
-            yGrid += dh;
-          }
-        }
-      }
+      double spriteX = naziX - posX;
+      double spriteY = naziY - posY;
 
-      if (alpha < angles.ANGLE90 || alpha > angles.ANGLE270) {
-        xGrid = floor(x / 64) * 64 + 64;
-        dv = 64;
-        yBoxIntersection = angles.fTanTable[alpha] * (xGrid - x) + y;
-      } else {
-        xGrid = floor(x / 64) * 64 - 1;
-        dv = -64;
-        yBoxIntersection = angles.fTanTable[alpha] * (xGrid - x) + y;
-      }
-      if (alpha == angles.ANGLE90 || alpha == angles.ANGLE270) {
-        distanceOne = INT_MAX;
-      } else {
-        dy = angles.fYStepTable[alpha];
-        while (true) {
-          xIndex = floor(xGrid / 64);
-          yIndex = floor(yBoxIntersection / 64);
 
-          if (xIndex >= matrix.dimx || yIndex >= matrix.dimy || xIndex < 0 || yIndex < 0) {
-            distanceOne = INT_MAX;
-            break;
-          } else if (matrix.matrix[xIndex][yIndex] != 0) {
-            firstHit = matrix.matrix[xIndex][yIndex];
-            distanceOne =
-                abs(yBoxIntersection - y) * abs(angles.fISinTable[alpha]);
-            break;
-          } else {
-            yBoxIntersection += dy;
-            xGrid += dv;
-          }
-        }
-      }
+      double invDet = 1.0 / (planeX * dirY - dirX * planeY);
 
-      double distanceToWall =
-          (distanceOne > distanceTwo) ? distanceTwo : distanceOne;
+      double transformX = invDet * (dirY * spriteX - dirX * spriteY);
+      double transformY = invDet * (-planeY * spriteX + planeX * spriteY);
 
-      double wallHeight = (64.0 / distanceToWall) * distanceToProyection;
-      wallHeight *= angles.fFishTable[i];
+      int spriteScreenX = int((WIDTH / 2) * (1 + transformX / transformY));
 
-      int offset;
-      int textureToUse;
-      if (distanceOne > distanceTwo) {
-        textureToUse = secondHit;
-        distanceToWall = distanceTwo;
-        offset = (int)xBoxIntersection % 64;
-      } else {
-        textureToUse = firstHit;
-        distanceToWall = distanceOne;
-        offset = (int)yBoxIntersection % 64;
-      }
+      int spriteHeight = abs(int(HEIGHT / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
 
-      int height = ceil(wallHeight);
-      Area srcArea(offset, 0, 1, height);
-      Area destArea(i, (HEIGHT - height) / 2, 1, height);
-      std::cout << "tengo que renderizar." << std::endl;
-      this->manager.render(textureToUse, srcArea, destArea);
-      alpha += 1;
-      while (alpha >= angles.ANGLE360) alpha -= angles.ANGLE360;
-      this->window->render();  
+      int drawStartY = -spriteHeight / 2 + HEIGHT / 2;
+      if(drawStartY < 0) drawStartY = 0;
+      int drawEndY = spriteHeight / 2 + HEIGHT / 2;
+      if(drawEndY >= HEIGHT) drawEndY = HEIGHT - 1;
 
-    }
+      int spriteWidth = abs( int (HEIGHT / (transformY)));
+      int drawStartX = -spriteWidth / 2 + spriteScreenX;
+      if(drawStartX < 0) drawStartX = 0;
+      int drawEndX = spriteWidth / 2 + spriteScreenX;
+      if(drawEndX >= WIDTH) drawEndX = WIDTH - 1;
 
-  }
+      for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+          {
+            int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * 64 / spriteWidth) / 256;
+
+            if(transformY > 0 && stripe > 0 && stripe < WIDTH && transformY < zBuffer[stripe]){
+                Area srcArea(texX, 1, 1, spriteHeight);
+                Area destArea(stripe, (HEIGHT - spriteHeight) / 2, 1, spriteHeight);
+                img3->render(srcArea, destArea);
+
+              }
+            }
+
+    */
+
+}
+
 }

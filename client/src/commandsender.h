@@ -5,18 +5,18 @@
 #include "../../common/includes/Socket/SocketException.h"
 #include "../../common/includes/Thread/Thread.h"
 #include "anglemanager.h"
+#include <atomic>
 
 class CommandSender : public Thread {
  public:
   CommandSender(SocketCommunication& s);
-  void update(uint32_t deltax, uint32_t deltay, double viewAngle, AngleManager& angles);
+  void update(uint32_t keyType);
   void run();
 
  private:
-  void update();
+  std::atomic<bool>& alive;
   SocketCommunication& socket;
-  uint32_t x;
-  uint32_t y;
+
 };
 
 #endif  // COMMANDSENDER_H_
