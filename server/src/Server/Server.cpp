@@ -29,4 +29,5 @@ int Server::run() {
   accepter.join();
 
   std::cout << "[SERVER] Shutting down" << std::endl;
+  return 1;
 }

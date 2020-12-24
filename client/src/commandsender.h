@@ -6,9 +6,11 @@
 #include "../../common/includes/Thread/Thread.h"
 #include "anglemanager.h"
 
+#include <atomic>
+
 class CommandSender : public Thread {
  public:
-  CommandSender(SocketCommunication& s);
+  CommandSender(SocketCommunication& s, std::atomic<bool> &alive);
   void update(uint32_t deltax, uint32_t deltay, double viewAngle, AngleManager& angles);
   void run();
 
@@ -17,6 +19,7 @@ class CommandSender : public Thread {
   SocketCommunication& socket;
   uint32_t x;
   uint32_t y;
+  std::atomic<bool>& alive;
 };
 
 #endif  // COMMANDSENDER_H_
