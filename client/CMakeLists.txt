@@ -7,6 +7,7 @@ add_library(sdldemo
   src/sdlexception.cpp
   src/sdlwindow.cpp
   src/player.cpp
+  src/drawable.cpp
   src/anglemanager.cpp
   src/raycaster.cpp
   src/texturemanager.cpp
