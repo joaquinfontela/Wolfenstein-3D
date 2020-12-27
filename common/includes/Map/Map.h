@@ -18,6 +18,7 @@ class Map {
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1}};
   int dimx;
   int dimy;
+  int get(int x, int y) { return matrix[x][y]; } 
 };
 
 #endif  // TP_FINAL_MAP_H

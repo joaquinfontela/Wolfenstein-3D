@@ -6,12 +6,9 @@ add_library(sdldemo
   src/sdltexture.cpp
   src/sdlexception.cpp
   src/sdlwindow.cpp
-  src/player.cpp
-  src/anglemanager.cpp
   src/raycaster.cpp
   src/texturemanager.cpp
   src/commandsender.cpp
-  src/commandexecuter.cpp
   ../common/src/Map/Map.cpp
   ../common/src/Socket/SocketCommunication.cpp
   ../common/src/Thread/Thread.cpp
@@ -25,7 +22,6 @@ add_executable (sdl-wall
 add_executable (raycastingtest
   src/mainraycasting.cpp  
 )
-
 add_executable (raycastinglord
   src/raycastingLord.cpp  
 )

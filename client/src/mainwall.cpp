@@ -10,7 +10,6 @@
 #include "../../common/includes/protocol.h"
 #include "commandexecuter.h"
 #include "commandsender.h"
-#include "player.h"
 #include "raycaster.h"
 #include "sdlwindow.h"
 #include "sdltexture.h"
@@ -39,7 +38,6 @@ int main(int argc, char** argv) {
   socket.send(&id_, sizeof(id_));
   socket.receive(&opcode, sizeof(opcode));
   socket.receive(&id, sizeof(id));
-  Player* self = new Player();
 
 //#########################################################
   SdlWindow window(WIDTH, HEIGHT);
@@ -61,12 +59,12 @@ int main(int argc, char** argv) {
   Map matrix("COMPLETAR CON EL YAML LATER");
   std::atomic<bool> alive;
   alive = true;
-  Raycaster caster(WIDTH, HEIGHT, manager, matrix, self, alive, &window);
+  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window);
 //#########################################################
 
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket);
-  CommandExecuter* worker = new CommandExecuter(self, id, socket);
+  CommandExecuter* worker = new CommandExecuter(id, socket);
 
   try {
     worker->start();

@@ -1,11 +1,10 @@
 #include "raycaster.h"
 
-
+#include <climits>
 
 void Raycaster::run(){
 
   while(alive){
-
 
     double dirX = self->dirX;
     double dirY = self->dirY;
@@ -14,10 +13,8 @@ void Raycaster::run(){
     double planeX = self->planeX;
     double planeY = self->planeY;
 
-
     double zBuffer[this->width];
     for(int x = 0; x < this->width; x++){
-
 
        double cameraX = 2 * x / (double)this->width - 1;
        double rayDirX = dirX + planeX * cameraX;
@@ -73,8 +70,7 @@ void Raycaster::run(){
            mapY = INT_MAX;
          }
 
-
-         if(matrix[mapX][mapY] > 0) hit = 1;
+         if(matrix.get(mapX,mapY) > 0) hit = 1;
        }
 
        if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
@@ -85,8 +81,7 @@ void Raycaster::run(){
        int offset = 0;
 
 
-      int texNum = matrix[mapX][mapY];
-
+      int texNum = matrix.get(mapX,mapY);
 
       double wallX;
       if (side == 0) wallX = posY + perpWallDist * rayDirY;

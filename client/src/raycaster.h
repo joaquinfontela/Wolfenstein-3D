@@ -3,9 +3,7 @@
 #include "sdlwindow.h"
 
 #include "texturemanager.h"
-#include "anglemanager.h"
 #include "../../common/includes/Map/Map.h"
-#include "player.h"
 #include "../../common/includes/Thread/Thread.h"
 
 #include <atomic>
@@ -14,8 +12,8 @@
 
 class Raycaster : public Thread {
  public:
-  Raycaster(double width, double height, TextureManager& manager, Map& m, Player* p, std::atomic<bool>& b, SdlWindow* window) :
-          alive(b), width(width) , height(height) , manager(manager) , matrix(m) , self(p), window(window) {}
+  Raycaster(double width, double height, TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window) :
+          alive(b), width(width) , height(height) , manager(manager) , matrix(m) ,  window(window) {}
   void run();
  private:
   std::atomic<bool>& alive;
@@ -23,7 +21,6 @@ class Raycaster : public Thread {
   double height;
   TextureManager& manager;
   Map& matrix;
-  Player* self;
   double distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   SdlWindow* window;
 };
