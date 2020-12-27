@@ -121,6 +121,13 @@ static void renderWithPerspective(double posX, double posY, double dirX, double 
   }
 }
 
+void renderAnimationTest(SdlTexture& gun) {
+  int seconds = (int(SDL_GetTicks()) / 1000) % 4;
+  Area srcArea(64, 0, 64, 64);
+  Area destArea(WIDTH/2 - 130, HEIGHT/2 - 78, 250, 250);
+  gun.renderOnTime(seconds, srcArea, destArea);
+}
+  
 int main(int argc, char** argv) {
 
   int matrix[DIMX][DIMY] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -140,7 +147,7 @@ int main(int argc, char** argv) {
     SdlWindow window(WIDTH, HEIGHT);
     SdlTexture im1(IMG_PATH "wall.png", window);
     SdlTexture im2(IMG_PATH "wall2.png", window);
-    SdlTexture gun(IMG_PATH "chaingun2.png", window);
+    SdlTexture gun(IMG_PATH "animation.png", window);
     SdlTexture back(IMG_PATH "hud.png", window);
     SdlTexture guard(IMG_PATH "guard.png", window);
     SdlTexture barrelTex(IMG_PATH "barrel.png", window);
@@ -168,51 +175,56 @@ int main(int argc, char** argv) {
 
     double oldDirX = 0;
     double oldPlaneX = 0;
-    while (true) {
+      
+    bool leaving = false;
+    
+    while (!leaving) {
       SDL_Event event;
       window.fillWolfenstein();
       renderWithPerspective(posX, posY, dirX, dirY, planeX, planeY, matrix, manager, sprites);
       back.renderAll({.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT});
-      gun.renderAll({.x = WIDTH/2 - 130, .y = HEIGHT/2 - 78, .w = 250, .h = 250});
+      renderAnimationTest(gun);
       window.render();
 
       double moveSpeed = 0.25;
       double rotSpeed = 0.3;
 
-      SDL_WaitEvent(&event);
-      if (event.type == SDL_QUIT) {
-        break;
-      } else if (event.type == SDL_KEYDOWN) {
-        SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
-        switch (key.keysym.sym) {
-          case SDLK_w:
-            if(matrix[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
-            if(matrix[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
-            break;
-          case SDLK_d:
-            oldDirX = dirX;
-            dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-            dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-            oldPlaneX = planeX;
-            planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-            planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
-            break;
-          case SDLK_a:
-            oldDirX = dirX;
-            dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-            dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-            oldPlaneX = planeX;
-            planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-            planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
-            break;
-          case SDLK_s:
-            if(matrix[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
-            if(matrix[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
-            break;
-          case SDLK_LEFT:
-            break;
-          case SDLK_RIGHT:
-            break;
+      while(SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+          leaving = true;
+          break;
+        } else if (event.type == SDL_KEYDOWN) {
+          SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
+          switch (key.keysym.sym) {
+            case SDLK_w:
+              if(matrix[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
+              if(matrix[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
+              break;
+            case SDLK_d:
+              oldDirX = dirX;
+              dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
+              dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+              oldPlaneX = planeX;
+              planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
+              planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+              break;
+            case SDLK_a:
+              oldDirX = dirX;
+              dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+              dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+              oldPlaneX = planeX;
+              planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
+              planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+              break;
+            case SDLK_s:
+              if(matrix[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
+              if(matrix[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
+              break;
+            case SDLK_LEFT:
+              break;
+            case SDLK_RIGHT:
+              break;
+          }
         }
     }
   }
