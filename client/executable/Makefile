@@ -351,6 +351,33 @@ src/commandsender.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.s
 .PHONY : src/commandsender.cpp.s
 
+src/drawable.o: src/drawable.cpp.o
+
+.PHONY : src/drawable.o
+
+# target to build an object file
+src/drawable.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.o
+.PHONY : src/drawable.cpp.o
+
+src/drawable.i: src/drawable.cpp.i
+
+.PHONY : src/drawable.i
+
+# target to preprocess a source file
+src/drawable.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.i
+.PHONY : src/drawable.cpp.i
+
+src/drawable.s: src/drawable.cpp.s
+
+.PHONY : src/drawable.s
+
+# target to generate assembly for a file
+src/drawable.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.s
+.PHONY : src/drawable.cpp.s
+
 src/mainraycasting.o: src/mainraycasting.cpp.o
 
 .PHONY : src/mainraycasting.o
@@ -627,6 +654,9 @@ help:
 	@echo "... src/commandsender.o"
 	@echo "... src/commandsender.i"
 	@echo "... src/commandsender.s"
+	@echo "... src/drawable.o"
+	@echo "... src/drawable.i"
+	@echo "... src/drawable.s"
 	@echo "... src/mainraycasting.o"
 	@echo "... src/mainraycasting.i"
 	@echo "... src/mainraycasting.s"
