@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
     SdlTexture gun(IMG_PATH "animation.png", window);
     SdlTexture back(IMG_PATH "hud.png", window);
     SdlTexture guard(IMG_PATH "guard.png", window);
-    SdlTexture barrelTex(IMG_PATH "barrel.png", window);
+    SdlTexture barrelTex(IMG_PATH "smallbarrel.png", window);
     SdlTexture light(IMG_PATH "greenlight.png", window);
 
     TextureManager manager;
