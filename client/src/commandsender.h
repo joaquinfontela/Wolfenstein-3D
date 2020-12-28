@@ -6,6 +6,8 @@
 #include "../../common/includes/Thread/Thread.h"
 #include <atomic>
 
+#include <atomic>
+
 class CommandSender : public Thread {
  public:
   CommandSender(SocketCommunication& s, std::atomic<bool>& alive);

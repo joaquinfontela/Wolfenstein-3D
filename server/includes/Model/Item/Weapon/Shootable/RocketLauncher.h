@@ -4,6 +4,6 @@ class RocketLauncher : public Shootable {
  public:
   RocketLauncher(int newAmmo);
   ~RocketLauncher();
-  void shoot();
+  unsigned int shoot();
   bool outOfAmmo();
 };

@@ -126,7 +126,7 @@ void renderAnimationTest(SdlTexture& gun) {
   Area destArea(WIDTH/2 - 130, HEIGHT/2 - 78, 250, 250);
   gun.renderOnTime(seconds, srcArea, destArea);
 }
-  
+
 int main(int argc, char** argv) {
 
   int matrix[DIMX][DIMY] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
     SdlWindow window(WIDTH, HEIGHT);
 
     TextureManager manager(&window);
-    
+
     Drawable nazi(6,4,3);
     Drawable barrel1(4,6,6);
     Drawable barrel2(7,7,6);
@@ -160,9 +160,9 @@ int main(int argc, char** argv) {
 
     double oldDirX = 0;
     double oldPlaneX = 0;
-      
+
     bool leaving = false;
-    
+
     while (!leaving) {
       SDL_Event event;
       window.fillWolfenstein();

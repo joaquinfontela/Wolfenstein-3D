@@ -5,7 +5,7 @@
 
 class Map {
  public:
-  Map(const std::string& s) : dimx(10), dimy(13) {}
+  Map(const std::string& s) : dimx(12), dimy(12) {}
   int matrix[12][12] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1},
                         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
@@ -20,7 +20,7 @@ class Map {
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
   int dimx;
   int dimy;
-  int get(int x, int y) { return matrix[x][y]; } 
+  int get(int x, int y) { return matrix[x][y]; }
 };
 
 #endif  // TP_FINAL_MAP_H

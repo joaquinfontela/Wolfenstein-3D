@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include <time.h>
-
+#include <atomic>
 #include <iostream>
 #include "../../common/includes/protocol.h"
 
@@ -31,6 +31,7 @@ void CommandSender::update(uint32_t keyType) {
 void CommandSender::run() {
   while (alive) {
     try {
+
       SDL_Event event;
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {

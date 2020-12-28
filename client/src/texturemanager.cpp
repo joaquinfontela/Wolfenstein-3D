@@ -26,7 +26,7 @@ void TextureManager::garbageCollector() {
 bool TextureManager::loadAndCheckTexture(int n, const std::string& name) {
   SdlTexture* text = new SdlTexture((IMG_PATH + name).c_str(), *window);
   if (text == NULL) {
-    return false; 
+    return false;
   } else {
     this->loadTexture(n,text);
   }
