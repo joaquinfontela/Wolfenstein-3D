@@ -9,11 +9,33 @@ void SocketWrapper::send(double value) {
   this->socket.send(secondMessage, sizeof(uint32_t));
 }
 
-double SocketWrapper::receive() {
+double SocketWrapper::receiveDouble() {
   uint32_t firstReceived;
   uint32_t secondReceived;
   this->socket.receive(&firstMessage, sizeof(uint32_t));
   this->socket.receive(&secondMessage, sizeof(uint32_t));
   double ans = firstMessage + (((double)secondMessage) / PRECISION);
   return ((double)ans);
+}
+
+void SocketWrapper:send(PlayerData& value) {
+  this->send(value.dirX);
+  this->send(value.dirY);
+  this->send(value.posX);
+  this->send(value.posY);
+  this->send(value.rotSpeed);
+  //this->socket.send(value.weaponID, sizeof(uint32_t));
+  //this->socket.send(value.lives, sizeof(uint32_t));
+  //this->socket.send(value.health, sizeof(uint32_t));
+}
+
+void SocketWrapper:receivePlayerData(PlayerData& value) {
+  value.dirX = this->receiveDouble();
+  value.dirY = this->receiveDouble();
+  value.posX = this->receiveDouble();
+  value.posY = this->receiveDouble();
+  value.rotSpeed = this->receiveDouble();
+  //this->socket.receive(&value.weaponID, sizeof(uint32_t));
+  //this->socket.receive(&value.lives, sizeof(uint32_t));
+  //this->socket.senreceived(&value.health, sizeof(uint32_t));
 }

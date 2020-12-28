@@ -7,7 +7,7 @@ typedef struct PlayerData{
 
   double posX, posY;
   double dirX, dirY;
-  //int weaponID;
+  // int weaponID;
   double rotSpeed;
   // int health;
   // int lives;
