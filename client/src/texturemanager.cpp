@@ -48,7 +48,7 @@ void TextureManager::loadTextures() {
                                    "chaingun2.png",
                                    "hud.png",
                                    "greenlight.png",
-                                   "barrel.png" });
+                                   "smallbarrel.png" });
   int i = 1;
   for (std::string& name : names) {
     if (!this->loadAndCheckTexture(i,name)){

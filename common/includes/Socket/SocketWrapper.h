@@ -2,6 +2,7 @@
 #define SOCKETWRAPPER_H_
 
 #include "SocketCommunication.h"
+#include "../../../server/includes/Model/Player/Player.h"
 
 class SocketWrapper {
  private:
@@ -9,7 +10,9 @@ class SocketWrapper {
  public:
   SocketWrapper(SocketCommunication& socket) : socket(socket) {}
   void send(double value);
-  double receive();
+  double receiveDouble();
+  void send(PlayerData& value);
+  void receivePlayerData(PlayerData& value);
 };
 
 #endif  // SOCKETWRAPPER_H_
