@@ -46,3 +46,10 @@ int SdlTexture::render(const Area& src, const Area& dest) const {
                       dest.getHeight()};
   return SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);
 }
+
+int SdlTexture::renderOnTime(int sprite, const Area& src, const Area& dest) const {
+  SDL_Rect sdlSrc = {src.getX() * sprite, src.getY(), src.getWidth(), src.getHeight()};
+  SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
+                      dest.getHeight()};
+  return SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);
+}
