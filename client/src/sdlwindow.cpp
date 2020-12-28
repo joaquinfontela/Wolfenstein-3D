@@ -83,7 +83,7 @@ void SdlWindow::fill() { this->fill(0, 0, 0, 0); }
 
 void SdlWindow::fillWolfenstein() { 
   this->fill(FLOOR_COLOR, 0); 
-  SdlTexture im(IMG_PATH "ceiling.jpg", *this);
+  SdlTexture im(IMG_PATH "ceiling.png", *this);
   // Hacer que ^^ esta textura sea un atributo para evitar múltiples cargas.
   im.renderHalfOfScreen();
 }
