@@ -6,8 +6,13 @@ class Item;
 
 class Player {
  private:
-  int x, y;
-  double viewAngle;
+  double x, y;
+  double dirX, dirY;
+  double rotSpeed;
+  double moveSpeed;
+
+  bool hasToBeNotified;
+
   int score;
   unsigned int health, lifeRemaining, ammo;
   Item* weapon;
@@ -23,9 +28,13 @@ class Player {
   // Devuelve cuanto daño hace un ataque con su arma.
   // Si se queda sin balas, cambia de arma.
   int attack();
-
+  void updateMoveSpeed(double movSpeed);
+  void updateRotationSpeed(double rotSpeed);
   void equipWeapon(Item* weapon);
 
+  void update();
+
+  
   void pickupKey();
   bool hasKey();
 

@@ -49,6 +49,13 @@ void Game::removePlayer(int playerID){
 
 }
 
+void Game::updatePlayerMoveSpeed(int playerID, double moveSpeed){
+  this->players[playerID]->updateMoveSpeed(moveSpeed);
+}
+
+void Game::updatePlayerRotationSpeed(int playerID, double rotSpeed){
+  this->players[playerID]->updateRotationSpeed(rotSpeed);
+}
 void Game::start() {
   // Deberia controlar la logica de iniciar el juego -> mandar la notificacion a
   // los jugadores

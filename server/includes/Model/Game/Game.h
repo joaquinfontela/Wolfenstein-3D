@@ -23,6 +23,9 @@ class Game {
   // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa que lo borre en sus coordenadas.
   void removePlayer(int playerID);
 
+  void updatePlayerMoveSpeed(int playerID, double moveSpeed);
+  void updatePlayerRotationSpeed(int playerID, double rotSpeed);
+
   // Dispara, si colisiona con un jugador le aplica el daño.
   void playerShoot(int playerID);
 
@@ -30,6 +33,7 @@ class Game {
   int moveDoor(int playerID);
 
   // Comienza el juego.
+
   void start();
 
   // Termina el juego.

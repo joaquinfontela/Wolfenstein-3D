@@ -1,12 +1,13 @@
 #include "../../../includes/Model/Player/Player.h"
 
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
+#include <math.h>
 
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
 
 Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), viewAngle(90.0) {}
+    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(5.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
 
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
@@ -29,10 +30,34 @@ int Player::takeDamage(unsigned int damage) {
   return this->health;
 }
 
+void Player::update(){
+
+  if(moveSpeed == 0.0 && rotSpeed == 0.0)
+    return;
+
+
+  x += dirX * moveSpeed;
+  y += dirY * moveSpeed;
+
+  double oldDirX = dirX;
+
+  dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+  dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+
+  this->hasToBeNotified = true;
+}
 int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo
+}
+
+void Player::updateMoveSpeed(double moveSpeed){
+  this->moveSpeed += moveSpeed;
+}
+
+void Player::updateRotationSpeed(double rotSpeed){
+  this->rotSpeed += rotSpeed;
 }
 
 void Player::equipWeapon(Item* weapon) { this->weapon = (Weapon*)weapon; }

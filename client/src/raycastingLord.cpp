@@ -7,7 +7,6 @@
 #include <vector>
 #include <time.h>
 
-#include "anglemanager.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
 #include "sdlwindow.h"
@@ -127,7 +126,14 @@ void renderAnimationTest(SdlTexture& gun) {
   Area destArea(WIDTH/2 - 130, HEIGHT/2 - 78, 250, 250);
   gun.renderOnTime(seconds, srcArea, destArea);
 }
-  
+
+void renderAnimationTest(SdlTexture& gun) {
+  int seconds = (int(SDL_GetTicks()) / 1000) % 4;
+  Area srcArea(64, 0, 64, 64);
+  Area destArea(WIDTH/2 - 130, HEIGHT/2 - 78, 250, 250);
+  gun.renderOnTime(seconds, srcArea, destArea);
+}
+
 int main(int argc, char** argv) {
 
   int matrix[DIMX][DIMY] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -145,22 +151,8 @@ int main(int argc, char** argv) {
 
     int exitcode = 0;
     SdlWindow window(WIDTH, HEIGHT);
-    SdlTexture im1(IMG_PATH "wall.png", window);
-    SdlTexture im2(IMG_PATH "wall2.png", window);
-    SdlTexture gun(IMG_PATH "animation.png", window);
-    SdlTexture back(IMG_PATH "hud.png", window);
-    SdlTexture guard(IMG_PATH "guard.png", window);
-    SdlTexture barrelTex(IMG_PATH "smallbarrel.png", window);
-    SdlTexture light(IMG_PATH "greenlight.png", window);
 
-    TextureManager manager;
-    manager.loadTexture(1, &im1);
-    manager.loadTexture(2, &im2);
-    manager.loadTexture(3, &guard);
-    manager.loadTexture(4, &gun);
-    manager.loadTexture(5, &back);
-    manager.loadTexture(6, &barrelTex);
-    manager.loadTexture(7, &light);
+    TextureManager manager(&window);
 
     Drawable nazi(6,4,3);
     Drawable barrel1(4,6,6);
@@ -175,15 +167,15 @@ int main(int argc, char** argv) {
 
     double oldDirX = 0;
     double oldPlaneX = 0;
-      
+
     bool leaving = false;
-    
+
     while (!leaving) {
       SDL_Event event;
       window.fillWolfenstein();
       renderWithPerspective(posX, posY, dirX, dirY, planeX, planeY, matrix, manager, sprites);
-      back.renderAll({.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT});
-      renderAnimationTest(gun);
+      //back.renderAll({.x = 0, .y = 0, .w = WIDTH, .h = HEIGHT});
+      //renderAnimationTest(gun);
       window.render();
 
       double moveSpeed = 0.25;

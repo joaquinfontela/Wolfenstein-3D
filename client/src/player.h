@@ -1,19 +1,18 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-#include <cstdint>
+#include "drawable.h"
 
-class Player {
- private:
-  uint32_t x;
-  uint32_t y;
-  uint32_t viewAngle;
+class Player : public Drawable {
  public:
-  int getX();
-  int getY();
-  int getAngle();
-  Player() : x(370), y(370), viewAngle(90 * 60/800) {}
-  void goTo(uint32_t x, uint32_t y, uint32_t angle);
+  Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) : Drawable(posX, posY, id) , posX(posX), posY(posY), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY) {}
+  double posX;
+  double posY;
+  double dirX;
+  double dirY;
+  double planeX;
+  double planeY;
+  int id;
 };
 
 #endif  // PLAYER_H_
