@@ -73,19 +73,19 @@ int main(int argc, char** argv) {
 //#########################################################
 
   int exitcode = 0;
-  //CommandSender* sender = new CommandSender(socket);
+  CommandSender* sender = new CommandSender(socket, alive);
   //CommandExecuter* worker = new CommandExecuter(id, socket);
 
   try {
     //worker->start();
-    //sender->start();
+    sender->start();
     caster.run(sprites);
   } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
     exitcode = ERROR;
   }
   alive = false;
-  //sender->join();
+  sender->join();
   //worker->join();
   //delete sender;
   //delete worker;

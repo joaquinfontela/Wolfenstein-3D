@@ -9,7 +9,7 @@
 class CommandSender : public Thread {
  public:
   CommandSender(SocketCommunication& s, std::atomic<bool>& alive);
-  CommandSender(SocketCommunication& s);
+
   void update(uint32_t keyType);
   void run();
 
