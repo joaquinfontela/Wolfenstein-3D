@@ -13,4 +13,7 @@ PlayerDisconnected::PlayerDisconnected(int ID) {
 void PlayerDisconnected::execute(WaitingQueue<Notification*>& notifications, Game& game) {
 
   game.removePlayer(this->playerID);
+  PlayerDisconnect* noti = new PlayerDisconnect(this->playerID);
+  notifications.push(noti);
+  
 }

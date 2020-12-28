@@ -45,6 +45,8 @@ class Game {
 
   // Termina el juego.
   void end();
+
+  ~Game();
 };
 
 #endif

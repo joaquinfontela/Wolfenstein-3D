@@ -13,6 +13,7 @@
 #define PICK_TREASURE 9
 #define PLAYER_DISCONNECT 10
 #define PLAYER_SCORE_UPDATE 11
+#define PLAYER_UPDATE_PACKAGE 12
 
 // Weapon ID definitions
 #define KNIFE 20
@@ -26,6 +27,15 @@
 #define MEDIKIT 31
 #define BLOOD 32
 #define BULLETS 33
+
+#define KEY_A_DOWN 100
+#define KEY_D_DOWN 200
+#define KEY_W_DOWN 300
+#define KEY_S_DOWN 400
+#define KEY_A_UP 500
+#define KEY_D_UP 600
+#define KEY_W_UP 700
+#define KEY_S_UP 800
 
 // RESPONSE DEFINITIONS
 

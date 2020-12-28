@@ -196,6 +196,36 @@ common/src/Socket/SocketListener.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketListener.cpp.s
 .PHONY : common/src/Socket/SocketListener.cpp.s
 
+common/src/Socket/SocketWrapper.o: common/src/Socket/SocketWrapper.cpp.o
+
+.PHONY : common/src/Socket/SocketWrapper.o
+
+# target to build an object file
+common/src/Socket/SocketWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketWrapper.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketWrapper.cpp.o
+.PHONY : common/src/Socket/SocketWrapper.cpp.o
+
+common/src/Socket/SocketWrapper.i: common/src/Socket/SocketWrapper.cpp.i
+
+.PHONY : common/src/Socket/SocketWrapper.i
+
+# target to preprocess a source file
+common/src/Socket/SocketWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketWrapper.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketWrapper.cpp.i
+.PHONY : common/src/Socket/SocketWrapper.cpp.i
+
+common/src/Socket/SocketWrapper.s: common/src/Socket/SocketWrapper.cpp.s
+
+.PHONY : common/src/Socket/SocketWrapper.s
+
+# target to generate assembly for a file
+common/src/Socket/SocketWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/common/src/Socket/SocketWrapper.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/common/src/Socket/SocketWrapper.cpp.s
+.PHONY : common/src/Socket/SocketWrapper.cpp.s
+
 common/src/Thread/Thread.o: common/src/Thread/Thread.cpp.o
 
 .PHONY : common/src/Thread/Thread.o
@@ -465,6 +495,36 @@ server/src/Control/Notification/PlayerDisconnect.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerDisconnect.cpp.s
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerDisconnect.cpp.s
 .PHONY : server/src/Control/Notification/PlayerDisconnect.cpp.s
+
+server/src/Control/Notification/PlayerPackageUpdate.o: server/src/Control/Notification/PlayerPackageUpdate.cpp.o
+
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.o
+
+# target to build an object file
+server/src/Control/Notification/PlayerPackageUpdate.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.o
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.cpp.o
+
+server/src/Control/Notification/PlayerPackageUpdate.i: server/src/Control/Notification/PlayerPackageUpdate.cpp.i
+
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.i
+
+# target to preprocess a source file
+server/src/Control/Notification/PlayerPackageUpdate.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.i
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.cpp.i
+
+server/src/Control/Notification/PlayerPackageUpdate.s: server/src/Control/Notification/PlayerPackageUpdate.cpp.s
+
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.s
+
+# target to generate assembly for a file
+server/src/Control/Notification/PlayerPackageUpdate.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerPackageUpdate.cpp.s
+.PHONY : server/src/Control/Notification/PlayerPackageUpdate.cpp.s
 
 server/src/Control/Notification/PlayerUpdatePosition.o: server/src/Control/Notification/PlayerUpdatePosition.cpp.o
 
@@ -1226,6 +1286,9 @@ help:
 	@echo "... common/src/Socket/SocketListener.o"
 	@echo "... common/src/Socket/SocketListener.i"
 	@echo "... common/src/Socket/SocketListener.s"
+	@echo "... common/src/Socket/SocketWrapper.o"
+	@echo "... common/src/Socket/SocketWrapper.i"
+	@echo "... common/src/Socket/SocketWrapper.s"
 	@echo "... common/src/Thread/Thread.o"
 	@echo "... common/src/Thread/Thread.i"
 	@echo "... common/src/Thread/Thread.s"
@@ -1253,6 +1316,9 @@ help:
 	@echo "... server/src/Control/Notification/PlayerDisconnect.o"
 	@echo "... server/src/Control/Notification/PlayerDisconnect.i"
 	@echo "... server/src/Control/Notification/PlayerDisconnect.s"
+	@echo "... server/src/Control/Notification/PlayerPackageUpdate.o"
+	@echo "... server/src/Control/Notification/PlayerPackageUpdate.i"
+	@echo "... server/src/Control/Notification/PlayerPackageUpdate.s"
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.o"
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.i"
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.s"

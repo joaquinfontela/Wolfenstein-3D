@@ -5,6 +5,7 @@
 #include "../../../common/includes/Socket/SocketException.h"
 #include "../../../common/includes/protocol.h"
 #include "../../includes/Control/Command/PlayerMove.h"
+#include "../../includes/Control/Command/PlayerDisconnected.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
                                      WaitingQueue<Command*>& com, int playerID)
@@ -35,6 +36,12 @@ void ConnectionHandler::receiveCommands() {
                     << std::endl;
           break;
         }
+
+        case PLAYER_DISCONNECT:{
+          PlayerDisconnected* playerDisc = new PlayerDisconnected(this->ID);
+          this->commands.push(playerDisc);
+          break;
+       }
         default:
           std::cout << "[ConnectionHandler] Unknow opcode received"
                     << std::endl;

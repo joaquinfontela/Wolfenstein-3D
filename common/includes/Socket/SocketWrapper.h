@@ -2,7 +2,7 @@
 #define SOCKETWRAPPER_H_
 
 #include "SocketCommunication.h"
-#include "../../../server/includes/Model/Player/Player.h"
+#include "../PlayerData.h"
 
 class SocketWrapper {
  private:

@@ -45,6 +45,7 @@ set(SOURCE_FILES_SERVER
 
         common/src/Socket/SocketCommunication.cpp
         common/src/Socket/SocketListener.cpp
+        common/src/Socket/SocketWrapper.cpp
         common/src/Thread/Thread.cpp
         server/src/Server/Server.cpp
         server/src/Server/ClientAccepter.cpp
@@ -72,6 +73,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/PlayerConnected.cpp
         server/src/Control/Notification/PlayerUpdatePosition.cpp
         server/src/Control/Notification/PlayerDisconnect.cpp
+        server/src/Control/Notification/PlayerPackageUpdate.cpp
         server/src/Control/Command/PlayerADown.cpp
         server/src/Control/Command/PlayerSDown.cpp
         server/src/Control/Command/PlayerDDown.cpp

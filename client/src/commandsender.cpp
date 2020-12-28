@@ -11,21 +11,14 @@
 #define DIMX 10
 #define DIMY 13
 
-#define KEY_A_DOWN 100
-#define KEY_D_DOWN 200
-#define KEY_W_DOWN 300
-#define KEY_S_DOWN 400
-#define KEY_A_UP 500
-#define KEY_D_UP 600
-#define KEY_W_UP 700
-#define KEY_S_UP 800
+#define UINT32_SIZE sizeof(uint32_t)
 
 CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) : socket(s), alive(alive) {}
 
 void CommandSender::update(uint32_t keyType) {
-  uint32_t protocol = PLAYER_POS_UPDATE;
-  //socket.send(&protocol, sizeof(protocol));
-  //socket.send(&keyType, sizeof(keyType));
+
+  socket.send(&keyType, UINT32_SIZE);
+
 }
 
 void CommandSender::run() {
@@ -35,6 +28,9 @@ void CommandSender::run() {
       SDL_Event event;
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {
+        uint32_t opcode = PLAYER_DISCONNECT;
+        socket.send(&opcode, UINT32_SIZE);
+
         socket.readShutdown();
         socket.writeShutdown();
         socket.close();

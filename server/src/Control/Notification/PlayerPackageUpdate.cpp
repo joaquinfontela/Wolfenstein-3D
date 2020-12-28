@@ -1,23 +1,19 @@
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../../common/includes/Socket/SocketWrapper.h"
 
 #include "../../../../common/includes/protocol.h"
 
-PlayerUpdatePosition::PlayerUpdatePosition(int playerID, int x, int y) {
+PlayerPackageUpdate::PlayerPackageUpdate(int playerID, PlayerData data) {
   this->playerID = playerID;
-  this->newX = x;
-  this->newY = y;
+  this->data = data;
 }
 
-void PlayerUpdatePosition::send(SocketCommunication& socket) {
-  uint32_t opcode = PLAYER_POS_UPDATE;
-
+void PlayerPackageUpdate::send(SocketCommunication& socket) {
+  uint32_t opcode = PLAYER_UPDATE_PACKAGE;
   socket.send(&opcode, sizeof(opcode));
 
-  uint32_t playerID = this->playerID;
-  uint32_t x = this->newX;
-  uint32_t y = this->newY;
+  SocketWrapper wrapper(socket);
 
-  socket.send(&playerID, sizeof(playerID));
-  socket.send(&x, sizeof(x));
-  socket.send(&y, sizeof(y));
+  wrapper.send(this->data);
+
 }

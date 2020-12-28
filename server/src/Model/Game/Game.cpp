@@ -1,8 +1,10 @@
 #include "../../../includes/Model/Game/Game.h"
 
 #include <string>
+#include <iostream>
 
 #include "../../../includes/Model/Player/Player.h"
+#include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 
 Game::Game(std::string mapFile, std::string configFile) : map(mapFile) {}
 
@@ -88,4 +90,12 @@ void Game::start() {
 
 void Game::end() {
   // Lo mismo pero para terminarlo.
+}
+
+Game::~Game(){
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  for(; it != this->players.end(); ++it){
+      delete it->second;
+  }
 }
