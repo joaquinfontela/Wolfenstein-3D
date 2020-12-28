@@ -39,25 +39,13 @@ int main(int argc, char** argv) {
   socket.send(&id_, sizeof(id_));
   socket.receive(&opcode, sizeof(opcode));
   socket.receive(&id, sizeof(id));
+  Map matrix("COMPLETAR CON EL YAML LATER");
+  SdlWindow window(WIDTH, HEIGHT);
 
 //#########################################################
-  SdlWindow window(WIDTH, HEIGHT);
-  SdlTexture im1(IMG_PATH "wall.png", window);
-  SdlTexture im2(IMG_PATH "wall2.png", window);
-  SdlTexture nazit(IMG_PATH "guard.png", window);
-  SdlTexture gun(IMG_PATH "chaingun2.png", window);
-  SdlTexture back(IMG_PATH "hud.png", window);
-  SdlTexture light(IMG_PATH "greenlight.png", window);
-  SdlTexture barrel(IMG_PATH "barrel.png", window);
-  TextureManager manager;
-  manager.loadTexture(1,&im1);
-  manager.loadTexture(2,&im2);
-  manager.loadTexture(3,&nazit);
-  manager.loadTexture(4,&barrel);
-  manager.loadTexture(5,&gun);
-  manager.loadTexture(6,&back);
-  manager.loadTexture(7,&light);
-  Map matrix("COMPLETAR CON EL YAML LATER");
+  TextureManager manager(&window);
+  manager.loadTextures();
+//#########################################################
   Drawable nazi(6,4,3);
   Drawable barrel1(4,6,4);
   Drawable barrel2(7,7,4);
@@ -68,7 +56,6 @@ int main(int argc, char** argv) {
   alive = true;
   Player player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
   Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, &player);
-//#########################################################
 
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
