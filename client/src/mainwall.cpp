@@ -42,8 +42,6 @@ int main(int argc, char** argv) {
 
 //#########################################################
   SdlWindow window(WIDTH, HEIGHT);
-  window.fillWolfenstein();
-
   SdlTexture im1(IMG_PATH "wall.png", window);
   SdlTexture im2(IMG_PATH "wall2.png", window);
   SdlTexture nazit(IMG_PATH "guard.png", window);

@@ -10,6 +10,7 @@
 void Raycaster::run(std::vector<Drawable>& sprites){
 
   while(alive){
+    this->window->fillWolfenstein();
 
     double dirX = this->player->dirX;
     double dirY = this->player->dirY;
