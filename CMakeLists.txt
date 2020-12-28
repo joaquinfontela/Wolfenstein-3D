@@ -42,6 +42,7 @@ set(SOURCE_FILES_SERVER
 
 
 
+
         common/src/Socket/SocketCommunication.cpp
         common/src/Socket/SocketListener.cpp
         common/src/Thread/Thread.cpp
@@ -71,6 +72,10 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/PlayerConnected.cpp
         server/src/Control/Notification/PlayerUpdatePosition.cpp
         server/src/Control/Notification/PlayerDisconnect.cpp
+        server/src/Control/Command/PlayerADown.cpp
+        server/src/Control/Command/PlayerSDown.cpp
+        server/src/Control/Command/PlayerDDown.cpp
+        server/src/Control/Command/PlayerWDown.cpp
 
         test/CPPUnit.h
         test/CPPUnit.cpp

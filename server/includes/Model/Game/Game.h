@@ -9,7 +9,7 @@
 
 class Game {
  private:
-  std::map<int, Player> players;
+  std::map<int, Player*> players;
   Map map;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
@@ -18,6 +18,9 @@ class Game {
   Game(std::string mapFile, std::string configFile);
   void addPlayer(int playerID);
   void removePlayer(int playerID);
+
+  void updatePlayerMoveSpeed(int playerID, double moveSpeed);
+  void updatePlayerRotationSpeed(int playerID, double rotSpeed);
   void start();
   void end();
 };

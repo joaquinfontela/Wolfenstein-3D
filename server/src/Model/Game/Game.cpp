@@ -10,15 +10,22 @@ void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
   unsigned int lifes = 2;
 
-  Player newPlayer(health, lifes);
+  Player* newPlayer = new Player(health, lifes);
   this->players[playerID] = newPlayer;
 }
 
 void Game::removePlayer(int playerID){
-
+  delete this->players[playerID];
   this->players.erase(playerID);
 }
 
+void Game::updatePlayerMoveSpeed(int playerID, double moveSpeed){
+  this->players[playerID]->updateMoveSpeed(moveSpeed);
+}
+
+void Game::updatePlayerRotationSpeed(int playerID, double rotSpeed){
+  this->players[playerID]->updateRotationSpeed(rotSpeed);
+}
 void Game::start() {
   // Deberia controlar la logica de iniciar el juego -> mandar la notificacion a
   // los jugadores
