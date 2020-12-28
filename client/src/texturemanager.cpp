@@ -7,7 +7,11 @@
 
 #include "area.h"
 #include "sdltexture.h"
+
 #include "sdlexception.h"
+
+#define TEXTURE_LIMIT 64
+
 
 #define IMG_PATH "../media/"
 #define TEXTURE_LIMIT 64

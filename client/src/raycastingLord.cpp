@@ -127,6 +127,13 @@ void renderAnimationTest(SdlTexture& gun) {
   gun.renderOnTime(seconds, srcArea, destArea);
 }
 
+void renderAnimationTest(SdlTexture& gun) {
+  int seconds = (int(SDL_GetTicks()) / 1000) % 4;
+  Area srcArea(64, 0, 64, 64);
+  Area destArea(WIDTH/2 - 130, HEIGHT/2 - 78, 250, 250);
+  gun.renderOnTime(seconds, srcArea, destArea);
+}
+
 int main(int argc, char** argv) {
 
   int matrix[DIMX][DIMY] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

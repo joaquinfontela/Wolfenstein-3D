@@ -6,6 +6,7 @@ add_library(sdldemo
   src/sdltexture.cpp
   src/sdlexception.cpp
   src/sdlwindow.cpp
+  src/player.cpp
   src/raycaster.cpp
   src/drawable.cpp
   src/texturemanager.cpp
@@ -18,10 +19,10 @@ add_library(sdldemo
 )
 include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-wall
-  src/mainwall.cpp  
+  src/mainwall.cpp
 )
 add_executable (raycastinglord
-  src/raycastingLord.cpp  
+  src/raycastingLord.cpp
 )
 target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer)
 target_link_libraries(raycastinglord sdldemo SDL2 SDL2_image SDL2_mixer)
