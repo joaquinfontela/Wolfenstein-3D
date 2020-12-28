@@ -2,17 +2,7 @@
 #define __PLAYER_H__
 
 #include "../Item/Item.h"
-
-typedef struct PlayerData{
-
-  double posX, posY;
-  double dirX, dirY;
-  //int weaponID;
-  double rotSpeed;
-  // int health;
-  // int lives;
-  //
-}PlayerData;
+#include "../../../../common/includes/PlayerData.h"
 
 class Item;
 
@@ -36,6 +26,8 @@ class Player {
   Player(unsigned int hp, unsigned int lifes);
   Player() {}
   int takeDamage(unsigned int damage);
+
+  void fillPlayerData(PlayerData& data);
 
   // Devuelve cuanto daño hace un ataque con su arma.
   // Si se queda sin balas, cambia de arma.

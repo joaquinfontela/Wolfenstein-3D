@@ -8,6 +8,7 @@
 #include "../../../../common/includes/Map/Map.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../../../common/includes/PlayerData.h"
 
 class Game {
  private:

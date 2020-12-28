@@ -53,7 +53,9 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis){
   for(; it != this->players.end(); ++it){
     PlayerData data;
     if(it->second->hasToBeUpdated()){
-      
+      it->second->fillPlayerData(data);
+      PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
+      notis.push(noti);
     }
 
   }

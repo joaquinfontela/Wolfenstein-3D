@@ -1,11 +1,12 @@
-#include "../../../includes/Control/Notification/PlayerUpdatePosition.h"
+#include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 
 #include "../../../../common/includes/protocol.h"
 
-PlayerUpdatePosition::PlayerUpdatePosition(int playerID, PlayerData& data) {
+PlayerUpdatePosition::PlayerUpdatePosition(int playerID, int x, int y) {
   this->playerID = playerID;
-  this->data = data
- }
+  this->newX = x;
+  this->newY = y;
+}
 
 void PlayerUpdatePosition::send(SocketCommunication& socket) {
   uint32_t opcode = PLAYER_POS_UPDATE;
