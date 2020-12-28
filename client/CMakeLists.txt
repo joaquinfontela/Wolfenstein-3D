@@ -7,6 +7,7 @@ add_library(sdldemo
   src/sdlexception.cpp
   src/sdlwindow.cpp
   src/raycaster.cpp
+  src/drawable.cpp
   src/texturemanager.cpp
   src/commandsender.cpp
   ../common/src/Map/Map.cpp
@@ -19,12 +20,8 @@ include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-wall
   src/mainwall.cpp  
 )
-add_executable (raycastingtest
-  src/mainraycasting.cpp  
-)
 add_executable (raycastinglord
   src/raycastingLord.cpp  
 )
 target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer)
-target_link_libraries(raycastingtest sdldemo SDL2 SDL2_image SDL2_mixer)
 target_link_libraries(raycastinglord sdldemo SDL2 SDL2_image SDL2_mixer)

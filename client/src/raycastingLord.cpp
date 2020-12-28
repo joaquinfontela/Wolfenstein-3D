@@ -7,7 +7,6 @@
 #include <vector>
 #include <time.h>
 
-#include "anglemanager.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
 #include "sdlwindow.h"

@@ -4,11 +4,11 @@
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
 #include "../../common/includes/Thread/Thread.h"
-#include "anglemanager.h"
 #include <atomic>
 
 class CommandSender : public Thread {
  public:
+  CommandSender(SocketCommunication& s, std::atomic<bool>& alive);
   CommandSender(SocketCommunication& s);
   void update(uint32_t keyType);
   void run();

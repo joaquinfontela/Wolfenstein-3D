@@ -51,7 +51,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/niyo/TallerI/tp-final-taller/client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/niyo/TallerI/tp-final-taller/client
+CMAKE_BINARY_DIR = /home/niyo/TallerI/tp-final-taller/client/executable
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/CMakeFiles /home/niyo/TallerI/tp-final-taller/client/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,19 +122,6 @@ raycastinglord: cmake_check_build_system
 raycastinglord/fast:
 	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/build
 .PHONY : raycastinglord/fast
-
-#=============================================================================
-# Target rules for targets named raycastingtest
-
-# Build rule for target.
-raycastingtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 raycastingtest
-.PHONY : raycastingtest
-
-# fast build rule for target.
-raycastingtest/fast:
-	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/build
-.PHONY : raycastingtest/fast
 
 #=============================================================================
 # Target rules for targets named sdl-wall
@@ -297,32 +284,32 @@ src/commandsender.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandsender.cpp.s
 .PHONY : src/commandsender.cpp.s
 
-src/mainraycasting.o: src/mainraycasting.cpp.o
+src/drawable.o: src/drawable.cpp.o
 
-.PHONY : src/mainraycasting.o
+.PHONY : src/drawable.o
 
 # target to build an object file
-src/mainraycasting.cpp.o:
-	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.o
-.PHONY : src/mainraycasting.cpp.o
+src/drawable.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.o
+.PHONY : src/drawable.cpp.o
 
-src/mainraycasting.i: src/mainraycasting.cpp.i
+src/drawable.i: src/drawable.cpp.i
 
-.PHONY : src/mainraycasting.i
+.PHONY : src/drawable.i
 
 # target to preprocess a source file
-src/mainraycasting.cpp.i:
-	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.i
-.PHONY : src/mainraycasting.cpp.i
+src/drawable.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.i
+.PHONY : src/drawable.cpp.i
 
-src/mainraycasting.s: src/mainraycasting.cpp.s
+src/drawable.s: src/drawable.cpp.s
 
-.PHONY : src/mainraycasting.s
+.PHONY : src/drawable.s
 
 # target to generate assembly for a file
-src/mainraycasting.cpp.s:
-	$(MAKE) -f CMakeFiles/raycastingtest.dir/build.make CMakeFiles/raycastingtest.dir/src/mainraycasting.cpp.s
-.PHONY : src/mainraycasting.cpp.s
+src/drawable.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.s
+.PHONY : src/drawable.cpp.s
 
 src/mainwall.o: src/mainwall.cpp.o
 
@@ -522,7 +509,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... raycastinglord"
-	@echo "... raycastingtest"
 	@echo "... sdl-wall"
 	@echo "... sdldemo"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o"
@@ -540,9 +526,9 @@ help:
 	@echo "... src/commandsender.o"
 	@echo "... src/commandsender.i"
 	@echo "... src/commandsender.s"
-	@echo "... src/mainraycasting.o"
-	@echo "... src/mainraycasting.i"
-	@echo "... src/mainraycasting.s"
+	@echo "... src/drawable.o"
+	@echo "... src/drawable.i"
+	@echo "... src/drawable.s"
 	@echo "... src/mainwall.o"
 	@echo "... src/mainwall.i"
 	@echo "... src/mainwall.s"
