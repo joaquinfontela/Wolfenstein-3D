@@ -53,7 +53,8 @@ void TextureManager::loadTextures() {
   for (std::string& name : names) {
     if (!this->loadAndCheckTexture(i,name)){
       this->garbageCollector();
-      throw SdlException(SDL_TEXTURE_INIT_ERROR, SDL_GetError());;
+      throw SdlException(SDL_TEXTURE_INIT_ERROR, SDL_GetError());
+      break;
     }
     i++;
   }

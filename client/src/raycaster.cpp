@@ -104,7 +104,7 @@ void Raycaster::run(std::vector<Drawable>& sprites){
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
       Area srcArea(texX, 0, 1, lineHeight);
 
-<<<<<<< HEAD
+
       this->manager.render(texNum, srcArea, destArea);
 
       zBuffer[x] = perpWallDist;
@@ -120,15 +120,5 @@ void Raycaster::run(std::vector<Drawable>& sprites){
       d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
     }
   this->window->render();
-=======
-      int height = ceil(wallHeight);
-      Area srcArea(offset, 0, 1, height);
-      Area destArea(i, (HEIGHT - height) / 2, 1, height);
-      this->manager.render(textureToUse, srcArea, destArea);
-      alpha += 1;
-      while (alpha >= angles.ANGLE360) alpha -= angles.ANGLE360;
-    }
-    this->window->render();
->>>>>>> master
   }
 }

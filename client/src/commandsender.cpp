@@ -24,8 +24,8 @@ CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) :
 
 void CommandSender::update(uint32_t keyType) {
   uint32_t protocol = PLAYER_POS_UPDATE;
-  socket.send(&protocol, sizeof(protocol));
-  socket.send(&keyType, sizeof(keyType));
+  //socket.send(&protocol, sizeof(protocol));
+  //socket.send(&keyType, sizeof(keyType));
 }
 
 void CommandSender::run() {
