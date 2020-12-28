@@ -6,6 +6,8 @@
 
 #include "../Player/Player.h"
 #include "../../../../common/includes/Map/Map.h"
+#include "../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../Control/Notification/Notification.h"
 
 class Game {
  private:
@@ -20,8 +22,12 @@ class Game {
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID);
 
+  void sendUpdateMessages(WaitingQueue<Notification*>& notis);
+
   // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa que lo borre en sus coordenadas.
   void removePlayer(int playerID);
+
+  void updatePositions();
 
   void updatePlayerMoveSpeed(int playerID, double moveSpeed);
   void updatePlayerRotationSpeed(int playerID, double rotSpeed);

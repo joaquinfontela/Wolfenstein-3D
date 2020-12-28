@@ -2,6 +2,18 @@
 #define __PLAYER_H__
 
 #include "../Item/Item.h"
+
+typedef struct PlayerData{
+
+  double posX, posY;
+  double dirX, dirY;
+  //int weaponID;
+  double rotSpeed;
+  // int health;
+  // int lives;
+  //
+}PlayerData;
+
 class Item;
 
 class Player {
@@ -32,9 +44,10 @@ class Player {
   void updateRotationSpeed(double rotSpeed);
   void equipWeapon(Item* weapon);
 
+  bool hasToBeUpdated();
   void update();
 
-  
+
   void pickupKey();
   bool hasKey();
 

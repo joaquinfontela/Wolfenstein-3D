@@ -33,9 +33,32 @@ void Game::playerShoot(int playerID){
     */
 }
 
+void Game::updatePositions(){
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  for(; it != this->players.end(); ++it){
+    it->second->update();
+  }
+}
+
 int Game::moveDoor(int playerID){
 
     //return this->map.moveDoor(this->players[playerID]);
+}
+
+void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis){
+
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  for(; it != this->players.end(); ++it){
+    PlayerData data;
+    if(it->second->hasToBeUpdated()){
+      
+    }
+
+  }
+
+
 }
 
 void Game::removePlayer(int playerID){
