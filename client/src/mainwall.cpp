@@ -47,23 +47,22 @@ int main(int argc, char** argv) {
   manager.loadTextures();
 //#########################################################
   Drawable nazi(6,4,3);
-  Drawable barrel1(4,6,4);
-  Drawable barrel2(7,7,4);
-  Drawable greenlight1(2,5,7);
-  Drawable greenlight2(2,7,7);
+  Drawable barrel1(4,6,7);
+  Drawable barrel2(7,7,7);
+  Drawable greenlight1(2,5,6);
+  Drawable greenlight2(2,7,6);
 
 
   // VA A PERDER MEMORMIAAAAAAA (si le meto new, doble delete con el destructor de commandexecuter)
 
   std::atomic<bool> alive;
   alive = true;
-  Player player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
+  Player* player = new Player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
   std::map<uint32_t,Player*> players;
-  players[id] = &player;
+  players[id] = player;
 
-  Player player1(4.24, 4.48, -1.0, 0.0, 0.0, 0.66, 0);
-  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2, &player1});
-  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, &player, sprites);
+  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
+  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, player, sprites);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players);

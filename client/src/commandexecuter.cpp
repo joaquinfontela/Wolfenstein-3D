@@ -5,9 +5,9 @@
 #include <iostream>
 
 CommandExecuter::~CommandExecuter(){
-  for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
+  /*for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
     delete it->second;
-  }
+  }*/
 }
 
 void CommandExecuter::run(){

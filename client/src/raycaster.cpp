@@ -114,7 +114,10 @@ void Raycaster::run(){
       d->loadDistanceWithCoords(posX, posY);
     }
 
-    std::sort(this->sprites.begin(), this->sprites.end());
+    std::sort(this->sprites.begin(), this->sprites.end(), []
+                    (Drawable* a, Drawable* b) -> bool {
+                      return *a < *b;
+                    });
 
 
     for (Drawable* d : this->sprites) {
