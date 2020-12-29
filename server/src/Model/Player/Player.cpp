@@ -2,6 +2,7 @@
 
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
 #include <math.h>
+#include <iostream>
 
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
@@ -63,6 +64,8 @@ void Player::update(){
 
   dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
   dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+
+  std::cout<<"[PLAYER] New Updated position: posX: "<<x<<", posY: "<<y<<", dirX: "<<dirX<<", dirY: "<<dirY<<std::endl;
 
   this->hasToBeNotified = true;
 }

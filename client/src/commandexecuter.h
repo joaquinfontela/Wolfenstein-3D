@@ -14,15 +14,15 @@ typedef std::map<uint32_t,Player*>::iterator iterator_t;
 
 class CommandExecuter : public Thread {
  public:
-  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*> sprites) :
-  socket(s) , alive(alive) , sprites(sprites) {}
+  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites, std::map<uint32_t,Player*>& players) :
+  socket(s) , alive(alive) , sprites(sprites), players(players) {}
   ~CommandExecuter();
   void run();
  private:
   SocketCommunication& socket;
   std::atomic<bool>& alive;
-  std::vector<Drawable*> sprites;
-  std::map<uint32_t,Player*> players;
+  std::vector<Drawable*>& sprites;
+  std::map<uint32_t,Player*>& players;
 };
 
 #endif  // COMMANDEXECUTER_H_

@@ -6,12 +6,12 @@
 #include <climits>
 
 class Drawable {
- private:
+public:
   double x;
   double y;
   int id;
   double dist;
- public:
+
   Drawable() {}
   Drawable(double x, double y, int id, double dist = INT_MAX) : x(x), y(y), id(id), dist(dist) {}
   void draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer);

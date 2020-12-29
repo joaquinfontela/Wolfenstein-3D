@@ -10,14 +10,14 @@ class Player : public Drawable {
   void update(PlayerData& info);
   void update(double posX, double posY, double dirX, double dirY);
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
-  Drawable(posX, posY, id) , posX(posX), posY(posY), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY) {}
-  double posX;
-  double posY;
+  Drawable(posX, posY, 3) , dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY), playerID(id) {}
+  void draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer);
+
+  int playerID;
   double dirX;
   double dirY;
   double planeX;
   double planeY;
-  int id;
 };
 
 #endif  // PLAYER_H_

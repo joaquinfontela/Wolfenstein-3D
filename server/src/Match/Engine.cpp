@@ -78,7 +78,7 @@ void Engine::sendNotifications() {
     Notification* newNotification = nullptr;
     newNotification = notifications.pop();
     if (newNotification == nullptr) continue;
-    std::cout << "[ENGINE] Sending Notification" << std::endl;
+    //std::cout << "[ENGINE] Sending Notification" << std::endl;
     for (auto& it : players) {
       ClientCommunication* c = it.second;
       try {

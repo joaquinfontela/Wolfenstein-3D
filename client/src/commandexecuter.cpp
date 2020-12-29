@@ -2,6 +2,7 @@
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
+#include <iostream>
 
 CommandExecuter::~CommandExecuter(){
   for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){

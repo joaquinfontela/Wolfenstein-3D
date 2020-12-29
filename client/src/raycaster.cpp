@@ -6,16 +6,16 @@
 #include <math.h>
 
 #include "drawable.h"
-
-void Raycaster::run(std::vector<Drawable*>& sprites){
+#include <iostream>
+void Raycaster::run(){
 
   while(alive){
     this->window->fillWolfenstein();
 
     double dirX = this->player->dirX;
     double dirY = this->player->dirY;
-    double posX = this->player->posX;
-    double posY = this->player->posY;
+    double posX = this->player->x;
+    double posY = this->player->y;
     double planeX = this->player->planeX;
     double planeY = this->player->planeY;
 
@@ -110,15 +110,17 @@ void Raycaster::run(std::vector<Drawable*>& sprites){
       zBuffer[x] = perpWallDist;
     }
 
-    for (Drawable* d : sprites) {
+    for (Drawable* d : this->sprites) {
       d->loadDistanceWithCoords(posX, posY);
     }
 
-    std::sort(sprites.begin(), sprites.end());
+    std::sort(this->sprites.begin(), this->sprites.end());
 
-    for (Drawable* d : sprites) {
+
+    for (Drawable* d : this->sprites) {
       d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
     }
+
   this->window->render();
   }
 }

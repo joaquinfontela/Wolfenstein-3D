@@ -51,23 +51,27 @@ int main(int argc, char** argv) {
   Drawable barrel2(7,7,4);
   Drawable greenlight1(2,5,7);
   Drawable greenlight2(2,7,7);
-  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
+
 
   // VA A PERDER MEMORMIAAAAAAA (si le meto new, doble delete con el destructor de commandexecuter)
 
   std::atomic<bool> alive;
   alive = true;
   Player player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
-  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, &player);
+  std::map<uint32_t,Player*> players;
+  players[id] = &player;
 
+  Player player1(4.24, 4.48, -1.0, 0.0, 0.0, 0.66, 0);
+  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2, &player1});
+  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, &player, sprites);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players);
 
   try {
     worker->start();
     sender->start();
-    caster.run(sprites);
+    caster.run();
   } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
     exitcode = ERROR;
