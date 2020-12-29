@@ -78,6 +78,10 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerSDown.cpp
         server/src/Control/Command/PlayerDDown.cpp
         server/src/Control/Command/PlayerWDown.cpp
+        server/src/Control/Command/PlayerAUp.cpp
+        server/src/Control/Command/PlayerSUp.cpp
+        server/src/Control/Command/PlayerDUp.cpp
+        server/src/Control/Command/PlayerWUp.cpp
 
         test/CPPUnit.h
         test/CPPUnit.cpp

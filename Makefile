@@ -286,6 +286,36 @@ server/src/Control/Command/PlayerADown.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerADown.cpp.s
 .PHONY : server/src/Control/Command/PlayerADown.cpp.s
 
+server/src/Control/Command/PlayerAUp.o: server/src/Control/Command/PlayerAUp.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerAUp.o
+
+# target to build an object file
+server/src/Control/Command/PlayerAUp.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerAUp.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerAUp.cpp.o
+.PHONY : server/src/Control/Command/PlayerAUp.cpp.o
+
+server/src/Control/Command/PlayerAUp.i: server/src/Control/Command/PlayerAUp.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerAUp.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerAUp.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerAUp.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerAUp.cpp.i
+.PHONY : server/src/Control/Command/PlayerAUp.cpp.i
+
+server/src/Control/Command/PlayerAUp.s: server/src/Control/Command/PlayerAUp.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerAUp.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerAUp.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerAUp.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerAUp.cpp.s
+.PHONY : server/src/Control/Command/PlayerAUp.cpp.s
+
 server/src/Control/Command/PlayerDDown.o: server/src/Control/Command/PlayerDDown.cpp.o
 
 .PHONY : server/src/Control/Command/PlayerDDown.o
@@ -315,6 +345,36 @@ server/src/Control/Command/PlayerDDown.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDDown.cpp.s
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDDown.cpp.s
 .PHONY : server/src/Control/Command/PlayerDDown.cpp.s
+
+server/src/Control/Command/PlayerDUp.o: server/src/Control/Command/PlayerDUp.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerDUp.o
+
+# target to build an object file
+server/src/Control/Command/PlayerDUp.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDUp.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDUp.cpp.o
+.PHONY : server/src/Control/Command/PlayerDUp.cpp.o
+
+server/src/Control/Command/PlayerDUp.i: server/src/Control/Command/PlayerDUp.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerDUp.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerDUp.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDUp.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDUp.cpp.i
+.PHONY : server/src/Control/Command/PlayerDUp.cpp.i
+
+server/src/Control/Command/PlayerDUp.s: server/src/Control/Command/PlayerDUp.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerDUp.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerDUp.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerDUp.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerDUp.cpp.s
+.PHONY : server/src/Control/Command/PlayerDUp.cpp.s
 
 server/src/Control/Command/PlayerDisconnected.o: server/src/Control/Command/PlayerDisconnected.cpp.o
 
@@ -406,6 +466,36 @@ server/src/Control/Command/PlayerSDown.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerSDown.cpp.s
 .PHONY : server/src/Control/Command/PlayerSDown.cpp.s
 
+server/src/Control/Command/PlayerSUp.o: server/src/Control/Command/PlayerSUp.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerSUp.o
+
+# target to build an object file
+server/src/Control/Command/PlayerSUp.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerSUp.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerSUp.cpp.o
+.PHONY : server/src/Control/Command/PlayerSUp.cpp.o
+
+server/src/Control/Command/PlayerSUp.i: server/src/Control/Command/PlayerSUp.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerSUp.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerSUp.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerSUp.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerSUp.cpp.i
+.PHONY : server/src/Control/Command/PlayerSUp.cpp.i
+
+server/src/Control/Command/PlayerSUp.s: server/src/Control/Command/PlayerSUp.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerSUp.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerSUp.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerSUp.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerSUp.cpp.s
+.PHONY : server/src/Control/Command/PlayerSUp.cpp.s
+
 server/src/Control/Command/PlayerWDown.o: server/src/Control/Command/PlayerWDown.cpp.o
 
 .PHONY : server/src/Control/Command/PlayerWDown.o
@@ -435,6 +525,36 @@ server/src/Control/Command/PlayerWDown.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerWDown.cpp.s
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerWDown.cpp.s
 .PHONY : server/src/Control/Command/PlayerWDown.cpp.s
+
+server/src/Control/Command/PlayerWUp.o: server/src/Control/Command/PlayerWUp.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerWUp.o
+
+# target to build an object file
+server/src/Control/Command/PlayerWUp.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerWUp.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerWUp.cpp.o
+.PHONY : server/src/Control/Command/PlayerWUp.cpp.o
+
+server/src/Control/Command/PlayerWUp.i: server/src/Control/Command/PlayerWUp.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerWUp.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerWUp.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerWUp.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerWUp.cpp.i
+.PHONY : server/src/Control/Command/PlayerWUp.cpp.i
+
+server/src/Control/Command/PlayerWUp.s: server/src/Control/Command/PlayerWUp.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerWUp.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerWUp.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerWUp.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerWUp.cpp.s
+.PHONY : server/src/Control/Command/PlayerWUp.cpp.s
 
 server/src/Control/Notification/PlayerConnected.o: server/src/Control/Notification/PlayerConnected.cpp.o
 
@@ -1295,9 +1415,15 @@ help:
 	@echo "... server/src/Control/Command/PlayerADown.o"
 	@echo "... server/src/Control/Command/PlayerADown.i"
 	@echo "... server/src/Control/Command/PlayerADown.s"
+	@echo "... server/src/Control/Command/PlayerAUp.o"
+	@echo "... server/src/Control/Command/PlayerAUp.i"
+	@echo "... server/src/Control/Command/PlayerAUp.s"
 	@echo "... server/src/Control/Command/PlayerDDown.o"
 	@echo "... server/src/Control/Command/PlayerDDown.i"
 	@echo "... server/src/Control/Command/PlayerDDown.s"
+	@echo "... server/src/Control/Command/PlayerDUp.o"
+	@echo "... server/src/Control/Command/PlayerDUp.i"
+	@echo "... server/src/Control/Command/PlayerDUp.s"
 	@echo "... server/src/Control/Command/PlayerDisconnected.o"
 	@echo "... server/src/Control/Command/PlayerDisconnected.i"
 	@echo "... server/src/Control/Command/PlayerDisconnected.s"
@@ -1307,9 +1433,15 @@ help:
 	@echo "... server/src/Control/Command/PlayerSDown.o"
 	@echo "... server/src/Control/Command/PlayerSDown.i"
 	@echo "... server/src/Control/Command/PlayerSDown.s"
+	@echo "... server/src/Control/Command/PlayerSUp.o"
+	@echo "... server/src/Control/Command/PlayerSUp.i"
+	@echo "... server/src/Control/Command/PlayerSUp.s"
 	@echo "... server/src/Control/Command/PlayerWDown.o"
 	@echo "... server/src/Control/Command/PlayerWDown.i"
 	@echo "... server/src/Control/Command/PlayerWDown.s"
+	@echo "... server/src/Control/Command/PlayerWUp.o"
+	@echo "... server/src/Control/Command/PlayerWUp.i"
+	@echo "... server/src/Control/Command/PlayerWUp.s"
 	@echo "... server/src/Control/Notification/PlayerConnected.o"
 	@echo "... server/src/Control/Notification/PlayerConnected.i"
 	@echo "... server/src/Control/Notification/PlayerConnected.s"

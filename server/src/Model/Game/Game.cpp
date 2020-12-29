@@ -62,7 +62,6 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis){
 
   }
 
-
 }
 
 void Game::removePlayer(int playerID){
