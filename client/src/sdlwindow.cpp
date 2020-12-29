@@ -8,8 +8,6 @@
 #include "sdltexture.h"
 #include <iostream>
 
-#define WIDTH 800
-#define HEIGHT 600
 #define SDL_INIT_ERROR "\nError on initialization: "
 #define SDL_WINDOW_INIT_ERROR "\nError on window initialization: "
 #define CEILING_COLOR 0x7B, 0x7B, 0x7B
@@ -34,6 +32,12 @@ SdlWindow::SdlWindow(int width, int height) :
   SDL_SetWindowTitle(this->window,"Wolfenstein");
   SDL_Surface* icon = IMG_Load(IMG_PATH "wolfensteinlogo.jpg");
   SDL_SetWindowIcon(this->window,icon);
+}
+
+void SdlWindow::getWindowSize(int* w, int* h) {
+  SDL_GetWindowSize(this->window, &this->width, &this->height);
+  *w = this->width;
+  *h = this->height;
 }
 
 void SdlWindow::playOrStopAudio(){
@@ -81,11 +85,11 @@ void SdlWindow::fill(int r, int g, int b, int alpha) {
 
 void SdlWindow::fill() { this->fill(0, 0, 0, 0); }
 
-void SdlWindow::fillWolfenstein() { 
-  this->fill(FLOOR_COLOR, 0); 
+void SdlWindow::fillWolfenstein() {
+  this->fill(FLOOR_COLOR, 0);
   SdlTexture im(IMG_PATH "ceiling.png", *this);
   // Hacer que ^^ esta textura sea un atributo para evitar múltiples cargas.
-  im.renderHalfOfScreen();
+  im.renderHalfOfScreen(this->width, this->height);
 }
 
 void SdlWindow::render() { SDL_RenderPresent(this->renderer); }

@@ -9,8 +9,6 @@
 #include "sdlwindow.h"
 
 #define SDL_TEXTURE_LOAD_ERROR "\nTexture loading error: "
-#define WIDTH 800
-#define HEIGHT 600
 
 SdlTexture::SdlTexture(const std::string& filename, const SdlWindow& window)
     : renderer(window.getRenderer()) {
@@ -33,8 +31,8 @@ int SdlTexture::renderAll(const Area& dest) const {
   return SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);
 }
 
-int SdlTexture::renderHalfOfScreen() const {
-  SDL_Rect sdlDest = {0, 0, WIDTH, HEIGHT/2};
+int SdlTexture::renderHalfOfScreen(int width, int height) const {
+  SDL_Rect sdlDest = {0, 0, width, height/2};
   // Se pueden evitar estas macros pasándo por parámetro al constructor el támaño
   // de pantalla (o en un update(newW, newH) por si llega a cambiar).
   return SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);

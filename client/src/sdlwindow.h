@@ -16,6 +16,7 @@ class SdlWindow {
   void fillWolfenstein();
   void fillTransparent(int r, int g, int b);
   void render();
+  void getWindowSize(int* w, int* h);
   SDL_Renderer* getRenderer() const;
   void playOrStopAudio();
  private:
@@ -30,4 +31,3 @@ class SdlWindow {
 };
 
 #endif
-

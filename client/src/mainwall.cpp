@@ -27,6 +27,7 @@ int main(int argc, char** argv) {
   if (argc != 3) {
     std::cerr << INVALID_ARGS_ERR << std::endl;
   }
+  SdlWindow window(WIDTH, HEIGHT);
   // Me creo a "window" en el main por si más objetos la quisieran usar.
   SocketCommunication socket(-1);
   socket.connect(argv[1], argv[2]);
@@ -40,7 +41,6 @@ int main(int argc, char** argv) {
   socket.receive(&opcode, sizeof(opcode));
   socket.receive(&id, sizeof(id));
   Map matrix("COMPLETAR CON EL YAML LATER");
-  SdlWindow window(WIDTH, HEIGHT);
 
 //#########################################################
   TextureManager manager(&window);
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
   players[id] = player;
 
   std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
-  Raycaster caster(WIDTH, HEIGHT, manager, matrix, alive, &window, player, sprites);
+  Raycaster caster(manager, matrix, alive, &window, player, sprites);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players);

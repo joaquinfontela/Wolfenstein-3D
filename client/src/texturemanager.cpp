@@ -21,6 +21,10 @@
 #define TEXTURE_LIMIT_ERROR "Error, cannot add more textures with code: "
 // Cambiar por una excepción.
 
+void TextureManager::getWindowSize(int* w, int* h) {
+  return this->window->getWindowSize(w,h);
+}
+
 void TextureManager::garbageCollector() {
   for (std::map<int, SdlTexture*>::iterator it = this->textures.begin(); it != this->textures.end(); ++it) {
     delete it->second;

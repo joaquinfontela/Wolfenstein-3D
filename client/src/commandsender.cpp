@@ -6,11 +6,6 @@
 #include <iostream>
 #include "../../common/includes/protocol.h"
 
-#define WIDTH 800
-#define HEIGHT 600
-#define DIMX 10
-#define DIMY 13
-
 #define UINT32_SIZE sizeof(uint32_t)
 
 CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) : socket(s), alive(alive) {}
