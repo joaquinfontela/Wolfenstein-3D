@@ -64,6 +64,7 @@ void SdlWindow::killWindow(){
 void SdlWindow::killAudio() {
   if (!this->window) return;
   Mix_FreeMusic(this->audio);
+  Mix_CloseAudio();
   Mix_Quit();
 }
 
@@ -71,6 +72,7 @@ SdlWindow::~SdlWindow() {
   this->killRenderer();
   this->killWindow();
   this->killAudio();
+  SDL_Quit();
 }
 
 void SdlWindow::fillTransparent(int r, int g, int b) {

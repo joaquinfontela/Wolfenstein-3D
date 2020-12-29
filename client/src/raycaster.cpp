@@ -102,15 +102,9 @@ void Raycaster::run(){
       if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
       if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
-      if (lineHeight < BLOCKSIZE) { // CASO DONDE EL ALTO DE LA TEXTURA < ESPACIO A DIBUJAR
-        Area srcArea(texX, 0, 1, BLOCKSIZE);
-        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-        this->manager.render(texNum, srcArea, destArea);
-      } else { // CASO NORMAL
-        Area srcArea(texX, 0, 1, lineHeight);
-        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-        this->manager.render(texNum, srcArea, destArea);
-      }
+      Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+      Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+      this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
     }
 

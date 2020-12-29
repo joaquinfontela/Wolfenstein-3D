@@ -46,13 +46,18 @@ TextureManager::~TextureManager() {
 }
 
 void TextureManager::loadTextures() {
-  std::vector<std::string> names({ "wall.png",
-                                   "wall2.png",
-                                   "guard.png",
-                                   "chaingun2.png",
-                                   "hud.png",
-                                   "greenlight.png",
-                                   "smallbarrel.png" });
+  std::vector<std::string> names({ "wall.png", // 1
+                                   "wall2.png", // 2
+                                   "guard.png", // 3
+                                   "chaingun2.png", // 4
+                                   "hud.png", // 5
+                                   "greenlight.png", // 6
+                                   "smallbarrel.png", // 7
+                                   "soldierfront.png", // 8
+                                   "soldierright.png", // 9
+                                   "soldierback.png", // 10
+                                   "soldierleft.png" // 11
+                                  });
   int i = 1;
   for (std::string& name : names) {
     if (!this->loadAndCheckTexture(i,name)){

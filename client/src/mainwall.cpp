@@ -78,6 +78,7 @@ int main(int argc, char** argv) {
   alive = false;
   sender->join();
   worker->join();
+  delete player;
   delete sender;
   delete worker;
   return exitcode;
