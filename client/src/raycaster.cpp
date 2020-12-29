@@ -7,6 +7,9 @@
 
 #include "drawable.h"
 #include <iostream>
+
+#define BLOCKSIZE 64
+
 void Raycaster::run(){
 
   while(alive){
@@ -69,12 +72,13 @@ void Raycaster::run(){
           side = 1;
         }
 
-        if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapX < 0) {
+         if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapY < 0) {
           mapX = INT_MAX;
           mapY = INT_MAX;
+          hit = 1;
+        } else if (matrix.get(mapX,mapY) > 0) {
+          hit = 1;
         }
-
-        if(matrix.get(mapX,mapY) > 0) hit = 1;
       }
 
       if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
@@ -82,31 +86,31 @@ void Raycaster::run(){
 
 
       int lineHeight = (int) (this->height/ perpWallDist);
-      int offset = 0;
 
-      int texNum = matrix.get(mapX,mapY);
+      int texNum = 1;
+      if (mapY != INT_MAX) {
+        texNum = matrix.get(mapX,mapY);
+      }
+      //int texNum = matrix.get(mapX,mapY);
 
       double wallX;
       if (side == 0) wallX = posY + perpWallDist * rayDirY;
       else wallX = posX + perpWallDist * rayDirX;
       wallX -= floor((wallX));
 
-      int texX = int(wallX * double(64));
-      if(side == 0 && rayDirX > 0) texX = 64 - texX - 1;
-      if(side == 1 && rayDirY < 0) texX = 64 - texX - 1;
+      int texX = int(wallX * double(BLOCKSIZE));
+      if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
+      if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
-      if (side == 0) {
-         offset = int(sideDistX) % 64;
-      } else {
-         offset = int(sideDistY) % 64;
+      if (lineHeight < BLOCKSIZE) { // CASO DONDE EL ALTO DE LA TEXTURA < ESPACIO A DIBUJAR
+        Area srcArea(texX, 0, 1, BLOCKSIZE);
+        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+        this->manager.render(texNum, srcArea, destArea);
+      } else { // CASO NORMAL
+        Area srcArea(texX, 0, 1, lineHeight);
+        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+        this->manager.render(texNum, srcArea, destArea);
       }
-
-      Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-      Area srcArea(texX, 0, 1, lineHeight);
-
-
-      this->manager.render(texNum, srcArea, destArea);
-
       zBuffer[x] = perpWallDist;
     }
 
@@ -118,7 +122,6 @@ void Raycaster::run(){
                     (Drawable* a, Drawable* b) -> bool {
                       return *a < *b;
                     });
-
 
     for (Drawable* d : this->sprites) {
       d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);

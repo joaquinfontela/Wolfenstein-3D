@@ -14,8 +14,8 @@
 
 #define EPSILON 0.0001
 #define PI 3.14159265359
-#define HEIGHT 600
-#define WIDTH 800
+#define HEIGHT 200
+#define WIDTH 320
 #define IMG_PATH "../media/"
 #define DIMX 12
 #define DIMY 12
@@ -103,6 +103,8 @@ static void renderWithPerspective(double posX, double posY, double dirX, double 
 
     Area destArea(x, (HEIGHT - lineHeight) / 2, 1, lineHeight);
     Area srcArea(texX, 0, 1, lineHeight);
+
+    std::cout << "Lineheight: " << lineHeight << std::endl;
 
     manager.render(matrix[mapX][mapY], srcArea, destArea);
 
