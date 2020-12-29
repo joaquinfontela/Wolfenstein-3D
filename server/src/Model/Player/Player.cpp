@@ -7,7 +7,7 @@
 #define MAX_HEALTH 100
 
 Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(5.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
+    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
 
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
@@ -39,7 +39,7 @@ int Player::takeDamage(unsigned int damage) {
 }
 
 void Player::fillPlayerData(PlayerData& data){
-  
+
   data.posX = this->x;
   data.posY = this->y;
   data.dirX = this->dirX;
@@ -71,6 +71,7 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo
+  return 0;
 }
 
 void Player::updateMoveSpeed(double moveSpeed){

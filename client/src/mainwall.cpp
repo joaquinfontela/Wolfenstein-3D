@@ -51,7 +51,10 @@ int main(int argc, char** argv) {
   Drawable barrel2(7,7,4);
   Drawable greenlight1(2,5,7);
   Drawable greenlight2(2,7,7);
-  std::vector<Drawable> sprites({nazi, barrel1, barrel2, greenlight1, greenlight2});
+  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
+
+  // VA A PERDER MEMORMIAAAAAAA (si le meto new, doble delete con el destructor de commandexecuter)
+
   std::atomic<bool> alive;
   alive = true;
   Player player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
@@ -59,10 +62,10 @@ int main(int argc, char** argv) {
 
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
-  //CommandExecuter* worker = new CommandExecuter(id, socket);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites);
 
   try {
-    //worker->start();
+    worker->start();
     sender->start();
     caster.run(sprites);
   } catch (std::exception& e) {
@@ -71,8 +74,8 @@ int main(int argc, char** argv) {
   }
   alive = false;
   sender->join();
-  //worker->join();
-  //delete sender;
-  //delete worker;
+  worker->join();
+  delete sender;
+  delete worker;
   return exitcode;
 }

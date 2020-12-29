@@ -9,7 +9,6 @@ typedef struct PlayerData{
   double rotSpeed;
   // int health;
   // int lives;
-  //
 }PlayerData;
 
 #endif

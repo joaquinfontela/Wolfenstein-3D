@@ -7,7 +7,7 @@
 
 #include "drawable.h"
 
-void Raycaster::run(std::vector<Drawable>& sprites){
+void Raycaster::run(std::vector<Drawable*>& sprites){
 
   while(alive){
     this->window->fillWolfenstein();
@@ -110,14 +110,14 @@ void Raycaster::run(std::vector<Drawable>& sprites){
       zBuffer[x] = perpWallDist;
     }
 
-    for (Drawable& d : sprites) {
-      d.loadDistanceWithCoords(posX, posY);
+    for (Drawable* d : sprites) {
+      d->loadDistanceWithCoords(posX, posY);
     }
 
     std::sort(sprites.begin(), sprites.end());
 
-    for (Drawable& d : sprites) {
-      d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+    for (Drawable* d : sprites) {
+      d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
     }
   this->window->render();
   }

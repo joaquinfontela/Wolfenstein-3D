@@ -30,6 +30,7 @@ void SocketWrapper::send(PlayerData& value) {
 }
 
 void SocketWrapper::receivePlayerData(PlayerData& value) {
+  this->socket.receive(&value.playerID, sizeof(value.playerID));
   value.dirX = this->receiveDouble();
   value.dirY = this->receiveDouble();
   value.posX = this->receiveDouble();

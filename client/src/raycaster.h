@@ -16,9 +16,9 @@ class Raycaster {
  public:
   Raycaster(int width, int height, TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window, Player* player) :
           alive(b), width(width) , height(height) , manager(manager) , matrix(m) , player(player) , window(window) {
-    this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3))); 
+    this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   }
-  void run(std::vector<Drawable>& sprites);
+  void run(std::vector<Drawable*>& sprites);
  private:
   std::atomic<bool>& alive;
   int width;

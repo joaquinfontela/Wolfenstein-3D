@@ -46,6 +46,7 @@ void Game::updatePositions(){
 int Game::moveDoor(int playerID){
 
     //return this->map.moveDoor(this->players[playerID]);
+    return 0;
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis){

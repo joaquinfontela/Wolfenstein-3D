@@ -203,6 +203,33 @@ home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
 .PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
 
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o
+
+# target to build an object file
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
+
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i
+
+# target to preprocess a source file
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
+
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s
+
+# target to generate assembly for a file
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
+
 home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o: home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.o
 
 .PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o
@@ -256,6 +283,33 @@ src/area.s: src/area.cpp.s
 src/area.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/area.cpp.s
 .PHONY : src/area.cpp.s
+
+src/commandexecuter.o: src/commandexecuter.cpp.o
+
+.PHONY : src/commandexecuter.o
+
+# target to build an object file
+src/commandexecuter.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.o
+.PHONY : src/commandexecuter.cpp.o
+
+src/commandexecuter.i: src/commandexecuter.cpp.i
+
+.PHONY : src/commandexecuter.i
+
+# target to preprocess a source file
+src/commandexecuter.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.i
+.PHONY : src/commandexecuter.cpp.i
+
+src/commandexecuter.s: src/commandexecuter.cpp.s
+
+.PHONY : src/commandexecuter.s
+
+# target to generate assembly for a file
+src/commandexecuter.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/commandexecuter.cpp.s
+.PHONY : src/commandexecuter.cpp.s
 
 src/commandsender.o: src/commandsender.cpp.o
 
@@ -544,12 +598,18 @@ help:
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.o"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.i"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.s"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.i"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.s"
 	@echo "... src/area.o"
 	@echo "... src/area.i"
 	@echo "... src/area.s"
+	@echo "... src/commandexecuter.o"
+	@echo "... src/commandexecuter.i"
+	@echo "... src/commandexecuter.s"
 	@echo "... src/commandsender.o"
 	@echo "... src/commandsender.i"
 	@echo "... src/commandsender.s"

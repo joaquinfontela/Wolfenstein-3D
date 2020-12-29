@@ -11,8 +11,10 @@ add_library(sdldemo
   src/drawable.cpp
   src/texturemanager.cpp
   src/commandsender.cpp
+  src/commandexecuter.cpp
   ../common/src/Map/Map.cpp
   ../common/src/Socket/SocketCommunication.cpp
+  ../common/src/Socket/SocketWrapper.cpp
   ../common/src/Thread/Thread.cpp
   ../common/src/Map/Map.cpp
 
