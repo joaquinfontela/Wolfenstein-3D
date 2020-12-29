@@ -12,6 +12,8 @@ void PlayerPackageUpdate::send(SocketCommunication& socket) {
   uint32_t opcode = PLAYER_UPDATE_PACKAGE;
   socket.send(&opcode, sizeof(opcode));
 
+  socket.send(&this->playerID, sizeof(this->playerID));
+
   SocketWrapper wrapper(socket);
 
   wrapper.send(this->data);

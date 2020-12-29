@@ -39,7 +39,7 @@ int Player::takeDamage(unsigned int damage) {
 }
 
 void Player::fillPlayerData(PlayerData& data){
-
+  
   data.posX = this->x;
   data.posY = this->y;
   data.dirX = this->dirX;
@@ -85,7 +85,7 @@ void Player::equipWeapon(Item* weapon) {
    this->weapon = (Weapon*)weapon;
 
    this->hasToBeNotified = true;
-   
+
   }
 
 void Player::pickupKey() { this->key = true; }
