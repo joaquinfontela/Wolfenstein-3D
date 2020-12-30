@@ -6,12 +6,14 @@
 
 class Player : public Drawable {
  public:
+  ~Player() {}
   Player(PlayerData& info);
   void update(PlayerData& info);
   void update(double posX, double posY, double dirX, double dirY);
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
   Drawable(posX, posY, 3) , dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY), playerID(id) {}
-  void draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer);
+  void draw(TextureManager& manager, double posX, double posY, double dirX,
+    double dirY, double planeX, double planeY, double* zBuffer) override;
 
   int playerID;
   double dirX;

@@ -2,6 +2,13 @@
 #include <math.h>
 #include <iostream>
 
+#define BLOCKSIZE 64
+#define PI 3.141592654
+
+static bool sameSign(double a, double b) {
+  return ((a <= 0 && b <= 0) || (a > 0 && b > 0));
+}
+
 Player::Player(PlayerData& info) {
   this->x = info.posX;
   this->y = info.posY;
@@ -62,13 +69,32 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   int drawEndX = spriteWidth / 2 + spriteScreenX;
   if (drawEndX >= width) drawEndX = width - 1;
 
+  int spriteId = 3;
+  /*double angle = atan2(this->dirY - dirY, this->dirX - dirX);
+  if (angle < 2*PI) angle += PI;
+  if (angle > 0 && angle < PI) spriteId = 10;*/
+
+  bool sameSignX = sameSign(this->dirX, dirX);
+  bool sameSignY = sameSign(this->dirY, dirY);
+  bool diffSignX = !sameSignX;
+  bool diffSignY = !sameSignY;
+
+  if (diffSignX && diffSignY)
+    spriteId = 8;
+  else if (sameSignX && diffSignY)
+    spriteId = 11;
+  else if (diffSignX && sameSignY)
+    spriteId = 9;
+  else
+    spriteId = 10;
+
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * 64 / spriteWidth) / 256;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      Area srcArea(texX, 0, 1, spriteHeight);
+      Area srcArea(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
       Area destArea(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
-      manager.render(3, srcArea, destArea);
+      manager.render(spriteId, srcArea, destArea);
     }
   }
 }

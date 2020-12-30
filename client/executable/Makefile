@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/niyo/TallerI/tp-final-taller/client/executable
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -109,19 +109,6 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named raycastinglord
-
-# Build rule for target.
-raycastinglord: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 raycastinglord
-.PHONY : raycastinglord
-
-# fast build rule for target.
-raycastinglord/fast:
-	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/build
-.PHONY : raycastinglord/fast
 
 #=============================================================================
 # Target rules for targets named sdl-wall
@@ -446,33 +433,6 @@ src/raycaster.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.s
 .PHONY : src/raycaster.cpp.s
 
-src/raycastingLord.o: src/raycastingLord.cpp.o
-
-.PHONY : src/raycastingLord.o
-
-# target to build an object file
-src/raycastingLord.cpp.o:
-	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.o
-.PHONY : src/raycastingLord.cpp.o
-
-src/raycastingLord.i: src/raycastingLord.cpp.i
-
-.PHONY : src/raycastingLord.i
-
-# target to preprocess a source file
-src/raycastingLord.cpp.i:
-	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.i
-.PHONY : src/raycastingLord.cpp.i
-
-src/raycastingLord.s: src/raycastingLord.cpp.s
-
-.PHONY : src/raycastingLord.s
-
-# target to generate assembly for a file
-src/raycastingLord.cpp.s:
-	$(MAKE) -f CMakeFiles/raycastinglord.dir/build.make CMakeFiles/raycastinglord.dir/src/raycastingLord.cpp.s
-.PHONY : src/raycastingLord.cpp.s
-
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -587,9 +547,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... raycastinglord"
+	@echo "... edit_cache"
 	@echo "... sdl-wall"
 	@echo "... sdldemo"
 	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o"
@@ -625,9 +584,6 @@ help:
 	@echo "... src/raycaster.o"
 	@echo "... src/raycaster.i"
 	@echo "... src/raycaster.s"
-	@echo "... src/raycastingLord.o"
-	@echo "... src/raycastingLord.i"
-	@echo "... src/raycastingLord.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"
