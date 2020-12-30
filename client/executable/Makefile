@@ -352,6 +352,33 @@ src/drawable.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/drawable.cpp.s
 .PHONY : src/drawable.cpp.s
 
+src/hud.o: src/hud.cpp.o
+
+.PHONY : src/hud.o
+
+# target to build an object file
+src/hud.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/hud.cpp.o
+.PHONY : src/hud.cpp.o
+
+src/hud.i: src/hud.cpp.i
+
+.PHONY : src/hud.i
+
+# target to preprocess a source file
+src/hud.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/hud.cpp.i
+.PHONY : src/hud.cpp.i
+
+src/hud.s: src/hud.cpp.s
+
+.PHONY : src/hud.s
+
+# target to generate assembly for a file
+src/hud.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/hud.cpp.s
+.PHONY : src/hud.cpp.s
+
 src/mainwall.o: src/mainwall.cpp.o
 
 .PHONY : src/mainwall.o
@@ -575,6 +602,9 @@ help:
 	@echo "... src/drawable.o"
 	@echo "... src/drawable.i"
 	@echo "... src/drawable.s"
+	@echo "... src/hud.o"
+	@echo "... src/hud.i"
+	@echo "... src/hud.s"
 	@echo "... src/mainwall.o"
 	@echo "... src/mainwall.i"
 	@echo "... src/mainwall.s"

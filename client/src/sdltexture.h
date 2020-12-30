@@ -1,6 +1,7 @@
 #ifndef __SDL_TEXTURE_H__
 #define __SDL_TEXTURE_H__
 #include <string>
+#include <SDL2/SDL_image.h>
 
 class SDL_Texture;
 class SDL_Renderer;
@@ -10,6 +11,7 @@ class Area;
 class SdlTexture {
  public:
   SdlTexture(const std::string& filename, const SdlWindow& window);
+  SdlTexture(SDL_Surface* surface, SdlWindow* window);
   ~SdlTexture();
   int render(const Area& src, const Area& dest) const;
   int renderAll(const Area& dest) const;

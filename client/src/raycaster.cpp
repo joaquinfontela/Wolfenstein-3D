@@ -91,7 +91,6 @@ void Raycaster::run(){
       if (mapY != INT_MAX) {
         texNum = matrix.get(mapX,mapY);
       }
-      //int texNum = matrix.get(mapX,mapY);
 
       double wallX;
       if (side == 0) wallX = posY + perpWallDist * rayDirY;
@@ -109,19 +108,14 @@ void Raycaster::run(){
     }
 
     this->lock.lock();
-    for (Drawable* d : this->sprites) {
-      d->loadDistanceWithCoords(posX, posY);
-    }
-
+    for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(posX, posY); }
     std::sort(this->sprites.begin(), this->sprites.end(), []
-                    (Drawable* a, Drawable* b) -> bool {
-                      return *a < *b; });
-
+                    (Drawable* a, Drawable* b) -> bool { return *a < *b; });
     for (Drawable* d : this->sprites) {
-      d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
-    }
+      d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-  this->window->render();
+    this->hud.renderText();
+    this->window->render();
   }
 }

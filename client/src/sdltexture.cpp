@@ -15,6 +15,13 @@ SdlTexture::SdlTexture(const std::string& filename, const SdlWindow& window)
   this->texture = loadTexture(filename);
 }
 
+SdlTexture::SdlTexture(SDL_Surface* surface, SdlWindow* window) {
+  SDL_Texture* text = SDL_CreateTextureFromSurface(window->getRenderer(), surface);
+  if (!text) {
+    throw SdlException(SDL_TEXTURE_LOAD_ERROR, SDL_GetError());
+  }
+}
+
 SdlTexture::~SdlTexture() { SDL_DestroyTexture(this->texture); }
 
 SDL_Texture* SdlTexture::loadTexture(const std::string& filename) {

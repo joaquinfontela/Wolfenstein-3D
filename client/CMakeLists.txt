@@ -3,6 +3,7 @@ project(sdl)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -pthread")
 add_library(sdldemo
   src/area.cpp
+  src/hud.cpp
   src/sdltexture.cpp
   src/sdlexception.cpp
   src/sdlwindow.cpp
@@ -26,5 +27,5 @@ add_executable (sdl-wall
 #add_executable (raycastinglord
 #  src/raycastingLord.cpp
 #)
-target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer)
+target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer SDL2_ttf)
 #target_link_libraries(raycastinglord sdldemo SDL2 SDL2_image SDL2_mixer)

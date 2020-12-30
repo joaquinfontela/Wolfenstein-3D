@@ -18,7 +18,7 @@
 
 SdlWindow::SdlWindow(int width, int height) :
                      width(width), height(height) {
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_VIDEO)) {
     throw SdlException(SDL_INIT_ERROR, SDL_GetError());
   }
   if (SDL_CreateWindowAndRenderer(width, height, SDL_RENDERER_ACCELERATED,

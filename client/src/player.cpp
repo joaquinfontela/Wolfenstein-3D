@@ -43,6 +43,9 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer) {
 
+  std::cout << "   my dir = (" << this->dirX << "," << this->dirY << ")" << std::endl;
+  std::cout << "other dir = (" << dirX << "," << dirY << ")" << std::endl;
+
   int width, height;
   manager.getWindowSize(&width, &height);
 
