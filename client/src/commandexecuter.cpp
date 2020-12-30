@@ -3,6 +3,7 @@
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
 #include <iostream>
+#include <algorithm>
 
 CommandExecuter::~CommandExecuter(){
   /*for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
@@ -27,6 +28,20 @@ void CommandExecuter::run(){
           players[id] = placeholder;
           sprites.push_back(placeholder);
         }
+      } else if (opcode == PLAYER_DISCONNECT) {
+        std::cout << "ENTROOOO" << std::endl;
+        uint32_t id;
+        this->socket.receive(&id, sizeof(id));
+        Player* toKill = players[id];
+        players.erase(id);
+        std::vector<Drawable*>::iterator it = this->sprites.begin();
+        for (; it != this->sprites.end(); ++it) {
+          if (*it == toKill) {
+            this->sprites.erase(it);
+            break;
+          }
+        }
+        delete toKill;
       }
     } catch (SocketException& e) {
       break;
