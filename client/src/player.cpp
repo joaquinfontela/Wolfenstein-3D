@@ -80,9 +80,9 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   bool diffSignY = !sameSignY;
 
   if (diffSignX && diffSignY)
-    spriteId = 8;
-  else if (sameSignX && diffSignY)
     spriteId = 11;
+  else if (sameSignX && diffSignY)
+    spriteId = 8;
   else if (diffSignX && sameSignY)
     spriteId = 9;
   else

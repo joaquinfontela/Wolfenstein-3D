@@ -108,18 +108,19 @@ void Raycaster::run(){
       zBuffer[x] = perpWallDist;
     }
 
+    this->lock.lock();
     for (Drawable* d : this->sprites) {
       d->loadDistanceWithCoords(posX, posY);
     }
 
     std::sort(this->sprites.begin(), this->sprites.end(), []
                     (Drawable* a, Drawable* b) -> bool {
-                      return *a < *b;
-                    });
+                      return *a < *b; });
 
     for (Drawable* d : this->sprites) {
       d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
     }
+    this->lock.unlock();
 
   this->window->render();
   }

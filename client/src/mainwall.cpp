@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <mutex>
 
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Map/Map.h"
@@ -36,6 +37,7 @@ int main(int argc, char** argv) {
   uint32_t id;
   uint32_t opcode;
 
+  std::mutex m;
   socket.send(&protocol, sizeof(protocol));
   socket.send(&id_, sizeof(id_));
   socket.receive(&opcode, sizeof(opcode));
@@ -52,7 +54,6 @@ int main(int argc, char** argv) {
   Drawable greenlight1(2,5,6);
   Drawable greenlight2(2,7,6);
 
-
   // VA A PERDER MEMORMIAAAAAAA (si le meto new, doble delete con el destructor de commandexecuter)
 
   std::atomic<bool> alive;
@@ -61,11 +62,13 @@ int main(int argc, char** argv) {
   std::map<uint32_t,Player*> players;
   players[id] = player;
 
+  std::cout << "Soy el de id: " << id << std::endl;
+
   std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
-  Raycaster caster(manager, matrix, alive, &window, player, sprites);
+  Raycaster caster(manager, matrix, alive, &window, player, sprites, m);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id);
 
   try {
     worker->start();

@@ -3,6 +3,7 @@
 
 #include <atomic>
 #include <map>
+#include <mutex>
 #include <vector>
 
 #include "player.h"
@@ -14,8 +15,8 @@ typedef std::map<uint32_t,Player*>::iterator iterator_t;
 
 class CommandExecuter : public Thread {
  public:
-  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites, std::map<uint32_t,Player*>& players) :
-  socket(s) , alive(alive) , sprites(sprites), players(players) {}
+  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites, std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId) :
+  socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) , selfId(selfId) {}
   ~CommandExecuter();
   void run();
  private:
@@ -23,6 +24,8 @@ class CommandExecuter : public Thread {
   std::atomic<bool>& alive;
   std::vector<Drawable*>& sprites;
   std::map<uint32_t,Player*>& players;
+  std::mutex& lock;
+  int selfId;
 };
 
 #endif  // COMMANDEXECUTER_H_

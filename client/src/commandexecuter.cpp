@@ -24,14 +24,16 @@ void CommandExecuter::run(){
         if (players.find(id) != players.end()) {
           players[id]->update(playerinfo);
         } else {
+          std::cout << "Agrego player con id: " << id << std::endl;
           Player* placeholder = new Player(playerinfo);
           players[id] = placeholder;
           sprites.push_back(placeholder);
         }
       } else if (opcode == PLAYER_DISCONNECT) {
-        std::cout << "ENTROOOO" << std::endl;
         uint32_t id;
         this->socket.receive(&id, sizeof(id));
+        if (id == this->selfId) continue;
+        this->lock.lock();
         Player* toKill = players[id];
         players.erase(id);
         std::vector<Drawable*>::iterator it = this->sprites.begin();
@@ -41,7 +43,9 @@ void CommandExecuter::run(){
             break;
           }
         }
+        std::cout << "ENTROOOO para matar a: " << id << std::endl;
         delete toKill;
+        this->lock.unlock();
       }
     } catch (SocketException& e) {
       break;

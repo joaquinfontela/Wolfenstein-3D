@@ -6,6 +6,7 @@
 #include "texturemanager.h"
 #include "../../common/includes/Map/Map.h"
 
+#include <mutex>
 #include <atomic>
 #include <vector>
 #include <math.h>
@@ -14,22 +15,23 @@
 
 class Raycaster {
  public:
-  Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window, Player* player, std::vector<Drawable*>& sprites) :
-          alive(b), manager(manager) , matrix(m) , player(player) , window(window), sprites(sprites) {
+  Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window, Player* player, std::vector<Drawable*>& sprites, std::mutex& lock) :
+          alive(b), manager(manager) , matrix(m) , player(player) , window(window), sprites(sprites) , lock(lock) {
     manager.getWindowSize(&this->width, &this->height);
     this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   }
   void run();
  private:
-  std::vector<Drawable*>& sprites;
   std::atomic<bool>& alive;
-  int width;
-  int height;
   TextureManager& manager;
   Map& matrix;
-  double distanceToProyection;
   Player* player;
   SdlWindow* window;
+  std::vector<Drawable*>& sprites;
+  std::mutex& lock;
+  int width;
+  int height;
+  double distanceToProyection;
 };
 
 #endif  // RAYCASTER_H_
