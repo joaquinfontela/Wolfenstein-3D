@@ -1,12 +1,12 @@
 #include "../../../../includes/Model/Item/ItemDrop/ItemDrop.h"
 
-ItemDrop::ItemDrop(Item &anItem) : item(anItem) {}
+ItemDrop::ItemDrop(int itemId) { this->itemId = itemId; }
 
 bool ItemDrop::canBePickedUpBy(Player &player) {
-  return item.canBePickedUpBy(player);
+  return item->canBePickedUpBy(player);
 }
 
-void ItemDrop::pickUp(Player &player) { item.pickUp(player); }
+void ItemDrop::pickUp(Player &player) { item->pickUp(player); }
 
 bool ItemDrop::pickUpIfPossible(Player &player) {
   bool wasPickedUp;

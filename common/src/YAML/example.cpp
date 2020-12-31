@@ -15,9 +15,9 @@ int main() {
       tileMap.addDropWithIdAt(itemId, c.getX(), c.getY());
     }
   }
-  std::vector<int> dropIds = tileMap.getDropIdsAt(4, 2);
-  for (int dropId : dropIds) {
-    std::cout << dropId << std::endl;
+  std::vector<ItemDrop> drops = tileMap.getItemDropsAt(4, 2);
+  for (ItemDrop drop : drops) {
+    std::cout << drop.itemId << std::endl;
   }
   return 0;
 }

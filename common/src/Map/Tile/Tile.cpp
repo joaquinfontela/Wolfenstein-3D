@@ -5,6 +5,9 @@ Tile::Tile(int x, int y) {
   this->y = y;
 }
 
-void Tile::addDrop(int id) { dropsIds.push_back(id); }
+void Tile::addDrop(int id) {
+  ItemDrop i(id);
+  drops.push_back(i);
+}
 
-std::vector<int> Tile::getDropIds() { return dropsIds; }
+std::vector<ItemDrop> Tile::getItemDrops() { return drops; }

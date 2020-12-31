@@ -6,13 +6,14 @@
 
 class ItemDrop {
  protected:
-  Item& item;
+  Item* item;
   bool canBePickedUpBy(Player& player);
   void pickUp(Player& player);
 
  public:
-  ItemDrop(Item& anITem);
+  ItemDrop(int itemId);
   bool pickUpIfPossible(Player& player);
+  int itemId;
 };
 
 #endif  // TP_FINAL_ITEMDROP_H

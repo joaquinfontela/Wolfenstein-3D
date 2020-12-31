@@ -23,6 +23,6 @@ void Map::addDropWithIdAt(int id, int x, int y) {
   this->tileMatrix[x][y].addDrop(id);
 }
 
-std::vector<int> Map::getDropIdsAt(int x, int y) {
-  return this->tileMatrix[x][y].getDropIds();
+std::vector<ItemDrop> Map::getItemDropsAt(int x, int y) {
+  return this->tileMatrix[x][y].getItemDrops();
 }

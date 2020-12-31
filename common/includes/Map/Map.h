@@ -12,7 +12,7 @@ class Map {
  public:
   Map(int dimx, int dimy);
   void addDropWithIdAt(int id, int x, int y);
-  std::vector<int> getDropIdsAt(int x, int y);
+  std::vector<ItemDrop> getItemDropsAt(int x, int y);
 
  private:
   int dimx;
