@@ -17,7 +17,7 @@ int main() {
   }
   std::vector<ItemDrop> drops = tileMap.getItemDropsAt(4, 2);
   for (ItemDrop drop : drops) {
-    std::cout << drop.itemId << std::endl;
+    std::cout << drop.id << std::endl;
   }
   return 0;
 }
