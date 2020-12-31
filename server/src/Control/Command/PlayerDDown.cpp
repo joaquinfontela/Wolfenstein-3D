@@ -8,6 +8,6 @@ PlayerDDown::PlayerDDown(int ID) {
 }
 
 void PlayerDDown::execute(WaitingQueue<Notification*>& notifications, Game& game) {
-  double rotSpeed = -0.25;
+  double rotSpeed = -0.125;
   game.updatePlayerRotationSpeed(this->playerID, rotSpeed);
 }

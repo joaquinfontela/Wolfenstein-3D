@@ -8,6 +8,6 @@ PlayerWUp::PlayerWUp(int ID) {
 }
 
 void PlayerWUp::execute(WaitingQueue<Notification*>& notifications, Game& game) {
-  double movSpeed = -0.25;
+  double movSpeed = -0.2;
   game.updatePlayerMoveSpeed(this->playerID, movSpeed);
 }

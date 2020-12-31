@@ -36,6 +36,7 @@ void Engine::run() {
 
     t2 = std::chrono::steady_clock::now();
     diff = t2 - t1;
+
     rest = rate - ceil(diff.count());
 
     if(rest < 0){

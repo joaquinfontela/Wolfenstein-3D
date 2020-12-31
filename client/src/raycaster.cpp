@@ -115,7 +115,7 @@ void Raycaster::run(){
       d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-    this->hud.renderText();
+    //this->hud.renderText();
     this->window->render();
   }
 }

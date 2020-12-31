@@ -8,6 +8,6 @@ PlayerSDown::PlayerSDown(int ID) {
 }
 
 void PlayerSDown::execute(WaitingQueue<Notification*>& notifications, Game& game) {
-  double moveSpeed = -0.25;
+  double moveSpeed = -0.2;
   game.updatePlayerMoveSpeed(this->playerID, moveSpeed);
 }

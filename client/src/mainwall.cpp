@@ -21,8 +21,8 @@
 
 #define IMG_PATH "../media/"
 #define ERROR -1
-#define HEIGHT 500
-#define WIDTH 500
+#define HEIGHT 920
+#define WIDTH 1280
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
 int main(int argc, char** argv) {
@@ -60,14 +60,14 @@ int main(int argc, char** argv) {
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
-  Hud hud(&window, player);
+  //Hud hud(&window, player);
   std::map<uint32_t,Player*> players;
   players[id] = player;
 
   std::cout << "Soy el de id: " << id << std::endl;
 
   std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
-  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
+  Raycaster caster(manager, matrix, alive, &window, player, sprites, m);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id);

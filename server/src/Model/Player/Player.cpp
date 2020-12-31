@@ -65,7 +65,6 @@ void Player::update(){
   dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
   dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
 
-  std::cout<<"[PLAYER] New Updated position: posX: "<<x<<", posY: "<<y<<", dirX: "<<dirX<<", dirY: "<<dirY<<std::endl;
 
   this->hasToBeNotified = true;
 }
