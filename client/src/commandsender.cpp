@@ -19,6 +19,7 @@ void CommandSender::run() {
   bool downPressed = false;
   bool rightPressed = false;
   bool leftPressed = false;
+  bool enterPressed = false;
   while (alive) {
     try {
       SDL_Event event;
@@ -59,6 +60,13 @@ void CommandSender::run() {
               this->update(KEY_S_DOWN);
             }
             break;
+          case SDLK_RETURN:
+            std::cout << "Apretando enter\n";
+            if (!enterPressed) {
+              enterPressed = true;
+              //this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
+            }
+            break;
           case SDLK_LEFT:
             break;
           case SDLK_RIGHT:
@@ -82,6 +90,11 @@ void CommandSender::run() {
           case SDLK_s:
             downPressed = false;
             this->update(KEY_S_UP);
+            break;
+          case SDLK_RETURN:
+            std::cout << "Soltando enter\n";
+            enterPressed = false;
+            //this->update(PLAYER_SHOOT);
             break;
           case SDLK_LEFT:
             break;

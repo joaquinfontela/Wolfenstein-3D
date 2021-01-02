@@ -496,6 +496,36 @@ server/src/Control/Command/PlayerSUp.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerSUp.cpp.s
 .PHONY : server/src/Control/Command/PlayerSUp.cpp.s
 
+server/src/Control/Command/PlayerShoot.o: server/src/Control/Command/PlayerShoot.cpp.o
+
+.PHONY : server/src/Control/Command/PlayerShoot.o
+
+# target to build an object file
+server/src/Control/Command/PlayerShoot.cpp.o:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerShoot.cpp.o
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerShoot.cpp.o
+.PHONY : server/src/Control/Command/PlayerShoot.cpp.o
+
+server/src/Control/Command/PlayerShoot.i: server/src/Control/Command/PlayerShoot.cpp.i
+
+.PHONY : server/src/Control/Command/PlayerShoot.i
+
+# target to preprocess a source file
+server/src/Control/Command/PlayerShoot.cpp.i:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerShoot.cpp.i
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerShoot.cpp.i
+.PHONY : server/src/Control/Command/PlayerShoot.cpp.i
+
+server/src/Control/Command/PlayerShoot.s: server/src/Control/Command/PlayerShoot.cpp.s
+
+.PHONY : server/src/Control/Command/PlayerShoot.s
+
+# target to generate assembly for a file
+server/src/Control/Command/PlayerShoot.cpp.s:
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Command/PlayerShoot.cpp.s
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Command/PlayerShoot.cpp.s
+.PHONY : server/src/Control/Command/PlayerShoot.cpp.s
+
 server/src/Control/Command/PlayerWDown.o: server/src/Control/Command/PlayerWDown.cpp.o
 
 .PHONY : server/src/Control/Command/PlayerWDown.o
@@ -1556,6 +1586,9 @@ help:
 	@echo "... server/src/Control/Command/PlayerSUp.o"
 	@echo "... server/src/Control/Command/PlayerSUp.i"
 	@echo "... server/src/Control/Command/PlayerSUp.s"
+	@echo "... server/src/Control/Command/PlayerShoot.o"
+	@echo "... server/src/Control/Command/PlayerShoot.i"
+	@echo "... server/src/Control/Command/PlayerShoot.s"
 	@echo "... server/src/Control/Command/PlayerWDown.o"
 	@echo "... server/src/Control/Command/PlayerWDown.i"
 	@echo "... server/src/Control/Command/PlayerWDown.s"

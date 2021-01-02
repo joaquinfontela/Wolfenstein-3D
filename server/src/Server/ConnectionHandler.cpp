@@ -10,7 +10,7 @@
 #include "../../includes/Control/Command/PlayerSDown.h"
 #include "../../includes/Control/Command/PlayerADown.h"
 #include "../../includes/Control/Command/PlayerDDown.h"
-
+#include "../../includes/Control/Command/PlayerShoot.h"
 #include "../../includes/Control/Command/PlayerWUp.h"
 #include "../../includes/Control/Command/PlayerAUp.h"
 #include "../../includes/Control/Command/PlayerSUp.h"
