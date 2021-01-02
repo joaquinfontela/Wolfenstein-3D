@@ -54,16 +54,12 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerDDown* command = new PlayerDDown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
         case KEY_W_DOWN:{
 
           PlayerWDown* command = new PlayerWDown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
 
@@ -71,8 +67,6 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerAUp* command = new PlayerAUp(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
 
@@ -80,8 +74,6 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerSUp* command = new PlayerSUp(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
 
@@ -89,8 +81,7 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerDUp* command = new PlayerDUp(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
+
           break;
         }
 
@@ -98,8 +89,7 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerWUp* command = new PlayerWUp(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
+
           break;
         }
 
@@ -107,6 +97,12 @@ void ConnectionHandler::receiveCommands() {
           PlayerDisconnected* playerDisc = new PlayerDisconnected(this->ID);
           this->commands.push(playerDisc);
           break;
+       }
+
+       case PLAYER_SHOOT: {
+         PlayerShoot* shoot = new PlayerShoot(this->ID);
+         this->commands.push(shoot);
+         break;
        }
         default:
           std::cout << "[ConnectionHandler] Unknow opcode received"
