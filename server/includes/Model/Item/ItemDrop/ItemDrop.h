@@ -3,6 +3,7 @@
 
 #include "../../Player/Player.h"
 #include "../Item.h"
+#include "./ItemFactory.h"
 
 class ItemDrop {
  protected:
@@ -13,7 +14,8 @@ class ItemDrop {
  public:
   ItemDrop(int itemId);
   bool pickUpIfPossible(Player& player);
-  int itemId;
+  int id;
+  //~ItemDrop();
 };
 
 #endif  // TP_FINAL_ITEMDROP_H

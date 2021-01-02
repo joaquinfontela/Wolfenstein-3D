@@ -10,6 +10,6 @@ class Tile {
 
  public:
   Tile(int x, int y);
-  void addDrop(int id);
+  void addDrop(ItemDrop itemDrop);
   std::vector<ItemDrop> getItemDrops();
 };
