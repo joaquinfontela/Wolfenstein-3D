@@ -20,9 +20,9 @@ Map::Map(int dimx, int dimy) {
 }
 
 void Map::addDropWithIdAt(int id, int x, int y) {
-  // if ((x > this->dimx) || (y > this->dimy))
-  //   throw std::runtime_error(
-  //       "Error adding drop into map (map limits overpassed).");
+  if ((x > this->dimx) || (y > this->dimy))
+    throw std::runtime_error(
+        "Error adding drop into map (map limits overpassed).");
   ItemDrop i(id);
   this->tileMatrix[x][y].addDrop(i);
 }
