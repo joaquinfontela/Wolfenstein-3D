@@ -1,24 +1,13 @@
-#ifndef TP_FINAL_MAP_H
-#define TP_FINAL_MAP_H
+//
+// Created by joaquinfontela on 1/12/20.
+//
 
-#include <string>
+#include "../../../includes/Model/Map/Map.h"
 
-class Map {
- public:
-  Map(const std::string& s) : dimx(24), dimy(24) {}
- /* int matrix[12][12] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1},
-                        {1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
-                        {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                        {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                        {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                        {1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-                        {1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1},
-                        {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};*/
-  int matrix[24][24] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+#include <iostream>
+
+// La uso para crear un mapa de prueba
+static int matrix[24][24] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -42,10 +31,40 @@ class Map {
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-  int dimx;
-  int dimy;
-  int get(int x, int y) { return matrix[x][y]; }
-};
 
-#endif  // TP_FINAL_MAP_H
+Map::Map(int dimx, int dimy) { // Deberia recibir directamente el archivo del mapa.
+  this->dimx = dimx;
+  this->dimy = dimy;
+  for (int x = 0; x < dimy; x++) {
+    std::vector<Tile> tileRow;
+    for (int y = 0; y < dimx; y++) {
+      Tile t(x, y);
+      if(matrix[x][y] != 0){
+        t.setWall();
+        std::cout<<"Setting wall at: "<<x<<", "<<y<<std::endl;
+      }
 
+
+      tileRow.push_back(t);
+    }
+    tileMatrix.push_back(tileRow);
+  }
+}
+
+void Map::addDropWithIdAt(int id, int x, int y) {
+  this->tileMatrix[x][y].addDrop(id);
+}
+
+std::vector<ItemDrop> Map::getItemDropsAt(int x, int y) {
+  return this->tileMatrix[x][y].getItemDrops();
+}
+
+bool Map::allowMovement(double mapX, double mapY){
+
+  int x = (int) mapX;
+  int y = (int) mapY;
+
+  std::cout<<"Trying to move to: "<<x<<", "<<y<<std::endl;
+
+  return this->tileMatrix.at(x).at(y).allowMovement();
+}

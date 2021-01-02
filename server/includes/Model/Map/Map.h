@@ -1,25 +1,28 @@
-#ifndef __MAP_H__
-#define __MAP_H__
+#ifndef TP_FINAL_MAP_H
+#define TP_FINAL_MAP_H
 
-#include "../Player/Player.h"
-class Map{
+#include <string>
+#include <vector>
 
-private:
+#include "./Tile/Tile.h"
+#include "../Item/ItemDrop/ItemDrop.h"
 
-    int map[10][10]; // Esto deberia determinarse dinamicamente, considerar memoria dinamica.
+class Tile;
+class ItemDrop;
 
+typedef std::vector<std::vector<Tile>> TileMatrix;
 
-public:
+class Map {
+ public:
+  Map(int dimx, int dimy);
+  void addDropWithIdAt(int id, int x, int y);
+  std::vector<ItemDrop> getItemDropsAt(int x, int y);
+  bool allowMovement(double x, double y);
 
-    bool checkCollision(int toX, int toY);
-
-    void respawn(Player& player);
-
+ private:
+  int dimx;
+  int dimy;
+  TileMatrix tileMatrix;
 };
 
-
-
-
-
-
-#endif
+#endif  // TP_FINAL_MAP_H

@@ -51,14 +51,21 @@ void Player::fillPlayerData(PlayerData& data){
   return;
 }
 
-void Player::update(){
+void Player::update(Map& map){
 
   if(moveSpeed == 0.0 && rotSpeed == 0.0)
     return;
 
 
-  x += dirX * moveSpeed;
-  y += dirY * moveSpeed;
+  double newX =  x + dirX * moveSpeed;
+  double newY = y + dirY * moveSpeed;
+
+  if(map.allowMovement(newX, newY)){
+    x = newX;
+    y = newY;
+  }else
+    std::cout<<"INVALID MOVEMENT"<<std::endl;
+
 
   double oldDirX = dirX;
 

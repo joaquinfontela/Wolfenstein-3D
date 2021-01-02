@@ -4,6 +4,9 @@
 #include "../../Player/Player.h"
 #include "../Item.h"
 
+class Item;
+class Player;
+
 class ItemDrop {
  protected:
   Item* item;
@@ -11,6 +14,7 @@ class ItemDrop {
   void pickUp(Player& player);
 
  public:
+  ItemDrop(Item* item) : item(item){}
   ItemDrop(int itemId);
   bool pickUpIfPossible(Player& player);
   int itemId;

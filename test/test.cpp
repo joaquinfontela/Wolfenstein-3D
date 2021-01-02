@@ -51,7 +51,7 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
 Test(PlayerWith10PointsOfHealthPicksUpBloodAndGetsOnePointOfHealth) {
   Player myPlayer(10, 1);
   Blood blood;
-  ItemDrop bloodDrop(blood);
+  ItemDrop bloodDrop(&blood);
 
   TEST_ASSERT_TRUE(bloodDrop.pickUpIfPossible(myPlayer));
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
@@ -60,7 +60,7 @@ Test(PlayerWith10PointsOfHealthPicksUpBloodAndGetsOnePointOfHealth) {
 Test(PlayerWith11PointsOfHealthCannotPickUpBloodAndDoesNotGetExtraHealth) {
   Player myPlayer(11, 1);
   Blood blood;
-  ItemDrop bloodDrop(blood);
+  ItemDrop bloodDrop(&blood);
 
   TEST_ASSERT_FALSE(bloodDrop.pickUpIfPossible(myPlayer));
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
@@ -69,7 +69,7 @@ Test(PlayerWith11PointsOfHealthCannotPickUpBloodAndDoesNotGetExtraHealth) {
 Test(PlayerPicksUpChestAndGets100Points) {
   Player myPlayer(100, 1);
   Chest myChest;
-  ItemDrop chestDrop(myChest);
+  ItemDrop chestDrop(&myChest);
   chestDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 100);
@@ -78,7 +78,7 @@ Test(PlayerPicksUpChestAndGets100Points) {
 Test(PlayerPicksUpCrossAndGets10Points) {
   Player myPlayer(100, 1);
   Cross myCross;
-  ItemDrop crossDrop(myCross);
+  ItemDrop crossDrop(&myCross);
   crossDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 10);
@@ -87,7 +87,7 @@ Test(PlayerPicksUpCrossAndGets10Points) {
 Test(PlayerPicksUpCupAndGets50Points) {
   Player myPlayer(100, 1);
   Cup myCup;
-  ItemDrop cupDrop(myCup);
+  ItemDrop cupDrop(&myCup);
   cupDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 50);
@@ -96,7 +96,7 @@ Test(PlayerPicksUpCupAndGets50Points) {
 Test(PlayerPicksUpCrownAndGets200Points) {
   Player myPlayer(100, 1);
   Crown myCrown;
-  ItemDrop crownDrop(myCrown);
+  ItemDrop crownDrop(&myCrown);
   crownDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getScore(), 200);
@@ -105,7 +105,7 @@ Test(PlayerPicksUpCrownAndGets200Points) {
 Test(PlayerPicksUpFoodAndGets10OfHealth) {
   Player myPlayer(50, 1);
   Food myFood;
-  ItemDrop foodDrop(myFood);
+  ItemDrop foodDrop(&myFood);
   foodDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 60);
@@ -114,7 +114,7 @@ Test(PlayerPicksUpFoodAndGets10OfHealth) {
 Test(PlayerCannotPickUpFoodWhenHeHas100PointsOfHealth) {
   Player myPlayer(100, 1);
   Food myFood;
-  ItemDrop foodDrop(myFood);
+  ItemDrop foodDrop(&myFood);
   TEST_ASSERT_FALSE(foodDrop.pickUpIfPossible(myPlayer));
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
 }
@@ -122,7 +122,7 @@ Test(PlayerCannotPickUpFoodWhenHeHas100PointsOfHealth) {
 Test(PlayerPicksUpMedKitAndGets20OfHealth) {
   Player myPlayer(50, 1);
   MedKit medKit;
-  ItemDrop medKitDrop(medKit);
+  ItemDrop medKitDrop(&medKit);
   medKitDrop.pickUpIfPossible(myPlayer);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 70);
@@ -131,7 +131,7 @@ Test(PlayerPicksUpMedKitAndGets20OfHealth) {
 Test(PlayerCannotPickUpMedKitWhenHeHas100PointsOfHealth) {
   Player myPlayer(100, 1);
   MedKit myMedKit;
-  ItemDrop medKitDrop(myMedKit);
+  ItemDrop medKitDrop(&myMedKit);
   TEST_ASSERT_FALSE(medKitDrop.pickUpIfPossible(myPlayer));
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
 }
@@ -139,7 +139,7 @@ Test(PlayerCannotPickUpMedKitWhenHeHas100PointsOfHealth) {
 Test(PlayerCannotSurpass100PointsOfHealth) {
   Player myPlayer(90, 1);
   MedKit myMedKit;
-  ItemDrop medKitDrop(myMedKit);
+  ItemDrop medKitDrop(&myMedKit);
   TEST_ASSERT_TRUE(medKitDrop.pickUpIfPossible(myPlayer));
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
 }
@@ -147,7 +147,7 @@ Test(PlayerCannotSurpass100PointsOfHealth) {
 Test(PlayerHasNotKeyBeforePickingItUpAndWhenHePicksItUpHeHasAKey) {
   Player myPlayer(100, 1);
   Key myKey;
-  ItemDrop keyDrop(myKey);
+  ItemDrop keyDrop(&myKey);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.hasKey(), 0);
   keyDrop.pickUpIfPossible(myPlayer);

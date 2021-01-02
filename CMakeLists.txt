@@ -82,6 +82,8 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerSUp.cpp
         server/src/Control/Command/PlayerDUp.cpp
         server/src/Control/Command/PlayerWUp.cpp
+        server/src/Model/Map/Map.cpp
+        server/src/Model/Map/Tile/Tile.cpp
 
         test/CPPUnit.h
         test/CPPUnit.cpp

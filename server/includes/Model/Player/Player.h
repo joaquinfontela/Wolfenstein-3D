@@ -3,8 +3,10 @@
 
 #include "../Item/Item.h"
 #include "../../../../common/includes/PlayerData.h"
+#include "../Map/Map.h"
 
 class Item;
+class Map;
 
 class Player {
  private:
@@ -37,7 +39,7 @@ class Player {
   void equipWeapon(Item* weapon);
 
   bool hasToBeUpdated();
-  void update();
+  void update(Map& map);
 
 
   void pickupKey();

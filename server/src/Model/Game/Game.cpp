@@ -6,7 +6,7 @@
 #include "../../../includes/Model/Player/Player.h"
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 
-Game::Game(std::string mapFile, std::string configFile) : map(mapFile) {}
+Game::Game(std::string mapFile, std::string configFile) : map(24, 24) {}
 
 void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
@@ -39,7 +39,7 @@ void Game::updatePositions(){
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for(; it != this->players.end(); ++it){
-    it->second->update();
+    it->second->update(this->map);
   }
 }
 
