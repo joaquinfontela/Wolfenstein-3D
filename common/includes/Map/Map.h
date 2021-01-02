@@ -18,6 +18,7 @@ class Map {
   int dimx;
   int dimy;
   TileMatrix tileMatrix;
+  void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
 };
 
 #endif  // TP_FINAL_MAP_H
