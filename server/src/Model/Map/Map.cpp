@@ -4,6 +4,7 @@
 
 #include "../../../includes/Model/Map/Map.h"
 
+
 #include <iostream>
 
 // La uso para crear un mapa de prueba
@@ -67,12 +68,56 @@ void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
         "Error adding drop into map (map limits overpassed).");
 }
 
-bool Map::allowMovement(double mapX, double mapY){
+Player* Map::traceAttackFrom(Player* attacker){
 
-  int x = (int) mapX;
-  int y = (int) mapY;
+  double initialX = attacker->getX();
+  double initialY = attacker->getY();
 
-  std::cout<<"Trying to move to: "<<x<<", "<<y<<std::endl;
+  double dirX = attacker->getDirX() / 3.0;
+  double dirY = attacker->getDirY() / 3.0;
 
-  return this->tileMatrix.at(x).at(y).allowMovement();
+
+  int i = 1;
+
+  Player* p = nullptr;
+
+  while(true){
+
+    double rayPosX = (initialX + i * dirX);
+    double rayPosY = (initialY + i * dirY);
+
+    int mapX = (int) rayPosX;
+    int mapY = (int) rayPosY;
+
+    if(this->tileMatrix.at(mapX).at(mapY).checkWall())
+      return nullptr;
+
+    else if((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(rayPosX, rayPosY)) != nullptr)
+      return p;
+
+    i++;
+  }
+}
+bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p){
+
+  int x = (int) toX;
+  int y = (int) toY;
+
+
+  if(this->tileMatrix.at(x).at(y).allowMovement(toX, toY, p)){
+
+    if((int) fromX != x || (int) fromY != y){
+      this->tileMatrix.at((int) fromX).at((int) fromY).removePlayerFromTile(p);
+      this->tileMatrix.at(x).at(y).addPlayer(p);
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+void Map::addPlayer(int x, int y, Player* p){
+
+  this->tileMatrix.at(x).at(y).addPlayer(p);
 }

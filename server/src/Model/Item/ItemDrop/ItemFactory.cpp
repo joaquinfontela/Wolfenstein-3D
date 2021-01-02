@@ -3,5 +3,7 @@
 #include "../../../../includes/Model/Item/Weapon/Knife.h"
 
 Item* ItemFactory::getItem(int itemId) {
-  return new Knife();  // provisorio
+  //return new Knife();  // provisorio
+
+  return nullptr;
 }

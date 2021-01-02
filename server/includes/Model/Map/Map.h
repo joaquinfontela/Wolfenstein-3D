@@ -6,6 +6,7 @@
 
 #include "Tile/Tile.h"
 #include "../Item/ItemDrop/ItemDrop.h"
+#include "../Player/Player.h"
 
 class Tile;
 class ItemDrop;
@@ -17,8 +18,11 @@ class Map {
   Map(int dimx, int dimy);
   void addDropWithIdAt(int id, int x, int y);
   std::vector<ItemDrop> getItemDropsAt(int x, int y);
-  bool allowMovement(double x, double y);
+  bool moveTo(double fromX, double fromY, double x, double y, Player* p);
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
+  void addPlayer(int x, int y, Player* p);
+
+  Player* traceAttackFrom(Player* attacker);
 
  private:
   int dimx;

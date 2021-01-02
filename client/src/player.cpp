@@ -1,5 +1,6 @@
 #include "player.h"
 #include <math.h>
+#include <iostream>
 
 #define BLOCKSIZE 64
 #define PI 3.141592654
@@ -9,24 +10,9 @@ static bool sameSign(double a, double b) {
 }
 
 int Player::getSoldierId(double x, double y, double dirX, double dirY) {
-  double angle = abs(atan2(this->y - y, this->x - x)) * 180 / PI;
-
-  if (angle > 0 && angle < 22.5) // Frente
-    return 8;
-  else if (angle < 67.5 && angle > 22.5) // Der-Frente
-    return
-  else if (angle < 112.5 && angle > 67.5) // Der
-    return 9;
-  else if (angle > 112.5 && angle < 157.5) // Der-Atrás
-    return
-  else if (angle < 202.5 && angle > 157.5) // Atrás
-    return 10;
-  else if (angle > 202.5 && angle > 247.5) // Izq-Atrás
-    return
-  else if (angle > 292.5 && angle < 247.5) // Izq
-    return 11;
-  else // Izq-Frente
-    return 
+  double angle = atan2(this->y - y, this->x - x) * 180 / PI;
+  std::cout<<angle<<std::endl;
+  return 1;
 }
 
 Player::Player(PlayerData& info) {
@@ -98,6 +84,10 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   bool sameSignY = sameSign(this->dirY, dirY);
   bool diffSignX = !sameSignX;
   bool diffSignY = !sameSignY;
+
+
+  getSoldierId(posX, posY, dirX, dirY);
+
 
   if (diffSignX && diffSignY)
     spriteId = 11;

@@ -7,9 +7,22 @@
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
 
-Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
+Player::Player(unsigned int hp, unsigned int lifes, Map& map, unsigned int playerID)
+    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {
 
+      this->playerID = playerID;
+      map.addPlayer(6, 4, this);
+
+    }
+
+Player::Player(unsigned int hp, unsigned int lifes)
+        : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
+
+
+bool Player::collidesWith(double x, double y){
+
+  return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
+}
 int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
     this->health = 0;
@@ -29,6 +42,8 @@ bool Player::hasToBeUpdated(){
 
 int Player::takeDamage(unsigned int damage) {
 
+
+  std::cout<<"[GAME LOGIC] Player has received: "<<damage<< " damage."<<std::endl;
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
@@ -60,7 +75,7 @@ void Player::update(Map& map){
   double newX =  x + dirX * moveSpeed;
   double newY = y + dirY * moveSpeed;
 
-  if(map.allowMovement(newX, newY)){
+  if(map.moveTo(x, y, newX, newY, this)){
     x = newX;
     y = newY;
   }
@@ -75,11 +90,31 @@ void Player::update(Map& map){
   this->hasToBeNotified = true;
 }
 
+double Player::getX(){
+  return this->x;
+}
+
+double Player::getY(){
+  return this->y;
+}
+
+double Player::getDirX(){
+  return this->dirX;
+}
+
+double Player::getDirY(){
+  return this->dirY;
+}
+
 int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
-  // cambio a cuchillo
-  return 0;
+  // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
+  return 1;
+}
+
+unsigned int Player::ID(){
+  return this->playerID;
 }
 
 void Player::updateMoveSpeed(double moveSpeed){
@@ -90,7 +125,7 @@ void Player::updateRotationSpeed(double rotSpeed){
   this->rotSpeed += rotSpeed;
 }
 
-void Player::equipWeapon(Item* weapon) {
+void Player::equipWeapon(Weapon* weapon) {
    this->weapon = (Weapon*)weapon;
 
    this->hasToBeNotified = true;
@@ -124,3 +159,8 @@ void Player::addHealth(int health) {
 void Player::addPoints(int points) { this->score += points; }
 
 int Player::getScore() { return this->score; }
+
+
+Player::~Player(){
+  delete this->weapon;
+}
