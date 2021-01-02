@@ -43,7 +43,7 @@ void CommandExecuter::run(){
             break;
           }
         }
-        std::cout << "ENTROOOO para matar a: " << id << std::endl;
+        std::cout << "Killing player with id: " << id << std::endl;
         delete toKill;
         this->lock.unlock();
       }

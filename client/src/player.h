@@ -14,6 +14,7 @@ class Player : public Drawable {
   Drawable(posX, posY, 3) , dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY), playerID(id) {}
   void draw(TextureManager& manager, double posX, double posY, double dirX,
     double dirY, double planeX, double planeY, double* zBuffer) override;
+  int getSoldierId(double x, double y, double dirX, double dirY);
 
   int playerID;
   double dirX;

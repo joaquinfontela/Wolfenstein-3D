@@ -21,8 +21,8 @@
 
 #define IMG_PATH "../media/"
 #define ERROR -1
-#define HEIGHT 920
-#define WIDTH 1280
+#define HEIGHT 500
+#define WIDTH 500
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
 int main(int argc, char** argv) {
@@ -54,8 +54,6 @@ int main(int argc, char** argv) {
   Drawable barrel2(7,7,7);
   Drawable greenlight1(2,5,6);
   Drawable greenlight2(2,7,6);
-
-  // VA A PERDER MEMORMIAAAAAAA (si le meto new, doble delete con el destructor de commandexecuter)
 
   std::atomic<bool> alive;
   alive = true;
