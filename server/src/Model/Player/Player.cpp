@@ -162,5 +162,5 @@ int Player::getScore() { return this->score; }
 
 
 Player::~Player(){
-  delete this->weapon;
+  //delete this->weapon;
 }
