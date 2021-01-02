@@ -48,4 +48,3 @@ class Map {
 };
 
 #endif  // TP_FINAL_MAP_H
-

@@ -3,6 +3,7 @@
 
 #include "../../Player/Player.h"
 #include "../Item.h"
+#include "./ItemFactory.h"
 
 class Item;
 class Player;
@@ -17,7 +18,8 @@ class ItemDrop {
   ItemDrop(Item* item) : item(item){}
   ItemDrop(int itemId);
   bool pickUpIfPossible(Player& player);
-  int itemId;
+  int id;
+  //~ItemDrop();
 };
 
 #endif  // TP_FINAL_ITEMDROP_H

@@ -1,6 +1,10 @@
 #include "../../../../includes/Model/Item/ItemDrop/ItemDrop.h"
 
-ItemDrop::ItemDrop(int itemId) { this->itemId = itemId; }
+ItemDrop::ItemDrop(int itemId) : id(itemId) {
+  ItemFactory it;
+
+  this->item = it.getItem(itemId);
+}
 
 bool ItemDrop::canBePickedUpBy(Player &player) {
   return item->canBePickedUpBy(player);
@@ -13,3 +17,5 @@ bool ItemDrop::pickUpIfPossible(Player &player) {
   if ((wasPickedUp = canBePickedUpBy(player))) pickUp(player);
   return wasPickedUp;
 }
+
+// ItemDrop::~ItemDrop() { delete this->item; }

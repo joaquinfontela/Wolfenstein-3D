@@ -17,7 +17,9 @@ class Tile {
 
  public:
   Tile(int x, int y);
+  void addDrop(ItemDrop itemDrop);
   void addDrop(int id);
+
   std::vector<ItemDrop> getItemDrops();
   void setWall();
   bool allowMovement();

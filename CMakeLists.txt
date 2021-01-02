@@ -57,6 +57,7 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
         server/src/Model/Item/ItemDrop/ItemDrop.cpp
+        server/src/Model/Item/ItemDrop/ItemFactory.cpp
         server/src/Model/Item/Item.cpp
         server/src/Model/Item/Ammo.cpp
         server/src/Model/Item/Blood.cpp
@@ -68,6 +69,7 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/MedKit.cpp
         server/src/Model/Item/Weapon/Weapon.cpp
+        server/src/Model/Item/Weapon/Knife.cpp
         server/src/Control/Command/PlayerMove.cpp
         server/src/Control/Command/PlayerDisconnected.cpp
         server/src/Control/Notification/PlayerConnected.cpp

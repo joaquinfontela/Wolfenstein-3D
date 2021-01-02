@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "./Tile/Tile.h"
+#include "Tile/Tile.h"
 #include "../Item/ItemDrop/ItemDrop.h"
 
 class Tile;
@@ -18,6 +18,7 @@ class Map {
   void addDropWithIdAt(int id, int x, int y);
   std::vector<ItemDrop> getItemDropsAt(int x, int y);
   bool allowMovement(double x, double y);
+  void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
 
  private:
   int dimx;

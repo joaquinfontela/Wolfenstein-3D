@@ -63,8 +63,7 @@ void Player::update(Map& map){
   if(map.allowMovement(newX, newY)){
     x = newX;
     y = newY;
-  }else
-    std::cout<<"INVALID MOVEMENT"<<std::endl;
+  }
 
 
   double oldDirX = dirX;

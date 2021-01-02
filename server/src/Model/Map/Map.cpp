@@ -41,7 +41,6 @@ Map::Map(int dimx, int dimy) { // Deberia recibir directamente el archivo del ma
       Tile t(x, y);
       if(matrix[x][y] != 0){
         t.setWall();
-        std::cout<<"Setting wall at: "<<x<<", "<<y<<std::endl;
       }
 
 
@@ -52,11 +51,20 @@ Map::Map(int dimx, int dimy) { // Deberia recibir directamente el archivo del ma
 }
 
 void Map::addDropWithIdAt(int id, int x, int y) {
-  this->tileMatrix[x][y].addDrop(id);
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  ItemDrop i(id);
+  //this->tileMatrix[x][y].addDrop(i);
 }
 
 std::vector<ItemDrop> Map::getItemDropsAt(int x, int y) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
   return this->tileMatrix[x][y].getItemDrops();
+}
+
+void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
+  if ((x > this->dimx) || (y > this->dimy))
+    throw std::runtime_error(
+        "Error adding drop into map (map limits overpassed).");
 }
 
 bool Map::allowMovement(double mapX, double mapY){

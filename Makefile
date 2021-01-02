@@ -1066,6 +1066,36 @@ server/src/Model/Item/ItemDrop/ItemDrop.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
 .PHONY : server/src/Model/Item/ItemDrop/ItemDrop.cpp.s
 
+server/src/Model/Item/ItemDrop/ItemFactory.o: server/src/Model/Item/ItemDrop/ItemFactory.cpp.o
+
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.o
+
+# target to build an object file
+server/src/Model/Item/ItemDrop/ItemFactory.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.o
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.cpp.o
+
+server/src/Model/Item/ItemDrop/ItemFactory.i: server/src/Model/Item/ItemDrop/ItemFactory.cpp.i
+
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.i
+
+# target to preprocess a source file
+server/src/Model/Item/ItemDrop/ItemFactory.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.i
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.cpp.i
+
+server/src/Model/Item/ItemDrop/ItemFactory.s: server/src/Model/Item/ItemDrop/ItemFactory.cpp.s
+
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.s
+
+# target to generate assembly for a file
+server/src/Model/Item/ItemDrop/ItemFactory.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/ItemDrop/ItemFactory.cpp.s
+.PHONY : server/src/Model/Item/ItemDrop/ItemFactory.cpp.s
+
 server/src/Model/Item/Key.o: server/src/Model/Item/Key.cpp.o
 
 .PHONY : server/src/Model/Item/Key.o
@@ -1125,6 +1155,36 @@ server/src/Model/Item/MedKit.cpp.s:
 	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/MedKit.cpp.s
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/MedKit.cpp.s
 .PHONY : server/src/Model/Item/MedKit.cpp.s
+
+server/src/Model/Item/Weapon/Knife.o: server/src/Model/Item/Weapon/Knife.cpp.o
+
+.PHONY : server/src/Model/Item/Weapon/Knife.o
+
+# target to build an object file
+server/src/Model/Item/Weapon/Knife.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Knife.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Knife.cpp.o
+.PHONY : server/src/Model/Item/Weapon/Knife.cpp.o
+
+server/src/Model/Item/Weapon/Knife.i: server/src/Model/Item/Weapon/Knife.cpp.i
+
+.PHONY : server/src/Model/Item/Weapon/Knife.i
+
+# target to preprocess a source file
+server/src/Model/Item/Weapon/Knife.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Knife.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Knife.cpp.i
+.PHONY : server/src/Model/Item/Weapon/Knife.cpp.i
+
+server/src/Model/Item/Weapon/Knife.s: server/src/Model/Item/Weapon/Knife.cpp.s
+
+.PHONY : server/src/Model/Item/Weapon/Knife.s
+
+# target to generate assembly for a file
+server/src/Model/Item/Weapon/Knife.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Model/Item/Weapon/Knife.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Model/Item/Weapon/Knife.cpp.s
+.PHONY : server/src/Model/Item/Weapon/Knife.cpp.s
 
 server/src/Model/Item/Weapon/Weapon.o: server/src/Model/Item/Weapon/Weapon.cpp.o
 
@@ -1553,12 +1613,18 @@ help:
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.o"
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.i"
 	@echo "... server/src/Model/Item/ItemDrop/ItemDrop.s"
+	@echo "... server/src/Model/Item/ItemDrop/ItemFactory.o"
+	@echo "... server/src/Model/Item/ItemDrop/ItemFactory.i"
+	@echo "... server/src/Model/Item/ItemDrop/ItemFactory.s"
 	@echo "... server/src/Model/Item/Key.o"
 	@echo "... server/src/Model/Item/Key.i"
 	@echo "... server/src/Model/Item/Key.s"
 	@echo "... server/src/Model/Item/MedKit.o"
 	@echo "... server/src/Model/Item/MedKit.i"
 	@echo "... server/src/Model/Item/MedKit.s"
+	@echo "... server/src/Model/Item/Weapon/Knife.o"
+	@echo "... server/src/Model/Item/Weapon/Knife.i"
+	@echo "... server/src/Model/Item/Weapon/Knife.s"
 	@echo "... server/src/Model/Item/Weapon/Weapon.o"
 	@echo "... server/src/Model/Item/Weapon/Weapon.i"
 	@echo "... server/src/Model/Item/Weapon/Weapon.s"
