@@ -84,7 +84,6 @@ void Raycaster::run(){
       if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
       else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
 
-
       int lineHeight = (int) (this->height/ perpWallDist);
 
       int texNum = 1;
@@ -110,12 +109,11 @@ void Raycaster::run(){
     this->lock.lock();
     for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(posX, posY); }
     std::sort(this->sprites.begin(), this->sprites.end(), []
-                    (Drawable* a, Drawable* b) -> bool { return *a < *b; });
-    for (Drawable* d : this->sprites) {
-      d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
+      (Drawable* a, Drawable* b) -> bool { return *a < *b; });
+    for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-    //this->hud.renderText();
+    this->hud.renderText();
     this->window->render();
   }
 }

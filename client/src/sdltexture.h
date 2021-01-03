@@ -11,7 +11,7 @@ class Area;
 class SdlTexture {
  public:
   SdlTexture(const std::string& filename, const SdlWindow& window);
-  SdlTexture(SDL_Surface* surface, SdlWindow* window);
+  SdlTexture(SDL_Surface* surface, const SdlWindow& window);
   ~SdlTexture();
   int render(const Area& src, const Area& dest) const;
   int renderAll(const Area& dest) const;

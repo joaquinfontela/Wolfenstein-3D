@@ -58,14 +58,14 @@ int main(int argc, char** argv) {
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
-  //Hud hud(&window, player);
+  Hud hud(&window, player);
   std::map<uint32_t,Player*> players;
   players[id] = player;
 
   std::cout << "Soy el de id: " << id << std::endl;
 
   std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
-  Raycaster caster(manager, matrix, alive, &window, player, sprites, m);
+  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id);
