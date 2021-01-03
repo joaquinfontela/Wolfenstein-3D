@@ -27,10 +27,20 @@ class Engine : public Thread {
 
  public:
   Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game);
+
+  // Le pida a sus colas que cierren ordenadamente para poder finalizar la ejecucion.
   void requestShutdown();
+
+  // Ejecuta en un loop los comandos que esten en la Queue
   void executeCommands();
+
+  // Hace update del modelo del juego.
   void update();
+
+  // Run para el thread.
   void run();
+
+  // Envia las notificaciones que se encuentren en la Queue.
   void sendNotifications();
 };
 

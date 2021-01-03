@@ -33,11 +33,20 @@ class Match {
   Match();
   ~Match();
   explicit Match(int lobbyID);
+
+  // Fuerza el cierre del Match.
   void forceShutdown();
+
+  // Devuelve si el Match tiene cierto ID o no.
   bool hasID(int lobbyID);
+
+  // Comienza el Match.
   void start();
+
+  // Devuelve si la partida efectivamente termino.
   bool hasEnded();
 
+  // Agrega un jugador a la partida y devuelve la instancia del ConnectionHandler que maneja la interaccion con dicho usuario.
   ConnectionHandler* addPlayerToMatch(ClientCommunication* player);
 };
 

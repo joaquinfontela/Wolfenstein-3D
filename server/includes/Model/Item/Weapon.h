@@ -13,6 +13,8 @@ public:
 
   Weapon(){}
   Weapon(unsigned int ammo) : ammo(ammo){}
+
+  // Devuelve el daño que haria un ataque.
   virtual unsigned int attack() = 0;
   ~Weapon(){}
 

@@ -9,6 +9,7 @@ public:
 
   Pistol(unsigned int ammo);
 
+  // Devuelve el daño que haria el disparo.
   unsigned int attack();
 
 };
