@@ -1,14 +1,13 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#include "../Item/Item.h"
 #include "../../../../common/includes/PlayerData.h"
-#include "../Item/Weapon/Weapon.h"
+#include "../Item/Weapon.h"
 #include "../Map/Map.h"
 
 
 class Map;
-class Weapon;
+
 
 
 class Player {

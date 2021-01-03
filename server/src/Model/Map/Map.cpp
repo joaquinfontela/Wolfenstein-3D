@@ -54,15 +54,14 @@ Map::Map(int dimx, int dimy) { // Deberia recibir directamente el archivo del ma
 
 void Map::addDropWithIdAt(int id, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  ItemDrop i(id);
+  //ItemDrop i(id);
   //this->tileMatrix[x][y].addDrop(i);
 }
 
-std::vector<ItemDrop> Map::getItemDropsAt(int x, int y) {
-  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  return this->tileMatrix[x][y].getItemDrops();
-}
-
+//std::vector<ItemDrop> Map::getItemDropsAt(int x, int y) {
+//  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+//  return this->tileMatrix[x][y].getItemDrops();
+//
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
   if ((x > this->dimx) || (y > this->dimy))
     throw std::runtime_error(

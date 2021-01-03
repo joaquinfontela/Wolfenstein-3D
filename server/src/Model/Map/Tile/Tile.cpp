@@ -7,11 +7,11 @@ Tile::Tile(int x, int y) {
 }
 
 void Tile::addDrop(int id) {
-  ItemDrop i(id);
-  drops.push_back(i);
+//  ItemDrop i(id);
+//  drops.push_back(i);
 }
 
-std::vector<ItemDrop> Tile::getItemDrops() { return drops; }
+//std::vector<ItemDrop> Tile::getItemDrops() { return drops; }
 
 
 bool Tile::allowMovement(double x, double y, Player* p){

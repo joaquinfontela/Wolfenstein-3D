@@ -1,14 +1,21 @@
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef __ITEM_H__
+#define __ITEM_H__
 
 #include "../Player/Player.h"
-class Player;
 
 class Item {
- public:
-  virtual ~Item() = 0;
-  virtual void pickUp(Player& player) = 0;
-  virtual bool canBePickedUpBy(Player& player) = 0;
+protected:
+
+  int id;
+
+public:
+
+  virtual bool canBePickedUpBy(Player* p);
+  virtual void pickUp(Player* p);
 };
+
+
+
+
 
 #endif

@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Player/Player.h"
 
-#include "../../../includes/Model/Item/Weapon/Weapon.h"
+#include "../../../includes/Model/Item/Weapon.h"
 #include <math.h>
 #include <iostream>
 #include <tuple>

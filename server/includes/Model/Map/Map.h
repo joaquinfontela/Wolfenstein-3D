@@ -5,11 +5,12 @@
 #include <vector>
 
 #include "Tile/Tile.h"
-#include "../Item/ItemDrop/ItemDrop.h"
+
 #include "../Player/Player.h"
 
 class Tile;
-class ItemDrop;
+class Player;
+
 
 typedef std::vector<std::vector<Tile>> TileMatrix;
 
@@ -17,7 +18,7 @@ class Map {
  public:
   Map(int dimx, int dimy);
   void addDropWithIdAt(int id, int x, int y);
-  std::vector<ItemDrop> getItemDropsAt(int x, int y);
+  //std::vector<ItemDrop> getItemDropsAt(int x, int y);
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
   void addPlayer(int x, int y, Player* p);
