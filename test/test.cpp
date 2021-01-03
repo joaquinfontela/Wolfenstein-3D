@@ -6,6 +6,9 @@
 #include "../common/includes/Socket/SocketWrapper.h"
 #include "../common/includes/Socket/SocketException.h"
 #include "../server/includes/Model/Game/Game.h"
+#include "../server/includes/Model/Item/Key.h"
+#include "../server/includes/Model/Item/Kit.h"
+#include "../server/includes/Model/Item/Blood.h"
 
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
@@ -17,6 +20,8 @@
 
 Map map(24, 24);
 
+
+// PLAYER TEST *********************************************************************
 Test(SocketThrowsExcepctedException) {
   SocketCommunication socket(-1);
   socket.connect("localhost", "8080");
@@ -43,6 +48,44 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
 
+Test(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan){
+
+  Player myPlayer(100, 1);
+  Kit kit(1);
+
+  TEST_ASSERT_FALSE(kit.canBePickedUpBy(&myPlayer));
+  myPlayer.takeDamage(10, map);
+  TEST_ASSERT_TRUE(kit.canBePickedUpBy(&myPlayer));
+  kit.pickUp(&myPlayer);
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
+}
+
+Test(PlayerCanPickUpKey){
+
+  Player myPlayer(100, 1);
+  Key key(1);
+
+  TEST_ASSERT_TRUE(key.canBePickedUpBy(&myPlayer));
+  TEST_ASSERT_FALSE(myPlayer.hasKey());
+  key.pickUp(&myPlayer);
+
+  TEST_ASSERT_TRUE(myPlayer.hasKey());
+}
+
+Test(PlayerCantPickUpBloodWithMoreThan11HPButThenYes){
+
+  Player myPlayer(11, 1);
+  Blood blood(1);
+
+  TEST_ASSERT_FALSE(blood.canBePickedUpBy(&myPlayer));
+  myPlayer.takeDamage(1, map);
+  TEST_ASSERT_TRUE(blood.canBePickedUpBy(&myPlayer));
+  blood.pickUp(&myPlayer);
+  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
+}
+
+//****************************************************************************
+// Double Wrapper Test
 Test(sendDoubles1) {
   double value = 10000000.5;
   uint32_t firstMessage = (uint32_t)value;
@@ -68,14 +111,18 @@ Test(sendDoubles3) {
   printf("Double: %f, asn: %f as doubles\n\n", value, ans);
   TEST_ASSERT_TRUE(value < ans + EPSILON && value > ans - EPSILON);
 }
+//*****************************************************************************
 
 int main() {
   TestSuit playerTests("Player Test");
   TestSuit socketWrapperTest("Socket Wrapper Test");
+
   playerTests.addTest(PlayerTakesDamageSuccesfully);
   playerTests.addTest(PlayerTakesFatalDamageAndDies);
-  playerTests.addTest(
-      PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.addTest(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.addTest(PlayerCanPickUpKey);
+  playerTests.addTest(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan);
+  playerTests.addTest(PlayerCantPickUpBloodWithMoreThan11HPButThenYes);
 
 
   socketWrapperTest.addTest(sendDoubles1);

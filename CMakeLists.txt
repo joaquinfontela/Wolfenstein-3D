@@ -49,6 +49,9 @@ set(SOURCE_FILES_SERVER
 
 
         server/src/Model/Item/Pistol.cpp
+        server/src/Model/Item/Key.cpp
+        server/src/Model/Item/Kit.cpp
+        server/src/Model/Item/Blood.cpp
 
         server/src/Control/Command/PlayerMove.cpp
         server/src/Control/Command/PlayerDisconnected.cpp

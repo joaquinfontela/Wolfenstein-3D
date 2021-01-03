@@ -11,7 +11,7 @@ class Map;
 
 
 class Player {
- private
+private:
   double x, y;
   double dirX, dirY;
   double rotSpeed;

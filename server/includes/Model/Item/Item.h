@@ -10,8 +10,11 @@ protected:
 
 public:
 
-  virtual bool canBePickedUpBy(Player* p);
-  virtual void pickUp(Player* p);
+  Item(){}
+  Item(int id) : id(id){}
+  virtual bool canBePickedUpBy(Player* p) = 0;
+  virtual void pickUp(Player* p) = 0;
+  ~Item(){}
 };
 
 
