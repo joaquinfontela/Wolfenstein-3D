@@ -11,7 +11,7 @@
 #define FONT_PATH "../media/"
 #define SIZE 25
 
-Hud::Hud(SdlWindow* window, Player*) : window(window), player(player) {
+Hud::Hud(SdlWindow* window, Player*) : window(window), player(player), texture(nullptr) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH "wolfenstein.ttf", 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
@@ -28,9 +28,9 @@ void Hud::renderText() {
   Area srcArea(0,0,200,200);
   Area destArea(100,100,200,200);
   SDL_ClearError();
-  std::cout << "SAMALE-CUM" << std::endl;
-  std::cout << "Drawing exit code: " << text->render(srcArea, destArea)
-  << " and error code: " << SDL_GetError() << std::endl;
+  //std::cout << "SAMALE-CUM" << std::endl;
+//  std::cout << "Drawing exit code: " << text->render(srcArea, destArea)
+//  << " and error code: " << SDL_GetError() << std::endl;
 }
 
 Hud::~Hud() {

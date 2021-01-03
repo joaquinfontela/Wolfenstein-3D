@@ -21,7 +21,7 @@ class Map {
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
   void addPlayer(int x, int y, Player* p);
-
+  std::tuple<double, double> handleRespawn();
   Player* traceAttackFrom(Player* attacker);
 
  private:

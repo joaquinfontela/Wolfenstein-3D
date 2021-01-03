@@ -10,7 +10,7 @@ Game::Game(std::string mapFile, std::string configFile) : map(24, 24) {}
 
 void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
-  unsigned int lifes = 2;
+  unsigned int lifes = 200;
 
   Player* newPlayer = new Player(health, lifes, map, playerID);
 
@@ -26,7 +26,7 @@ void Game::playerShoot(int playerID){
     int receiverHealth = 0;
 
     if((receiver = map.traceAttackFrom(attacker)) != nullptr){
-      receiverHealth = receiver->takeDamage(attacker->attack());
+      receiverHealth = receiver->takeDamage(attacker->attack(), this->map);
 
       //if(receiverHealth == 0) // El jugador murio y debe respawnear
       //  this->map.handleRespawn(receiver);

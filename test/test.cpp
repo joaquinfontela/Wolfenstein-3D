@@ -17,10 +17,13 @@
 #include "../server/includes/Model/Item/MedKit.h"
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
+#include "../server/includes/Model/Map/Map.h"
 #include "CPPUnit.h"
 
 #define PRECISION 100000.0
 #define EPSILON 10.0/PRECISION
+
+Map map(24, 24);
 
 Test(SocketThrowsExcepctedException) {
   SocketCommunication socket(-1);
@@ -30,21 +33,21 @@ Test(SocketThrowsExcepctedException) {
 Test(PlayerTakesDamageSuccesfully) {
   Player myPlayer(100, 2);
 
-  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(25), 75);
+  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(25, map), 75);
 }
 
 Test(PlayerTakesFatalDamageAndDies) {
   Player myPlayer(100, 2);
 
-  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(100), 0);
+  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(100, map), 0);
 }
 
 Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   Player myPlayer(100, 1);
-  myPlayer.takeDamage(100);
+  myPlayer.takeDamage(100, map);
 
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
-  myPlayer.takeDamage(100);
+  myPlayer.takeDamage(100, map);
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
 

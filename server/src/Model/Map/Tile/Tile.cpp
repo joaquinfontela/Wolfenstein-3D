@@ -38,13 +38,13 @@ bool Tile::checkWall(){
   return this->isWall;
 }
 
-Player* Tile::playerCollision(double x, double y){
+Player* Tile::playerCollision(double x, double y, Player* p){
 
   std::vector<Player*>::iterator it = this->players.begin();
 
   for(; it != this->players.end(); ++it){
 
-    if((*it)->collidesWith(x, y))
+    if((*it)->collidesWith(x, y) && (*it) != p)
       return (*it);
   }
 

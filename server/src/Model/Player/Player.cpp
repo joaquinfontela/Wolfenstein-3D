@@ -3,6 +3,8 @@
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
 #include <math.h>
 #include <iostream>
+#include <tuple>
+#include <functional>
 
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
@@ -23,16 +25,24 @@ bool Player::collidesWith(double x, double y){
 
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
-int Player::handleDeath() {
+int Player::handleDeath(Map& map) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;  // El jugador ya no puede respawnear.
   }
 
+
   this->lifeRemaining -= 1;
   this->health = MAX_HEALTH;  // Deberia restaurar la vida al maximo.
   this->ammo -= 10;
   this->key = false;
+
+  double x, y;
+  std::tie(x, y) = map.handleRespawn();
+  map.moveTo(this->x, this->y, x, y, this);
+  this->x = x;
+  this->y = y;
+
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 
@@ -40,14 +50,14 @@ bool Player::hasToBeUpdated(){
   return this->hasToBeNotified;
 }
 
-int Player::takeDamage(unsigned int damage) {
+int Player::takeDamage(unsigned int damage, Map& map) {
 
 
   std::cout<<"[GAME LOGIC] Player has received: "<<damage<< " damage."<<std::endl;
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath();
+    return handleDeath(map);
   }
 
   this->health -= damage;
@@ -110,7 +120,7 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
-  return 1;
+  return 10;
 }
 
 unsigned int Player::ID(){

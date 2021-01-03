@@ -26,13 +26,13 @@ class Player {
   Weapon* weapon;
   bool key;
 
-  int handleDeath();
+  int handleDeath(Map& map);
 
  public:
   Player(unsigned int hp, unsigned int lifes, Map& map, unsigned int playerID);
   Player(unsigned int hp, unsigned int lifes);
   Player() {}
-  int takeDamage(unsigned int damage);
+  int takeDamage(unsigned int damage, Map& map);
 
   unsigned int ID();
 

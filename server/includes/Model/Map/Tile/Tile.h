@@ -26,7 +26,7 @@ class Tile {
 
   void removePlayerFromTile(Player* p);
 
-  Player* playerCollision(double x, double y);
+  Player* playerCollision(double x, double y, Player* p);
 
   bool checkWall();
   std::vector<ItemDrop> getItemDrops();

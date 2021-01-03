@@ -64,7 +64,7 @@ void CommandSender::run() {
             std::cout << "Apretando enter\n";
             if (!enterPressed) {
               enterPressed = true;
-              //this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
+              this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
             }
             break;
           case SDLK_LEFT:
