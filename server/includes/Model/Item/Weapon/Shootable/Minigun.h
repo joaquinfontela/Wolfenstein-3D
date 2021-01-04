@@ -1,8 +1,8 @@
-#include "Weapon.h"
+#include "Shootable.h"
 
-class Minigun : public Weapon {
+class Minigun : public Shootable {
  public:
   Minigun(int newAmmo);
   ~Minigun();
-  unsigned int shoot();
+  unsigned int attack();
 };

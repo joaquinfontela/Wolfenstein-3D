@@ -2,7 +2,4 @@
 
 Pistol::Pistol(unsigned int ammo) : Shootable(ammo) {}
 
-unsigned int Pistol::attack() {
-  ammo--;
-  return 1;
-}
+unsigned int Pistol::attack() { return shoot(); }

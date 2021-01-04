@@ -55,6 +55,9 @@ set(SOURCE_FILES_SERVER
 
 
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
+        server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp
+        server/src/Model/Item/Weapon/Shootable/Minigun.cpp
+        server/src/Model/Item/Weapon/Shootable/MachineGun.cpp
         server/src/Model/Item/Weapon/Shootable/Shootable.cpp
         server/src/Model/Item/Weapon/Knife.cpp
         server/src/Model/Item/Key.cpp
