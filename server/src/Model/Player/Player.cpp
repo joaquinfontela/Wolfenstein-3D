@@ -71,6 +71,8 @@ void Player::fillPlayerData(PlayerData& data){
   data.dirX = this->dirX;
   data.dirY = this->dirY;
   data.rotSpeed = this->rotSpeed;
+  data.lives = lifeRemaining;
+  data.health = health;
 
   this->hasToBeNotified = false;
   return;

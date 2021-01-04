@@ -7,8 +7,8 @@ typedef struct PlayerData{
   double dirX, dirY;
   //int weaponID;
   double rotSpeed;
-  // int health;
-  // int lives;
+  int health;
+  int lives;
 }PlayerData;
 
 #endif

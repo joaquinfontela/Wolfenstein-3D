@@ -41,6 +41,8 @@ void SocketWrapper::send(PlayerData& value) {
   this->socket.sendDouble(&value.posX, sizeof(double));
   this->socket.sendDouble(&value.posY, sizeof(double));
   this->socket.sendDouble(&value.rotSpeed, sizeof(double));
+  this->socket.send((uint32_t*)&value.lives, sizeof(uint32_t));
+  this->socket.send((uint32_t*)&value.health, sizeof(uint32_t));
 
   //this->send((const double)value.dirX);
   //this->send((const double)value.dirY);
@@ -48,8 +50,7 @@ void SocketWrapper::send(PlayerData& value) {
   //this->send((const double)value.posY);
   //this->send((const double)value.rotSpeed);
   //this->socket.send(value.weaponID, sizeof(uint32_t));
-  //this->socket.send(value.lives, sizeof(uint32_t));
-  //this->socket.send(value.health, sizeof(uint32_t));
+
 }
 
 void SocketWrapper::receivePlayerData(PlayerData& value) {
@@ -60,6 +61,8 @@ void SocketWrapper::receivePlayerData(PlayerData& value) {
   this->socket.receiveDouble(&value.posX, sizeof(double));
   this->socket.receiveDouble(&value.posY, sizeof(double));
   this->socket.receiveDouble(&value.rotSpeed, sizeof(double));
+  this->socket.receive((uint32_t*)&value.lives, sizeof(uint32_t));
+  this->socket.receive((uint32_t*)&value.health, sizeof(uint32_t));
 //  this->socket.receive(&value.playerID, sizeof(value.playerID));
 //  value.dirX = this->receiveDouble();
 //  std::cout<<"DirX: "<<value.dirX<<std::endl;
@@ -68,6 +71,5 @@ void SocketWrapper::receivePlayerData(PlayerData& value) {
 //  value.posX = this->receiveDouble();
 //  value.rotSpeed = this->receiveDouble();
   //this->socket.receive(&value.weaponID, sizeof(uint32_t));
-  //this->socket.receive(&value.lives, sizeof(uint32_t));
-  //this->socket.senreceived(&value.health, sizeof(uint32_t));
+
 }
