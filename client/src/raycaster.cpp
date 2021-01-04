@@ -127,9 +127,9 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    if (iters % 8 == 0) {
+    if (iters % 500 == 0) {
       std::chrono::duration<float,std::milli> diff = t2 - t1;
-      lastfps = 8000/ceil(diff.count());
+      lastfps = 500000/ceil(diff.count());
       t1 = t2;
     }
     this->hud.renderFps(lastfps);
