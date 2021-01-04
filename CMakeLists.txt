@@ -17,13 +17,23 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Player/Player.h
         server/includes/Model/Game/Game.h
 
-        server/includes/Model/Item/Weapon/Weapon.h
+        server/includes/Model/Item/Ammo.h
+        server/includes/Model/Item/Blood.h
+        server/includes/Model/Item/Chest.h
+        server/includes/Model/Item/Cross.h
+        server/includes/Model/Item/Crown.h
+        server/includes/Model/Item/Cup.h
+        server/includes/Model/Item/Food.h
+        server/includes/Model/Item/Item.h
+        server/includes/Model/Item/Key.h
+        server/includes/Model/Item/Kit.h
         server/includes/Model/Item/Weapon/Knife.h
         server/includes/Model/Item/Weapon/Shootable/Pistol.h
         server/includes/Model/Item/Weapon/Shootable/Minigun.h
         server/includes/Model/Item/Weapon/Shootable/Shootable.h
         server/includes/Model/Item/Weapon/Shootable/MachineGun.h
         server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
+
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
