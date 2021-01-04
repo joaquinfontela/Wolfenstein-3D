@@ -11,7 +11,7 @@ static bool sameSign(double a, double b) {
 
 int Player::getSoldierId(double x, double y, double dirX, double dirY) {
   double angle = atan2(this->y - y, this->x - x) * 180 / PI;
-  std::cout<<angle<<std::endl;
+  std::cout << angle << std::endl;
   return 1;
 }
 
@@ -24,6 +24,8 @@ Player::Player(PlayerData& info) {
   this->planeX = 0;
   this->planeY = 0;
   this->playerID = info.playerID;
+  this->lives = info.lives;
+  this->health = info.health;
 }
 
 void Player::update(PlayerData& info) {
@@ -31,6 +33,8 @@ void Player::update(PlayerData& info) {
   this->y = info.posY;
   this->dirX = info.dirX;
   this->dirY = info.dirY;
+  this->lives = info.lives;
+  this->health = info.health;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);

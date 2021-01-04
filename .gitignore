@@ -9,3 +9,7 @@ cmake_install.cmake
 .idea/
 ./cmake-build-debug
 .gitignore
+*Makefile
+ServerMain
+WolfensteinTest
+*sdl-wall

@@ -19,6 +19,7 @@ void CommandExecuter::run(){
       socket.receive(&opcode, sizeof(opcode));
       if (opcode == PLAYER_UPDATE_PACKAGE) {
         PlayerData playerinfo;
+        memset(&playerinfo, 0, sizeof(PlayerData));
         infogetter.receivePlayerData(playerinfo);
         uint32_t id = playerinfo.playerID;
         if (players.find(id) != players.end()) {

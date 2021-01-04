@@ -116,9 +116,10 @@ void Raycaster::run(){
     Area d((this->width/2) - 130, (this->height / 2) - 78, 250, 250);
     this->manager.renderAll(4, d);
     Area d2(0, 0, this->width, this->height);
-    
+
     this->manager.renderAll(5, d2);
-    this->hud.renderText();
+    this->hud.renderLifes();
+    this->hud.renderHealth();
     this->window->render();
   }
 }

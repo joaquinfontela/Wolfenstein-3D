@@ -7,12 +7,14 @@
 class Hud {
  private:
   SdlWindow* window;
+  SDL_Renderer* renderer;
   TTF_Font* font;
   SDL_Texture* texture;
   Player* player;
-  SdlTexture* text;
  public:
-  void renderText();
+  void renderText(const char* text, SDL_Rect* rect);
+  void renderLifes();
+  void renderHealth();
   ~Hud();
   Hud(SdlWindow* window, Player* player);
 };
