@@ -17,7 +17,13 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Player/Player.h
         server/includes/Model/Game/Game.h
 
-        server/includes/Model/Item/Weapon.h
+        server/includes/Model/Item/Weapon/Weapon.h
+        server/includes/Model/Item/Weapon/Knife.h
+        server/includes/Model/Item/Weapon/Shootable/Pistol.h
+        server/includes/Model/Item/Weapon/Shootable/Minigun.h
+        server/includes/Model/Item/Weapon/Shootable/Shootable.h
+        server/includes/Model/Item/Weapon/Shootable/MachineGun.h
+        server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
@@ -48,7 +54,9 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Game/Game.cpp
 
 
-        server/src/Model/Item/Pistol.cpp
+        server/src/Model/Item/Weapon/Shootable/Pistol.cpp
+        server/src/Model/Item/Weapon/Shootable/Shootable.cpp
+        server/src/Model/Item/Weapon/Knife.cpp
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/Kit.cpp
         server/src/Model/Item/Blood.cpp

@@ -1,15 +1,14 @@
 #ifndef __PISTOL_H__
 #define __PISTOL_H__
 
-#include "Weapon.h"
+#include "Shootable.h"
 
-class Pistol : public Weapon {
+class Pistol : public Shootable {
  public:
   Pistol(unsigned int ammo);
 
   // Devuelve el daño que haria el disparo.
   unsigned int attack();
-  bool outOfAmmo();
 };
 
 #endif

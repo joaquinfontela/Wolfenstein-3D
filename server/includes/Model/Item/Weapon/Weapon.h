@@ -3,17 +3,15 @@
 
 class Weapon {
  protected:
-  unsigned int ammo;
   // faltan cosas como el fire rate, precision y los datos particulares que
   // hagan falta.
 
  public:
   Weapon() {}
-  Weapon(unsigned int ammo) : ammo(ammo) {}
+  Weapon(unsigned int ammo) {}
 
   // Devuelve el daño que haria un ataque.
   virtual unsigned int attack() = 0;
-  virtual bool outOfAmmo() = 0;
   ~Weapon() {}
 };
 
