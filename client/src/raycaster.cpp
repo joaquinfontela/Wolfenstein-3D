@@ -10,6 +10,7 @@
 
 #include <time.h>
 
+#define FPS_FREQ 500
 #define BLOCKSIZE 64
 
 void Raycaster::run(){
@@ -79,7 +80,7 @@ void Raycaster::run(){
           side = 1;
         }
 
-         if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapY < 0) {
+        if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapY < 0) {
           mapX = INT_MAX;
           mapY = INT_MAX;
           hit = 1;
@@ -127,9 +128,10 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    if (iters % 500 == 0) {
+    if (!(iters % FPS_FREQ)) {
       std::chrono::duration<float,std::milli> diff = t2 - t1;
-      lastfps = 500000/ceil(diff.count());
+      if (!iters) lastfps = (1000)/ceil(diff.count());
+      else lastfps = (FPS_FREQ * 1000)/ceil(diff.count());
       t1 = t2;
     }
     this->hud.renderFps(lastfps);
