@@ -36,13 +36,16 @@ double SocketWrapper::receiveDouble() {
 
 void SocketWrapper::send(PlayerData& value) {
 
+  uint32_t lives = value.lives;
+  uint32_t health = value.health;
+
   this->socket.sendDouble(&value.dirX, sizeof(double));
   this->socket.sendDouble(&value.dirY, sizeof(double));
   this->socket.sendDouble(&value.posX, sizeof(double));
   this->socket.sendDouble(&value.posY, sizeof(double));
   this->socket.sendDouble(&value.rotSpeed, sizeof(double));
-  this->socket.send((uint32_t*)&value.lives, sizeof(uint32_t));
-  this->socket.send((uint32_t*)&value.health, sizeof(uint32_t));
+  this->socket.send(&lives, sizeof(uint32_t));
+  this->socket.send(&health, sizeof(uint32_t));
 
   //this->send((const double)value.dirX);
   //this->send((const double)value.dirY);
@@ -55,14 +58,21 @@ void SocketWrapper::send(PlayerData& value) {
 
 void SocketWrapper::receivePlayerData(PlayerData& value) {
 
+  uint32_t lives = value.lives;
+  uint32_t health = value.health;
+
   this->socket.receive(&value.playerID, sizeof(value.playerID));
   this->socket.receiveDouble(&value.dirX, sizeof(double));
   this->socket.receiveDouble(&value.dirY, sizeof(double));
   this->socket.receiveDouble(&value.posX, sizeof(double));
   this->socket.receiveDouble(&value.posY, sizeof(double));
   this->socket.receiveDouble(&value.rotSpeed, sizeof(double));
-  this->socket.receive((uint32_t*)&value.lives, sizeof(uint32_t));
-  this->socket.receive((uint32_t*)&value.health, sizeof(uint32_t));
+  this->socket.receive(&lives, sizeof(uint32_t));
+  this->socket.receive(&health, sizeof(uint32_t));
+
+  value.lives = int(lives);
+  value.health = int(health);
+
 //  this->socket.receive(&value.playerID, sizeof(value.playerID));
 //  value.dirX = this->receiveDouble();
 //  std::cout<<"DirX: "<<value.dirX<<std::endl;
