@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../../includes/Map/Map.h"
+#include "../../../server/includes/Model/Map/Map.h"
 #include "../../includes/YAML/YAMLReader.h"
 
 int main() {
