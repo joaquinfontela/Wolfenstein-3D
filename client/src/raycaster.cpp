@@ -16,6 +16,8 @@ void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
 
+  int lastfps = 0;
+  int iters = 0;
   while(alive){
 
     this->window->fillWolfenstein();
@@ -124,12 +126,17 @@ void Raycaster::run(){
     this->manager.renderAll(5, d2);
 
     auto t2 = std::chrono::steady_clock::now();
-    std::chrono::duration<float,std::milli> diff = t2 - t1;
-    this->hud.renderFps(1000/ceil(diff.count()));
-    t1 = t2;
+
+    if (iters % 8 == 0) {
+      std::chrono::duration<float,std::milli> diff = t2 - t1;
+      lastfps = 8000/ceil(diff.count());
+      t1 = t2;
+    }
+    this->hud.renderFps(lastfps);
 
     this->hud.renderLifes();
     this->hud.renderHealth();
     this->window->render();
+    iters++;
   }
 }

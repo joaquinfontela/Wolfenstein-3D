@@ -36,9 +36,10 @@ void Hud::renderFps(int fps) {
   int width = x / 16;
   int height = y / 6;
   x -= width + 893 * x / 1000;
+  x += x / 11;
   if (fps < 100){
-    width -= 5;
-    x += 5;
+    width -= width / 160;
+    x += x / 50;
   }
   y -= height - y / 275;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
@@ -52,8 +53,8 @@ void Hud::renderHealth() {
   int height = y / 6;
   x -= width + 405 * x / 1000;
   if (player->health < 100){
-    width -= 5;
-    x += 5;
+    width -= width / 160;
+    x += x / 53;
   }
   y -= height - y / 275;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
