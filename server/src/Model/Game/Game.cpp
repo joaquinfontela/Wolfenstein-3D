@@ -10,7 +10,7 @@ Game::Game(std::string mapFile, std::string configFile) : map(24, 24) {}
 
 void Game::addPlayer(int playerID) {
   unsigned int health = 100;  // Deberian obtenerse del file de config.
-  unsigned int lifes = 200;
+  unsigned int lifes = 2;
 
   Player* newPlayer = new Player(health, lifes, map, playerID);
 
