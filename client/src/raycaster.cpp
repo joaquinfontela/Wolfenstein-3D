@@ -8,11 +8,16 @@
 #include "drawable.h"
 #include <iostream>
 
+#include <time.h>
+
 #define BLOCKSIZE 64
 
 void Raycaster::run(){
 
+  auto t1 = std::chrono::steady_clock::now();
+
   while(alive){
+
     this->window->fillWolfenstein();
 
     double dirX = this->player->dirX;
@@ -116,8 +121,13 @@ void Raycaster::run(){
     Area d((this->width/2) - 130, (this->height / 2) - 78, 250, 250);
     this->manager.renderAll(4, d);
     Area d2(0, 0, this->width, this->height);
-
     this->manager.renderAll(5, d2);
+
+    auto t2 = std::chrono::steady_clock::now();
+    std::chrono::duration<float,std::milli> diff = t2 - t1;
+    this->hud.renderFps(1000/ceil(diff.count()));
+    t1 = t2;
+
     this->hud.renderLifes();
     this->hud.renderHealth();
     this->window->render();

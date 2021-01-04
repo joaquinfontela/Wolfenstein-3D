@@ -30,6 +30,21 @@ void Hud::renderLifes() {
   this->renderText(std::to_string(player->lives).c_str(), &rect);
 }
 
+void Hud::renderFps(int fps) {
+  int x, y;
+  this->window->getWindowSize(&x, &y);
+  int width = x / 16;
+  int height = y / 6;
+  x -= width + 893 * x / 1000;
+  if (fps < 100){
+    width -= 5;
+    x += 5;
+  }
+  y -= height - y / 275;
+  SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
+  this->renderText(std::to_string(fps).c_str(), &rect);
+}
+
 void Hud::renderHealth() {
   int x, y;
   this->window->getWindowSize(&x, &y);

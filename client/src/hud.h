@@ -11,8 +11,9 @@ class Hud {
   TTF_Font* font;
   SDL_Texture* texture;
   Player* player;
- public:
   void renderText(const char* text, SDL_Rect* rect);
+ public:
+  void renderFps(int fps);
   void renderLifes();
   void renderHealth();
   ~Hud();
