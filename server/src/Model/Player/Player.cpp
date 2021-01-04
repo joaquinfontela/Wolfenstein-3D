@@ -1,28 +1,49 @@
 #include "../../../includes/Model/Player/Player.h"
 
-#include "../../../includes/Model/Item/Weapon.h"
 #include <math.h>
+
+#include <functional>
 #include <iostream>
 #include <tuple>
-#include <functional>
+
+#include "../../../includes/Model/Item/Weapon/Weapon.h"
 
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
 
-Player::Player(unsigned int hp, unsigned int lifes, Map& map, unsigned int playerID)
-    : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {
-
-      this->playerID = playerID;
-      map.addPlayer(6, 4, this);
-
-    }
+Player::Player(unsigned int hp, unsigned int lifes, Map& map,
+               unsigned int playerID)
+    : health(hp),
+      lifeRemaining(lifes),
+      ammo(0),
+      key(false),
+      score(0),
+      x(6.0),
+      y(4.0),
+      dirX(-1),
+      dirY(0),
+      rotSpeed(0.0),
+      moveSpeed(0.0),
+      hasToBeNotified(false) {
+  this->playerID = playerID;
+  map.addPlayer(6, 4, this);
+}
 
 Player::Player(unsigned int hp, unsigned int lifes)
-        : health(hp), lifeRemaining(lifes), ammo(0), key(false), score(0), x(6.0), y(4.0), dirX(-1), dirY(0), rotSpeed(0.0), moveSpeed(0.0), hasToBeNotified(false)  {}
+    : health(hp),
+      lifeRemaining(lifes),
+      ammo(0),
+      key(false),
+      score(0),
+      x(6.0),
+      y(4.0),
+      dirX(-1),
+      dirY(0),
+      rotSpeed(0.0),
+      moveSpeed(0.0),
+      hasToBeNotified(false) {}
 
-
-bool Player::collidesWith(double x, double y){
-
+bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
 int Player::handleDeath(Map& map) {
@@ -30,7 +51,6 @@ int Player::handleDeath(Map& map) {
     this->health = 0;
     return -1;  // El jugador ya no puede respawnear.
   }
-
 
   this->lifeRemaining -= 1;
   this->health = MAX_HEALTH;  // Deberia restaurar la vida al maximo.
@@ -46,14 +66,11 @@ int Player::handleDeath(Map& map) {
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 
-bool Player::hasToBeUpdated(){
-  return this->hasToBeNotified;
-}
+bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
 int Player::takeDamage(unsigned int damage, Map& map) {
-
-
-  std::cout<<"[GAME LOGIC] Player has received: "<<damage<< " damage."<<std::endl;
+  std::cout << "[GAME LOGIC] Player has received: " << damage << " damage."
+            << std::endl;
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
@@ -64,8 +81,7 @@ int Player::takeDamage(unsigned int damage, Map& map) {
   return this->health;
 }
 
-void Player::fillPlayerData(PlayerData& data){
-
+void Player::fillPlayerData(PlayerData& data) {
   data.posX = this->x;
   data.posY = this->y;
   data.dirX = this->dirX;
@@ -78,45 +94,32 @@ void Player::fillPlayerData(PlayerData& data){
   return;
 }
 
-void Player::update(Map& map){
+void Player::update(Map& map) {
+  if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
-  if(moveSpeed == 0.0 && rotSpeed == 0.0)
-    return;
-
-
-  double newX =  x + dirX * moveSpeed;
+  double newX = x + dirX * moveSpeed;
   double newY = y + dirY * moveSpeed;
 
-  if(map.moveTo(x, y, newX, newY, this)){
+  if (map.moveTo(x, y, newX, newY, this)) {
     x = newX;
     y = newY;
   }
-
 
   double oldDirX = dirX;
 
   dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
   dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
 
-
   this->hasToBeNotified = true;
 }
 
-double Player::getX(){
-  return this->x;
-}
+double Player::getX() { return this->x; }
 
-double Player::getY(){
-  return this->y;
-}
+double Player::getY() { return this->y; }
 
-double Player::getDirX(){
-  return this->dirX;
-}
+double Player::getDirX() { return this->dirX; }
 
-double Player::getDirY(){
-  return this->dirY;
-}
+double Player::getDirY() { return this->dirY; }
 
 int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
@@ -125,24 +128,19 @@ int Player::attack() {
   return 10;
 }
 
-unsigned int Player::ID(){
-  return this->playerID;
-}
+unsigned int Player::ID() { return this->playerID; }
 
-void Player::updateMoveSpeed(double moveSpeed){
-  this->moveSpeed += moveSpeed;
-}
+void Player::updateMoveSpeed(double moveSpeed) { this->moveSpeed += moveSpeed; }
 
-void Player::updateRotationSpeed(double rotSpeed){
+void Player::updateRotationSpeed(double rotSpeed) {
   this->rotSpeed += rotSpeed;
 }
 
 void Player::equipWeapon(Weapon* weapon) {
-   this->weapon = (Weapon*)weapon;
+  this->weapon = (Weapon*)weapon;
 
-   this->hasToBeNotified = true;
-
-  }
+  this->hasToBeNotified = true;
+}
 
 void Player::pickupKey() { this->key = true; }
 
@@ -172,7 +170,6 @@ void Player::addPoints(int points) { this->score += points; }
 
 int Player::getScore() { return this->score; }
 
-
-Player::~Player(){
-  //delete this->weapon;
+Player::~Player() {
+  // delete this->weapon;
 }

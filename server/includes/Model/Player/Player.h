@@ -2,16 +2,13 @@
 #define __PLAYER_H__
 
 #include "../../../../common/includes/PlayerData.h"
-#include "../Item/Weapon.h"
+#include "../Item/Weapon/Weapon.h"
 #include "../Map/Map.h"
-
 
 class Map;
 
-
-
 class Player {
-private:
+ private:
   double x, y;
   double dirX, dirY;
   double rotSpeed;
@@ -26,13 +23,13 @@ private:
   int handleDeath(Map& map);
 
  public:
-
   // CONSTRUCTORES.
   Player(unsigned int hp, unsigned int lifes, Map& map, unsigned int playerID);
   Player(unsigned int hp, unsigned int lifes);
   Player() {}
 
-  // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de respawn.
+  // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
+  // respawn.
   int takeDamage(unsigned int damage, Map& map);
 
   // GETTERS
@@ -42,7 +39,8 @@ private:
   double getDirX();
   double getDirY();
 
-  // LLena el struct playerdata con toda la informacion relevante para ser transmitida por el socket.
+  // LLena el struct playerdata con toda la informacion relevante para ser
+  // transmitida por el socket.
   void fillPlayerData(PlayerData& data);
 
   // Devuelve cuanto daño hace un ataque con su arma.
@@ -61,10 +59,12 @@ private:
   // Comprueba si cierto punto colisiona con el hitbox del jugador.
   bool collidesWith(double x, double y);
 
-  // Devuelve true si hubo un cambio en el estado del jugador que deba ser transmitida al resto.
+  // Devuelve true si hubo un cambio en el estado del jugador que deba ser
+  // transmitida al resto.
   bool hasToBeUpdated();
 
-  // Actualiza la posicion del jugador dada la velocidad de movimiento y rotacion.
+  // Actualiza la posicion del jugador dada la velocidad de movimiento y
+  // rotacion.
   void update(Map& map);
 
   // Equipa una llave.

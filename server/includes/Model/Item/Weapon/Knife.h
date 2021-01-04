@@ -8,7 +8,6 @@ class Knife : public Weapon {
   Knife();
   ~Knife();
   unsigned int attack();
-  bool outOfAmmo();
 };
 
 #endif
