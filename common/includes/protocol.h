@@ -5,6 +5,7 @@
 #define CONNECT_TO_LOBBY 1
 #define PLAYER_POS_UPDATE 2
 #define PLAYER_SHOOT 3
+#define SHOTS_FIRED 4
 #define OPEN_DOOR 5
 #define PICK_WEAPON 6
 #define PICK_POWERUP 7

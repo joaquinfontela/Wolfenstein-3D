@@ -57,6 +57,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerDisconnected.cpp
         server/src/Control/Notification/PlayerConnected.cpp
         server/src/Control/Notification/PlayerUpdatePosition.cpp
+        server/src/Control/Notification/ShotsFired.cpp
         server/src/Control/Notification/PlayerDisconnect.cpp
         server/src/Control/Notification/PlayerPackageUpdate.cpp
         server/src/Control/Command/PlayerADown.cpp

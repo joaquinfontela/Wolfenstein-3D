@@ -706,6 +706,36 @@ server/src/Control/Notification/PlayerUpdatePosition.cpp.s:
 	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/PlayerUpdatePosition.cpp.s
 .PHONY : server/src/Control/Notification/PlayerUpdatePosition.cpp.s
 
+server/src/Control/Notification/ShotsFired.o: server/src/Control/Notification/ShotsFired.cpp.o
+
+.PHONY : server/src/Control/Notification/ShotsFired.o
+
+# target to build an object file
+server/src/Control/Notification/ShotsFired.cpp.o:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/ShotsFired.cpp.o
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/ShotsFired.cpp.o
+.PHONY : server/src/Control/Notification/ShotsFired.cpp.o
+
+server/src/Control/Notification/ShotsFired.i: server/src/Control/Notification/ShotsFired.cpp.i
+
+.PHONY : server/src/Control/Notification/ShotsFired.i
+
+# target to preprocess a source file
+server/src/Control/Notification/ShotsFired.cpp.i:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/ShotsFired.cpp.i
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/ShotsFired.cpp.i
+.PHONY : server/src/Control/Notification/ShotsFired.cpp.i
+
+server/src/Control/Notification/ShotsFired.s: server/src/Control/Notification/ShotsFired.cpp.s
+
+.PHONY : server/src/Control/Notification/ShotsFired.s
+
+# target to generate assembly for a file
+server/src/Control/Notification/ShotsFired.cpp.s:
+	$(MAKE) -f CMakeFiles/WolfensteinTest.dir/build.make CMakeFiles/WolfensteinTest.dir/server/src/Control/Notification/ShotsFired.cpp.s
+	$(MAKE) -f CMakeFiles/ServerMain.dir/build.make CMakeFiles/ServerMain.dir/server/src/Control/Notification/ShotsFired.cpp.s
+.PHONY : server/src/Control/Notification/ShotsFired.cpp.s
+
 server/src/Match/Engine.o: server/src/Match/Engine.cpp.o
 
 .PHONY : server/src/Match/Engine.o
@@ -1307,6 +1337,9 @@ help:
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.o"
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.i"
 	@echo "... server/src/Control/Notification/PlayerUpdatePosition.s"
+	@echo "... server/src/Control/Notification/ShotsFired.o"
+	@echo "... server/src/Control/Notification/ShotsFired.i"
+	@echo "... server/src/Control/Notification/ShotsFired.s"
 	@echo "... server/src/Match/Engine.o"
 	@echo "... server/src/Match/Engine.i"
 	@echo "... server/src/Match/Engine.s"
