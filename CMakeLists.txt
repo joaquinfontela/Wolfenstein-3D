@@ -46,9 +46,6 @@ set(SOURCE_FILES_SERVER
         server/includes/Control/Notification/PlayerUpdatePosition.h
         server/includes/Control/Notification/PlayerDisconnect.h
 
-
-
-
         common/src/Socket/SocketCommunication.cpp
         common/src/Socket/SocketListener.cpp
         common/src/Socket/SocketWrapper.cpp
@@ -63,7 +60,6 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
 
-
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
         server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp
         server/src/Model/Item/Weapon/Shootable/Minigun.cpp
@@ -73,6 +69,12 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/Kit.cpp
         server/src/Model/Item/Blood.cpp
+        server/src/Model/Item/Ammo.cpp
+        server/src/Model/Item/Chest.cpp
+        server/src/Model/Item/Cross.cpp
+        server/src/Model/Item/Crown.cpp
+        server/src/Model/Item/Cup.cpp
+        server/src/Model/Item/Food.cpp
 
         server/src/Control/Command/PlayerMove.cpp
         server/src/Control/Command/PlayerDisconnected.cpp
