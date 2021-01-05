@@ -3,6 +3,7 @@ project(sdl)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -pthread")
 add_library(sdldemo
   src/area.cpp
+  src/audio.cpp
   src/hud.cpp
   src/sdltexture.cpp
   src/sdlanimation.cpp

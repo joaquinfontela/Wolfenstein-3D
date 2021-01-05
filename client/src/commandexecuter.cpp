@@ -4,6 +4,8 @@
 #include "../../common/includes/protocol.h"
 #include <iostream>
 #include <algorithm>
+#include "audio.h"
+#include <string>
 
 CommandExecuter::~CommandExecuter(){
   /*for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
@@ -12,6 +14,10 @@ CommandExecuter::~CommandExecuter(){
 }
 
 void CommandExecuter::run(){
+
+  std::string n = "Pistol.wav";
+  Audio eyeofthetiger(n);
+
   SocketWrapper infogetter(this->socket);
   while (alive) {
     try {
@@ -47,6 +53,8 @@ void CommandExecuter::run(){
         std::cout << "Killing player with id: " << id << std::endl;
         delete toKill;
         this->lock.unlock();
+      } else if (opcode == SHOTS_FIRED) {
+        eyeofthetiger.playOrStopAudio();
       }
     } catch (SocketException& e) {
       break;

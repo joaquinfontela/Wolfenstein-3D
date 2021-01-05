@@ -1,7 +1,6 @@
 #ifndef __SDL_WINDOW_H__
 #define __SDL_WINDOW_H__
 #include "area.h"
-#include <SDL2/SDL_mixer.h>
 
 class SDL_Window;
 class SDL_Renderer;
@@ -25,7 +24,6 @@ class SdlWindow {
   void killAudio();
   int width;
   int height;
-  Mix_Music* audio;
   SDL_Window* window;
   SDL_Renderer* renderer;
 };

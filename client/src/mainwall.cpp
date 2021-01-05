@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
+#include <atomic>
 
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Map/Map.h"
@@ -17,7 +18,6 @@
 #include "hud.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
-#include <atomic>
 
 #define IMG_PATH "../media/"
 #define ERROR -1

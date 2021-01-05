@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_render.h>
 #include "sdlexception.h"
 #include "sdlwindow.h"
@@ -14,7 +14,6 @@
 #define FLOOR_COLOR 0x60, 0x60, 0x60
 #define OTHER_COLOR 0xFF, 0xFF, 0x60
 #define IMG_PATH "../media/"
-#define AUDIO_PATH "../audio/"
 
 SdlWindow::SdlWindow(int width, int height) :
                      width(width), height(height) {
@@ -25,10 +24,9 @@ SdlWindow::SdlWindow(int width, int height) :
       &this->window, &this->renderer)) {
     throw SdlException(SDL_WINDOW_INIT_ERROR, SDL_GetError());
   }
-  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
+  if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
     throw SdlException(Mix_GetError());
   }
-  this->audio = Mix_LoadMUS(AUDIO_PATH "song.mp3");
   SDL_SetWindowTitle(this->window,"Wolfenstein");
   SDL_Surface* icon = IMG_Load(IMG_PATH "wolfensteinlogo.jpg");
   SDL_SetWindowIcon(this->window,icon);
@@ -38,15 +36,6 @@ void SdlWindow::getWindowSize(int* w, int* h) {
   SDL_GetWindowSize(this->window, &this->width, &this->height);
   *w = this->width;
   *h = this->height;
-}
-
-void SdlWindow::playOrStopAudio(){
-  if (!Mix_PlayingMusic())
-    Mix_PlayMusic(this->audio, 1);
-  else if (Mix_PausedMusic())
-    Mix_ResumeMusic();
-  else
-    Mix_PauseMusic();
 }
 
 void SdlWindow::killRenderer(){
@@ -62,8 +51,6 @@ void SdlWindow::killWindow(){
 }
 
 void SdlWindow::killAudio() {
-  if (!this->window) return;
-  Mix_FreeMusic(this->audio);
   Mix_CloseAudio();
   Mix_Quit();
 }
