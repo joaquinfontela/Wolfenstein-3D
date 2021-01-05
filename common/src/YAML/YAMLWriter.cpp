@@ -1,6 +1,6 @@
 #include "../../includes/YAML/YAMLWriter.h"
 
-YAMLWriter::YAMLWriter() { fileName = "example.yaml"; }
+YAMLWriter::YAMLWriter(std::string& fileName) { this->fileName = fileName; }
 
 YAML::Node YAMLWriter::getData() { return YAML::LoadFile(this->fileName); }
 

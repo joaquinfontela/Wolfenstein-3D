@@ -4,7 +4,7 @@
 #define FROM_ID 1
 #define TO_ID 20
 
-YAMLReader::YAMLReader() { this->fileName = "map.yaml"; }
+YAMLReader::YAMLReader(std::string& fileName) { this->fileName = fileName; }
 
 YAML::Node YAMLReader::getData() { return YAML::LoadFile(this->fileName); }
 

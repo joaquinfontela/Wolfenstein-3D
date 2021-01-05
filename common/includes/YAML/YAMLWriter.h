@@ -11,6 +11,6 @@ class YAMLWriter {
   YAML::Node getData();
 
  public:
-  YAMLWriter();
+  YAMLWriter(std::string& fileName);
   void addCoordinateWhereObjectWithIdIsIn(int objectId, Coordinate& coordinate);
 };
