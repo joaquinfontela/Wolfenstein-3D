@@ -16,6 +16,7 @@ set(SOURCE_FILES_SERVER
         server/includes/Match/Engine.h
         server/includes/Model/Player/Player.h
         server/includes/Model/Game/Game.h
+        server/includes/Model/Map/MapLoader.h
 
         server/includes/Model/Item/Ammo.h
         server/includes/Model/Item/Blood.h
@@ -25,8 +26,10 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/Cup.h
         server/includes/Model/Item/Food.h
         server/includes/Model/Item/Item.h
+        server/includes/Model/Item/ItemFactory.h
         server/includes/Model/Item/Key.h
         server/includes/Model/Item/Kit.h
+        server/includes/Model/Item/Weapon/WeaponFactory.h
         server/includes/Model/Item/Weapon/Knife.h
         server/includes/Model/Item/Weapon/Shootable/Pistol.h
         server/includes/Model/Item/Weapon/Shootable/Minigun.h
@@ -37,6 +40,7 @@ set(SOURCE_FILES_SERVER
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
         common/includes/Socket/SocketListener.h
+        common/includes/Coordinate/Coordinate.h
         common/includes/protocol.h
         server/includes/Control/Command/Command.h
         server/includes/Control/Command/PlayerMove.h
@@ -50,6 +54,7 @@ set(SOURCE_FILES_SERVER
         common/src/Socket/SocketListener.cpp
         common/src/Socket/SocketWrapper.cpp
         common/src/Thread/Thread.cpp
+        common/src/Coordinate/Coordinate.cpp
         server/src/Server/Server.cpp
         server/src/Server/ClientAccepter.cpp
         server/src/Server/ClientCommunication.cpp
@@ -66,6 +71,7 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Weapon/Shootable/MachineGun.cpp
         server/src/Model/Item/Weapon/Shootable/Shootable.cpp
         server/src/Model/Item/Weapon/Knife.cpp
+        server/src/Model/Item/Weapon/WeaponFactory.cpp
         server/src/Model/Item/Key.cpp
         server/src/Model/Item/Kit.cpp
         server/src/Model/Item/Blood.cpp
@@ -75,6 +81,8 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Crown.cpp
         server/src/Model/Item/Cup.cpp
         server/src/Model/Item/Food.cpp
+        server/src/Model/Item/ItemFactory.cpp
+
 
         server/src/Control/Command/PlayerMove.cpp
         server/src/Control/Command/PlayerDisconnected.cpp
@@ -93,6 +101,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerWUp.cpp
         server/src/Control/Command/PlayerShoot.cpp
         server/src/Model/Map/Map.cpp
+        server/src/Model/Map/MapLoader.cpp
         server/src/Model/Map/Tile/Tile.cpp
 
         test/CPPUnit.h

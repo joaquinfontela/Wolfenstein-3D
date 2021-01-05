@@ -5,7 +5,7 @@
 
 class Knife : public Weapon {
  public:
-  Knife();
+  Knife() {}
   ~Knife();
   unsigned int attack();
 };

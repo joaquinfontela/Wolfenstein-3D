@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Cup.h"
 
-Cup::Cup() : Item() {}
+Cup::Cup(int id) : Item(id) {}
 
 Cup::~Cup() {}
 

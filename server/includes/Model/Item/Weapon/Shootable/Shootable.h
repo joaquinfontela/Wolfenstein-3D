@@ -1,3 +1,6 @@
+#ifndef SHOOTABLE_H
+#define SHOOTABLE_H
+
 #include "../Weapon.h"
 
 class Shootable : public Weapon {
@@ -7,6 +10,8 @@ class Shootable : public Weapon {
 
  public:
   Shootable(int newAmmo);
-  virtual ~Shootable() = 0;
+  ~Shootable();
   bool outOfAmmo();
 };
+
+#endif

@@ -4,7 +4,7 @@
 #define FROM_ID 1
 #define TO_ID 20
 
-YAMLReader::YAMLReader() { this->fileName = "example.yaml"; }
+YAMLReader::YAMLReader(std::string& fileName) { this->fileName = fileName; }
 
 YAML::Node YAMLReader::getData() { return YAML::LoadFile(this->fileName); }
 
@@ -27,4 +27,16 @@ std::map<int, std::vector<Coordinate>> YAMLReader::getItemCoordinateMap() {
     itemCoordinateMap[i] = this->getTileCoordinatesWhereObjectIsIn(i);
   }
   return itemCoordinateMap;
+}
+
+std::vector<int> YAMLReader::getMapDimensions() {
+  YAML::Node data = this->getData();
+  std::vector<int> dimensions;
+  try {
+    dimensions.push_back(data["dimx"].as<int>());
+    dimensions.push_back(data["dimy"].as<int>());
+  } catch (YAML::TypedKeyNotFound<std::string>& e) {
+    std::cout << "Key not found: " << e.key << std::endl;
+  }
+  return dimensions;
 }

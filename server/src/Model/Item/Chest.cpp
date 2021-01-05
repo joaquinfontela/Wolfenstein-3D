@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Chest.h"
 
-Chest::Chest() : Item() {}
+Chest::Chest(int id) : Item(id) {}
 
 Chest::~Chest() {}
 

@@ -5,7 +5,7 @@
 
 class Pistol : public Shootable {
  public:
-  Pistol(unsigned int ammo);
+  Pistol(unsigned int ammo) : Shootable(ammo) {}
 
   // Devuelve el daño que haria el disparo.
   unsigned int attack();

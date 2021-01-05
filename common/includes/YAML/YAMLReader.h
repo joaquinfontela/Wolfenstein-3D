@@ -15,6 +15,7 @@ class YAMLReader {
   std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
 
  public:
-  YAMLReader();
+  YAMLReader(std::string& fileName);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
+  std::vector<int> getMapDimensions();
 };

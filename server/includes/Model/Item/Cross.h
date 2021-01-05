@@ -2,7 +2,7 @@
 
 class Cross : public Item {
  public:
-  Cross();
+  Cross(int id);
   ~Cross();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;
