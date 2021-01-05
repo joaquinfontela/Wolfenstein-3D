@@ -15,9 +15,6 @@ CommandExecuter::~CommandExecuter(){
 
 void CommandExecuter::run(){
 
-  std::string n = "Pistol.wav";
-  Audio eyeofthetiger(n);
-
   SocketWrapper infogetter(this->socket);
   while (alive) {
     try {
@@ -54,7 +51,7 @@ void CommandExecuter::run(){
         delete toKill;
         this->lock.unlock();
       } else if (opcode == SHOTS_FIRED) {
-        eyeofthetiger.playOrStopAudio();
+        this->audiomanager.playOrStopWithId(2);
       }
     } catch (SocketException& e) {
       break;

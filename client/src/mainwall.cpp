@@ -18,6 +18,7 @@
 #include "hud.h"
 #include "sdltexture.h"
 #include "texturemanager.h"
+#include "audiomanager.h"
 
 #define IMG_PATH "../media/"
 #define ERROR -1
@@ -53,7 +54,9 @@ int main(int argc, char** argv) {
   Drawable barrel2(7,7,7);
   Drawable greenlight1(2,5,6);
   Drawable greenlight2(2,7,6);
-  //#########################################################
+//#########################################################
+  AudioManager audios;
+//#########################################################
 
   std::atomic<bool> alive;
   alive = true;
@@ -68,7 +71,7 @@ int main(int argc, char** argv) {
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id, audios);
 
   try {
     worker->start();

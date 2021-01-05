@@ -7,7 +7,6 @@
 
 #include "area.h"
 #include "sdltexture.h"
-
 #include "sdlexception.h"
 
 #define TEXTURE_LIMIT 64
@@ -31,13 +30,12 @@ void TextureManager::garbageCollector() {
   }
 }
 
-bool TextureManager::loadAndCheckTexture(int n, const std::string& name) {
+bool TextureManager::loadAndCheckTexture(int i, const std::string& name) {
   SdlTexture* text = new SdlTexture((IMG_PATH + name).c_str(), *window);
   if (text == NULL) {
     return false;
-  } else {
-    this->loadTexture(n,text);
   }
+  this->loadTexture(i, text);
   return true;
 }
 

@@ -61,7 +61,6 @@ void CommandSender::run() {
             }
             break;
           case SDLK_RETURN:
-            std::cout << "Apretando enter\n";
             if (!enterPressed) {
               enterPressed = true;
               this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
@@ -92,7 +91,6 @@ void CommandSender::run() {
             this->update(KEY_S_UP);
             break;
           case SDLK_RETURN:
-            std::cout << "Soltando enter\n";
             enterPressed = false;
             //this->update(PLAYER_SHOOT);
             break;

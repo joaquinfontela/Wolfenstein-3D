@@ -10,7 +10,7 @@ class Audio {
   int volume;
  public:
   void volumeUp();
-  Audio(std::string& name);
+  Audio(const char* name);
   ~Audio();
   void playOrStopAudio();
 };

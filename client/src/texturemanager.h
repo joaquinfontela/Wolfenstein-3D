@@ -23,7 +23,7 @@ class TextureManager{
  private:
   SdlWindow* window;
   void garbageCollector();
-  bool loadAndCheckTexture(int n, const std::string& name);
+  bool loadAndCheckTexture(int i, const std::string& name);
   std::map<int,SdlTexture*> textures;
 };
 

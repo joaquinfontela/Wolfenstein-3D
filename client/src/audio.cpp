@@ -21,12 +21,13 @@ void Audio::playOrStopAudio(){
 }
 
 void Audio::volumeUp() {
+  std::cout << "disparando con vol: " << this->volume << std::endl;
+  Mix_VolumeMusic(this->volume); // Máx 128.
   this->volume += 3;
-  Mix_Volume(2, this->volume);
 }
 
-Audio::Audio(std::string& name) : volume(0) {
-  if (!(this->audio = Mix_LoadMUS((AUDIO_PATH + name).c_str()))) {
+Audio::Audio(const char* name) : volume(30) {
+  if (!(this->audio = Mix_LoadMUS(name))) {
     throw SdlException(Mix_GetError());
   }
 }
