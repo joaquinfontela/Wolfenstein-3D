@@ -38,6 +38,16 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/Weapon/Shootable/MachineGun.h
         server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
 
+        server/includes/Model/Wall/Wall.h
+        server/includes/Model/Wall/GreyStoneWall.h
+        server/includes/Model/Wall/WoodenWall.h
+        server/includes/Model/Wall/BlueWall.h
+        server/includes/Model/Wall/RockWall.h
+
+        server/includes/Model/Door/Door.h
+        server/includes/Model/Door/LockableDoor.h
+        server/includes/Model/Door/UnlockableDoor.h
+
         common/includes/YAML/YAMLMapReader.h
         common/includes/YAML/YAMLMapWriter.h
 
@@ -72,6 +82,7 @@ set(SOURCE_FILES_SERVER
         common/src/YAML/YAMLMapReader.cpp
         common/src/YAML/YAMLMapWriter.cpp
 
+        server/src/Model/Item/Weapon/Weapon.cpp
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
         server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp
         server/src/Model/Item/Weapon/Shootable/Minigun.cpp
@@ -90,6 +101,10 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/Food.cpp
         server/src/Model/Item/ItemFactory.cpp
 
+        server/src/Model/Wall/Wall.cpp
+
+        server/src/Model/Door/LockableDoor.cpp
+        server/src/Model/Door/UnlockableDoor.cpp
 
         server/src/Control/Command/PlayerMove.cpp
         server/src/Control/Command/PlayerDisconnected.cpp
