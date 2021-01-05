@@ -1,10 +1,13 @@
 #ifndef __WEAPON_H__
 #define __WEAPON_H__
 
+#include <cstdlib>
+
 class Weapon {
  protected:
   // faltan cosas como el fire rate, precision y los datos particulares que
   // hagan falta.
+  unsigned int getRandomDamage();
 
  public:
   Weapon() {}

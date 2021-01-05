@@ -1,9 +1,12 @@
 #include "../../../../../includes/Model/Item/Weapon/Shootable/RocketLauncher.h"
 
 unsigned int RocketLauncher::attack() {
-  unsigned int DAMAGE = 50;  // provisorio
+  unsigned int damage = 0;
+  for (int i = 0; i < 5; i++) {
+    damage += this->getRandomDamage();
+  }
   ammo -= 5;
-  return DAMAGE;
+  return damage;
 }
 
 bool RocketLauncher::outOfAmmo() { return (ammo < 5); }

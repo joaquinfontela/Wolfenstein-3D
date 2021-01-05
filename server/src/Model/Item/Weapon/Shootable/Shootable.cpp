@@ -6,7 +6,7 @@ Shootable::~Shootable() {}
 
 unsigned int Shootable::shoot() {
   ammo--;
-  return 1;  // random 1-10
+  return this->getRandomDamage();
 }
 
 bool Shootable::outOfAmmo() { return (ammo == 0); }
