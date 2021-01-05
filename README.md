@@ -14,4 +14,14 @@
 sudo apt-get install libsdl2-dev && sudo apt-get install libsdl2-image-dev -y && sudo apt-get install libsdl2-mixer-dev -y && sudo apt-get install libsdl2-ttf-dev -y
 ```
 
+Una vez instaladas estas dependencias ir a la carpeta `common/src/YAML/yaml-cpp-master` y ejecutar 
+
+```
+mkdir build
+cd build
+cmake ..
+sudo make install
+cd ..
+rm -r -f build
+```
 
