@@ -12,6 +12,7 @@ add_library(sdldemo
   src/player.cpp
   src/raycaster.cpp
   src/drawable.cpp
+  src/audiomanager.cpp
   src/texturemanager.cpp
   src/commandsender.cpp
   src/commandexecuter.cpp
