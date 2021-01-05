@@ -21,8 +21,8 @@
 
 #define IMG_PATH "../media/"
 #define ERROR -1
-#define HEIGHT 500
-#define WIDTH 500
+#define HEIGHT 600
+#define WIDTH 800
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
 int main(int argc, char** argv) {

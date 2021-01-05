@@ -17,6 +17,7 @@ void SdlAnimation::renderActualFrame(Area& destArea, int textureId) {
   int w, h;
   this->manager.getTextureSizeWithId(textureId, &w, &h);
   w /= this->picsPerAnimation;
-  Area srcArea(w * pos, 0, w, h);
+  std::cout << "w: " << w << " pos-1: " << pos - 1 << std::endl;
+  Area srcArea(w * pos + (pos - 1), 0, w, h);
   this->manager.render(textureId, srcArea, destArea);
 }
