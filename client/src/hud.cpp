@@ -83,7 +83,7 @@ void Hud::renderHealth() {
   this->window->getWindowSize(&x, &y);
   int width = x / 16;
   int height = y / 6;
-  x -= width + 405 * x / 1000;
+  x -= width + 49 * x / 125;
   if (player->health < 100){
     width -= width / 160;
     x += x / 53;
