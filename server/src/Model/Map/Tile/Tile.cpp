@@ -1,15 +1,57 @@
 #include "../../../../includes/Model/Map/Tile/Tile.h"
 
-Tile::Tile() { this->isWall = false; }
+Tile::Tile() {}
 
-void Tile::addItemDrop(Item* item) { items.push_back(item); }
+bool Tile::isWall() { return (this->wall != nullptr); }
 
-void Tile::addWeaponDrop(Weapon* weapon) { weapons.push_back(weapon); }
+void Tile::deleteDoor() {
+  delete this->door;
+  this->door = nullptr;
+}
 
-// std::vector<ItemDrop> Tile::getItemDrops() { return drops; }
+void Tile::deleteWall() {
+  delete this->wall;
+  this->wall = nullptr;
+}
+
+void Tile::deleteItemDrops() {
+  for (Item* i : items) delete i;
+  items.clear();
+}
+
+void Tile::deleteWeaponDrops() {
+  for (Weapon* w : weapons) delete w;
+  weapons.clear();
+}
+
+void Tile::addItemDrop(Item* item) {
+  items.push_back(item);
+  this->deleteDoor();
+  this->deleteWall();
+}
+
+void Tile::addWeaponDrop(Weapon* weapon) {
+  weapons.push_back(weapon);
+  this->deleteDoor();
+  this->deleteWall();
+}
+
+void Tile::addDoor(Door* door) {
+  this->door = door;
+  this->deleteWall();
+  this->deleteItemDrops();
+  this->deleteWeaponDrops();
+}
+
+void Tile::addWall(Wall* wall) {
+  this->wall = wall;
+  this->deleteDoor();
+  this->deleteItemDrops();
+  this->deleteWeaponDrops();
+}
 
 bool Tile::allowMovement(double x, double y, Player* p) {
-  if (this->isWall) return false;
+  if (this->isWall()) return false;
 
   std::vector<Player*>::iterator it = this->players.begin();
 
@@ -22,7 +64,7 @@ bool Tile::allowMovement(double x, double y, Player* p) {
   return true;  // Faltaria chequear la interseccion con los jugadores.
 }
 
-bool Tile::checkWall() { return this->isWall; }
+bool Tile::checkWall() { return this->isWall(); }
 
 Player* Tile::playerCollision(double x, double y, Player* p) {
   std::vector<Player*>::iterator it = this->players.begin();
@@ -34,7 +76,10 @@ Player* Tile::playerCollision(double x, double y, Player* p) {
   return nullptr;
 }
 void Tile::addPlayer(Player* p) { this->players.push_back(p); }
-void Tile::setWall() { this->isWall = true; }
+
+void Tile::setWall() {
+  this->wall = new Wall(true);  // por ahora, despues este metodo se elimina
+}
 
 void Tile::removePlayerFromTile(Player* p) {
   std::vector<Player*>::iterator it = this->players.begin();

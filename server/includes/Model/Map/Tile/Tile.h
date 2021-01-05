@@ -3,24 +3,34 @@
 
 #include <vector>
 
+#include "../../Door/Door.h"
 #include "../../Item/Item.h"
 #include "../../Item/Weapon/Weapon.h"
 #include "../../Player/Player.h"
+#include "../../Wall/Wall.h"
 
 class Player;
 class Item;
 
 class Tile {
  private:
-  bool isWall;
+  Door* door;
+  Wall* wall;
   std::vector<Player*> players;
   std::vector<Item*> items;
   std::vector<Weapon*> weapons;
+  bool isWall();
+  void deleteDoor();
+  void deleteWall();
+  void deleteItemDrops();
+  void deleteWeaponDrops();
 
  public:
   Tile();
   void addItemDrop(Item* item);
   void addWeaponDrop(Weapon* weapon);
+  void addDoor(Door* door);
+  void addWall(Wall* wall);
 
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);

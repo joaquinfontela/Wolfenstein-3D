@@ -1,3 +1,6 @@
+#ifndef WALL_H
+#define WALL_H
+
 class Wall {
  private:
   bool isTrueWall;
@@ -5,3 +8,5 @@ class Wall {
  public:
   Wall(bool isTrueWall);
 };
+
+#endif
