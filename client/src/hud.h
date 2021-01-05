@@ -12,7 +12,6 @@ class Hud {
   SdlAnimation* bjface;
   SDL_Renderer* renderer;
   TTF_Font* font;
-  SDL_Texture* texture;
   Player* player;
   TextureManager& manager;
   void renderText(const char* text, SDL_Rect* rect);

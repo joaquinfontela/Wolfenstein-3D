@@ -44,7 +44,7 @@ void Hud::updateBjFace() {
 }
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
-  window(window), renderer(window->getRenderer()), texture(nullptr), player(player), manager(manager) {
+  window(window), renderer(window->getRenderer()), player(player), manager(manager) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH "wolfenstein.ttf", 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
@@ -94,22 +94,22 @@ void Hud::renderHealth() {
 }
 
 void Hud::renderText(const char* text, SDL_Rect* rect) {
+  SDL_Texture* texture = nullptr;
+  SDL_Surface* surface = nullptr;
   SDL_Color color = GREY;
-  SDL_Surface* surface = NULL;
   if (!(surface = TTF_RenderText_Solid(this->font, text, color))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
-  if (!(this->texture = SDL_CreateTextureFromSurface(this->renderer, surface))) {
+  if (!(texture = SDL_CreateTextureFromSurface(this->renderer, surface))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
-  SDL_RenderCopy(this->renderer, this->texture, NULL, rect);
+  SDL_RenderCopy(this->renderer, texture, NULL, rect);
   SDL_FreeSurface(surface);
-  SDL_DestroyTexture(this->texture);
+  SDL_DestroyTexture(texture);
 }
 
 Hud::~Hud() {
   delete this->bjface;
-  SDL_DestroyTexture(texture);
   TTF_CloseFont(this->font);
   TTF_Quit();
 }
