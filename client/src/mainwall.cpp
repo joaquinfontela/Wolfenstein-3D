@@ -48,17 +48,17 @@ int main(int argc, char** argv) {
 //#########################################################
   TextureManager manager(&window);
   manager.loadTextures();
-//#########################################################
   Drawable nazi(6,4,3);
   Drawable barrel1(4,6,7);
   Drawable barrel2(7,7,7);
   Drawable greenlight1(2,5,6);
   Drawable greenlight2(2,7,6);
+  //#########################################################
 
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
-  Hud hud(&window, player);
+  Hud hud(&window, player, manager);
   std::map<uint32_t,Player*> players;
   players[id] = player;
 

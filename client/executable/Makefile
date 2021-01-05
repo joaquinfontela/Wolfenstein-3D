@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/client
+CMAKE_SOURCE_DIR = /home/niyo/TallerI/tp-final-taller/client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/client/executable
+CMAKE_BINARY_DIR = /home/niyo/TallerI/tp-final-taller/client/executable
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/client/executable/CMakeFiles /home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/client/executable/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/client/executable/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/niyo/TallerI/tp-final-taller/client/executable/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -136,113 +136,113 @@ sdldemo/fast:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/build
 .PHONY : sdldemo/fast
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.o: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.o
-
-# target to build an object file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.o
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.o
-
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.i: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.i
-
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.i
-
-# target to preprocess a source file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.i
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.i
-
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.s: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.s
-
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.s
-
-# target to generate assembly for a file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.s
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.cpp.s
-
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.o: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.o
-
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o
 
 # target to build an object file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.o
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.o
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.i: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i
 
 # target to preprocess a source file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.i
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.i
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.s: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s: home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s
 
 # target to generate assembly for a file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.s
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Map/Map.cpp.s
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.o: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.o: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.o
 
 # target to build an object file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.o
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.o
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.i: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.i: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.i
 
 # target to preprocess a source file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.i
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.i
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.s: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.s: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.s
 
 # target to generate assembly for a file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.s
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.cpp.s
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.o: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o
 
 # target to build an object file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.o
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.o
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.o
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.i: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i
 
 # target to preprocess a source file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.i
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.i
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.i
 
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.s: home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s: home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
 
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s
 
 # target to generate assembly for a file
-home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.s
-.PHONY : home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp.s
+home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.cpp.s
+
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o: home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.o
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o
+
+# target to build an object file
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.o
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.o
+
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.i: home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.i
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.i
+
+# target to preprocess a source file
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.i
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.i
+
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.s: home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.s
+
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.s
+
+# target to generate assembly for a file
+home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.s
+.PHONY : home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.cpp.s
 
 src/area.o: src/area.cpp.o
 
@@ -460,6 +460,33 @@ src/raycaster.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/raycaster.cpp.s
 .PHONY : src/raycaster.cpp.s
 
+src/sdlanimation.o: src/sdlanimation.cpp.o
+
+.PHONY : src/sdlanimation.o
+
+# target to build an object file
+src/sdlanimation.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdlanimation.cpp.o
+.PHONY : src/sdlanimation.cpp.o
+
+src/sdlanimation.i: src/sdlanimation.cpp.i
+
+.PHONY : src/sdlanimation.i
+
+# target to preprocess a source file
+src/sdlanimation.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdlanimation.cpp.i
+.PHONY : src/sdlanimation.cpp.i
+
+src/sdlanimation.s: src/sdlanimation.cpp.s
+
+.PHONY : src/sdlanimation.s
+
+# target to generate assembly for a file
+src/sdlanimation.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/sdlanimation.cpp.s
+.PHONY : src/sdlanimation.cpp.s
+
 src/sdlexception.o: src/sdlexception.cpp.o
 
 .PHONY : src/sdlexception.o
@@ -578,18 +605,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... sdl-wall"
 	@echo "... sdldemo"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.o"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.i"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Map/Map.s"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.o"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.i"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.s"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.o"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.i"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.s"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.o"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.i"
-	@echo "... home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.s"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Map/Map.s"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketCommunication.s"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Socket/SocketWrapper.s"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.o"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.i"
+	@echo "... home/niyo/TallerI/tp-final-taller/common/src/Thread/Thread.s"
 	@echo "... src/area.o"
 	@echo "... src/area.i"
 	@echo "... src/area.s"
@@ -614,6 +641,9 @@ help:
 	@echo "... src/raycaster.o"
 	@echo "... src/raycaster.i"
 	@echo "... src/raycaster.s"
+	@echo "... src/sdlanimation.o"
+	@echo "... src/sdlanimation.i"
+	@echo "... src/sdlanimation.s"
 	@echo "... src/sdlexception.o"
 	@echo "... src/sdlexception.i"
 	@echo "... src/sdlexception.s"

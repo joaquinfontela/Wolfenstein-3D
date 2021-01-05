@@ -11,12 +11,45 @@
 #define FONT_PATH "../media/"
 #define SIZE 25
 #define GREY {169, 168, 244}
+#define FACES_PER_IMG 3
 
-Hud::Hud(SdlWindow* window, Player* player) :
-  window(window), renderer(window->getRenderer()), texture(nullptr), player(player) {
+void Hud::update(int fps) {
+  this->renderFps(fps);
+  this->renderLifes();
+  this->renderHealth();
+  this->renderFace();
+}
+
+void Hud::renderFace() {
+  int health = this->player->health;
+  int x, y;
+  this->window->getWindowSize(&x, &y);
+  int width, height, id;
+  if (health > 66) {
+    id = 13;
+  } else if (health > 33) {
+    id = 14;
+  } else {
+    id = 15;
+  }
+  this->manager.getTextureSizeWithId(id, &width, &height);
+  this->bjface->setSlideWidth(&width);
+  std::cout << "dx: " << x - 457 * width / 24  << std::endl;
+  Area destArea(x - 465 * width / 24, y - 97 * height / 30,
+                7 * x / 80, 2 * y / 15);
+  this->bjface->renderActualFrame(destArea, id);
+}
+
+void Hud::updateBjFace() {
+  this->bjface->updateFrame();
+}
+
+Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
+  window(window), renderer(window->getRenderer()), texture(nullptr), player(player), manager(manager) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH "wolfenstein.ttf", 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
+  this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
 }
 
 void Hud::renderLifes() {
@@ -76,7 +109,7 @@ void Hud::renderText(const char* text, SDL_Rect* rect) {
 }
 
 Hud::~Hud() {
-  //delete this->text;
+  delete this->bjface;
   SDL_DestroyTexture(texture);
   TTF_CloseFont(this->font);
   TTF_Quit();

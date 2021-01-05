@@ -10,6 +10,10 @@
 
 #define SDL_TEXTURE_LOAD_ERROR "\nTexture loading error: "
 
+void SdlTexture::getSizes(int* w, int* h) {
+  SDL_QueryTexture(this->texture, NULL, NULL, w, h);
+}
+
 SdlTexture::SdlTexture(const std::string& filename, const SdlWindow& window)
     : renderer(window.getRenderer()) {
   this->texture = loadTexture(filename);

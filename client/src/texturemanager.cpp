@@ -57,7 +57,10 @@ void TextureManager::loadTextures() {
                                    "soldierright.png", // 9
                                    "soldierback.png", // 10
                                    "soldierleft.png", // 11
-                                   "hitlerwall.png" // 12
+                                   "hitlerwall.png", // 12
+                                   "bj1.png", // 13
+                                   "bj2.png", // 14
+                                   "bj3.png" // 15
                                   });
   int i = 1;
   for (std::string& name : names) {
@@ -74,6 +77,14 @@ void TextureManager::render(int id, Area srcArea, Area destArea) {
   std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->render(srcArea, destArea);
+  else
+    std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
+}
+
+void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
+  std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
+  if (it != this->textures.end())
+    it->second->getSizes(w, h);
   else
     std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
 }

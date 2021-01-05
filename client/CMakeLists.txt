@@ -5,6 +5,7 @@ add_library(sdldemo
   src/area.cpp
   src/hud.cpp
   src/sdltexture.cpp
+  src/sdlanimation.cpp
   src/sdlexception.cpp
   src/sdlwindow.cpp
   src/player.cpp
