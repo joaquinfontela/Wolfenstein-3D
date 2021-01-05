@@ -20,4 +20,6 @@ class YAMLMapReader {
   std::vector<int> getMapDimensions();
   std::vector<int> getWeaponsIdLimits();
   std::vector<int> getItemsIdLimits();
+  std::vector<int> getDoorsIdLimits();
+  std::vector<int> getWallsIdLimits();
 };

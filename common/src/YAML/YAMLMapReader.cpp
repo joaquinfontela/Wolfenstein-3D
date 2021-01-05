@@ -1,10 +1,10 @@
 #include "../../includes/YAML/YAMLMapReader.h"
 
 #include <fstream>
-#define FROM_ID 1
-#define TO_ID 20
 
-YAMLMapReader::YAMLMapReader(std::string& fileName) { this->fileName = fileName; }
+YAMLMapReader::YAMLMapReader(std::string& fileName) {
+  this->fileName = fileName;
+}
 
 YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
 
@@ -23,6 +23,8 @@ std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
 std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
   int i;
   std::map<int, std::vector<Coordinate>> itemCoordinateMap;
+  int FROM_ID = this->getWeaponsIdLimits().at(0);
+  int TO_ID = this->getWallsIdLimits().at(1);
   for (i = FROM_ID; i <= TO_ID; i++) {
     itemCoordinateMap[i] = this->getTileCoordinatesWhereObjectIsIn(i);
   }
@@ -55,4 +57,20 @@ std::vector<int> YAMLMapReader::getItemsIdLimits() {
   itemsIdLimits.push_back(data["item id start"].as<int>());
   itemsIdLimits.push_back(data["item id end"].as<int>());
   return itemsIdLimits;
+}
+
+std::vector<int> YAMLMapReader::getDoorsIdLimits() {
+  YAML::Node data = this->getData();
+  std::vector<int> doorsIdLimits;
+  doorsIdLimits.push_back(data["door id start"].as<int>());
+  doorsIdLimits.push_back(data["door id end"].as<int>());
+  return doorsIdLimits;
+}
+
+std::vector<int> YAMLMapReader::getWallsIdLimits() {
+  YAML::Node data = this->getData();
+  std::vector<int> wallsIdLimits;
+  wallsIdLimits.push_back(data["wall id start"].as<int>());
+  wallsIdLimits.push_back(data["wall id end"].as<int>());
+  return wallsIdLimits;
 }

@@ -39,12 +39,14 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
 
         server/includes/Model/Wall/Wall.h
+        server/includes/Model/Wall/WallFactory.h
         server/includes/Model/Wall/GreyStoneWall.h
         server/includes/Model/Wall/WoodenWall.h
         server/includes/Model/Wall/BlueWall.h
         server/includes/Model/Wall/RockWall.h
 
         server/includes/Model/Door/Door.h
+        server/includes/Model/Door/DoorFactory.h
         server/includes/Model/Door/LockableDoor.h
         server/includes/Model/Door/UnlockableDoor.h
 
@@ -102,7 +104,9 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Item/ItemFactory.cpp
 
         server/src/Model/Wall/Wall.cpp
+        server/src/Model/Wall/WallFactory.cpp
 
+        server/src/Model/Door/DoorFactory.cpp
         server/src/Model/Door/LockableDoor.cpp
         server/src/Model/Door/UnlockableDoor.cpp
 

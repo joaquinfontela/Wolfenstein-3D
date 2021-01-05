@@ -10,14 +10,17 @@
 class Tile;
 class Player;
 class Item;
+class Wall;
 
 typedef std::vector<std::vector<Tile>> TileMatrix;
 
 class Map {
  public:
   Map(int dimx, int dimy);
-  void addItemDropWithIdAt(Item* item, int x, int y);
-  void addWeaponDropWithIdAt(Weapon* weapon, int x, int y);
+  void addItemDropAt(Item* item, int x, int y);
+  void addWeaponDropAt(Weapon* weapon, int x, int y);
+  void addDoorAt(Door* door, int x, int y);
+  void addWallAt(Wall* wall, int x, int y);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);

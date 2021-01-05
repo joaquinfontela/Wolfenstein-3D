@@ -1,6 +1,11 @@
 #include "../../../../includes/Model/Map/Tile/Tile.h"
 
-Tile::Tile() {}
+#include <iostream>
+
+Tile::Tile() {
+  this->door = nullptr;
+  this->wall = nullptr;
+}
 
 bool Tile::isWall() { return (this->wall != nullptr); }
 

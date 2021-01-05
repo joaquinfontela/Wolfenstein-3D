@@ -51,20 +51,30 @@ Map::Map(int dimx,
   }
 }
 
-void Map::addItemDropWithIdAt(Item* item, int x, int y) {
+void Map::addItemDropAt(Item* item, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x][y].addItemDrop(item);
+  this->tileMatrix[x - 1][y - 1].addItemDrop(item);
 }
 
-void Map::addWeaponDropWithIdAt(Weapon* weapon, int x, int y) {
+void Map::addWeaponDropAt(Weapon* weapon, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x][y].addWeaponDrop(weapon);
+  this->tileMatrix[x - 1][y - 1].addWeaponDrop(weapon);
+}
+
+void Map::addDoorAt(Door* door, int x, int y) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[x - 1][y - 1].addDoor(door);
+}
+
+void Map::addWallAt(Wall* wall, int x, int y) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[x - 1][y - 1].addWall(wall);
 }
 
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
   if ((x > this->dimx) || (y > this->dimy))
     throw std::runtime_error(
-        "Error adding drop into map (map limits overpassed).");
+        "Error adding item into map (map limits overpassed).");
 }
 
 Player* Map::traceAttackFrom(Player* attacker) {

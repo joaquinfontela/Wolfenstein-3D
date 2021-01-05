@@ -12,39 +12,39 @@
 
 Item* ItemFactory::getItem(int itemTypeId, int uniqueId) {
   switch (itemTypeId) {
-    case 6:
+    case 101:
       return new Ammo(uniqueId);
       break;
 
-    case 7:
+    case 102:
       return new Blood(uniqueId);
       break;
 
-    case 8:
+    case 103:
       return new Chest(uniqueId);
       break;
 
-    case 9:
+    case 104:
       return new Cross(uniqueId);
       break;
 
-    case 10:
+    case 105:
       return new Crown(uniqueId);
       break;
 
-    case 11:
+    case 106:
       return new Cup(uniqueId);
       break;
 
-    case 12:
+    case 107:
       return new Food(uniqueId);
       break;
 
-    case 13:
+    case 108:
       return new Key(uniqueId);
       break;
 
-    case 14:
+    case 109:
       return new Kit(uniqueId);
       break;
 
