@@ -151,7 +151,6 @@ bool Player::hasMaxAmmo() { return ammo < MAX_AMMO; }
 void Player::pickUpAmmo() {
   ammo += 5;
   if (ammo > MAX_AMMO) ammo = MAX_AMMO;
-
   this->hasToBeNotified = true;
 }
 
@@ -162,7 +161,6 @@ bool Player::hasFullHealth() { return this->health == MAX_HEALTH; }
 void Player::addHealth(int health) {
   this->health += health;
   if (this->health > MAX_HEALTH) this->health = MAX_HEALTH;
-
   this->hasToBeNotified = true;
 }
 
