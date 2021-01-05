@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo -e "Installing dependencies...\n"
-echo -e "Installing YAML-CPP: \n"
+echo -e "[Installing dependencies]\n"
+echo -e "[Installing YAML-CPP] \n"
 
 cd common/src/YAML/yaml-cpp-master
 mkdir build
@@ -11,15 +11,15 @@ sudo make install
 cd ..
 rm -r -f build
 
-echo -e "\n Compiling Server...\n"
+echo -e "\n [Compiling Server]\n"
 cd ../../../../
 cmake .
 make
 
-echo -e "\n Compiling Client...\n"
+echo -e "\n [Compiling Client]\n"
 cd client/executable
 cmake .
 make
 
 
-echo -e "\n Install finished. \n"
+echo -e "\n [Install finished] \n"
