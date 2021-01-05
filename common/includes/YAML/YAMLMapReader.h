@@ -8,14 +8,14 @@
 
 // compile with flag -lyaml-cpp
 
-class YAMLReader {
+class YAMLMapReader {
  private:
   std::string fileName;
   YAML::Node getData();
   std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
 
  public:
-  YAMLReader(std::string& fileName);
+  YAMLMapReader(std::string& fileName);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
   std::vector<int> getMapDimensions();
   std::vector<int> getWeaponsIdLimits();

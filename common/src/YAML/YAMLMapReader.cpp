@@ -1,14 +1,14 @@
-#include "../../includes/YAML/YAMLReader.h"
+#include "../../includes/YAML/YAMLMapReader.h"
 
 #include <fstream>
 #define FROM_ID 1
 #define TO_ID 20
 
-YAMLReader::YAMLReader(std::string& fileName) { this->fileName = fileName; }
+YAMLMapReader::YAMLMapReader(std::string& fileName) { this->fileName = fileName; }
 
-YAML::Node YAMLReader::getData() { return YAML::LoadFile(this->fileName); }
+YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
 
-std::vector<Coordinate> YAMLReader::getTileCoordinatesWhereObjectIsIn(
+std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
     int objectId) {
   YAML::Node data = this->getData();
   std::vector<Coordinate> coordinates;
@@ -20,7 +20,7 @@ std::vector<Coordinate> YAMLReader::getTileCoordinatesWhereObjectIsIn(
   return coordinates;
 }
 
-std::map<int, std::vector<Coordinate>> YAMLReader::getItemCoordinateMap() {
+std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
   int i;
   std::map<int, std::vector<Coordinate>> itemCoordinateMap;
   for (i = FROM_ID; i <= TO_ID; i++) {
@@ -29,7 +29,7 @@ std::map<int, std::vector<Coordinate>> YAMLReader::getItemCoordinateMap() {
   return itemCoordinateMap;
 }
 
-std::vector<int> YAMLReader::getMapDimensions() {
+std::vector<int> YAMLMapReader::getMapDimensions() {
   YAML::Node data = this->getData();
   std::vector<int> dimensions;
   try {
@@ -41,7 +41,7 @@ std::vector<int> YAMLReader::getMapDimensions() {
   return dimensions;
 }
 
-std::vector<int> YAMLReader::getWeaponsIdLimits() {
+std::vector<int> YAMLMapReader::getWeaponsIdLimits() {
   YAML::Node data = this->getData();
   std::vector<int> weaponsIdLimits;
   weaponsIdLimits.push_back(data["weapon id start"].as<int>());
@@ -49,7 +49,7 @@ std::vector<int> YAMLReader::getWeaponsIdLimits() {
   return weaponsIdLimits;
 }
 
-std::vector<int> YAMLReader::getItemsIdLimits() {
+std::vector<int> YAMLMapReader::getItemsIdLimits() {
   YAML::Node data = this->getData();
   std::vector<int> itemsIdLimits;
   itemsIdLimits.push_back(data["item id start"].as<int>());

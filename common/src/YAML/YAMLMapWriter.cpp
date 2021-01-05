@@ -1,11 +1,11 @@
-#include "../../includes/YAML/YAMLWriter.h"
+#include "../../includes/YAML/YAMLMapWriter.h"
 
-YAMLWriter::YAMLWriter(std::string& fileName) { this->fileName = fileName; }
+YAMLMapWriter::YAMLMapWriter(std::string& fileName) { this->fileName = fileName; }
 
-YAML::Node YAMLWriter::getData() { return YAML::LoadFile(this->fileName); }
+YAML::Node YAMLMapWriter::getData() { return YAML::LoadFile(this->fileName); }
 
-void YAMLWriter::addCoordinateWhereObjectWithIdIsIn(int objectId,
-                                                    Coordinate& coordinate) {
+void YAMLMapWriter::addCoordinateWhereObjectWithIdIsIn(int objectId,
+                                                       Coordinate& coordinate) {
   YAML::Node data = this->getData();
   std::vector<std::vector<int>> coordinateVector;
   if (!data[objectId]) {

@@ -5,14 +5,14 @@
 #include <vector>
 
 #include "../../../../common/includes/Coordinate/Coordinate.h"
-#include "../../../../common/includes/YAML/YAMLReader.h"
+#include "../../../../common/includes/YAML/YAMLMapReader.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Item/Weapon/WeaponFactory.h"
 #include "Map.h"
 
 class MapLoader {
  private:
-  YAMLReader yamlReader;
+  YAMLMapReader yamlReader;
   unsigned int weaponIdStart;
   unsigned int weaponIdEnd;
   unsigned int itemIdStart;

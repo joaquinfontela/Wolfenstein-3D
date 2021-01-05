@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Wolfenstein3D"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ServerMain">
+				<Option output="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/ServerMain" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 ServerMain"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ServerMain/fast">
+				<Option output="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/ServerMain" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 ServerMain/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WolfensteinTest">
+				<Option output="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/WolfensteinTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 WolfensteinTest"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WolfensteinTest/fast">
+				<Option output="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/WolfensteinTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 WolfensteinTest/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/Coordinate/Coordinate.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/Socket/SocketCommunication.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/Socket/SocketException.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/Socket/SocketListener.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/Thread/Thread.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLReader.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLWriter.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/protocol.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Coordinate/Coordinate.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketCommunication.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketListener.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Socket/SocketWrapper.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/Thread/Thread.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLReader.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLWriter.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Command/Command.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Command/PlayerDisconnected.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Command/PlayerMove.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Notification/Notification.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Notification/PlayerConnected.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Notification/PlayerDisconnect.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Control/Notification/PlayerUpdatePosition.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Match/Engine.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Match/Match.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Match/MatchList.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Game/Game.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Ammo.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Blood.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Chest.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Cross.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Crown.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Cup.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Food.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Item.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/ItemFactory.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Key.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Kit.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Knife.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Shootable/MachineGun.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Shootable/Minigun.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Shootable/Pistol.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/Shootable/Shootable.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Item/Weapon/WeaponFactory.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Map/MapLoader.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Player/Player.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Server/ClientAccepter.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Server/ClientCommunication.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Server/ConnectionHandler.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Server/Server.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerADown.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerAUp.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerDDown.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerDUp.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerDisconnected.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerMove.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerSDown.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerSUp.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerShoot.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerWDown.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Command/PlayerWUp.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Notification/PlayerConnected.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Notification/PlayerDisconnect.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Notification/PlayerPackageUpdate.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Notification/PlayerUpdatePosition.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Control/Notification/ShotsFired.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Match/Engine.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Match/Match.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Match/MatchList.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Game/Game.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Ammo.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Blood.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Chest.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Cross.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Crown.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Cup.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Food.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/ItemFactory.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Key.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Kit.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Knife.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Shootable/MachineGun.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Shootable/Minigun.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Shootable/Pistol.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Shootable/Shootable.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/WeaponFactory.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Map/Map.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Map/MapLoader.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Map/Tile/Tile.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Player/Player.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Server/ClientAccepter.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Server/ClientCommunication.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Server/ConnectionHandler.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Server/Server.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/serverMain.cpp">
+			<Option target="ServerMain"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/test/CPPUnit.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/test/CPPUnit.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/test/test.cpp">
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

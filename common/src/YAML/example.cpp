@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "../../../server/includes/Model/Map/Map.h"
-#include "../../includes/YAML/YAMLReader.h"
+#include "../../includes/YAML/YAMLMapReader.h"
 
 int main() {
   YAMLReader yamlReader;

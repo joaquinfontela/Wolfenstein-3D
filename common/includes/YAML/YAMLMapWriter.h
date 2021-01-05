@@ -5,12 +5,12 @@
 
 #include "../Coordinate/Coordinate.h"
 
-class YAMLWriter {
+class YAMLMapWriter {
  private:
   std::string fileName;
   YAML::Node getData();
 
  public:
-  YAMLWriter(std::string& fileName);
+  YAMLMapWriter(std::string& fileName);
   void addCoordinateWhereObjectWithIdIsIn(int objectId, Coordinate& coordinate);
 };

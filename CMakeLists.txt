@@ -37,9 +37,9 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/Weapon/Shootable/Shootable.h
         server/includes/Model/Item/Weapon/Shootable/MachineGun.h
         server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
-        
-        common/includes/YAML/YAMLReader.h
-        common/includes/YAML/YAMLWriter.h
+
+        common/includes/YAML/YAMLMapReader.h
+        common/includes/YAML/YAMLMapWriter.h
 
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
@@ -69,8 +69,8 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
 
-        common/src/YAML/YAMLReader.cpp
-        common/src/YAML/YAMLWriter.cpp
+        common/src/YAML/YAMLMapReader.cpp
+        common/src/YAML/YAMLMapWriter.cpp
 
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
         server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp
