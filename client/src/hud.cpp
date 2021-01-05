@@ -35,7 +35,7 @@ void Hud::renderFace() {
   this->manager.getTextureSizeWithId(id, &width, &height);
   this->bjface->setSlideWidth(&width);
   std::cout << "dx: " << x - 457 * width / 24  << std::endl;
-  Area destArea(x - 465 * width / 24, y - 97 * height / 30,
+  Area destArea(x - ((x * 93)/ 160.0), y - ((y * 97) / 600.0),
                 7 * x / 80, 2 * y / 15);
   this->bjface->renderActualFrame(destArea, id);
 }

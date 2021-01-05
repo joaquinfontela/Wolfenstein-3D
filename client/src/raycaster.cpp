@@ -134,7 +134,7 @@ void Raycaster::run(){
       else lastfps = (FPS_FREQ * 1000)/ceil(diff.count());
       t1 = t2;
     }
-    if (!(iters % 50)) this->hud.updateBjFace();
+    if (!(iters % 500)) this->hud.updateBjFace();
 
     this->hud.update(lastfps);
     this->window->render();
