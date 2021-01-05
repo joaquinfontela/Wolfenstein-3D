@@ -1,10 +1,10 @@
 #include "../../../includes/Model/Map/MapLoader.h"
 
 MapLoader::MapLoader(std::string& yamlFile) : yamlReader(yamlFile) {
-  this->weaponIdStart = 1;
-  this->weaponIdEnd = 5;
-  this->itemIdStart = 6;
-  this->itemIdEnd = 14;  // hardodeo x ahora, despues lo sao del yaml
+  this->weaponIdStart = yamlReader.getWeaponsIdLimits().at(0);
+  this->weaponIdEnd = yamlReader.getWeaponsIdLimits().at(1);
+  this->itemIdStart = yamlReader.getItemsIdLimits().at(0);
+  this->itemIdEnd = yamlReader.getItemsIdLimits().at(1);
   this->itemCoordinateMap = yamlReader.getItemCoordinateMap();
 }
 

@@ -40,3 +40,19 @@ std::vector<int> YAMLReader::getMapDimensions() {
   }
   return dimensions;
 }
+
+std::vector<int> YAMLReader::getWeaponsIdLimits() {
+  YAML::Node data = this->getData();
+  std::vector<int> weaponsIdLimits;
+  weaponsIdLimits.push_back(data["weapon id start"].as<int>());
+  weaponsIdLimits.push_back(data["weapon id end"].as<int>());
+  return weaponsIdLimits;
+}
+
+std::vector<int> YAMLReader::getItemsIdLimits() {
+  YAML::Node data = this->getData();
+  std::vector<int> itemsIdLimits;
+  itemsIdLimits.push_back(data["item id start"].as<int>());
+  itemsIdLimits.push_back(data["item id end"].as<int>());
+  return itemsIdLimits;
+}

@@ -18,4 +18,6 @@ class YAMLReader {
   YAMLReader(std::string& fileName);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
   std::vector<int> getMapDimensions();
+  std::vector<int> getWeaponsIdLimits();
+  std::vector<int> getItemsIdLimits();
 };
