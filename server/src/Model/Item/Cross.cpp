@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Crown.h"
 
-Crown::Crown() : Item() {}
+Crown::Crown(int id) : Item(id) {}
 
 Crown::~Crown() {}
 

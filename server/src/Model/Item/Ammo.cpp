@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Ammo.h"
 
-Ammo::Ammo() : Item() {}
+Ammo::Ammo(int id) : Item(id) {}
 
 Ammo::~Ammo() {}
 

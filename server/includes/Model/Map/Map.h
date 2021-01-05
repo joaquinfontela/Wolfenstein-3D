@@ -4,21 +4,20 @@
 #include <string>
 #include <vector>
 
-#include "Tile/Tile.h"
-
 #include "../Player/Player.h"
+#include "Tile/Tile.h"
 
 class Tile;
 class Player;
-
+class Item;
 
 typedef std::vector<std::vector<Tile>> TileMatrix;
 
 class Map {
  public:
   Map(int dimx, int dimy);
-  void addDropWithIdAt(int id, int x, int y);
-  //std::vector<ItemDrop> getItemDropsAt(int x, int y);
+  void addItemDropWithIdAt(Item* item, int x, int y);
+  void addWeaponDropWithIdAt(Weapon* weapon, int x, int y);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);
@@ -29,10 +28,12 @@ class Map {
   // Agrega un jugador al mapa.
   void addPlayer(int x, int y, Player* p);
 
-  // Devuelve una tupla representando el (x, y) sobre el cual el jugador deberia respawnear.
+  // Devuelve una tupla representando el (x, y) sobre el cual el jugador deberia
+  // respawnear.
   std::tuple<double, double> handleRespawn();
 
-  // Devuelve la primera instancia del jugador que colisiona con la bala emitida desde attacker. Nullptr si no colisiona con ningun jugador.
+  // Devuelve la primera instancia del jugador que colisiona con la bala emitida
+  // desde attacker. Nullptr si no colisiona con ningun jugador.
   Player* traceAttackFrom(Player* attacker);
 
  private:

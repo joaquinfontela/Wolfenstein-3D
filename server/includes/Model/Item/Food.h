@@ -2,7 +2,7 @@
 
 class Food : public Item {
  public:
-  Food();
+  Food(int id);
   ~Food();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

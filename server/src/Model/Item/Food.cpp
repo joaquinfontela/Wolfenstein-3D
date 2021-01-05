@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Food.h"
 
-Food::Food() : Item() {}
+Food::Food(int id) : Item(id) {}
 
 Food::~Food() {}
 

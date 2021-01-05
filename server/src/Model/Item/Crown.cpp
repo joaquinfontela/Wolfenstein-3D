@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Cross.h"
 
-Cross::Cross() : Item() {}
+Cross::Cross(int id) : Item(id) {}
 
 Cross::~Cross() {}
 

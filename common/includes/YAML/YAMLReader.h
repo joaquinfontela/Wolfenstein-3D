@@ -17,4 +17,5 @@ class YAMLReader {
  public:
   YAMLReader();
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
+  std::vector<int> getMapDimensions();
 };

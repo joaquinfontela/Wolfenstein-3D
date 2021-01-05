@@ -2,7 +2,7 @@
 
 class Ammo : public Item {
  public:
-  Ammo();
+  Ammo(int id);
   ~Ammo();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

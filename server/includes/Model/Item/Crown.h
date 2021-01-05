@@ -5,7 +5,7 @@
 
 class Crown : public Item {
  public:
-  Crown();
+  Crown(int id);
   ~Crown();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

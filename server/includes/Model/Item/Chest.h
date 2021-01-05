@@ -5,7 +5,7 @@
 
 class Chest : public Item {
  public:
-  Chest();
+  Chest(int id);
   ~Chest();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

@@ -5,7 +5,7 @@
 
 class Cup : public Item {
  public:
-  Cup();
+  Cup(int id);
   ~Cup();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;
