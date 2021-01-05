@@ -6,4 +6,4 @@ Cross::~Cross() {}
 
 bool Cross::canBePickedUpBy(Player* p) { return true; }
 
-void Cross::pickUp(Player* p) { p->addPoints(10); }
+void Cross::pickUp(Player* p) { p->addPoints(200); }
