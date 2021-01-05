@@ -4,16 +4,17 @@
 #include <map>
 #include <string>
 
-#include "../Player/Player.h"
-#include "../Map/Map.h"
+#include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../Control/Notification/Notification.h"
-#include "../../../../common/includes/PlayerData.h"
+#include "../Map/Map.h"
+#include "../Map/MapLoader.h"
+#include "../Player/Player.h"
 
 class Game {
  private:
   std::map<int, Player*> players;
-  Map map;
+  Map* map;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
 
@@ -23,10 +24,12 @@ class Game {
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID);
 
-  // Encola la notificacion de los estados de los jugadores que requerian notificar al resto.
+  // Encola la notificacion de los estados de los jugadores que requerian
+  // notificar al resto.
   void sendUpdateMessages(WaitingQueue<Notification*>& notis);
 
-  // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa que lo borre en sus coordenadas.
+  // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa
+  // que lo borre en sus coordenadas.
   void removePlayer(int playerID);
 
   // Actualiza la posicion de los elementos dependientes del tiempo.

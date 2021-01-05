@@ -1,3 +1,6 @@
+#ifndef COORDINATE_H
+#define COORDINATE_H
+
 #include <vector>
 
 class Coordinate {
@@ -13,3 +16,5 @@ class Coordinate {
   int getY();
   std::vector<int> getVector();
 };
+
+#endif

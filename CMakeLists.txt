@@ -4,6 +4,7 @@ project(Wolfenstein3D)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -g")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 set(SOURCE_FILES_SERVER
         common/includes/Thread/Thread.h
@@ -36,6 +37,9 @@ set(SOURCE_FILES_SERVER
         server/includes/Model/Item/Weapon/Shootable/Shootable.h
         server/includes/Model/Item/Weapon/Shootable/MachineGun.h
         server/includes/Model/Item/Weapon/Shootable/RocketLauncher.h
+        
+        common/includes/YAML/YAMLReader.h
+        common/includes/YAML/YAMLWriter.h
 
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
@@ -64,6 +68,9 @@ set(SOURCE_FILES_SERVER
         server/src/Match/Engine.cpp
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
+
+        common/src/YAML/YAMLReader.cpp
+        common/src/YAML/YAMLWriter.cpp
 
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
         server/src/Model/Item/Weapon/Shootable/RocketLauncher.cpp
@@ -108,6 +115,11 @@ set(SOURCE_FILES_SERVER
         test/CPPUnit.cpp
         )
 
+find_package(PkgConfig)
+pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
 
 add_executable(WolfensteinTest ${SOURCE_FILES_SERVER} test/test.cpp)
 add_executable(ServerMain ${SOURCE_FILES_SERVER} serverMain.cpp)
+
+target_link_libraries(WolfensteinTest ${YAMLCPP_LIBRARIES})
+target_link_libraries(ServerMain ${YAMLCPP_LIBRARIES})

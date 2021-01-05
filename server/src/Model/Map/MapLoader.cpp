@@ -1,27 +1,26 @@
 #include "../../../includes/Model/Map/MapLoader.h"
 
-MapLoader::MapLoader(int weaponIdStart, int weaponIdEnd, int itemIdStart,
-                     int itemIdEnd) {
-  this->weaponIdStart = weaponIdStart;
-  this->weaponIdEnd = weaponIdEnd;
-  this->itemIdStart = itemIdStart;
-  this->itemIdEnd = itemIdEnd;
+MapLoader::MapLoader(std::string& yamlFile) : yamlReader(yamlFile) {
+  this->weaponIdStart = 1;
+  this->weaponIdEnd = 5;
+  this->itemIdStart = 6;
+  this->itemIdEnd = 14;  // hardodeo x ahora, despues lo sao del yaml
+  this->itemCoordinateMap = yamlReader.getItemCoordinateMap();
 }
 
-Map* MapLoader::loadMap(
-    std::vector<int> dimensions,
-    std::map<int, std::vector<Coordinate>> itemCoordinateMap) {
+Map* MapLoader::loadMap() {
+  std::vector<int> dimensions = yamlReader.getMapDimensions();
   Map* map = new Map(dimensions.at(0), dimensions.at(1));
-  this->addWeaponsToMap(map, itemCoordinateMap);
-  this->addItemsToMap(map, itemCoordinateMap);
+  this->addWeaponsToMap(map);
+  this->addItemsToMap(map);
   return map;
 }
 
-void MapLoader::addWeaponsToMap(
-    Map* map, std::map<int, std::vector<Coordinate>> itemCoordinateMap) {
+void MapLoader::addWeaponsToMap(Map* map) {
   int currentId;
+  WeaponFactory weaponFactory;
   for (currentId = this->weaponIdStart; currentId <= weaponIdEnd; currentId++) {
-    if (!idIsInItemCoordinateMap(currentId, itemCoordinateMap)) continue;
+    if (!idIsInItemCoordinateMap(currentId)) continue;
     std::vector<Coordinate> coordinatesWhereWeaponIsIn =
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereWeaponIsIn) {
@@ -31,12 +30,12 @@ void MapLoader::addWeaponsToMap(
   }
 }
 
-void MapLoader::addItemsToMap(
-    Map* map, std::map<int, std::vector<Coordinate>> itemCoordinateMap) {
+void MapLoader::addItemsToMap(Map* map) {
   int currentId;
   int currentItemUniqueId = 0;
+  ItemFactory itemFactory;
   for (currentId = this->itemIdStart; currentId <= itemIdEnd; currentId++) {
-    if (!idIsInItemCoordinateMap(currentId, itemCoordinateMap)) continue;
+    if (!idIsInItemCoordinateMap(currentId)) continue;
     currentItemUniqueId++;
     std::vector<Coordinate> coordinatesWhereItemIsIn =
         itemCoordinateMap.at(currentId);
@@ -48,7 +47,6 @@ void MapLoader::addItemsToMap(
   }
 }
 
-bool MapLoader::idIsInItemCoordinateMap(
-    int itemId, std::map<int, std::vector<Coordinate>> itemCoordinateMap) {
+bool MapLoader::idIsInItemCoordinateMap(int itemId) {
   return (itemCoordinateMap.find(itemId) != itemCoordinateMap.end());
 }

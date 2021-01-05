@@ -5,29 +5,26 @@
 #include <vector>
 
 #include "../../../../common/includes/Coordinate/Coordinate.h"
+#include "../../../../common/includes/YAML/YAMLReader.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Item/Weapon/WeaponFactory.h"
 #include "Map.h"
 
 class MapLoader {
  private:
+  YAMLReader yamlReader;
   unsigned int weaponIdStart;
   unsigned int weaponIdEnd;
   unsigned int itemIdStart;
   unsigned int itemIdEnd;
-  ItemFactory itemFactory;
-  WeaponFactory weaponFactory;
-  bool idIsInItemCoordinateMap(
-      int itemId, std::map<int, std::vector<Coordinate>> itemCoordinateMap);
-  void addWeaponsToMap(
-      Map* map, std::map<int, std::vector<Coordinate>> itemCoordinateMap);
-  void addItemsToMap(Map* map,
-                     std::map<int, std::vector<Coordinate>> itemCoordinateMap);
+  std::map<int, std::vector<Coordinate>> itemCoordinateMap;
+  void addWeaponsToMap(Map* map);
+  void addItemsToMap(Map* map);
+  bool idIsInItemCoordinateMap(int itemId);
 
  public:
-  MapLoader(int weaponIdStart, int weaponIdEnd, int itemIdStart, int itemIdEnd);
-  Map* loadMap(std::vector<int> dimensions,
-               std::map<int, std::vector<Coordinate>> itemCoordinateMap);
+  MapLoader(std::string& yamlFile);
+  Map* loadMap();
 };
 
 #endif
