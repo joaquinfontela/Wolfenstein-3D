@@ -38,10 +38,13 @@ Map::Map(int dimx,
          int dimy) {  // Deberia recibir directamente el archivo del mapa.
   this->dimx = dimx;
   this->dimy = dimy;
-  for (int y = 0; y < dimy; y++) {
+  for (int x = 0; x < dimy; x++) {
     std::vector<Tile> tileRow;
-    for (int x = 0; x < dimx; x++) {
+    for (int y = 0; y < dimx; y++) {
       Tile t;
+     if (matrix[x][y] != 0) {
+        t.setWall();
+     }
       tileRow.push_back(t);
     }
     tileMatrix.push_back(tileRow);

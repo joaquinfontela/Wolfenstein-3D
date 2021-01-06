@@ -2,14 +2,20 @@
 
 #include <iostream>
 #include <string>
+#include <time.h>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Model/Player/Player.h"
 
 Game::Game(std::string mapFile, std::string configFile) {
   std::string mapFileName = "./common/src/YAML/map.yaml";
+  auto t1 = std::chrono::steady_clock::now();
   MapLoader mapLoader(mapFileName);
   map = mapLoader.loadMap();
+  auto t2 = std::chrono::steady_clock::now();
+  std::chrono::duration<float, std::milli> diff;
+  diff = t2 - t1;
+  std::cout<<"[GAME] Map loaded, required time: "<<ceil(diff.count()) / 1000<<"s."<<std::endl;
 }
 
 void Game::addPlayer(int playerID) {

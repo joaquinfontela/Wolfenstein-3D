@@ -32,8 +32,8 @@ void MapLoader::addWeaponsToMap(Map* map) {
     for (Coordinate c : coordinatesWhereWeaponIsIn) {
       map->addWeaponDropAt(weaponFactory.getWeapon(currentId), c.getX(),
                            c.getY());
-      std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-                << std::endl;
+      //std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
+        //        << std::endl;
     }
   }
 }
@@ -50,8 +50,8 @@ void MapLoader::addItemsToMap(Map* map) {
     for (Coordinate c : coordinatesWhereItemIsIn) {
       map->addItemDropAt(itemFactory.getItem(currentId, currentItemUniqueId),
                          c.getX(), c.getY());
-      std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-                << std::endl;
+    //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
+  //              << std::endl;
     }
   }
 }
@@ -65,8 +65,8 @@ void MapLoader::addDoorsToMap(Map* map) {
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereDoorIsIn) {
       map->addDoorAt(doorFactory.getDoor(currentId), c.getX(), c.getY());
-      std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-                << std::endl;
+    //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
+    //            << std::endl;
     }
   }
 }
@@ -80,8 +80,8 @@ void MapLoader::addWallsToMap(Map* map) {
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereWallIsIn) {
       map->addWallAt(wallFactory.getWall(currentId), c.getX(), c.getY());
-      std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-                << std::endl;
+    //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
+      //          << std::endl;
     }
   }
 }
