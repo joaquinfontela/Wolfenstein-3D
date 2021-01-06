@@ -51,6 +51,8 @@ class Tile {
 
   // Devuelve true si autoriza el movimiento de un jugador a la posicion (x, y)
   bool allowMovement(double x, double y, Player* p);
+
+  ~Tile();
 };
 
 #endif
