@@ -98,4 +98,6 @@ Game::~Game() {
   for (; it != this->players.end(); ++it) {
     delete it->second;
   }
+
+  delete this->map;
 }

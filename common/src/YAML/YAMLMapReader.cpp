@@ -4,13 +4,14 @@
 
 YAMLMapReader::YAMLMapReader(std::string& fileName) {
   this->fileName = fileName;
+  this->data = this->getData();
 }
 
 YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
 
 std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
     int objectId) {
-  YAML::Node data = this->getData();
+
   std::vector<Coordinate> coordinates;
   if (!data[objectId]) return coordinates;
   std::vector<std::vector<int>> coordinatesData =
@@ -32,7 +33,7 @@ std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
 }
 
 std::vector<int> YAMLMapReader::getMapDimensions() {
-  YAML::Node data = this->getData();
+
   std::vector<int> dimensions;
   try {
     dimensions.push_back(data["dimx"].as<int>());
@@ -44,7 +45,7 @@ std::vector<int> YAMLMapReader::getMapDimensions() {
 }
 
 std::vector<int> YAMLMapReader::getWeaponsIdLimits() {
-  YAML::Node data = this->getData();
+
   std::vector<int> weaponsIdLimits;
   weaponsIdLimits.push_back(data["weapon id start"].as<int>());
   weaponsIdLimits.push_back(data["weapon id end"].as<int>());
@@ -52,7 +53,7 @@ std::vector<int> YAMLMapReader::getWeaponsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getItemsIdLimits() {
-  YAML::Node data = this->getData();
+
   std::vector<int> itemsIdLimits;
   itemsIdLimits.push_back(data["item id start"].as<int>());
   itemsIdLimits.push_back(data["item id end"].as<int>());
@@ -60,7 +61,7 @@ std::vector<int> YAMLMapReader::getItemsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getDoorsIdLimits() {
-  YAML::Node data = this->getData();
+
   std::vector<int> doorsIdLimits;
   doorsIdLimits.push_back(data["door id start"].as<int>());
   doorsIdLimits.push_back(data["door id end"].as<int>());
@@ -68,7 +69,7 @@ std::vector<int> YAMLMapReader::getDoorsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getWallsIdLimits() {
-  YAML::Node data = this->getData();
+
   std::vector<int> wallsIdLimits;
   wallsIdLimits.push_back(data["wall id start"].as<int>());
   wallsIdLimits.push_back(data["wall id end"].as<int>());
