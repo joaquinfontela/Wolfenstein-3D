@@ -15,11 +15,11 @@ CommandExecuter::~CommandExecuter(){
 
 void CommandExecuter::playShootingSounds(int shooterId) {
   if (shooterId == this->selfId){
-    // this->audiomanager.playOrStopAudioOnMaxVolumeWithId(2);
+    this->audiomanager.playOnMaxVolumeWithId(2);
     // Hacer que pueda variar en función del arma.
   } else {
     double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
-    this->audiomanager.playOrStopAudioOnVariableVolumeWithId(2, dist);
+    this->audiomanager.playOnVariableVolumeWithId(2, dist);
   }
 }
 

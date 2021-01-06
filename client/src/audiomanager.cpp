@@ -8,7 +8,7 @@
 #define TRACK_NOT_FOUND_ERROR "Error, track not found with code: "
 #define AUDIO_PATH "../audio/"
 
-void AudioManager::playOrStopAudioOnVariableVolumeWithId(int id, double dist){
+void AudioManager::playOnVariableVolumeWithId(int id, double dist){
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (!(it != this->audiotracks.end())) {
     std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
@@ -16,7 +16,7 @@ void AudioManager::playOrStopAudioOnVariableVolumeWithId(int id, double dist){
   }
   Audio* audio = it->second;
   audio->volumeDownWithDist(dist);
-  audio->playOrStopAudio();
+  audio->play();
 }
 
 AudioManager::~AudioManager() {
@@ -48,6 +48,14 @@ AudioManager::AudioManager() {
   }
 }
 
+void AudioManager::stopWithId(int id) {
+  std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
+  if (it != this->audiotracks.end())
+    it->second->stop();
+  else
+    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+}
+
 void AudioManager::loadTrack(int id, Audio* audio) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end())
@@ -56,18 +64,18 @@ void AudioManager::loadTrack(int id, Audio* audio) {
     this->audiotracks[id] = audio;
 }
 
-void AudioManager::playOrStopWithId(int id) {
+void AudioManager::playWithId(int id) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end())
-    it->second->playOrStopAudio();
+    it->second->play();
   else
     std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
 }
 
-void AudioManager::playOrStopAudioOnMaxVolumeWithId(int id) {
+void AudioManager::playOnMaxVolumeWithId(int id) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end())
-    it->second->playOrStopAudioWithMaxVolume();
+    it->second->playWithMaxVolume();
   else
     std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
 }

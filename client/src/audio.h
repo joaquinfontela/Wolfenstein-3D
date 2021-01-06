@@ -13,8 +13,9 @@ class Audio {
   void volumeUp();
   Audio(const char* name);
   ~Audio();
-  void playOrStopAudio();
-  void playOrStopAudioWithMaxVolume();
+  void play();
+  void stop();
+  void playWithMaxVolume();
 };
 
 #endif  // AUDIO_H_
