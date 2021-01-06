@@ -42,9 +42,6 @@ Map::Map(int dimx, int dimy) {
     std::vector<Tile> tileRow;
     for (int y = 0; y < dimx; y++) {
       Tile t;
-     if (matrix[x][y] != 0) {
-        t.setWall();
-     }
       tileRow.push_back(t);
     }
     tileMatrix.push_back(tileRow);
