@@ -82,10 +82,6 @@ Player* Tile::playerCollision(double x, double y, Player* p) {
 }
 void Tile::addPlayer(Player* p) { this->players.push_back(p); }
 
-void Tile::setWall() {
-  this->wall = new Wall(true);  // por ahora, despues este metodo se elimina
-}
-
 void Tile::removePlayerFromTile(Player* p) {
   std::vector<Player*>::iterator it = this->players.begin();
 

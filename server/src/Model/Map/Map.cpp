@@ -38,13 +38,10 @@ Map::Map(int dimx,
          int dimy) {  // Deberia recibir directamente el archivo del mapa.
   this->dimx = dimx;
   this->dimy = dimy;
-  for (int x = 0; x < dimy; x++) {
+  for (int y = 0; y < dimy; y++) {
     std::vector<Tile> tileRow;
-    for (int y = 0; y < dimx; y++) {
+    for (int x = 0; x < dimx; x++) {
       Tile t;
-      if (matrix[x][y] != 0) {
-        t.setWall();
-      }
       tileRow.push_back(t);
     }
     tileMatrix.push_back(tileRow);
@@ -53,22 +50,22 @@ Map::Map(int dimx,
 
 void Map::addItemDropAt(Item* item, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x - 1][y - 1].addItemDrop(item);
+  this->tileMatrix[y - 1][x - 1].addItemDrop(item);
 }
 
 void Map::addWeaponDropAt(Weapon* weapon, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x - 1][y - 1].addWeaponDrop(weapon);
+  this->tileMatrix[y - 1][x - 1].addWeaponDrop(weapon);
 }
 
 void Map::addDoorAt(Door* door, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x - 1][y - 1].addDoor(door);
+  this->tileMatrix[y - 1][x - 1].addDoor(door);
 }
 
 void Map::addWallAt(Wall* wall, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[x - 1][y - 1].addWall(wall);
+  this->tileMatrix[y - 1][x - 1].addWall(wall);
 }
 
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {

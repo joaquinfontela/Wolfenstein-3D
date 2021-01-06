@@ -7,6 +7,7 @@
 #include "../../Item/Item.h"
 #include "../../Item/Weapon/Weapon.h"
 #include "../../Player/Player.h"
+#include "../../Wall/BlueWall.h"
 #include "../../Wall/Wall.h"
 
 class Player;
