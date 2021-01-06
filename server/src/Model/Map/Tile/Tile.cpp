@@ -96,3 +96,10 @@ void Tile::removePlayerFromTile(Player* p) {
     }
   }
 }
+
+Tile::~Tile() {
+  this->deleteWeaponDrops();
+  this->deleteItemDrops();
+  this->deleteDoor();
+  this->deleteWall();
+}
