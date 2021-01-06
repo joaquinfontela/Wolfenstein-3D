@@ -8,6 +8,17 @@
 #define TRACK_NOT_FOUND_ERROR "Error, track not found with code: "
 #define AUDIO_PATH "../audio/"
 
+void AudioManager::playOrStopAudioOnVariableVolumeWithId(int id, double dist){
+  std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
+  if (!(it != this->audiotracks.end())) {
+    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    return;
+  }
+  Audio* audio = it->second;
+  audio->volumeDownWithDist(dist);
+  audio->playOrStopAudio();
+}
+
 AudioManager::~AudioManager() {
   this->garbageCollector();
 }
@@ -49,6 +60,14 @@ void AudioManager::playOrStopWithId(int id) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end())
     it->second->playOrStopAudio();
+  else
+    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+}
+
+void AudioManager::playOrStopAudioOnMaxVolumeWithId(int id) {
+  std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
+  if (it != this->audiotracks.end())
+    it->second->playOrStopAudioWithMaxVolume();
   else
     std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
 }

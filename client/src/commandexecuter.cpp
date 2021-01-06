@@ -13,8 +13,17 @@ CommandExecuter::~CommandExecuter(){
   }*/
 }
 
-void CommandExecuter::run(){
+void CommandExecuter::playShootingSounds(int shooterId) {
+  if (shooterId == this->selfId){
+    // this->audiomanager.playOrStopAudioOnMaxVolumeWithId(2);
+    // Hacer que pueda variar en función del arma.
+  } else {
+    double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
+    this->audiomanager.playOrStopAudioOnVariableVolumeWithId(2, dist);
+  }
+}
 
+void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
   while (alive) {
     try {
@@ -51,7 +60,9 @@ void CommandExecuter::run(){
         delete toKill;
         this->lock.unlock();
       } else if (opcode == SHOTS_FIRED) {
-        this->audiomanager.playOrStopWithId(2);
+        uint32_t shooterId;
+        this->socket.receive(&shooterId, sizeof(shooterId));
+        this->playShootingSounds(shooterId);
       }
     } catch (SocketException& e) {
       break;

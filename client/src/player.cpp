@@ -9,9 +9,12 @@ static bool sameSign(double a, double b) {
   return ((a <= 0 && b <= 0) || (a > 0 && b > 0));
 }
 
+double Player::calculateDist(Player* other) {
+  return sqrt(pow(this->x - other->x,2) + pow(this->y - other->y,2));
+}
+
 int Player::getSoldierId(double x, double y, double dirX, double dirY) {
   double angle = atan2(this->y - y, this->x - x) * 180 / PI;
-  std::cout << angle << std::endl;
   return 1;
 }
 

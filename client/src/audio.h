@@ -9,10 +9,12 @@ class Audio {
   Mix_Music* audio;
   int volume;
  public:
+  void volumeDownWithDist(double dist);
   void volumeUp();
   Audio(const char* name);
   ~Audio();
   void playOrStopAudio();
+  void playOrStopAudioWithMaxVolume();
 };
 
 #endif  // AUDIO_H_

@@ -9,6 +9,8 @@ class AudioManager {
   ~AudioManager();
   AudioManager();
   void playOrStopWithId(int id);
+  void playOrStopAudioOnMaxVolumeWithId(int id);
+  void playOrStopAudioOnVariableVolumeWithId(int id, double distance);
   void loadTrack(int id, Audio* audio);
   bool loadAndCheckTrack(int id, Audio* audio);
  private:
