@@ -8,7 +8,7 @@
 
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
 #include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
-
+#include "../../../includes/Model/Item/Weapon/Knife.h"
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
 
@@ -129,7 +129,12 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
-  return this->weapon->attack();
+  int damageDealt = this->weapon->attack();
+
+  if(!this->weapon->hasAmmo()){
+    delete this->weapon;
+    this->weapon = new Knife();
+  }
 }
 
 unsigned int Player::ID() { return this->playerID; }
