@@ -36,8 +36,9 @@ void Game::playerShoot(int playerID) {
   Player* receiver = nullptr;
   int receiverHealth = 0;
 
+  int att = attacker->attack();
   if ((receiver = map->traceAttackFrom(attacker)) != nullptr) {
-    receiverHealth = receiver->takeDamage(attacker->attack(), *(this->map));
+    receiverHealth = receiver->takeDamage(att, *(this->map));
 
     // if(receiverHealth == 0) // El jugador murio y debe respawnear
     //  this->map.handleRespawn(receiver);

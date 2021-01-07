@@ -11,12 +11,38 @@
 #define TTF_INIT_ERROR "\nError on initialization: "
 #define SIZE 25
 #define FACES_PER_IMG 3
+#define GUNS_IN_HUD 4
+// Deben ser 5 ^^^ cuando se meta el rocket launcher.
 
 void Hud::update(int fps) {
   this->renderFps(fps);
   this->renderLifes();
   this->renderHealth();
   this->renderFace();
+  this->renderTypeOfGun();
+  //this->renderGun();
+}
+
+void Hud::renderTypeOfGun() {
+  int weaponId = this->player->weaponId;
+  this->hudgun->updateFrame(weaponId-1);
+  int x, y;
+  this->window->getWindowSize(&x, &y);
+  int width, height;
+  this->manager.getTextureSizeWithId(HUDGUNS, &width, &height);
+  this->hudgun->setSlideWidth(&width);
+  float aspectRatio = float(height) / float(width);
+  width = (x * 9)/50;
+  height = width * aspectRatio;
+  Area destArea((63 * x) / 80, y - (14 * y) / 80, width , height);
+  //std::cout << "id: " << weaponId << " x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
+  this->hudgun->renderActualFrame(destArea, HUDGUNS);
+}
+
+//void Hud::renderGun() {}
+
+void Hud::updateHudGun() {
+  this->hudgun->updateFrame();
 }
 
 void Hud::renderFace() {
@@ -48,6 +74,7 @@ Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
+  this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
 }
 
 void Hud::renderLifes() {
@@ -109,6 +136,7 @@ void Hud::renderText(const char* text, SDL_Rect* rect) {
 
 Hud::~Hud() {
   delete this->bjface;
+  delete this->hudgun;
   TTF_CloseFont(this->font);
   TTF_Quit();
 }

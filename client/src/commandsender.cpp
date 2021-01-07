@@ -70,6 +70,21 @@ void CommandSender::run() {
             break;
           case SDLK_RIGHT:
             break;
+          case SDLK_1:
+            // this->update(KEY_1_DOWN);
+            break;
+          case SDLK_2:
+            // this->update(KEY_2_DOWN);
+            break;
+          case SDLK_3:
+            // this->update(KEY_3_DOWN);
+            break;
+          case SDLK_4:
+            // this->update(KEY_4_DOWN);
+            break;
+          case SDLK_5:
+            // this->update(KEY_5_DOWN);
+            break;
         }
       } else if (event.type == SDL_KEYUP) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;

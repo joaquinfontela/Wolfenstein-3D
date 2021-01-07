@@ -9,6 +9,7 @@ class SdlAnimation : public Drawable {
  public:
   SdlAnimation(TextureManager& manager, int slides) :
     pos(0), textureId(textureId), manager(manager) , picsPerAnimation(slides) {}
+  void updateFrame(int newpos);
   void updateFrame();
   void setSlideWidth(int* width);
   void renderActualFrame(Area& destArea, int textureId);

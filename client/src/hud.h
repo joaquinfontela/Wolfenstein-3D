@@ -14,13 +14,17 @@ class Hud {
   TTF_Font* font;
   Player* player;
   TextureManager& manager;
+  SdlAnimation* hudgun;
   void renderText(const char* text, SDL_Rect* rect);
   void renderFps(int fps);
   void renderLifes();
   void renderFace();
   void renderHealth();
+  void renderTypeOfGun();
+  void renderGun();
  public:
   void update(int fps);
+  void updateHudGun();
   void updateBjFace();
   ~Hud();
   Hud(SdlWindow* window, Player* player, TextureManager& manager);

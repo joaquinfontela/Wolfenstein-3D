@@ -15,13 +15,6 @@
 #define PLAYER_SCORE_UPDATE 11
 #define PLAYER_UPDATE_PACKAGE 12
 
-// Weapon ID definitions
-#define KNIFE 20
-#define PISTOL 21
-#define MACHINEGUN 22
-#define CHAINGUN 23
-#define ROCKET 24
-
 // PowerUp ID definitions
 #define FOOD 30
 #define MEDIKIT 31

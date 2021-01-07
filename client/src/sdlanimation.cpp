@@ -7,6 +7,11 @@ void SdlAnimation::updateFrame() {
   this->pos %= this->picsPerAnimation;
 }
 
+void SdlAnimation::updateFrame(int newpos) {
+  this->pos = newpos;
+  this->pos %= this->picsPerAnimation;
+}
+
 void SdlAnimation::setSlideWidth(int* width) {
   *width /= this->picsPerAnimation;
 }

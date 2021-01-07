@@ -2,7 +2,7 @@
 
 class RocketLauncher : public Shootable {
  public:
-  RocketLauncher(unsigned int newAmmo) : Shootable(newAmmo), ID(2) {}
+  RocketLauncher(unsigned int newAmmo) : Shootable(newAmmo), ID(5) {}
   ~RocketLauncher();
   unsigned int attack();
   bool hasAmmo();

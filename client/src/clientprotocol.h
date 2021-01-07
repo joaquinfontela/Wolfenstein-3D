@@ -1,6 +1,9 @@
 #ifndef CLIENTPROTOCOL_H_
 #define CLIENTPROTOCOL_H_
 
+#define HEIGHT 600
+#define WIDTH 800
+
 // Apply bit masks to facilitate the sound selection.
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
@@ -9,10 +12,10 @@
 #define MACHINEGUN_SOUND 3
 
 #define KNIFE 1
-#define ROCKETLAUNCHER 2
-#define PISTOL 3
+#define PISTOL 2
+#define MACHINEGUN 3
 #define CHAINGUN 4
-#define MACHINEGUN 5
+#define ROCKETLAUNCHER 5
 
 #define AUDIO_PATH "../audio/"
 #define FONT_PATH "../media/"
@@ -22,8 +25,6 @@
 #define GAME_TITLE "Wolfenstein"
 
 #define TEXTURE_LIMIT 64
-#define HEIGHT 500
-#define WIDTH 500
 #define GREY 169, 168, 244
 #define CEILING_COLOR 0x7B, 0x7B, 0x7B
 #define FLOOR_COLOR 0x60, 0x60, 0x60
@@ -48,5 +49,6 @@
 #define BJ1_SPRITE 13
 #define BJ2_SPRITE 14
 #define BJ3_SPRITE 15
+#define HUDGUNS 16
 
 #endif  // CLIENTPROTOCOL_H_

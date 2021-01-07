@@ -19,6 +19,7 @@ class Player : public Drawable {
   double calculateDist(Player* other);
 
   int playerID;
+  int weaponId;
   double dirX;
   double dirY;
   double planeX;

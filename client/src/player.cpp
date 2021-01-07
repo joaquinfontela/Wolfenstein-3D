@@ -19,6 +19,7 @@ int Player::getSoldierId(double x, double y, double dirX, double dirY) {
 Player::Player(PlayerData& info) {
   this->x = info.posX;
   this->y = info.posY;
+  this->weaponId = info.weaponID;
   this->dirX = info.dirX;
   this->dirY = info.dirY;
   this->id = 3;
@@ -36,6 +37,8 @@ void Player::update(PlayerData& info) {
   this->dirY = info.dirY;
   this->lives = info.lives;
   this->health = info.health;
+  std::cout << "cambio de: " << weaponId << ", hacia: " << info.weaponID << std::endl;
+  this->weaponId = info.weaponID;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);

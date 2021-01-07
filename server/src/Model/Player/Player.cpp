@@ -28,7 +28,7 @@ Player::Player(unsigned int hp, unsigned int lifes, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  this->weapon = new Pistol(100);
+  this->weapon = new Pistol(5);
 
 }
 
@@ -132,9 +132,12 @@ int Player::attack() {
   int damageDealt = this->weapon->attack();
 
   if(!this->weapon->hasAmmo()){
+    std::cout << "cambiando de armadinha" << std::endl;
     delete this->weapon;
     this->weapon = new Knife();
   }
+
+  return damageDealt;
 }
 
 unsigned int Player::ID() { return this->playerID; }

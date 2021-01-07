@@ -15,8 +15,10 @@
 
 class Raycaster {
  public:
-  Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window, Player* player, std::vector<Drawable*>& sprites, std::mutex& lock, Hud& hud) :
-          alive(b), manager(manager) , matrix(m) , player(player) , window(window), sprites(sprites) , lock(lock) , hud(hud) {
+  Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
+            Player* player, std::vector<Drawable*>& sprites, std::mutex& lock, Hud& hud) :
+            alive(b), manager(manager) , matrix(m) , player(player) ,
+            window(window), sprites(sprites) , lock(lock) , hud(hud) {
     manager.getWindowSize(&this->width, &this->height);
     this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   }
