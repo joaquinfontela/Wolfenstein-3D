@@ -1,27 +1,27 @@
-#include <iostream>
-#include <cstring>
 #include <math.h>
 
+#include <cstring>
+#include <iostream>
+
 #include "../common/includes/Socket/SocketCommunication.h"
-#include "../common/includes/Socket/SocketWrapper.h"
 #include "../common/includes/Socket/SocketException.h"
+#include "../common/includes/Socket/SocketWrapper.h"
 #include "../server/includes/Model/Game/Game.h"
+#include "../server/includes/Model/Item/Blood.h"
 #include "../server/includes/Model/Item/Key.h"
 #include "../server/includes/Model/Item/Kit.h"
-#include "../server/includes/Model/Item/Blood.h"
-
+#include "../server/includes/Model/Map/Map.h"
 #include "../server/includes/Model/Player/Player.h"
 #include "../server/includes/Server/Server.h"
-#include "../server/includes/Model/Map/Map.h"
 #include "CPPUnit.h"
 
 #define PRECISION 100000.0
-#define EPSILON 10.0/PRECISION
+#define EPSILON 10.0 / PRECISION
 
 Map map(24, 24);
 
-
-// PLAYER TEST *********************************************************************
+// PLAYER TEST
+// *********************************************************************
 Test(SocketThrowsExcepctedException) {
   SocketCommunication socket(-1);
   socket.connect("localhost", "8080");
@@ -48,10 +48,9 @@ Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
 }
 
-Test(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan){
-
+Test(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan) {
   Player myPlayer(100, 1);
-  Kit kit(1);
+  Kit kit(1, 20);
 
   TEST_ASSERT_FALSE(kit.canBePickedUpBy(&myPlayer));
   myPlayer.takeDamage(10, map);
@@ -60,8 +59,7 @@ Test(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan){
   TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
 }
 
-Test(PlayerCanPickUpKey){
-
+Test(PlayerCanPickUpKey) {
   Player myPlayer(100, 1);
   Key key(1);
 
@@ -72,10 +70,9 @@ Test(PlayerCanPickUpKey){
   TEST_ASSERT_TRUE(myPlayer.hasKey());
 }
 
-Test(PlayerCantPickUpBloodWithMoreThan11HPButThenYes){
-
+Test(PlayerCantPickUpBloodWithMoreThan11HPButThenYes) {
   Player myPlayer(11, 1);
-  Blood blood(1);
+  Blood blood(1, 1, 10);
 
   TEST_ASSERT_FALSE(blood.canBePickedUpBy(&myPlayer));
   myPlayer.takeDamage(1, map);
@@ -89,7 +86,7 @@ Test(PlayerCantPickUpBloodWithMoreThan11HPButThenYes){
 Test(sendDoubles1) {
   double value = 10000000.5;
   uint32_t firstMessage = (uint32_t)value;
-  uint32_t secondMessage = (value - (int) value) * PRECISION;
+  uint32_t secondMessage = (value - (int)value) * PRECISION;
   double ans = firstMessage + (((double)secondMessage) / PRECISION);
   TEST_ASSERT_TRUE(value == ans);
 }
@@ -97,7 +94,7 @@ Test(sendDoubles1) {
 Test(sendDoubles2) {
   double value = 10000000.12345;
   uint32_t firstMessage = (uint32_t)value;
-  uint32_t secondMessage = (long int)((value - (int) value) * PRECISION);
+  uint32_t secondMessage = (long int)((value - (int)value) * PRECISION);
   double ans = firstMessage + (((double)secondMessage) / PRECISION);
   TEST_ASSERT_TRUE(value < ans + EPSILON && value > ans - EPSILON);
 }
@@ -105,7 +102,7 @@ Test(sendDoubles2) {
 Test(sendDoubles3) {
   double value = 1999463499.1999345;
   uint32_t firstMessage = (uint32_t)value;
-  uint32_t secondMessage = (long int)((value - (int) value) * PRECISION);
+  uint32_t secondMessage = (long int)((value - (int)value) * PRECISION);
   double ans = firstMessage + (((double)secondMessage) / PRECISION);
   printf("\nDouble: %lX, ans: %lX as hexa\n", (uint64_t)value, (uint64_t)ans);
   printf("Double: %f, asn: %f as doubles\n\n", value, ans);
@@ -119,11 +116,11 @@ int main() {
 
   playerTests.addTest(PlayerTakesDamageSuccesfully);
   playerTests.addTest(PlayerTakesFatalDamageAndDies);
-  playerTests.addTest(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
+  playerTests.addTest(
+      PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
   playerTests.addTest(PlayerCanPickUpKey);
   playerTests.addTest(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan);
   playerTests.addTest(PlayerCantPickUpBloodWithMoreThan11HPButThenYes);
-
 
   socketWrapperTest.addTest(sendDoubles1);
   socketWrapperTest.addTest(sendDoubles2);

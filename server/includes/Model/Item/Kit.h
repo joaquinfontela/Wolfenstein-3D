@@ -3,15 +3,15 @@
 
 #include "Item.h"
 
+class Kit : public Item {
+ private:
+  int healthSumWhenPickedUp;
 
-class Kit : public Item{
-public:
-
-  Kit(int id);
+ public:
+  Kit(int id, int healthSumWhenPickedUp);
 
   bool canBePickedUpBy(Player* p);
   void pickUp(Player* p);
-
 };
 
 #endif

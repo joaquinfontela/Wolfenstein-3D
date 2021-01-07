@@ -7,7 +7,7 @@ class YAMLConfigReader {
   YAML::Node getData();
 
  public:
-  YAMLConfigReader(std::string& fileName);
+  YAMLConfigReader(std::string fileName);
   int getBulletAmountAtStart();
   int getBulletAmountDropWhenPlayerDies();
   int getMaxAmountOfBullets();
@@ -15,9 +15,7 @@ class YAMLConfigReader {
   int getMaxHealth();
   int getMaxReviveTimes();
   int getMaxHealthToBeAbleToPickUpBloodItem();
-  int getHealthSumWhenPickingUpBlood();
-  int getHealthSumWhenPickingUpFood();
-  int getHealthSumWhenPickingUpKit();
+  int getHealthSumWhenPickingUpItem(int itemId);
   int getPointsSumWhenPickingUpItem(int itemId);
   std::vector<int> getMinAndMaxDamagePerBullet();
   int getBlastFrequency(int weaponId);

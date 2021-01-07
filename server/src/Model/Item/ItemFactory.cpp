@@ -10,6 +10,12 @@
 #include "../../../includes/Model/Item/Key.h"
 #include "../../../includes/Model/Item/Kit.h"
 
+ItemFactory::ItemFactory()
+    : yamlConfigReader(std::string("common/src/YAML/config.yaml")) {}
+
+ItemFactory::ItemFactory(std::string& configFileName)
+    : yamlConfigReader(configFileName) {}
+
 Item* ItemFactory::getItem(int itemTypeId, int uniqueId) {
   switch (itemTypeId) {
     case 101:
@@ -17,27 +23,34 @@ Item* ItemFactory::getItem(int itemTypeId, int uniqueId) {
       break;
 
     case 102:
-      return new Blood(uniqueId);
+      return new Blood(
+          uniqueId, yamlConfigReader.getHealthSumWhenPickingUpItem(102),
+          yamlConfigReader.getMaxHealthToBeAbleToPickUpBloodItem());
       break;
 
     case 103:
-      return new Chest(uniqueId);
+      return new Chest(uniqueId,
+                       yamlConfigReader.getPointsSumWhenPickingUpItem(103));
       break;
 
     case 104:
-      return new Cross(uniqueId);
+      return new Cross(uniqueId,
+                       yamlConfigReader.getPointsSumWhenPickingUpItem(104));
       break;
 
     case 105:
-      return new Crown(uniqueId);
+      return new Crown(uniqueId,
+                       yamlConfigReader.getPointsSumWhenPickingUpItem(105));
       break;
 
     case 106:
-      return new Cup(uniqueId);
+      return new Cup(uniqueId,
+                     yamlConfigReader.getPointsSumWhenPickingUpItem(106));
       break;
 
     case 107:
-      return new Food(uniqueId);
+      return new Food(uniqueId,
+                      yamlConfigReader.getHealthSumWhenPickingUpItem(107));
       break;
 
     case 108:
@@ -45,7 +58,8 @@ Item* ItemFactory::getItem(int itemTypeId, int uniqueId) {
       break;
 
     case 109:
-      return new Kit(uniqueId);
+      return new Kit(uniqueId,
+                     yamlConfigReader.getHealthSumWhenPickingUpItem(109));
       break;
 
     default:
