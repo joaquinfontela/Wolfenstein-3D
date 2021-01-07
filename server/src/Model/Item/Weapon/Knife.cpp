@@ -5,3 +5,7 @@ unsigned int Knife::attack() { return this->getRandomDamage(); }
 int Knife::getID(){
   return this->ID;
 }
+
+bool Knife::hasAmmo(){
+  return true;
+}

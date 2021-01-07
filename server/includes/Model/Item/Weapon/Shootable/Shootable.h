@@ -11,7 +11,8 @@ class Shootable : public Weapon {
  public:
   Shootable(int newAmmo);
   ~Shootable();
-  bool outOfAmmo();
+  virtual bool hasAmmo() = 0;
+  //bool outOfAmmo();
 
 };
 

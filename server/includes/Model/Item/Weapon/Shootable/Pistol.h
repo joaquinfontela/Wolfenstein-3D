@@ -10,6 +10,7 @@ class Pistol : public Shootable {
 
   // Devuelve el daño que haria el disparo.
   unsigned int attack();
+  bool hasAmmo();
 
 private:
 

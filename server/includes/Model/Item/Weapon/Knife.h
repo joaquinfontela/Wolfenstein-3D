@@ -9,6 +9,7 @@ class Knife : public Weapon {
   ~Knife();
   int getID();
   unsigned int attack();
+  bool hasAmmo();
 
 private:
   int ID;

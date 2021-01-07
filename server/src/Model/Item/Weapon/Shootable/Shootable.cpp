@@ -9,4 +9,4 @@ unsigned int Shootable::shoot() {
   return this->getRandomDamage();
 }
 
-bool Shootable::outOfAmmo() { return (ammo == 0); }
+//bool Shootable::outOfAmmo() { return (ammo == 0); }

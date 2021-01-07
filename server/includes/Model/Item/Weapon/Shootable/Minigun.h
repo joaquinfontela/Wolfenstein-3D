@@ -6,7 +6,8 @@ class Minigun : public Shootable {
   ~Minigun();
   unsigned int attack();
   int getID();
-
+  bool hasAmmo();
+  
 private:
   int ID;
 };

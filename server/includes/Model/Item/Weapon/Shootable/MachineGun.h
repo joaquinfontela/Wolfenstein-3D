@@ -6,7 +6,8 @@ class MachineGun : public Shootable {
   ~MachineGun();
   unsigned int attack();
   int getID();
-
+  bool hasAmmo();
+  
 private:
   int ID;
 };

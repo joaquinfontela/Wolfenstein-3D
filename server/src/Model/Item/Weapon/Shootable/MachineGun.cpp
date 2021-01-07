@@ -11,3 +11,5 @@ unsigned int MachineGun::attack() {
 int MachineGun::getID(){
   return this->ID;
 }
+
+bool MachineGun::hasAmmo(){ return this->ammo > 0;}
