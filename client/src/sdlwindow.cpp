@@ -7,13 +7,10 @@
 #include "sdlwindow.h"
 #include "sdltexture.h"
 #include <iostream>
+#include "clientprotocol.h"
 
 #define SDL_INIT_ERROR "\nError on initialization: "
 #define SDL_WINDOW_INIT_ERROR "\nError on window initialization: "
-#define CEILING_COLOR 0x7B, 0x7B, 0x7B
-#define FLOOR_COLOR 0x60, 0x60, 0x60
-#define OTHER_COLOR 0xFF, 0xFF, 0x60
-#define IMG_PATH "../media/"
 
 SdlWindow::SdlWindow(int width, int height) :
                      width(width), height(height) {
@@ -27,8 +24,8 @@ SdlWindow::SdlWindow(int width, int height) :
   if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
     throw SdlException(Mix_GetError());
   }
-  SDL_SetWindowTitle(this->window,"Wolfenstein");
-  SDL_Surface* icon = IMG_Load(IMG_PATH "wolfensteinlogo.jpg");
+  SDL_SetWindowTitle(this->window, GAME_TITLE);
+  SDL_Surface* icon = IMG_Load(IMG_PATH GAME_LOGO);
   SDL_SetWindowIcon(this->window,icon);
 }
 

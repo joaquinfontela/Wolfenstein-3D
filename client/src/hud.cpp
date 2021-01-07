@@ -2,15 +2,14 @@
 #include "player.h"
 #include "sdlexception.h"
 #include "sdltexture.h"
+#include "clientprotocol.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
 
 #define TTF_INIT_ERROR "\nError on initialization: "
-#define FONT_PATH "../media/"
 #define SIZE 25
-#define GREY {169, 168, 244}
 #define FACES_PER_IMG 3
 
 void Hud::update(int fps) {
@@ -45,7 +44,7 @@ void Hud::updateBjFace() {
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
   window(window), renderer(window->getRenderer()), player(player), manager(manager) {
-  if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH "wolfenstein.ttf", 100))) {
+  if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
@@ -96,7 +95,7 @@ void Hud::renderHealth() {
 void Hud::renderText(const char* text, SDL_Rect* rect) {
   SDL_Texture* texture = nullptr;
   SDL_Surface* surface = nullptr;
-  SDL_Color color = GREY;
+  SDL_Color color = {GREY};
   if (!(surface = TTF_RenderText_Solid(this->font, text, color))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }

@@ -1,8 +1,6 @@
 #include "drawable.h"
-
+#include "clientprotocol.h"
 #include <math.h>
-
-#define BLOCKSIZE 64
 
 void Drawable::loadDistanceWithCoords(int px, int py){
   this->dist = pow(px - this->x, 2) + pow(py - this->y, 2);
@@ -12,7 +10,8 @@ bool Drawable::operator<(Drawable& other) {
   return this->dist > other.dist;
 }
 
-void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer) {
+void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
+                    double dirY, double planeX, double planeY, double* zBuffer) {
 
   int width, height;
   manager.getWindowSize(&width, &height);
@@ -41,7 +40,7 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   if (drawEndX >= width) drawEndX = width - 1;
 
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * 64 / spriteWidth) / 256;
+    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       Area srcArea(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);

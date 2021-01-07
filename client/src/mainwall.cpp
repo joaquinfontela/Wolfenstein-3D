@@ -19,11 +19,9 @@
 #include "sdltexture.h"
 #include "texturemanager.h"
 #include "audiomanager.h"
+#include "clientprotocol.h"
 
-#define IMG_PATH "../media/"
 #define ERROR -1
-#define HEIGHT 500
-#define WIDTH 500
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
 int main(int argc, char** argv) {

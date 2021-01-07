@@ -4,9 +4,7 @@
 #include <string>
 #include <iostream>
 #include <math.h>
-
-#define AUDIO_PATH "../audio/"
-#define TIMES_THE_AUDIO_IS_PLAYED 1
+#include "clientprotocol.h"
 
 Audio::~Audio() {
   Mix_FreeMusic(this->audio);
@@ -36,7 +34,6 @@ void Audio::stop(){
 }
 
 void Audio::volumeUp() {
-  std::cout << "disparando con vol: " << this->volume << std::endl;
   Mix_VolumeMusic(this->volume); // Máx 128.
   this->volume += 3;
 }

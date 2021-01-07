@@ -1,11 +1,13 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+#include "audio.h"
 #include "commandexecuter.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
-#include <iostream>
-#include <algorithm>
-#include "audio.h"
-#include <string>
+#include "clientprotocol.h"
 
 CommandExecuter::~CommandExecuter(){
   /*for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
@@ -15,11 +17,11 @@ CommandExecuter::~CommandExecuter(){
 
 void CommandExecuter::playShootingSounds(int shooterId) {
   if (shooterId == this->selfId){
-    this->audiomanager.playOnMaxVolumeWithId(2);
+    this->audiomanager.playOnMaxVolumeWithId(PISTOLSHOT_SOUND);
     // Hacer que pueda variar en función del arma.
   } else {
     double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
-    this->audiomanager.playOnVariableVolumeWithId(2, dist);
+    this->audiomanager.playOnVariableVolumeWithId(PISTOLSHOT_SOUND, dist);
   }
 }
 

@@ -16,8 +16,10 @@ typedef std::map<uint32_t,Player*>::iterator iterator_t;
 
 class CommandExecuter : public Thread {
  public:
-  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites, std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId, AudioManager& audiomanager) :
-  socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) , selfId(selfId) , audiomanager(audiomanager) {}
+  CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
+                  std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId, AudioManager& audiomanager) :
+  socket(s) , alive(alive) , sprites(sprites), players(players) ,
+  lock(lock) , selfId(selfId) , audiomanager(audiomanager) {}
   ~CommandExecuter();
   void run();
  private:

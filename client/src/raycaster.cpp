@@ -1,17 +1,12 @@
 #include "raycaster.h"
-
+#include "drawable.h"
+#include "clientprotocol.h"
 #include <climits>
 #include <algorithm>
 #include <vector>
 #include <math.h>
-
-#include "drawable.h"
 #include <iostream>
-
 #include <time.h>
-
-#define FPS_FREQ 500
-#define BLOCKSIZE 64
 
 void Raycaster::run(){
 

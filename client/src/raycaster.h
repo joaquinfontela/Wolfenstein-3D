@@ -5,14 +5,13 @@
 #include "player.h"
 #include "sdlwindow.h"
 #include "texturemanager.h"
+#include "clientprotocol.h"
 #include "../../common/includes/Map/Map.h"
 
 #include <mutex>
 #include <atomic>
 #include <vector>
 #include <math.h>
-
-#define PI 3.14159265359
 
 class Raycaster {
  public:

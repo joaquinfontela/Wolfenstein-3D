@@ -15,7 +15,8 @@ public:
   Drawable() {}
   ~Drawable() {}
   Drawable(double x, double y, int id, double dist = INT_MAX) : x(x), y(y), id(id), dist(dist) {}
-  virtual void draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer);
+  virtual void draw(TextureManager& manager, double posX, double posY, double dirX,
+                    double dirY, double planeX, double planeY, double* zBuffer);
   bool operator<(Drawable& other);
   void loadDistanceWithCoords(int px, int py);
 };

@@ -8,12 +8,8 @@
 #include "area.h"
 #include "sdltexture.h"
 #include "sdlexception.h"
+#include "clientprotocol.h"
 
-#define TEXTURE_LIMIT 64
-
-
-#define IMG_PATH "../media/"
-#define TEXTURE_LIMIT 64
 #define SDL_TEXTURE_INIT_ERROR "Error, couldn't be opened. "
 #define TEXTURE_NOT_FOUND_ERROR "Error, texture not found with code: "
 #define TEXTURE_FOUND_ERROR "Error, texture already found with code: "

@@ -1,9 +1,7 @@
 #include "player.h"
+#include "clientprotocol.h"
 #include <math.h>
 #include <iostream>
-
-#define BLOCKSIZE 64
-#define PI 3.141592654
 
 static bool sameSign(double a, double b) {
   return ((a <= 0 && b <= 0) || (a > 0 && b > 0));
@@ -106,7 +104,7 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
     spriteId = 10;
 
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * 64 / spriteWidth) / 256;
+    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       Area srcArea(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);

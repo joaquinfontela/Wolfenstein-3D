@@ -11,10 +11,8 @@
 class CommandSender : public Thread {
  public:
   CommandSender(SocketCommunication& s, std::atomic<bool>& alive);
-
   void update(uint32_t keyType);
   void run();
-
  private:
   std::atomic<bool>& alive;
   SocketCommunication& socket;
