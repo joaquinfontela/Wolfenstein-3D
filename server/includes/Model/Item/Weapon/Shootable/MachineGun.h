@@ -10,7 +10,6 @@ class MachineGun : public Shootable {
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
         ID(4) {}
   ~MachineGun();
-  unsigned int attack();
   int getID();
   bool hasAmmo();
 

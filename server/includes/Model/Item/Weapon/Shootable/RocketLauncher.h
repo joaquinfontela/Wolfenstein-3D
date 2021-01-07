@@ -9,7 +9,6 @@ class RocketLauncher : public Shootable {
                   shotsPerBlast, ammoLostPerShot),
         ID(1) {}
   ~RocketLauncher();
-  unsigned int attack();
   bool hasAmmo();
   int getID();
 

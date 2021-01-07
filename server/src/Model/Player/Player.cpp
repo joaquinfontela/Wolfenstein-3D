@@ -136,6 +136,8 @@ int Player::attack() {
     delete this->weapon;
     this->weapon = weaponFactory.getWeapon(1);
   }
+
+  return damageDealt;
 }
 
 unsigned int Player::ID() { return this->playerID; }

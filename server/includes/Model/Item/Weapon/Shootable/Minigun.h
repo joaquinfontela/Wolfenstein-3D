@@ -10,7 +10,6 @@ class Minigun : public Shootable {
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
         ID(3) {}
   ~Minigun();
-  unsigned int attack();
   int getID();
   bool hasAmmo();
 

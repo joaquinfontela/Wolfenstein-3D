@@ -25,6 +25,7 @@ class Shootable : public Weapon {
             unsigned int blastFrequency);
   ~Shootable();
   virtual bool hasAmmo() = 0;
+  unsigned int attack();
   // bool outOfAmmo();
 };
 

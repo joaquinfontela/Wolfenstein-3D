@@ -12,9 +12,6 @@ class Pistol : public Shootable {
                   ammoLostPerShot, precision),
         ID(2) {}
   int getID();
-
-  // Devuelve el daño que haria el disparo.
-  unsigned int attack();
   bool hasAmmo();
 
  private:
