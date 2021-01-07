@@ -5,13 +5,14 @@
 
 class Knife : public Weapon {
  public:
-  Knife() : ID(0) {}
+  Knife(unsigned int minDamagePerBullet, unsigned maxDamagePerBullet)
+      : Weapon(minDamagePerBullet, maxDamagePerBullet), ID(0) {}
   ~Knife();
   int getID();
   unsigned int attack();
   bool hasAmmo();
 
-private:
+ private:
   int ID;
 };
 
