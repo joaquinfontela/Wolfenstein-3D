@@ -52,6 +52,7 @@ set(SOURCE_FILES_SERVER
 
         common/includes/YAML/YAMLMapReader.h
         common/includes/YAML/YAMLMapWriter.h
+        common/includes/YAML/YAMLConfigReader.h
 
         common/includes/Socket/SocketCommunication.h
         common/includes/Socket/SocketException.h
@@ -83,6 +84,7 @@ set(SOURCE_FILES_SERVER
 
         common/src/YAML/YAMLMapReader.cpp
         common/src/YAML/YAMLMapWriter.cpp
+        common/src/YAML/YAMLConfigReader.cpp
 
         server/src/Model/Item/Weapon/Weapon.cpp
         server/src/Model/Item/Weapon/Shootable/Pistol.cpp
