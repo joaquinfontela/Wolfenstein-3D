@@ -1,4 +1,5 @@
 #include "../../../includes/Model/Item/Blood.h"
+#include <iostream>
 
 Blood::Blood(int id, int healthSumWhenPickedUp, int maxHealthToPickUp)
     : Item(id) {
@@ -7,6 +8,7 @@ Blood::Blood(int id, int healthSumWhenPickedUp, int maxHealthToPickUp)
 }
 
 bool Blood::canBePickedUpBy(Player* p) {
+
   return (p->getHealth() <= this->maxHealthToPickUp);
 }
 

@@ -36,6 +36,8 @@ class Tile {
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 
+  void pickUpItems(double x, double y, Player* p);
+
   // Remueve el jugador del Tile.
   void removePlayerFromTile(Player* p);
 
