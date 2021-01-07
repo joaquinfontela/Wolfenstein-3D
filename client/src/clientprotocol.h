@@ -8,6 +8,12 @@
 #define PISTOLSHOT_SOUND 2
 #define MACHINEGUN_SOUND 3
 
+#define KNIFE 1
+#define ROCKETLAUNCHER 2
+#define PISTOL 3
+#define CHAINGUN 4
+#define MACHINEGUN 5
+
 #define AUDIO_PATH "../audio/"
 #define FONT_PATH "../media/"
 #define IMG_PATH "../media/"

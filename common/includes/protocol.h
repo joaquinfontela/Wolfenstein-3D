@@ -36,6 +36,11 @@
 #define KEY_D_UP 600
 #define KEY_W_UP 700
 #define KEY_S_UP 800
+#define KEY_1_DOWN 101
+#define KEY_2_DOWN 202
+#define KEY_3_DOWN 303
+#define KEY_4_DOWN 404
+#define KEY_5_DOWN 505
 
 // RESPONSE DEFINITIONS
 
