@@ -4,8 +4,11 @@
 #include "Item.h"
 
 class Crown : public Item {
+ private:
+  int pointsSumWhenPickedUp;
+
  public:
-  Crown(int id);
+  Crown(int id, int pointsSumWhenPickedUp);
   ~Crown();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

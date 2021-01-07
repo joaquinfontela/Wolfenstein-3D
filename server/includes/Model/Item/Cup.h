@@ -4,8 +4,11 @@
 #include "Item.h"
 
 class Cup : public Item {
+ private:
+  int pointsSumWhenPickedUp;
+
  public:
-  Cup(int id);
+  Cup(int id, int pointsSumWhenPickedUp);
   ~Cup();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

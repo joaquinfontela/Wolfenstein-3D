@@ -1,9 +1,11 @@
-#include "../../../includes/Model/Item/Crown.h"
+#include "../../../includes/Model/Item/Cross.h"
 
-Crown::Crown(int id) : Item(id) {}
+Cross::Cross(int id, int pointsSumWhenPickedUp) : Item(id) {
+  this->pointsSumWhenPickedUp = pointsSumWhenPickedUp;
+}
 
-Crown::~Crown() {}
+Cross::~Cross() {}
 
-bool Crown::canBePickedUpBy(Player* p) { return true; }
+bool Cross::canBePickedUpBy(Player* p) { return true; }
 
-void Crown::pickUp(Player* p) { p->addPoints(10); }
+void Cross::pickUp(Player* p) { p->addPoints(this->pointsSumWhenPickedUp); }
