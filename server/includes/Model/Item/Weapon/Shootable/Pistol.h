@@ -5,10 +5,15 @@
 
 class Pistol : public Shootable {
  public:
-  Pistol(unsigned int ammo) : Shootable(ammo) {}
+  Pistol(unsigned int ammo) : Shootable(ammo), ID(2) {}
+  int getID();
 
   // Devuelve el daño que haria el disparo.
   unsigned int attack();
+
+private:
+
+  int ID;
 };
 
 #endif

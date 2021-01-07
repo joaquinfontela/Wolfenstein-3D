@@ -7,3 +7,7 @@ unsigned int MachineGun::attack() {
   }
   return damage;
 }
+
+int MachineGun::getID(){
+  return this->ID;
+}

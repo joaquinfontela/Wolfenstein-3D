@@ -9,9 +9,11 @@ class Weapon {
   // hagan falta.
   unsigned int getRandomDamage();
 
+
  public:
   Weapon() {}
   Weapon(unsigned int ammo) {}
+  virtual int getID() = 0;
 
   // Devuelve el daño que haria un ataque.
   virtual unsigned int attack() = 0;

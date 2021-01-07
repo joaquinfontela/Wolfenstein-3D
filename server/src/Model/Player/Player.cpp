@@ -7,6 +7,7 @@
 #include <tuple>
 
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
+#include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
 
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
@@ -27,6 +28,8 @@ Player::Player(unsigned int hp, unsigned int lifes, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
+  this->weapon = new Pistol(100);
+
 }
 
 Player::Player(unsigned int hp, unsigned int lifes)
@@ -89,6 +92,7 @@ void Player::fillPlayerData(PlayerData& data) {
   data.rotSpeed = this->rotSpeed;
   data.lives = lifeRemaining;
   data.health = health;
+  data.weaponID = this->weapon->getID();
 
   this->hasToBeNotified = false;
   return;
@@ -125,7 +129,7 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
-  return 10;
+  return this->weapon->attack();
 }
 
 unsigned int Player::ID() { return this->playerID; }
@@ -169,5 +173,5 @@ void Player::addPoints(int points) { this->score += points; }
 int Player::getScore() { return this->score; }
 
 Player::~Player() {
-  // delete this->weapon;
+  delete this->weapon;
 }

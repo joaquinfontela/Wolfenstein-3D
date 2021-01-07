@@ -12,6 +12,7 @@ class Shootable : public Weapon {
   Shootable(int newAmmo);
   ~Shootable();
   bool outOfAmmo();
+
 };
 
 #endif

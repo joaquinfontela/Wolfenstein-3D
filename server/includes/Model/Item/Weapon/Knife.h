@@ -5,9 +5,13 @@
 
 class Knife : public Weapon {
  public:
-  Knife() {}
+  Knife() : ID(0) {}
   ~Knife();
+  int getID();
   unsigned int attack();
+
+private:
+  int ID;
 };
 
 #endif

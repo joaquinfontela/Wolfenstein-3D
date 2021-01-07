@@ -2,7 +2,11 @@
 
 class MachineGun : public Shootable {
  public:
-  MachineGun(unsigned int newAmmo) : Shootable(newAmmo) {}
+  MachineGun(unsigned int newAmmo) : Shootable(newAmmo), ID(4) {}
   ~MachineGun();
   unsigned int attack();
+  int getID();
+
+private:
+  int ID;
 };

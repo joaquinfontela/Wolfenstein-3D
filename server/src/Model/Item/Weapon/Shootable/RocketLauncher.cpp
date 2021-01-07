@@ -10,3 +10,7 @@ unsigned int RocketLauncher::attack() {
 }
 
 bool RocketLauncher::outOfAmmo() { return (ammo < 5); }
+
+int RocketLauncher::getID(){
+  return this->ID;
+}
