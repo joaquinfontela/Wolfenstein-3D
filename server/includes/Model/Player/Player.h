@@ -3,6 +3,7 @@
 
 #include "../../../../common/includes/PlayerData.h"
 #include "../Item/Weapon/Weapon.h"
+#include "../Item/Weapon/WeaponFactory.h"
 #include "../Map/Map.h"
 
 class Map;
@@ -19,6 +20,7 @@ class Player {
   unsigned int health, lifeRemaining, ammo;
   Weapon* weapon;
   bool key;
+  WeaponFactory weaponFactory;
 
   int handleDeath(Map& map);
 

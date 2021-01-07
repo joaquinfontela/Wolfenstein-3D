@@ -6,9 +6,9 @@
 #include <iostream>
 #include <tuple>
 
-#include "../../../includes/Model/Item/Weapon/Weapon.h"
-#include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
 #include "../../../includes/Model/Item/Weapon/Knife.h"
+#include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
+#include "../../../includes/Model/Item/Weapon/Weapon.h"
 #define MAX_AMMO 1000
 #define MAX_HEALTH 100
 
@@ -28,8 +28,9 @@ Player::Player(unsigned int hp, unsigned int lifes, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  this->weapon = new Pistol(5);
-
+  this->weapon = weaponFactory.getWeapon(
+      2);  // por ahora va asi, pero hay que pasar el arch de config o  el
+           // lector y hacerlo a partir de eso.
 }
 
 Player::Player(unsigned int hp, unsigned int lifes)
@@ -131,10 +132,14 @@ int Player::attack() {
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
   int damageDealt = this->weapon->attack();
 
+<<<<<<< HEAD
   if(!this->weapon->hasAmmo()){
     std::cout << "cambiando de armadinha" << std::endl;
+=======
+  if (!this->weapon->hasAmmo()) {
+>>>>>>> 912473dc28c4885d4ef02d63e007d310c6bfc4e2
     delete this->weapon;
-    this->weapon = new Knife();
+    this->weapon = weaponFactory.getWeapon(1);
   }
 
   return damageDealt;
@@ -180,6 +185,4 @@ void Player::addPoints(int points) { this->score += points; }
 
 int Player::getScore() { return this->score; }
 
-Player::~Player() {
-  delete this->weapon;
-}
+Player::~Player() { delete this->weapon; }

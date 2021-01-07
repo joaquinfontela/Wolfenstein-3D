@@ -1,3 +1,6 @@
+#ifndef YAMLCONFIGREADER_H
+#define YAMLCONFIGREADER_H
+
 #include <yaml-cpp/yaml.h>
 
 class YAMLConfigReader {
@@ -23,3 +26,5 @@ class YAMLConfigReader {
   int ammoLostPerShot(int weaponId);
   int precision(int weaponId);
 };
+
+#endif
