@@ -8,7 +8,7 @@ class Minigun : public Shootable {
           unsigned int blastFrequency)
       : Shootable(newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
-        ID(3) {}
+        ID(4) {}
   ~Minigun();
   int getID();
   bool hasAmmo();

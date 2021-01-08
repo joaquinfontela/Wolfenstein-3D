@@ -1,6 +1,6 @@
 #include "../../../../includes/Model/Item/Weapon/WeaponFactory.h"
 
-#define DEFAULT_AMMO 0
+#define DEFAULT_AMMO 5
 
 #include "../../../../includes/Model/Item/Weapon/Knife.h"
 #include "../../../../includes/Model/Item/Weapon/Shootable/MachineGun.h"

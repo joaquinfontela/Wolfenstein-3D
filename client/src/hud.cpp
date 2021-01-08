@@ -11,7 +11,7 @@
 #define TTF_INIT_ERROR "\nError on initialization: "
 #define SIZE 25
 #define FACES_PER_IMG 3
-#define GUNS_IN_HUD 4
+#define GUNS_IN_HUD 5
 // Deben ser 5 ^^^ cuando se meta el rocket launcher.
 
 void Hud::update(int fps) {

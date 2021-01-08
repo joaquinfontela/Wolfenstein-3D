@@ -8,7 +8,7 @@ class MachineGun : public Shootable {
              unsigned int blastFrequency)
       : Shootable(newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
-        ID(4) {}
+        ID(3) {}
   ~MachineGun();
   int getID();
   bool hasAmmo();

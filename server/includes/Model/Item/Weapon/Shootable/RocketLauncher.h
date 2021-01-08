@@ -7,7 +7,7 @@ class RocketLauncher : public Shootable {
                  unsigned int ammoLostPerShot)
       : Shootable(newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot),
-        ID(1) {}
+        ID(5) {}
   ~RocketLauncher();
   bool hasAmmo();
   int getID();

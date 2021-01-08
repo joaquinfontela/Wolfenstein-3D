@@ -132,12 +132,7 @@ int Player::attack() {
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
   int damageDealt = this->weapon->attack();
 
-<<<<<<< HEAD
-  if(!this->weapon->hasAmmo()){
-    std::cout << "cambiando de armadinha" << std::endl;
-=======
   if (!this->weapon->hasAmmo()) {
->>>>>>> 912473dc28c4885d4ef02d63e007d310c6bfc4e2
     delete this->weapon;
     this->weapon = weaponFactory.getWeapon(1);
   }
