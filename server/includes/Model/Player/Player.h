@@ -10,6 +10,7 @@ class Map;
 
 class Player {
  private:
+  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP;
   double x, y;
   double dirX, dirY;
   double rotSpeed;
@@ -26,9 +27,8 @@ class Player {
 
  public:
   // CONSTRUCTORES.
-  Player(unsigned int hp, unsigned int lifes, Map& map, unsigned int playerID);
-  Player(unsigned int hp, unsigned int lifes);
-  Player() {}
+  Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
+  Player(YAMLConfigReader yamlConfigReader);
 
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.

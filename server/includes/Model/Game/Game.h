@@ -6,6 +6,7 @@
 
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../Control/Notification/Notification.h"
 #include "../Map/Map.h"
 #include "../Map/MapLoader.h"
@@ -15,6 +16,7 @@ class Game {
  private:
   std::map<int, Player*> players;
   Map* map;
+  YAMLConfigReader yamlConfigReader;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
 

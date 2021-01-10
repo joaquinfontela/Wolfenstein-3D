@@ -20,6 +20,11 @@
 #define MEDIKIT 31
 #define BLOOD 32
 #define BULLETS 33
+#define CHEST 34
+#define CROSS 35
+#define CROWN 36
+#define CUP 37
+#define KEY 38
 
 #define KEY_A_DOWN 100
 #define KEY_D_DOWN 200

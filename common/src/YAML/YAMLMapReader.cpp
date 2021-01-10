@@ -11,7 +11,6 @@ YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
 
 std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
     int objectId) {
-
   std::vector<Coordinate> coordinates;
   if (!data[objectId]) return coordinates;
   std::vector<std::vector<int>> coordinatesData =
@@ -21,19 +20,37 @@ std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
   return coordinates;
 }
 
-std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
+std::map<int, std::vector<Coordinate>>
+YAMLMapReader::getPartialItemCoordinateMap(int FROM_ID, int TO_ID) {
   int i;
   std::map<int, std::vector<Coordinate>> itemCoordinateMap;
-  int FROM_ID = this->getWeaponsIdLimits().at(0);
-  int TO_ID = this->getWallsIdLimits().at(1);
   for (i = FROM_ID; i <= TO_ID; i++) {
     itemCoordinateMap[i] = this->getTileCoordinatesWhereObjectIsIn(i);
   }
   return itemCoordinateMap;
 }
 
-std::vector<int> YAMLMapReader::getMapDimensions() {
+std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
+  int FROM_ID = this->getWeaponsIdLimits().at(0);
+  int TO_ID = this->getWallsIdLimits().at(1);
+  return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
+}
 
+std::map<int, std::vector<Coordinate>>
+YAMLMapReader::getWallTypeCoordinateMap() {
+  int FROM_ID = this->getWallsIdLimits().at(0);
+  int TO_ID = this->getWallsIdLimits().at(1);
+  return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
+}
+
+std::map<int, std::vector<Coordinate>>
+YAMLMapReader::getItemTypeCoordinateMap() {
+  int FROM_ID = this->getItemsIdLimits().at(0);
+  int TO_ID = this->getItemsIdLimits().at(1);
+  return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
+}
+
+std::vector<int> YAMLMapReader::getMapDimensions() {
   std::vector<int> dimensions;
   try {
     dimensions.push_back(data["dimx"].as<int>());
@@ -45,7 +62,6 @@ std::vector<int> YAMLMapReader::getMapDimensions() {
 }
 
 std::vector<int> YAMLMapReader::getWeaponsIdLimits() {
-
   std::vector<int> weaponsIdLimits;
   weaponsIdLimits.push_back(data["weapon id start"].as<int>());
   weaponsIdLimits.push_back(data["weapon id end"].as<int>());
@@ -53,7 +69,6 @@ std::vector<int> YAMLMapReader::getWeaponsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getItemsIdLimits() {
-
   std::vector<int> itemsIdLimits;
   itemsIdLimits.push_back(data["item id start"].as<int>());
   itemsIdLimits.push_back(data["item id end"].as<int>());
@@ -61,7 +76,6 @@ std::vector<int> YAMLMapReader::getItemsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getDoorsIdLimits() {
-
   std::vector<int> doorsIdLimits;
   doorsIdLimits.push_back(data["door id start"].as<int>());
   doorsIdLimits.push_back(data["door id end"].as<int>());
@@ -69,7 +83,6 @@ std::vector<int> YAMLMapReader::getDoorsIdLimits() {
 }
 
 std::vector<int> YAMLMapReader::getWallsIdLimits() {
-
   std::vector<int> wallsIdLimits;
   wallsIdLimits.push_back(data["wall id start"].as<int>());
   wallsIdLimits.push_back(data["wall id end"].as<int>());

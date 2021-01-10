@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -g")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 set(SOURCE_FILES_SERVER
+
         common/includes/Thread/Thread.h
         server/includes/Match/Match.h
         server/includes/Match/MatchList.h

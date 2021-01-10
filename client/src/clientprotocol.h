@@ -34,7 +34,7 @@
 #define BLOCKSIZE 64
 #define FPS_FREQ 500
 
-#define WALL_SPRITE 1
+#define BLUE_WALL 1
 #define WALL2_SPRITE 2
 #define GUARD_SPRITE 3
 #define CHAINGUN_SPRITE 4
@@ -51,5 +51,9 @@
 #define BJ3_SPRITE 15
 #define HUDGUNS 16
 #define GUNSPRITESROW 17
+#define GREY_STONE_WALL 18
+#define ROCK_WALL 19
+#define WOODEN_WALL 20
+
 
 #endif  // CLIENTPROTOCOL_H_

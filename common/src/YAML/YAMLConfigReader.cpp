@@ -1,5 +1,7 @@
 #include "../../includes/YAML/YAMLConfigReader.h"
 
+#include <iostream>
+
 YAMLConfigReader::YAMLConfigReader(std::string fileName) {
   this->fileName = fileName;
   data = this->getData();
