@@ -41,8 +41,7 @@ void Hud::renderTypeOfGun() {
 }
 
 /*
- * Let us call X(T) = Frames rendered in T seconds => FPS = X(T)/T [1/s]
- * And let's say that the number of frames that our animation has is Z.
+ * Let's say that the number of frames that our animation has is Z.
  * If our animation lasted N frames and we wanted to play it in one second,
  * then we would have to update the frames every FPS/Z number of iterations.
  * Now, if we had N frames that would have to be played in T' seconds, every
