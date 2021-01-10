@@ -12,8 +12,8 @@
 
 Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
                unsigned int playerID)
-    : health(100),
-      MAX_HEALTH(100),
+    : health(yamlConfigReader.getMaxHealth()),
+      MAX_HEALTH(yamlConfigReader.getMaxHealth()),
       lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
       ammo(yamlConfigReader.getBulletAmountAtStart()),
       MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),

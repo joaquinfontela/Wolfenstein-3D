@@ -23,9 +23,6 @@ Game::Game(std::string mapFile, std::string configFile)
 }
 
 void Game::addPlayer(int playerID) {
-  unsigned int health = 100;  // Deberian obtenerse del file de config.
-  unsigned int lifes = 2;
-
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
 
   this->players[playerID] = newPlayer;

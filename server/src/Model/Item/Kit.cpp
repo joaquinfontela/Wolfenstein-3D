@@ -6,8 +6,4 @@ Kit::Kit(int id, int healthSumWhenPickedUp) : Item(id) {
 
 bool Kit::canBePickedUpBy(Player* p) { return !p->hasFullHealth(); }
 
-void Kit::pickUp(Player* p) {
-  // Probablemente la vida deberia venir del configFile por lo que capaz deberia
-  // recibir la vida que quiero que sume por parametro del constructor.
-  p->addHealth(this->healthSumWhenPickedUp);
-}
+void Kit::pickUp(Player* p) { p->addHealth(this->healthSumWhenPickedUp); }

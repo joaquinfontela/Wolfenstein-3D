@@ -43,6 +43,13 @@ YAMLMapReader::getWallTypeCoordinateMap() {
   return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
 }
 
+std::map<int, std::vector<Coordinate>>
+YAMLMapReader::getItemTypeCoordinateMap() {
+  int FROM_ID = this->getItemsIdLimits().at(0);
+  int TO_ID = this->getItemsIdLimits().at(1);
+  return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
+}
+
 std::vector<int> YAMLMapReader::getMapDimensions() {
   std::vector<int> dimensions;
   try {

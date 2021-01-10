@@ -21,6 +21,7 @@ class YAMLMapReader {
   YAMLMapReader(std::string& fileName);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
   std::map<int, std::vector<Coordinate>> getWallTypeCoordinateMap();
+  std::map<int, std::vector<Coordinate>> getItemTypeCoordinateMap();
   std::vector<int> getMapDimensions();
   std::vector<int> getWeaponsIdLimits();
   std::vector<int> getItemsIdLimits();
