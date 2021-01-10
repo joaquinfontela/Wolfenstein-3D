@@ -42,13 +42,13 @@ void Hud::renderGun() {
   int weaponId = this->player->weaponId;
   if (this->player->isShooting()) {
     animationStatus++;
-    std::cout << "Shooting" << std::endl;
+    std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+1+animationStatus << std::endl;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
     }
   }
-  this->gun->updateFrame((weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+1+animationStatus);
+  this->gun->updateFrame((weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+animationStatus);
   int x, y, width, height;
   this->window->getWindowSize(&x, &y);
   this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
