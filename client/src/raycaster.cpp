@@ -12,7 +12,6 @@ void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
 
-  int lastfps = 0;
   int iters = 0;
   while(alive){
 
@@ -121,15 +120,21 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
+    //#ifdef FPS_FREQ
+    //#define FPS_FREQ 50
+    //Use this with a VM only case.
+
     if (!(iters % FPS_FREQ)) {
       std::chrono::duration<float,std::milli> diff = t2 - t1;
-      if (!iters) lastfps = (1000)/ceil(diff.count());
-      else lastfps = (FPS_FREQ * 1000)/ceil(diff.count());
+      if (!iters) this->hud.updateFpsCounter((1000)/ceil(diff.count()));
+      else this->hud.updateFpsCounter((FPS_FREQ * 1000)/ceil(diff.count()));
       t1 = t2;
     }
-    if (!(iters % 500)) this->hud.updateBjFace();
+    if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    this->hud.update(lastfps);
+    //#endif
+
+    this->hud.update();
     this->window->render();
     iters++;
   }

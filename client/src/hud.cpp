@@ -13,14 +13,16 @@
 #define FACES_PER_IMG 3
 #define GUNS_IN_HUD 5
 #define FRAMES_PER_GUN_ANIMATION 20
+#define GUN_SLICES FRAMES_PER_GUN_ANIMATION/4
 
-void Hud::update(int fps) {
-  this->renderFps(fps);
+void Hud::update() {
+  this->renderFpsCounter();
   this->renderLifes();
   this->renderHealth();
   this->renderFace();
   this->renderTypeOfGun();
   this->renderGun();
+  this->framesAlreadyPlayed++;
 }
 
 void Hud::renderTypeOfGun() {
@@ -38,17 +40,26 @@ void Hud::renderTypeOfGun() {
   this->hudgun->renderActualFrame(destArea, HUDGUNS);
 }
 
+/*
+ * Let us call X(T) = Frames rendered in T seconds => FPS = X(T)/T [1/s]
+ * And let's say that the number of frames that our animation has is Z.
+ * If our animation lasted N frames and we wanted to play it in one second,
+ * then we would have to update the frames every FPS/Z number of iterations.
+ * Now, if we had N frames that would have to be played in T' seconds, every
+ * frame of the animation would have to be updated every (FPS * T')/Z iterations.
+ */
+
 void Hud::renderGun() {
   int weaponId = this->player->weaponId;
-  if (this->player->isShooting()) {
+  if (this->player->isShooting() && !(this->framesAlreadyPlayed % (this->fps / 16))) {
     animationStatus++;
-    std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+1+animationStatus << std::endl;
+    std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
     }
   }
-  this->gun->updateFrame((weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+animationStatus);
+  this->gun->updateFrame((weaponId-1)*(GUN_SLICES)+animationStatus);
   int x, y, width, height;
   this->window->getWindowSize(&x, &y);
   this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
@@ -90,7 +101,7 @@ void Hud::updateBjFace() {
 }
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
-  window(window), renderer(window->getRenderer()), player(player), manager(manager), animationStatus(0){
+  window(window), renderer(window->getRenderer()), player(player), manager(manager), animationStatus(0), framesAlreadyPlayed(0){
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
@@ -110,20 +121,24 @@ void Hud::renderLifes() {
   this->renderText(std::to_string(player->lives).c_str(), &rect);
 }
 
-void Hud::renderFps(int fps) {
+void Hud::updateFpsCounter(int fps) {
+  this->fps = fps;
+}
+
+void Hud::renderFpsCounter() {
   int x, y;
   this->window->getWindowSize(&x, &y);
   int width = x / 16;
   int height = y / 6;
   x -= width + 893 * x / 1000;
   x += x / 11;
-  if (fps < 100){
+  if (this->fps < 100){
     width -= width / 160;
     x += x / 50;
   }
   y -= height - y / 275;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(fps).c_str(), &rect);
+  this->renderText(std::to_string(this->fps).c_str(), &rect);
 }
 
 void Hud::renderHealth() {

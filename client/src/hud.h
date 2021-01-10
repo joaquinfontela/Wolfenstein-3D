@@ -16,16 +16,19 @@ class Hud {
   SdlAnimation* hudgun;
   SdlAnimation* bjface;
   SdlAnimation* gun;
-  int animationStatus;
+  short animationStatus;
+  int fps;
+  int framesAlreadyPlayed;
   void renderText(const char* text, SDL_Rect* rect);
-  void renderFps(int fps);
+  void renderFpsCounter();
   void renderLifes();
   void renderFace();
   void renderHealth();
   void renderTypeOfGun();
   void renderGun();
  public:
-  void update(int fps);
+  void updateFpsCounter(int fps);
+  void update();
   void updateHudGun();
   void updateBjFace();
   ~Hud();
