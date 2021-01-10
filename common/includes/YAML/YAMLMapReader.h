@@ -14,10 +14,13 @@ class YAMLMapReader {
   YAML::Node data;
   YAML::Node getData();
   std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
+  std::map<int, std::vector<Coordinate>> getPartialItemCoordinateMap(
+      int FROM_ID, int TO_ID);
 
  public:
   YAMLMapReader(std::string& fileName);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
+  std::map<int, std::vector<Coordinate>> getWallTypeCoordinateMap();
   std::vector<int> getMapDimensions();
   std::vector<int> getWeaponsIdLimits();
   std::vector<int> getItemsIdLimits();

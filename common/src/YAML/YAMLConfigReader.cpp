@@ -4,7 +4,6 @@
 
 YAMLConfigReader::YAMLConfigReader(std::string fileName) {
   this->fileName = fileName;
-  std::cout << fileName << std::endl;
   data = this->getData();
 }
 
