@@ -50,5 +50,6 @@
 #define BJ2_SPRITE 14
 #define BJ3_SPRITE 15
 #define HUDGUNS 16
+#define GUNSPRITESROW 17
 
 #endif  // CLIENTPROTOCOL_H_
