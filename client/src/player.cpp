@@ -16,6 +16,10 @@ int Player::getSoldierId(double x, double y, double dirX, double dirY) {
   return 1;
 }
 
+bool Player::isShooting() {
+  return this->shooting;
+}
+
 Player::Player(PlayerData& info) {
   this->x = info.posX;
   this->y = info.posY;
@@ -37,7 +41,6 @@ void Player::update(PlayerData& info) {
   this->dirY = info.dirY;
   this->lives = info.lives;
   this->health = info.health;
-  std::cout << "cambio de: " << weaponId << ", hacia: " << info.weaponID << std::endl;
   this->weaponId = info.weaponID;
 
   double oldPlaneX = planeX;
@@ -115,4 +118,12 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
       manager.render(spriteId, srcArea, destArea);
     }
   }
+}
+
+void Player::startShooting() {
+  this->shooting = true;
+}
+
+void Player::stopShooting() {
+  this->shooting = false;
 }

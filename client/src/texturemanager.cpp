@@ -55,7 +55,8 @@ void TextureManager::loadTextures() {
                                    "bj1.png", // 13
                                    "bj2.png", // 14
                                    "bj3.png", // 15
-                                   "hudguns.png" // 16
+                                   "hudguns.png", // 16
+                                   "gunspritesrow.png" // 17
                                   });
   int i = 1;
   for (std::string& name : names) {

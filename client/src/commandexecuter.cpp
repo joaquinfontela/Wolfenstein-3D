@@ -64,6 +64,7 @@ void CommandExecuter::run() {
       } else if (opcode == SHOTS_FIRED) {
         uint32_t shooterId;
         this->socket.receive(&shooterId, sizeof(shooterId));
+        this->players.at(shooterId)->startShooting();
         this->playShootingSounds(shooterId);
       }
     } catch (SocketException& e) {

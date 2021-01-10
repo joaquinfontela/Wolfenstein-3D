@@ -12,7 +12,7 @@
 #define SIZE 25
 #define FACES_PER_IMG 3
 #define GUNS_IN_HUD 5
-// Deben ser 5 ^^^ cuando se meta el rocket launcher.
+#define FRAMES_PER_GUN_ANIMATION 20
 
 void Hud::update(int fps) {
   this->renderFps(fps);
@@ -20,15 +20,14 @@ void Hud::update(int fps) {
   this->renderHealth();
   this->renderFace();
   this->renderTypeOfGun();
-  //this->renderGun();
+  this->renderGun();
 }
 
 void Hud::renderTypeOfGun() {
   int weaponId = this->player->weaponId;
   this->hudgun->updateFrame(weaponId-1);
-  int x, y;
+  int x, y, width, height;
   this->window->getWindowSize(&x, &y);
-  int width, height;
   this->manager.getTextureSizeWithId(HUDGUNS, &width, &height);
   this->hudgun->setSlideWidth(&width);
   float aspectRatio = float(height) / float(width);
@@ -39,7 +38,29 @@ void Hud::renderTypeOfGun() {
   this->hudgun->renderActualFrame(destArea, HUDGUNS);
 }
 
-//void Hud::renderGun() {}
+void Hud::renderGun() {
+  int weaponId = this->player->weaponId;
+  if (this->player->isShooting()) {
+    animationStatus++;
+    std::cout << "Shooting" << std::endl;
+    if (animationStatus >= 5) {
+      animationStatus = 0;
+      this->player->stopShooting();
+    }
+  }
+  this->gun->updateFrame((weaponId-1)*(FRAMES_PER_GUN_ANIMATION/4)+1+animationStatus);
+  int x, y, width, height;
+  this->window->getWindowSize(&x, &y);
+  this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
+  this->gun->setSlideWidth(&width);
+  float aspectRatio = float(height) / float(width);
+  width = x / 2;
+  height = width * aspectRatio;
+  y -= (y + height) / 2;
+  x -= (x + width) / 2;
+  Area destArea(x, 72*y/100, width , height);
+  this->gun->renderActualFrame(destArea, GUNSPRITESROW);
+}
 
 void Hud::updateHudGun() {
   this->hudgun->updateFrame();
@@ -69,12 +90,13 @@ void Hud::updateBjFace() {
 }
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
-  window(window), renderer(window->getRenderer()), player(player), manager(manager) {
+  window(window), renderer(window->getRenderer()), player(player), manager(manager), animationStatus(0){
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
   this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
+  this->gun = new SdlAnimation(manager, FRAMES_PER_GUN_ANIMATION);
 }
 
 void Hud::renderLifes() {

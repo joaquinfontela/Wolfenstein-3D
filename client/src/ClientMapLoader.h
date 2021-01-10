@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "../../common/includes/YAML/YAMLMapReader.h"
-#include "./drawable.h"
+#include "drawable.h"
 
 typedef std::vector<std::vector<int>> WallIdMatrix;
 

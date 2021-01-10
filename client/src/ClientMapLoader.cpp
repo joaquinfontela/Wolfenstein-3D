@@ -1,4 +1,4 @@
-#include "./ClientMapLoader.h"
+#include "ClientMapLoader.h"
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)

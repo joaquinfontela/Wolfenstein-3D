@@ -9,12 +9,14 @@
 class Hud {
  private:
   SdlWindow* window;
-  SdlAnimation* bjface;
   SDL_Renderer* renderer;
   TTF_Font* font;
   Player* player;
   TextureManager& manager;
   SdlAnimation* hudgun;
+  SdlAnimation* bjface;
+  SdlAnimation* gun;
+  int animationStatus;
   void renderText(const char* text, SDL_Rect* rect);
   void renderFps(int fps);
   void renderLifes();

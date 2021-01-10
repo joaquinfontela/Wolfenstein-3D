@@ -116,10 +116,8 @@ void Raycaster::run(){
     for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-    Area d((this->width/2) - 130, (this->height / 2) - 78, 250, 250);
-    this->manager.renderAll(4, d);
     Area d2(0, 0, this->width, this->height);
-    this->manager.renderAll(5, d2);
+    this->manager.renderAll(HUD_SPRITE, d2);
 
     auto t2 = std::chrono::steady_clock::now();
 
