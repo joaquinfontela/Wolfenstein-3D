@@ -1,7 +1,10 @@
 #include "../../includes/YAML/YAMLConfigReader.h"
 
+#include <iostream>
+
 YAMLConfigReader::YAMLConfigReader(std::string fileName) {
   this->fileName = fileName;
+  std::cout << fileName << std::endl;
   data = this->getData();
 }
 

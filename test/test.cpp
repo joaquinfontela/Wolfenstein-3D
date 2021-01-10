@@ -27,60 +27,6 @@ Test(SocketThrowsExcepctedException) {
   socket.connect("localhost", "8080");
 }
 
-Test(PlayerTakesDamageSuccesfully) {
-  Player myPlayer(100, 2);
-
-  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(25, map), 75);
-}
-
-Test(PlayerTakesFatalDamageAndDies) {
-  Player myPlayer(100, 2);
-
-  TEST_ASSERT_EQUAL_INT(myPlayer.takeDamage(100, map), 0);
-}
-
-Test(PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt) {
-  Player myPlayer(100, 1);
-  myPlayer.takeDamage(100, map);
-
-  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
-  myPlayer.takeDamage(100, map);
-  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 0);
-}
-
-Test(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan) {
-  Player myPlayer(100, 1);
-  Kit kit(1, 20);
-
-  TEST_ASSERT_FALSE(kit.canBePickedUpBy(&myPlayer));
-  myPlayer.takeDamage(10, map);
-  TEST_ASSERT_TRUE(kit.canBePickedUpBy(&myPlayer));
-  kit.pickUp(&myPlayer);
-  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 100);
-}
-
-Test(PlayerCanPickUpKey) {
-  Player myPlayer(100, 1);
-  Key key(1);
-
-  TEST_ASSERT_TRUE(key.canBePickedUpBy(&myPlayer));
-  TEST_ASSERT_FALSE(myPlayer.hasKey());
-  key.pickUp(&myPlayer);
-
-  TEST_ASSERT_TRUE(myPlayer.hasKey());
-}
-
-Test(PlayerCantPickUpBloodWithMoreThan11HPButThenYes) {
-  Player myPlayer(11, 1);
-  Blood blood(1, 1, 10);
-
-  TEST_ASSERT_FALSE(blood.canBePickedUpBy(&myPlayer));
-  myPlayer.takeDamage(1, map);
-  TEST_ASSERT_TRUE(blood.canBePickedUpBy(&myPlayer));
-  blood.pickUp(&myPlayer);
-  TEST_ASSERT_EQUAL_INT(myPlayer.getHealth(), 11);
-}
-
 //****************************************************************************
 // Double Wrapper Test
 Test(sendDoubles1) {
@@ -113,14 +59,6 @@ Test(sendDoubles3) {
 int main() {
   TestSuit playerTests("Player Test");
   TestSuit socketWrapperTest("Socket Wrapper Test");
-
-  playerTests.addTest(PlayerTakesDamageSuccesfully);
-  playerTests.addTest(PlayerTakesFatalDamageAndDies);
-  playerTests.addTest(
-      PlayerDiesAndRespawnsWithFullLifeButIfKilledAgainItDoesnt);
-  playerTests.addTest(PlayerCanPickUpKey);
-  playerTests.addTest(PlayerCantPickUpKitWhenFullHealthButAfterDamageHeCan);
-  playerTests.addTest(PlayerCantPickUpBloodWithMoreThan11HPButThenYes);
 
   socketWrapperTest.addTest(sendDoubles1);
   socketWrapperTest.addTest(sendDoubles2);

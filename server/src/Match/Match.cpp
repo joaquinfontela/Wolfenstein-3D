@@ -2,17 +2,20 @@
 
 #include "../../includes/Server/ClientCommunication.h"
 
-Match::Match(int lobbyID) : ID(lobbyID), playerCount(0), running(true), game("MAPFILE", "CONFIGFILE") {
+Match::Match(int lobbyID)
+    : ID(lobbyID),
+      playerCount(0),
+      running(true),
+      game("./common/src/YAML/map.yaml", "./common/src/YAML/config.yaml") {
   cont = true;
 }
 
-Match::Match() : game("MAPFILE", "CONFIGFILE") {}
+Match::Match()
+    : game("./common/src/YAML/map.yaml", "./common/src/YAML/config.yaml") {}
 
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }
 
-void Match::forceShutdown() {
-  this->running = false;
-}
+void Match::forceShutdown() { this->running = false; }
 
 ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   this->playerCount++;
@@ -26,10 +29,9 @@ ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
 }
 
 void Match::start() {
-
   engine = new Engine(commands, cont, players, this->game);
   engine->start();
-  }
+}
 
 bool Match::hasEnded() { return !running; }
 

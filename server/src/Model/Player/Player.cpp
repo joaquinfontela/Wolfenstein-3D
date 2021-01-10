@@ -9,14 +9,17 @@
 #include "../../../includes/Model/Item/Weapon/Knife.h"
 #include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
-#define MAX_AMMO 1000
-#define MAX_HEALTH 100
 
-Player::Player(unsigned int hp, unsigned int lifes, Map& map,
+Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
                unsigned int playerID)
-    : health(hp),
-      lifeRemaining(lifes),
-      ammo(8),
+    : health(100),
+      MAX_HEALTH(100),
+      lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
+      ammo(yamlConfigReader.getBulletAmountAtStart()),
+      MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
+      BULLET_DROP_WHEN_DIES(
+          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
       x(6.0),
@@ -33,10 +36,15 @@ Player::Player(unsigned int hp, unsigned int lifes, Map& map,
            // lector y hacerlo a partir de eso.
 }
 
-Player::Player(unsigned int hp, unsigned int lifes)
-    : health(hp),
-      lifeRemaining(lifes),
-      ammo(8),
+Player::Player(YAMLConfigReader yamlConfigReader)
+    : health(yamlConfigReader.getMaxHealth()),
+      MAX_HEALTH(yamlConfigReader.getMaxHealth()),
+      lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
+      ammo(yamlConfigReader.getBulletAmountAtStart()),
+      MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
+      BULLET_DROP_WHEN_DIES(
+          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
       x(6.0),
@@ -57,8 +65,8 @@ int Player::handleDeath(Map& map) {
   }
 
   this->lifeRemaining -= 1;
-  this->health = MAX_HEALTH;  // Deberia restaurar la vida al maximo.
-  this->ammo -= 10;
+  this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
+  this->ammo -= this->BULLET_DROP_WHEN_DIES;
   this->key = false;
 
   double x, y;
@@ -158,21 +166,21 @@ void Player::pickupKey() { this->key = true; }
 
 bool Player::hasKey() { return key; }
 
-bool Player::hasMaxAmmo() { return ammo < MAX_AMMO; }
+bool Player::hasMaxAmmo() { return ammo < this->MAX_AMMO; }
 
 void Player::pickUpAmmo() {
-  ammo += 5;
-  if (ammo > MAX_AMMO) ammo = MAX_AMMO;
+  ammo += this->AMMO_PICK_UP;
+  if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;
   this->hasToBeNotified = true;
 }
 
 int Player::getHealth() { return this->health; }
 
-bool Player::hasFullHealth() { return this->health == MAX_HEALTH; }
+bool Player::hasFullHealth() { return this->health == this->MAX_HEALTH; }
 
 void Player::addHealth(int health) {
   this->health += health;
-  if (this->health > MAX_HEALTH) this->health = MAX_HEALTH;
+  if (this->health > MAX_HEALTH) this->health = this->MAX_HEALTH;
   this->hasToBeNotified = true;
 }
 
