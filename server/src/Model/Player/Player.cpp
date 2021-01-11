@@ -31,9 +31,9 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  this->weapon = weaponFactory.getWeapon(
-      2);  // por ahora va asi, pero hay que pasar el arch de config o  el
-           // lector y hacerlo a partir de eso.
+  weapons.push_back(weaponFactory.getWeapon(1));
+  weapons.push_back(weaponFactory.getWeapon(2));
+  this->currentWeapon = weapons.at(1);
 }
 
 Player::Player(YAMLConfigReader yamlConfigReader)
@@ -53,7 +53,11 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       dirY(0),
       rotSpeed(0.0),
       moveSpeed(0.0),
-      hasToBeNotified(false) {}
+      hasToBeNotified(false) {
+  weapons.push_back(weaponFactory.getWeapon(1));
+  weapons.push_back(weaponFactory.getWeapon(2));
+  this->currentWeapon = weapons.at(1);
+}
 
 bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
@@ -101,7 +105,7 @@ void Player::fillPlayerData(PlayerData& data) {
   data.rotSpeed = this->rotSpeed;
   data.lives = lifeRemaining;
   data.health = health;
-  data.weaponID = this->weapon->getID();
+  data.weaponID = this->currentWeapon->getID();
 
   this->hasToBeNotified = false;
   return;
@@ -138,11 +142,11 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
-  int damageDealt = this->weapon->attack();
+  int damageDealt = this->currentWeapon->attack();
 
-  if (!this->weapon->hasAmmo()) {
-    delete this->weapon;
-    this->weapon = weaponFactory.getWeapon(1);
+  if (!this->currentWeapon->hasAmmo()) {
+    delete this->currentWeapon;
+    this->currentWeapon = weaponFactory.getWeapon(1);
   }
 
   return damageDealt;
@@ -157,7 +161,7 @@ void Player::updateRotationSpeed(double rotSpeed) {
 }
 
 void Player::equipWeapon(Weapon* weapon) {
-  this->weapon = (Weapon*)weapon;
+  this->currentWeapon = weapon;
 
   this->hasToBeNotified = true;
 }
@@ -169,6 +173,7 @@ bool Player::hasKey() { return key; }
 bool Player::hasMaxAmmo() { return ammo < this->MAX_AMMO; }
 
 void Player::pickUpAmmo() {
+  if (ammo == this->MAX_AMMO) return;
   ammo += this->AMMO_PICK_UP;
   if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;
   this->hasToBeNotified = true;
@@ -188,4 +193,4 @@ void Player::addPoints(int points) { this->score += points; }
 
 int Player::getScore() { return this->score; }
 
-Player::~Player() { delete this->weapon; }
+Player::~Player() { delete this->currentWeapon; }
