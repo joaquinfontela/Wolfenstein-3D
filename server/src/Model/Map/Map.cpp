@@ -7,6 +7,8 @@
 #include <iostream>
 #include <tuple>
 
+unsigned int Map::nextId = 1;
+
 Map::Map(int dimx, int dimy) {
   this->dimx = dimx;
   this->dimy = dimy;
@@ -97,4 +99,10 @@ bool Map::moveTo(double fromX, double fromY, double toX, double toY,
 
 void Map::addPlayer(int x, int y, Player* p) {
   this->tileMatrix.at(x).at(y).addPlayer(p);
+}
+
+unsigned int Map::getAndIncreaseByOneNextUniqueItemId() {
+  std::cout << Map::nextId << std::endl;
+  Map::nextId++;
+  return (Map::nextId - 1);
 }

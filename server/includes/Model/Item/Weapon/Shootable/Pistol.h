@@ -5,11 +5,12 @@
 
 class Pistol : public Shootable {
  public:
-  Pistol(unsigned int ammo, unsigned int minDamagePerBullet,
-         unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
-         unsigned int ammoLostPerShot, unsigned int precision)
-      : Shootable(ammo, minDamagePerBullet, maxDamagePerBullet, shotsPerBlast,
-                  ammoLostPerShot, precision),
+  Pistol(unsigned int uniqueId, unsigned int ammo,
+         unsigned int minDamagePerBullet, unsigned maxDamagePerBullet,
+         unsigned int shotsPerBlast, unsigned int ammoLostPerShot,
+         unsigned int precision)
+      : Shootable(uniqueId, ammo, minDamagePerBullet, maxDamagePerBullet,
+                  shotsPerBlast, ammoLostPerShot, precision),
         ID(2) {}
   int getID();
   bool hasAmmo();

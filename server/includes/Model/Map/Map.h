@@ -39,7 +39,10 @@ class Map {
   // desde attacker. Nullptr si no colisiona con ningun jugador.
   Player* traceAttackFrom(Player* attacker);
 
+  static unsigned int getAndIncreaseByOneNextUniqueItemId();
+
  private:
+  static unsigned int nextId;
   int dimx;
   int dimy;
   TileMatrix tileMatrix;

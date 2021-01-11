@@ -2,6 +2,8 @@
 
 #define DEFAULT_AMMO 5
 
+#include <iostream>
+
 #include "../../../../includes/Model/Item/Weapon/Knife.h"
 #include "../../../../includes/Model/Item/Weapon/Shootable/MachineGun.h"
 #include "../../../../includes/Model/Item/Weapon/Shootable/Minigun.h"
@@ -14,7 +16,7 @@ WeaponFactory::WeaponFactory()
 WeaponFactory::WeaponFactory(std::string& configFileName)
     : yamlConfigReader(configFileName) {}
 
-Weapon* WeaponFactory::getWeapon(int weaponId) {
+Weapon* WeaponFactory::getWeapon(int weaponId, unsigned int weaponUniqueId) {
   unsigned int minDamagePerBullet =
       yamlConfigReader.getMinAndMaxDamagePerBullet().at(0);
   unsigned int maxDamagePerBullet =
@@ -27,33 +29,33 @@ Weapon* WeaponFactory::getWeapon(int weaponId) {
 
   switch (weaponId) {
     case 1:
-      return new Knife(minDamagePerBullet, maxDamagePerBullet);
+      return new Knife(weaponUniqueId, minDamagePerBullet, maxDamagePerBullet);
       break;
 
     case 2:
-      return new Pistol(DEFAULT_AMMO, minDamagePerBullet, maxDamagePerBullet,
-                        shotsPerBlast, ammoLostPerShot,
+      return new Pistol(weaponUniqueId, DEFAULT_AMMO, minDamagePerBullet,
+                        maxDamagePerBullet, shotsPerBlast, ammoLostPerShot,
                         yamlConfigReader.precision(2));
       break;
 
     case 3:
-      return new MachineGun(DEFAULT_AMMO, minDamagePerBullet,
+      return new MachineGun(weaponUniqueId, DEFAULT_AMMO, minDamagePerBullet,
                             maxDamagePerBullet, shotsPerBlast, ammoLostPerShot,
                             yamlConfigReader.precision(3),
                             yamlConfigReader.getBlastFrequency(3));
       break;
 
     case 4:
-      return new Minigun(DEFAULT_AMMO, minDamagePerBullet, maxDamagePerBullet,
-                         shotsPerBlast, ammoLostPerShot,
+      return new Minigun(weaponUniqueId, DEFAULT_AMMO, minDamagePerBullet,
+                         maxDamagePerBullet, shotsPerBlast, ammoLostPerShot,
                          yamlConfigReader.precision(4),
                          yamlConfigReader.getBlastFrequency(4));
       break;
 
     case 5:
-      return new RocketLauncher(DEFAULT_AMMO, minDamagePerBullet,
-                                maxDamagePerBullet, shotsPerBlast,
-                                ammoLostPerShot);
+      return new RocketLauncher(weaponUniqueId, DEFAULT_AMMO,
+                                minDamagePerBullet, maxDamagePerBullet,
+                                shotsPerBlast, ammoLostPerShot);
       break;
 
     default:

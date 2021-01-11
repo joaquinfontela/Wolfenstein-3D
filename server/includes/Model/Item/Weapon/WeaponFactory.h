@@ -11,7 +11,7 @@ class WeaponFactory {
  public:
   WeaponFactory();
   WeaponFactory(std::string& configFileName);
-  Weapon* getWeapon(int weaponId);
+  Weapon* getWeapon(int weaponId, unsigned int weaponUniqueId);
 };
 
 #endif
