@@ -31,8 +31,10 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  weapons.push_back(weaponFactory.getWeapon(1));
-  weapons.push_back(weaponFactory.getWeapon(2));
+  weapons.push_back(
+      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(
+      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -54,8 +56,10 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       rotSpeed(0.0),
       moveSpeed(0.0),
       hasToBeNotified(false) {
-  weapons.push_back(weaponFactory.getWeapon(1));
-  weapons.push_back(weaponFactory.getWeapon(2));
+  weapons.push_back(
+      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(
+      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -66,6 +70,11 @@ int Player::handleDeath(Map& map) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;  // El jugador ya no puede respawnear.
+  }
+
+  if (this->hasKey()) {
+    this->key = false;
+    // agregar llave en mapa
   }
 
   this->lifeRemaining -= 1;
@@ -146,7 +155,8 @@ int Player::attack() {
 
   if (!this->currentWeapon->hasAmmo()) {
     delete this->currentWeapon;
-    this->currentWeapon = weaponFactory.getWeapon(1);
+    this->currentWeapon =
+        weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId());
   }
 
   return damageDealt;

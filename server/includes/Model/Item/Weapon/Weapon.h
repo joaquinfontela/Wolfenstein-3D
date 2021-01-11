@@ -11,10 +11,12 @@ class Weapon {
  protected:
   // faltan cosas como el fire rate, precision y los datos particulares que
   // hagan falta.
+  unsigned int uniqueId;
   unsigned int getRandomDamage();
 
  public:
-  Weapon(unsigned int minDamagePerBullet, int maxDamagePerBullet);
+  Weapon(unsigned int uniqueId, unsigned int minDamagePerBullet,
+         int maxDamagePerBullet);
   Weapon(unsigned int ammo) {}
   virtual int getID() = 0;
   virtual bool hasAmmo() = 0;

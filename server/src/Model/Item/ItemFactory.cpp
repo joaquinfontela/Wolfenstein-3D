@@ -1,5 +1,7 @@
 #include "../../../includes/Model/Item/ItemFactory.h"
 
+#include <iostream>
+
 #include "../../../includes/Model/Item/Ammo.h"
 #include "../../../includes/Model/Item/Blood.h"
 #include "../../../includes/Model/Item/Chest.h"

@@ -2,10 +2,10 @@
 
 class RocketLauncher : public Shootable {
  public:
-  RocketLauncher(unsigned int newAmmo, unsigned int minDamagePerBullet,
-                 unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
-                 unsigned int ammoLostPerShot)
-      : Shootable(newAmmo, minDamagePerBullet, maxDamagePerBullet,
+  RocketLauncher(unsigned int uniqueId, unsigned int newAmmo,
+                 unsigned int minDamagePerBullet, unsigned maxDamagePerBullet,
+                 unsigned int shotsPerBlast, unsigned int ammoLostPerShot)
+      : Shootable(uniqueId, newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot),
         ID(5) {}
   ~RocketLauncher();

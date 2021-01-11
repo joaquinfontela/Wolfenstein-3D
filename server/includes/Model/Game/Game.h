@@ -14,6 +14,7 @@
 
 class Game {
  private:
+  static unsigned int nextId;
   std::map<int, Player*> players;
   Map* map;
   YAMLConfigReader yamlConfigReader;

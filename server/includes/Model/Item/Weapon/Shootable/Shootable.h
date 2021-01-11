@@ -13,13 +13,13 @@ class Shootable : public Weapon {
   unsigned int shoot();
 
  public:
-  Shootable(int newAmmo, unsigned int minDamagePerBullet,
+  Shootable(unsigned int uniqueId, int newAmmo, unsigned int minDamagePerBullet,
             unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
             unsigned int ammoLostPerShot);
-  Shootable(int newAmmo, unsigned int minDamagePerBullet,
+  Shootable(unsigned int uniqueId, int newAmmo, unsigned int minDamagePerBullet,
             unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
             unsigned int ammoLostPerShot, unsigned int precision);
-  Shootable(int newAmmo, unsigned int minDamagePerBullet,
+  Shootable(unsigned int uniqueId, int newAmmo, unsigned int minDamagePerBullet,
             unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
             unsigned int ammoLostPerShot, unsigned int precision,
             unsigned int blastFrequency);

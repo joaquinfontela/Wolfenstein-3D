@@ -2,11 +2,11 @@
 
 class MachineGun : public Shootable {
  public:
-  MachineGun(unsigned int newAmmo, unsigned int minDamagePerBullet,
-             unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
-             unsigned int ammoLostPerShot, unsigned int precision,
-             unsigned int blastFrequency)
-      : Shootable(newAmmo, minDamagePerBullet, maxDamagePerBullet,
+  MachineGun(unsigned int uniqueId, unsigned int newAmmo,
+             unsigned int minDamagePerBullet, unsigned maxDamagePerBullet,
+             unsigned int shotsPerBlast, unsigned int ammoLostPerShot,
+             unsigned int precision, unsigned int blastFrequency)
+      : Shootable(uniqueId, newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
         ID(3) {}
   ~MachineGun();

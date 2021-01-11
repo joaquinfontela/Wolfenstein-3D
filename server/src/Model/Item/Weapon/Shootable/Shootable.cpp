@@ -1,9 +1,10 @@
 #include "../../../../../includes/Model/Item/Weapon/Shootable/Shootable.h"
 
-Shootable::Shootable(int newAmmo, unsigned int minDamagePerBullet,
+Shootable::Shootable(unsigned int uniqueId, int newAmmo,
+                     unsigned int minDamagePerBullet,
                      unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
                      unsigned int ammoLostPerShot)
-    : Weapon(minDamagePerBullet, maxDamagePerBullet) {
+    : Weapon(uniqueId, minDamagePerBullet, maxDamagePerBullet) {
   this->ammo = newAmmo;
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
@@ -11,10 +12,11 @@ Shootable::Shootable(int newAmmo, unsigned int minDamagePerBullet,
   this->blastFrequency = NULL;
 }
 
-Shootable::Shootable(int newAmmo, unsigned int minDamagePerBullet,
+Shootable::Shootable(unsigned int uniqueId, int newAmmo,
+                     unsigned int minDamagePerBullet,
                      unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
                      unsigned int ammoLostPerShot, unsigned int precision)
-    : Weapon(minDamagePerBullet, maxDamagePerBullet) {
+    : Weapon(uniqueId, minDamagePerBullet, maxDamagePerBullet) {
   this->ammo = newAmmo;
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
@@ -22,11 +24,12 @@ Shootable::Shootable(int newAmmo, unsigned int minDamagePerBullet,
   this->blastFrequency = NULL;
 }
 
-Shootable::Shootable(int newAmmo, unsigned int minDamagePerBullet,
+Shootable::Shootable(unsigned int uniqueId, int newAmmo,
+                     unsigned int minDamagePerBullet,
                      unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
                      unsigned int ammoLostPerShot, unsigned int precision,
                      unsigned int blastFrequency)
-    : Weapon(minDamagePerBullet, maxDamagePerBullet) {
+    : Weapon(uniqueId, minDamagePerBullet, maxDamagePerBullet) {
   this->ammo = newAmmo;
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
