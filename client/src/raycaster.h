@@ -13,7 +13,7 @@
 #include <vector>
 #include <math.h>
 #include <iostream>
-
+/*
 typedef struct Door {
   int mapX, mapY;
   bool hit;
@@ -37,7 +37,7 @@ typedef struct Door {
 
   }
 } Door;
-
+*/
 class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,

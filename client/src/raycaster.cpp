@@ -12,6 +12,12 @@ static bool isDoor(int id){
   return (id == 20); // Expand to list of id's.
 }
 
+typedef struct test{
+  int side;
+  int mapX, mapY;
+  bool hit;
+} Door;
+
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
@@ -29,10 +35,11 @@ void Raycaster::run(){
     double planeY = this->player->planeY;
 
     double zBuffer[this->width];
+
     Door door;
     for(int x = 0; x < this->width; x++) {
-      door.hit = false;
 
+      door.hit = false;
       double cameraX = 2 * x / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraX;
       double rayDirY = dirY + planeY * cameraX;
@@ -85,12 +92,13 @@ void Raycaster::run(){
           mapY = INT_MAX;
           hit = 1;
         } else if (matrix.get(mapX,mapY) > 0) {
-          if (isDoor(matrix.get(mapX, mapY)) /*&& door.mapX != mapX && door.mapY != mapY*/){
-            door(mapX, mapY, side);
-            door.calcDistToWall(posX, posY, stepX, stepY, rayDirX, rayDirY);
-            continue;
-          }
-          hit = 1;
+            if(isDoor(matrix.get(mapX, mapY)) && !door.hit){
+              door.hit = true;
+              door.mapX = mapX;
+              door.mapY = mapY;
+              door.side = side;
+            }else if(!isDoor(matrix.get(mapX, mapY)))
+              hit = 1;
         }
       }
 
@@ -119,18 +127,24 @@ void Raycaster::run(){
       this->manager.render(texNum, srcArea, destArea);
 
       if(door.hit){
-        std::cout<<"Deberia estar dibujando la puerta"<<std::endl;
-        lineHeight = int(this->height/door.perpWallDist);
-        std::cout<<"LineHeight: "<<lineHeight<<std::endl;
-        if (door.side == 0) wallX = posY + door.perpWallDist * rayDirY;
-        else wallX = posX + door.perpWallDist * rayDirX;
+
+        if(door.side == 0) perpWallDist = (door.mapX - posX + (1 - stepX) / 2) / rayDirX;
+        else perpWallDist = (door.mapY - posY + (1 - stepY) / 2) / rayDirY;
+
+        lineHeight = int(this->height / perpWallDist);
+
+        if (door.side == 0) wallX = posY + perpWallDist * rayDirY;
+        else wallX = posX + perpWallDist * rayDirX;
         wallX -= floor((wallX));
-        texX = int(wallX * double(BLOCKSIZE));
+
+        int texX = int(wallX * double(BLOCKSIZE));
+        if(door.side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
+        if(door.side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
+
         Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
         Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
         this->manager.render(20, srcArea, destArea);
       }
-
 
       zBuffer[x] = perpWallDist;
     }
