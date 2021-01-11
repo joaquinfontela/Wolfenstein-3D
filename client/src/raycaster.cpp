@@ -94,7 +94,6 @@ void Raycaster::run(){
         }
       }
 
-      std::cout << side << std::endl;
       if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
       else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
 
@@ -114,21 +113,25 @@ void Raycaster::run(){
       if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
       if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
-      if (!door.hit) {
-        Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-        this->manager.render(texNum, srcArea, destArea);
-      } else { // DOOR
-        std::cout << "tu puta madre\n";
+
+      Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+      Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+      this->manager.render(texNum, srcArea, destArea);
+
+      if(door.hit){
+        std::cout<<"Deberia estar dibujando la puerta"<<std::endl;
         lineHeight = int(this->height/door.perpWallDist);
-        if (side == 0) wallX = posY + door.perpWallDist * rayDirY;
+        std::cout<<"LineHeight: "<<lineHeight<<std::endl;
+        if (door.side == 0) wallX = posY + door.perpWallDist * rayDirY;
         else wallX = posX + door.perpWallDist * rayDirX;
         wallX -= floor((wallX));
         texX = int(wallX * double(BLOCKSIZE));
         Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
         Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-        this->manager.render(texNum, srcArea, destArea);
+        this->manager.render(20, srcArea, destArea);
       }
+
+
       zBuffer[x] = perpWallDist;
     }
 
@@ -144,8 +147,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    #ifdef FPS_FREQ
-    #define FPS_FREQ 50
+  //  #ifdef FPS_FREQ
+  //  #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -156,7 +159,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    #endif
+  //  #endif
 
     this->hud.update();
     this->window->render();

@@ -12,6 +12,7 @@
 #include <atomic>
 #include <vector>
 #include <math.h>
+#include <iostream>
 
 typedef struct Door {
   int mapX, mapY;
@@ -25,8 +26,15 @@ typedef struct Door {
     this->hit  = true;
   }
   void calcDistToWall(int posX, int posY, int stepX, int stepY, int rayDirX, int rayDirY) {
-    if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
-    else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
+    if(this->side == 0){
+      perpWallDist = (mapX - posX + (1 - stepX) / 2) / (rayDirX + 0.001);
+    }
+    else{
+      perpWallDist = (mapY - posY + (1 - stepY) / 2) / (rayDirY + 0.001);
+    }
+
+    std::cout<<"Wall Dist: "<<perpWallDist<<std::endl;
+
   }
 } Door;
 
