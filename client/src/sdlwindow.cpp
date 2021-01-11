@@ -10,6 +10,7 @@
 #include "clientprotocol.h"
 
 #define SDL_INIT_ERROR "\nError on initialization: "
+#define SDL_CEILING_INIT_ERROR "\nError on ceiling texture initialization "
 #define SDL_WINDOW_INIT_ERROR "\nError on window initialization: "
 
 SdlWindow::SdlWindow(int width, int height) :
@@ -23,6 +24,9 @@ SdlWindow::SdlWindow(int width, int height) :
   }
   if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
     throw SdlException(Mix_GetError());
+  }
+  if (!(ceilingPixel = new SdlTexture(IMG_PATH "ceiling.png", *this))) {
+    throw SdlException(SDL_CEILING_INIT_ERROR, SDL_GetError());
   }
   SDL_SetWindowTitle(this->window, GAME_TITLE);
   SDL_Surface* icon = IMG_Load(IMG_PATH GAME_LOGO);
@@ -53,6 +57,7 @@ void SdlWindow::killAudio() {
 }
 
 SdlWindow::~SdlWindow() {
+  delete this->ceilingPixel;
   this->killRenderer();
   this->killWindow();
   this->killAudio();
@@ -73,9 +78,7 @@ void SdlWindow::fill() { this->fill(0, 0, 0, 0); }
 
 void SdlWindow::fillWolfenstein() {
   this->fill(FLOOR_COLOR, 0);
-  SdlTexture im(IMG_PATH "ceiling.png", *this);
-  // Hacer que ^^ esta textura sea un atributo para evitar múltiples cargas.
-  im.renderHalfOfScreen(this->width, this->height);
+  this->ceilingPixel->renderHalfOfScreen(this->width, this->height);
 }
 
 void SdlWindow::render() { SDL_RenderPresent(this->renderer); }

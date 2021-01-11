@@ -1,6 +1,7 @@
 #ifndef __SDL_WINDOW_H__
 #define __SDL_WINDOW_H__
 #include "area.h"
+#include "sdltexture.h"
 
 class SDL_Window;
 class SDL_Renderer;
@@ -26,6 +27,7 @@ class SdlWindow {
   int height;
   SDL_Window* window;
   SDL_Renderer* renderer;
+  SdlTexture* ceilingPixel;
 };
 
 #endif

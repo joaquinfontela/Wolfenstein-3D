@@ -175,6 +175,7 @@ void Hud::renderText(const char* text, SDL_Rect* rect) {
 Hud::~Hud() {
   delete this->bjface;
   delete this->hudgun;
+  delete this->gun;
   TTF_CloseFont(this->font);
   TTF_Quit();
 }
