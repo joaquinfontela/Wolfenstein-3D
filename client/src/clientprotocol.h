@@ -57,8 +57,8 @@
 #define HUDGUNS 16
 #define GUNSPRITESROW 17
 #define GREY_STONE_WALL 18
-#define ROCK_WALL 19
-#define WOODEN_WALL 20
+#define WOODEN_WALL 19
+#define DOOR 20
 
 
 #endif  // CLIENTPROTOCOL_H_

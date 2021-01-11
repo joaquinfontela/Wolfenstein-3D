@@ -8,6 +8,10 @@
 #include <iostream>
 #include <time.h>
 
+static bool isDoor(int id){
+  return (id == 20); // Expand to list of id's.
+}
+
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
@@ -25,7 +29,9 @@ void Raycaster::run(){
     double planeY = this->player->planeY;
 
     double zBuffer[this->width];
+    Door door;
     for(int x = 0; x < this->width; x++) {
+      door.hit = false;
 
       double cameraX = 2 * x / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraX;
@@ -79,14 +85,20 @@ void Raycaster::run(){
           mapY = INT_MAX;
           hit = 1;
         } else if (matrix.get(mapX,mapY) > 0) {
+          if (isDoor(matrix.get(mapX, mapY)) /*&& door.mapX != mapX && door.mapY != mapY*/){
+            door(mapX, mapY, side);
+            door.calcDistToWall(posX, posY, stepX, stepY, rayDirX, rayDirY);
+            continue;
+          }
           hit = 1;
         }
       }
 
+      std::cout << side << std::endl;
       if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
       else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
 
-      int lineHeight = (int) (this->height/ perpWallDist);
+      int lineHeight = int(this->height/ perpWallDist);
 
       int texNum = 1;
       if (mapY != INT_MAX) {
@@ -102,9 +114,21 @@ void Raycaster::run(){
       if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
       if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
-      Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-      Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-      this->manager.render(texNum, srcArea, destArea);
+      if (!door.hit) {
+        Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+        this->manager.render(texNum, srcArea, destArea);
+      } else { // DOOR
+        std::cout << "tu puta madre\n";
+        lineHeight = int(this->height/door.perpWallDist);
+        if (side == 0) wallX = posY + door.perpWallDist * rayDirY;
+        else wallX = posX + door.perpWallDist * rayDirX;
+        wallX -= floor((wallX));
+        texX = int(wallX * double(BLOCKSIZE));
+        Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+        this->manager.render(texNum, srcArea, destArea);
+      }
       zBuffer[x] = perpWallDist;
     }
 
@@ -120,8 +144,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    //#ifdef FPS_FREQ
-    //#define FPS_FREQ 50
+    #ifdef FPS_FREQ
+    #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -132,7 +156,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    //#endif
+    #endif
 
     this->hud.update();
     this->window->render();

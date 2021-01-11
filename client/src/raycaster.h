@@ -13,6 +13,23 @@
 #include <vector>
 #include <math.h>
 
+typedef struct Door {
+  int mapX, mapY;
+  bool hit;
+  double perpWallDist;
+  int side;
+  void operator()(int mapX, int mapY, int side) {
+    this->mapX = mapX;
+    this->mapY = mapY;
+    this->side = side;
+    this->hit  = true;
+  }
+  void calcDistToWall(int posX, int posY, int stepX, int stepY, int rayDirX, int rayDirY) {
+    if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
+    else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
+  }
+} Door;
+
 class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
