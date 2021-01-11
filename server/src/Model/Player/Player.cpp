@@ -151,9 +151,7 @@ int Player::attack() {
   int damageDealt = this->currentWeapon->attack();
 
   if (!this->currentWeapon->hasAmmo()) {
-    delete this->currentWeapon;
-    this->currentWeapon =
-        weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId());
+    this->currentWeapon = this->weapons.at(0);
   }
 
   return damageDealt;
@@ -207,5 +205,5 @@ Player::~Player() {
   for(; it != this->weapons.end(); ++it){
     delete (*it);
   }
-  
+
  }
