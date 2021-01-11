@@ -48,7 +48,9 @@ void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
         "Error adding item into map (map limits overpassed).");
 }
 
-Player* Map::traceAttackFrom(Player* attacker) {
+
+Player* Map::traceAttackFrom(Player* attacker, int range) {
+
   double initialX = attacker->getX();
   double initialY = attacker->getY();
 
@@ -59,7 +61,7 @@ Player* Map::traceAttackFrom(Player* attacker) {
 
   Player* p = nullptr;
 
-  while (true) {
+  while (i < 1 + range) {
     double rayPosX = (initialX + i * dirX);
     double rayPosY = (initialY + i * dirY);
 
@@ -69,12 +71,26 @@ Player* Map::traceAttackFrom(Player* attacker) {
     if (this->tileMatrix.at(mapX).at(mapY).checkWall())
       return nullptr;
 
-    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(
-                  rayPosX, rayPosY, attacker)) != nullptr)
+    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr)
       return p;
+
+    else if(((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx)){
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr){
+        return p;
+      }
+
+    }
+
+    else if(((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)){
+      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr){
+        return p;
+      }
+    }
 
     i++;
   }
+
+  return p;
 }
 
 std::tuple<double, double> Map::handleRespawn() {

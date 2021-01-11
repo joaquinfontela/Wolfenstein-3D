@@ -12,6 +12,7 @@ class MachineGun : public Shootable {
   ~MachineGun();
   int getID();
   bool hasAmmo();
+  int getRange();
 
  private:
   int ID;

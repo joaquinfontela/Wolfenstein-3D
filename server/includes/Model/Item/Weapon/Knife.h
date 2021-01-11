@@ -12,6 +12,7 @@ class Knife : public Weapon {
   int getID();
   unsigned int attack();
   bool hasAmmo();
+  int getRange();
 
  private:
   int ID;

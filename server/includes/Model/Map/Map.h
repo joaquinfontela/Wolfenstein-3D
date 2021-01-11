@@ -39,7 +39,7 @@ class Map {
 
   // Devuelve la primera instancia del jugador que colisiona con la bala emitida
   // desde attacker. Nullptr si no colisiona con ningun jugador.
-  Player* traceAttackFrom(Player* attacker);
+  Player* traceAttackFrom(Player* attacker, int range);
 
   static unsigned int getAndIncreaseByOneNextUniqueItemId();
 

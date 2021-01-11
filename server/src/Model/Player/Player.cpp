@@ -63,15 +63,14 @@ Player::Player(YAMLConfigReader yamlConfigReader)
 bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
-int Player::handleDeath(Map& map) {
+int Player::handleDeath() {
   if (this->lifeRemaining == 0) {
     this->health = 0;
-    return -1;  // El jugador ya no puede respawnear.
+    return -1;
   }
 
   if (this->hasKey()) {
     this->key = false;
-    // agregar llave en mapa
   }
 
   this->lifeRemaining -= 1;
@@ -79,24 +78,18 @@ int Player::handleDeath(Map& map) {
   this->ammo -= this->BULLET_DROP_WHEN_DIES;
   this->key = false;
 
-  double x, y;
-  std::tie(x, y) = map.handleRespawn();
-  map.moveTo(this->x, this->y, x, y, this);
-  this->x = x;
-  this->y = y;
 
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(unsigned int damage, Map& map) {
-  std::cout << "[GAME LOGIC] Player has received: " << damage << " damage."
-            << std::endl;
+int Player::takeDamage(unsigned int damage) {
+
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath(map);
+    return handleDeath();
   }
 
   this->health -= damage;
@@ -115,6 +108,11 @@ void Player::fillPlayerData(PlayerData& data) {
 
   this->hasToBeNotified = false;
   return;
+}
+
+void Player::moveTo(double x, double y){
+  this->x = x;
+  this->y = y;
 }
 
 void Player::update(Map& map) {
@@ -152,9 +150,14 @@ int Player::attack() {
 
   if (!this->currentWeapon->hasAmmo()) {
     this->currentWeapon = this->weapons.at(0);
+    this->hasToBeNotified = true;
   }
 
   return damageDealt;
+}
+
+int Player::getRange(){
+  return this->currentWeapon->getRange();
 }
 
 unsigned int Player::ID() { return this->playerID; }

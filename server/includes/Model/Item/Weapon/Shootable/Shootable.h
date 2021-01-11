@@ -2,6 +2,7 @@
 #define SHOOTABLE_H
 
 #include "../Weapon.h"
+#include <climits> 
 
 class Shootable : public Weapon {
  protected:

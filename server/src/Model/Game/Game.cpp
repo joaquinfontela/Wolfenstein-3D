@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iostream>
 #include <string>
+#include <functional>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Model/Player/Player.h"
@@ -35,11 +36,22 @@ void Game::playerShoot(int playerID) {
   int receiverHealth = 0;
 
   int att = attacker->attack();
-  if ((receiver = map->traceAttackFrom(attacker)) != nullptr) {
-    receiverHealth = receiver->takeDamage(att, *(this->map));
+  int range = attacker->getRange();
 
-    // if(receiverHealth == 0) // El jugador murio y debe respawnear
-    //  this->map.handleRespawn(receiver);
+  if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
+    receiverHealth = receiver->takeDamage(att);
+
+    if(receiverHealth == 0){ // Deberia generar un evento de los items dropeados.
+      double x, y;
+      double playerX = receiver->getX();
+      double playerY = receiver->getY();
+      std::tie(x, y) = this->map->handleRespawn();
+      this->map->moveTo(playerX, playerY, x, y, receiver);
+      receiver->moveTo(x, y);
+    }else if(receiverHealth == -1){
+
+    } // Ya no deberia respawnear, deberia generar un evento de muerte.
+
   }
 }
 

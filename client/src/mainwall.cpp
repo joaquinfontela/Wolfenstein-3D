@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
   SocketCommunication socket(-1);
   socket.connect(argv[1], argv[2]);
   uint32_t protocol = CONNECT_TO_LOBBY;
-  uint32_t id_ = 1;  // ID del lobby de la partida.
+  uint32_t id_ = 2;  // ID del lobby de la partida.
   uint32_t id;
   uint32_t opcode;
 

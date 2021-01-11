@@ -14,6 +14,7 @@ class Pistol : public Shootable {
         ID(2) {}
   int getID();
   bool hasAmmo();
+  int getRange();
 
  private:
   int ID;

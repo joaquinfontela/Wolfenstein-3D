@@ -9,3 +9,7 @@ int Knife::getID(){
 bool Knife::hasAmmo(){
   return true;
 }
+
+int Knife::getRange(){
+  return 1;
+}

@@ -11,6 +11,7 @@ class RocketLauncher : public Shootable {
   ~RocketLauncher();
   bool hasAmmo();
   int getID();
+  int getRange();
 
  private:
   int ID;

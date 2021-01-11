@@ -3,3 +3,7 @@
 int Minigun::getID() { return this->ID; }
 
 bool Minigun::hasAmmo() { return this->ammo > 0; }
+
+int Minigun::getRange(){
+  return INT_MAX - 1;
+}
