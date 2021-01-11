@@ -50,7 +50,9 @@ void Hud::renderTypeOfGun() {
 
 void Hud::renderGun() {
   int weaponId = this->player->weaponId;
-  if (this->player->isShooting() && !(this->framesAlreadyPlayed % (this->fps / 16))) {
+  if (this->player->isShooting() &&
+     (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
+    // This ^^^^^ is there if this->fps < 16 which could result in a zero division error.      
     animationStatus++;
     std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
