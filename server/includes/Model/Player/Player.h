@@ -19,7 +19,8 @@ class Player {
   bool hasToBeNotified;
   int score;
   unsigned int health, lifeRemaining, ammo;
-  Weapon* weapon;
+  Weapon* currentWeapon;
+  std::vector<Weapon*> weapons;
   bool key;
   WeaponFactory weaponFactory;
 

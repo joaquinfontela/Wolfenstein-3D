@@ -114,11 +114,15 @@
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
-		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLReader.h">
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLConfigReader.h">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
-		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLWriter.h">
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLMapReader.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/includes/YAML/YAMLMapWriter.h">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
@@ -146,11 +150,15 @@
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
-		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLReader.cpp">
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLConfigReader.cpp">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
-		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLWriter.cpp">
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLMapReader.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/common/src/YAML/YAMLMapWriter.cpp">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
@@ -191,6 +199,22 @@
 			<Option target="WolfensteinTest"/>
 		</Unit>
 		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Match/MatchList.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Door/Door.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Door/DoorFactory.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Door/LockableDoor.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Door/UnlockableDoor.h">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
@@ -275,6 +299,30 @@
 			<Option target="WolfensteinTest"/>
 		</Unit>
 		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Player/Player.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/BlueWall.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/GreyStoneWall.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/RockWall.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/Wall.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/WallFactory.h">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/includes/Model/Wall/WoodenWall.h">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
@@ -370,6 +418,18 @@
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Door/DoorFactory.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Door/LockableDoor.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Door/UnlockableDoor.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
 		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Game/Game.cpp">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
@@ -438,6 +498,10 @@
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/Weapon.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
 		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Item/Weapon/WeaponFactory.cpp">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
@@ -455,6 +519,14 @@
 			<Option target="WolfensteinTest"/>
 		</Unit>
 		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Player/Player.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Wall/Wall.cpp">
+			<Option target="ServerMain"/>
+			<Option target="WolfensteinTest"/>
+		</Unit>
+		<Unit filename="/home/joaquinfontela/Documents/facultad/2020-2/taller-de-programacion/tp-final/server/src/Model/Wall/WallFactory.cpp">
 			<Option target="ServerMain"/>
 			<Option target="WolfensteinTest"/>
 		</Unit>
