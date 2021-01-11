@@ -33,9 +33,10 @@ bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
 }
 
 AudioManager::AudioManager() {
-  std::vector<std::string> names({ "song.mp3", // 1
+  std::vector<std::string> names({ "Knife.wav", // 1
                                    "Pistol.wav", // 2
-                                   "Machine Gun.wav" // 3
+                                   "Machine Gun.wav", // 3
+                                   "Gatling Gun.wav"
                                   });
   int i = 1;
   for (std::string& name : names) {

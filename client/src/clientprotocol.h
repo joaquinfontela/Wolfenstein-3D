@@ -7,9 +7,14 @@
 // Apply bit masks to facilitate the sound selection.
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
-#define EYEOFTHETIGER 1
-#define PISTOLSHOT_SOUND 2
+
+#define GET_WEAPON_SOUND(X) X
+
+#define KNIFE_SOUND 1
+#define PISTOL_SOUND 2
 #define MACHINEGUN_SOUND 3
+#define CHAINGUN_SOUND 4
+#define ROCKETLAUNCHER_SOUND 5
 
 #define KNIFE 1
 #define PISTOL 2

@@ -16,12 +16,14 @@ CommandExecuter::~CommandExecuter(){
 }
 
 void CommandExecuter::playShootingSounds(int shooterId) {
+  int weaponId = players.at(shooterId)->weaponId;
+  int soundId = GET_WEAPON_SOUND(weaponId);
   if (shooterId == this->selfId){
-    this->audiomanager.playOnMaxVolumeWithId(PISTOLSHOT_SOUND);
+    this->audiomanager.playOnMaxVolumeWithId(soundId);
     // Hacer que pueda variar en función del arma.
   } else {
     double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
-    this->audiomanager.playOnVariableVolumeWithId(PISTOLSHOT_SOUND, dist);
+    this->audiomanager.playOnVariableVolumeWithId(soundId, dist);
   }
 }
 
