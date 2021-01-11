@@ -22,6 +22,8 @@ class Map {
   void addDoorAt(Door* door, int x, int y);
   void addWallAt(Wall* wall, int x, int y);
 
+  void removePlayer(int x, int y, Player* p);
+
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);
 

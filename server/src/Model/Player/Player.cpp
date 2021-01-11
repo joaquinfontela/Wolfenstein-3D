@@ -17,8 +17,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
       ammo(yamlConfigReader.getBulletAmountAtStart()),
       MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(
-          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      BULLET_DROP_WHEN_DIES(yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
@@ -31,10 +30,8 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  weapons.push_back(
-      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(
-      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -203,4 +200,12 @@ void Player::addPoints(int points) { this->score += points; }
 
 int Player::getScore() { return this->score; }
 
-Player::~Player() { delete this->currentWeapon; }
+Player::~Player() {
+
+  std::vector<Weapon*>::iterator it = this->weapons.begin();
+
+  for(; it != this->weapons.end(); ++it){
+    delete (*it);
+  }
+  
+ }

@@ -33,6 +33,8 @@ class Tile {
   void addDoor(Door* door);
   void addWall(Wall* wall);
 
+  
+
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 

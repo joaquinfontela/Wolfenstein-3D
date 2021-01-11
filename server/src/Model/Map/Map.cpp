@@ -106,3 +106,9 @@ unsigned int Map::getAndIncreaseByOneNextUniqueItemId() {
   Map::nextId++;
   return (Map::nextId - 1);
 }
+
+void Map::removePlayer(int x, int y, Player* p){
+
+    this->tileMatrix.at(x).at(y).removePlayerFromTile(p);
+
+}
