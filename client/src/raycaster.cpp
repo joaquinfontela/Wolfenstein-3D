@@ -21,13 +21,15 @@ Raycaster::~Raycaster() {
 
 void Raycaster::destroyDoors() {
 
-  std::vector<Door*>::iterator it = this->doors.begin();
-  for (; it != this->doors.end(); ++it)
-    delete (*it);
+  //std::vector<Door*>::iterator it = this->doors.begin();
+  for (auto& door: doors){
+    delete door;
+  }
 
-
-  for(int i = 0; i < this->doors.size(); i++)
+  for(int i = 0; i < this->doors.size(); i++){
     this->doors.erase(doors.begin());
+  }
+
 
 }
 
@@ -149,15 +151,21 @@ void Raycaster::run(){
       Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
-
+      zBuffer[x] = perpWallDist;
+      
       //this->drawDoors();
-      for (auto d : doors) {
+      while(!this->doors.empty()){
+
+        Door* d = this->doors.back();
+        this->doors.pop_back();
         d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+        delete d;
       }
 
-      this->destroyDoors();
 
-      zBuffer[x] = perpWallDist;
+      //this->destroyDoors();
+
+
     }
 
     this->lock.lock();
@@ -166,6 +174,7 @@ void Raycaster::run(){
       (Drawable* a, Drawable* b) -> bool { return *a < *b; });
     for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
+
 
     Area d2(0, 0, this->width, this->height);
     this->manager.renderAll(HUD_SPRITE, d2);

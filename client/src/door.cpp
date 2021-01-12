@@ -30,4 +30,7 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
   if (this->side) manager.render(DOOR, srcArea, destArea);
   else manager.render(WOODEN_WALL, srcArea, destArea);
+
+  if(perpWallDist < zBuffer[x]) // && door.isClosed()
+    zBuffer[x] = perpWallDist;
 }
