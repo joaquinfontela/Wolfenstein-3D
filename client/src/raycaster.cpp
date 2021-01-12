@@ -16,7 +16,7 @@ void Raycaster::drawDoors() {
 }
 
 static bool isDoor(int& id){
-  return (id & AND_IS_THIS_ID_A_DOOR == 0); 
+  return (!(id & AND_IS_THIS_ID_A_DOOR));
 }
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
@@ -156,8 +156,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    //#ifdef FPS_FREQ
-  //  #define FPS_FREQ 50
+    #ifdef FPS_FREQ
+    #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -168,7 +168,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-  //  #endif
+    #endif
 
     this->hud.update();
     this->window->render();

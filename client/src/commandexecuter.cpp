@@ -70,6 +70,7 @@ void CommandExecuter::run() {
         this->players.at(shooterId)->startShooting();
         this->playShootingSounds(shooterId);
       } else if (opcode == OPEN_DOOR) {
+        std::cout << "Abriendo la puerta" << std::endl;
         uint32_t x, y;
         this->socket.receive(&x, sizeof(x));
         this->socket.receive(&y, sizeof(y));
