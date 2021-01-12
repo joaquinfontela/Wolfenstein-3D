@@ -178,9 +178,13 @@ void Player::pickupKey() { this->key = true; }
 
 bool Player::hasKey() { return key; }
 
-bool Player::hasMaxAmmo() { return ammo < this->MAX_AMMO; }
+bool Player::hasMaxAmmo() {
+  std::cout<<"Player has max Ammo."<<std::endl;
+  return ammo < this->MAX_AMMO; }
 
 void Player::pickUpAmmo() {
+
+  std::cout<<"Player Picking up Ammo."<<std::endl;
   if (ammo == this->MAX_AMMO) return;
   ammo += this->AMMO_PICK_UP;
   if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;

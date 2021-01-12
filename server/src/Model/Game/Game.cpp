@@ -9,6 +9,7 @@
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Model/Player/Player.h"
+#include "../../../includes/Model/Item/ItemFactory.h"
 
 Game::Game(std::string mapFile, std::string configFile)
     : yamlConfigReader(configFile) {
@@ -39,6 +40,9 @@ void Game::playerShoot(int playerID) {
   int range = attacker->getRange();
 
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
+
+    ItemFactory factory;
+
     receiverHealth = receiver->takeDamage(att);
 
     if(receiverHealth == 0){ // Deberia generar un evento de los items dropeados.
@@ -48,6 +52,10 @@ void Game::playerShoot(int playerID) {
       std::tie(x, y) = this->map->handleRespawn();
       this->map->moveTo(playerX, playerY, x, y, receiver);
       receiver->moveTo(x, y);
+
+      Item* ammo = factory.getItem(101, Map::getAndIncreaseByOneNextUniqueItemId());
+      this->map->addItemDropAt(ammo, int(playerY) + 1, int(playerX) + 1);
+
     }else if(receiverHealth == -1){
 
     } // Ya no deberia respawnear, deberia generar un evento de muerte.
