@@ -15,8 +15,8 @@ class TextureManager{
   ~TextureManager();
   TextureManager(SdlWindow* window) : window(window) {}
   void loadTextures();
-  void render(int id, Area srcArea, Area destArea);
-  void renderAll(int id, Area destArea);
+  void render(int id, const Area& srcArea, const Area& destArea);
+  void renderAll(int id, const Area& destArea);
   void loadTexture(int id, SdlTexture* texture);
   void getWindowSize(int* w, int* h);
   void getTextureSizeWithId(int id, int* w, int* h);

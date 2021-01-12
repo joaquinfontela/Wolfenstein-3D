@@ -14,31 +14,7 @@
 #include <vector>
 #include <math.h>
 #include <iostream>
-/*
-typedef struct Door {
-  int mapX, mapY;
-  bool hit;
-  double perpWallDist;
-  int side;
-  void operator()(int mapX, int mapY, int side) {
-    this->mapX = mapX;
-    this->mapY = mapY;
-    this->side = side;
-    this->hit  = true;
-  }
-  void calcDistToWall(int posX, int posY, int stepX, int stepY, int rayDirX, int rayDirY) {
-    if(this->side == 0){
-      perpWallDist = (mapX - posX + (1 - stepX) / 2) / (rayDirX + 0.001);
-    }
-    else{
-      perpWallDist = (mapY - posY + (1 - stepY) / 2) / (rayDirY + 0.001);
-    }
 
-    std::cout<<"Wall Dist: "<<perpWallDist<<std::endl;
-
-  }
-} Door;
-*/
 class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
@@ -48,9 +24,8 @@ class Raycaster {
     manager.getWindowSize(&this->width, &this->height);
     this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   }
-  ~Raycaster();
   void run();
-  bool hitDoor(int mapX, int mapY);
+  bool hitDoor(const int& mapX, const int& mapY);
  private:
   std::atomic<bool>& alive;
   TextureManager& manager;
@@ -64,7 +39,6 @@ class Raycaster {
   int height;
   std::vector<Door> doors;
   void drawDoors();
-  void destroyDoors();
   double distanceToProyection;
 };
 

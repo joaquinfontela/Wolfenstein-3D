@@ -7,18 +7,18 @@
 
 class Door : public Drawable {
  public:
-  Door(int mapX, int mapY, int width, int height, int stepX, int stepY, int side, double cameraX, int x) :
+  Door(int mapX, int mapY, const int& width, const int& height, const int& stepX, const int& stepY, int side, const double& cameraX, const int& x) :
        Drawable(mapX, mapY, DOOR), mapX(mapX), mapY(mapY), width(width),
        height(height), cameraX(cameraX), stepX(stepX), stepY(stepY), side(side), x(x) {}
   void openDoor();
   void draw(TextureManager& manager, double posX, double posY, double dirX,
     double dirY, double planeX, double planeY, double* zBuffer) override;
   int mapX, mapY;
-  int x;
+  const int& x;
 private:
-  int width, height;
-  double cameraX;
-  int stepX, stepY;
+  const int& width, height;
+  const double& cameraX;
+  const int& stepX, stepY;
   int side;
 };
 

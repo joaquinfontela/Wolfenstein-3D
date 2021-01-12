@@ -10,6 +10,7 @@ class Map {
   Map(const std::string& s) : dimx(24), dimy(24) {
     memset(this->doors, 0, sizeof(this->doors));
     this->doors[10][17] = DOOR_CLOSED;
+    this->doors[3][10] = DOOR_CLOSED;
   }
   int matrix[24][24] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 12, 12, 12, 12},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12},

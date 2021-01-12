@@ -72,7 +72,7 @@ void TextureManager::loadTextures() {
   }
 }
 
-void TextureManager::render(int id, Area srcArea, Area destArea) {
+void TextureManager::render(int id, const Area& srcArea, const Area& destArea) {
   std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->render(srcArea, destArea);
@@ -88,7 +88,7 @@ void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
     std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
 }
 
-void TextureManager::renderAll(int id, Area destArea) {
+void TextureManager::renderAll(int id, const Area& destArea) {
   std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->renderAll(destArea);

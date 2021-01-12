@@ -15,20 +15,12 @@ void Raycaster::drawDoors() {
   }*/
 }
 
-Raycaster::~Raycaster() {
-  //this->destroyDoors();
-}
-
-void Raycaster::destroyDoors() {
-
-}
-
-static bool isDoor(int id){
+static bool isDoor(int& id){
   return (id == 20); // Use mask to easily identify wall id'.
 }
 
-bool Raycaster::hitDoor(int mapX, int mapY) {
-  for (auto d : doors) {
+bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
+  for (Door& d : doors) {
     if (d.mapX == mapX && d.mapY == mapY) {
       return false;
     }
@@ -54,7 +46,6 @@ void Raycaster::run(){
 
     double zBuffer[this->width];
 
-    //int lastHeight = 0;
     for(int x = 0; x < this->width; x++) {
 
       double cameraX = 2 * x / (double)this->width - 1;
@@ -109,24 +100,22 @@ void Raycaster::run(){
           mapX = INT_MAX;
           mapY = INT_MAX;
           hit = 1;
-        } else if (matrix.get(mapX,mapY) > 0) {
-            if (isDoor(matrix.get(mapX, mapY)) && this->hitDoor(mapX,mapY)){
-              Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
-              this->doors.push_back(door);
-            } else if (!isDoor(matrix.get(mapX, mapY))) {
-              hit = 1;
-            }
+        } else if (matrix.get(mapX, mapY) > 0) {
+          if (isDoor((texNum = matrix.get(mapX, mapY)))
+              && !(this->doors.size()) && this->hitDoor(mapX,mapY)) {
+            Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
+            this->doors.push_back(door);
+            hit = (matrix.getDoor(mapX, mapY) == DOOR_CLOSED);
+          } else if (!isDoor(texNum)) {
+            hit = 1;
+          }
         }
       }
 
-      if(side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
+      if (side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
       else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
 
       int lineHeight = int(this->height/ perpWallDist);
-
-      if (mapY != INT_MAX) {
-        texNum = matrix.get(mapX,mapY);
-      }
 
       double wallX;
       if (side == 0) wallX = posY + perpWallDist * rayDirY;
@@ -152,10 +141,6 @@ void Raycaster::run(){
         //delete d;
       }
 
-
-      //this->destroyDoors();
-
-
     }
 
     this->lock.lock();
@@ -171,8 +156,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    //#ifdef FPS_FREQ
-    //#define FPS_FREQ 50
+    #ifdef FPS_FREQ
+    #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -183,7 +168,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    //#endif
+    #endif
 
     this->hud.update();
     this->window->render();
