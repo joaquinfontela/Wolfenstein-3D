@@ -62,7 +62,7 @@ class Raycaster {
   Hud& hud;
   int width;
   int height;
-  std::vector<Door*> doors;
+  std::vector<Door> doors;
   void drawDoors();
   void destroyDoors();
   double distanceToProyection;

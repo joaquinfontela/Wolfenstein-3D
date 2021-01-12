@@ -21,16 +21,6 @@ Raycaster::~Raycaster() {
 
 void Raycaster::destroyDoors() {
 
-  //std::vector<Door*>::iterator it = this->doors.begin();
-  for (auto& door: doors){
-    delete door;
-  }
-
-  for(int i = 0; i < this->doors.size(); i++){
-    this->doors.erase(doors.begin());
-  }
-
-
 }
 
 static bool isDoor(int id){
@@ -39,7 +29,7 @@ static bool isDoor(int id){
 
 bool Raycaster::hitDoor(int mapX, int mapY) {
   for (auto d : doors) {
-    if (d->mapX == mapX && d->mapY == mapY) {
+    if (d.mapX == mapX && d.mapY == mapY) {
       return false;
     }
   }
@@ -121,7 +111,7 @@ void Raycaster::run(){
           hit = 1;
         } else if (matrix.get(mapX,mapY) > 0) {
             if (isDoor(matrix.get(mapX, mapY)) && this->hitDoor(mapX,mapY)){
-              Door* door = new Door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
+              Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
               this->doors.push_back(door);
             } else if (!isDoor(matrix.get(mapX, mapY))) {
               hit = 1;
@@ -152,14 +142,14 @@ void Raycaster::run(){
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
-      
+
       //this->drawDoors();
       while(!this->doors.empty()){
 
-        Door* d = this->doors.back();
+        Door d = this->doors.back();
         this->doors.pop_back();
-        d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
-        delete d;
+        d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+        //delete d;
       }
 
 

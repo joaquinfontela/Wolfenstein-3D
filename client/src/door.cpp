@@ -11,8 +11,8 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
 
-  if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / (rayDirX + 0.01);
-  else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY + 0.01);
+  if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / (rayDirX);
+  else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY);
 
   int lineHeight = int(this->height / perpWallDist);
 
