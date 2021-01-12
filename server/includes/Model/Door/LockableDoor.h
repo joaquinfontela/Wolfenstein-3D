@@ -1,4 +1,5 @@
-#include "../Player/Player.h"
+#ifndef __LOCKABLE_DOOR_H__
+#define __LOCKABLE_DOOR_H__
 #include "./Door.h"
 
 class LockableDoor : public Door {
@@ -8,5 +9,7 @@ class LockableDoor : public Door {
  public:
   LockableDoor();
   bool isLocked();
-  bool unlock(Player* p);
+  bool unlock(bool hasKey);
 };
+
+#endif

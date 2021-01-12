@@ -136,3 +136,34 @@ unsigned int Map::getAndIncreaseByOneNextUniqueItemId() {
 void Map::removePlayer(int x, int y, Player* p) {
   this->tileMatrix.at(x).at(y).removePlayerFromTile(p);
 }
+
+std::tuple<int, int> Map::moveDoor(Player* p){
+
+  double playerX = p->getX();
+  double playerY = p->getY();
+  double dirX = p->getDirX();
+  double dirY = p->getDirY();
+
+  int mapX, mapY;
+
+  if(dirX < 0)
+      mapX = int(playerX) - 1;
+  else if(dirX > 0)
+      mapX = int(playerX) + 1;
+  else
+      mapX = int(playerX) + 1;
+
+  if(dirY < 0)
+      mapY = int(playerY) - 1;
+  else if(dirY > 0)
+      mapY = int(playerY) + 1;
+  else
+      mapY = int(playerY);
+
+
+  if(this->tileMatrix.at(10).at(17).moveDoor(p)) // Temporal hasta que arregle el algoritmo de arriba.
+    return std::make_tuple(mapX, mapY);
+  else
+    return std::make_tuple(-1, -1);
+
+}

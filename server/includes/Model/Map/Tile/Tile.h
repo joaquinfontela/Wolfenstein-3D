@@ -37,6 +37,8 @@ class Tile {
   void addAmmoDrop();
   void addKeyDrop();
 
+  bool moveDoor(Player* p);
+
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 

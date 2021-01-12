@@ -40,6 +40,9 @@ class Map {
   // respawnear.
   std::tuple<double, double> handleRespawn();
 
+  // Intenta abrir una puerta directamente en frente del jugador y devuelve el (x, y) de la puerta si se abrio. (-1, -1) caso contrario.
+  std::tuple<int, int> moveDoor(Player* p);
+
   // Devuelve la primera instancia del jugador que colisiona con la bala emitida
   // desde attacker. Nullptr si no colisiona con ningun jugador.
   Player* traceAttackFrom(Player* attacker, int range);

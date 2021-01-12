@@ -71,8 +71,8 @@ void Game::updatePositions() {
 }
 
 std::tuple<int, int> Game::moveDoor(int playerID) {
-  // return this->map.moveDoor(this->players[playerID]);
-  return std::make_tuple(0, 0);
+  return this->map->moveDoor(this->players[playerID]);
+  //return std::make_tuple(0, 0);
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
@@ -88,15 +88,18 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
   }
 }
 
-void Game::removePlayer(int playerID) {
+bool Game::removePlayer(int playerID) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
-  this->map->removePlayer(int(it->second->getX()), int(it->second->getY()),
-                          it->second);
   if (it != this->players.end()) {
+    this->map->removePlayer(int(it->second->getX()), int(it->second->getY()),
+                            it->second);
     delete it->second;
     this->players.erase(it);
+    return true;
   }
+
+  return false;
 }
 
 void Game::updatePlayerMoveSpeed(int playerID, double moveSpeed) {
