@@ -3,14 +3,18 @@
 #include <time.h>
 
 #include <cmath>
+#include <functional>
 #include <iostream>
 #include <string>
+<<<<<<< HEAD
 #include <functional>
 #include <tuple>
+=======
+>>>>>>> e64ce7d76f560166ed5f1922763295c1a9e6b5d5
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
-#include "../../../includes/Model/Player/Player.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
+#include "../../../includes/Model/Player/Player.h"
 
 Game::Game(std::string mapFile, std::string configFile)
     : yamlConfigReader(configFile) {
@@ -41,12 +45,12 @@ void Game::playerShoot(int playerID) {
   int range = attacker->getRange();
 
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
-
     ItemFactory factory;
 
-    receiverHealth = receiver->takeDamage(att);
+    receiverHealth = receiver->takeDamage(*map, att);
 
-    if(receiverHealth == 0){ // Deberia generar un evento de los items dropeados.
+    if (receiverHealth ==
+        0) {  // Deberia generar un evento de los items dropeados.
       double x, y;
       double playerX = receiver->getX();
       double playerY = receiver->getY();
@@ -89,7 +93,8 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
 void Game::removePlayer(int playerID) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
-  this->map->removePlayer(int(it->second->getX()), int(it->second->getY()), it->second);
+  this->map->removePlayer(int(it->second->getX()), int(it->second->getY()),
+                          it->second);
   if (it != this->players.end()) {
     delete it->second;
     this->players.erase(it);

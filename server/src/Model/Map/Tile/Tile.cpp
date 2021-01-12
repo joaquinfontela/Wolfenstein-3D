@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include "../../../../includes/Model/Item/Ammo.h"
+#include "../../../../includes/Model/Item/Key.h"
+
 Tile::Tile() {
   this->door = nullptr;
   this->wall = nullptr;
@@ -55,20 +58,32 @@ void Tile::addWall(Wall* wall) {
   this->deleteWeaponDrops();
 }
 
-void Tile::pickUpItems(double x, double y, Player* p){
+void Tile::addAmmoDrop() {
+  this->items.push_back(new Ammo(Map::getAndIncreaseByOneNextUniqueItemId()));
+  this->deleteDoor();
+  this->deleteWall();
+}
 
-  // Por ahora hago que agarre todos los que estan en la misma celda, en realidad el item deberia tener un hitbox y deberia preguntarle a cada uno si estoy en rango para agarrarlo.
+void Tile::addKeyDrop() {
+  this->items.push_back(new Key(Map::getAndIncreaseByOneNextUniqueItemId()));
+  this->deleteDoor();
+  this->deleteWall();
+}
+
+void Tile::pickUpItems(double x, double y, Player* p) {
+  // Por ahora hago que agarre todos los que estan en la misma celda, en
+  // realidad el item deberia tener un hitbox y deberia preguntarle a cada uno
+  // si estoy en rango para agarrarlo.
   std::vector<Item*>::iterator it = this->items.begin();
 
-  while(it != this->items.end()){
-
-    if((*it)->canBePickedUpBy(p)){
-      std::cout<<"Player picking up item."<<std::endl;
+  while (it != this->items.end()) {
+    if ((*it)->canBePickedUpBy(p)) {
+      std::cout << "Player picking up item." << std::endl;
       (*it)->pickUp(p);
       delete *it;
       it = this->items.erase(it);
-    }else{
-      std::cout<<"Player could not pick up item"<<std::endl;
+    } else {
+      std::cout << "Player could not pick up item" << std::endl;
       ++it;
     }
   }
@@ -85,7 +100,8 @@ bool Tile::allowMovement(double x, double y, Player* p) {
     if ((*it)->collidesWith(x, y)) return false;
   }
 
-  // Se autorizo el movimiento, asique veo que items hay en su posicion por si tengo que agarrar alguno.
+  // Se autorizo el movimiento, asique veo que items hay en su posicion por si
+  // tengo que agarrar alguno.
 
   pickUpItems(x, y, p);
   return true;

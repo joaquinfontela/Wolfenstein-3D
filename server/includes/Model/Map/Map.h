@@ -22,6 +22,9 @@ class Map {
   void addDoorAt(Door* door, int x, int y);
   void addWallAt(Wall* wall, int x, int y);
 
+  void addAmmoDropAt(int x, int y);
+  void addKeyDropAt(int x, int y);
+
   void removePlayer(int x, int y, Player* p);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)

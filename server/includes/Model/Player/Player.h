@@ -24,7 +24,7 @@ class Player {
   bool key;
   WeaponFactory weaponFactory;
 
-  int handleDeath();
+  int handleDeath(Map& map);
 
  public:
   // CONSTRUCTORES.
@@ -33,7 +33,7 @@ class Player {
 
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
-  int takeDamage(unsigned int damage);
+  int takeDamage(Map& map, unsigned int damage);
 
   // GETTERS
   unsigned int ID();
@@ -56,12 +56,13 @@ class Player {
   // Actualiza la velocidad de rotacion.
   void updateRotationSpeed(double rotSpeed);
 
-  // Mueve al jugador a la coordenada especificada. Se usa para cuando el juego quiere gestionarle un punto de respawn.
+  // Mueve al jugador a la coordenada especificada. Se usa para cuando el juego
+  // quiere gestionarle un punto de respawn.
   void moveTo(double x, double y);
 
   // Devuelve el rango que tiene el ataque del player.
   int getRange();
-  
+
   // Equipa el arma indicada.
   void equipWeapon(Weapon* weapon);
 
