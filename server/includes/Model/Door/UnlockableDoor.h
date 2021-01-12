@@ -1,12 +1,20 @@
+#ifndef __UNLOCKABLE_DOOR_H__
+#define __UNLOCKABLE_DOOR_H__
+
 #include "./Door.h"
-#include "../Player/Player.h"
+
+
+
 
 class UnlockableDoor : public Door {
  public:
   UnlockableDoor();
   bool isLocked();
-  bool unlock(Player* p);
+  bool unlock(bool hasKey);
 
 private:
   bool locked;
 };
+
+
+#endif

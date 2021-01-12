@@ -4,8 +4,8 @@ LockableDoor::LockableDoor() : Door() { locked = true; }
 
 bool LockableDoor::isLocked() { return locked; }
 
-bool LockableDoor::unlock(Player* p) {
-  if (p->hasKey()){
+bool LockableDoor::unlock(bool hasKey) {
+  if (hasKey){
       locked = false;
       return true;
   }

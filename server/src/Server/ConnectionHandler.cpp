@@ -15,6 +15,7 @@
 #include "../../includes/Control/Command/PlayerAUp.h"
 #include "../../includes/Control/Command/PlayerSUp.h"
 #include "../../includes/Control/Command/PlayerDUp.h"
+#include "../../includes/Control/Command/PlayerInteractDoor.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
                                      WaitingQueue<Command*>& com, int playerID)
@@ -104,12 +105,19 @@ void ConnectionHandler::receiveCommands() {
          this->commands.push(shoot);
          break;
        }
+
+       case OPEN_DOOR: {
+         PlayerInteractDoor* door = new PlayerInteractDoor(this->ID);
+         this->commands.push(door);
+         break;
+       }
         default:
           std::cout << "[ConnectionHandler] Unknow opcode received"
                     << std::endl;
       }
     } catch (SocketException& e) {
-      // TODO -> Deberia tambien crear un comando de desconexion y pushearlo
+      PlayerDisconnected* playerDisc = new PlayerDisconnected(this->ID);
+      this->commands.push(playerDisc);
       std::cout << "[ConnectionHandler] Player Connection Lost, ID: "
                 << this->ID << std::endl;
       break;

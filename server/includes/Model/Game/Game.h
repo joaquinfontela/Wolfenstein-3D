@@ -34,7 +34,7 @@ class Game {
 
   // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa
   // que lo borre en sus coordenadas.
-  void removePlayer(int playerID);
+  bool removePlayer(int playerID);
 
   // Actualiza la posicion de los elementos dependientes del tiempo.
   void updatePositions();

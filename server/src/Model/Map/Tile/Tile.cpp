@@ -137,6 +137,15 @@ void Tile::removePlayerFromTile(Player* p) {
   }
 }
 
+bool Tile::moveDoor(Player* p){
+
+  if(this->door == nullptr){
+    return false;
+  }
+
+  return this->door->unlock(p);
+}
+
 Tile::~Tile() {
   this->deleteWeaponDrops();
   this->deleteItemDrops();
