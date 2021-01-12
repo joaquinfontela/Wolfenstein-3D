@@ -10,7 +10,9 @@ Tile::Tile() {
   this->wall = nullptr;
 }
 
-bool Tile::isWall() { return (this->wall != nullptr); }
+bool Tile::isWall() {
+
+  return (this->wall != nullptr) || (this->door != nullptr && this->door->isLocked()); }
 
 void Tile::deleteDoor() {
   delete this->door;

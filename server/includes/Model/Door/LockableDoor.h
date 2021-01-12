@@ -1,4 +1,4 @@
-#include "../Item/Key.h"
+#include "../Player/Player.h"
 #include "./Door.h"
 
 class LockableDoor : public Door {
@@ -8,5 +8,5 @@ class LockableDoor : public Door {
  public:
   LockableDoor();
   bool isLocked();
-  void unlock(Key* key);
+  bool unlock(Player* p);
 };

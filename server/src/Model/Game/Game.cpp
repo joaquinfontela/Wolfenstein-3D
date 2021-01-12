@@ -6,11 +6,9 @@
 #include <functional>
 #include <iostream>
 #include <string>
-<<<<<<< HEAD
+
 #include <functional>
 #include <tuple>
-=======
->>>>>>> e64ce7d76f560166ed5f1922763295c1a9e6b5d5
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
@@ -74,7 +72,7 @@ void Game::updatePositions() {
 
 std::tuple<int, int> Game::moveDoor(int playerID) {
   // return this->map.moveDoor(this->players[playerID]);
-  return make_tuple(0, 0);
+  return std::make_tuple(0, 0);
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {

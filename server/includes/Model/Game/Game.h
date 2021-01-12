@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <tuple>
 
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
@@ -48,7 +49,7 @@ class Game {
   void playerShoot(int playerID);
 
   // Devuelve el ID de la pared que cambio de estado, -1 si no se modifico nada.
-  int moveDoor(int playerID);
+  std::tuple<int, int> moveDoor(int playerID);
 
   // Comienza el juego.
   void start();

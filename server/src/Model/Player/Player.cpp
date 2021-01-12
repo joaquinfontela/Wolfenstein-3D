@@ -17,8 +17,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
       ammo(yamlConfigReader.getBulletAmountAtStart()),
       MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(
-          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      BULLET_DROP_WHEN_DIES(yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
@@ -29,12 +28,11 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       rotSpeed(0.0),
       moveSpeed(0.0),
       hasToBeNotified(false) {
+
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  weapons.push_back(
-      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(
-      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -44,8 +42,7 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
       ammo(yamlConfigReader.getBulletAmountAtStart()),
       MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(
-          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      BULLET_DROP_WHEN_DIES(yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
@@ -56,28 +53,33 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       rotSpeed(0.0),
       moveSpeed(0.0),
       hasToBeNotified(false) {
-  weapons.push_back(
-      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(
-      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+
+  weapons.push_back(weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
 bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
+
 int Player::handleDeath(Map& map) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;
   }
 
-  if (this->hasKey()) {
+  double x, y;
+  std::tie(x, y) = map.handleRespawn();
+  map.moveTo(this->x, this->y, x, y, this);
+
+  if (this->key) {
     this->key = false;
-    map.addKeyDropAt(this->x, this->y);
+    map.addKeyDropAt(this->y + 1, this->x + 1);
   }
-  map.addAmmoDropAt(this->x, this->y);
-  map.addAmmoDropAt(this->x, this->y);
+
+  map.addAmmoDropAt(this->y + 1, this->x + 1);
+  //map.addAmmoDropAt(this->x + 1, this->y + 1);
 
   this->lifeRemaining -= 1;
   this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
