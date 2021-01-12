@@ -120,6 +120,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/ShotsFired.cpp
         server/src/Control/Notification/PlayerDisconnect.cpp
         server/src/Control/Notification/PlayerPackageUpdate.cpp
+        server/src/Control/Notification/DoorMoving.cpp
         server/src/Control/Command/PlayerADown.cpp
         server/src/Control/Command/PlayerSDown.cpp
         server/src/Control/Command/PlayerDDown.cpp
@@ -129,6 +130,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerDUp.cpp
         server/src/Control/Command/PlayerWUp.cpp
         server/src/Control/Command/PlayerShoot.cpp
+        server/src/Control/Command/PlayerInteractDoor.cpp
         server/src/Model/Map/Map.cpp
         server/src/Model/Map/MapLoader.cpp
         server/src/Model/Map/Tile/Tile.cpp

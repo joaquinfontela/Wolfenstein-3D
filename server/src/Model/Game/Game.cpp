@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <functional>
+#include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Model/Player/Player.h"
@@ -52,10 +53,6 @@ void Game::playerShoot(int playerID) {
       std::tie(x, y) = this->map->handleRespawn();
       this->map->moveTo(playerX, playerY, x, y, receiver);
       receiver->moveTo(x, y);
-
-      Item* ammo = factory.getItem(101, Map::getAndIncreaseByOneNextUniqueItemId());
-      this->map->addItemDropAt(ammo, int(playerY) + 1, int(playerX) + 1);
-
     }else if(receiverHealth == -1){
 
     } // Ya no deberia respawnear, deberia generar un evento de muerte.
@@ -71,9 +68,9 @@ void Game::updatePositions() {
   }
 }
 
-int Game::moveDoor(int playerID) {
+std::tuple<int, int> Game::moveDoor(int playerID) {
   // return this->map.moveDoor(this->players[playerID]);
-  return 0;
+  return make_tuple(0, 0);
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
