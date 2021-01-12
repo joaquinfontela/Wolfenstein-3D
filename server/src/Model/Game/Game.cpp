@@ -3,13 +3,13 @@
 #include <time.h>
 
 #include <cmath>
+#include <functional>
 #include <iostream>
 #include <string>
-#include <functional>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
-#include "../../../includes/Model/Player/Player.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
+#include "../../../includes/Model/Player/Player.h"
 
 Game::Game(std::string mapFile, std::string configFile)
     : yamlConfigReader(configFile) {
@@ -40,12 +40,12 @@ void Game::playerShoot(int playerID) {
   int range = attacker->getRange();
 
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
-
     ItemFactory factory;
 
-    receiverHealth = receiver->takeDamage(att);
+    receiverHealth = receiver->takeDamage(*map, att);
 
-    if(receiverHealth == 0){ // Deberia generar un evento de los items dropeados.
+    if (receiverHealth ==
+        0) {  // Deberia generar un evento de los items dropeados.
       double x, y;
       double playerX = receiver->getX();
       double playerY = receiver->getY();
@@ -53,13 +53,12 @@ void Game::playerShoot(int playerID) {
       this->map->moveTo(playerX, playerY, x, y, receiver);
       receiver->moveTo(x, y);
 
-      Item* ammo = factory.getItem(101, Map::getAndIncreaseByOneNextUniqueItemId());
+      Item* ammo =
+          factory.getItem(101, Map::getAndIncreaseByOneNextUniqueItemId());
       this->map->addItemDropAt(ammo, int(playerY) + 1, int(playerX) + 1);
 
-    }else if(receiverHealth == -1){
-
-    } // Ya no deberia respawnear, deberia generar un evento de muerte.
-
+    } else if (receiverHealth == -1) {
+    }  // Ya no deberia respawnear, deberia generar un evento de muerte.
   }
 }
 
@@ -92,7 +91,8 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
 void Game::removePlayer(int playerID) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
-  this->map->removePlayer(int(it->second->getX()), int(it->second->getY()), it->second);
+  this->map->removePlayer(int(it->second->getX()), int(it->second->getY()),
+                          it->second);
   if (it != this->players.end()) {
     delete it->second;
     this->players.erase(it);

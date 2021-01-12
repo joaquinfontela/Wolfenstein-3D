@@ -17,7 +17,8 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
       ammo(yamlConfigReader.getBulletAmountAtStart()),
       MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
+      BULLET_DROP_WHEN_DIES(
+          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
@@ -30,8 +31,10 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       hasToBeNotified(false) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
-  weapons.push_back(weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(
+      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(
+      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -63,7 +66,7 @@ Player::Player(YAMLConfigReader yamlConfigReader)
 bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
-int Player::handleDeath() {
+int Player::handleDeath(Map& map) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;
@@ -71,25 +74,26 @@ int Player::handleDeath() {
 
   if (this->hasKey()) {
     this->key = false;
+    map.addKeyDropAt(this->x, this->y);
   }
+  map.addAmmoDropAt(this->x, this->y);
+  map.addAmmoDropAt(this->x, this->y);
 
   this->lifeRemaining -= 1;
   this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
   this->ammo -= this->BULLET_DROP_WHEN_DIES;
   this->key = false;
 
-
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(unsigned int damage) {
-
+int Player::takeDamage(Map& map, unsigned int damage) {
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath();
+    return handleDeath(map);
   }
 
   this->health -= damage;
@@ -110,7 +114,7 @@ void Player::fillPlayerData(PlayerData& data) {
   return;
 }
 
-void Player::moveTo(double x, double y){
+void Player::moveTo(double x, double y) {
   this->x = x;
   this->y = y;
 }
@@ -156,9 +160,7 @@ int Player::attack() {
   return damageDealt;
 }
 
-int Player::getRange(){
-  return this->currentWeapon->getRange();
-}
+int Player::getRange() { return this->currentWeapon->getRange(); }
 
 unsigned int Player::ID() { return this->playerID; }
 
@@ -170,7 +172,7 @@ void Player::updateRotationSpeed(double rotSpeed) {
 
 void Player::equipWeapon(Weapon* weapon) {
   this->currentWeapon = weapon;
-
+  this->weapons.push_back(weapon);
   this->hasToBeNotified = true;
 }
 
@@ -179,13 +181,12 @@ void Player::pickupKey() { this->key = true; }
 bool Player::hasKey() { return key; }
 
 bool Player::hasMaxAmmo() {
-  std::cout<<"Player has max Ammo."<<std::endl;
-  return ammo < this->MAX_AMMO; }
+  std::cout << "Player has max Ammo." << std::endl;
+  return ammo >= this->MAX_AMMO;
+}
 
 void Player::pickUpAmmo() {
-
-  std::cout<<"Player Picking up Ammo."<<std::endl;
-  if (ammo == this->MAX_AMMO) return;
+  std::cout << "Player Picking up Ammo." << std::endl;
   ammo += this->AMMO_PICK_UP;
   if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;
   this->hasToBeNotified = true;
@@ -206,11 +207,9 @@ void Player::addPoints(int points) { this->score += points; }
 int Player::getScore() { return this->score; }
 
 Player::~Player() {
-
   std::vector<Weapon*>::iterator it = this->weapons.begin();
 
-  for(; it != this->weapons.end(); ++it){
+  for (; it != this->weapons.end(); ++it) {
     delete (*it);
   }
-
- }
+}

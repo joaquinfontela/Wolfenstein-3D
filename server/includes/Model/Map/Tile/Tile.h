@@ -9,6 +9,7 @@
 #include "../../Player/Player.h"
 #include "../../Wall/BlueWall.h"
 #include "../../Wall/Wall.h"
+#include "../Map.h"
 
 class Player;
 class Item;
@@ -33,7 +34,8 @@ class Tile {
   void addDoor(Door* door);
   void addWall(Wall* wall);
 
-  
+  void addAmmoDrop();
+  void addKeyDrop();
 
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);

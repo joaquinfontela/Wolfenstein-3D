@@ -42,15 +42,23 @@ void Map::addWallAt(Wall* wall, int x, int y) {
   this->tileMatrix[y - 1][x - 1].addWall(wall);
 }
 
+void Map::addAmmoDropAt(int x, int y) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[y - 1][x - 1].addAmmoDrop();
+}
+
+void Map::addKeyDropAt(int x, int y) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[y - 1][x - 1].addKeyDrop();
+}
+
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
   if ((x > this->dimx) || (x < 1) || (y > this->dimy) || (y < 1))
     throw std::runtime_error(
         "Error adding item into map (map limits overpassed).");
 }
 
-
 Player* Map::traceAttackFrom(Player* attacker, int range) {
-
   double initialX = attacker->getX();
   double initialY = attacker->getY();
 
@@ -71,18 +79,21 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
     if (this->tileMatrix.at(mapX).at(mapY).checkWall())
       return nullptr;
 
-    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr)
+    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(
+                  rayPosX, rayPosY, attacker)) != nullptr)
       return p;
 
-    else if(((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx)){
-      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr){
+    else if (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx)) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(
+               rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
 
     }
 
-    else if(((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)){
-      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr){
+    else if (((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) {
+      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(
+               rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
     }
@@ -118,13 +129,10 @@ void Map::addPlayer(int x, int y, Player* p) {
 }
 
 unsigned int Map::getAndIncreaseByOneNextUniqueItemId() {
-  std::cout << Map::nextId << std::endl;
   Map::nextId++;
   return (Map::nextId - 1);
 }
 
-void Map::removePlayer(int x, int y, Player* p){
-
-    this->tileMatrix.at(x).at(y).removePlayerFromTile(p);
-
+void Map::removePlayer(int x, int y, Player* p) {
+  this->tileMatrix.at(x).at(y).removePlayerFromTile(p);
 }
