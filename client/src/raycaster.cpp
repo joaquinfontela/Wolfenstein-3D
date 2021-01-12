@@ -1,5 +1,6 @@
 #include "raycaster.h"
 #include "drawable.h"
+#include "door.h"
 #include "clientprotocol.h"
 #include <climits>
 #include <algorithm>
@@ -8,15 +9,36 @@
 #include <iostream>
 #include <time.h>
 
-static bool isDoor(int id){
-  return (id == 20); // Expand to list of id's.
+void Raycaster::drawDoors() {
+  /*for (auto d : doors) {
+    d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+  }*/
 }
 
-typedef struct test{
-  int side;
-  int mapX, mapY;
-  bool hit;
-} Door;
+Raycaster::~Raycaster() {
+  //this->destroyDoors();
+}
+
+void Raycaster::destroyDoors() {
+  std::vector<Door*>::iterator it = this->doors.begin();
+  for (; it != this->doors.end(); ++it) {
+    delete (*it);
+    it = this->doors.erase(it);
+  }
+}
+
+static bool isDoor(int id){
+  return (id == 20); // Use mask to easily identify wall id'.
+}
+
+bool Raycaster::hitDoor(int mapX, int mapY) {
+  for (auto d : doors) {
+    if (d->mapX == mapX && d->mapY == mapY) {
+      return false;
+    }
+  }
+  return true;
+}
 
 void Raycaster::run(){
 
@@ -36,10 +58,9 @@ void Raycaster::run(){
 
     double zBuffer[this->width];
 
-    Door door;
+    //int lastHeight = 0;
     for(int x = 0; x < this->width; x++) {
 
-      door.hit = false;
       double cameraX = 2 * x / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraX;
       double rayDirY = dirY + planeY * cameraX;
@@ -58,6 +79,7 @@ void Raycaster::run(){
       int stepY;
 
       int hit = 0;
+      int texNum = 1;
       int side;
 
       if (rayDirX < 0) {
@@ -92,13 +114,12 @@ void Raycaster::run(){
           mapY = INT_MAX;
           hit = 1;
         } else if (matrix.get(mapX,mapY) > 0) {
-            if(isDoor(matrix.get(mapX, mapY)) && !door.hit){
-              door.hit = true;
-              door.mapX = mapX;
-              door.mapY = mapY;
-              door.side = side;
-            }else if(!isDoor(matrix.get(mapX, mapY)))
+            if (isDoor(matrix.get(mapX, mapY)) && this->hitDoor(mapX,mapY)){
+              Door* door = new Door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX);
+              this->doors.push_back(door);
+            } else if (!isDoor(matrix.get(mapX, mapY))) {
               hit = 1;
+            }
         }
       }
 
@@ -107,7 +128,6 @@ void Raycaster::run(){
 
       int lineHeight = int(this->height/ perpWallDist);
 
-      int texNum = 1;
       if (mapY != INT_MAX) {
         texNum = matrix.get(mapX,mapY);
       }
@@ -126,25 +146,11 @@ void Raycaster::run(){
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
 
-      if(door.hit){
-
-        if(door.side == 0) perpWallDist = (door.mapX - posX + (1 - stepX) / 2) / rayDirX;
-        else perpWallDist = (door.mapY - posY + (1 - stepY) / 2) / rayDirY;
-
-        lineHeight = int(this->height / perpWallDist);
-
-        if (door.side == 0) wallX = posY + perpWallDist * rayDirY;
-        else wallX = posX + perpWallDist * rayDirX;
-        wallX -= floor((wallX));
-
-        int texX = int(wallX * double(BLOCKSIZE));
-        if(door.side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
-        if(door.side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
-
-        Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-        Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-        this->manager.render(20, srcArea, destArea);
+      //this->drawDoors();
+      for (auto d : doors) {
+        d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
       }
+      this->destroyDoors();
 
       zBuffer[x] = perpWallDist;
     }
@@ -161,8 +167,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-  //  #ifdef FPS_FREQ
-  //  #define FPS_FREQ 50
+    #ifdef FPS_FREQ
+    #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -173,7 +179,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-  //  #endif
+    #endif
 
     this->hud.update();
     this->window->render();

@@ -2,6 +2,7 @@
 #define RAYCASTER_H_
 
 #include "hud.h"
+#include "door.h"
 #include "player.h"
 #include "sdlwindow.h"
 #include "texturemanager.h"
@@ -47,7 +48,9 @@ class Raycaster {
     manager.getWindowSize(&this->width, &this->height);
     this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
   }
+  ~Raycaster();
   void run();
+  bool hitDoor(int mapX, int mapY);
  private:
   std::atomic<bool>& alive;
   TextureManager& manager;
@@ -59,7 +62,9 @@ class Raycaster {
   Hud& hud;
   int width;
   int height;
-
+  std::vector<Door*> doors;
+  void drawDoors();
+  void destroyDoors();
   double distanceToProyection;
 };
 

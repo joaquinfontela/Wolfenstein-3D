@@ -60,5 +60,9 @@
 #define WOODEN_WALL 19
 #define DOOR 20
 
+#define DOOR_CLOSED 1
+#define DOOR_OPEN 2
+#define DOOR_CLOSING 3
+#define DOOR_OPENING 4
 
 #endif  // CLIENTPROTOCOL_H_

@@ -8,6 +8,7 @@ add_library(sdldemo
   src/area.cpp
   src/audio.cpp
   src/hud.cpp
+  src/door.cpp
   src/sdltexture.cpp
   src/sdlanimation.cpp
   src/sdlexception.cpp
