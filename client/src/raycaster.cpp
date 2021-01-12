@@ -16,7 +16,7 @@ void Raycaster::drawDoors() {
 }
 
 static bool isDoor(int& id){
-  return (id == 20); // Use mask to easily identify wall id'.
+  return (id & AND_IS_THIS_ID_A_DOOR == 0); 
 }
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
@@ -103,7 +103,7 @@ void Raycaster::run(){
         } else if (matrix.get(mapX, mapY) > 0) {
           if (isDoor((texNum = matrix.get(mapX, mapY)))
               && !(this->doors.size()) && this->hitDoor(mapX,mapY)) {
-            Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
+            Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
             this->doors.push_back(door);
             hit = (matrix.getDoor(mapX, mapY) == DOOR_CLOSED);
           } else if (!isDoor(texNum)) {

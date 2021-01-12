@@ -4,6 +4,7 @@
 
 #include "audio.h"
 #include "commandexecuter.h"
+#include "../../common/includes/Map/Map.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
@@ -33,7 +34,7 @@ void CommandExecuter::run() {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
-      if (opcode == PLAYER_UPDATE_PACKAGE) {
+      if (opcode == PLAYER_UPDATE_PACKAGE) { // Cambiar por switch
         PlayerData playerinfo;
         memset(&playerinfo, 0, sizeof(PlayerData));
         infogetter.receivePlayerData(playerinfo);
@@ -68,6 +69,11 @@ void CommandExecuter::run() {
         this->socket.receive(&shooterId, sizeof(shooterId));
         this->players.at(shooterId)->startShooting();
         this->playShootingSounds(shooterId);
+      } else if (opcode == OPEN_DOOR) {
+        uint32_t x, y;
+        this->socket.receive(&x, sizeof(x));
+        this->socket.receive(&y, sizeof(y));
+        matrix.openDoor(x, y);
       }
     } catch (SocketException& e) {
       break;

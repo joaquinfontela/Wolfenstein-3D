@@ -41,6 +41,7 @@ class Map {
   int dimy;
   int get(int x, int y) { return matrix[x][y]; }
   int getDoor(int x, int y) { return doors[x][y]; }
+  void openDoor(int x, int y) { doors[x][y] = DOOR_OPENING; }
 };
 
 #endif  // TP_FINAL_MAP_H

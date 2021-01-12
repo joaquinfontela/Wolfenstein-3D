@@ -66,6 +66,9 @@ void CommandSender::run() {
               this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
             }
             break;
+          case SDLK_e:
+            this->update(OPEN_DOOR); // Hacer que tenga shoot up y shoot down
+            break;
           case SDLK_LEFT:
             break;
           case SDLK_RIGHT:

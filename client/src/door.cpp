@@ -6,7 +6,6 @@
 void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double dirY, double planeX, double planeY, double* zBuffer) {
 
-
   double perpWallDist;
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
@@ -15,7 +14,6 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY);
 
   int lineHeight = int(this->height / perpWallDist);
-
 
   double wallX;
   if (this->side == 0) wallX = posY + perpWallDist * rayDirY;
@@ -26,11 +24,12 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   if(this->side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
   if(this->side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
+  int doorState = this->matrix->getDoor(this->mapX, this->mapY);
   Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
   Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
-  if (this->side) manager.render(DOOR, srcArea, destArea);
+  if (doorState == DOOR_CLOSED) manager.render(DOOR, srcArea, destArea);
   else manager.render(WOODEN_WALL, srcArea, destArea);
 
-  if(perpWallDist < zBuffer[x]) // && door.isClosed()
+  if(perpWallDist < zBuffer[x] && doorState == DOOR_CLOSED) // && door.isClosed()
     zBuffer[x] = perpWallDist;
 }
