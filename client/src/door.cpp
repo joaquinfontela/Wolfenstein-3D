@@ -5,15 +5,17 @@
 
 void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double dirY, double planeX, double planeY, double* zBuffer) {
-  std::cout << "dibujandinho" << std::endl;
+
+
   double perpWallDist;
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
 
-  if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / rayDirX;
-  else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / rayDirY;
+  if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / (rayDirX + 0.01);
+  else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY + 0.01);
 
   int lineHeight = int(this->height / perpWallDist);
+
 
   double wallX;
   if (this->side == 0) wallX = posY + perpWallDist * rayDirY;

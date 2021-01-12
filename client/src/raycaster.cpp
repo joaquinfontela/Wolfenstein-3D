@@ -20,11 +20,15 @@ Raycaster::~Raycaster() {
 }
 
 void Raycaster::destroyDoors() {
+
   std::vector<Door*>::iterator it = this->doors.begin();
-  for (; it != this->doors.end(); ++it) {
+  for (; it != this->doors.end(); ++it)
     delete (*it);
-    it = this->doors.erase(it);
-  }
+
+
+  for(int i = 0; i < this->doors.size(); i++)
+    this->doors.erase(doors.begin());
+
 }
 
 static bool isDoor(int id){
@@ -115,7 +119,7 @@ void Raycaster::run(){
           hit = 1;
         } else if (matrix.get(mapX,mapY) > 0) {
             if (isDoor(matrix.get(mapX, mapY)) && this->hitDoor(mapX,mapY)){
-              Door* door = new Door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX);
+              Door* door = new Door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x);
               this->doors.push_back(door);
             } else if (!isDoor(matrix.get(mapX, mapY))) {
               hit = 1;
@@ -150,6 +154,7 @@ void Raycaster::run(){
       for (auto d : doors) {
         d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
       }
+
       this->destroyDoors();
 
       zBuffer[x] = perpWallDist;
@@ -167,8 +172,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    #ifdef FPS_FREQ
-    #define FPS_FREQ 50
+    //#ifdef FPS_FREQ
+    //#define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -179,7 +184,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    #endif
+    //#endif
 
     this->hud.update();
     this->window->render();
