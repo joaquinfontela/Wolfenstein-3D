@@ -152,8 +152,8 @@ void Raycaster::run(){
 
     auto t2 = std::chrono::steady_clock::now();
 
-    #ifdef FPS_FREQ
-    #define FPS_FREQ 50
+    //#ifdef FPS_FREQ
+    //#define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -164,7 +164,7 @@ void Raycaster::run(){
     }
     if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
-    #endif
+    //#endif
 
     this->hud.update();
     this->window->render();

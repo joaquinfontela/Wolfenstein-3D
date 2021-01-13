@@ -5,6 +5,7 @@
 class LockableDoor : public Door {
  private:
   bool locked;
+  bool previouslyUnlocked;
 
  public:
   LockableDoor();
