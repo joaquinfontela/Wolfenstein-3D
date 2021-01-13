@@ -9,7 +9,8 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   float doorState = this->matrix->getDoor(this->mapX, this->mapY);
   if (doorState == DOOR_OPEN) return;
 
-  floor doorFrame = GET_DOOR_STATE_WITH_ID(doorState);
+  float doorFrame = GET_DOOR_STATE_WITH_ID(doorState);
+
   double perpWallDist;
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
