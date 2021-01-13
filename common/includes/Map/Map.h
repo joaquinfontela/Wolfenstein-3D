@@ -36,12 +36,18 @@ class Map {
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-  int doors[24][24];
+  float doors[24][24];
   int dimx;
   int dimy;
   int get(int x, int y) { return matrix[x][y]; }
-  int getDoor(int x, int y) { return doors[x][y]; }
+  float getDoor(int x, int y) { return doors[x][y]; }
   void openDoor(int x, int y) { doors[x][y] = DOOR_OPEN; }
+  void switchDoorState(int x, int y) {
+    if (doors[x][y] == DOOR_OPEN)
+      doors[x][y] = DOOR_CLOSED;
+    else
+      doors[x][y] = DOOR_OPEN;
+  }
 };
 
 #endif  // TP_FINAL_MAP_H

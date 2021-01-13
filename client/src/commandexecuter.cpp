@@ -75,7 +75,7 @@ void CommandExecuter::run() {
         this->socket.receive(&x, sizeof(x));
         this->socket.receive(&y, sizeof(y));
         std::cout<<"Opening door at: "<<x<<", "<<y<<std::endl;
-        matrix.openDoor(x, y);
+        matrix.switchDoorState(x, y);
       }
     } catch (SocketException& e) {
       break;
