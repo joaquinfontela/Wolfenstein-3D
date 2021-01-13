@@ -5,8 +5,11 @@ LockableDoor::LockableDoor() : Door() { locked = true; }
 bool LockableDoor::isLocked() { return locked; }
 
 bool LockableDoor::unlock(bool hasKey) {
-  if (hasKey){
+  if (hasKey && locked){
       locked = false;
+      return true;
+  }else if(!locked){
+      locked = true;
       return true;
   }
 

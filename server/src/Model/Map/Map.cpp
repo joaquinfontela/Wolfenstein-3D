@@ -139,29 +139,31 @@ void Map::removePlayer(int x, int y, Player* p) {
 
 std::tuple<int, int> Map::moveDoor(Player* p){
 
-  double playerX = p->getX();
-  double playerY = p->getY();
+  double initialX = p->getX();
+  double initialY = p->getY();
   double dirX = p->getDirX();
   double dirY = p->getDirY();
 
-  int mapX, mapY;
+  int i = 1;
+  double rayPosX = (initialX + i * dirX);
+  double rayPosY = (initialY + i * dirY);
 
-  if(dirX < 0)
-      mapX = int(playerX) - 1;
-  else if(dirX > 0)
-      mapX = int(playerX) + 1;
-  else
-      mapX = int(playerX) + 1;
-
-  if(dirY < 0)
-      mapY = int(playerY) - 1;
-  else if(dirY > 0)
-      mapY = int(playerY) + 1;
-  else
-      mapY = int(playerY);
+  int mapX = (int)rayPosX;
+  int mapY = (int)rayPosY;
 
 
-  if(this->tileMatrix.at(10).at(17).moveDoor(p)) // Temporal hasta que arregle el algoritmo de arriba.
+  while (mapX == floor(initialX) && mapY == floor(initialY)) {
+
+    rayPosX = (initialX + i * dirX);
+    rayPosY = (initialY + i * dirY);
+
+    mapX = (int)rayPosX;
+    mapY = (int)rayPosY;
+
+    i++;
+  }
+
+  if(this->tileMatrix.at(mapX).at(mapY).moveDoor(p)) // Temporal hasta que arregle el algoritmo de arriba.
     return std::make_tuple(mapX, mapY);
   else
     return std::make_tuple(-1, -1);
