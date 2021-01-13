@@ -126,19 +126,18 @@ void Raycaster::run(){
       if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
       if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
 
-
       Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
 
-      //this->drawDoors();
       while(!this->doors.empty()){
-
+        // It is not necessary to sort the doors (depending on their distance to the player)
+        // because they are already pushed in the vector as you detect them, meaning that
+        // the doors are already sorted. Thanks LIFO.
         Door d = this->doors.back();
         this->doors.pop_back();
         d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
-        //delete d;
       }
 
     }
