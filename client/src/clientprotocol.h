@@ -60,11 +60,7 @@
 #define WOODEN_WALL 19
 #define DOOR 20
 
-<<<<<<< HEAD
-#define GET_DOOR_STATE_WITH_ID(x) x + 2
-=======
 #define GET_DOOR_STATE_WITH_ID(X) (-X - 1)
->>>>>>> e0137f9ca02b68452ab182e61d9e099ac007a403
 
 #define DOOR_OPEN -1.0
 #define DOOR_CLOSED -2.0

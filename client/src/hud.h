@@ -8,6 +8,7 @@
 
 class Hud {
  private:
+  int width, height;
   SdlWindow* window;
   SDL_Renderer* renderer;
   TTF_Font* font;
@@ -17,6 +18,7 @@ class Hud {
   SdlAnimation* bjface;
   SdlAnimation* gun;
   short animationStatus;
+  short movementStatus;
   int fps;
   int framesAlreadyPlayed;
   void renderText(const char* text, SDL_Rect* rect);
@@ -26,6 +28,9 @@ class Hud {
   void renderHealth();
   void renderTypeOfGun();
   void renderGun();
+  void renderGunWithShifts(int dx = 0, int dy = 0);
+  void renderGunWithMovement();
+  void renderBorder();
  public:
   void updateFpsCounter(int fps);
   void update();

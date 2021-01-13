@@ -1,3 +1,4 @@
+#include "area.h"
 #include "hud.h"
 #include "player.h"
 #include "sdlexception.h"
@@ -6,6 +7,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <math.h>
 #include <iostream>
 
 #define TTF_INIT_ERROR "\nError on initialization: "
@@ -16,13 +18,19 @@
 #define GUN_SLICES FRAMES_PER_GUN_ANIMATION/4
 
 void Hud::update() {
+  this->renderTypeOfGun();
+  this->renderGun();
+  this->renderBorder();
   this->renderFpsCounter();
   this->renderLifes();
   this->renderHealth();
   this->renderFace();
-  this->renderTypeOfGun();
-  this->renderGun();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::renderBorder() {
+  Area d2(0, 0, this->width, this->height);
+  this->manager.renderAll(HUD_SPRITE, d2);
 }
 
 void Hud::renderTypeOfGun() {
@@ -40,6 +48,28 @@ void Hud::renderTypeOfGun() {
   this->hudgun->renderActualFrame(destArea, HUDGUNS);
 }
 
+void Hud::renderGun() {
+  if (player->isMoving()) {
+    std::cout << "Se está moviendo\n";
+    this->renderGunWithMovement();
+    this->movementStatus++;
+    if (this->movementStatus > 60) { // Usar fórmula de los fps...
+      player->stopMoving();
+      this->movementStatus = 0;
+    }
+  }
+  else {
+    this->renderGunWithShifts();
+    std::cout << "No se está moviendo\n";
+  }
+}
+
+void Hud::renderGunWithMovement() {
+  int x = sin(movementStatus/4)*10;
+  int y = sin(movementStatus/4)*cos(movementStatus/4)*6;
+  this->renderGunWithShifts(x, y + 2);
+}
+
 /*
  * Let's say that the number of frames that our animation has is Z.
  * If our animation lasted N frames and we wanted to play it in one second,
@@ -48,11 +78,11 @@ void Hud::renderTypeOfGun() {
  * frame of the animation would have to be updated every (FPS * T')/Z iterations.
  */
 
-void Hud::renderGun() {
+void Hud::renderGunWithShifts(int dx, int dy) {
   int weaponId = this->player->weaponId;
   if (this->player->isShooting() &&
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
-    // This ^^^^^ is there if this->fps < 16 which could result in a zero division error.      
+    // This ^^^^^ is there if this->fps < 16 which could result in a zero division error.
     animationStatus++;
     std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
@@ -70,7 +100,7 @@ void Hud::renderGun() {
   height = width * aspectRatio;
   y -= (y + height) / 2;
   x -= (x + width) / 2;
-  Area destArea(x, 72*y/100, width , height);
+  Area destArea(x + dx, 72*y/100 + dy, width , height);
   this->gun->renderActualFrame(destArea, GUNSPRITESROW);
 }
 
@@ -102,13 +132,15 @@ void Hud::updateBjFace() {
 }
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
-  window(window), renderer(window->getRenderer()), player(player), manager(manager), animationStatus(0), framesAlreadyPlayed(0){
+  window(window), renderer(window->getRenderer()), player(player), manager(manager),
+  animationStatus(0), framesAlreadyPlayed(0), movementStatus(0) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
   this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
   this->gun = new SdlAnimation(manager, FRAMES_PER_GUN_ANIMATION);
+  this->window->getWindowSize(&this->width, &this->height);
 }
 
 void Hud::renderLifes() {

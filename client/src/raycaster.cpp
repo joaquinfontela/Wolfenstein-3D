@@ -150,10 +150,6 @@ void Raycaster::run(){
     for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-
-    Area d2(0, 0, this->width, this->height);
-    this->manager.renderAll(HUD_SPRITE, d2);
-
     auto t2 = std::chrono::steady_clock::now();
 
     #ifdef FPS_FREQ

@@ -20,6 +20,14 @@ bool Player::isShooting() {
   return this->shooting;
 }
 
+bool Player::isMoving() {
+  return this->moving;
+}
+
+void Player::stopMoving() {
+  this->moving = false;
+}
+
 Player::Player(PlayerData& info) {
   this->x = info.posX;
   this->y = info.posY;
@@ -35,6 +43,7 @@ Player::Player(PlayerData& info) {
 }
 
 void Player::update(PlayerData& info) {
+  this->moving = (this->x != info.posX || this->y != info.posX);
   this->x = info.posX;
   this->y = info.posY;
   this->dirX = info.dirX;
