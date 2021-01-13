@@ -42,6 +42,9 @@ class Player {
   double getDirX();
   double getDirY();
 
+  // Calcula la distancia a otro jugador.
+  double calculateDistanceTo(Player* other);
+
   // LLena el struct playerdata con toda la informacion relevante para ser
   // transmitida por el socket.
   void fillPlayerData(PlayerData& data);
@@ -75,7 +78,7 @@ class Player {
 
   // Actualiza la posicion del jugador dada la velocidad de movimiento y
   // rotacion.
-  void update(Map& map);
+  void update(Map& map, float timeElapsed);
 
   // Equipa una llave.
   void pickupKey();
