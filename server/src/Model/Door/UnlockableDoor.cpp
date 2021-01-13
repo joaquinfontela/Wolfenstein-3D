@@ -9,7 +9,12 @@ bool UnlockableDoor::unlock(bool hasKey){
   if(locked)
     locked = false;
   else
-    locked = true;
+    return false;
 
+  return true;
+}
+
+bool UnlockableDoor::lock(){
+  locked = true;
   return true;
 }

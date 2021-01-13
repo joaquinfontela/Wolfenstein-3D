@@ -11,6 +11,7 @@ class UnlockableDoor : public Door {
   UnlockableDoor();
   bool isLocked();
   bool unlock(bool hasKey);
+  bool lock();
 
 private:
   bool locked;

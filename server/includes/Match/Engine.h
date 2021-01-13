@@ -35,7 +35,7 @@ class Engine : public Thread {
   void executeCommands();
 
   // Hace update del modelo del juego.
-  void update();
+  void update(float timeElapsed);
 
   // Run para el thread.
   void run();

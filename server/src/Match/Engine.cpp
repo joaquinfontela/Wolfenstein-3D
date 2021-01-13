@@ -8,9 +8,8 @@ Engine::Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<
     : commandQueue(commandQ), cont(c), players(play), thisGame(game) {}
 
 
-void Engine::update(){
-
-  this->thisGame.updatePositions();
+void Engine::update(float timeElapsed){
+  this->thisGame.updatePositions(timeElapsed);
   this->thisGame.sendUpdateMessages(this->notifications);
 
 }
@@ -23,6 +22,7 @@ void Engine::run() {
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
   std::chrono::duration<float, std::milli> diff;
+  diff = t2 - t1;
 
   int rest = 0;
   int behind = 0;
@@ -31,7 +31,7 @@ void Engine::run() {
   while (cont) {
 
     this->gameLock.lock();
-    update();
+    update(abs(diff.count() / 100));
     this->gameLock.unlock();
 
     t2 = std::chrono::steady_clock::now();

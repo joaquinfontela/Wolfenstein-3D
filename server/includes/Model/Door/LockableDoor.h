@@ -10,6 +10,7 @@ class LockableDoor : public Door {
   LockableDoor();
   bool isLocked();
   bool unlock(bool hasKey);
+  bool lock();
 };
 
 #endif

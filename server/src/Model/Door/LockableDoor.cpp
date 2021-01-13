@@ -8,10 +8,13 @@ bool LockableDoor::unlock(bool hasKey) {
   if (hasKey && locked){
       locked = false;
       return true;
-  }else if(!locked){
-      locked = true;
-      return true;
   }
 
   return false;
+}
+
+bool LockableDoor::lock(){
+  locked = true;
+
+  return true;
 }

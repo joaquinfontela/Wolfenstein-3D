@@ -72,6 +72,12 @@ void Tile::addKeyDrop() {
   this->deleteWall();
 }
 
+void Tile::forceDoorStatusChange(){
+
+  if(this->door)
+    this->door->lock();
+}
+
 void Tile::pickUpItems(double x, double y, Player* p) {
   // Por ahora hago que agarre todos los que estan en la misma celda, en
   // realidad el item deberia tener un hitbox y deberia preguntarle a cada uno

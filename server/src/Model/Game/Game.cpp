@@ -11,6 +11,7 @@
 #include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Player/Player.h"
 
@@ -31,6 +32,11 @@ void Game::addPlayer(int playerID) {
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
 
   this->players[playerID] = newPlayer;
+}
+
+void Game::forceDoorStatusChange(int x, int y){
+
+  this->map->forceDoorStatusChange(x, y);
 }
 
 void Game::playerShoot(int playerID) {
@@ -62,17 +68,29 @@ void Game::playerShoot(int playerID) {
   }
 }
 
-void Game::updatePositions() {
+void Game::updatePositions(float timeElapsed) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
     it->second->update(*(this->map));
   }
+
+  std::list<Updatable*>::iterator updatableIt = this->updatables.begin();
+  for(; updatableIt != this->updatables.end(); ++updatableIt){
+    (*updatableIt)->update(timeElapsed, (*this));
+  }
 }
 
 std::tuple<int, int> Game::moveDoor(int playerID) {
-  return this->map->moveDoor(this->players[playerID]);
-  //return std::make_tuple(0, 0);
+
+  int x, y;
+  std::tie(x, y) = this->map->moveDoor(this->players[playerID]);
+
+  if(x >= 0)
+    this->updatables.push_back(new ChangeDoorStatus(x, y));
+
+  return std::make_tuple(x, y);
+
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
@@ -85,6 +103,17 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
       PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
       notis.push(noti);
     }
+  }
+
+  std::list<Updatable*>::iterator updateIt = this->updatables.begin();
+  bool done = false;
+
+  while(updateIt != this->updatables.end()){
+    if((done = (*updateIt)->notify(notis))){
+      delete (*updateIt);
+      updateIt = this->updatables.erase(updateIt);
+    }else
+      ++updateIt;
   }
 }
 

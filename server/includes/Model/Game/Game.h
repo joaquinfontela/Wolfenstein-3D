@@ -9,9 +9,12 @@
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Map/Map.h"
 #include "../Map/MapLoader.h"
 #include "../Player/Player.h"
+
+class Updatable;
 
 class Game {
  private:
@@ -19,11 +22,15 @@ class Game {
   std::map<int, Player*> players;
   Map* map;
   YAMLConfigReader yamlConfigReader;
+  std::list<Updatable*> updatables;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
 
  public:
   Game(std::string mapFile, std::string configFile);
+
+  // Fuerza a una puerta a cambiar su estado. Se usa para el cierre automatico de las puertas.
+  void forceDoorStatusChange(int x, int y);
 
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID);
@@ -37,7 +44,7 @@ class Game {
   bool removePlayer(int playerID);
 
   // Actualiza la posicion de los elementos dependientes del tiempo.
-  void updatePositions();
+  void updatePositions(float timeElapsed);
 
   // Actualiza la velocidad de movimiento del jugador indicado.
   void updatePlayerMoveSpeed(int playerID, double moveSpeed);

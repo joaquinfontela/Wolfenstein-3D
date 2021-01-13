@@ -58,6 +58,11 @@ void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
         "Error adding item into map (map limits overpassed).");
 }
 
+void Map::forceDoorStatusChange(int x, int y){
+
+  this->tileMatrix.at(x).at(y).forceDoorStatusChange();
+}
+
 Player* Map::traceAttackFrom(Player* attacker, int range) {
   double initialX = attacker->getX();
   double initialY = attacker->getY();
