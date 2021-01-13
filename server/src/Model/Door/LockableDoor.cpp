@@ -1,12 +1,22 @@
 #include "../../../includes/Model/Door/LockableDoor.h"
 
-LockableDoor::LockableDoor() : Door() { locked = true; }
+LockableDoor::LockableDoor() : Door() {
+  locked = true;
+  previouslyUnlocked = false;
+ }
 
 bool LockableDoor::isLocked() { return locked; }
 
 bool LockableDoor::unlock(bool hasKey) {
-  if (hasKey && locked){
+
+  if(locked && previouslyUnlocked){
+    locked = false;
+    return true;
+  }
+
+  else if (hasKey && locked){
       locked = false;
+      previouslyUnlocked = true;
       return true;
   }
 
