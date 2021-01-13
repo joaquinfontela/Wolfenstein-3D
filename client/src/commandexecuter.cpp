@@ -73,6 +73,7 @@ void CommandExecuter::run() {
         uint32_t x, y;
         this->socket.receive(&x, sizeof(x));
         this->socket.receive(&y, sizeof(y));
+        std::cout<<"Opening door at: "<<x<<", "<<y<<std::endl;
         matrix.openDoor(x, y);
       }
     } catch (SocketException& e) {

@@ -16,7 +16,7 @@ void Raycaster::drawDoors() {
 }
 
 static bool isDoor(int& id){
-  return (id & AND_IS_THIS_ID_A_DOOR == 0); 
+  return (id & AND_IS_THIS_ID_A_DOOR == 0);
 }
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
