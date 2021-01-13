@@ -89,6 +89,10 @@ int Player::handleDeath(Map& map) {
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
 
+double Player::calculateDistanceTo(Player* p){
+  return sqrt(pow(this->x - p->getX(), 2) + pow(this->y - p->getY(), 2));
+}
+
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
 int Player::takeDamage(Map& map, unsigned int damage) {
@@ -121,11 +125,11 @@ void Player::moveTo(double x, double y) {
   this->y = y;
 }
 
-void Player::update(Map& map) {
+void Player::update(Map& map, float timeElapsed) {
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
-  double newX = x + dirX * moveSpeed;
-  double newY = y + dirY * moveSpeed;
+  double newX = x + dirX * (moveSpeed * (timeElapsed));
+  double newY = y + dirY * (moveSpeed * (timeElapsed));
 
   if (map.moveTo(x, y, newX, newY, this)) {
     x = newX;

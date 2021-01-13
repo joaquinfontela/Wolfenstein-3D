@@ -2,7 +2,7 @@
 
 #include <time.h>
 
-#include <cmath>
+#include <math.h>
 #include <functional>
 #include <iostream>
 #include <string>
@@ -51,10 +51,10 @@ void Game::playerShoot(int playerID) {
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
     ItemFactory factory;
 
+    att = int((att/sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
     receiverHealth = receiver->takeDamage(*map, att);
 
-    if (receiverHealth ==
-        0) {  // Deberia generar un evento de los items dropeados.
+    if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
       double x, y;
       double playerX = receiver->getX();
       double playerY = receiver->getY();
@@ -72,7 +72,7 @@ void Game::updatePositions(float timeElapsed) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    it->second->update(*(this->map));
+    it->second->update(*(this->map), timeElapsed);
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();

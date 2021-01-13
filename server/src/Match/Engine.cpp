@@ -3,6 +3,7 @@
 #include <iostream>
 #include <time.h>
 #include <math.h>
+#define SECONDS_PER_TICK 0.033
 
 Engine::Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game)
     : commandQueue(commandQ), cont(c), players(play), thisGame(game) {}
@@ -31,7 +32,7 @@ void Engine::run() {
   while (cont) {
 
     this->gameLock.lock();
-    update(abs(diff.count() / 100));
+    update(SECONDS_PER_TICK);
     this->gameLock.unlock();
 
     t2 = std::chrono::steady_clock::now();
