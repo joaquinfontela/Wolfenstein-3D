@@ -42,6 +42,9 @@ class Player {
   double getDirX();
   double getDirY();
 
+  // Respawnea al jugador.
+  void respawn(Map& map);
+
   // Calcula la distancia a otro jugador.
   double calculateDistanceTo(Player* other);
 

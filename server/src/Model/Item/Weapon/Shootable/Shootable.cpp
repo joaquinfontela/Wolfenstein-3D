@@ -39,17 +39,20 @@ Shootable::Shootable(unsigned int uniqueId, int newAmmo,
 
 Shootable::~Shootable() {}
 
-unsigned int Shootable::attack() {
+unsigned int Shootable::attack(int& ammo) {
   int i;
   unsigned int damage = 0;
   for (i = 0; i < this->shotsPerBlast; i++) {
-    damage += this->shoot();
+    if(ammo >= this->ammoLostPerShot){
+      damage += this->shoot();
+      ammo -= this->ammoLostPerShot;
+    }
+
   }
   return damage;
 }
 
 unsigned int Shootable::shoot() {
-  ammo -= this->ammoLostPerShot;
   return this->getRandomDamage();
 }
 

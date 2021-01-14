@@ -8,13 +8,11 @@ void ChangeDoorStatus::update(float timeElapsed, Game& game){
 
   this->timeElapsed += timeElapsed;
 
-  std::cout<<"Door Time elapsed: "<<this->timeElapsed<<std::endl;
-
   if(this->timeElapsed > this->timeRequired && !done){
-    std::cout<<"Closing Door."<<std::endl;
-    game.forceDoorStatusChange(x, y);
-    this->hasToBeNotified = true;
-    this->done = true;
+    if(game.forceDoorStatusChange(x, y)){
+      this->hasToBeNotified = true;
+      this->done = true;
+    }
   }
 
 

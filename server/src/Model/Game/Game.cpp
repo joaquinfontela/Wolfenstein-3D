@@ -34,9 +34,9 @@ void Game::addPlayer(int playerID) {
   this->players[playerID] = newPlayer;
 }
 
-void Game::forceDoorStatusChange(int x, int y){
+bool Game::forceDoorStatusChange(int x, int y){
 
-  this->map->forceDoorStatusChange(x, y);
+  return this->map->forceDoorStatusChange(x, y);
 }
 
 void Game::playerShoot(int playerID) {
@@ -55,12 +55,7 @@ void Game::playerShoot(int playerID) {
     receiverHealth = receiver->takeDamage(*map, att);
 
     if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
-      double x, y;
-      double playerX = receiver->getX();
-      double playerY = receiver->getY();
-      std::tie(x, y) = this->map->handleRespawn();
-      this->map->moveTo(playerX, playerY, x, y, receiver);
-      receiver->moveTo(x, y);
+
     }else if(receiverHealth == -1){
 
     } // Ya no deberia respawnear, deberia generar un evento de muerte.

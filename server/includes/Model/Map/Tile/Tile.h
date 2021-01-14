@@ -47,7 +47,7 @@ class Tile {
   // Remueve el jugador del Tile.
   void removePlayerFromTile(Player* p);
 
-  void forceDoorStatusChange();
+  bool forceDoorStatusChange();
 
   // Devuelve el primer jugador con el que colisiona el punto (x, y). Nullptr si
   // no existe tal jugador.

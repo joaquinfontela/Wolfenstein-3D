@@ -72,10 +72,17 @@ void Tile::addKeyDrop() {
   this->deleteWall();
 }
 
-void Tile::forceDoorStatusChange(){
+bool Tile::forceDoorStatusChange(){
 
-  if(this->door)
+  if(this->door && this->players.size() == 0){
     this->door->lock();
+    return true;
+  }
+
+  if(!this->door)
+    return true;
+
+  return false;
 }
 
 void Tile::pickUpItems(double x, double y, Player* p) {

@@ -63,28 +63,36 @@ bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
 
+void Player::respawn(Map& map){
+  double x, y;
+
+  std::tie(x, y) = map.handleRespawn();
+  map.moveTo(this->x, this->y, x, y, this);
+
+  this->x = x;
+  this->y = y;
+}
+
 int Player::handleDeath(Map& map) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;
   }
 
-  double x, y;
-  std::tie(x, y) = map.handleRespawn();
-  map.moveTo(this->x, this->y, x, y, this);
-
+  map.addAmmoDropAt(this->y + 1, this->x + 1);
+  this->respawn(map);
   if (this->key) {
     this->key = false;
     map.addKeyDropAt(this->y + 1, this->x + 1);
   }
 
-  map.addAmmoDropAt(this->y + 1, this->x + 1);
-  //map.addAmmoDropAt(this->x + 1, this->y + 1);
-
   this->lifeRemaining -= 1;
   this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
-  this->ammo -= this->BULLET_DROP_WHEN_DIES;
-  this->key = false;
+
+  if(this->ammo < this->BULLET_DROP_WHEN_DIES )
+    this->ammo = 0;
+  else
+    this->ammo -= this->BULLET_DROP_WHEN_DIES;
 
   return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
 }
@@ -115,6 +123,7 @@ void Player::fillPlayerData(PlayerData& data) {
   data.lives = lifeRemaining;
   data.health = health;
   data.weaponID = this->currentWeapon->getID();
+  data.bullets = this->ammo;
 
   this->hasToBeNotified = false;
   return;
@@ -156,13 +165,16 @@ int Player::attack() {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
-  int damageDealt = this->currentWeapon->attack();
 
-  if (!this->currentWeapon->hasAmmo()) {
+  int ammo = this->ammo;
+  int damageDealt = this->currentWeapon->attack(ammo);
+  this->ammo = ammo;
+
+  if (this->ammo <= 0) {
     this->currentWeapon = this->weapons.at(0);
-    this->hasToBeNotified = true;
   }
 
+  this->hasToBeNotified = true;
   return damageDealt;
 }
 
@@ -187,12 +199,14 @@ void Player::pickupKey() { this->key = true; }
 bool Player::hasKey() { return key; }
 
 bool Player::hasMaxAmmo() {
-  std::cout << "Player has max Ammo." << std::endl;
   return ammo >= this->MAX_AMMO;
 }
 
 void Player::pickUpAmmo() {
-  std::cout << "Player Picking up Ammo." << std::endl;
+
+  if(this->ammo == 0)
+    this->currentWeapon = this->weapons.at(1);
+
   ammo += this->AMMO_PICK_UP;
   if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;
   this->hasToBeNotified = true;

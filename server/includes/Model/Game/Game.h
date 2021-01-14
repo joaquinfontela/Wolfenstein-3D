@@ -30,7 +30,7 @@ class Game {
   Game(std::string mapFile, std::string configFile);
 
   // Fuerza a una puerta a cambiar su estado. Se usa para el cierre automatico de las puertas.
-  void forceDoorStatusChange(int x, int y);
+  bool forceDoorStatusChange(int x, int y);
 
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID);

@@ -58,8 +58,8 @@ void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
         "Error adding item into map (map limits overpassed).");
 }
 
-void Map::forceDoorStatusChange(int x, int y) {
-  this->tileMatrix.at(x).at(y).forceDoorStatusChange();
+bool Map::forceDoorStatusChange(int x, int y) {
+  return this->tileMatrix.at(x).at(y).forceDoorStatusChange();
 }
 
 Player* Map::traceAttackFrom(Player* attacker, int range) {
@@ -93,10 +93,14 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
         return p;
       }
 
-    }
-
-    else if (((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) {
+    } else if (((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) {
       if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(
+               rayPosX, rayPosY, attacker)) != nullptr) {
+        return p;
+      }
+    } else if ((((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) &&
+               (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx))) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY + 1).playerCollision(
                rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
@@ -111,6 +115,7 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
 std::tuple<double, double> Map::handleRespawn() {
   return std::make_tuple(6, 4);
 }
+
 bool Map::moveTo(double fromX, double fromY, double toX, double toY,
                  Player* p) {
   int x = (int)toX;

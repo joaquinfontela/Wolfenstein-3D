@@ -27,7 +27,7 @@ class Map {
 
   void removePlayer(int x, int y, Player* p);
 
-  void forceDoorStatusChange(int x, int y);
+  bool forceDoorStatusChange(int x, int y);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p);
