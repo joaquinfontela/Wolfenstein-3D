@@ -58,8 +58,7 @@ void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
         "Error adding item into map (map limits overpassed).");
 }
 
-void Map::forceDoorStatusChange(int x, int y){
-
+void Map::forceDoorStatusChange(int x, int y) {
   this->tileMatrix.at(x).at(y).forceDoorStatusChange();
 }
 
@@ -142,8 +141,7 @@ void Map::removePlayer(int x, int y, Player* p) {
   this->tileMatrix.at(x).at(y).removePlayerFromTile(p);
 }
 
-std::tuple<int, int> Map::moveDoor(Player* p){
-
+std::tuple<int, int> Map::moveDoor(Player* p) {
   double initialX = p->getX();
   double initialY = p->getY();
   double dirX = p->getDirX();
@@ -156,9 +154,7 @@ std::tuple<int, int> Map::moveDoor(Player* p){
   int mapX = (int)rayPosX;
   int mapY = (int)rayPosY;
 
-
-  while (mapX == floor(initialX) && mapY == floor(initialY)) {
-
+  while (mapX == float(initialX) && mapY == float(initialY)) {
     rayPosX = (initialX + i * dirX);
     rayPosY = (initialY + i * dirY);
 
@@ -168,9 +164,9 @@ std::tuple<int, int> Map::moveDoor(Player* p){
     i++;
   }
 
-  if(this->tileMatrix.at(mapX).at(mapY).moveDoor(p)) // Temporal hasta que arregle el algoritmo de arriba.
+  if (this->tileMatrix.at(mapX).at(mapY).moveDoor(
+          p))  // Temporal hasta que arregle el algoritmo de arriba.
     return std::make_tuple(mapX, mapY);
   else
     return std::make_tuple(-1, -1);
-
 }
