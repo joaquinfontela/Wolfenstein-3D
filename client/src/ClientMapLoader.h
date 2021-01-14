@@ -1,5 +1,5 @@
-#ifndef CLIENTMAP_LOADER_H_
-#define CLIENTMAP_LOADER_H_
+#ifndef CLIENTMAPLOADER_H_
+#define CLIENTMAPLOADER_H_
 
 #include <string>
 #include <vector>
@@ -12,8 +12,9 @@ typedef std::vector<std::vector<int>> WallIdMatrix;
 class ClientMapLoader {
  public:
   ClientMapLoader(std::string& yamlFile, unsigned int dimx, unsigned int dimy);
-  WallIdMatrix getWallIdMatrix();
+  int* getWallIdMatrix();
   std::vector<Drawable*> getDrawableItemList();
+  unsigned int dimx, dimy;
 
  private:
   YAMLMapReader yamlMapReader;
@@ -24,4 +25,4 @@ class ClientMapLoader {
   unsigned int convertYamlFileItemIdToProtocolItemSkinId(int yamlFileId);
 };
 
-#endif  // CLIENTMAP_LOADER_H_
+#endif  // CLIENTMAPLOADER_H_

@@ -13,12 +13,12 @@ class YAMLMapReader {
   std::string fileName;
   YAML::Node data;
   YAML::Node getData();
-  std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
   std::map<int, std::vector<Coordinate>> getPartialItemCoordinateMap(
       int FROM_ID, int TO_ID);
 
  public:
   YAMLMapReader(std::string& fileName);
+  std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
   std::map<int, std::vector<Coordinate>> getWallTypeCoordinateMap();
   std::map<int, std::vector<Coordinate>> getItemTypeCoordinateMap();

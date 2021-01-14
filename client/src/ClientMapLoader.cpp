@@ -4,19 +4,15 @@ ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
     : yamlMapReader(yamlFile) {
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
-  unsigned int dimx = mapDimensions.at(0);
-  unsigned int dimy = mapDimensions.at(1);
-  unsigned int x, y;
-  for (y = 0; y < dimy; y++) {
-    std::vector<int> wallIdRow;
-    for (x = 0; x < dimx; x++) {
-      wallIdRow.push_back(0);
-    }
-    this->wallIdMatrix.push_back(wallIdRow);
-  }
+  this->dimx = mapDimensions.at(0);
+  this->dimy = mapDimensions.at(1);
+
 }
 
-WallIdMatrix ClientMapLoader::getWallIdMatrix() {
+int* ClientMapLoader::getWallIdMatrix() {
+
+  int* matrix = (int*)calloc(24 * 24, sizeof(int));
+
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
   int TO_ID = yamlMapReader.getWallsIdLimits().at(1);
   std::map<int, std::vector<Coordinate>> wallTypeCoordinateMap =
@@ -27,11 +23,21 @@ WallIdMatrix ClientMapLoader::getWallIdMatrix() {
     std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
         wallTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
-      wallIdMatrix.at(c.getY() - 1).at(c.getX() - 1) =
-          this->convertYamlFileWallIdToProtocolWallSkinId(id);
+      matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] = this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
   }
-  return wallIdMatrix;
+
+  int DOOR_FROM = yamlMapReader.getDoorsIdLimits().at(0);
+  int DOOR_TO = yamlMapReader.getDoorsIdLimits().at(1);
+
+  for(id = DOOR_FROM; id <= DOOR_TO; id++){
+    std::vector<Coordinate> pos= yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+
+    for(Coordinate& c : pos){
+        matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] = this->convertYamlFileWallIdToProtocolWallSkinId(id);
+    }
+  }
+  return matrix;
 }
 
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
@@ -80,6 +86,9 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
     case 304:
     case 354:
       return 19;
+      break;
+    case 201:
+      return 20;
       break;
 
     default:
