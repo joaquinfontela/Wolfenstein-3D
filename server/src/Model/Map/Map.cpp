@@ -172,5 +172,4 @@ std::tuple<int, int> Map::moveDoor(Player* p){
     return std::make_tuple(mapX, mapY);
   else
     return std::make_tuple(-1, -1);
-
 }

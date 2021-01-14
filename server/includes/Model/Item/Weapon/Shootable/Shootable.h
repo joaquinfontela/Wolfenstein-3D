@@ -2,7 +2,7 @@
 #define SHOOTABLE_H
 
 #include "../Weapon.h"
-#include <climits> 
+#include <climits>
 
 class Shootable : public Weapon {
  protected:
@@ -26,7 +26,7 @@ class Shootable : public Weapon {
             unsigned int blastFrequency);
   ~Shootable();
   virtual bool hasAmmo() = 0;
-  unsigned int attack();
+  unsigned int attack(int& ammo);
   // bool outOfAmmo();
 };
 

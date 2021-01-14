@@ -90,7 +90,8 @@ void Hud::renderGunWithMovement() {
 }
 
 void Hud::renderBullets() {
-  int x, y, bullets = player->bullets;
+  int x, y;
+  int bullets = player->bullets;
   this->window->getWindowSize(&x, &y);
   int width = x / 30;
   int height = y / 6;

@@ -1,6 +1,6 @@
 #include "../../../../includes/Model/Item/Weapon/Knife.h"
 
-unsigned int Knife::attack() { return this->getRandomDamage(); }
+unsigned int Knife::attack(int& ammo) { return this->getRandomDamage(); }
 
 int Knife::getID(){
   return this->ID;

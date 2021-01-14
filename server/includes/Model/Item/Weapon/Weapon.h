@@ -23,7 +23,7 @@ class Weapon {
   virtual int getRange() = 0;
 
   // Devuelve el daño que haria un ataque.
-  virtual unsigned int attack() = 0;
+  virtual unsigned int attack(int& ammo) = 0;
   ~Weapon() {}
 };
 

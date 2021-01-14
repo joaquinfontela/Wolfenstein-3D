@@ -10,7 +10,7 @@ class Knife : public Weapon {
       : Weapon(uniqueId, minDamagePerBullet, maxDamagePerBullet), ID(1) {}
   ~Knife();
   int getID();
-  unsigned int attack();
+  unsigned int attack(int& ammo);
   bool hasAmmo();
   int getRange();
 

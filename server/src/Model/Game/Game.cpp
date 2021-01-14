@@ -55,12 +55,7 @@ void Game::playerShoot(int playerID) {
     receiverHealth = receiver->takeDamage(*map, att);
 
     if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
-      double x, y;
-      double playerX = receiver->getX();
-      double playerY = receiver->getY();
-      std::tie(x, y) = this->map->handleRespawn();
-      this->map->moveTo(playerX, playerY, x, y, receiver);
-      receiver->moveTo(x, y);
+  
     }else if(receiverHealth == -1){
 
     } // Ya no deberia respawnear, deberia generar un evento de muerte.
