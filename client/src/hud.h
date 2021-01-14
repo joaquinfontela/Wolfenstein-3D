@@ -28,7 +28,7 @@ class Hud {
   void renderHealth();
   void renderTypeOfGun();
   void renderGun();
-  void renderGunWithShifts(int dx = 0, int dy = 0);
+  void renderGunWithShifts(int dx = 0, int dy = 0, int updatefreq = 16);
   void renderGunWithMovement();
   void renderBorder();
  public:

@@ -50,44 +50,44 @@ void Hud::renderTypeOfGun() {
 }
 
 void Hud::renderGun() {
-  int updatefreq = this->fps / (FRAMES_PER_MOVEMENT * 4);
-  if (player->isMoving() &&
-     (!(updatefreq) || !(this->framesAlreadyPlayed % (this->fps / updatefreq)))) {
-    std::cout << "Se está moviendo " << movementStatus << std::endl;
+  if (player->isMoving()) {
+    //std::cout << "Se está moviendo " << movementStatus << std::endl;
     this->renderGunWithMovement();
-    this->movementStatus++;
     if (this->movementStatus > FRAMES_PER_MOVEMENT) { // Usar fórmula de los fps...
       player->stopMoving();
       this->movementStatus = 0;
     }
-  }
-  else {
+  } else {
     this->renderGunWithShifts();
-    std::cout << "No se está moviendo\n";
+    //std::cout << "No se está moviendo\n";
   }
 }
+/*
+* Let's say that the number of frames that our animation has is Z.
+* If our animation lasted Z frames and we wanted to play it in one second,
+* then we would have to update the frames every FPS/Z number of iterations.
+* Now, if we had Z frames that would have to be played in T' seconds, every
+* frame of the animation would have to be updated every (FPS * T')/Z iterations.
+*/
 
+// This equation is the solution to the "Lemniscate of Gerono" equation.
 void Hud::renderGunWithMovement() {
-  // This equation is the solution to the "Lemniscate of Gerono" equation.
   float sinval = sin(movementStatus/4);
-  int x = sinval*10;
-  int y = sinval*cos(movementStatus/4)*6;
-  this->renderGunWithShifts(x, y + 2);
+  int dx = sinval * 10;
+  int dy = sinval * cos(movementStatus/4) * 6;
+  int updatefreq = this->fps / (FRAMES_PER_MOVEMENT * 2);
+  std::cout << "Update freq: " << updatefreq  << " status: " << movementStatus << std::endl;
+  this->renderGunWithShifts(dx, dy + 2, updatefreq);
+  if(!(this->framesAlreadyPlayed % updatefreq))
+    movementStatus++;
 }
 
-/*
- * Let's say that the number of frames that our animation has is Z.
- * If our animation lasted Z frames and we wanted to play it in one second,
- * then we would have to update the frames every FPS/Z number of iterations.
- * Now, if we had Z frames that would have to be played in T' seconds, every
- * frame of the animation would have to be updated every (FPS * T')/Z iterations.
- */
 
-void Hud::renderGunWithShifts(int dx, int dy) {
+void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   int weaponId = this->player->weaponId;
   if (this->player->isShooting() &&
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
-    // This ^^^^^ is there if this->fps < 16 which could result in a zero division error.
+    // This ^^^^^ is there if this->fps < updatefreq which could result in a zero division error.
     animationStatus++;
     std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
