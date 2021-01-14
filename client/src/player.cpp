@@ -3,6 +3,10 @@
 #include <math.h>
 #include <iostream>
 
+bool Player::isSprite() {
+  return false;  
+}
+
 static bool sameSign(double a, double b) {
   return ((a <= 0 && b <= 0) || (a > 0 && b > 0));
 }

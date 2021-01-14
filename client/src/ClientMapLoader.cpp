@@ -3,7 +3,7 @@
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
-    : yamlMapReader(yamlFile) {
+    : yamlMapReader(yamlFile), uniqueid(1) {
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
   this->dimx = mapDimensions.at(0);
   this->dimy = mapDimensions.at(1);
@@ -11,7 +11,6 @@ ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
 }
 
 int* ClientMapLoader::getWallIdMatrix() {
-
   int* matrix = (int*)calloc(24 * 24, sizeof(int));
 
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
@@ -55,7 +54,9 @@ std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
     for (Coordinate& c : coordinatesWhereItemWithCurrentIdIsIn) {
       drawableItems.push_back(
           new Drawable(c.getX() - 1, c.getY() - 1,
-                       this->convertYamlFileItemIdToProtocolItemSkinId(id)));
+                       this->convertYamlFileItemIdToProtocolItemSkinId(id),
+                       uniqueid));
+      uniqueid++;
     }
   }
   return drawableItems;

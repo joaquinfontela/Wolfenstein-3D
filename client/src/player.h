@@ -7,7 +7,7 @@
 class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
-  Drawable(posX, posY, 3) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX),
+  Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX),
   planeY(planeY), playerID(id), health(100), lives(2), moving(false), bullets(8) {}
 
   ~Player() {}
@@ -23,6 +23,7 @@ class Player : public Drawable {
   bool isShooting();
   bool isMoving();
   void stopMoving();
+  bool isSprite() override;
 
   int playerID;
   int weaponId;

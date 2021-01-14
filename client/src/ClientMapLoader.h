@@ -17,6 +17,7 @@ class ClientMapLoader {
   unsigned int dimx, dimy;
 
  private:
+  int uniqueid;
   YAMLMapReader yamlMapReader;
   WallIdMatrix wallIdMatrix;
   bool idIsInCoordinateMap(std::map<int, std::vector<Coordinate>>& coordinateMap,

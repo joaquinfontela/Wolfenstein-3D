@@ -25,6 +25,12 @@
 #define ERROR -1
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
+static void deleteSprites(std::vector<Drawable*>& sprites) {
+  for (Drawable* s : sprites) {
+    if (s->isSprite()) delete s;
+  }
+}
+
 int main(int argc, char** argv) {
   if (argc != 3) {
     std::cerr << INVALID_ARGS_ERR << std::endl;
@@ -47,17 +53,9 @@ int main(int argc, char** argv) {
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);
 
-//#########################################################
   TextureManager manager(&window);
   manager.loadTextures();
-  Drawable nazi(6,4,3);
-  Drawable barrel1(4,6,7);
-  Drawable barrel2(7,7,7);
-  Drawable greenlight1(2,5,6);
-  Drawable greenlight2(2,7,6);
-//#########################################################
   AudioManager audios;
-//#########################################################
 
   std::atomic<bool> alive;
   alive = true;
@@ -67,8 +65,6 @@ int main(int argc, char** argv) {
   players[id] = player;
 
   std::cout << "Soy el de id: " << id << std::endl;
-
-  //std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList(); // Falta tener bien los ids de los sprites.
 
@@ -91,5 +87,6 @@ int main(int argc, char** argv) {
   delete player;
   delete sender;
   delete worker;
+  deleteSprites(sprites);
   return exitcode;
 }

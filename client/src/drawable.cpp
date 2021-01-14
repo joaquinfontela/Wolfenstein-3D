@@ -2,6 +2,10 @@
 #include "clientprotocol.h"
 #include <math.h>
 
+bool Drawable::isSprite() {
+  return true;  
+}
+
 void Drawable::loadDistanceWithCoords(int px, int py){
   this->dist = pow(px - this->x, 2) + pow(py - this->y, 2);
 }
