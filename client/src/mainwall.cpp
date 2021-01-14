@@ -20,6 +20,7 @@
 #include "texturemanager.h"
 #include "audiomanager.h"
 #include "clientprotocol.h"
+#include "ClientMapLoader.h"
 
 #define ERROR -1
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
@@ -42,7 +43,9 @@ int main(int argc, char** argv) {
   socket.send(&id_, sizeof(id_));
   socket.receive(&opcode, sizeof(opcode));
   socket.receive(&id, sizeof(id));
-  Map matrix("COMPLETAR CON EL YAML LATER");
+  std::string mapFile = "../../common/src/YAML/map.yaml";
+  ClientMapLoader loader(mapFile, 24, 24);
+  Map matrix(loader);
 
 //#########################################################
   TextureManager manager(&window);

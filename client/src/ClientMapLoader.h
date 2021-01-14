@@ -1,3 +1,6 @@
+#ifndef CLIENTMAP_LOADER_H_
+#define CLIENTMAP_LOADER_H_
+
 #include <string>
 #include <vector>
 
@@ -15,8 +18,10 @@ class ClientMapLoader {
  private:
   YAMLMapReader yamlMapReader;
   WallIdMatrix wallIdMatrix;
-  bool idIsInCoordinateMap(std::map<int, std::vector<Coordinate>> coordinateMap,
+  bool idIsInCoordinateMap(std::map<int, std::vector<Coordinate>>& coordinateMap,
                            int itemId);
   unsigned int convertYamlFileWallIdToProtocolWallSkinId(int yamlFileId);
   unsigned int convertYamlFileItemIdToProtocolItemSkinId(int yamlFileId);
 };
+
+#endif  // CLIENTMAP_LOADER_H_

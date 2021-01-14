@@ -23,8 +23,8 @@ WallIdMatrix ClientMapLoader::getWallIdMatrix() {
     if (!this->idIsInCoordinateMap(wallTypeCoordinateMap, id)) continue;
     std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
         wallTypeCoordinateMap[id];
-    for (Coordinate c : coordinatesWhereWallWithCurrentIdIsIn) {
-      wallIdMatrix[c.getY()][c.getX()] =
+    for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
+      wallIdMatrix.at(c.getY() - 1).at(c.getX() - 1) =
           this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
   }
@@ -42,9 +42,9 @@ std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
     if (!this->idIsInCoordinateMap(itemTypeCoordinateMap, id)) continue;
     std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn =
         itemTypeCoordinateMap[id];
-    for (Coordinate c : coordinatesWhereItemWithCurrentIdIsIn) {
+    for (Coordinate& c : coordinatesWhereItemWithCurrentIdIsIn) {
       drawableItems.push_back(
-          new Drawable(c.getX(), c.getY(),
+          new Drawable(c.getX() - 1, c.getY() - 1,
                        this->convertYamlFileItemIdToProtocolItemSkinId(id)));
     }
   }
@@ -52,7 +52,7 @@ std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
 }
 
 bool ClientMapLoader::idIsInCoordinateMap(
-    std::map<int, std::vector<Coordinate>> coordinateMap, int itemId) {
+    std::map<int, std::vector<Coordinate>>& coordinateMap, int itemId) {
   return (coordinateMap.find(itemId) != coordinateMap.end());
 }
 
