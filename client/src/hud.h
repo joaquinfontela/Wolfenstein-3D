@@ -31,6 +31,7 @@ class Hud {
   void renderGunWithShifts(int dx = 0, int dy = 0, int updatefreq = 16);
   void renderGunWithMovement();
   void renderBorder();
+  void renderBullets();
  public:
   void updateFpsCounter(int fps);
   void update();

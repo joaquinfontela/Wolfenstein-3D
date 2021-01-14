@@ -161,8 +161,8 @@ void Raycaster::run(){
       if (!iters) this->hud.updateFpsCounter((1000)/ceil(diff.count()));
       else this->hud.updateFpsCounter((FPS_FREQ * 1000)/ceil(diff.count()));
       t1 = t2;
+      this->hud.updateBjFace();
     }
-    if (!(iters % FPS_FREQ)) this->hud.updateBjFace();
 
     #endif
 

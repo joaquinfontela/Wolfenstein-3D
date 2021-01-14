@@ -26,6 +26,7 @@ void Hud::update() {
   this->renderLifes();
   this->renderHealth();
   this->renderFace();
+  this->renderBullets();
   this->framesAlreadyPlayed++;
 }
 
@@ -53,7 +54,7 @@ void Hud::renderGun() {
   if (player->isMoving()) {
     //std::cout << "Se está moviendo " << movementStatus << std::endl;
     this->renderGunWithMovement();
-    if (this->movementStatus > FRAMES_PER_MOVEMENT) { // Usar fórmula de los fps...
+    if (this->movementStatus > FRAMES_PER_MOVEMENT) {
       player->stopMoving();
       this->movementStatus = 0;
     }
@@ -82,6 +83,25 @@ void Hud::renderGunWithMovement() {
     movementStatus++;
 }
 
+void Hud::renderBullets() {
+  int x, y, bullets = player->bullets;
+  this->window->getWindowSize(&x, &y);
+  int width = x / 30;
+  int height = y / 6;
+  x -= width + 300 * x / 1000;
+  y -= height - y / 200;
+  if (bullets > 99) {
+    width *= 2;
+    x -= x / 100;
+  } else if (bullets > 9) {
+    width *= 2;
+    x -= x / 100;
+  } else {
+    x += x / 50;
+  }
+  SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
+  this->renderText(std::to_string(bullets).c_str(), &rect);
+}
 
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   int weaponId = this->player->weaponId;
@@ -138,7 +158,7 @@ void Hud::updateBjFace() {
 
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
   window(window), renderer(window->getRenderer()), player(player), manager(manager),
-  animationStatus(0), framesAlreadyPlayed(0), movementStatus(0) {
+  animationStatus(0), framesAlreadyPlayed(0), movementStatus(0), fps(30) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }

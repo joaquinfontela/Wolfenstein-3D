@@ -40,9 +40,12 @@ Player::Player(PlayerData& info) {
   this->playerID = info.playerID;
   this->lives = info.lives;
   this->health = info.health;
+  this->bullets = info.bullets;
 }
 
 void Player::update(PlayerData& info) {
+  std::cout << "x vieja: " << x << " x nueva: " << info.posX << std::endl;
+  std::cout << "y vieja: " << y << " y nueva: " << info.posY << std::endl;
   this->moving = (this->x != info.posX || this->y != info.posX);
   this->x = info.posX;
   this->y = info.posY;
@@ -51,6 +54,7 @@ void Player::update(PlayerData& info) {
   this->lives = info.lives;
   this->health = info.health;
   this->weaponId = info.weaponID;
+  this->bullets = info.bullets;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);

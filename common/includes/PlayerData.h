@@ -9,6 +9,7 @@ typedef struct PlayerData{
   double rotSpeed;
   int health;
   int lives;
+  int bullets;
 }PlayerData;
 
 #endif
