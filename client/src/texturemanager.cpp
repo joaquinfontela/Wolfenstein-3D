@@ -59,7 +59,50 @@ void TextureManager::loadTextures() {
                                    "gunspritesrow.png", // 17
                                    "greystone.png", // 18
                                    "wood.png", // 19
-                                   "door.png" // 20
+                                   "door.png", // 20
+                                   "1up.png", // 21
+                                   "ammo.png", // 22
+                                   "armor.png", // 23
+                                   "basket.png", // 24
+                                   "bed.png", // 25
+                                   "blood.png", // 26
+                                   "bloodyskeleton.png", // 27
+                                   "bluekey.png", // 28
+                                   "cage.png", // 29
+                                   "cageskeleton.png", // 30
+                                   "chaingunitem.png", // 31
+                                   "chairandtable.png", // 32
+                                   "chandelier.png", // 33
+                                   "dogfood.png", // 34
+                                   "emptywell.png", // 35
+                                   "flag.png", // 36
+                                   "floorlamp.png", // 37
+                                   "flowerpot.png", // 38
+                                   "food.png", // 39
+                                   "chest.png", // 40
+                                   "goldencross.png", // 41
+                                   "goldencrown.png", // 42
+                                   "goldencup.png", // 43
+                                   "goldenkey.png", // 44
+                                   "greenbarrel.png", // 45
+                                   "groundskeleton.png", // 46
+                                   "heapofbones.png", // 47
+                                   "hungskeleton.png", // 48
+                                   "lamp.png", // 49
+                                   "machinegunitem.png", // 50
+                                   "medkit.png", // 51
+                                   "pillar.png", // 52
+                                   "plant.png", // 53
+                                   "pot.png", // 54
+                                   "sink.png", // 55
+                                   "spikes.png", // 56
+                                   "stove.png", // 57
+                                   "table.png", // 58
+                                   "utensilholder.png", // 59
+                                   "utensils.png", // 60
+                                   "veins.png", // 61
+                                   "water.png", // 62
+                                   "well.png" // 63
                                   });
   int i = 1;
   for (std::string& name : names) {

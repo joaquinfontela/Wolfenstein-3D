@@ -14,7 +14,7 @@
 #define PLAYER_DISCONNECT 10
 #define PLAYER_SCORE_UPDATE 11
 #define PLAYER_UPDATE_PACKAGE 12
-
+/*
 // PowerUp ID definitions
 #define FOOD 30
 #define MEDIKIT 31
@@ -24,7 +24,7 @@
 #define CROSS 35
 #define CROWN 36
 #define CUP 37
-#define KEY 38
+#define KEY 38*/
 
 #define KEY_A_DOWN 100
 #define KEY_D_DOWN 200

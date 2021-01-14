@@ -1,4 +1,5 @@
 #include "ClientMapLoader.h"
+#include "clientprotocol.h"
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
@@ -100,39 +101,39 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
     int yamlFileId) {
   switch (yamlFileId) {
     case 101:
-      return 33;
+      return AMMO;
       break;
 
     case 102:
-      return 32;
+      return BLOOD;
       break;
 
     case 103:
-      return 34;
+      return CHEST;
       break;
 
     case 104:
-      return 35;
+      return GOLDENCROSS;
       break;
 
     case 105:
-      return 36;
+      return GOLDENCROWN;
       break;
 
     case 106:
-      return 37;
+      return GOLDENCUP;
       break;
 
     case 107:
-      return 30;
+      return FOOD;
       break;
 
     case 108:
-      return 38;
+      return GOLDENKEY;
       break;
 
     case 109:
-      return 31;
+      return MEDKIT;
       break;
 
     default:

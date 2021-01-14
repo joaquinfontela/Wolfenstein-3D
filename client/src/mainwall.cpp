@@ -68,9 +68,9 @@ int main(int argc, char** argv) {
 
   std::cout << "Soy el de id: " << id << std::endl;
 
-  std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
+  //std::vector<Drawable*> sprites({&nazi, &barrel1, &barrel2, &greenlight1, &greenlight2});
 
-  //std::vector<Drawable*> sprites = loader.getDrawableItemList(); Falta tener bien los ids de los sprites.
+  std::vector<Drawable*> sprites = loader.getDrawableItemList(); // Falta tener bien los ids de los sprites.
 
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;
