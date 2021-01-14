@@ -3,6 +3,9 @@
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
     : yamlMapReader(yamlFile) {
+  std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
+  unsigned int dimx = mapDimensions.at(0);
+  unsigned int dimy = mapDimensions.at(1);
   unsigned int x, y;
   for (y = 0; y < dimy; y++) {
     std::vector<int> wallIdRow;
