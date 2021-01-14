@@ -78,7 +78,7 @@ void Hud::renderGunWithMovement() {
   int updatefreq = this->fps / (FRAMES_PER_MOVEMENT * 2);
   std::cout << "Update freq: " << updatefreq  << " status: " << movementStatus << std::endl;
   this->renderGunWithShifts(dx, dy + 2, updatefreq);
-  if(!(this->framesAlreadyPlayed % updatefreq))
+  if(!(updatefreq) || !(this->framesAlreadyPlayed % updatefreq))
     movementStatus++;
 }
 
