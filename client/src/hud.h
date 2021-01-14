@@ -8,7 +8,7 @@
 
 class Hud {
  private:
-  int width, height;
+  int width, height, weaponId;
   SdlWindow* window;
   SDL_Renderer* renderer;
   TTF_Font* font;
@@ -32,6 +32,7 @@ class Hud {
   void renderGunWithMovement();
   void renderBorder();
   void renderBullets();
+  void updateGunId();
  public:
   void updateFpsCounter(int fps);
   void update();

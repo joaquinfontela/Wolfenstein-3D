@@ -44,8 +44,8 @@ Player::Player(PlayerData& info) {
 }
 
 void Player::update(PlayerData& info) {
-  std::cout << "x vieja: " << x << " x nueva: " << info.posX << std::endl;
-  std::cout << "y vieja: " << y << " y nueva: " << info.posY << std::endl;
+  //std::cout << "x vieja: " << x << " x nueva: " << info.posX << std::endl;
+  //std::cout << "y vieja: " << y << " y nueva: " << info.posY << std::endl;
   this->moving = (this->x != info.posX || this->y != info.posX);
   this->x = info.posX;
   this->y = info.posY;

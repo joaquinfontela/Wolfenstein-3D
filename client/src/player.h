@@ -7,8 +7,8 @@
 class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
-  Drawable(posX, posY, 3) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY),
-  playerID(id), health(100), lives(2), moving(false), bullets(110) {}
+  Drawable(posX, posY, 3) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX),
+  planeY(planeY), playerID(id), health(100), lives(2), moving(false), bullets(110) {}
 
   ~Player() {}
   Player(PlayerData& info);

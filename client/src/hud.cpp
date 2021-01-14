@@ -19,7 +19,6 @@
 #define GUN_SLICES FRAMES_PER_GUN_ANIMATION/4
 
 void Hud::update() {
-  this->renderTypeOfGun();
   this->renderGun();
   this->renderBorder();
   this->renderFpsCounter();
@@ -27,7 +26,14 @@ void Hud::update() {
   this->renderHealth();
   this->renderFace();
   this->renderBullets();
+  this->renderTypeOfGun();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::updateGunId() {
+  // To verify that the animation has ended or that I still have one shot left
+  if (!this->movementStatus || this->player->bullets == 1)
+    this->weaponId = this->player->weaponId;
 }
 
 void Hud::renderBorder() {
@@ -36,7 +42,7 @@ void Hud::renderBorder() {
 }
 
 void Hud::renderTypeOfGun() {
-  int weaponId = this->player->weaponId;
+  this->updateGunId();
   this->hudgun->updateFrame(weaponId-1);
   int x, y, width, height;
   this->window->getWindowSize(&x, &y);
@@ -46,7 +52,7 @@ void Hud::renderTypeOfGun() {
   width = (x * 9)/50;
   height = width * aspectRatio;
   Area destArea((63 * x) / 80, y - (14 * y) / 80, width , height);
-  //std::cout << "id: " << weaponId << " x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
+  //std::cout "x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
   this->hudgun->renderActualFrame(destArea, HUDGUNS);
 }
 
@@ -77,7 +83,7 @@ void Hud::renderGunWithMovement() {
   int dx = sinval * 10;
   int dy = sinval * cos(movementStatus/4) * 6;
   int updatefreq = this->fps / (FRAMES_PER_MOVEMENT * 2);
-  std::cout << "Update freq: " << updatefreq  << " status: " << movementStatus << std::endl;
+  //std::cout << "Update freq: " << updatefreq  << " status: " << movementStatus << std::endl;
   this->renderGunWithShifts(dx, dy + 2, updatefreq);
   if(!(updatefreq) || !(this->framesAlreadyPlayed % updatefreq))
     movementStatus++;
@@ -104,18 +110,17 @@ void Hud::renderBullets() {
 }
 
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
-  int weaponId = this->player->weaponId;
   if (this->player->isShooting() &&
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
     // This ^^^^^ is there if this->fps < updatefreq which could result in a zero division error.
     animationStatus++;
-    std::cout << "Shooting with id: " << weaponId << " and frame: " << (weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
+    std::cout << "Shooting with id: " << weaponId << " and frame: " << (this->weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
     }
   }
-  this->gun->updateFrame((weaponId-1)*(GUN_SLICES)+animationStatus);
+  this->gun->updateFrame((this->weaponId-1)*(GUN_SLICES)+animationStatus);
   int x, y, width, height;
   this->window->getWindowSize(&x, &y);
   this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
@@ -126,6 +131,7 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   y -= (y + height) / 2;
   x -= (x + width) / 2;
   Area destArea(x + dx, 72*y/100 + dy, width , height);
+  //std::cout << "x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
   this->gun->renderActualFrame(destArea, GUNSPRITESROW);
 }
 
