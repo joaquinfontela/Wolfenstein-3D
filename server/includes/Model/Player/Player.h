@@ -27,8 +27,7 @@ class Player {
   WeaponFactory weaponFactory;
   Map& map;
 
-  int handleDeath(WaitingQueue<Notification*>& notis,
-                  YAMLMapReader& yamlMapReader);
+  int handleDeath(WaitingQueue<Notification*>& notis);
 
  public:
   // CONSTRUCTORES.
@@ -37,8 +36,7 @@ class Player {
 
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
-  int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis,
-                 YAMLMapReader& yamlMapReader);
+  int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
 
   // GETTERS
   unsigned int ID();
@@ -54,8 +52,7 @@ class Player {
   bool hasGunWithId(int uniqueId);
 
   // Respawnea al jugador.
-  void respawn(WaitingQueue<Notification*>& notis,
-               YAMLMapReader& yamlMapReader);
+  void respawn(WaitingQueue<Notification*>& notis);
 
   // Calcula la distancia a otro jugador.
   double calculateDistanceTo(Player* other);

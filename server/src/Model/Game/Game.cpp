@@ -52,7 +52,7 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
     ItemFactory factory;
 
     att = int((att / sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
-    receiverHealth = receiver->takeDamage(att, notis, yamlMapReader);
+    receiverHealth = receiver->takeDamage(att, notis);
 
     if (receiverHealth ==
         0) {  // Deberia generar un evento de los items dropeados.

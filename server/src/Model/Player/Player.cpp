@@ -81,26 +81,24 @@ bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
 
-void Player::respawn(WaitingQueue<Notification*>& notis,
-                     YAMLMapReader& yamlMapReader) {
+void Player::respawn(WaitingQueue<Notification*>& notis) {
   double x, y;
 
-  std::tie(x, y) = map.handleRespawn(yamlMapReader);
+  std::tie(x, y) = map.handleRespawn();
   map.moveTo(this->x, this->y, x, y, this, notis);
 
   this->x = x;
   this->y = y;
 }
 
-int Player::handleDeath(WaitingQueue<Notification*>& notis,
-                        YAMLMapReader& yamlMapReader) {
+int Player::handleDeath(WaitingQueue<Notification*>& notis) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;
   }
 
   map.addAmmoDropAt(this->y + 1, this->x + 1);
-  this->respawn(notis, yamlMapReader);
+  this->respawn(notis);
   if (this->key) {
     this->key = false;
     map.addKeyDropAt(this->y + 1, this->x + 1);
@@ -123,12 +121,11 @@ double Player::calculateDistanceTo(Player* p) {
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis,
-                       YAMLMapReader& yamlMapReader) {
+int Player::takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis) {
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath(notis, yamlMapReader);
+    return handleDeath(notis);
   }
 
   this->health -= damage;

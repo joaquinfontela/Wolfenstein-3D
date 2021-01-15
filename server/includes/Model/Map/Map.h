@@ -33,6 +33,8 @@ class Map {
 
   bool forceDoorStatusChange(int x, int y);
 
+  void setRespawnPoints(std::vector<Coordinate> respPoints);
+
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p,
               WaitingQueue<Notification*>& notis);
@@ -45,7 +47,7 @@ class Map {
 
   // Devuelve una tupla representando el (x, y) sobre el cual el jugador deberia
   // respawnear.
-  std::tuple<double, double> handleRespawn(YAMLMapReader& yamlMapReader);
+  std::tuple<double, double> handleRespawn();
 
   // Intenta abrir una puerta directamente en frente del jugador y devuelve el
   // (x, y) de la puerta si se abrio. (-1, -1) caso contrario.
@@ -59,10 +61,11 @@ class Map {
 
  private:
   static unsigned int nextId;
+  std::vector<Coordinate> respawnPoints;
   int dimx;
   int dimy;
   TileMatrix tileMatrix;
-  Coordinate getRandomRespawn(YAMLMapReader& yamlMapReader);
+  Coordinate getRandomRespawn();
   bool tileHasPlayers(Coordinate& c);
 };
 

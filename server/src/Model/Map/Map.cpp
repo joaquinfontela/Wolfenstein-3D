@@ -22,6 +22,10 @@ Map::Map(int dimx, int dimy) {
   }
 }
 
+void Map::setRespawnPoints(std::vector<Coordinate> respPoints){
+  this->respawnPoints = respPoints;
+}
+
 void Map::addItemDropAt(Item* item, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
   this->tileMatrix[y - 1][x - 1].addItemDrop(item);
@@ -112,21 +116,19 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
   return p;
 }
 
-std::tuple<double, double> Map::handleRespawn(YAMLMapReader& yamlMapReader) {
+std::tuple<double, double> Map::handleRespawn() {
   bool randomTileHasPlayersInIt = true;
   Coordinate c;
   while (randomTileHasPlayersInIt) {
-    c = this->getRandomRespawn(yamlMapReader);
-    std::cout << "( " << c.getX() << ", " << c.getY() << std::endl;
+    c = this->getRandomRespawn();
     randomTileHasPlayersInIt = this->tileHasPlayers(c);
   }
-  return std::make_tuple(c.getX(), c.getY());
+  return std::make_tuple(c.getX() - 1, c.getY() - 1);
 }
 
-Coordinate Map::getRandomRespawn(YAMLMapReader& yamlMapReader) {
-  std::vector<Coordinate> possibleRespawnLocations =
-      yamlMapReader.getRespawnLocations();
-  return possibleRespawnLocations.at(rand() % possibleRespawnLocations.size());
+Coordinate Map::getRandomRespawn() {
+
+  return this->respawnPoints.at(rand() % this->respawnPoints.size());
 }
 
 bool Map::tileHasPlayers(Coordinate& c) {
