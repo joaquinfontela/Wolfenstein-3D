@@ -63,30 +63,26 @@ void CommandSender::run() {
           case SDLK_RETURN:
             if (!enterPressed) {
               enterPressed = true;
-              this->update(PLAYER_SHOOT); // Hacer que tenga shoot up y shoot down
+              this->update(PLAYER_SHOOT); 
             }
             break;
           case SDLK_e:
-            this->update(OPEN_DOOR); // Hacer que tenga shoot up y shoot down
-            break;
-          case SDLK_LEFT:
-            break;
-          case SDLK_RIGHT:
+            this->update(OPEN_DOOR);
             break;
           case SDLK_1:
-            // this->update(KEY_1_DOWN);
+            this->update(KEY_1_DOWN);
             break;
           case SDLK_2:
-            // this->update(KEY_2_DOWN);
+            this->update(KEY_2_DOWN);
             break;
           case SDLK_3:
-            // this->update(KEY_3_DOWN);
+            this->update(KEY_3_DOWN);
             break;
           case SDLK_4:
-            // this->update(KEY_4_DOWN);
+            this->update(KEY_4_DOWN);
             break;
           case SDLK_5:
-            // this->update(KEY_5_DOWN);
+            this->update(KEY_5_DOWN);
             break;
         }
       } else if (event.type == SDL_KEYUP) {

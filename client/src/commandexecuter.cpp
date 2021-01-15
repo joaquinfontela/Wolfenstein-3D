@@ -28,6 +28,19 @@ void CommandExecuter::playShootingSounds(int shooterId) {
   }
 }
 
+void CommandExecuter::removeSpriteWithId(int itemId) {
+  this->lock.lock();
+  std::vector<Drawable*>::iterator it = this->sprites.begin();
+  for (; it != this->sprites.end(); ++it) {
+    if (it->hasThisUniqueId(itemId)) {
+      this->sprites.erase(it);
+      delete (*it);
+      break;
+    }
+  }
+  this->lock.unlock();
+}
+
 void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
   while (alive) {
@@ -42,7 +55,7 @@ void CommandExecuter::run() {
         if (players.find(id) != players.end()) {
           players[id]->update(playerinfo);
         } else {
-          std::cout << "Agrego player con id: " << id << std::endl;
+          std::cout << "[GAME] Adding player with id: " << id << std::endl;
           Player* placeholder = new Player(playerinfo);
           players[id] = placeholder;
           sprites.push_back(placeholder);
@@ -61,7 +74,7 @@ void CommandExecuter::run() {
             break;
           }
         }
-        std::cout << "Killing player with id: " << id << std::endl;
+        std::cout << "[GAME] Killing player with id: " << id << std::endl;
         delete toKill;
         this->lock.unlock();
       } else if (opcode == SHOTS_FIRED) {
@@ -70,12 +83,16 @@ void CommandExecuter::run() {
         this->players.at(shooterId)->startShooting();
         this->playShootingSounds(shooterId);
       } else if (opcode == OPEN_DOOR) {
-        std::cout << "Abriendo la puerta" << std::endl;
         uint32_t x, y;
         this->socket.receive(&x, sizeof(x));
         this->socket.receive(&y, sizeof(y));
-        std::cout<<"Opening door at: "<<x<<", "<<y<<std::endl;
+        std::cout<<"[GAME] Switching door state at: " << x << ", " << y << std::endl;
         matrix.switchDoorState(x, y);
+      } else if (opcode == /*PLAYER_PICKUP_ITEM*/ 13) {
+        uint32_t itemId;
+        this->socket.receive(&itemId, sizeof(itemId));
+        std::cout<<"[GAME] Picking up item with id: " << itemId << std::endl;
+        this->removeSpriteWithId(itemId);
       }
     } catch (SocketException& e) {
       break;

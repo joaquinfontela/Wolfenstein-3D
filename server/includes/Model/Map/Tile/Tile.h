@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#include "../../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../../Control/Notification/PlayerPickUpItem.h"
+#include "../../../Control/Notification/Notification.h"
 #include "../../Door/Door.h"
 #include "../../Item/Item.h"
 #include "../../Item/Weapon/Weapon.h"
@@ -42,7 +45,7 @@ class Tile {
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 
-  void pickUpItems(double x, double y, Player* p);
+  void pickUpItems(double x, double y, Player* p, WaitingQueue<Notification*>& notis);
 
   // Remueve el jugador del Tile.
   void removePlayerFromTile(Player* p);
@@ -60,7 +63,7 @@ class Tile {
   void setWall();
 
   // Devuelve true si autoriza el movimiento de un jugador a la posicion (x, y)
-  bool allowMovement(double x, double y, Player* p);
+  bool allowMovement(double x, double y, Player* p, WaitingQueue<Notification*>& notis);
 
   ~Tile();
 };

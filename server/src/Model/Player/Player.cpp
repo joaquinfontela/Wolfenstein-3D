@@ -63,24 +63,24 @@ bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
 
-void Player::respawn(Map& map){
+void Player::respawn(Map& map, WaitingQueue<Notification*>& notis){
   double x, y;
 
   std::tie(x, y) = map.handleRespawn();
-  map.moveTo(this->x, this->y, x, y, this);
+  map.moveTo(this->x, this->y, x, y, this, notis);
 
   this->x = x;
   this->y = y;
 }
 
-int Player::handleDeath(Map& map) {
+int Player::handleDeath(Map& map,  WaitingQueue<Notification*>& notis) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
     return -1;
   }
 
   map.addAmmoDropAt(this->y + 1, this->x + 1);
-  this->respawn(map);
+  this->respawn(map, notis);
   if (this->key) {
     this->key = false;
     map.addKeyDropAt(this->y + 1, this->x + 1);
@@ -103,11 +103,11 @@ double Player::calculateDistanceTo(Player* p){
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(Map& map, unsigned int damage) {
+int Player::takeDamage(Map& map, unsigned int damage,  WaitingQueue<Notification*>& notis) {
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath(map);
+    return handleDeath(map, notis);
   }
 
   this->health -= damage;
@@ -134,13 +134,13 @@ void Player::moveTo(double x, double y) {
   this->y = y;
 }
 
-void Player::update(Map& map, float timeElapsed) {
+void Player::update(Map& map, float timeElapsed, WaitingQueue<Notification*>& notis) {
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
   double newX = x + dirX * (moveSpeed * (timeElapsed));
   double newY = y + dirY * (moveSpeed * (timeElapsed));
 
-  if (map.moveTo(x, y, newX, newY, this)) {
+  if (map.moveTo(x, y, newX, newY, this, notis)) {
     x = newX;
     y = newY;
   }

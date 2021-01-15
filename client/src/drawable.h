@@ -21,6 +21,7 @@ public:
                     double dirY, double planeX, double planeY, double* zBuffer);
   bool operator<(Drawable& other);
   void loadDistanceWithCoords(int px, int py);
+  bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
 };
 

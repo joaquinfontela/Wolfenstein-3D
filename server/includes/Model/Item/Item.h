@@ -11,6 +11,7 @@ class Item {
  public:
   Item() {}
   Item(int id) : id(id) {}
+  int getID(){ return id;}
   virtual bool canBePickedUpBy(Player* p) = 0;
   virtual void pickUp(Player* p) = 0;
   ~Item() {}

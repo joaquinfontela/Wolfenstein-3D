@@ -112,7 +112,7 @@ void ConnectionHandler::receiveCommands() {
          break;
        }
         default:
-          std::cout << "[ConnectionHandler] Unknow opcode received"
+          std::cout << "[ConnectionHandler] Unknown opcode received"
                     << std::endl;
       }
     } catch (SocketException& e) {

@@ -25,6 +25,7 @@ class CommandExecuter : public Thread {
   ~CommandExecuter();
   void run();
  private:
+  void removeSpriteWithId(int itemId);
   void playShootingSounds(int shooterId);
   SocketCommunication& socket;
   std::atomic<bool>& alive;

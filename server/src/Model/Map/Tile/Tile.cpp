@@ -5,6 +5,7 @@
 #include "../../../../includes/Model/Item/Ammo.h"
 #include "../../../../includes/Model/Item/Key.h"
 
+
 Tile::Tile() {
   this->door = nullptr;
   this->wall = nullptr;
@@ -85,7 +86,7 @@ bool Tile::forceDoorStatusChange(){
   return false;
 }
 
-void Tile::pickUpItems(double x, double y, Player* p) {
+void Tile::pickUpItems(double x, double y, Player* p, WaitingQueue<Notification*>& notis) {
   // Por ahora hago que agarre todos los que estan en la misma celda, en
   // realidad el item deberia tener un hitbox y deberia preguntarle a cada uno
   // si estoy en rango para agarrarlo.
@@ -94,6 +95,8 @@ void Tile::pickUpItems(double x, double y, Player* p) {
   while (it != this->items.end()) {
     if ((*it)->canBePickedUpBy(p)) {
       std::cout << "Player picking up item." << std::endl;
+      PlayerPickupItem* noti = new PlayerPickupItem((*it)->getID());
+      notis.push(noti);
       (*it)->pickUp(p);
       delete *it;
       it = this->items.erase(it);
@@ -104,7 +107,7 @@ void Tile::pickUpItems(double x, double y, Player* p) {
   }
 }
 
-bool Tile::allowMovement(double x, double y, Player* p) {
+bool Tile::allowMovement(double x, double y, Player* p, WaitingQueue<Notification*>& notis) {
   if (this->isWall()) return false;
 
   std::vector<Player*>::iterator it = this->players.begin();
@@ -118,7 +121,7 @@ bool Tile::allowMovement(double x, double y, Player* p) {
   // Se autorizo el movimiento, asique veo que items hay en su posicion por si
   // tengo que agarrar alguno.
 
-  pickUpItems(x, y, p);
+  pickUpItems(x, y, p, notis);
   return true;
 }
 

@@ -14,8 +14,9 @@
 #define PLAYER_DISCONNECT 10
 #define PLAYER_SCORE_UPDATE 11
 #define PLAYER_UPDATE_PACKAGE 12
-/*
-// PowerUp ID definitions
+#define PLAYER_PICKUP_ITEM 13
+
+/*// PowerUp ID definitions
 #define FOOD 30
 #define MEDIKIT 31
 #define BLOOD 32

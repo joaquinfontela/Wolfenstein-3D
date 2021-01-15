@@ -117,11 +117,11 @@ std::tuple<double, double> Map::handleRespawn() {
 }
 
 bool Map::moveTo(double fromX, double fromY, double toX, double toY,
-                 Player* p) {
+                 Player* p, WaitingQueue<Notification*>& notis) {
   int x = (int)toX;
   int y = (int)toY;
 
-  if (this->tileMatrix.at(x).at(y).allowMovement(toX, toY, p)) {
+  if (this->tileMatrix.at(x).at(y).allowMovement(toX, toY, p, notis)) {
     if ((int)fromX != x || (int)fromY != y) {
       this->tileMatrix.at((int)fromX).at((int)fromY).removePlayerFromTile(p);
       this->tileMatrix.at(x).at(y).addPlayer(p);

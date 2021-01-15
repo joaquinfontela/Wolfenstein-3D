@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
   std::map<uint32_t,Player*> players;
   players[id] = player;
 
-  std::cout << "Soy el de id: " << id << std::endl;
+  std::cout << "[CLIENT] My id is: " << id << std::endl;
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList(); // Falta tener bien los ids de los sprites.
 

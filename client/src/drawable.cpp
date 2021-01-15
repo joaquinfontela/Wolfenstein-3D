@@ -3,7 +3,11 @@
 #include <math.h>
 
 bool Drawable::isSprite() {
-  return true;  
+  return true;
+}
+
+bool Drawable::hasThisUniqueId(int otherid) {
+  return (this->uniqueid == otherid);
 }
 
 void Drawable::loadDistanceWithCoords(int px, int py){

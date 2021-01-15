@@ -10,10 +10,9 @@ Engine::Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<
 
 
 void Engine::update(float timeElapsed){
-  this->thisGame.updatePositions(timeElapsed);
-  this->thisGame.sendUpdateMessages(this->notifications);
-
+  this->thisGame.update(timeElapsed, this->notifications);
 }
+
 void Engine::run() {
   std::thread notificationThread(&Engine::sendNotifications, this);
   std::thread commandThread(&Engine::executeCommands, this);

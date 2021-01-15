@@ -115,7 +115,7 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
     // This ^^^^^ is there if this->fps < updatefreq which could result in a zero division error.
     animationStatus++;
-    std::cout << "Shooting with id: " << weaponId << " and frame: " << (this->weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
+    //std::cout << "Shooting with id: " << weaponId << " and frame: " << (this->weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
