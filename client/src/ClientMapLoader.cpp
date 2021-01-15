@@ -100,7 +100,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return 2;
       break;
     case 307:
-      return 64;
+      return 65;
       break;
 
     case 308:
