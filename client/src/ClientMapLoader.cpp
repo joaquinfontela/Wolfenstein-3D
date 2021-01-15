@@ -3,7 +3,7 @@
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
-    : yamlMapReader(yamlFile), uniqueid(1) {
+    : yamlMapReader(yamlFile), uniqueid(14) {
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
   this->dimx = mapDimensions.at(0);
   this->dimy = mapDimensions.at(1);
@@ -42,7 +42,7 @@ int* ClientMapLoader::getWallIdMatrix() {
 }
 
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
-  int FROM_ID = yamlMapReader.getItemsIdLimits().at(0);
+  int FROM_ID = yamlMapReader.getWeaponsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
   std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap = yamlMapReader.getItemTypeCoordinateMap();
   int id;
@@ -101,6 +101,18 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
     int yamlFileId) {
   switch (yamlFileId) {
+    case 3:
+      return MACHINEGUNITEM;
+      break;
+
+    case 4:
+      return CHAINGUNITEM;
+      break;
+
+    /*case 5:
+      return ROCKETLAUNCERITEM;
+      break;*/
+
     case 101:
       return AMMO;
       break;

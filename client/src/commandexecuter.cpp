@@ -32,7 +32,7 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
   this->lock.lock();
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
-    if (it->hasThisUniqueId(itemId)) {
+    if ((*it)->hasThisUniqueId(itemId)) {
       this->sprites.erase(it);
       delete (*it);
       break;
@@ -88,7 +88,7 @@ void CommandExecuter::run() {
         this->socket.receive(&y, sizeof(y));
         std::cout<<"[GAME] Switching door state at: " << x << ", " << y << std::endl;
         matrix.switchDoorState(x, y);
-      } else if (opcode == /*PLAYER_PICKUP_ITEM*/ 13) {
+      } else if (opcode == PLAYER_PICKUP_ITEM) {
         uint32_t itemId;
         this->socket.receive(&itemId, sizeof(itemId));
         std::cout<<"[GAME] Picking up item with id: " << itemId << std::endl;
