@@ -7,7 +7,6 @@ ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
   this->dimx = mapDimensions.at(0);
   this->dimy = mapDimensions.at(1);
-
 }
 
 int* ClientMapLoader::getWallIdMatrix() {

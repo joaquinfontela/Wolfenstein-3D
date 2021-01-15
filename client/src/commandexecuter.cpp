@@ -35,7 +35,7 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
     if ((*it)->hasThisUniqueId(itemId)) {
       delete (*it);
       this->sprites.erase(it);
-      std::cout<<"Erasing complete."<<std::endl;      
+      std::cout<<"Erasing complete."<<std::endl;
       break;
     }
   }
@@ -92,7 +92,7 @@ void CommandExecuter::run() {
       } else if (opcode == PLAYER_PICKUP_ITEM) {
         uint32_t itemId;
         this->socket.receive(&itemId, sizeof(itemId));
-        std::cout<<"[GAME] Picking up item with id: " << itemId << std::endl;
+        std::cout<<"[GAME] Picking up item with id: " << itemId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->removeSpriteWithId(itemId);
       }
     } catch (SocketException& e) {

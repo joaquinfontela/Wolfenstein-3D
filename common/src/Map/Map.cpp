@@ -6,14 +6,21 @@
 #include "../../includes/Map/Map.h"
 
 Map::~Map() {
+  // No se puede dejar este free acá. Debería estar en el
+  // destructor del loader. Si el lo crea el lo destruye.
   free(this->matrix);
 }
 
 Map::Map(ClientMapLoader& loader) : dimx(24), dimy(24), loader(loader) {
   memset(this->doors, 0, sizeof(this->doors));
-  this->doors[10][17] = DOOR_CLOSED;
-  this->doors[3][10] = DOOR_CLOSED;
-
+  this->doors[3][12] = DOOR_CLOSED;
+  this->doors[6][10] = DOOR_CLOSED;
+  this->doors[7][12] = DOOR_CLOSED;
+  this->doors[12][3] = DOOR_CLOSED;
+  this->doors[13][11] = DOOR_CLOSED;
+  this->doors[18][22] = DOOR_CLOSED;
+  this->doors[19][6] = DOOR_CLOSED;
+  this->doors[19][22] = DOOR_CLOSED;
   matrix = loader.getWallIdMatrix();
 }
 
