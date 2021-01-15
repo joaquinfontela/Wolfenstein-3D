@@ -29,4 +29,4 @@ wall id end: 354
 # 1: knife, 2: pistol: 3: machine gun, 4: minigun, 5: rocket launcher
 # 101: ammo, 102: blood, 103: chest, 104: cross, 105: crown, 106: cup, 107: food, 108: key, 109: kit
 # 201: unlockable door, 202: lockable door
-# 301: blue wall, 302: grey wall, 303: rock wall, 304: wooden wall (all true walls, from 351-354 same texture but fake walls).
+# 301: blue wall, 302: grey wall, 303: rock wall, 304: wooden wall, 305: mossy, 306: skeleton wall, 307: red brick wall  (all true walls, from 351-354 same texture but fake walls).
