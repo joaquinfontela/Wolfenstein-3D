@@ -21,10 +21,10 @@ class YAMLConfigReader {
   int getHealthSumWhenPickingUpItem(int itemId);
   int getPointsSumWhenPickingUpItem(int itemId);
   std::vector<int> getMinAndMaxDamagePerBullet();
-  int getBlastFrequency(int weaponId);
+  float getBlastFrequency(int weaponId);
   int getShotsPerBlast(int weaponId);
   int ammoLostPerShot(int weaponId);
-  int precision(int weaponId);
+  float precision(int weaponId);
 };
 
 #endif

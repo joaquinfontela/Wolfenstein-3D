@@ -52,8 +52,8 @@ std::vector<int> YAMLConfigReader::getMinAndMaxDamagePerBullet() {
   return bulletDamageLimits;
 }
 
-int YAMLConfigReader::getBlastFrequency(int weaponId) {
-  return data["BLAST_FREQ"][weaponId].as<int>();
+float YAMLConfigReader::getBlastFrequency(int weaponId) {
+  return data["BLAST_FREQ"][weaponId].as<float>();
 }
 
 int YAMLConfigReader::getShotsPerBlast(int weaponId) {
@@ -64,6 +64,6 @@ int YAMLConfigReader::ammoLostPerShot(int weaponId) {
   return data["AMMO_LOST_PER_SHOT"][weaponId].as<int>();
 }
 
-int YAMLConfigReader::precision(int weaponId) {
-  return data["PRECISION"][weaponId].as<int>();
+float YAMLConfigReader::precision(int weaponId) {
+  return data["PRECISION"][weaponId].as<float>();
 }
