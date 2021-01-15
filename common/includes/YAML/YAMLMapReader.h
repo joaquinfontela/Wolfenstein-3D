@@ -15,10 +15,13 @@ class YAMLMapReader {
   YAML::Node getData();
   std::map<int, std::vector<Coordinate>> getPartialItemCoordinateMap(
       int FROM_ID, int TO_ID);
+  std::vector<Coordinate> getCoordinateVectorFromVectorOfVectorsOfSizeTwo(
+      std::vector<std::vector<int>>& coordinatesData);
 
  public:
   YAMLMapReader(std::string& fileName);
   std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
+  std::vector<Coordinate> getRespawnLocations();
   std::map<int, std::vector<Coordinate>> getItemCoordinateMap();
   std::map<int, std::vector<Coordinate>> getWallTypeCoordinateMap();
   std::map<int, std::vector<Coordinate>> getItemTypeCoordinateMap();

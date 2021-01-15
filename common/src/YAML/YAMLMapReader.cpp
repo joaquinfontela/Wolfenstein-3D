@@ -9,15 +9,30 @@ YAMLMapReader::YAMLMapReader(std::string& fileName) {
 
 YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
 
-std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
-    int objectId) {
+std::vector<Coordinate>
+YAMLMapReader::getCoordinateVectorFromVectorOfVectorsOfSizeTwo(
+    std::vector<std::vector<int>>& coordinatesData) {
   std::vector<Coordinate> coordinates;
-  if (!data[objectId]) return coordinates;
-  std::vector<std::vector<int>> coordinatesData =
-      data[objectId].as<std::vector<std::vector<int>>>();
   for (std::vector<int> c : coordinatesData)
     coordinates.push_back(Coordinate(c));
   return coordinates;
+}
+
+std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
+    int objectId) {
+  if (!data[objectId]) {
+    std::vector<Coordinate> v;
+    return v;
+  }
+  std::vector<std::vector<int>> coordinatesData =
+      data[objectId].as<std::vector<std::vector<int>>>();
+  return this->getCoordinateVectorFromVectorOfVectorsOfSizeTwo(coordinatesData);
+}
+
+std::vector<Coordinate> YAMLMapReader::getRespawnLocations() {
+  std::vector<std::vector<int>> coordinatesData =
+      data["respawn locations"].as<std::vector<std::vector<int>>>();
+  return this->getCoordinateVectorFromVectorOfVectorsOfSizeTwo(coordinatesData);
 }
 
 std::map<int, std::vector<Coordinate>>
