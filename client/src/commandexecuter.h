@@ -27,6 +27,7 @@ class CommandExecuter : public Thread {
  private:
   void removeSpriteWithId(int itemId);
   void playShootingSounds(int shooterId);
+  void playDoorOpeningSound(int x, int y);
   SocketCommunication& socket;
   std::atomic<bool>& alive;
   std::vector<Drawable*>& sprites;

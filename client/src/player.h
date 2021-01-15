@@ -18,6 +18,7 @@ class Player : public Drawable {
     double dirY, double planeX, double planeY, double* zBuffer) override;
   int getSoldierId(double x, double y, double dirX, double dirY);
   double calculateDist(Player* other);
+  double calculateDist(int otherx, int othery);
   void startShooting();
   void stopShooting();
   bool isShooting();

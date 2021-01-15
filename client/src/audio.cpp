@@ -16,10 +16,10 @@ void Audio::volumeDownWithDist(double dist) {
 }
 
 void Audio::play() {
-  if (!Mix_PlayingMusic())
+  //if (!Mix_PlayingMusic())
     Mix_PlayMusic(this->audio, TIMES_THE_AUDIO_IS_PLAYED);
-  else if (Mix_PausedMusic())
-    Mix_ResumeMusic();
+  //else if (Mix_PausedMusic())
+  //  Mix_ResumeMusic();
 }
 
 void Audio::playWithMaxVolume() {

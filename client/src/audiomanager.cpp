@@ -36,7 +36,8 @@ AudioManager::AudioManager() {
   std::vector<std::string> names({ "Knife.wav", // 1
                                    "Pistol.wav", // 2
                                    "Machine Gun.wav", // 3
-                                   "Gatling Gun.wav"
+                                   "Gatling Gun.wav", //4
+                                   "Door.wav" // 5
                                   });
   int i = 1;
   for (std::string& name : names) {

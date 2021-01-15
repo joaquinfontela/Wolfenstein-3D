@@ -28,6 +28,11 @@ void CommandExecuter::playShootingSounds(int shooterId) {
   }
 }
 
+void CommandExecuter::playDoorOpeningSound(int x, int y) {
+  double dist = players.at(this->selfId)->calculateDist(x, y);
+  this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist);
+}
+
 void CommandExecuter::removeSpriteWithId(int itemId) {
   this->lock.lock();
   std::vector<Drawable*>::iterator it = this->sprites.begin();
@@ -89,6 +94,7 @@ void CommandExecuter::run() {
         this->socket.receive(&y, sizeof(y));
         std::cout<<"[GAME] Switching door state at: " << x << ", " << y << std::endl;
         matrix.switchDoorState(x, y);
+        this->playDoorOpeningSound(x, y);
       } else if (opcode == PLAYER_PICKUP_ITEM) {
         uint32_t itemId;
         this->socket.receive(&itemId, sizeof(itemId));
