@@ -132,6 +132,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerWUp.cpp
         server/src/Control/Command/PlayerShoot.cpp
         server/src/Control/Command/PlayerInteractDoor.cpp
+        server/src/Control/Command/PlayerSwitchWeapon.cpp
 
         server/src/Control/UpdatableEvent/ChangeDoorStatus.cpp
         server/src/Model/Map/Map.cpp

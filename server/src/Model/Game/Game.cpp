@@ -39,6 +39,11 @@ bool Game::forceDoorStatusChange(int x, int y){
   return this->map->forceDoorStatusChange(x, y);
 }
 
+void Game::playerSwitchWeapon(int playerID, int weaponPos){
+
+  this->players[playerID]->equipWeapon(weaponPos);
+}
+
 void Game::playerShoot(int playerID,  WaitingQueue<Notification*>& notis) {
   Player* attacker = this->players[playerID];
 

@@ -35,6 +35,9 @@ class Game {
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID);
 
+  // Changes, if possible, the current weapon of the player.
+  void playerSwitchWeapon(int playerID, int weaponPos);
+
   // Encola la notificacion de los estados de los jugadores que requerian
   // notificar al resto.
   void sendUpdateMessages(WaitingQueue<Notification*>& notis);

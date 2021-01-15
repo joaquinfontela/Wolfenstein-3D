@@ -207,7 +207,7 @@ void Player::updateRotationSpeed(double rotSpeed) {
 
 void Player::equipWeapon(int weaponPos) {
 
-  if(weaponPos >= this->weapons.size())
+  if((weaponPos >= this->weapons.size()) || (this->ammo <= 0))
     return;
 
   this->currentWeapon = this->weapons.at(weaponPos);

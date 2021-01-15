@@ -16,6 +16,7 @@
 #include "../../includes/Control/Command/PlayerSUp.h"
 #include "../../includes/Control/Command/PlayerDUp.h"
 #include "../../includes/Control/Command/PlayerInteractDoor.h"
+#include "../../includes/Control/Command/PlayerSwitchWeapon.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
                                      WaitingQueue<Command*>& com, int playerID)
@@ -111,9 +112,34 @@ void ConnectionHandler::receiveCommands() {
          this->commands.push(door);
          break;
        }
-        default:
-          std::cout << "[ConnectionHandler] Unknown opcode received"
-                    << std::endl;
+
+       case KEY_1_DOWN:{
+         this->commands.push(new PlayerSwitchWeapon(this->ID, 0));
+         break;
+       }
+
+      case KEY_2_DOWN:{
+        this->commands.push(new PlayerSwitchWeapon(this->ID, 1));
+        break;
+      }
+
+      case KEY_3_DOWN:{
+        this->commands.push(new PlayerSwitchWeapon(this->ID, 2));
+        break;
+      }
+
+      case KEY_4_DOWN:{
+        this->commands.push(new PlayerSwitchWeapon(this->ID, 3));
+        break;
+      }
+
+      case KEY_5_DOWN:{
+        this->commands.push(new PlayerSwitchWeapon(this->ID, 4));
+        break;
+      }
+
+      default:
+          std::cout << "[ConnectionHandler] Unknown opcode received"<< std::endl;
       }
     } catch (SocketException& e) {
       PlayerDisconnected* playerDisc = new PlayerDisconnected(this->ID);
