@@ -129,7 +129,7 @@ Coordinate Map::getRandomRespawn(YAMLMapReader& yamlMapReader) {
 }
 
 bool Map::tileHasPlayers(Coordinate& c) {
-  return (this->tileMatrix[c.getY()][c.getX()].hasPlayers());
+  return (this->tileMatrix[c.getY() - 1][c.getX() - 1].hasPlayers());
 }
 
 bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p,
