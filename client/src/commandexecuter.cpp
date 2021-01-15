@@ -33,8 +33,9 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
-      this->sprites.erase(it);
       delete (*it);
+      this->sprites.erase(it);
+      std::cout<<"Erasing complete."<<std::endl;      
       break;
     }
   }

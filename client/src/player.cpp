@@ -4,7 +4,7 @@
 #include <iostream>
 
 bool Player::isSprite() {
-  return false;  
+  return false;
 }
 
 static bool sameSign(double a, double b) {
@@ -18,6 +18,10 @@ double Player::calculateDist(Player* other) {
 int Player::getSoldierId(double x, double y, double dirX, double dirY) {
   double angle = atan2(this->y - y, this->x - x) * 180 / PI;
   return 1;
+}
+
+bool Player::hasThisUniqueId(int otherid){
+  return false;
 }
 
 bool Player::isShooting() {

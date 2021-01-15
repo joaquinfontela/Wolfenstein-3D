@@ -23,6 +23,7 @@ class Player : public Drawable {
   bool isShooting();
   bool isMoving();
   void stopMoving();
+  bool hasThisUniqueId(int otherid) override;
   bool isSprite() override;
 
   int playerID;

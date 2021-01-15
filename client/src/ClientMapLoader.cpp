@@ -53,7 +53,7 @@ std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
     std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn = itemTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereItemWithCurrentIdIsIn) {
       drawableItems.push_back(
-          new Drawable(c.getX() - 1, c.getY() - 1,
+          new Drawable(c.getY() - 0.5 , c.getX() - 0.5,
                        this->convertYamlFileItemIdToProtocolItemSkinId(id),
                        uniqueid));
       uniqueid++;
