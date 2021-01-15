@@ -16,16 +16,16 @@ void Raycaster::drawDoors() {
 }
 
 static bool isDoor(float id){
-  return (id <= DOOR_OPEN);
+  return (id == DOOR_CLOSED || id == DOOR_OPEN);
 }
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
   for (Door& d : doors) {
     if (d.mapX == mapX && d.mapY == mapY) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 void Raycaster::run(){
@@ -47,6 +47,8 @@ void Raycaster::run(){
     double zBuffer[this->width];
 
     for(int x = 0; x < this->width; x++) {
+
+      int amountOfWalls = 0;
 
       double cameraX = 2 * x / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraX;
@@ -103,10 +105,11 @@ void Raycaster::run(){
           hit = 1;
         } else if ((texNum = matrix.get(mapX, mapY)) > 0) {
           if (isDoor((floatNum = matrix.getDoor(mapX, mapY)))
-              && !(this->doors.size()) && this->hitDoor(mapX,mapY)) {
+               && !this->hitDoor(mapX,mapY)) {
             Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
             this->doors.push_back(door);
             hit = (floatNum == DOOR_CLOSED);
+
           } else if (!isDoor(floatNum)) {
             hit = 1;
           }

@@ -2,7 +2,7 @@
 #include "../../../includes/Control/Notification/DoorMoving.h"
 
 
-ChangeDoorStatus::ChangeDoorStatus(int x, int y) : Updatable(), timeRequired(3.0f), x(x), y(y){}
+ChangeDoorStatus::ChangeDoorStatus(int x, int y) : Updatable(), timeRequired(8.0f), x(x), y(y){}
 
 void ChangeDoorStatus::update(float timeElapsed, Game& game){
 

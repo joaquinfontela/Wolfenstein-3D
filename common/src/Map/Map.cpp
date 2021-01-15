@@ -13,14 +13,15 @@ Map::~Map() {
 
 Map::Map(ClientMapLoader& loader) : dimx(24), dimy(24), loader(loader) {
   memset(this->doors, 0, sizeof(this->doors));
-  this->doors[3][12] = DOOR_CLOSED;
-  this->doors[6][10] = DOOR_CLOSED;
-  this->doors[7][12] = DOOR_CLOSED;
-  this->doors[12][3] = DOOR_CLOSED;
-  this->doors[13][11] = DOOR_CLOSED;
-  this->doors[18][22] = DOOR_CLOSED;
-  this->doors[19][6] = DOOR_CLOSED;
-  this->doors[19][22] = DOOR_CLOSED;
+  this->doors[11][2] = DOOR_CLOSED;
+  this->doors[9][5] = DOOR_CLOSED;
+  this->doors[11][6] = DOOR_CLOSED;
+  this->doors[2][11] = DOOR_CLOSED;
+  this->doors[10][12] = DOOR_CLOSED;
+  this->doors[21][17] = DOOR_CLOSED;
+  this->doors[5][18] = DOOR_CLOSED;
+  this->doors[21][18] = DOOR_CLOSED;
+
   matrix = loader.getWallIdMatrix();
 }
 
