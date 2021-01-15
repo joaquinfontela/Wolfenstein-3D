@@ -115,8 +115,9 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
 std::tuple<double, double> Map::handleRespawn(YAMLMapReader& yamlMapReader) {
   bool randomTileHasPlayersInIt = true;
   Coordinate c;
-  while (!randomTileHasPlayersInIt) {
+  while (randomTileHasPlayersInIt) {
     c = this->getRandomRespawn(yamlMapReader);
+    std::cout << "( " << c.getX() << ", " << c.getY() << std::endl;
     randomTileHasPlayersInIt = this->tileHasPlayers(c);
   }
   return std::make_tuple(c.getX(), c.getY());
