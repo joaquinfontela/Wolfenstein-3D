@@ -9,7 +9,7 @@
 class Map {
  public:
   // ¡CAMBIAR POR DEFINES EN EL PROTOCOLO!
-  float doors[24][24];
+  float doors[25][25];
   int* matrix;
   int dimx;
   int dimy;

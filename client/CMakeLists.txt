@@ -20,6 +20,8 @@ add_library(sdldemo
   src/texturemanager.cpp
   src/commandsender.cpp
   src/commandexecuter.cpp
+  src/timer.cpp
+  src/timerevent.cpp
   ../common/src/Map/Map.cpp
   ../common/src/Socket/SocketCommunication.cpp
   ../common/src/Socket/SocketWrapper.cpp

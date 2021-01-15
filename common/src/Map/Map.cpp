@@ -22,7 +22,6 @@ Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
   this->doors[22][18] = DOOR_CLOSED;
   this->doors[6][19] = DOOR_CLOSED;
   this->doors[22][19] = DOOR_CLOSED;
-
   matrix = loader.getWallIdMatrix();
 }
 

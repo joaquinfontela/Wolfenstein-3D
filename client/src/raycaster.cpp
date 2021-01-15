@@ -105,7 +105,7 @@ void Raycaster::run(){
           hit = 1;
         } else if ((texNum = matrix.get(mapX, mapY)) > 0) {
           if (isDoor((floatNum = matrix.getDoor(mapX, mapY)))
-               && !this->hitDoor(mapX,mapY)) {
+              && (!(this->doors.size()) || !this->hitDoor(mapX,mapY))) {
             Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
             this->doors.push_back(door);
             hit = (floatNum == DOOR_CLOSED);
