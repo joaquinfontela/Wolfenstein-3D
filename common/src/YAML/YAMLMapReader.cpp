@@ -5,6 +5,7 @@
 YAMLMapReader::YAMLMapReader(std::string& fileName) {
   this->fileName = fileName;
   this->data = this->getData();
+  std::cout<<"Paso el getData"<<std::endl;
 }
 
 YAML::Node YAMLMapReader::getData() { return YAML::LoadFile(this->fileName); }
@@ -17,6 +18,8 @@ std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
       data[objectId].as<std::vector<std::vector<int>>>();
   for (std::vector<int> c : coordinatesData)
     coordinates.push_back(Coordinate(c));
+
+  std::cout<<"Paso el getTileCoordinates"<<std::endl;
   return coordinates;
 }
 
@@ -27,12 +30,14 @@ YAMLMapReader::getPartialItemCoordinateMap(int FROM_ID, int TO_ID) {
   for (i = FROM_ID; i <= TO_ID; i++) {
     itemCoordinateMap[i] = this->getTileCoordinatesWhereObjectIsIn(i);
   }
+
   return itemCoordinateMap;
 }
 
 std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
   int FROM_ID = this->getWeaponsIdLimits().at(0);
   int TO_ID = this->getWallsIdLimits().at(1);
+    std::cout<<"Paso el getItemCoordinates"<<std::endl;
   return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
 }
 
@@ -40,6 +45,7 @@ std::map<int, std::vector<Coordinate>>
 YAMLMapReader::getWallTypeCoordinateMap() {
   int FROM_ID = this->getWallsIdLimits().at(0);
   int TO_ID = this->getWallsIdLimits().at(1);
+  std::cout<<"Paso el getWallTypeCoordinates"<<std::endl;
   return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
 }
 
@@ -55,6 +61,7 @@ std::vector<int> YAMLMapReader::getMapDimensions() {
   try {
     dimensions.push_back(data["dimx"].as<int>());
     dimensions.push_back(data["dimy"].as<int>());
+    std::cout<<"Paso el agarrar las dimensiones"<<std::endl;
   } catch (YAML::TypedKeyNotFound<std::string>& e) {
     std::cout << "Key not found: " << e.key << std::endl;
   }
