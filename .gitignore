@@ -1,4 +1,3 @@
-*log
 *.o
 .vscode/
 CMakeCache.txt
@@ -13,3 +12,5 @@ cmake_install.cmake
 ServerMain
 WolfensteinTest
 *sdl-wall
+*log
+*log.txt
