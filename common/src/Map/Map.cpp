@@ -11,21 +11,22 @@ Map::~Map() {
   free(this->matrix);
 }
 
-Map::Map(ClientMapLoader& loader) : dimx(24), dimy(24), loader(loader) {
+Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
   memset(this->doors, 0, sizeof(this->doors));
   this->doors[11][2] = DOOR_CLOSED;
   this->doors[9][5] = DOOR_CLOSED;
   this->doors[11][6] = DOOR_CLOSED;
-  this->doors[2][11] = DOOR_CLOSED;
-  this->doors[10][12] = DOOR_CLOSED;
-  this->doors[21][17] = DOOR_CLOSED;
-  this->doors[5][18] = DOOR_CLOSED;
-  this->doors[21][18] = DOOR_CLOSED;
+  this->doors[7][9] = DOOR_CLOSED;
+  this->doors[3][12] = DOOR_CLOSED;
+  this->doors[11][13] = DOOR_CLOSED;
+  this->doors[22][18] = DOOR_CLOSED;
+  this->doors[6][19] = DOOR_CLOSED;
+  this->doors[22][19] = DOOR_CLOSED;
 
   matrix = loader.getWallIdMatrix();
 }
 
-int Map::get(int x, int y) { return *(this->matrix + y + x*24); }
+int Map::get(int x, int y) { return *(this->matrix + y + x*25); }
 
 float Map::getDoor(int x, int y) { return doors[x][y]; }
 

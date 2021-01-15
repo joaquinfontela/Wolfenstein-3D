@@ -10,7 +10,7 @@ ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
 }
 
 int* ClientMapLoader::getWallIdMatrix() {
-  int* matrix = (int*)calloc(24 * 24, sizeof(int));
+  int* matrix = (int*)calloc(25 * 25, sizeof(int));
 
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
   int TO_ID = yamlMapReader.getWallsIdLimits().at(1);
