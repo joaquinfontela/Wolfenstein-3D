@@ -44,6 +44,12 @@ class Player {
   double getDirX();
   double getDirY();
 
+  // Agrega el arma indicada al vector de armas que posee el jugador.
+  void addWeapon(Weapon* weapon);
+
+  // Return true if player already has Weapon with that unique weapon ID.
+  bool hasGunWithId(int uniqueId);
+
   // Respawnea al jugador.
   void respawn(Map& map,  WaitingQueue<Notification*>& notis);
 
@@ -72,7 +78,7 @@ class Player {
   int getRange();
 
   // Equipa el arma indicada.
-  void equipWeapon(Weapon* weapon);
+  void equipWeapon(int weaponPos);
 
   // Comprueba si cierto punto colisiona con el hitbox del jugador.
   bool collidesWith(double x, double y);

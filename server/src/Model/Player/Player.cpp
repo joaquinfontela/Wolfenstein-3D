@@ -59,6 +59,23 @@ Player::Player(YAMLConfigReader yamlConfigReader)
   this->currentWeapon = weapons.at(1);
 }
 
+bool Player::hasGunWithId(int uniqueId){
+
+  std::vector<Weapon*>::iterator it = this->weapons.begin();
+
+  for(; it != this->weapons.end(); ++it){
+    if((*it)->getID() == uniqueId)
+      return true;
+  }
+
+  return false;
+}
+
+void Player::addWeapon(Weapon* weapon){
+
+  this->weapons.push_back(weapon);
+}
+
 bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
@@ -188,9 +205,12 @@ void Player::updateRotationSpeed(double rotSpeed) {
   this->rotSpeed += rotSpeed;
 }
 
-void Player::equipWeapon(Weapon* weapon) {
-  this->currentWeapon = weapon;
-  this->weapons.push_back(weapon);
+void Player::equipWeapon(int weaponPos) {
+
+  if(weaponPos >= this->weapons.size())
+    return;
+
+  this->currentWeapon = this->weapons.at(weaponPos);
   this->hasToBeNotified = true;
 }
 

@@ -40,6 +40,10 @@ class Tile {
   void addAmmoDrop();
   void addKeyDrop();
 
+  // Guns within the Tile will be added to the Players inventory if he does not currently own the weapon.
+  void pickUpGuns(Player* p);
+
+  // Changes the door status within the Tile if it exists and if possible. Returns true if the door was succesfully opened.
   bool moveDoor(Player* p);
 
   // Agrega un jugador al Tile.

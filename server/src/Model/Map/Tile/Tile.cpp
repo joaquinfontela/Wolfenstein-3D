@@ -122,8 +122,25 @@ bool Tile::allowMovement(double x, double y, Player* p, WaitingQueue<Notificatio
   // tengo que agarrar alguno.
 
   pickUpItems(x, y, p, notis);
+  pickUpGuns(p);
   return true;
 }
+
+void Tile::pickUpGuns(Player* p){
+
+  std::vector<Weapon*>::iterator it = this->weapons.begin();
+
+  while(it != this->weapons.end()){
+
+    if(p->hasGunWithId((*it)->getID())){
+      ++it;
+    }else{
+      p->addWeapon((*it));
+      it = this->weapons.erase(it);
+    }
+  }
+}
+
 
 bool Tile::checkWall() { return this->isWall(); }
 
@@ -136,6 +153,7 @@ Player* Tile::playerCollision(double x, double y, Player* p) {
 
   return nullptr;
 }
+
 void Tile::addPlayer(Player* p) { this->players.push_back(p); }
 
 void Tile::setWall() {
