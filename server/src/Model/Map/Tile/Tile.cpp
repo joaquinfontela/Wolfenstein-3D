@@ -5,15 +5,15 @@
 #include "../../../../includes/Model/Item/Ammo.h"
 #include "../../../../includes/Model/Item/Key.h"
 
-
 Tile::Tile() {
   this->door = nullptr;
   this->wall = nullptr;
 }
 
 bool Tile::isWall() {
-
-  return (this->wall != nullptr) || (this->door != nullptr && this->door->isLocked()); }
+  return (this->wall != nullptr) ||
+         (this->door != nullptr && this->door->isLocked());
+}
 
 void Tile::deleteDoor() {
   delete this->door;
@@ -73,20 +73,19 @@ void Tile::addKeyDrop() {
   this->deleteWall();
 }
 
-bool Tile::forceDoorStatusChange(){
-
-  if(this->door && this->players.size() == 0){
+bool Tile::forceDoorStatusChange() {
+  if (this->door && this->players.size() == 0) {
     this->door->lock();
     return true;
   }
 
-  if(!this->door)
-    return true;
+  if (!this->door) return true;
 
   return false;
 }
 
-void Tile::pickUpItems(double x, double y, Player* p, WaitingQueue<Notification*>& notis) {
+void Tile::pickUpItems(double x, double y, Player* p,
+                       WaitingQueue<Notification*>& notis) {
   // Por ahora hago que agarre todos los que estan en la misma celda, en
   // realidad el item deberia tener un hitbox y deberia preguntarle a cada uno
   // si estoy en rango para agarrarlo.
@@ -107,7 +106,8 @@ void Tile::pickUpItems(double x, double y, Player* p, WaitingQueue<Notification*
   }
 }
 
-bool Tile::allowMovement(double x, double y, Player* p, WaitingQueue<Notification*>& notis) {
+bool Tile::allowMovement(double x, double y, Player* p,
+                         WaitingQueue<Notification*>& notis) {
   if (this->isWall()) return false;
 
   std::vector<Player*>::iterator it = this->players.begin();
@@ -126,21 +126,18 @@ bool Tile::allowMovement(double x, double y, Player* p, WaitingQueue<Notificatio
   return true;
 }
 
-void Tile::pickUpGuns(Player* p){
-
+void Tile::pickUpGuns(Player* p) {
   std::vector<Weapon*>::iterator it = this->weapons.begin();
 
-  while(it != this->weapons.end()){
-
-    if(p->hasGunWithId((*it)->getID())){
+  while (it != this->weapons.end()) {
+    if (p->hasGunWithId((*it)->getID())) {
       ++it;
-    }else{
+    } else {
       p->addWeapon((*it));
       it = this->weapons.erase(it);
     }
   }
 }
-
 
 bool Tile::checkWall() { return this->isWall(); }
 
@@ -171,14 +168,15 @@ void Tile::removePlayerFromTile(Player* p) {
   }
 }
 
-bool Tile::moveDoor(Player* p){
-
-  if(this->door == nullptr){
+bool Tile::moveDoor(Player* p) {
+  if (this->door == nullptr) {
     return false;
   }
 
   return this->door->unlock(p);
 }
+
+bool Tile::hasPlayers() { return (!this->players.empty()); }
 
 Tile::~Tile() {
   this->deleteWeaponDrops();

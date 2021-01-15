@@ -1,10 +1,12 @@
 #ifndef TP_FINAL_MAP_H
 #define TP_FINAL_MAP_H
 
+#include <cstdlib>
 #include <string>
 #include <vector>
 
 #include "../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../../../common/includes/YAML/YAMLMapReader.h"
 #include "../../Control/Notification/Notification.h"
 #include "../Player/Player.h"
 #include "Tile/Tile.h"
@@ -32,7 +34,8 @@ class Map {
   bool forceDoorStatusChange(int x, int y);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)
-  bool moveTo(double fromX, double fromY, double x, double y, Player* p, WaitingQueue<Notification*>& notis);
+  bool moveTo(double fromX, double fromY, double x, double y, Player* p,
+              WaitingQueue<Notification*>& notis);
 
   // Verifica si las coordenadas (x, y) se salen de los limites del mapa.
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
@@ -42,9 +45,10 @@ class Map {
 
   // Devuelve una tupla representando el (x, y) sobre el cual el jugador deberia
   // respawnear.
-  std::tuple<double, double> handleRespawn();
+  std::tuple<double, double> handleRespawn(YAMLMapReader& yamlMapReader);
 
-  // Intenta abrir una puerta directamente en frente del jugador y devuelve el (x, y) de la puerta si se abrio. (-1, -1) caso contrario.
+  // Intenta abrir una puerta directamente en frente del jugador y devuelve el
+  // (x, y) de la puerta si se abrio. (-1, -1) caso contrario.
   std::tuple<int, int> moveDoor(Player* p);
 
   // Devuelve la primera instancia del jugador que colisiona con la bala emitida
@@ -58,6 +62,8 @@ class Map {
   int dimx;
   int dimy;
   TileMatrix tileMatrix;
+  Coordinate getRandomRespawn(YAMLMapReader& yamlMapReader);
+  bool tileHasPlayers(Coordinate& c);
 };
 
 #endif  // TP_FINAL_MAP_H

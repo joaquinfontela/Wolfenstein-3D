@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "../../../../../common/includes/Queue/WaitingQueue.h"
-#include "../../../Control/Notification/PlayerPickUpItem.h"
 #include "../../../Control/Notification/Notification.h"
+#include "../../../Control/Notification/PlayerPickUpItem.h"
 #include "../../Door/Door.h"
 #include "../../Item/Item.h"
 #include "../../Item/Weapon/Weapon.h"
@@ -40,16 +40,19 @@ class Tile {
   void addAmmoDrop();
   void addKeyDrop();
 
-  // Guns within the Tile will be added to the Players inventory if he does not currently own the weapon.
+  // Guns within the Tile will be added to the Players inventory if he does not
+  // currently own the weapon.
   void pickUpGuns(Player* p);
 
-  // Changes the door status within the Tile if it exists and if possible. Returns true if the door was succesfully opened.
+  // Changes the door status within the Tile if it exists and if possible.
+  // Returns true if the door was succesfully opened.
   bool moveDoor(Player* p);
 
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 
-  void pickUpItems(double x, double y, Player* p, WaitingQueue<Notification*>& notis);
+  void pickUpItems(double x, double y, Player* p,
+                   WaitingQueue<Notification*>& notis);
 
   // Remueve el jugador del Tile.
   void removePlayerFromTile(Player* p);
@@ -67,7 +70,10 @@ class Tile {
   void setWall();
 
   // Devuelve true si autoriza el movimiento de un jugador a la posicion (x, y)
-  bool allowMovement(double x, double y, Player* p, WaitingQueue<Notification*>& notis);
+  bool allowMovement(double x, double y, Player* p,
+                     WaitingQueue<Notification*>& notis);
+
+  bool hasPlayers();
 
   ~Tile();
 };

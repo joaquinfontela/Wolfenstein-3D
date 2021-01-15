@@ -1,3 +1,6 @@
+#ifndef YAML_MAP_READER_H
+#define YAML_MAP_READER_H
+
 #include <yaml-cpp/yaml.h>
 
 #include <iostream>
@@ -31,3 +34,5 @@ class YAMLMapReader {
   std::vector<int> getDoorsIdLimits();
   std::vector<int> getWallsIdLimits();
 };
+
+#endif

@@ -112,12 +112,28 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
   return p;
 }
 
-std::tuple<double, double> Map::handleRespawn() {
-  return std::make_tuple(3, 3);
+std::tuple<double, double> Map::handleRespawn(YAMLMapReader& yamlMapReader) {
+  bool randomTileHasPlayersInIt = true;
+  Coordinate c;
+  while (!randomTileHasPlayersInIt) {
+    c = this->getRandomRespawn(yamlMapReader);
+    randomTileHasPlayersInIt = this->tileHasPlayers(c);
+  }
+  return std::make_tuple(c.getX(), c.getY());
 }
 
-bool Map::moveTo(double fromX, double fromY, double toX, double toY,
-                 Player* p, WaitingQueue<Notification*>& notis) {
+Coordinate Map::getRandomRespawn(YAMLMapReader& yamlMapReader) {
+  std::vector<Coordinate> possibleRespawnLocations =
+      yamlMapReader.getRespawnLocations();
+  return possibleRespawnLocations.at(rand() % possibleRespawnLocations.size());
+}
+
+bool Map::tileHasPlayers(Coordinate& c) {
+  return (this->tileMatrix[c.getY()][c.getX()].hasPlayers());
+}
+
+bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p,
+                 WaitingQueue<Notification*>& notis) {
   int x = (int)toX;
   int y = (int)toY;
 

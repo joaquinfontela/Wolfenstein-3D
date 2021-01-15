@@ -1,13 +1,11 @@
 #include "../../../includes/Model/Game/Game.h"
 
+#include <math.h>
 #include <time.h>
 
-#include <math.h>
 #include <functional>
 #include <iostream>
 #include <string>
-
-#include <functional>
 #include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
@@ -16,10 +14,9 @@
 #include "../../../includes/Model/Player/Player.h"
 
 Game::Game(std::string mapFile, std::string configFile)
-    : yamlConfigReader(configFile) {
-  std::string mapFileName = "./common/src/YAML/map.yaml";
+    : yamlConfigReader(configFile), yamlMapReader(mapFile) {
   auto t1 = std::chrono::steady_clock::now();
-  MapLoader mapLoader(mapFileName);
+  MapLoader mapLoader(mapFile);
   map = mapLoader.loadMap();
   auto t2 = std::chrono::steady_clock::now();
   std::chrono::duration<float, std::milli> diff;
@@ -34,17 +31,15 @@ void Game::addPlayer(int playerID) {
   this->players[playerID] = newPlayer;
 }
 
-bool Game::forceDoorStatusChange(int x, int y){
-
+bool Game::forceDoorStatusChange(int x, int y) {
   return this->map->forceDoorStatusChange(x, y);
 }
 
-void Game::playerSwitchWeapon(int playerID, int weaponPos){
-
+void Game::playerSwitchWeapon(int playerID, int weaponPos) {
   this->players[playerID]->equipWeapon(weaponPos);
 }
 
-void Game::playerShoot(int playerID,  WaitingQueue<Notification*>& notis) {
+void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
   Player* attacker = this->players[playerID];
 
   Player* receiver = nullptr;
@@ -56,26 +51,24 @@ void Game::playerShoot(int playerID,  WaitingQueue<Notification*>& notis) {
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
     ItemFactory factory;
 
-    att = int((att/sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
-    receiverHealth = receiver->takeDamage(*map, att, notis);
+    att = int((att / sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
+    receiverHealth = receiver->takeDamage(*map, att, notis, yamlMapReader);
 
-    if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
+    if (receiverHealth ==
+        0) {  // Deberia generar un evento de los items dropeados.
 
-    }else if(receiverHealth == -1){
-
-    } // Ya no deberia respawnear, deberia generar un evento de muerte.
-
+    } else if (receiverHealth == -1) {
+    }  // Ya no deberia respawnear, deberia generar un evento de muerte.
   }
 }
 
-void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis){
-
+void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
   this->updatePositions(timeElapsed, notis);
   this->sendUpdateMessages(notis);
-
 }
 
-void Game::updatePositions(float timeElapsed, WaitingQueue<Notification*>& notis) {
+void Game::updatePositions(float timeElapsed,
+                           WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
@@ -83,21 +76,18 @@ void Game::updatePositions(float timeElapsed, WaitingQueue<Notification*>& notis
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();
-  for(; updatableIt != this->updatables.end(); ++updatableIt){
+  for (; updatableIt != this->updatables.end(); ++updatableIt) {
     (*updatableIt)->update(timeElapsed, (*this));
   }
 }
 
 std::tuple<int, int> Game::moveDoor(int playerID) {
-
   int x, y;
   std::tie(x, y) = this->map->moveDoor(this->players[playerID]);
 
-  if(x >= 0)
-    this->updatables.push_back(new ChangeDoorStatus(x, y));
+  if (x >= 0) this->updatables.push_back(new ChangeDoorStatus(x, y));
 
   return std::make_tuple(x, y);
-
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
@@ -115,11 +105,11 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
   std::list<Updatable*>::iterator updateIt = this->updatables.begin();
   bool done = false;
 
-  while(updateIt != this->updatables.end()){
-    if((done = (*updateIt)->notify(notis))){
+  while (updateIt != this->updatables.end()) {
+    if ((done = (*updateIt)->notify(notis))) {
       delete (*updateIt);
       updateIt = this->updatables.erase(updateIt);
-    }else
+    } else
       ++updateIt;
   }
 }
