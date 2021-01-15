@@ -25,8 +25,9 @@ class Player {
   std::vector<Weapon*> weapons;
   bool key;
   WeaponFactory weaponFactory;
+  Map& map;
 
-  int handleDeath(Map& map, WaitingQueue<Notification*>& notis,
+  int handleDeath(WaitingQueue<Notification*>& notis,
                   YAMLMapReader& yamlMapReader);
 
  public:
@@ -36,8 +37,7 @@ class Player {
 
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
-  int takeDamage(Map& map, unsigned int damage,
-                 WaitingQueue<Notification*>& notis,
+  int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis,
                  YAMLMapReader& yamlMapReader);
 
   // GETTERS
@@ -54,7 +54,7 @@ class Player {
   bool hasGunWithId(int uniqueId);
 
   // Respawnea al jugador.
-  void respawn(Map& map, WaitingQueue<Notification*>& notis,
+  void respawn(WaitingQueue<Notification*>& notis,
                YAMLMapReader& yamlMapReader);
 
   // Calcula la distancia a otro jugador.
@@ -93,7 +93,7 @@ class Player {
 
   // Actualiza la posicion del jugador dada la velocidad de movimiento y
   // rotacion.
-  void update(Map& map, float timeElapsed, WaitingQueue<Notification*>& notis);
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis);
 
   // Equipa una llave.
   void pickupKey();

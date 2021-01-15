@@ -28,7 +28,8 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       dirY(0),
       rotSpeed(0.0),
       moveSpeed(0.0),
-      hasToBeNotified(false) {
+      hasToBeNotified(false),
+      map(map) {
   this->playerID = playerID;
   map.addPlayer(6, 4, this);
   weapons.push_back(
@@ -55,7 +56,8 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       dirY(0),
       rotSpeed(0.0),
       moveSpeed(0.0),
-      hasToBeNotified(false) {
+      hasToBeNotified(false),
+      map(map) {
   weapons.push_back(
       weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(
@@ -79,7 +81,7 @@ bool Player::collidesWith(double x, double y) {
   return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
 }
 
-void Player::respawn(Map& map, WaitingQueue<Notification*>& notis,
+void Player::respawn(WaitingQueue<Notification*>& notis,
                      YAMLMapReader& yamlMapReader) {
   double x, y;
 
@@ -90,7 +92,7 @@ void Player::respawn(Map& map, WaitingQueue<Notification*>& notis,
   this->y = y;
 }
 
-int Player::handleDeath(Map& map, WaitingQueue<Notification*>& notis,
+int Player::handleDeath(WaitingQueue<Notification*>& notis,
                         YAMLMapReader& yamlMapReader) {
   if (this->lifeRemaining == 0) {
     this->health = 0;
@@ -98,7 +100,7 @@ int Player::handleDeath(Map& map, WaitingQueue<Notification*>& notis,
   }
 
   map.addAmmoDropAt(this->y + 1, this->x + 1);
-  this->respawn(map, notis, yamlMapReader);
+  this->respawn(notis, yamlMapReader);
   if (this->key) {
     this->key = false;
     map.addKeyDropAt(this->y + 1, this->x + 1);
@@ -121,13 +123,12 @@ double Player::calculateDistanceTo(Player* p) {
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(Map& map, unsigned int damage,
-                       WaitingQueue<Notification*>& notis,
+int Player::takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis,
                        YAMLMapReader& yamlMapReader) {
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {
-    return handleDeath(map, notis, yamlMapReader);
+    return handleDeath(notis, yamlMapReader);
   }
 
   this->health -= damage;
@@ -154,8 +155,7 @@ void Player::moveTo(double x, double y) {
   this->y = y;
 }
 
-void Player::update(Map& map, float timeElapsed,
-                    WaitingQueue<Notification*>& notis) {
+void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
   double newX = x + dirX * (moveSpeed * (timeElapsed));
