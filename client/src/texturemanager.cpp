@@ -104,7 +104,8 @@ void TextureManager::loadTextures() {
                                    "water.png", // 62
                                    "well.png", // 63
                                    "mossy.png", // 64
-                                   "redbrick.png" //65
+                                   "redbrick.png", //65
+                                   "purplestone.png" // 66
                                   });
   int i = 1;
   for (std::string& name : names) {

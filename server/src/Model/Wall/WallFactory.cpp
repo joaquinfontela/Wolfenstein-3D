@@ -1,4 +1,5 @@
 #include "../../../includes/Model/Wall/WallFactory.h"
+#include <iostream>
 
 Wall* WallFactory::getWall(int wallId) {
   switch (wallId) {
@@ -17,6 +18,24 @@ Wall* WallFactory::getWall(int wallId) {
     case 304:
       return new WoodenWall(true);
       break;
+
+    case 305:
+      return new BlueWall(true);
+      break;
+
+    case 306:
+      return new BlueWall(true);
+      break;
+
+    case 307:
+      return new BlueWall(true);
+      break;
+
+    case 308:
+      return new BlueWall(true);
+
+    case 309:
+      return new BlueWall(true);
 
     case 351:
       return new BlueWall(false);

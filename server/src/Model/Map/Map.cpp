@@ -113,7 +113,7 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
 }
 
 std::tuple<double, double> Map::handleRespawn() {
-  return std::make_tuple(6, 4);
+  return std::make_tuple(3, 3);
 }
 
 bool Map::moveTo(double fromX, double fromY, double toX, double toY,
