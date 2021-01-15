@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../Control/Notification/Notification.h"
 #include "../Player/Player.h"
 #include "Tile/Tile.h"
 
@@ -30,7 +32,7 @@ class Map {
   bool forceDoorStatusChange(int x, int y);
 
   // Mueve un jugador de (fromX, fromY) a (x, y)
-  bool moveTo(double fromX, double fromY, double x, double y, Player* p);
+  bool moveTo(double fromX, double fromY, double x, double y, Player* p, WaitingQueue<Notification*>& notis);
 
   // Verifica si las coordenadas (x, y) se salen de los limites del mapa.
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);

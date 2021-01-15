@@ -39,7 +39,7 @@ bool Game::forceDoorStatusChange(int x, int y){
   return this->map->forceDoorStatusChange(x, y);
 }
 
-void Game::playerShoot(int playerID) {
+void Game::playerShoot(int playerID,  WaitingQueue<Notification*>& notis) {
   Player* attacker = this->players[playerID];
 
   Player* receiver = nullptr;
@@ -52,7 +52,7 @@ void Game::playerShoot(int playerID) {
     ItemFactory factory;
 
     att = int((att/sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
-    receiverHealth = receiver->takeDamage(*map, att);
+    receiverHealth = receiver->takeDamage(*map, att, notis);
 
     if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
 
@@ -63,11 +63,18 @@ void Game::playerShoot(int playerID) {
   }
 }
 
-void Game::updatePositions(float timeElapsed) {
+void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis){
+
+  this->updatePositions(timeElapsed, notis);
+  this->sendUpdateMessages(notis);
+
+}
+
+void Game::updatePositions(float timeElapsed, WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    it->second->update(*(this->map), timeElapsed);
+    it->second->update(*(this->map), timeElapsed, notis);
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();

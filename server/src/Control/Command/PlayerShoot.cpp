@@ -10,7 +10,8 @@ PlayerShoot::PlayerShoot(int ID) {
 
 void PlayerShoot::execute(WaitingQueue<Notification*>& notifications, Game& game) {
 
-  game.playerShoot(this->playerID);
   ShotsFired* noti = new ShotsFired(this->playerID);
   notifications.push(noti);
+
+  game.playerShoot(this->playerID, notifications);
 }

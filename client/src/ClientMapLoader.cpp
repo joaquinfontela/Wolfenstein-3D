@@ -15,13 +15,14 @@ int* ClientMapLoader::getWallIdMatrix() {
 
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
   int TO_ID = yamlMapReader.getWallsIdLimits().at(1);
-  std::map<int, std::vector<Coordinate>> wallTypeCoordinateMap =
-      yamlMapReader.getWallTypeCoordinateMap();
+  std::map<int, std::vector<Coordinate>> wallTypeCoordinateMap = yamlMapReader.getWallTypeCoordinateMap();
+
   int id;
   for (id = FROM_ID; id <= TO_ID; id++) {
-    if (!this->idIsInCoordinateMap(wallTypeCoordinateMap, id)) continue;
-    std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
-        wallTypeCoordinateMap[id];
+
+    if (!this->idIsInCoordinateMap(wallTypeCoordinateMap, id))
+      continue;
+    std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn = wallTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
       matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] = this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
@@ -43,18 +44,15 @@ int* ClientMapLoader::getWallIdMatrix() {
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
   int FROM_ID = yamlMapReader.getItemsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
-  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap =
-      yamlMapReader.getItemTypeCoordinateMap();
+  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap = yamlMapReader.getItemTypeCoordinateMap();
   int id;
   std::vector<Drawable*> drawableItems;
+
   for (id = FROM_ID; id <= TO_ID; id++) {
     if (!this->idIsInCoordinateMap(itemTypeCoordinateMap, id)) continue;
-    std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn =
-        itemTypeCoordinateMap[id];
+    std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn = itemTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereItemWithCurrentIdIsIn) {
-      drawableItems.push_back(
-          new Drawable(c.getX() - 1, c.getY() - 1,
-                       this->convertYamlFileItemIdToProtocolItemSkinId(id)));
+      drawableItems.push_back(new Drawable(c.getX() - 1, c.getY() - 1, this->convertYamlFileItemIdToProtocolItemSkinId(id)));
     }
   }
   return drawableItems;

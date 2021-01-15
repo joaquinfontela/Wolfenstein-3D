@@ -7,8 +7,8 @@
 
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
-#include "../../../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Map/Map.h"
 #include "../Map/MapLoader.h"
@@ -43,8 +43,11 @@ class Game {
   // que lo borre en sus coordenadas.
   bool removePlayer(int playerID);
 
+  // Actualiza el estado del juego y deja las notificaciones para enviar sobre cambios en el mismo.
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis);
+
   // Actualiza la posicion de los elementos dependientes del tiempo.
-  void updatePositions(float timeElapsed);
+  void updatePositions(float timeElapsed, WaitingQueue<Notification*>& notis);
 
   // Actualiza la velocidad de movimiento del jugador indicado.
   void updatePlayerMoveSpeed(int playerID, double moveSpeed);
@@ -53,7 +56,7 @@ class Game {
   void updatePlayerRotationSpeed(int playerID, double rotSpeed);
 
   // Dispara, si colisiona con un jugador le aplica el daño.
-  void playerShoot(int playerID);
+  void playerShoot(int playerID, WaitingQueue<Notification*>& notis);
 
   // Devuelve el ID de la pared que cambio de estado, -1 si no se modifico nada.
   std::tuple<int, int> moveDoor(int playerID);
