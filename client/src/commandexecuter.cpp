@@ -40,7 +40,6 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
     if ((*it)->hasThisUniqueId(itemId)) {
       delete (*it);
       this->sprites.erase(it);
-      std::cout<<"Erasing complete."<<std::endl;
       break;
     }
   }
