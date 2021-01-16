@@ -10,6 +10,7 @@ typedef struct PlayerData{
   int health;
   int lives;
   int bullets;
+  int score;
 } PlayerData;
 
 #endif

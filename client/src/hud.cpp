@@ -24,10 +24,38 @@ void Hud::update() {
   this->renderFpsCounter();
   this->renderLifes();
   this->renderHealth();
+  this->renderScore();
   this->renderFace();
   this->renderBullets();
   this->renderTypeOfGun();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::renderScore() {
+  int x, y;
+  int score = player->score;
+  this->window->getWindowSize(&x, &y);
+  int width = x / 30;
+  int height = y / 6;
+  x -= width + 4 * x / 5;
+  y -= height - y / 200;
+  if (score > 9999) {
+    width *= 4;
+    x -= x / 25;
+  } else if (score > 999) {
+    width *= 3;
+    x += x / 30;
+  } else if (score > 99) {
+    width *= 2;
+    x += 13 * x / 100;
+  } else if (score > 9) {
+    width *= 2;
+    x += 3 * x / 25;
+  } else {
+    x += 11 * x / 50;
+  }
+  SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
+  this->renderText(std::to_string(score).c_str(), &rect);
 }
 
 void Hud::updateGunId() {
@@ -119,10 +147,9 @@ void Hud::playMyShootingSound() {
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   if (this->player->isShooting() &&
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
-    // This ^^^^^ is there if this->fps < updatefreq which could result in a zero division error.
-    if (!animationStatus) {
-      this->playMyShootingSound();
-    }
+    // This ^^^^^ is there if this->fps < updatefreq
+    // which could result in a zero division error.
+    if (!animationStatus) this->playMyShootingSound();
     animationStatus++;
     if (animationStatus >= 5) {
       animationStatus = 0;
