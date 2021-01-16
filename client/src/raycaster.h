@@ -16,12 +16,6 @@
 #include <math.h>
 #include <iostream>
 
-struct pair_hash {
-    inline std::size_t operator()(const std::pair<int,int> & v) const {
-        return v.first*31+v.second;
-    }
-};
-
 class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
@@ -47,7 +41,6 @@ class Raycaster {
   int width;
   int height;
   std::vector<Door> doors;
-  std::unordered_set<std::pair<int, int>, pair_hash> doorsSet;
   void drawDoors();
   double distanceToProyection;
 };
