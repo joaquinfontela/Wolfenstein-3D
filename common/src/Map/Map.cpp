@@ -27,6 +27,14 @@ void Map::forceDoorState(int x, int y) {
     doors[x][y].state = CLOSED;
 }
 
+void Map::updateTimers(float value) {
+  for (int i = 0; i < dimx; i++) {
+    for (int j = 0; j < dimy; j++) {
+      this->doors[i][j].updateTimer(value);
+    }
+  }
+}
+
 Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
   this->doors[11][2].setDoor(true);
   this->doors[9][5].setDoor(true);

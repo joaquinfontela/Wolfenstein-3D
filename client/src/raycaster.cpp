@@ -15,8 +15,6 @@ void Raycaster::drawDoors() {
   }*/
 }
 
-
-
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
   for (Door& d : doors) {
     if (d.mapX == mapX && d.mapY == mapY) {
@@ -29,6 +27,9 @@ bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
+  auto doorsTime1 = std::chrono::steady_clock::now();
+  auto doorsTime2 = doorsTime1;
+  std::chrono::duration<float,std::milli> doorDiff = doorsTime2 - doorsTime1;
 
   int iters = 0;
   while(alive){
@@ -168,5 +169,9 @@ void Raycaster::run(){
     this->hud.update();
     this->window->render();
     iters++;
+    doorsTime2 = std::chrono::steady_clock::now();
+    doorDiff = doorsTime2 - doorsTime1;
+    this->matrix.updateTimers(abs(doorDiff.count()/1000));
+    doorsTime1 = doorsTime2;
   }
 }

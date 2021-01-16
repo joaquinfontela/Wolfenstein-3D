@@ -18,6 +18,7 @@ class Map {
 
   Map(ClientMapLoader& loader);
   ~Map();
+  void updateTimers(float value);
   int get(int x, int y);
   bool isDoor(int x, int y);
   char getDoorState(int x, int y);

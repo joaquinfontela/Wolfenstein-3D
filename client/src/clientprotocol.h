@@ -104,10 +104,10 @@
 #define WATER 62
 #define WELL 63
 
-#define CLOSED 0
-#define CLOSING 1
-#define OPEN 2
-#define OPENING 3
+#define CLOSED 'c'
+#define CLOSING 'C'
+#define OPEN 'o'
+#define OPENING 'O'
 #define DOOR_ANIMATION_TIME 1.0
 
 #endif  // CLIENTPROTOCOL_H_

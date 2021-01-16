@@ -4,9 +4,8 @@
 #include "clientprotocol.h"
 
 class DoorTile {
- private:
-  float timer;
  public:
+  float timer;
   char state;
   bool isDoor;
   void setDoor(bool isDoor);
