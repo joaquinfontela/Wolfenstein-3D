@@ -79,7 +79,7 @@ void Hud::renderTypeOfGun() {
   float aspectRatio = float(height) / float(width);
   width = (x * 9)/50;
   height = width * aspectRatio;
-  area.update((63 * x) / 80, y - (14 * y) / 80, width , height);
+  area.update((63 * x) / 80, (33 * y) / 40, width , height);
   this->hudgun->renderActualFrame(area, HUDGUNS);
 }
 
@@ -106,10 +106,10 @@ void Hud::renderGun() {
 
 // This equation is the solution to the "Lemniscate of Gerono" equation.
 void Hud::renderGunWithMovement() {
-  float sinval = sin(movementStatus/4);
+  float sinval = sin(movementStatus >> 2);
   int dx = sinval * 10;
-  int dy = sinval * cos(movementStatus/4) * 6;
-  int updatefreq = this->fps / (FRAMES_PER_MOVEMENT * 2);
+  int dy = sinval * cos(movementStatus >> 2) * 6;
+  int updatefreq = this->fps / (FRAMES_PER_MOVEMENT << 1);
   //std::cout << "Update freq: " << updatefreq  << " status: " << movementStatus << std::endl;
   this->renderGunWithShifts(dx, dy + 2, updatefreq);
   if(!(updatefreq) || !(this->framesAlreadyPlayed % updatefreq))
@@ -146,7 +146,7 @@ void Hud::playMyShootingSound() {
 
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   if (this->player->isShooting() &&
-     (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
+     (!(this->fps >> 4) || !(this->framesAlreadyPlayed % (this->fps >> 4)))) {
     // This ^^^^^ is there if this->fps < updatefreq
     // which could result in a zero division error.
     if (!animationStatus) this->playMyShootingSound();
@@ -162,11 +162,11 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
   this->gun->setSlideWidth(&width);
   float aspectRatio = float(height) / float(width);
-  width = x / 2;
+  width = x >> 1;
   height = width * aspectRatio;
-  y -= (y + height) / 2;
-  x -= (x + width) / 2;
-  area.update(x + dx, 72*y/100 + dy, width , height);
+  y -= (y + height) >> 1;
+  x -= (x + width) >> 1;
+  area.update(x + dx, (18 * y) /25 + dy, width , height);
   this->gun->renderActualFrame(area, GUNSPRITESROW);
 }
 
@@ -188,8 +188,7 @@ void Hud::renderFace() {
   }
   this->manager.getTextureSizeWithId(id, &width, &height);
   this->bjface->setSlideWidth(&width);
-  area.update(x - ((x * 93)/ 160.0), y - ((y * 97) / 600.0),
-                7 * x / 80, 2 * y / 15);
+  area.update((x * 67)/ 160.0, (503 * y) / 600.0, (7 * x) / 80, (y << 1) / 15);
   this->bjface->renderActualFrame(area, id);
 }
 
@@ -214,7 +213,7 @@ void Hud::renderLifes() {
   this->window->getWindowSize(&x, &y);
   int width = x / 30;
   int height = y / 6;
-  x -= width + 620 * x / 1000;
+  x -= width + 31 * x / 50;
   y -= height - y / 200;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
   this->renderText(std::to_string(player->lives).c_str(), &rect);
