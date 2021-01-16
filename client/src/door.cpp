@@ -21,7 +21,7 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   wallX -= floor((wallX));
 
   int texX = int(wallX * double(BLOCKSIZE));
-  if(isSide && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
+  if( isSide && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
   if(!isSide && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
   if (texX < BLOCKSIZE * (1 - time)) return;
   int lineHeight = int(this->height / perpWallDist);

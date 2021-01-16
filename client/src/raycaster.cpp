@@ -60,7 +60,6 @@ void Raycaster::run(){
 
       double deltaDistX = std::abs(1 / rayDirX);
       double deltaDistY = std::abs(1 / rayDirY);
-      double perpWallDist;
 
       int stepX, stepY;
 
@@ -111,19 +110,19 @@ void Raycaster::run(){
         }
       }
 
-      if (side == 0) perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
-      else perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
+      bool isSide = (side == 0);
+      double perpWallDist = ((mapX - posX + (1 - stepX) / 2) / (rayDirX) * isSide) +
+                            ((mapY - posY + (1 - stepY) / 2) / (rayDirY) * !isSide);
 
       int lineHeight = int(this->height/ perpWallDist);
 
-      double wallX;
-      if (side == 0) wallX = posY + perpWallDist * rayDirY;
-      else wallX = posX + perpWallDist * rayDirX;
+      double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
+                     ((posX + perpWallDist * rayDirX) * !isSide);
       wallX -= floor((wallX));
 
       int texX = int(wallX * double(BLOCKSIZE));
-      if(side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
-      if(side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
+      bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
+      texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
 
       Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
       Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
