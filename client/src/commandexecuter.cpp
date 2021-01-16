@@ -17,12 +17,10 @@ CommandExecuter::~CommandExecuter(){
 }
 
 void CommandExecuter::playShootingSounds(int shooterId) {
-  int weaponId = players.at(shooterId)->weaponId;
-  int soundId = GET_WEAPON_SOUND(weaponId);
-  if (shooterId == this->selfId){
-    this->audiomanager.playOnMaxVolumeWithId(soundId);
-    // Hacer que pueda variar en función del arma.
-  } else {
+  if (shooterId != this->selfId){
+    std::cout << "[GAME] Playing enemy shooting sound. \n";
+    int weaponId = players.at(shooterId)->weaponId;
+    int soundId = GET_WEAPON_SOUND(weaponId);
     double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
     this->audiomanager.playOnVariableVolumeWithId(soundId, dist);
   }

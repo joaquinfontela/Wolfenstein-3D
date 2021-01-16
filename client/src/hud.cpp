@@ -109,12 +109,21 @@ void Hud::renderBullets() {
   this->renderText(std::to_string(bullets).c_str(), &rect);
 }
 
+void Hud::playMyShootingSound() {
+  std::cout << "[CLIENT] Shooting my gun." << std::endl;
+  int weaponId = this->player->weaponId;
+  int soundId = GET_WEAPON_SOUND(weaponId);
+  this->audiomanager.playOnMaxVolumeWithId(soundId);
+}
+
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   if (this->player->isShooting() &&
      (!(this->fps / 16) || !(this->framesAlreadyPlayed % (this->fps / 16)))) {
     // This ^^^^^ is there if this->fps < updatefreq which could result in a zero division error.
+    if (!animationStatus) {
+      this->playMyShootingSound();
+    }
     animationStatus++;
-    //std::cout << "Shooting with id: " << weaponId << " and frame: " << (this->weaponId-1)*(GUN_SLICES)+animationStatus << " the: " << framesAlreadyPlayed << "-th time" << std::endl;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
@@ -161,9 +170,9 @@ void Hud::updateBjFace() {
   this->bjface->updateFrame();
 }
 
-Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager) :
-  window(window), renderer(window->getRenderer()), player(player), manager(manager),
-  animationStatus(0), framesAlreadyPlayed(0), movementStatus(0), fps(30) {
+Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager, AudioManager& audiomanager) :
+  window(window), renderer(window->getRenderer()), player(player), manager(manager), fps(30),
+  animationStatus(0), framesAlreadyPlayed(0), movementStatus(0), audiomanager(audiomanager) {
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }

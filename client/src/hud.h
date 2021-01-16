@@ -4,6 +4,8 @@
 #include <SDL2/SDL_ttf.h>
 #include "sdlwindow.h"
 #include "sdlanimation.h"
+#include "audiomanager.h"
+#include "texturemanager.h"
 #include "area.h"
 #include "player.h"
 
@@ -15,6 +17,7 @@ class Hud {
   TTF_Font* font;
   Player* player;
   TextureManager& manager;
+  AudioManager& audiomanager;
   SdlAnimation* hudgun;
   SdlAnimation* bjface;
   SdlAnimation* gun;
@@ -23,6 +26,7 @@ class Hud {
   int fps;
   int framesAlreadyPlayed;
   Area area;
+  void playMyShootingSound();
   void renderText(const char* text, SDL_Rect* rect);
   void renderFpsCounter();
   void renderLifes();
@@ -41,7 +45,7 @@ class Hud {
   void updateHudGun();
   void updateBjFace();
   ~Hud();
-  Hud(SdlWindow* window, Player* player, TextureManager& manager);
+  Hud(SdlWindow* window, Player* player, TextureManager& manager, AudioManager& audiomanager);
 };
 
 #endif  // HUD_H_
