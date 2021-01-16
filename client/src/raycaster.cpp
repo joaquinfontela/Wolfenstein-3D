@@ -17,12 +17,7 @@ void Raycaster::drawDoors() {
 }
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
-  for (Door& d : doors) {
-    if (d.mapX == mapX && d.mapY == mapY) {
-      return true;
-    }
-  }
-  return false;
+  return (this->doorsSet.find(std::make_pair(mapX, mapY)) != this->doorsSet.end());
 }
 
 void Raycaster::run(){
@@ -102,6 +97,7 @@ void Raycaster::run(){
         } else if ((texNum = matrix.get(mapX, mapY)) > 0) {
           if ((wasADoor = matrix.isDoor(mapX, mapY)) && (!(this->doors.size()) || !this->hitDoor(mapX,mapY))) {
             Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
+            this->doorsSet.insert(std::make_pair(mapX, mapY));
             this->doors.push_back(door);
             hit = (matrix.getDoorState(mapX, mapY) == CLOSED);
           } else if (!wasADoor) {
@@ -137,7 +133,7 @@ void Raycaster::run(){
         this->doors.pop_back();
         d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
       }
-
+      this->doorsSet.clear();
     }
 
     this->lock.lock();
