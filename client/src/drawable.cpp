@@ -48,7 +48,7 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   if (drawEndX >= width) drawEndX = width - 1;
 
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
+    int texX = int((((stripe - (-spriteWidth / 2 + spriteScreenX)) << 6) << 8) / spriteWidth) >> 8;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
