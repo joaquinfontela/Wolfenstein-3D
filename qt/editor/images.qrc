@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>iconos/zoom_out_icon.png</file>
+        <file>iconos/zoom_in_icon.png</file>
+        <file>iconos/new_icon.png</file>
+        <file>iconos/open_icon.png</file>
+        <file>iconos/save_and_quit_icon.png</file>
+        <file>iconos/redo_icon.png</file>
+        <file>iconos/undo_icon.png</file>
+        <file>iconos/quit_icon.png</file>
+        <file>iconos/save_icon.png</file>
+        <file>iconos/copy_icon.png</file>
+        <file>iconos/paste_icon.png</file>
+    </qresource>
+    <qresource prefix="/game_icon">
+        <file>logo/wolfestein_logo.png</file>
+    </qresource>
+    <qresource prefix="/game_element">
+        <file>elementos_mapa/paredes.png</file>
+        <file>elementos_mapa/puertas.png</file>
+        <file>elementos_mapa/paredes/PARED_PIEDRA_LADRILLO_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_PIEDRA_LADRILLO_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_TIERRA_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_TIERRA_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_AZUL_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_AZUL_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_METAL_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_METAL_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_MIX_PIEDRA_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_MIX_PIEDRA_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_AZUL_MUY_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_AZUL_OSCURA_+.png</file>
+        <file>elementos_mapa/paredes/PARED_MADERA_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_MADERA_CLARA.png</file>
+        <file>elementos_mapa/paredes/PARED_PIEDRA_OSCURA.png</file>
+        <file>elementos_mapa/paredes/PARED_PIEDRA.png</file>
+        <file>elementos_mapa/empty_tile.PNG</file>
+    </qresource>
+    <qresource prefix="/varios">
+        <file>fondo_blanco.png</file>
+        <file>fondo_rojo.jpeg</file>
+    </qresource>
+</RCC>
