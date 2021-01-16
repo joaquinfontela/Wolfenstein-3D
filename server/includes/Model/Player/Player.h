@@ -2,11 +2,11 @@
 #define __PLAYER_H__
 
 #include "../../../../common/includes/PlayerData.h"
+#include "../../../../common/includes/Queue/WaitingQueue.h"
+#include "../../Control/Notification/Notification.h"
 #include "../Item/Weapon/Weapon.h"
 #include "../Item/Weapon/WeaponFactory.h"
 #include "../Map/Map.h"
-#include "../../../../common/includes/Queue/WaitingQueue.h"
-#include "../../Control/Notification/Notification.h"
 
 class Map;
 
@@ -25,8 +25,9 @@ class Player {
   std::vector<Weapon*> weapons;
   bool key;
   WeaponFactory weaponFactory;
+  Map& map;
 
-  int handleDeath(Map& map,  WaitingQueue<Notification*>& notis);
+  int handleDeath(WaitingQueue<Notification*>& notis);
 
  public:
   // CONSTRUCTORES.
@@ -35,7 +36,7 @@ class Player {
 
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
-  int takeDamage(Map& map, unsigned int damage,  WaitingQueue<Notification*>& notis);
+  int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
 
   // GETTERS
   unsigned int ID();
@@ -51,7 +52,7 @@ class Player {
   bool hasGunWithId(int uniqueId);
 
   // Respawnea al jugador.
-  void respawn(Map& map,  WaitingQueue<Notification*>& notis);
+  void respawn(WaitingQueue<Notification*>& notis);
 
   // Calcula la distancia a otro jugador.
   double calculateDistanceTo(Player* other);
@@ -89,7 +90,7 @@ class Player {
 
   // Actualiza la posicion del jugador dada la velocidad de movimiento y
   // rotacion.
-  void update(Map& map, float timeElapsed, WaitingQueue<Notification*>& notis);
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis);
 
   // Equipa una llave.
   void pickupKey();

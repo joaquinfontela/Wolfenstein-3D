@@ -7,8 +7,8 @@
 
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
-#include "../../Control/Notification/Notification.h"
 #include "../../../../common/includes/YAML/YAMLConfigReader.h"
+#include "../../Control/Notification/Notification.h"
 #include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Map/Map.h"
 #include "../Map/MapLoader.h"
@@ -22,6 +22,7 @@ class Game {
   std::map<int, Player*> players;
   Map* map;
   YAMLConfigReader yamlConfigReader;
+  YAMLMapReader yamlMapReader;
   std::list<Updatable*> updatables;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
@@ -29,7 +30,8 @@ class Game {
  public:
   Game(std::string mapFile, std::string configFile);
 
-  // Fuerza a una puerta a cambiar su estado. Se usa para el cierre automatico de las puertas.
+  // Fuerza a una puerta a cambiar su estado. Se usa para el cierre automatico
+  // de las puertas.
   bool forceDoorStatusChange(int x, int y);
 
   // Agrega un jugador al mapa de los jugadores
@@ -46,7 +48,8 @@ class Game {
   // que lo borre en sus coordenadas.
   bool removePlayer(int playerID);
 
-  // Actualiza el estado del juego y deja las notificaciones para enviar sobre cambios en el mismo.
+  // Actualiza el estado del juego y deja las notificaciones para enviar sobre
+  // cambios en el mismo.
   void update(float timeElapsed, WaitingQueue<Notification*>& notis);
 
   // Actualiza la posicion de los elementos dependientes del tiempo.
