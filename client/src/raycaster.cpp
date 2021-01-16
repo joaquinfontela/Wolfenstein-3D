@@ -15,9 +15,7 @@ void Raycaster::drawDoors() {
   }*/
 }
 
-static bool isDoor(float id){
-  return (id == DOOR_CLOSED || id == DOOR_OPEN);
-}
+
 
 bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
   for (Door& d : doors) {
@@ -69,7 +67,7 @@ void Raycaster::run(){
 
       int hit = 0;
       int texNum = 1;
-      float floatNum;
+      bool wasADoor;
       int side;
 
       if (rayDirX < 0) {
@@ -104,13 +102,11 @@ void Raycaster::run(){
           mapY = INT_MAX;
           hit = 1;
         } else if ((texNum = matrix.get(mapX, mapY)) > 0) {
-          if (isDoor((floatNum = matrix.getDoor(mapX, mapY)))
-              && (!(this->doors.size()) || !this->hitDoor(mapX,mapY))) {
+          if ((wasADoor = matrix.isDoor(mapX, mapY)) && (!(this->doors.size()) || !this->hitDoor(mapX,mapY))) {
             Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
             this->doors.push_back(door);
-            hit = (floatNum == DOOR_CLOSED);
-
-          } else if (!isDoor(floatNum)) {
+            hit = (matrix.getDoorState(mapX, mapY) == CLOSED);
+          } else if (!wasADoor) {
             hit = 1;
           }
         }
@@ -154,13 +150,12 @@ void Raycaster::run(){
     for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-    auto t2 = std::chrono::steady_clock::now();
-
     #ifdef FPS_FREQ
     #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
+      auto t2 = std::chrono::steady_clock::now();
       std::chrono::duration<float,std::milli> diff = t2 - t1;
       if (!iters) this->hud.updateFpsCounter((1000)/ceil(diff.count()));
       else this->hud.updateFpsCounter((FPS_FREQ * 1000)/ceil(diff.count()));

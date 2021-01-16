@@ -104,9 +104,10 @@
 #define WATER 62
 #define WELL 63
 
-#define GET_DOOR_STATE_WITH_ID(X) (-X - 1)
-
-#define DOOR_OPEN -1.0
-#define DOOR_CLOSED -2.0
+#define CLOSED 0
+#define CLOSING 1
+#define OPEN 2
+#define OPENING 3
+#define DOOR_ANIMATION_TIME 1.0
 
 #endif  // CLIENTPROTOCOL_H_

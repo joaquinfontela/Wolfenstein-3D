@@ -93,7 +93,8 @@ void CommandExecuter::run() {
         this->socket.receive(&x, sizeof(x));
         this->socket.receive(&y, sizeof(y));
         std::cout<<"[GAME] Switching door state at: " << x << ", " << y << std::endl;
-        matrix.switchDoorState(x, y);
+        //matrix.switchDoorState(x, y);
+        matrix.forceDoorState(x, y);
         this->playDoorOpeningSound(x, y);
       } else if (opcode == PLAYER_PICKUP_ITEM) {
         uint32_t itemId;
