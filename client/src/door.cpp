@@ -10,25 +10,22 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   if (doorState == OPEN) return;
 
   float time = this->matrix->doors[this->mapX][this->mapY].timer;
-  double perpWallDist;
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
 
-  if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / (rayDirX);
-  else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY);
-
-  double wallX;
-  if (this->side == 0) wallX = posY + perpWallDist * rayDirY;
-  else wallX = posX + perpWallDist * rayDirX;
-  wallX -= floor(wallX);
+  bool isSide = (this->side == 0);
+  double perpWallDist = ((this->mapX - posX + (1 - stepX) / 2) / (rayDirX) * isSide) +
+                        ((this->mapY - posY + (1 - stepY) / 2) / (rayDirY) * !isSide);
+  double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
+                 ((posX + perpWallDist * rayDirX) * !isSide);
+  wallX -= floor((wallX));
 
   int texX = int(wallX * double(BLOCKSIZE));
-  if(this->side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
-  if(this->side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
+  if(isSide && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
+  if(!isSide && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
   if (texX < BLOCKSIZE * (1 - time)) return;
   int lineHeight = int(this->height / perpWallDist);
 
-  std::cout << "i: " << texX << std::endl;
   if (doorState == CLOSED) {
     Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
     Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
