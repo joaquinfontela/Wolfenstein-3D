@@ -10,7 +10,7 @@ class DoorTile {
   bool isDoor;
   void setDoor(bool isDoor);
   void changeState();
-  DoorTile() : isDoor(false), state(CLOSED), timer(0) {}
+  DoorTile() : isDoor(false), state(CLOSED), timer(1) {}
   void updateTimer(float update);
 };
 

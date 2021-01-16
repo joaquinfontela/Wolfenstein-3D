@@ -17,26 +17,25 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   if(this->side == 0) perpWallDist = (this->mapX - posX + (1 - stepX) / 2) / (rayDirX);
   else perpWallDist = (this->mapY - posY + (1 - stepY) / 2) / (rayDirY);
 
-  int lineHeight = int(this->height / perpWallDist);
-
   double wallX;
   if (this->side == 0) wallX = posY + perpWallDist * rayDirY;
   else wallX = posX + perpWallDist * rayDirX;
-  wallX -= floor((wallX));
+  wallX -= floor(wallX);
 
   int texX = int(wallX * double(BLOCKSIZE));
   if(this->side == 0 && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
   if(this->side == 1 && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
+  if (texX < BLOCKSIZE * (1 - time)) return;
+  int lineHeight = int(this->height / perpWallDist);
 
-  Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-  Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+  std::cout << "i: " << texX << std::endl;
   if (doorState == CLOSED) {
     Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
     Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
     manager.render(DOOR, srcArea, destArea);
   } else {
-    Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight * time);
-    Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight * time);
+    Area srcArea(texX - BLOCKSIZE * (1 - time), 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+    Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
     manager.render(DOOR, srcArea, destArea);
   }
 

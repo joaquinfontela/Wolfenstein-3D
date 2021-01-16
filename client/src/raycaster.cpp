@@ -1,5 +1,6 @@
 #include "raycaster.h"
 #include "drawable.h"
+#include "doortimer.h"
 #include "door.h"
 #include "clientprotocol.h"
 #include <climits>
@@ -27,11 +28,10 @@ bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
-  auto doorsTime1 = std::chrono::steady_clock::now();
-  auto doorsTime2 = doorsTime1;
-  std::chrono::duration<float,std::milli> doorDiff = doorsTime2 - doorsTime1;
-
+  DoorTimer timer(this->matrix, this->alive);
+  timer.start();
   int iters = 0;
+
   while(alive){
 
     this->window->fillWolfenstein();
@@ -56,15 +56,13 @@ void Raycaster::run(){
       int mapX = int(posX);
       int mapY = int(posY);
 
-      double sideDistX;
-      double sideDistY;
+      double sideDistX, sideDistY;
 
       double deltaDistX = std::abs(1 / rayDirX);
       double deltaDistY = std::abs(1 / rayDirY);
       double perpWallDist;
 
-      int stepX;
-      int stepY;
+      int stepX, stepY;
 
       int hit = 0;
       int texNum = 1;
@@ -169,9 +167,7 @@ void Raycaster::run(){
     this->hud.update();
     this->window->render();
     iters++;
-    doorsTime2 = std::chrono::steady_clock::now();
-    doorDiff = doorsTime2 - doorsTime1;
-    this->matrix.updateTimers(abs(doorDiff.count()/1000));
-    doorsTime1 = doorsTime2;
   }
+
+  timer.join();
 }
