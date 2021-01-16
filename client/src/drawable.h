@@ -23,6 +23,8 @@ public:
   void loadDistanceWithCoords(int px, int py);
   virtual bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
+ private:
+  Area srcArea, destArea;  
 };
 
 #endif  // DRAWABLE_H_

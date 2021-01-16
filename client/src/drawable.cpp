@@ -51,8 +51,8 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
     int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      Area srcArea(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
-      Area destArea(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
+      srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
+      destArea.update(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
   }

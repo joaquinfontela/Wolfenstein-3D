@@ -27,6 +27,8 @@ class Raycaster {
   void run();
   bool hitDoor(const int& mapX, const int& mapY);
  private:
+  Area destArea;
+  Area srcArea;
   std::atomic<bool>& alive;
   TextureManager& manager;
   Map& matrix;

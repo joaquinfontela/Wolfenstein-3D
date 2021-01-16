@@ -39,6 +39,7 @@ class Player : public Drawable {
   bool moving;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
+  Area srcArea, destArea;
   bool shooting;
 };
 

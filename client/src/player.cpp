@@ -56,8 +56,6 @@ Player::Player(PlayerData& info) {
 }
 
 void Player::update(PlayerData& info) {
-  //std::cout << "x vieja: " << x << " x nueva: " << info.posX << std::endl;
-  //std::cout << "y vieja: " << y << " y nueva: " << info.posY << std::endl;
   this->moving = (this->x != info.posX || this->y != info.posX);
   this->x = info.posX;
   this->y = info.posY;
@@ -138,8 +136,8 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
     int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      Area srcArea(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
-      Area destArea(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
+      srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
+      destArea.update(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
     }
   }

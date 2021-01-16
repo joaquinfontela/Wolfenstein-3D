@@ -4,6 +4,7 @@
 #include <SDL2/SDL_ttf.h>
 #include "sdlwindow.h"
 #include "sdlanimation.h"
+#include "area.h"
 #include "player.h"
 
 class Hud {
@@ -21,6 +22,7 @@ class Hud {
   short movementStatus;
   int fps;
   int framesAlreadyPlayed;
+  Area area;
   void renderText(const char* text, SDL_Rect* rect);
   void renderFpsCounter();
   void renderLifes();

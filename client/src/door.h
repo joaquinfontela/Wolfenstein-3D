@@ -16,7 +16,7 @@ class Door : public Drawable {
     double dirY, double planeX, double planeY, double* zBuffer) override;
   int mapX, mapY;
   const int& x;
-private:
+ private:
   const int& width, height;
   const double& cameraX;
   const int& stepX, stepY;

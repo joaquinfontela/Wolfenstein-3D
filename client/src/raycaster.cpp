@@ -124,8 +124,8 @@ void Raycaster::run(){
       bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
       texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
 
-      Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-      Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+      srcArea.update(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
+      destArea.update(x, (this->height - lineHeight) / 2, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
 

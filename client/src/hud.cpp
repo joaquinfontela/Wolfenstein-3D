@@ -51,9 +51,8 @@ void Hud::renderTypeOfGun() {
   float aspectRatio = float(height) / float(width);
   width = (x * 9)/50;
   height = width * aspectRatio;
-  Area destArea((63 * x) / 80, y - (14 * y) / 80, width , height);
-  //std::cout "x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
-  this->hudgun->renderActualFrame(destArea, HUDGUNS);
+  area.update((63 * x) / 80, y - (14 * y) / 80, width , height);
+  this->hudgun->renderActualFrame(area, HUDGUNS);
 }
 
 void Hud::renderGun() {
@@ -131,9 +130,8 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   height = width * aspectRatio;
   y -= (y + height) / 2;
   x -= (x + width) / 2;
-  Area destArea(x + dx, 72*y/100 + dy, width , height);
-  //std::cout << "x: " << destArea.getX() << ", y:  " << destArea.getY() << ", w: " << destArea.getWidth() << ", h: " << destArea.getHeight() << " " << std::endl;
-  this->gun->renderActualFrame(destArea, GUNSPRITESROW);
+  area.update(x + dx, 72*y/100 + dy, width , height);
+  this->gun->renderActualFrame(area, GUNSPRITESROW);
 }
 
 void Hud::updateHudGun() {
@@ -154,9 +152,9 @@ void Hud::renderFace() {
   }
   this->manager.getTextureSizeWithId(id, &width, &height);
   this->bjface->setSlideWidth(&width);
-  Area destArea(x - ((x * 93)/ 160.0), y - ((y * 97) / 600.0),
+  area.update(x - ((x * 93)/ 160.0), y - ((y * 97) / 600.0),
                 7 * x / 80, 2 * y / 15);
-  this->bjface->renderActualFrame(destArea, id);
+  this->bjface->renderActualFrame(area, id);
 }
 
 void Hud::updateBjFace() {
