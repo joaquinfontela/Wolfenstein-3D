@@ -11,6 +11,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
+
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
@@ -30,6 +32,8 @@ set(PROJECT_SOURCES
         tiles_container.cpp
         tileset.cpp
         wall_tile_factory.cpp
+        ../../common/src/YAML/YAMLMapWriter.cpp
+        ../../common/src/Coordinate/Coordinate.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -48,4 +52,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(editor PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+find_package(PkgConfig)
+pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
+
+target_link_libraries(editor PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${YAMLCPP_LIBRARIES})
