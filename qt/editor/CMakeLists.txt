@@ -33,6 +33,7 @@ set(PROJECT_SOURCES
         tileset.cpp
         wall_tile_factory.cpp
         ../../common/src/YAML/YAMLMapWriter.cpp
+        ../../common/src/YAML/QtToYamlIdConversor.cpp
         ../../common/src/Coordinate/Coordinate.cpp
 )
 
