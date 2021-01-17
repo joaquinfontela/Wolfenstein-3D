@@ -36,6 +36,5 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
     manager.render(DOOR, srcArea, destArea);
   }
 
-  if(perpWallDist < zBuffer[x] && doorState == CLOSED)
-    zBuffer[x] = perpWallDist;
+  if(perpWallDist < zBuffer[x]) zBuffer[x] = perpWallDist;
 }
