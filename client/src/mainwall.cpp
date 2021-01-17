@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(6.0, 4.0, -1.0, 0.0, 0.0, 0.66, 0);
-  Hud hud(&window, player, manager);
+  Hud hud(&window, player, manager, audios);
   std::map<uint32_t,Player*> players;
   players[id] = player;
 

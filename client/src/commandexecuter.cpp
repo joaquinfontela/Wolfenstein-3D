@@ -17,12 +17,10 @@ CommandExecuter::~CommandExecuter(){
 }
 
 void CommandExecuter::playShootingSounds(int shooterId) {
-  int weaponId = players.at(shooterId)->weaponId;
-  int soundId = GET_WEAPON_SOUND(weaponId);
-  if (shooterId == this->selfId){
-    this->audiomanager.playOnMaxVolumeWithId(soundId);
-    // Hacer que pueda variar en función del arma.
-  } else {
+  if (shooterId != this->selfId){
+    std::cout << "[GAME] Playing enemy shooting sound. \n";
+    int weaponId = players.at(shooterId)->weaponId;
+    int soundId = GET_WEAPON_SOUND(weaponId);
     double dist = players.at(this->selfId)->calculateDist(players.at(shooterId));
     this->audiomanager.playOnVariableVolumeWithId(soundId, dist);
   }
@@ -35,12 +33,12 @@ void CommandExecuter::playDoorOpeningSound(int x, int y) {
 
 void CommandExecuter::removeSpriteWithId(int itemId) {
   this->lock.lock();
+  std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
       delete (*it);
       this->sprites.erase(it);
-      std::cout<<"Erasing complete."<<std::endl;
       break;
     }
   }

@@ -36,6 +36,7 @@ class Player : public Drawable {
   int health;
   int lives;
   int bullets;
+  int score;
   bool moving;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!

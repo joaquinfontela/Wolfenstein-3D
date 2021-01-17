@@ -14,8 +14,8 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double rayDirY = dirY + planeY * cameraX;
 
   bool isSide = (this->side == 0);
-  double perpWallDist = ((this->mapX - posX + (1 - stepX) / 2) / (rayDirX) * isSide) +
-                        ((this->mapY - posY + (1 - stepY) / 2) / (rayDirY) * !isSide);
+  double perpWallDist = ((this->mapX - posX + ((1 - stepX) >> 1)) / (rayDirX) * isSide) +
+                        ((this->mapY - posY + ((1 - stepY) >> 1)) / (rayDirY) * !isSide);
   double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
                  ((posX + perpWallDist * rayDirX) * !isSide);
   wallX -= floor((wallX));
@@ -28,11 +28,11 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
 
   if (doorState == CLOSED) {
     Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-    Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+    Area destArea(x, (this->height - lineHeight) >> 1, 1, lineHeight);
     manager.render(DOOR, srcArea, destArea);
   } else {
     Area srcArea(texX - BLOCKSIZE * (1 - time), 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-    Area destArea(x, (this->height - lineHeight) / 2, 1, lineHeight);
+    Area destArea(x, (this->height - lineHeight) >> 1, 1, lineHeight);
     manager.render(DOOR, srcArea, destArea);
   }
 

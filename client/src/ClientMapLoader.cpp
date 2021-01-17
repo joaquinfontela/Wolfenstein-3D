@@ -1,16 +1,18 @@
 #include "ClientMapLoader.h"
 #include "clientprotocol.h"
 
+#include <iostream>
+
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
-    : yamlMapReader(yamlFile), uniqueid(14) {
+    : yamlMapReader(yamlFile), uniqueid(1) {
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
   this->dimx = mapDimensions.at(0);
   this->dimy = mapDimensions.at(1);
 }
 
 int* ClientMapLoader::getWallIdMatrix() {
-  int* matrix = (int*)calloc(25 * 25, sizeof(int));
+  int* matrix = (int*)calloc(dimx * dimy, sizeof(int));
 
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
   int TO_ID = yamlMapReader.getWallsIdLimits().at(1);
@@ -43,7 +45,7 @@ int* ClientMapLoader::getWallIdMatrix() {
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
   int FROM_ID = yamlMapReader.getWeaponsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
-  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap = yamlMapReader.getItemTypeCoordinateMap();
+  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap = yamlMapReader.getPartialItemCoordinateMap(FROM_ID, TO_ID);
   int id;
   std::vector<Drawable*> drawableItems;
 

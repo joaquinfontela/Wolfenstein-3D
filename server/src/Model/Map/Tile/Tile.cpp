@@ -93,7 +93,7 @@ void Tile::pickUpItems(double x, double y, Player* p,
 
   while (it != this->items.end()) {
     if ((*it)->canBePickedUpBy(p)) {
-      std::cout << "Player picking up item." << std::endl;
+      std::cout << "Player picking up item with id: " << (*it)->getID() << std::endl;
       PlayerPickupItem* noti = new PlayerPickupItem((*it)->getID());
       notis.push(noti);
       (*it)->pickUp(p);

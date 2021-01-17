@@ -11,6 +11,7 @@
 
 #include <mutex>
 #include <atomic>
+#include <unordered_set>
 #include <vector>
 #include <math.h>
 #include <iostream>

@@ -111,8 +111,8 @@ void Raycaster::run(){
       }
 
       bool isSide = (side == 0);
-      double perpWallDist = ((mapX - posX + (1 - stepX) / 2) / (rayDirX) * isSide) +
-                            ((mapY - posY + (1 - stepY) / 2) / (rayDirY) * !isSide);
+      double perpWallDist = ((mapX - posX + ((1 - stepX) >> 1)) / (rayDirX) * isSide) +
+                            ((mapY - posY + ((1 - stepY) >> 1)) / (rayDirY) * !isSide);
 
       int lineHeight = int(this->height/ perpWallDist);
 
@@ -125,7 +125,7 @@ void Raycaster::run(){
       texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
 
       srcArea.update(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-      destArea.update(x, (this->height - lineHeight) / 2, 1, lineHeight);
+      destArea.update(x, (this->height - lineHeight) >> 1, 1, lineHeight);
       this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
 

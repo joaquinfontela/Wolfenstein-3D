@@ -32,27 +32,27 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   double transformX = invDet * (dirY * spriteX - dirX * spriteY);
   double transformY = invDet * (-planeY * spriteX + planeX * spriteY);
 
-  int spriteScreenX = int((width / 2) * (1 + transformX / transformY));
+  int spriteScreenX = int((width >> 1) * (1 + transformX / transformY));
 
   int spriteHeight = abs(int(height / (transformY)));
 
-  int drawStartY = -spriteHeight / 2 + height / 2;
+  int drawStartY = (height - spriteHeight) >> 1;
   if (drawStartY < 0) drawStartY = 0;
-  int drawEndY = spriteHeight / 2 + height / 2;
+  int drawEndY = (spriteHeight + height) >> 1;
   if (drawEndY >= height) drawEndY = height - 1;
 
   int spriteWidth = abs(int (height / (transformY)));
-  int drawStartX = -spriteWidth / 2 + spriteScreenX;
+  int drawStartX = (spriteScreenX - spriteWidth) >> 1;
   if (drawStartX < 0) drawStartX = 0;
   int drawEndX = spriteWidth / 2 + spriteScreenX;
   if (drawEndX >= width) drawEndX = width - 1;
 
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * BLOCKSIZE / spriteWidth) / 256;
+    int texX = int((((stripe - (spriteScreenX - (spriteWidth >> 1))) << 6) << 8) / spriteWidth) >> 8;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
-      destArea.update(stripe, (height - spriteHeight) / 2, 1, spriteHeight);
+      destArea.update(stripe, (height - spriteHeight) >> 1, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
   }
