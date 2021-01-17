@@ -7,8 +7,8 @@
 #include <QImage>
 
 #define COL 2
-#define MARGIN 10
-#define WIDTH 151
+#define MARGIN 7
+#define WIDTH 134
 
 tiles_container::tiles_container(QString path, int cant_row, int height, tile_factory* factory)
 {

@@ -2,6 +2,7 @@
 #include <vector>
 #include "tile.h"
 #include <QMessageBox>
+#include <iostream>
 
 map_canvas::map_canvas(int col,int row)
 {
@@ -18,10 +19,16 @@ map_canvas::map_canvas(int col,int row)
     this->cant_row = row;
 }
 
-bool map_canvas::paint_tile(int col, int row, tile* new_tile){
+bool map_canvas::paint_tile(std::vector<int> coordinates, tile* new_tile){
+    int row = coordinates[0]-1;
+    int col = coordinates[1]-1;
     std::vector<tile*> vector_selected = this->grilla.at(row).at(col);
     if(vector_selected.empty() || (vector_selected[0]->accept_tile(new_tile) && vector_selected.size() < 4)){
-        vector_selected.push_back(new_tile);
+        this->grilla.at(row).at(col).push_back(new_tile);
+        return true;
+    }else if(!new_tile->cumulative || !(vector_selected[0]->cumulative)){
+        this->grilla.at(row).at(col).clear();
+        this->grilla.at(row).at(col).push_back(new_tile);
         return true;
     }
     QMessageBox messageBox;
@@ -31,7 +38,9 @@ bool map_canvas::paint_tile(int col, int row, tile* new_tile){
     return false;
 }
 
-
+std::vector<tile*> map_canvas::tiles_at_coordinates(std::vector<int> coordinates){
+    return this->grilla.at(coordinates[0]-1).at(coordinates[1]-1);
+}
 
 
 

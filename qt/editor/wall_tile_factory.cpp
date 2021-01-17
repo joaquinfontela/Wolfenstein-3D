@@ -59,6 +59,6 @@ tile* wall_tile_factory:: get_tile(std::vector<int>& coordinates){
         path = ":/game_element/elementos_mapa/paredes/PARED_PIEDRA_LADRILLO_OSCURA.png";
         tipo = 16;
     }
-    tile* tile = new class tile(path, tipo, false);
+    tile* tile = new class tile(path, tipo, true);
     return tile;
 }

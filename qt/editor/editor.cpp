@@ -24,14 +24,13 @@ void Editor::initialize_tile_container(){
 }
 
 void Editor::initialize_map_container(int col, int row){
-    my_map* map = new my_map(col, row, this);
+    my_map* map = new my_map(col, row);
     QHBoxLayout* ly = new QHBoxLayout();
     ly->addWidget(map, Qt::AlignCenter);
     ui->map_container->setLayout(ly);
     ui->map_container->show();
     this->map_container = ui->map_container;
     this->mc = new map_canvas(col, row);
-
     map_actions* ma = new map_actions(this, map);
     ui->map_container->installEventFilter(ma);
 }
@@ -43,6 +42,7 @@ Editor::Editor(QWidget *parent)
     ui->setupUi(this);
     initialize_tile_container();
     ui->map_scroll->setWidgetResizable(true);
+    this->tile_selected = NULL;
 }
 
 Editor::~Editor()
@@ -73,7 +73,7 @@ void Editor::update_container(tiles_container* container){
 void Editor::on_actionParedes_triggered()
 {
     tile_factory* factory = new wall_tile_factory();
-    tiles_container* container = new tiles_container(":/game_element/elementos_mapa/paredes.png", 8, 501, factory);
+    tiles_container* container = new tiles_container(":/game_element/elementos_mapa/paredes.png", 8, 490, factory);
     update_container(container);
 }
 

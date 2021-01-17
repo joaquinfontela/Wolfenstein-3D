@@ -23,7 +23,7 @@ bool map_actions::eventFilter(QObject *obj, QEvent *event){
            QMouseEvent* me = (QMouseEvent*)event;
            int x = me->localPos().x();
            int y = me->localPos().y();
-           paint_map(x,y);
+           add_to_map(x,y);
            return true;
         } else{
             return QObject::eventFilter(obj, event);
@@ -52,16 +52,61 @@ static std::vector<int> get_position(std::vector<int> coordinates){
     return position;
 }
 
-void map_actions::paint_map(int x, int y){
-    if(is_inside(x,y)){
+void map_actions::erase_panting(std::vector<int> position){
+    QRect rect_0(position[0]+1, position[1]+1, SIDE_SIZE-1, SIDE_SIZE-1);
+    this->map->tile_to_paint = new tile(":/varios/fondo_blanco.png", 0, false);
+    this->map->repaint(rect_0);
+}
+
+void map_actions::paint_big_tile(std::vector<int> position, tile* tile){
+    int tile_size = SIDE_SIZE-1;
+    QRect rect(position[0], position[1], tile_size, tile_size);
+    this->map->tile_to_paint = tile;
+    this->map->repaint(rect);
+}
+
+void map_actions::paint_multiple_tile(std::vector<int> position, std::vector<tile*> tiles){
+    int tile_size = SIDE_SIZE/2-1;
+
+    QRect rect_5(position[0], position[1], tile_size, tile_size);
+    this->map->tile_to_paint = tiles.at(0);
+    this->map->repaint(rect_5);
+
+    QRect rect_2(position[0]+tile_size, position[1]+tile_size, tile_size, tile_size);
+    this->map->tile_to_paint = tiles.at(1);
+    this->map->repaint(rect_2);
+
+    if(this->map->tiles_to_paint > 2){
+        QRect rect_3(position[0]+tile_size, position[1], tile_size, tile_size);
+        this->map->tile_to_paint = tiles.at(2);
+        this->map->repaint(rect_3);
+    } if(this->map->tiles_to_paint > 3){
+        QRect rect_4(position[0], position[1]+tile_size, tile_size, tile_size);
+        this->map->tile_to_paint = tiles.at(3);
+        this->map->repaint(rect_4);
+    }
+}
+
+void map_actions::paint_map(std::vector<int> coordinates){
+    std::vector<int> position = get_position(coordinates);
+    std::vector<tile*> tiles = this->editor->mc->tiles_at_coordinates(coordinates);
+    this->map->tiles_to_paint = tiles.size();
+    this->erase_panting(position);
+    if(this->map->tiles_to_paint == 1){
+        this->paint_big_tile(position, tiles[0]);
+    }else{
+        this->paint_multiple_tile(position, tiles);
+    }
+    this->map->tiles_to_paint = 0;
+}
+
+
+void map_actions::add_to_map(int x, int y){
+    if(is_inside(x,y) && editor->tile_selected != NULL){
         std::vector<int> coordinates = get_coordinate(x,y);
         tile* tile = this->editor->tile_selected;
-        if(this->editor->mc->paint_tile(coordinates[0]-1, coordinates[1]-1, tile)){
-            std::vector<int> position = get_position(coordinates);
-            QRect rect(position[0]+1, position[1]+1, SIDE_SIZE-2, SIDE_SIZE-2); //arreglar bordes segfault
-            this->map->print_tile = true;
-            this->map->repaint(rect);
-            this->map->print_tile = false;
+        if(this->editor->mc->paint_tile(coordinates, tile)){
+            this->paint_map(coordinates);
         }
     }
 }

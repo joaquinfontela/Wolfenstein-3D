@@ -9,9 +9,8 @@
 
 #define SIDE_SIZE 40
 
-my_map::my_map(int col, int row, Editor* editor)
+my_map::my_map(int col, int row)
 {
-    this->print_tile = false;
     float width = col*SIDE_SIZE;
     float height = row*SIDE_SIZE;
 
@@ -33,18 +32,17 @@ my_map::my_map(int col, int row, Editor* editor)
         float newV = i * SIDE_SIZE;
         painter.drawLine(0, newV-1, width, newV-1);
     }
-
-    this->editor = editor;
     this->setPixmap(pm);
+    tiles_to_paint = 0;
 }
 
 
 void my_map::paintEvent(QPaintEvent *event){
-    if(print_tile){
+    if(tiles_to_paint >= 1){
         QPainter painter(this);
         QRect rect = event->rect();
-        tile* tile = this->editor->tile_selected;
-        QImage tile_image = tile->get_image().scaled(SIDE_SIZE, SIDE_SIZE);
+        tile* tile = tile_to_paint;
+        QImage tile_image = tile->get_image();
         painter.drawImage(rect, tile_image);
     } else {
         QLabel::paintEvent(event);

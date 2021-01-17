@@ -8,12 +8,11 @@
 
 class my_map : public QLabel
 {
-    Editor* editor;
 
 public:
-
-    bool print_tile;
-    my_map(int col, int row, Editor* editor);
+    tile* tile_to_paint;
+    int tiles_to_paint;
+    my_map(int col, int row);
     void paintEvent(QPaintEvent *event) override;
     virtual ~my_map() {};
 };
