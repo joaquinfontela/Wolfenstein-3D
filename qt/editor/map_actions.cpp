@@ -52,7 +52,7 @@ static std::vector<int> get_position(std::vector<int> coordinates) {
 
 void map_actions::erase_panting(std::vector<int> position) {
   QRect rect_0(position[0] + 1, position[1] + 1, SIDE_SIZE - 1, SIDE_SIZE - 1);
-  this->map->tile_to_paint = new tile(":/fondo_blanco.png", 0, false);
+  this->map->tile_to_paint = new tile("./fondo_blanco.png", 0, false);
   this->map->repaint(rect_0);
 }
 

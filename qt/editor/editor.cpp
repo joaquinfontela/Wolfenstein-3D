@@ -60,31 +60,31 @@ void Editor::update_container(tiles_container* container) {
 void Editor::on_actionParedes_triggered() {
   tile_factory* factory = new wall_tile_factory();
   tiles_container* container =
-      new tiles_container(":/elementos_mapa/paredes.png", 8, 490, factory);
+      new tiles_container("./elementos_mapa/paredes.png", 8, 490, factory);
   update_container(container);
 }
 
 void Editor::on_actionPuertas_triggered() {
   tile_factory* factory = new door_tile_factory();
   tiles_container* container =
-      new tiles_container(":/elementos_mapa/paredes.png", 8, 501, factory);
+      new tiles_container("./elementos_mapa/paredes.png", 8, 501, factory);
   update_container(container);
 }
 
 void Editor::on_actionBorrador_triggered() {
-  this->tile_selected = new tile(":/fondo_blanco.png", 0, false);
+  this->tile_selected = new tile("./fondo_blanco.png", 0, false);
 }
 
 void Editor::on_actionDecoraciones_triggered() {
   tile_factory* factory = new decoration_tile_factory();
   tiles_container* container =
-      new tiles_container(":/elementos_mapa/paredes.png", 8, 501, factory);
+      new tiles_container("./elementos_mapa/paredes.png", 8, 501, factory);
   update_container(container);
 }
 
 void Editor::on_actionItems_triggered() {
   tile_factory* factory = new item_tile_factory();
   tiles_container* container =
-      new tiles_container(":/elementos_mapa/paredes.png", 8, 501, factory);
+      new tiles_container("./elementos_mapa/paredes.png", 8, 501, factory);
   update_container(container);
 }

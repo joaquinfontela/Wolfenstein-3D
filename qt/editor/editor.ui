@@ -163,7 +163,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/new_icon.png</normaloff>:/icons/iconos/new_icon.png</iconset>
+     <normaloff>./iconos/new_icon.png</normaloff>./iconos/new_icon.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -172,7 +172,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/open_icon.png</normaloff>:/icons/iconos/open_icon.png</iconset>
+     <normaloff>./iconos/open_icon.png</normaloff>./iconos/open_icon.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -181,7 +181,7 @@
   <action name="actionsafe">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/save_icon.png</normaloff>:/icons/iconos/save_icon.png</iconset>
+     <normaloff>./iconos/save_icon.png</normaloff>./iconos/save_icon.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -190,7 +190,7 @@
   <action name="actionCopy">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/copy_icon.png</normaloff>:/icons/iconos/copy_icon.png</iconset>
+     <normaloff>./iconos/copy_icon.png</normaloff>./iconos/copy_icon.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -202,7 +202,7 @@
   <action name="actionPaste">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/paste_icon.png</normaloff>:/icons/iconos/paste_icon.png</iconset>
+     <normaloff>./iconos/paste_icon.png</normaloff>./iconos/paste_icon.png</iconset>
    </property>
    <property name="text">
     <string>Paste</string>
@@ -214,7 +214,7 @@
   <action name="actionUndo">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/undo_icon.png</normaloff>:/icons/iconos/undo_icon.png</iconset>
+     <normaloff>./iconos/undo_icon.png</normaloff>./iconos/undo_icon.png</iconset>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -226,7 +226,7 @@
   <action name="actionRedo">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/redo_icon.png</normaloff>:/icons/iconos/redo_icon.png</iconset>
+     <normaloff>./iconos/redo_icon.png</normaloff>./iconos/redo_icon.png</iconset>
    </property>
    <property name="text">
     <string>Redo</string>
@@ -238,7 +238,7 @@
   <action name="actionEXIT">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/quit_icon.png</normaloff>:/icons/iconos/quit_icon.png</iconset>
+     <normaloff>./iconos/quit_icon.png</normaloff>./iconos/quit_icon.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -247,7 +247,7 @@
   <action name="actionSave_and_exit">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/save_and_quit_icon.png</normaloff>:/icons/iconos/save_and_quit_icon.png</iconset>
+     <normaloff>./iconos/save_and_quit_icon.png</normaloff>./iconos/save_and_quit_icon.png</iconset>
    </property>
    <property name="text">
     <string>Save and exit</string>
@@ -292,7 +292,7 @@
   <action name="actionZoom_in">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/zoom_in_icon.png</normaloff>:/icons/iconos/zoom_in_icon.png</iconset>
+     <normaloff>./iconos/zoom_in_icon.png</normaloff>./iconos/zoom_in_icon.png</iconset>
    </property>
    <property name="text">
     <string>Zoom in</string>
@@ -301,7 +301,7 @@
   <action name="actionZoom_out">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/icons/iconos/zoom_out_icon.png</normaloff>:/icons/iconos/zoom_out_icon.png</iconset>
+     <normaloff>./iconos/zoom_out_icon.png</normaloff>./iconos/zoom_out_icon.png</iconset>
    </property>
    <property name="text">
     <string>Zoom out</string>

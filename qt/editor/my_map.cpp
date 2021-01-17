@@ -14,7 +14,7 @@ my_map::my_map(int col, int row) {
   float width = col * SIDE_SIZE;
   float height = row * SIDE_SIZE;
 
-  QImage image("tp-final/qt/editor/fondo_blanco.png");
+  QImage image("./fondo_blanco.png");
   QPixmap pm = QPixmap::fromImage(image).scaled(width, height);
 
   QPainter painter(&pm);
