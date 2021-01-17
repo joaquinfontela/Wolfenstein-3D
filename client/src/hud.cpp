@@ -14,9 +14,9 @@
 #define SIZE 25
 #define FACES_PER_IMG 3
 #define GUNS_IN_HUD 5
-#define FRAMES_PER_GUN_ANIMATION 20
+#define FRAMES_PER_GUN_ANIMATION 25
 #define FRAMES_PER_MOVEMENT 20
-#define GUN_SLICES FRAMES_PER_GUN_ANIMATION/4
+#define GUN_SLICES FRAMES_PER_GUN_ANIMATION/5
 
 void Hud::update() {
   this->renderGun();
@@ -38,7 +38,8 @@ void Hud::renderKey() {
   this->window->getWindowSize(&x, &y);
   int width, height;
   this->manager.getTextureSizeWithId(HUDKEY, &width, &height);
-  area.update((x * 547)/ 720.0, (517 * y) / 600.0, ((x >> 6) << 2) / 3, ((y >> 4) << 2) / 3);
+  //area.update((x * 547)/ 720.0, (517 * y) / 600.0, ((x >> 6) << 2) / 3, ((y >> 4) << 2) / 3);
+  area.update((x * 547)/ 720.0, (517 * y) / 600.0, (x >> 4) / 3, (y >> 2) / 3);
   this->manager.renderAll(HUDKEY, area);
 }
 
@@ -177,7 +178,7 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   height = width * aspectRatio;
   y -= (y + height) >> 1;
   x -= (x + width) >> 1;
-  area.update(x + dx, (18 * y) /25 + dy, width , height);
+  area.update(x + dx, (y * 120) / 91 + dy, width , height);
   this->gun->renderActualFrame(area, GUNSPRITESROW);
 }
 
