@@ -107,6 +107,9 @@
 #define BRICKWALL 65
 #define PURPLEWALL 66
 #define HUDKEY 67
+#define ROCKETLAUNCHERITEM 68
+#define FLYINGMISSILE 69
+#define EXPLOSION 70
 
 #define CLOSED 'c'
 #define CLOSING 'C'
