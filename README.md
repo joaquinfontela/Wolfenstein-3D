@@ -11,7 +11,7 @@
 # Requisitos
 
 ```
-sudo apt-get install libsdl2-dev && sudo apt-get install libsdl2-image-dev -y && sudo apt-get install libsdl2-mixer-dev -y && sudo apt-get install libsdl2-ttf-dev -y
+sudo apt-get install libsdl2-dev && sudo apt-get install libsdl2-image-dev -y && sudo apt-get install libsdl2-mixer-dev -y && sudo apt-get install libsdl2-ttf-dev -y && sudo apt-get install qt5-default
 cmake
 makefile
 ```
