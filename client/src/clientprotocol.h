@@ -103,6 +103,10 @@
 #define VEINS 61
 #define WATER 62
 #define WELL 63
+#define MOSSY 64
+#define BRICKWALL 65
+#define PURPLEWALL 66
+#define HUDKEY 67
 
 #define CLOSED 'c'
 #define CLOSING 'C'

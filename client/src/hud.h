@@ -38,6 +38,7 @@ class Hud {
   void renderGunWithShifts(int dx = 0, int dy = 0, int updatefreq = 16);
   void renderGunWithMovement();
   void renderBorder();
+  void renderKey();
   void renderBullets();
   void updateGunId();
  public:

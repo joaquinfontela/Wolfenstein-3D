@@ -26,9 +26,20 @@ void Hud::update() {
   this->renderHealth();
   this->renderScore();
   this->renderFace();
+  this->renderKey();
   this->renderBullets();
   this->renderTypeOfGun();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::renderKey() {
+  if (!player->hasKey()) return;
+  int x, y;
+  this->window->getWindowSize(&x, &y);
+  int width, height;
+  this->manager.getTextureSizeWithId(HUDKEY, &width, &height);
+  area.update((x * 547)/ 720.0, (517 * y) / 600.0, ((x >> 6) << 2) / 3, ((y >> 4) << 2) / 3);
+  this->manager.renderAll(HUDKEY, area);
 }
 
 void Hud::renderScore() {

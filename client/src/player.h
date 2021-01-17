@@ -8,7 +8,7 @@ class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
   Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX),
-  planeY(planeY), playerID(id), health(100), lives(2), moving(false), bullets(8) {}
+  planeY(planeY), playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false) {}
 
   ~Player() {}
   Player(PlayerData& info);
@@ -26,6 +26,7 @@ class Player : public Drawable {
   void stopMoving();
   bool hasThisUniqueId(int otherid) override;
   bool isSprite() override;
+  bool hasKey();
 
   int playerID;
   int weaponId;
@@ -40,6 +41,7 @@ class Player : public Drawable {
   bool moving;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
+  bool hasTheKey;
   Area srcArea, destArea;
   bool shooting;
 };

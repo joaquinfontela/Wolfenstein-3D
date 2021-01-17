@@ -3,6 +3,11 @@
 #include <math.h>
 #include <iostream>
 
+bool Player::hasKey() {
+  return true;
+  //return this->hasTheKey;
+}
+
 bool Player::isSprite() {
   return false;
 }
