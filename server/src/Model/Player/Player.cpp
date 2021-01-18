@@ -121,7 +121,8 @@ double Player::calculateDistanceTo(Player* p) {
 
 bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
 
-int Player::takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis) {
+int Player::takeDamage(unsigned int damage,
+                       WaitingQueue<Notification*>& notis) {
   this->hasToBeNotified = true;
 
   if (damage >= this->health) {

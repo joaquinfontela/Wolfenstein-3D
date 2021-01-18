@@ -14,16 +14,16 @@ tile* wall_tile_factory::get_tile(std::vector<int>& coordinates) {
   int tipo;
   if (col == 1 && row == 1) {
     path = "./elementos_mapa/paredes/PARED_PIEDRA.png";
-    tipo = 1;
+    tipo = 302;
   } else if (col == 1 && row == 2) {
     path = "./elementos_mapa/paredes/PARED_MADERA_CLARA.png";
-    tipo = 2;
+    tipo = 304;
   } else if (col == 1 && row == 3) {
     path = "./elementos_mapa/paredes/PARED_AZUL_OSCURA_+.png";
-    tipo = 3;
+    tipo = 301;
   } else if (col == 1 && row == 4) {
     path = "./elementos_mapa/paredes/PARED_MIX_PIEDRA_CLARA.png";
-    tipo = 4;
+    tipo = 303;
   } else if (col == 1 && row == 5) {
     path = "./elementos_mapa/paredes/PARED_METAL_CLARA.png";
     tipo = 5;
