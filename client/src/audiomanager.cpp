@@ -1,4 +1,5 @@
 #include "sdlexception.h"
+#include "clientprotocol.h"
 #include "audiomanager.h"
 #include <vector>
 #include <string>
@@ -24,7 +25,7 @@ AudioManager::~AudioManager() {
 }
 
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
-  Audio* audio = new Audio((AUDIO_PATH + name).c_str());
+  Audio* audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
   if (audio == NULL) {
     return false;
   }

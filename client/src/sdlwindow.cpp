@@ -22,12 +22,13 @@ SdlWindow::SdlWindow(int width, int height) :
       &this->window, &this->renderer)) {
     throw SdlException(SDL_WINDOW_INIT_ERROR, SDL_GetError());
   }
-  if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
+  if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 8, 2024) < 0) {
     throw SdlException(Mix_GetError());
   }
   if (!(ceilingPixel = new SdlTexture(IMG_PATH "ceiling.png", *this))) {
     throw SdlException(SDL_CEILING_INIT_ERROR, SDL_GetError());
   }
+  Mix_AllocateChannels(32);
   SDL_SetWindowTitle(this->window, GAME_TITLE);
   SDL_Surface* icon = IMG_Load(IMG_PATH GAME_LOGO);
   SDL_SetWindowIcon(this->window,icon);

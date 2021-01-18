@@ -47,6 +47,9 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
 
 void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
+  Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC);
+  eyeofthetiger.volumeUp();
+  eyeofthetiger.play();
   while (alive) {
     try {
       uint32_t opcode;

@@ -4,14 +4,20 @@
 #include <string>
 #include <SDL2/SDL_mixer.h>
 
+union Sound {
+  Mix_Music* music;
+  Mix_Chunk* chunk;
+};
+
 class Audio {
  private:
-  Mix_Music* audio;
+  union Sound audio;
+  bool isMusic;
   int volume;
  public:
   void volumeDownWithDist(double dist);
   void volumeUp();
-  Audio(const char* name);
+  Audio(const char* name, bool isMusic);
   ~Audio();
   void play();
   void stop();

@@ -7,39 +7,68 @@
 #include "clientprotocol.h"
 
 Audio::~Audio() {
-  Mix_FreeMusic(this->audio);
+  if (isMusic)
+    Mix_FreeMusic(this->audio.music);
+  else
+    Mix_FreeChunk(this->audio.chunk);
 }
 
 void Audio::volumeDownWithDist(double dist) {
   this->volume = floor(17.0/(log(dist)));
-  Mix_VolumeMusic(this->volume); // Máx 128.
+  if (isMusic)
+    Mix_VolumeMusic(this->volume); // Máx 128.
+  else
+    Mix_VolumeChunk(this->audio.chunk, this->volume); // Máx 128.
 }
 
 void Audio::play() {
   //if (!Mix_PlayingMusic())
-    Mix_PlayMusic(this->audio, TIMES_THE_AUDIO_IS_PLAYED);
+  if (isMusic) {
+    std::cout << "en la musik " << sizeof(this->audio) << "\n";
+    Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
+    std::cout << "en la musik\n";
+  } else {
+    Mix_PlayChannel(-1, this->audio.chunk, 0);
   //else if (Mix_PausedMusic())
   //  Mix_ResumeMusic();
+  }
 }
 
 void Audio::playWithMaxVolume() {
-  Mix_VolumeMusic(MIX_MAX_VOLUME);
-  this->play();
-  Mix_VolumeMusic(this->volume);
+  if (isMusic) {
+    Mix_VolumeMusic(MIX_MAX_VOLUME);
+    this->play();
+    Mix_VolumeMusic(this->volume);
+  } else {
+    Mix_VolumeChunk(this->audio.chunk, MIX_MAX_VOLUME);
+    this->play();
+    Mix_VolumeChunk(this->audio.chunk, this->volume);
+  }
 }
 
 void Audio::stop(){
-  if (!Mix_PlayingMusic())
-    Mix_PauseMusic();
+  if (!Mix_PlayingMusic()) Mix_PauseMusic();
 }
 
 void Audio::volumeUp() {
-  Mix_VolumeMusic(this->volume); // Máx 128.
   this->volume += 3;
+  if (isMusic)
+    Mix_VolumeMusic(this->volume); // Máx 128.
+  else
+    Mix_VolumeChunk(this->audio.chunk, this->volume); // Máx 128.
 }
 
-Audio::Audio(const char* name) : volume(30) {
-  if (!(this->audio = Mix_LoadMUS(name))) {
+Audio::Audio(const char* name, bool isMusic) : isMusic(isMusic) {
+  memset(&this->audio, 0, sizeof(this->audio));
+  if (isMusic) {
+    volume = 1;
+    if (!(this->audio.music = Mix_LoadMUS(name))) {
+      throw SdlException(Mix_GetError());
+    }
+    Mix_VolumeChunk(this->audio.chunk, this->volume);
+  } else if (!(this->audio.chunk = Mix_LoadWAV(name))) {
     throw SdlException(Mix_GetError());
+  } else {
+    volume = 30;
   }
 }

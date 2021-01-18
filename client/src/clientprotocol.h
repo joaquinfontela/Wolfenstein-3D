@@ -7,6 +7,7 @@
 // Apply bit masks to facilitate the sound selection.
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
+#define IS_MUSIC true
 
 #define GET_WEAPON_SOUND(X) X
 
