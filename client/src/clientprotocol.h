@@ -17,6 +17,7 @@
 #define CHAINGUN_SOUND 4
 //#define ROCKETLAUNCHER_SOUND 5
 #define DOOR_SOUND 5
+#define PICKUP_SOUND 6
 
 #define KNIFE 1
 #define PISTOL 2

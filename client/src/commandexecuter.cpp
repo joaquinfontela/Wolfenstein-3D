@@ -39,6 +39,7 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
     if ((*it)->hasThisUniqueId(itemId)) {
       delete (*it);
       this->sprites.erase(it);
+      this->audiomanager.playWithId(PICKUP_SOUND);
       break;
     }
   }

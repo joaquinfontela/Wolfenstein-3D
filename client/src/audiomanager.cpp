@@ -38,7 +38,8 @@ AudioManager::AudioManager() {
                                    "Pistol.wav", // 2
                                    "Machine Gun.wav", // 3
                                    "Gatling Gun.wav", //4
-                                   "Door.wav" // 5
+                                   "Door.wav", // 5
+                                   "ItemPickup.wav" // 6
                                   });
   int i = 1;
   for (std::string& name : names) {
