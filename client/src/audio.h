@@ -17,7 +17,7 @@ class Audio {
  public:
   void volumeDownWithDist(double dist);
   void volumeUp();
-  Audio(const char* name, bool isMusic);
+  Audio(const char* name, bool isMusic, int volume = 30);
   ~Audio();
   void play();
   void stop();

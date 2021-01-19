@@ -26,6 +26,7 @@ void Audio::play() {
   if (isMusic) {
     Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
   } else {
+    std::cout << "volume: " << this->volume << "\n";
     Mix_PlayChannel(-1, this->audio.chunk, 0);
   //else if (Mix_PausedMusic())
   //  Mix_ResumeMusic();
@@ -56,17 +57,14 @@ void Audio::volumeUp() {
     Mix_VolumeChunk(this->audio.chunk, this->volume); // Máx 128.
 }
 
-Audio::Audio(const char* name, bool isMusic) : isMusic(isMusic) {
+Audio::Audio(const char* name, bool isMusic, int volume) : isMusic(isMusic), volume(volume) {
   memset(&this->audio, 0, sizeof(this->audio));
   if (isMusic) {
-    volume = 1;
     if (!(this->audio.music = Mix_LoadMUS(name))) {
       throw SdlException(Mix_GetError());
     }
     Mix_VolumeChunk(this->audio.chunk, this->volume);
   } else if (!(this->audio.chunk = Mix_LoadWAV(name))) {
     throw SdlException(Mix_GetError());
-  } else {
-    volume = 30;
   }
 }

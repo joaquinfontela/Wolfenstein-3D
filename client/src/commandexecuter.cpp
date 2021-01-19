@@ -34,7 +34,8 @@ void CommandExecuter::playShootingSounds(int shooterId) {
 
 void CommandExecuter::playDoorOpeningSound(int x, int y) {
   double dist = players.at(this->selfId)->calculateDist(x, y);
-  this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist);
+  if (dist < 0) dist = 1;
+  this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist*10);
 }
 
 void CommandExecuter::removeSpriteWithId(int itemId) {
@@ -54,7 +55,7 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
 
 void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
-  Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC);
+  Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
   eyeofthetiger.volumeUp();
   eyeofthetiger.play();
   while (alive) {
