@@ -24,9 +24,7 @@ void Audio::volumeDownWithDist(double dist) {
 void Audio::play() {
   //if (!Mix_PlayingMusic())
   if (isMusic) {
-    std::cout << "en la musik " << sizeof(this->audio) << "\n";
     Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
-    std::cout << "en la musik\n";
   } else {
     Mix_PlayChannel(-1, this->audio.chunk, 0);
   //else if (Mix_PausedMusic())
