@@ -4,11 +4,18 @@
 
 #include "audio.h"
 #include "commandexecuter.h"
+#include "texturemanager.h"
 #include "../../common/includes/Map/Map.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
 #include "clientprotocol.h"
+
+CommandExecuter::CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
+                std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
+                AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
+socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
+selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
 
 void CommandExecuter::loadNewTexture(uint32_t x, uint32_t y,
                                      uint32_t yamlId, uint32_t uniqueId) {
@@ -38,7 +45,7 @@ void CommandExecuter::playDoorOpeningSound(int x, int y) {
   this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist*10);
 }
 
-void CommandExecuter::removeSpriteWithId(int itemId) {
+void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
   this->lock.lock();
   std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
   std::vector<Drawable*>::iterator it = this->sprites.begin();
@@ -61,6 +68,22 @@ void CommandExecuter::renderMovingSprite(double x, double y, uint32_t itemId) {
       (*it)->y = y;
       break;
     }
+  }
+}
+
+void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
+  uint32_t x = INT_MAX;
+  uint32_t y = INT_MAX;
+  std::vector<Drawable*>::iterator it = this->sprites.begin();
+  for (; it != this->sprites.end(); ++it) {
+    if ((*it)->hasThisUniqueId(itemId)) {
+      x = (*it)->x;
+      y = (*it)->y;
+      break;
+    }
+  }
+  if (x == INT_MAX || y == INT_MAX) {
+    std::cerr << "Error, no missile texture to explode found." << std::endl;
   }
 }
 
@@ -129,14 +152,15 @@ void CommandExecuter::run() {
         std::cout<<"[GAME] Droping item with id: " << uniqueId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->loadNewTexture(x, y, yamlId, uniqueId);
       } else if (opcode == ELEMENT_SWITCH_POSITION) {
-        double x = infogetter.receiveDouble();
-        double y = infogetter.receiveDouble();
         uint32_t uniqueId;
         this->socket.receive(&uniqueId, sizeof(uniqueId));
+        double x = infogetter.receiveDouble();
+        double y = infogetter.receiveDouble();
         this->renderMovingSprite(x, y, uniqueId);
       } else if (opcode == MISSILE_EXPLOTION) {
         uint32_t uniqueId;
         this->socket.receive(&uniqueId, sizeof(uniqueId));
+        this->renderExplosionAnimation(uniqueId);
       }
     } catch (SocketException& e) {
       break;
