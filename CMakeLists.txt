@@ -84,7 +84,6 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Game/Game.cpp
 
         common/src/YAML/YAMLMapReader.cpp
-        common/src/YAML/YAMLMapWriter.cpp
         common/src/YAML/YAMLConfigReader.cpp
 
         server/src/Model/Item/Weapon/Weapon.cpp

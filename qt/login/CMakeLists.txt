@@ -15,7 +15,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
-	main.cpp
+        main.cpp
         login.cpp
         login.h
         login.ui
@@ -26,9 +26,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
     )
 else()
-    add_executable(Login
-       ${PROJECT_SOURCES}
-    )
+    if(ANDROID)
+        add_library(Login SHARED
+            ${PROJECT_SOURCES}
+        )
+    else()
+        add_executable(Login
+            ${PROJECT_SOURCES}
+        )
+    endif()
 endif()
 
 target_link_libraries(Login PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

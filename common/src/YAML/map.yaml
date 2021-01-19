@@ -7,7 +7,7 @@ item id end: 109
 door id start: 201
 door id end: 202
 wall id start: 301
-wall id end: 354
+wall id end: 358
 respawn locations: [[4, 4], [24, 24], [4, 24], [14, 15]]
 3: [[3, 22]]
 4: [[3, 9]]
@@ -26,4 +26,4 @@ respawn locations: [[4, 4], [24, 24], [4, 24], [14, 15]]
 # 1: knife, 2: pistol: 3: machine gun, 4: minigun, 5: rocket launcher
 # 101: ammo, 102: blood, 103: chest, 104: cross, 105: crown, 106: cup, 107: food, 108: key, 109: kit
 # 201: unlockable door, 202: lockable door
-# 301: blue wall, 302: grey wall, 303: rock wall, 304: wooden wall, 305: mossy, 306: skeleton wall, 307: red brick wall  (all true walls, from 351-354 same texture but fake walls).
+# 301: blue wall, 302: grey wall, 303: rock wall, 304: wooden wall, 305: mossy, 306: skeleton wall, 307: red brick wall, 308: purple wall  (all true walls, from 351-358 same texture but fake walls).
