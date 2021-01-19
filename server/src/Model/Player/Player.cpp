@@ -22,16 +22,16 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
       key(false),
       score(0),
-      x(3.0),
-      y(3.0),
       dirX(-1),
       dirY(0),
       rotSpeed(0.0),
       moveSpeed(0.0),
       hasToBeNotified(false),
       map(map) {
+        
   this->playerID = playerID;
-  map.addPlayer(6, 4, this);
+  std::tie(this->x, this->y) = map.handleRespawn();
+  map.addPlayer(this->x, this->y, this);
   weapons.push_back(
       weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(
