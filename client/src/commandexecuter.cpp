@@ -10,6 +10,12 @@
 #include "../../common/includes/protocol.h"
 #include "clientprotocol.h"
 
+void CommandExecuter::loadNewTexture(uint32_t x, uint32_t y,
+                                     uint32_t yamlId, uint32_t uniqueId) {
+  unsigned int itemId = this->loader.convertYamlFileItemIdToProtocolItemSkinId(yamlId);
+  this->sprites.push_back(new Drawable(y, x, itemId, uniqueId));
+}
+
 CommandExecuter::~CommandExecuter(){
   /*for (iterator_t it = this->players.begin(); it != this->players.end(); ++it){
     delete it->second;
@@ -102,6 +108,14 @@ void CommandExecuter::run() {
         this->socket.receive(&itemId, sizeof(itemId));
         std::cout<<"[GAME] Picking up item with id: " << itemId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->removeSpriteWithId(itemId);
+      } else if (opcode == PLAYER_DROP_ITEM) {
+        uint32_t x, y, yamlId, uniqueId;
+        this->socket.receive(&x, sizeof(x));
+        this->socket.receive(&y, sizeof(y));
+        this->socket.receive(&yamlId, sizeof(yamlId));
+        this->socket.receive(&uniqueId, sizeof(uniqueId));
+        std::cout<<"[GAME] Droping item with id: " << uniqueId << ", there are: " << sprites.size() << " items left." << std::endl;
+        this->loadNewTexture(x, y, yamlId, uniqueId);
       }
     } catch (SocketException& e) {
       break;

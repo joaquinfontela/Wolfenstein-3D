@@ -8,6 +8,7 @@
 
 #include "player.h"
 #include "audiomanager.h"
+#include "ClientMapLoader.h"
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
 #include "../../common/includes/Map/Map.h"
@@ -18,13 +19,14 @@ typedef std::map<uint32_t,Player*>::iterator iterator_t;
 class CommandExecuter : public Thread {
  public:
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
-                  std::map<uint32_t,Player*>& players,
-                  std::mutex& lock, int selfId, AudioManager& audiomanager, Map& matrix) :
-  socket(s) , alive(alive) , sprites(sprites), players(players) ,
-  lock(lock) , selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) {}
+                  std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
+                  AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
+  socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
+  selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
   ~CommandExecuter();
   void run();
  private:
+  void loadNewTexture(uint32_t x, uint32_t y, uint32_t yamlId, uint32_t uniqueId);
   void removeSpriteWithId(int itemId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
@@ -36,6 +38,7 @@ class CommandExecuter : public Thread {
   int selfId;
   AudioManager& audiomanager;
   Map& matrix;
+  ClientMapLoader& loader;
 };
 
 #endif  // COMMANDEXECUTER_H_

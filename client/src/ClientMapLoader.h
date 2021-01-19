@@ -12,6 +12,7 @@ typedef std::vector<std::vector<int>> WallIdMatrix;
 class ClientMapLoader {
  public:
   ClientMapLoader(std::string& yamlFile, unsigned int dimx, unsigned int dimy);
+  unsigned int convertYamlFileItemIdToProtocolItemSkinId(int yamlFileId);
   int* getWallIdMatrix();
   std::vector<Drawable*> getDrawableItemList();
   unsigned int dimx, dimy;
@@ -23,7 +24,6 @@ class ClientMapLoader {
   bool idIsInCoordinateMap(std::map<int, std::vector<Coordinate>>& coordinateMap,
                            int itemId);
   unsigned int convertYamlFileWallIdToProtocolWallSkinId(int yamlFileId);
-  unsigned int convertYamlFileItemIdToProtocolItemSkinId(int yamlFileId);
 };
 
 #endif  // CLIENTMAPLOADER_H_

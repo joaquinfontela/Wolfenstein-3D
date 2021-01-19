@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id, audios, matrix);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, id, audios, matrix, loader);
 
   try {
     worker->start();
