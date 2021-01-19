@@ -5,7 +5,7 @@ class Food : public Item {
   int healthSumWhenPickedUp;
 
  public:
-  Food(int id, int healthSumWhenPickedUp);
+  Food(int itemID, int id, int healthSumWhenPickedUp);
   ~Food();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

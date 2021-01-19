@@ -51,9 +51,19 @@ void Map::addAmmoDropAt(int x, int y) {
   this->tileMatrix[y - 1][x - 1].addAmmoDrop();
 }
 
+void Map::addAmmoDropAt(int x, int y, WaitingQueue<Notification*>& notis) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[y - 1][x - 1].addAmmoDrop(x, y, notis);
+}
+
 void Map::addKeyDropAt(int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
   this->tileMatrix[y - 1][x - 1].addKeyDrop();
+}
+
+void Map::addKeyDropAt(int x, int y, WaitingQueue<Notification*>& notis) {
+  this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
+  this->tileMatrix[y - 1][x - 1].addKeyDrop(x, y, notis);
 }
 
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {

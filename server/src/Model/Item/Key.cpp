@@ -2,7 +2,7 @@
 
 
 
-Key::Key(int id) : Item(id){}
+Key::Key(int itemID, int id) : Item(itemID, id){}
 
 bool Key::canBePickedUpBy(Player* p){
   return true;

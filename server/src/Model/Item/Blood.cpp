@@ -1,8 +1,8 @@
 #include "../../../includes/Model/Item/Blood.h"
 #include <iostream>
 
-Blood::Blood(int id, int healthSumWhenPickedUp, int maxHealthToPickUp)
-    : Item(id) {
+Blood::Blood(int itemID, int id, int healthSumWhenPickedUp, int maxHealthToPickUp)
+    : Item(itemID, id) {
   this->healthSumWhenPickedUp = healthSumWhenPickedUp;
   this->maxHealthToPickUp = maxHealthToPickUp;
 }

@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Cross.h"
 
-Cross::Cross(int id, int pointsSumWhenPickedUp) : Item(id) {
+Cross::Cross(int itemID, int id, int pointsSumWhenPickedUp) : Item(itemID, id) {
   this->pointsSumWhenPickedUp = pointsSumWhenPickedUp;
 }
 

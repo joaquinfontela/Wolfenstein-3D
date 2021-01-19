@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Kit.h"
 
-Kit::Kit(int id, int healthSumWhenPickedUp) : Item(id) {
+Kit::Kit(int itemID, int id, int healthSumWhenPickedUp) : Item(itemID, id) {
   this->healthSumWhenPickedUp = healthSumWhenPickedUp;
 }
 

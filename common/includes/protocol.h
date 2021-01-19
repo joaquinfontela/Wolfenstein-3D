@@ -15,6 +15,7 @@
 #define PLAYER_SCORE_UPDATE 11
 #define PLAYER_UPDATE_PACKAGE 12
 #define PLAYER_PICKUP_ITEM 13
+#define PLAYER_DROP_ITEM 14
 
 /*// PowerUp ID definitions
 #define FOOD 30

@@ -9,7 +9,7 @@ class Blood : public Item {
   int maxHealthToPickUp;
 
  public:
-  Blood(int id, int healthSumWhenPickedUp, int maxHealthToPickUp);
+  Blood(int itemID, int id, int healthSumWhenPickedUp, int maxHealthToPickUp);
   bool canBePickedUpBy(Player* p);
   void pickUp(Player* p);
 };

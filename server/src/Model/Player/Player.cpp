@@ -28,7 +28,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       moveSpeed(0.0),
       hasToBeNotified(false),
       map(map) {
-        
+
   this->playerID = playerID;
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
@@ -97,11 +97,11 @@ int Player::handleDeath(WaitingQueue<Notification*>& notis) {
     return -1;
   }
 
-  map.addAmmoDropAt(this->y + 1, this->x + 1);
+  map.addAmmoDropAt(this->y + 1, this->x + 1, notis);
   this->respawn(notis);
   if (this->key) {
     this->key = false;
-    map.addKeyDropAt(this->y + 1, this->x + 1);
+    map.addKeyDropAt(this->y + 1, this->x + 1, notis);
   }
 
   this->lifeRemaining -= 1;

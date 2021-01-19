@@ -8,7 +8,7 @@ class Key : public Item{
 
 public:
 
-  Key(int id);
+  Key(int itemID, int id);
   bool canBePickedUpBy(Player* p);
   void pickUp(Player* p);
 };

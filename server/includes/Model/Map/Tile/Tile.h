@@ -6,6 +6,7 @@
 #include "../../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../../Control/Notification/Notification.h"
 #include "../../../Control/Notification/PlayerPickUpItem.h"
+#include "../../../Control/Notification/PlayerDropItem.h"
 #include "../../Door/Door.h"
 #include "../../Item/Item.h"
 #include "../../Item/Weapon/Weapon.h"
@@ -39,6 +40,9 @@ class Tile {
 
   void addAmmoDrop();
   void addKeyDrop();
+
+  void addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis);
+  void addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis);
 
   // Guns within the Tile will be added to the Players inventory if he does not
   // currently own the weapon.

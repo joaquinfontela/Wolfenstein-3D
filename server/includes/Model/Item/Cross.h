@@ -5,7 +5,7 @@ class Cross : public Item {
   int pointsSumWhenPickedUp;
 
  public:
-  Cross(int id, int pointsSumWhenPickedUp);
+  Cross(int itemID, int id, int pointsSumWhenPickedUp);
   ~Cross();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

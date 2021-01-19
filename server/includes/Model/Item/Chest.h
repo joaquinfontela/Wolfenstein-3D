@@ -8,7 +8,7 @@ class Chest : public Item {
   int pointsSumWhenPickedUp;
 
  public:
-  Chest(int id, int pointsSumWhenPickedUp);
+  Chest(int itemID, int id, int pointsSumWhenPickedUp);
   ~Chest();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

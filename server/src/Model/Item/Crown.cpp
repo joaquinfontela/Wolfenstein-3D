@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Crown.h"
 
-Crown::Crown(int id, int pointsSumWhenPickedUp) : Item(id) {
+Crown::Crown(int itemID, int id, int pointsSumWhenPickedUp) : Item(itemID, id) {
   this->pointsSumWhenPickedUp = pointsSumWhenPickedUp;
 }
 

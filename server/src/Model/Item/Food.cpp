@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Food.h"
 
-Food::Food(int id, int healthSumWhenPickedUp) : Item(id) {
+Food::Food(int itemID, int id, int healthSumWhenPickedUp) : Item(itemID, id) {
   this->healthSumWhenPickedUp = healthSumWhenPickedUp;
 }
 

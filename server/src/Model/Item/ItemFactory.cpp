@@ -21,46 +21,46 @@ ItemFactory::ItemFactory(std::string& configFileName)
 Item* ItemFactory::getItem(int itemTypeId, int uniqueId) {
   switch (itemTypeId) {
     case 101:
-      return new Ammo(uniqueId);
+      return new Ammo(itemTypeId, uniqueId);
       break;
 
     case 102:
-      return new Blood(
+      return new Blood(itemTypeId,
           uniqueId, yamlConfigReader.getHealthSumWhenPickingUpItem(102),
           yamlConfigReader.getMaxHealthToBeAbleToPickUpBloodItem());
       break;
 
     case 103:
-      return new Chest(uniqueId,
+      return new Chest(itemTypeId, uniqueId,
                        yamlConfigReader.getPointsSumWhenPickingUpItem(103));
       break;
 
     case 104:
-      return new Cross(uniqueId,
+      return new Cross(itemTypeId, uniqueId,
                        yamlConfigReader.getPointsSumWhenPickingUpItem(104));
       break;
 
     case 105:
-      return new Crown(uniqueId,
+      return new Crown(itemTypeId, uniqueId,
                        yamlConfigReader.getPointsSumWhenPickingUpItem(105));
       break;
 
     case 106:
-      return new Cup(uniqueId,
+      return new Cup(itemTypeId, uniqueId,
                      yamlConfigReader.getPointsSumWhenPickingUpItem(106));
       break;
 
     case 107:
-      return new Food(uniqueId,
+      return new Food(itemTypeId, uniqueId,
                       yamlConfigReader.getHealthSumWhenPickingUpItem(107));
       break;
 
     case 108:
-      return new Key(uniqueId);
+      return new Key(itemTypeId, uniqueId);
       break;
 
     case 109:
-      return new Kit(uniqueId,
+      return new Kit(itemTypeId, uniqueId,
                      yamlConfigReader.getHealthSumWhenPickingUpItem(109));
       break;
 

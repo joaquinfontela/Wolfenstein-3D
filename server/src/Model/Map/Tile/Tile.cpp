@@ -62,16 +62,39 @@ void Tile::addWall(Wall* wall) {
 }
 
 void Tile::addAmmoDrop() {
-  this->items.push_back(new Ammo(Map::getAndIncreaseByOneNextUniqueItemId()));
+  this->items.push_back(new Ammo(101, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->deleteDoor();
   this->deleteWall();
 }
 
 void Tile::addKeyDrop() {
-  this->items.push_back(new Key(Map::getAndIncreaseByOneNextUniqueItemId()));
+  this->items.push_back(new Key(108, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->deleteDoor();
   this->deleteWall();
 }
+
+void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis) {
+  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
+
+  this->items.push_back(new Key(108, uniqueId));
+  PlayerDropItem* noti = new PlayerDropItem(x, y, 108, uniqueId);
+  notis.push(noti);
+  
+  this->deleteDoor();
+  this->deleteWall();
+}
+
+void Tile::addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis) {
+
+  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
+  this->items.push_back(new Ammo(101, uniqueId));
+
+  PlayerDropItem* noti = new PlayerDropItem(x, y, 101, uniqueId);
+  notis.push(noti);
+  this->deleteDoor();
+  this->deleteWall();
+}
+
 
 bool Tile::forceDoorStatusChange() {
   if (this->door && this->players.size() == 0) {
@@ -93,14 +116,12 @@ void Tile::pickUpItems(double x, double y, Player* p,
 
   while (it != this->items.end()) {
     if ((*it)->canBePickedUpBy(p)) {
-      std::cout << "Player picking up item with id: " << (*it)->getID() << std::endl;
       PlayerPickupItem* noti = new PlayerPickupItem((*it)->getID());
       notis.push(noti);
       (*it)->pickUp(p);
       delete *it;
       it = this->items.erase(it);
     } else {
-      std::cout << "Player could not pick up item" << std::endl;
       ++it;
     }
   }

@@ -8,7 +8,7 @@ class Crown : public Item {
   int pointsSumWhenPickedUp;
 
  public:
-  Crown(int id, int pointsSumWhenPickedUp);
+  Crown(int itemID, int id, int pointsSumWhenPickedUp);
   ~Crown();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

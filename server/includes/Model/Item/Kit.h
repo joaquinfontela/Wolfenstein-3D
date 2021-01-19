@@ -8,7 +8,7 @@ class Kit : public Item {
   int healthSumWhenPickedUp;
 
  public:
-  Kit(int id, int healthSumWhenPickedUp);
+  Kit(int itemID, int id, int healthSumWhenPickedUp);
 
   bool canBePickedUpBy(Player* p);
   void pickUp(Player* p);

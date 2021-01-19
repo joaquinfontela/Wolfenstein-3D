@@ -8,7 +8,7 @@ class Cup : public Item {
   int pointsSumWhenPickedUp;
 
  public:
-  Cup(int id, int pointsSumWhenPickedUp);
+  Cup(int itemID, int id, int pointsSumWhenPickedUp);
   ~Cup();
   void pickUp(Player* p) override;
   bool canBePickedUpBy(Player* p) override;

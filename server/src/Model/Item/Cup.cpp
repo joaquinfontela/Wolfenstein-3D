@@ -1,6 +1,6 @@
 #include "../../../includes/Model/Item/Cup.h"
 
-Cup::Cup(int id, int pointsSumWhenPickedUp) : Item(id) {
+Cup::Cup(int itemID, int id, int pointsSumWhenPickedUp) : Item(itemID, id) {
   this->pointsSumWhenPickedUp = pointsSumWhenPickedUp;
 }
 

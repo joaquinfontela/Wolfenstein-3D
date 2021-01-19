@@ -29,6 +29,9 @@ class Map {
   void addAmmoDropAt(int x, int y);
   void addKeyDropAt(int x, int y);
 
+  void addAmmoDropAt(int x, int y, WaitingQueue<Notification*>& notis);
+  void addKeyDropAt(int x, int y, WaitingQueue<Notification*>& notis);
+
   void removePlayer(int x, int y, Player* p);
 
   bool forceDoorStatusChange(int x, int y);
