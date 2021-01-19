@@ -10,6 +10,7 @@
 #include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../includes/Control/Notification/PlayerDropItem.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
@@ -51,7 +52,10 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
   int range = attacker->getRange();
 
   if(range == INT_MAX){ // Por el momento, INT_MAX siginifica que lanzo un RPG. Cambiar a un metodo del estilo hasRPG();
-    RocketMissile* newMissile = new RocketMissile(attacker->getX(), attacker->getY(), attacker->getDirX(), attacker->getDirY(), Map::getAndIncreaseByOneNextUniqueItemId());
+    int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
+    PlayerDropItem* noti = new PlayerDropItem(attacker->getX(), attacker->getY(), 404, uniqueId);
+    notis.push(noti);
+    RocketMissile* newMissile = new RocketMissile(attacker->getX(), attacker->getY(), attacker->getDirX(), attacker->getDirY(), uniqueId);
     this->updatables.push_back(newMissile);
     return; // Damage is not calculcated on shot fired, but on hit.
   }
