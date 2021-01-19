@@ -10,7 +10,7 @@
 #include "../../common/includes/protocol.h"
 #include "clientprotocol.h"
 
-void CommandExecuter::loadNewTexture(uint32_t x, uint32_t y,
+void CommandExecuter::loadNewTexture(double x, double y,
                                      uint32_t yamlId, uint32_t uniqueId) {
   unsigned int itemId = this->loader.convertYamlFileItemIdToProtocolItemSkinId(yamlId);
   this->sprites.push_back(new Drawable(y, x, itemId, uniqueId));
@@ -121,18 +121,19 @@ void CommandExecuter::run() {
         std::cout<<"[GAME] Picking up item with id: " << itemId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->removeSpriteWithId(itemId);
       } else if (opcode == PLAYER_DROP_ITEM) {
-        uint32_t x, y, yamlId, uniqueId;
-        this->socket.receive(&x, sizeof(x));
-        this->socket.receive(&y, sizeof(y));
+        uint32_t  yamlId, uniqueId;
+        double x, y;
+        x = infogetter.receiveDouble();
+        y = infogetter.receiveDouble();
         this->socket.receive(&yamlId, sizeof(yamlId));
         this->socket.receive(&uniqueId, sizeof(uniqueId));
         std::cout<<"[GAME] Droping item with id: " << uniqueId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->loadNewTexture(x, y, yamlId, uniqueId);
       } else if (opcode == ELEMENT_SWITCH_POSITION) {
-        double x = infogetter.receiveDouble();
-        double y = infogetter.receiveDouble();
         uint32_t uniqueId;
         this->socket.receive(&uniqueId, sizeof(uniqueId));
+        double x = infogetter.receiveDouble();
+        double y = infogetter.receiveDouble();
         this->renderMovingSprite(x, y, uniqueId);
       } else if (opcode == MISSILE_EXPLOTION) {
         uint32_t uniqueId;

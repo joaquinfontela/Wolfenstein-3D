@@ -3,7 +3,7 @@
 
 #include "../../../../common/includes/protocol.h"
 
-PlayerDropItem::PlayerDropItem(int x, int y, int itemID, int uniqueId) {
+PlayerDropItem::PlayerDropItem(double x, double y, int itemID, int uniqueId) {
   this->x = x;
   this->y = y;
   this->itemID = itemID;
@@ -15,8 +15,10 @@ void PlayerDropItem::send(SocketCommunication& socket) {
 
   socket.send(&opcode, sizeof(opcode));
 
-  socket.send((uint32_t*)(&this->x), sizeof(this->x));
-  socket.send((uint32_t*)(&this->y), sizeof(this->y));
+  SocketWrapper wrapper(socket);
+  wrapper.send(this->x);
+  wrapper.send(this->y);
+
   socket.send((uint32_t*)(&this->itemID), sizeof(this->itemID));
   socket.send((uint32_t*)(&this->uniqueId), sizeof(this->uniqueId));
 

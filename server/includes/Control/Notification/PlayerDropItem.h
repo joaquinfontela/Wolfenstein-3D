@@ -5,11 +5,11 @@
 
 class PlayerDropItem : public Notification {
  private:
-  int x, y;
+  double x, y;
   int itemID, uniqueId;
 
  public:
-  PlayerDropItem(int x, int y, int itemId, int uniqueId);
+  PlayerDropItem(double x, double y, int itemId, int uniqueId);
   void send(SocketCommunication& socket);
 };
 
