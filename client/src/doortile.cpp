@@ -21,6 +21,6 @@ void DoorTile::updateTimer(float update) {
 }
 
 void DoorTile::changeState() {
-  if (state == OPEN) state = CLOSING;
-  else if (state == CLOSED) state = OPENING;
+  if (state == OPEN || state == OPENING) state = CLOSING;
+  else if (state == CLOSED || state == CLOSING) state = OPENING;
 }

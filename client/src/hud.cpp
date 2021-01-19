@@ -38,7 +38,6 @@ void Hud::renderKey() {
   this->window->getWindowSize(&x, &y);
   int width, height;
   this->manager.getTextureSizeWithId(HUDKEY, &width, &height);
-  //area.update((x * 547)/ 720.0, (517 * y) / 600.0, ((x >> 6) << 2) / 3, ((y >> 4) << 2) / 3);
   area.update((x * 547)/ 720.0, (517 * y) / 600.0, (x >> 4) / 3, (y >> 2) / 3);
   this->manager.renderAll(HUDKEY, area);
 }
