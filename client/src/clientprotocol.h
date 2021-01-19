@@ -8,6 +8,7 @@
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
 #define IS_MUSIC true
+#define MUSIC_VOLUME 3
 
 #define GET_WEAPON_SOUND(X) X
 

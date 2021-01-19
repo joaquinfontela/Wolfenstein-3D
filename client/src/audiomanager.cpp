@@ -25,7 +25,12 @@ AudioManager::~AudioManager() {
 }
 
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
-  Audio* audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
+  Audio* audio;
+  if (i == DOOR_SOUND) {
+    audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, 20);
+  } else {
+    audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
+  }
   if (audio == NULL) {
     return false;
   }
