@@ -129,9 +129,9 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
       return CHAINGUNITEM;
       break;
 
-    /*case 5:
-      return ROCKETLAUNCERITEM;
-      break;*/
+    case 5:
+      return ROCKETLAUNCHERITEM;
+      break;
 
     case 101:
       return AMMO;
@@ -167,6 +167,10 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
 
     case 109:
       return MEDKIT;
+      break;
+
+    case 404:
+      return FLYINGMISSILE;
       break;
 
     default:

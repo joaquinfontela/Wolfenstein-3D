@@ -53,6 +53,17 @@ void CommandExecuter::removeSpriteWithId(int itemId) {
   this->lock.unlock();
 }
 
+void CommandExecuter::renderMovingSprite(double x, double y, uint32_t itemId) {
+  std::vector<Drawable*>::iterator it = this->sprites.begin();
+  for (; it != this->sprites.end(); ++it) {
+    if ((*it)->hasThisUniqueId(itemId)) {
+      (*it)->x = x;
+      (*it)->y = y;
+      break;
+    }
+  }
+}
+
 void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
   Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
@@ -117,6 +128,15 @@ void CommandExecuter::run() {
         this->socket.receive(&uniqueId, sizeof(uniqueId));
         std::cout<<"[GAME] Droping item with id: " << uniqueId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->loadNewTexture(x, y, yamlId, uniqueId);
+      } else if (opcode == ELEMENT_SWITCH_POSITION) {
+        double x = infogetter.receiveDouble();
+        double y = infogetter.receiveDouble();
+        uint32_t uniqueId;
+        this->socket.receive(&uniqueId, sizeof(uniqueId));
+        this->renderMovingSprite(x, y, uniqueId);
+      } else if (opcode == MISSILE_EXPLOTION) {
+        uint32_t uniqueId;
+        this->socket.receive(&uniqueId, sizeof(uniqueId));
       }
     } catch (SocketException& e) {
       break;

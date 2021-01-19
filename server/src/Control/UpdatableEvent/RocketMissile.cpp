@@ -6,13 +6,16 @@
 RocketMissile::RocketMissile(double x, double y, double dirX, double dirY, int uniqueId) : Updatable(), x(x), y(y), dirX(dirX), dirY(dirY), uniqueId(uniqueId){}
 
 void RocketMissile::update(float timeElapsed, Game& game){
+  std::cout << "update" << std::endl;
 
   double newX = x + dirX * (moveSpeed * (timeElapsed));
   double newY = y + dirY * (moveSpeed * (timeElapsed));
   this->hasToBeNotified = true;
 
-  this->done = game.moveRocketMissileFrom(this->x, this->y, newX, newY); // Returns True if Rocket collided with another game object.
-  this->x = newX;                                                        // Even if a collision happened, settings these variables helps us know where the impact happened.
+ // Returns True if Rocket collided with another game object.
+ // Even if a collision happened, settings these variables helps us know where the impact happened.
+  this->done = game.moveRocketMissileFrom(this->x, this->y, newX, newY);
+  this->x = newX;
   this->y = newY;
 }
 
@@ -23,6 +26,7 @@ bool RocketMissile::notify(WaitingQueue<Notification*>& notif){
     notif.push(posUpdate);
 
     if(this->done){
+      std::cout << "x: " << x << " y: " << y << std::endl;
       MissileExplotion* noti = new MissileExplotion(this->uniqueId);
       notif.push(noti);
       return true;

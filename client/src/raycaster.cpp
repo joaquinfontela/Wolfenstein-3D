@@ -148,8 +148,8 @@ void Raycaster::run(){
     for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
     this->lock.unlock();
 
-    //#ifdef FPS_FREQ
-    //#define FPS_FREQ 50
+    #ifdef FPS_FREQ
+    #define FPS_FREQ 50
     //Use this with a VM only case.
 
     if (!(iters % FPS_FREQ)) {
@@ -161,7 +161,7 @@ void Raycaster::run(){
       this->hud.updateBjFace();
     }
 
-    //#endif
+    #endif
 
     this->hud.update();
     this->window->render();
