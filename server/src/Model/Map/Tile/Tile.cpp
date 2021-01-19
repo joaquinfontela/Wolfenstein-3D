@@ -79,7 +79,7 @@ void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis) {
   this->items.push_back(new Key(108, uniqueId));
   PlayerDropItem* noti = new PlayerDropItem(x, y, 108, uniqueId);
   notis.push(noti);
-  
+
   this->deleteDoor();
   this->deleteWall();
 }
@@ -144,6 +144,20 @@ bool Tile::allowMovement(double x, double y, Player* p,
 
   pickUpItems(x, y, p, notis);
   pickUpGuns(p, notis);
+
+  return true;
+}
+
+bool Tile::allowMovement(double x, double y) {
+    if (this->isWall()) return false;
+
+    std::vector<Player*>::iterator it = this->players.begin();
+
+    for (; it != this->players.end(); ++it) {
+      if ((*it)->collidesWith(x, y))
+        return false;
+    }
+
   return true;
 }
 

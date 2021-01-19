@@ -122,6 +122,8 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/DoorMoving.cpp
         server/src/Control/Notification/PlayerPickupItem.cpp
         server/src/Control/Notification/PlayerDropItem.cpp
+        server/src/Control/Notification/ElementSwitchPosition.cpp
+        server/src/Control/Notification/MissileExplotion.cpp
         server/src/Control/Command/PlayerADown.cpp
         server/src/Control/Command/PlayerSDown.cpp
         server/src/Control/Command/PlayerDDown.cpp
@@ -135,6 +137,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Command/PlayerSwitchWeapon.cpp
 
         server/src/Control/UpdatableEvent/ChangeDoorStatus.cpp
+        server/src/Control/UpdatableEvent/RocketMissile.cpp
         server/src/Model/Map/Map.cpp
         server/src/Model/Map/MapLoader.cpp
         server/src/Model/Map/Tile/Tile.cpp

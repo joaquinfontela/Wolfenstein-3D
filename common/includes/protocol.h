@@ -16,6 +16,8 @@
 #define PLAYER_UPDATE_PACKAGE 12
 #define PLAYER_PICKUP_ITEM 13
 #define PLAYER_DROP_ITEM 14
+#define MISSILE_EXPLOTION 15
+#define ELEMENT_SWITCH_POSITION 16
 
 /*// PowerUp ID definitions
 #define FOOD 30

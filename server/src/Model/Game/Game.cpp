@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <time.h>
+#include <limits.h>
 
 #include <functional>
 #include <iostream>
@@ -10,6 +11,7 @@
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
+#include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Player/Player.h"
 
@@ -48,6 +50,12 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
   int att = attacker->attack();
   int range = attacker->getRange();
 
+  if(range == INT_MAX){ // Por el momento, INT_MAX siginifica que lanzo un RPG. Cambiar a un metodo del estilo hasRPG();
+    RocketMissile* newMissile = new RocketMissile(attacker->getX(), attacker->getY(), attacker->getDirX(), attacker->getDirY(), Map::getAndIncreaseByOneNextUniqueItemId());
+    this->updatables.push_back(newMissile);
+    return; // Damage is not calculcated on shot fired, but on hit.
+  }
+
   if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
     ItemFactory factory;
 
@@ -60,6 +68,11 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
     } else if (receiverHealth == -1) {
     }  // Ya no deberia respawnear, deberia generar un evento de muerte.
   }
+}
+
+bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY){
+
+  return !map->moveTo(x, y, newX, newY); // Falta aplicar el daño si moveTo devuelve false.
 }
 
 void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis) {

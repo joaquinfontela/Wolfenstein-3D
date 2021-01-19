@@ -162,6 +162,13 @@ bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p,
   return false;
 }
 
+bool Map::moveTo(double fromX, double fromY, double toX, double toY) {
+  int x = (int)toX;
+  int y = (int)toY;
+
+  return this->tileMatrix.at(x).at(y).allowMovement(toX, toY);
+}
+
 void Map::addPlayer(int x, int y, Player* p) {
   this->tileMatrix.at(x).at(y).addPlayer(p);
 }

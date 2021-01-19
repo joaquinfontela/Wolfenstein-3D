@@ -48,6 +48,9 @@ class Game {
   // que lo borre en sus coordenadas.
   bool removePlayer(int playerID);
 
+  // Moves the rocket missile's position. Returns true if a collision occured and generates the damage accordingly.
+  bool moveRocketMissileFrom(double x, double y, double newX, double newY);
+
   // Actualiza el estado del juego y deja las notificaciones para enviar sobre
   // cambios en el mismo.
   void update(float timeElapsed, WaitingQueue<Notification*>& notis);

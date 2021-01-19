@@ -42,6 +42,9 @@ class Map {
   bool moveTo(double fromX, double fromY, double x, double y, Player* p,
               WaitingQueue<Notification*>& notis);
 
+  // Mueve un elemento, utilizado para el movimiento de elementos distintos del Jugador.
+  bool moveTo(double fromX, double fromY, double x, double y);
+
   // Verifica si las coordenadas (x, y) se salen de los limites del mapa.
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);
 
