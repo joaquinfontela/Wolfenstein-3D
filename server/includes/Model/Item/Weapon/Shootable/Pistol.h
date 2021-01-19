@@ -13,6 +13,7 @@ class Pistol : public Shootable {
                   shotsPerBlast, ammoLostPerShot, precision),
         ID(2) {}
   int getID();
+  int getUniqueId();
   bool hasAmmo();
   int getRange();
 

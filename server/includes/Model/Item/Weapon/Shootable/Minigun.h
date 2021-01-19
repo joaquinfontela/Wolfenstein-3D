@@ -11,6 +11,7 @@ class Minigun : public Shootable {
         ID(4) {}
   ~Minigun();
   int getID();
+  int getUniqueId();
   bool hasAmmo();
   int getRange();
 

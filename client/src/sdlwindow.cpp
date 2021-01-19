@@ -22,7 +22,7 @@ SdlWindow::SdlWindow(int width, int height) :
       &this->window, &this->renderer)) {
     throw SdlException(SDL_WINDOW_INIT_ERROR, SDL_GetError());
   }
-  if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 8, 2024) < 0) {
+  if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 2024) < 0) {
     throw SdlException(Mix_GetError());
   }
   if (!(ceilingPixel = new SdlTexture(IMG_PATH "ceiling.png", *this))) {
