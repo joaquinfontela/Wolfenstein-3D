@@ -13,3 +13,5 @@ bool Knife::hasAmmo(){
 int Knife::getRange(){
   return 1;
 }
+
+int Knife::getUniqueId(){ return this->uniqueId;}

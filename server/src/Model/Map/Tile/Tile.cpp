@@ -122,11 +122,11 @@ bool Tile::allowMovement(double x, double y, Player* p,
   // tengo que agarrar alguno.
 
   pickUpItems(x, y, p, notis);
-  pickUpGuns(p);
+  pickUpGuns(p, notis);
   return true;
 }
 
-void Tile::pickUpGuns(Player* p) {
+void Tile::pickUpGuns(Player* p, WaitingQueue<Notification*>& notis) {
   std::vector<Weapon*>::iterator it = this->weapons.begin();
 
   while (it != this->weapons.end()) {
@@ -134,6 +134,8 @@ void Tile::pickUpGuns(Player* p) {
       ++it;
     } else {
       p->addWeapon((*it));
+      PlayerPickupItem* noti = new PlayerPickupItem((*it)->getUniqueId());
+      notis.push(noti);
       it = this->weapons.erase(it);
     }
   }

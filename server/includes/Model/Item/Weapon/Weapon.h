@@ -19,6 +19,7 @@ class Weapon {
          int maxDamagePerBullet);
   Weapon(unsigned int ammo) {}
   virtual int getID() = 0;
+  virtual int getUniqueId() = 0;
   virtual bool hasAmmo() = 0;
   virtual int getRange() = 0;
 
