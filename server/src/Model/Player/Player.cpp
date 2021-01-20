@@ -30,6 +30,9 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       map(map) {
 
   this->playerID = playerID;
+  this->planeY = 0.66;
+  this->planeX = 0;
+
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
   weapons.push_back(
@@ -168,6 +171,10 @@ void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
 
   dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
   dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+
+  double oldPlaneX = this->planeX;
+  this->planeX = ((this->planeX) * cos(rotSpeed)) - (this->planeY * sin(rotSpeed));
+  this->planeY = (oldPlaneX * sin(rotSpeed)) + (this->planeY * cos(rotSpeed));
 
   this->hasToBeNotified = true;
 }

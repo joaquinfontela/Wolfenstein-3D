@@ -55,9 +55,9 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
     double dirX = attacker->getDirX();
     double dirY = attacker->getDirY();
     int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
-    PlayerDropItem* noti = new PlayerDropItem(attacker->getX() + dirX, attacker->getY() + dirY, 404, uniqueId);
+    PlayerDropItem* noti = new PlayerDropItem(attacker->getX() + dirX + attacker->planeX/2, attacker->getY() + dirY + attacker->planeY/2, 404, uniqueId);
     notis.push(noti);
-    RocketMissile* newMissile = new RocketMissile(attacker->getX() + dirX, attacker->getY() + dirY, dirX, dirY, uniqueId);
+    RocketMissile* newMissile = new RocketMissile(attacker->getX() + dirX + attacker->planeX/2, attacker->getY() + dirY + attacker->planeY/2, dirX, dirY, uniqueId);
     this->updatables.push_back(newMissile);
     return; // Damage is not calculcated on shot fired, but on hit.
   }
@@ -67,7 +67,6 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
 
     att = int((att / sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
     receiverHealth = receiver->takeDamage(att, notis);
-
     if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
 
     } else if (receiverHealth == -1) {

@@ -10,7 +10,7 @@ private:
   double dirY;
   double x;
   double y;
-  double moveSpeed = 8;
+  double moveSpeed = 20;
 
 public:
   RocketMissile(double x, double y, double dirX, double dirY, int uniqueId);
