@@ -90,7 +90,8 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
   this->dirY = dirY;
 }
 
-void Player::draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer) {
+void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
+                  double dirY, double planeX, double planeY, double* zBuffer) {
 
   int width, height;
   manager.getWindowSize(&width, &height);

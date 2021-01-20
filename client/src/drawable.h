@@ -24,7 +24,7 @@ public:
   virtual bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
  private:
-  Area srcArea, destArea;  
+  Area srcArea, destArea;
 };
 
 #endif  // DRAWABLE_H_
