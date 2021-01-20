@@ -51,9 +51,14 @@ void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
+      int soundid = (*it)->id;
       delete (*it);
       this->sprites.erase(it);
-      this->audiomanager.playWithId(PICKUP_SOUND);
+      if (IS_HEALTH_UP(soundid)) {
+        this->audiomanager.playWithId(HEALTH_PICKUP_SOUND);
+      } else {
+        this->audiomanager.playWithId(PICKUP_SOUND);
+      }
       break;
     }
   }

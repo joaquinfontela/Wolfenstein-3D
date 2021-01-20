@@ -27,7 +27,7 @@ class CommandExecuter : public Thread {
   void renderExplosionAnimation(uint32_t itemId);
   void renderMovingSprite(double x, double y, uint32_t itemId);
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
-  void removeSpriteWithId(int itemId);
+  void removeSpriteWithId(uint32_t itemId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
   SocketCommunication& socket;

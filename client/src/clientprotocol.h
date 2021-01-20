@@ -19,6 +19,7 @@
 //#define ROCKETLAUNCHER_SOUND 5
 #define DOOR_SOUND 5
 #define PICKUP_SOUND 6
+#define HEALTH_PICKUP_SOUND 7
 
 #define KNIFE 1
 #define PISTOL 2
@@ -113,6 +114,8 @@
 #define ROCKETLAUNCHERITEM 68
 #define FLYINGMISSILE 69
 #define EXPLOSION 70
+
+#define IS_HEALTH_UP(ID) (ID == BLOOD || ID == MEDKIT || ID == FOOD)
 
 #define CLOSED 'c'
 #define CLOSING 'C'
