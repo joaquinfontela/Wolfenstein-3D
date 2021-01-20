@@ -150,7 +150,6 @@ bool Tile::allowMovement(double x, double y, Player* p,
 
 bool Tile::allowMovement(double x, double y) {
     if (this->isWall()){
-       std::cout<<"Chocando contra una pared"<<std::endl;
        return false;
     }
 
@@ -158,7 +157,6 @@ bool Tile::allowMovement(double x, double y) {
 
     for (; it != this->players.end(); ++it) {
       if ((*it)->collidesWith(x, y)){
-        std::cout<<"Chocando contra un jugador"<<std::endl;
         return false;
       }
     }

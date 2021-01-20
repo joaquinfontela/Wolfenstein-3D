@@ -17,6 +17,7 @@ class Player {
   double dirX, dirY;
   double rotSpeed;
   double moveSpeed;
+
   unsigned int playerID;
   bool hasToBeNotified;
   int score;
@@ -30,6 +31,8 @@ class Player {
   int handleDeath(WaitingQueue<Notification*>& notis);
 
  public:
+   double planeX;
+   double planeY;
   // CONSTRUCTORES.
   Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
   Player(YAMLConfigReader yamlConfigReader);
