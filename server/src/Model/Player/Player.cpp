@@ -136,6 +136,10 @@ int Player::takeDamage(unsigned int damage,
   return this->health;
 }
 
+void Player::setNotifiable(bool status){
+  this->hasToBeNotified = status;
+}
+
 void Player::fillPlayerData(PlayerData& data) {
   data.posX = this->x;
   data.posY = this->y;
@@ -147,7 +151,7 @@ void Player::fillPlayerData(PlayerData& data) {
   data.weaponID = this->currentWeapon->getID();
   data.bullets = this->ammo;
 
-  this->hasToBeNotified = false;
+
   return;
 }
 

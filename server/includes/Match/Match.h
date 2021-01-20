@@ -22,6 +22,7 @@ class Match {
   std::atomic<bool> cont;
   Engine* engine;
   WaitingQueue<Command*> commands;
+  WaitingQueue<Notification*> notis;
   Game game;
 
   int ID;

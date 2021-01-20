@@ -41,6 +41,8 @@ class Player {
   // respawn.
   int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
 
+  void setNotifiable(bool status);
+  
   // GETTERS
   unsigned int ID();
   double getX();

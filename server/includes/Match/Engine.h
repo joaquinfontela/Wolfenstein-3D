@@ -19,14 +19,14 @@ class Engine : public Thread {
  private:
   std::map<int, ClientCommunication*>& players;
   WaitingQueue<Command*>& commandQueue;
-  WaitingQueue<Notification*> notifications;
+  WaitingQueue<Notification*>& notifications;
   std::atomic<bool>& cont;
   std::mutex gameLock;
 
   Game& thisGame;
 
  public:
-  Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game);
+  Engine(WaitingQueue<Command*>& commandQ, WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game);
 
   // Le pida a sus colas que cierren ordenadamente para poder finalizar la ejecucion.
   void requestShutdown();

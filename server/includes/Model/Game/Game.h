@@ -35,7 +35,7 @@ class Game {
   bool forceDoorStatusChange(int x, int y);
 
   // Agrega un jugador al mapa de los jugadores
-  void addPlayer(int playerID);
+  void addPlayer(int playerID, WaitingQueue<Notification*>& notis);
 
   // Changes, if possible, the current weapon of the player.
   void playerSwitchWeapon(int playerID, int weaponPos);
@@ -43,6 +43,8 @@ class Game {
   // Encola la notificacion de los estados de los jugadores que requerian
   // notificar al resto.
   void sendUpdateMessages(WaitingQueue<Notification*>& notis);
+
+  void sendGameStatus(WaitingQueue<Notification*>& notis);
 
   // Elimina a un jugador del mapa de jugadores. Tambien deberia pedirle al mapa
   // que lo borre en sus coordenadas.

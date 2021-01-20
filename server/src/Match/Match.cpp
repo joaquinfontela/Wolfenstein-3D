@@ -21,7 +21,7 @@ void Match::forceShutdown() { this->running = false; }
 
 ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   this->playerCount++;
-  this->game.addPlayer(player->ID());
+  this->game.addPlayer(player->ID(), this->notis);
 
   this->players[player->ID()] = player;
   ConnectionHandler* playerHandler =
@@ -31,7 +31,7 @@ ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
 }
 
 void Match::start() {
-  engine = new Engine(commands, cont, players, this->game);
+  engine = new Engine(commands, notis, cont, players, this->game);
   engine->start();
 }
 

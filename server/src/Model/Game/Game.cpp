@@ -28,8 +28,9 @@ Game::Game(std::string mapFile, std::string configFile)
             << "s." << std::endl;
 }
 
-void Game::addPlayer(int playerID) {
+void Game::addPlayer(int playerID, WaitingQueue<Notification*>& notis) {
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
+  this->sendGameStatus(notis);
 
   this->players[playerID] = newPlayer;
 }
@@ -107,6 +108,17 @@ std::tuple<int, int> Game::moveDoor(int playerID) {
   return std::make_tuple(x, y);
 }
 
+void Game::sendGameStatus(WaitingQueue<Notification*>& notis){
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  for (; it != this->players.end(); ++it) {
+    PlayerData data;
+    it->second->fillPlayerData(data);
+    PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
+    notis.push(noti);
+  }
+}
+
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
@@ -114,6 +126,7 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
     PlayerData data;
     if (it->second->hasToBeUpdated()) {
       it->second->fillPlayerData(data);
+      it->second->setNotifiable(false);
       PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
       notis.push(noti);
     }
@@ -166,6 +179,12 @@ Game::~Game() {
 
   for (; it != this->players.end(); ++it) {
     delete it->second;
+  }
+
+  std::list<Updatable*>::iterator it2 = this->updatables.begin();
+
+  for (; it2 != this->updatables.end(); ++it2) {
+    delete (*it2);
   }
 
   delete this->map;

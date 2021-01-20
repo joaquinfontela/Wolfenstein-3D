@@ -5,8 +5,8 @@
 #include <math.h>
 #define SECONDS_PER_TICK 0.033
 
-Engine::Engine(WaitingQueue<Command*>& commandQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game)
-    : commandQueue(commandQ), cont(c), players(play), thisGame(game) {}
+Engine::Engine(WaitingQueue<Command*>& commandQ, WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game)
+    : commandQueue(commandQ), notifications(notiQ), cont(c), players(play), thisGame(game) {}
 
 
 void Engine::update(float timeElapsed){
