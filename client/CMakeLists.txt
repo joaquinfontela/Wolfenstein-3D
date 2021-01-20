@@ -5,6 +5,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 add_library(sdldemo
   src/ClientMapLoader.cpp
+  src/client.cpp
   src/area.cpp
   src/doortimer.cpp
   src/doortile.cpp
