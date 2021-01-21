@@ -8,8 +8,20 @@
 
 class ClientCommunication;
 
+/**
+  * @section DESCRIPTION	
+  * The class that represents a player intent in the game.
+*/
 class Command {
  public:
+
+  /**
+	* <Executes the given command>
+	*
+	* @param Queue of Notifications to be sent.
+	* @param The game on which to execute the given command.
+
+  */
   virtual void execute(WaitingQueue<Notification*>& notifications, Game& game) = 0;
   virtual ~Command(){};
 };

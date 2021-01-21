@@ -12,6 +12,10 @@ class Match;
 
 typedef std::map<int, Match*>::iterator iterator_t;
 
+/**
+  * @section DESCRIPTION
+  * Class that represents the current list of matches the server is hosting.
+ */
 class MatchList {
  private:
   std::map<int, Match*> matches;
@@ -20,7 +24,14 @@ class MatchList {
 
  public:
   MatchList();
-  // Intenta entrar a una partida, si la misma no existe, la crea.
+
+  /**
+    * <Tries to join a match, creates it if not found>
+    *
+    * @param The clients ClientCommunication
+    * @param The lobby ID
+    * @return The connection handler of the client, NULL if not possible
+   */
   ConnectionHandler* joinOrCreate(ClientCommunication* player, int lobbyID);
 
   ~MatchList();

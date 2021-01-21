@@ -15,6 +15,10 @@
 
 class ClientCommunication;
 
+/**
+  * @section DESCRIPTION
+  * Class that simulates the passing of time and updates the status change to the clients.
+*/
 class Engine : public Thread {
  private:
   std::map<int, ClientCommunication*>& players;
@@ -28,19 +32,31 @@ class Engine : public Thread {
  public:
   Engine(WaitingQueue<Command*>& commandQ, WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game);
 
-  // Le pida a sus colas que cierren ordenadamente para poder finalizar la ejecucion.
+  /**
+    * <Forces shutdown of the engine>
+  */
   void requestShutdown();
 
-  // Ejecuta en un loop los comandos que esten en la Queue
+  /**
+    * <Pops a command and executes it>
+  */
   void executeCommands();
 
-  // Hace update del modelo del juego.
+  /**
+    * <Updates the game model>
+    *
+    * @param Time elapsed since last update.
+  */
   void update(float timeElapsed);
 
-  // Run para el thread.
+  /**
+    * <Runs the thread>
+  */
   void run();
 
-  // Envia las notificaciones que se encuentren en la Queue.
+  /**
+    * <Sends the notifications to the clients>
+  */
   void sendNotifications();
 };
 
