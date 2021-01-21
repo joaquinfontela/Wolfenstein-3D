@@ -56,7 +56,7 @@ class Match {
 
   /**
     * <Checks if the game has ended.>
-
+    *
     * @return True if match has ended.
   */
   bool hasEnded();
