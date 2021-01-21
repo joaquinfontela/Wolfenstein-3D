@@ -64,6 +64,7 @@ Player::Player(PlayerData& info) {
 
 void Player::update(PlayerData& info) {
   this->moving = (this->x != info.posX || this->y != info.posX);
+  this->healthdown = (this->health > info.health);
   this->x = info.posX;
   this->y = info.posY;
   this->dirX = info.dirX;

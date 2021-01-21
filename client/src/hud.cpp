@@ -29,7 +29,19 @@ void Hud::update() {
   this->renderKey();
   this->renderBullets();
   this->renderTypeOfGun();
+  this->renderBloodDamage();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::renderBloodDamage() {
+  int healthdown;
+  if (!(healthdown = player->healthdown)) return;
+  std::cout << "renderizando sangre" << std::endl;
+  int width, height;
+  this->window->getWindowSize(&width, &height);
+  area.update(13, 12, width - 26, 3*height/4 + 10);
+  this->manager.renderAll(DAMAGE_HUD, area);
+  player->healthdown = (healthdown + 1) % BLOOD_FRAMES;
 }
 
 void Hud::renderKey() {

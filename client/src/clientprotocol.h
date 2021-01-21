@@ -3,6 +3,7 @@
 
 #define HEIGHT 600
 #define WIDTH 800
+#define BLOOD_FRAMES 5
 
 // Apply bit masks to facilitate the sound selection.
 
@@ -114,6 +115,7 @@
 #define ROCKETLAUNCHERITEM 68
 #define FLYINGMISSILE 69
 #define EXPLOSION 70
+#define DAMAGE_HUD 71
 
 #define IS_HEALTH_UP(ID) (ID == BLOOD || ID == MEDKIT || ID == FOOD)
 

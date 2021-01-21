@@ -41,6 +41,7 @@ class Hud {
   void renderKey();
   void renderBullets();
   void updateGunId();
+  void renderBloodDamage();
  public:
   void updateFpsCounter(int fps);
   void update();

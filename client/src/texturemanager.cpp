@@ -109,7 +109,8 @@ void TextureManager::loadTextures() {
                                    "hudkey.png", // 67
                                    "rocketlauncheritem.png", // 68
                                    "flyingmissile.png", // 69
-                                   "explosion.png" // 70
+                                   "explosion.png", // 70
+                                   "damage.png" // 71
                                   });
   int i = 1;
   for (std::string& name : names) {
