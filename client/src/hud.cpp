@@ -36,7 +36,6 @@ void Hud::update() {
 void Hud::renderBloodDamage() {
   int healthdown;
   if (!(healthdown = player->healthdown)) return;
-  std::cout << "renderizando sangre" << std::endl;
   int width, height;
   this->window->getWindowSize(&width, &height);
   area.update(13, 12, width - 26, 3*height/4 + 10);
@@ -199,16 +198,9 @@ void Hud::updateHudGun() {
 
 void Hud::renderFace() {
   int health = this->player->health;
-  int x, y;
+  int x, y, width, height, id;
   this->window->getWindowSize(&x, &y);
-  int width, height, id;
-  if (health > 66) {
-    id = 13;
-  } else if (health > 33) {
-    id = 14;
-  } else {
-    id = 15;
-  }
+  id = GET_BJ_FACE_FROM_HEALTH(health);
   this->manager.getTextureSizeWithId(id, &width, &height);
   this->bjface->setSlideWidth(&width);
   area.update((x * 67)/ 160.0, (503 * y) / 600.0, (7 * x) / 80, (y << 1) / 15);
