@@ -73,44 +73,44 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
   switch (yamlFileId) {
     case 301:
     case 351:
-      return 1;
+      return BLUEWALL;
       break;
 
     case 302:
     case 352:
-      return 66;
+      return PURPLEWALL;
       break;
 
     case 303:
     case 353:
-      return 18;
+      return GREY_STONE_WALL;
       break;
 
     case 304:
     case 354:
-      return 19;
+      return WOODEN_WALL;
       break;
     case 201:
-      return 20;
+      return DOOR;
       break;
 
     case 305:
-      return 64;
+      return MOSSY;
       break;
 
     case 306:
-      return 2;
+      return WALL2_SPRITE;
       break;
     case 307:
-      return 65;
+      return BRICKWALL;
       break;
 
     case 308:
-      return 66;
+      return PURPLEWALL;
       break;
 
     case 309:
-      return 66;
+      return PURPLEWALL;
       break;
 
     default:
