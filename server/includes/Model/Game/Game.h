@@ -34,6 +34,9 @@ class Game {
   // de las puertas.
   bool forceDoorStatusChange(int x, int y);
 
+  // Generates Damage in a radius.
+  void generateRadiusDamage(int x, int y, WaitingQueue<Notification*>& notif);
+
   // Agrega un jugador al mapa de los jugadores
   void addPlayer(int playerID, WaitingQueue<Notification*>& notis);
 
@@ -51,7 +54,7 @@ class Game {
   bool removePlayer(int playerID);
 
   // Moves the rocket missile's position. Returns true if a collision occured and generates the damage accordingly.
-  bool moveRocketMissileFrom(double x, double y, double newX, double newY);
+  bool moveRocketMissileFrom(double x, double y, double newX, double newY, WaitingQueue<Notification*>& notif);
 
   // Actualiza el estado del juego y deja las notificaciones para enviar sobre
   // cambios en el mismo.

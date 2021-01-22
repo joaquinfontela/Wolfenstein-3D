@@ -14,7 +14,7 @@ private:
 
 public:
   RocketMissile(double x, double y, double dirX, double dirY, int uniqueId);
-  void update(float timeElapsed, Game& game);
+  void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif);
   bool notify(WaitingQueue<Notification*>& notif);
 
 };

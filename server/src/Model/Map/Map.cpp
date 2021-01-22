@@ -26,6 +26,25 @@ void Map::setRespawnPoints(std::vector<Coordinate> respPoints){
   this->respawnPoints = respPoints;
 }
 
+
+bool Map::withinMap(int x, int y){
+  return (x < this->dimx && y < this->dimy && x >= 0 && y >= 0);
+}
+
+void Map::applyDamageOnRadiusFrom(int damage, int x, int y, WaitingQueue<Notification*>& notif){
+
+  int radius = 2;
+
+  for(int i = x - radius; i < x + radius; i++){
+    for(int j = y - radius; j < y + radius; j++){
+      if(withinMap(i, j)){
+        this->tileMatrix[i][j].applyDamageToPlayers(damage, abs(x-i) + abs(y-j), notif);
+      }
+    }
+  }
+
+}
+
 void Map::addItemDropAt(Item* item, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
   this->tileMatrix[y - 1][x - 1].addItemDrop(item);

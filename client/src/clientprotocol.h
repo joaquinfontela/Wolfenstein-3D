@@ -3,7 +3,7 @@
 
 #define HEIGHT 600
 #define WIDTH 800
-#define BLOOD_FRAMES 5
+#define BLOOD_FRAMES 50
 
 // Apply bit masks to facilitate the sound selection.
 

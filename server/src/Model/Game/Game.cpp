@@ -75,9 +75,20 @@ void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
   }
 }
 
-bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY){
+void Game::generateRadiusDamage(int x, int y, WaitingQueue<Notification*>& notif){
 
-  return !map->moveTo(x, y, newX, newY); // Falta aplicar el daño si moveTo devuelve false.
+  int damage = (rand() + 1 ) % 10;
+  this->map->applyDamageOnRadiusFrom(damage, x, y, notif);
+}
+
+bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY, WaitingQueue<Notification*>& notif){
+
+  if(!map->moveTo(x, y, newX, newY)){
+    this->generateRadiusDamage(int(newX), int(newY), notif);
+    return true;
+  }
+
+  return false;
 }
 
 void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
@@ -95,7 +106,7 @@ void Game::updatePositions(float timeElapsed,
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();
   for (; updatableIt != this->updatables.end(); ++updatableIt) {
-    (*updatableIt)->update(timeElapsed, (*this));
+    (*updatableIt)->update(timeElapsed, (*this), notis);
   }
 }
 

@@ -25,11 +25,12 @@ public:
 
   /**
     * <Updates the event given the elapsed time>
-    * 
+    *
     * @param Time elapsed since the last update.
     * @param The game in which the event is occuring.
+    * @param The queue in which notifications are placed.
   */
-  virtual void update(float timeElapsed, Game& game) = 0;
+  virtual void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif) = 0;
 
   /**
     * <Notifies if needed the change of status of the event>
