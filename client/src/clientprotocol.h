@@ -1,9 +1,12 @@
 #ifndef CLIENTPROTOCOL_H_
 #define CLIENTPROTOCOL_H_
 
+#define ERROR -1
 #define HEIGHT 600
 #define WIDTH 800
+
 #define BLOOD_FRAMES 5
+#define EXPLOSION_FRAMES 30
 
 // Apply bit masks to facilitate the sound selection.
 
@@ -17,10 +20,11 @@
 #define PISTOL_SOUND 2
 #define MACHINEGUN_SOUND 3
 #define CHAINGUN_SOUND 4
-//#define ROCKETLAUNCHER_SOUND 5
-#define DOOR_SOUND 5
-#define PICKUP_SOUND 6
-#define HEALTH_PICKUP_SOUND 7
+#define ROCKETLAUNCHER_SOUND 5
+#define EXPLOSION_SOUND 6
+#define DOOR_SOUND 7
+#define PICKUP_SOUND 8
+#define HEALTH_PICKUP_SOUND 9
 
 #define KNIFE 1
 #define PISTOL 2

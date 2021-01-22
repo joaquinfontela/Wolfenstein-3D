@@ -6,7 +6,7 @@
 #include <climits>
 
 class Drawable {
-public:
+ public:
   double x;
   double y;
   int id;
@@ -23,7 +23,7 @@ public:
   void loadDistanceWithCoords(int px, int py);
   virtual bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
- private:
+ protected:
   Area srcArea, destArea;
 };
 

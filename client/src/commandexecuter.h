@@ -23,11 +23,13 @@ class CommandExecuter : public Thread {
                   AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader);
   ~CommandExecuter();
   void run();
+  void eraseSprite(uint32_t itemId);
+  void playExplosionSound();
  private:
+  void removeSpriteWithId(uint32_t itemId);
   void renderExplosionAnimation(uint32_t itemId);
   void renderMovingSprite(double x, double y, uint32_t itemId);
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
-  void removeSpriteWithId(uint32_t itemId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
   SocketCommunication& socket;

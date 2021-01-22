@@ -1,5 +1,5 @@
+#include "clientprotocol.h"
 #include "client.h"
-#define ERROR -1
 
 static void deleteSprites(std::vector<Drawable*>& sprites) {
   for (Drawable* s : sprites) {

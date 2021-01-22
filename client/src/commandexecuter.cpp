@@ -4,6 +4,7 @@
 
 #include "audio.h"
 #include "commandexecuter.h"
+#include "explosion.h"
 #include "texturemanager.h"
 #include "../../common/includes/Map/Map.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
@@ -12,10 +13,10 @@
 #include "clientprotocol.h"
 
 CommandExecuter::CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
-                std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
-                AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
-socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
-selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
+                                 std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
+                                 AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
+                                 socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
+                                 selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
 
 void CommandExecuter::loadNewTexture(double x, double y,
                                      uint32_t yamlId, uint32_t uniqueId) {
@@ -43,6 +44,21 @@ void CommandExecuter::playDoorOpeningSound(int x, int y) {
   double dist = players.at(this->selfId)->calculateDist(x, y);
   if (dist < 0) dist = 1;
   this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist*10);
+}
+
+void CommandExecuter::eraseSprite(uint32_t itemId) {
+  std::vector<Drawable*>::iterator it = this->sprites.begin();
+  for (; it != this->sprites.end(); ++it) {
+    if ((*it)->hasThisUniqueId(itemId)) {
+      delete (*it);
+      this->sprites.erase(it);
+      break;
+    }
+  }
+}
+
+void CommandExecuter::playExplosionSound() {
+  this->audiomanager.playWithId(EXPLOSION_SOUND);
 }
 
 void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
@@ -77,19 +93,21 @@ void CommandExecuter::renderMovingSprite(double x, double y, uint32_t itemId) {
 }
 
 void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
-  uint32_t x = INT_MAX;
-  uint32_t y = INT_MAX;
+  double x = ERROR;
+  double y = ERROR;
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
       x = (*it)->x;
       y = (*it)->y;
+      delete (*it);
+      this->sprites.erase(it);
       break;
     }
   }
-  if (x == INT_MAX || y == INT_MAX) {
-    std::cerr << "Error, no missile texture to explode found." << std::endl;
-  }
+  if (x == ERROR || y == ERROR) std::cerr << "Error, no missile texture to explode found.\n";
+  std::cout << "X: " << x << " Y: " << y << std::endl;
+  sprites.push_back(new Explosion(x, y, this, itemId));
 }
 
 void CommandExecuter::run() {
@@ -166,6 +184,7 @@ void CommandExecuter::run() {
       } else if (opcode == MISSILE_EXPLOTION) {
         uint32_t uniqueId;
         this->socket.receive(&uniqueId, sizeof(uniqueId));
+        this->audiomanager.playWithId(EXPLOSION_SOUND);
         this->renderExplosionAnimation(uniqueId);
       }
     } catch (SocketException& e) {

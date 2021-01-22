@@ -26,7 +26,7 @@
 #include "ClientMapLoader.h"
 
 class Client{
-private:
+ private:
   SocketCommunication socket;
   uint32_t myPlayerID = -1;
 
@@ -34,7 +34,7 @@ private:
   void connectToServer(std::string& host, std::string& port);
 
 
-public:
+ public:
   Client() : socket(-1){}
   int run(std::string& host, std::string& port, uint32_t lobbyID, std::string& mapFile);
 

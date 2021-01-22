@@ -1,27 +1,13 @@
-#include "drawable.h"
+#include "explosion.h"
+#include "area.h"
 #include "clientprotocol.h"
-#include <math.h>
+
 #include <iostream>
 
-bool Drawable::isSprite() {
-  return true;
-}
+#define FRAMES_PER_EXPLOSION_ANIMATION 3
 
-bool Drawable::hasThisUniqueId(int otherid) {
-  return (this->uniqueid == otherid);
-}
-
-// No square root for efficency sake.
-void Drawable::loadDistanceWithCoords(int px, int py){
-  this->dist = pow(px - this->x, 2) + pow(py - this->y, 2);
-}
-
-bool Drawable::operator<(Drawable& other) {
-  return this->dist > other.dist;
-}
-
-void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, double* zBuffer) {
+void Explosion::draw(TextureManager& manager, double posX, double posY, double dirX,
+          double dirY, double planeX, double planeY, double* zBuffer) {
 
   int width, height;
   manager.getWindowSize(&width, &height);
@@ -52,11 +38,16 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int((((stripe - (spriteScreenX - (spriteWidth >> 1))) << 6) << 8) / spriteWidth) >> 8;
     if (texX < 0) continue;
+    else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
+      this->frames = (this->frames + 1) % FRAMES_PER_EXPLOSION_ANIMATION;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
+      srcArea.update(texX + BLOCKSIZE * this->frames, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
       destArea.update(stripe, (height - spriteHeight) >> 1, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
+  }
+  if (!(this->remainingFrames--)) {
+    this->executer->eraseSprite(this->uniqueid);
   }
 }
