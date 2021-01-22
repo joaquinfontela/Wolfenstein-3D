@@ -24,6 +24,7 @@
 #include "audiomanager.h"
 #include "clientprotocol.h"
 #include "ClientMapLoader.h"
+#include "luasender.h"
 
 class Client{
  private:

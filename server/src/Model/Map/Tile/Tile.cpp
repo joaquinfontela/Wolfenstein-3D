@@ -95,9 +95,21 @@ void Tile::addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis) {
   this->deleteWall();
 }
 
+void Tile::applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<Notification*>& notif){
+  if(this->isWall())
+    return;
+
+  std::vector<Player*>::iterator it = this->players.begin();
+
+  for(; it != this->players.end(); ++it) {
+      (*it)->takeDamage(damage, notif);
+  }
+}
+
+
 
 bool Tile::forceDoorStatusChange() {
-  if (this->door && this->players.size() == 0) {
+  if (this->door && this->players.size() == 0) { // Para que no cierre la puerta mientras haya un jugador adentro de su celda.
     this->door->lock();
     return true;
   }

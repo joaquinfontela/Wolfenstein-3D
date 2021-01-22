@@ -52,6 +52,8 @@ class Tile {
   // Returns true if the door was succesfully opened.
   bool moveDoor(Player* p);
 
+  void applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<Notification*>& notif);
+
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 

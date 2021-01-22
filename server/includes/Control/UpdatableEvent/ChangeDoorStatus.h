@@ -12,7 +12,7 @@ private:
 
 public:
   ChangeDoorStatus(int x, int y);
-  void update(float timeElapsed, Game& game);
+  void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif);
   bool notify(WaitingQueue<Notification*>& notif);
 
 };

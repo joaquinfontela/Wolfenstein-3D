@@ -4,7 +4,7 @@
 
 ChangeDoorStatus::ChangeDoorStatus(int x, int y) : Updatable(), timeRequired(8.0f), x(x), y(y){}
 
-void ChangeDoorStatus::update(float timeElapsed, Game& game){
+void ChangeDoorStatus::update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif){
 
   this->timeElapsed += timeElapsed;
 
