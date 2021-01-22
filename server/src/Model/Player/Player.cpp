@@ -163,6 +163,7 @@ void Player::moveTo(double x, double y) {
 void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
+
   double newX = x + dirX * (moveSpeed * (timeElapsed));
   double newY = y + dirY * (moveSpeed * (timeElapsed));
 
@@ -212,10 +213,14 @@ int Player::getRange() { return this->currentWeapon->getRange(); }
 
 unsigned int Player::ID() { return this->playerID; }
 
-void Player::updateMoveSpeed(double moveSpeed) { this->moveSpeed += moveSpeed; }
+void Player::updateMoveSpeed(double moveSpeed) {
+   this->moveSpeed += moveSpeed;
+
+  }
 
 void Player::updateRotationSpeed(double rotSpeed) {
   this->rotSpeed += rotSpeed;
+
 }
 
 void Player::equipWeapon(int weaponPos) {

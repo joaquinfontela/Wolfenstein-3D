@@ -103,14 +103,13 @@ void Tile::applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<N
 
   for(; it != this->players.end(); ++it) {
       (*it)->takeDamage(damage, notif);
-      std::cout<<"Damage Dealt: "<< damage<<std::endl;
   }
 }
 
 
 
 bool Tile::forceDoorStatusChange() {
-  if (this->door && this->players.size() == 0) {
+  if (this->door && this->players.size() == 0) { // Para que no cierre la puerta mientras haya un jugador adentro de su celda.
     this->door->lock();
     return true;
   }
