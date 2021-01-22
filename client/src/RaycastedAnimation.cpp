@@ -1,12 +1,10 @@
-#include "explosion.h"
+#include "RaycastedAnimation.h"
 #include "area.h"
 #include "clientprotocol.h"
 
 #include <iostream>
 
-#define FRAMES_PER_EXPLOSION_ANIMATION 3
-
-void Explosion::draw(TextureManager& manager, double posX, double posY, double dirX,
+void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY, double dirX,
           double dirY, double planeX, double planeY, double* zBuffer) {
 
   int width, height;
@@ -45,7 +43,7 @@ void Explosion::draw(TextureManager& manager, double posX, double posY, double d
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (texX < 0) continue;
     else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
-      this->frames = (this->frames + 1) % FRAMES_PER_EXPLOSION_ANIMATION;
+      this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       srcArea.update(texX + (this->frames << 6), 0, 1, preCalcdValue3);

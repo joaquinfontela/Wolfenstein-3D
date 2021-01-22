@@ -4,7 +4,7 @@
 
 #include "audio.h"
 #include "commandexecuter.h"
-#include "explosion.h"
+#include "RaycastedAnimation.h"
 #include "texturemanager.h"
 #include "../../common/includes/Map/Map.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
@@ -107,10 +107,23 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
   }
   if (x == ERROR || y == ERROR) std::cerr << "Error, no missile texture to explode found.\n";
   std::cout << "X: " << x << " Y: " << y << std::endl;
-  sprites.push_back(new Explosion(x, y, this, itemId));
+  this->sprites.push_back(new RaycastedAnimation(x, y, this, EXPLOSION, itemId,
+                                                 EXPLOSION_FRAMES, FRAMES_PER_EXPLOSION_ANIMATION));
+}
+
+void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
+  Player* deadPlayer = this->players[playerId];
+  int deathSpriteId = GET_DEATH_ANIMATION_SPRITE(deadPlayer->weaponId);
+  // I don't need to get a new uniqueId for the sprite when I can use -1 * deadPlayer->playerId.
+  // Not only it's a negative number, which means that no other texture could have the same id,
+  // But that no other players can have the same id.
+  this->sprites.push_back(new RaycastedAnimation(deadPlayer->x, deadPlayer->y, this,
+                                                 deathSpriteId, -int(playerId),
+                                                 DEATH_FRAMES, FRAMES_PER_DEATH_ANIMATION));
 }
 
 void CommandExecuter::run() {
+
   SocketWrapper infogetter(this->socket);
   Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
   eyeofthetiger.volumeUp();
@@ -166,6 +179,11 @@ void CommandExecuter::run() {
         this->socket.receive(&itemId, sizeof(itemId));
         std::cout<<"[GAME] Picking up item with id: " << itemId << ", there are: " << sprites.size() << " items left." << std::endl;
         this->removeSpriteWithId(itemId);
+      } else if (opcode == PLAYER_DIED) {
+        uint32_t playerId;
+        this->socket.receive(&playerId, sizeof(playerId));
+        if (playerId != this->selfId)
+          this->renderDeathAnimation(playerId);
       } else if (opcode == PLAYER_DROP_ITEM) {
         uint32_t  yamlId, uniqueId;
         double x, y;

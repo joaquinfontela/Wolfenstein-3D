@@ -114,7 +114,12 @@ void TextureManager::loadTextures() {
                                    "rocketlauncheritem.png", // 72
                                    "flyingmissile.png", // 73
                                    "explosion.png", // 74
-                                   "damage.png" // 75
+                                   "damage.png", // 75
+                                   "dogdeath.png", // 76
+                                   "soldierdeath.png", // 77
+                                   "ssdeath.png", // 78
+                                   "officialdeath.png", // 79
+                                   "mutantdeath.png" // 80
                                   });
   int i = 1;
   for (std::string& name : names) {

@@ -91,7 +91,7 @@ add_library(sdldemo
   src/ClientMapLoader.cpp
   src/client.cpp
   src/area.cpp
-  src/explosion.cpp
+  src/RaycastedAnimation.cpp
   src/doortimer.cpp
   src/doortile.cpp
   src/audio.cpp

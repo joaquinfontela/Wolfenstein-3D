@@ -18,6 +18,7 @@
 #define PLAYER_DROP_ITEM 14
 #define MISSILE_EXPLOTION 15
 #define ELEMENT_SWITCH_POSITION 16
+#define PLAYER_DIED 17
 
 /*// PowerUp ID definitions
 #define FOOD 30

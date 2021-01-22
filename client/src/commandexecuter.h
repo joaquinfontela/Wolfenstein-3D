@@ -28,6 +28,7 @@ class CommandExecuter : public Thread {
  private:
   void removeSpriteWithId(uint32_t itemId);
   void renderExplosionAnimation(uint32_t itemId);
+  void renderDeathAnimation(uint32_t yamlId);
   void renderMovingSprite(double x, double y, uint32_t itemId);
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
   void playShootingSounds(int shooterId);

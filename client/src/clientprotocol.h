@@ -7,6 +7,7 @@
 
 #define BLOOD_FRAMES 5
 #define EXPLOSION_FRAMES 30
+#define DEATH_FRAMES 50
 
 // Apply bit masks to facilitate the sound selection.
 
@@ -125,8 +126,18 @@
 #define EXPLOSION 74
 #define DAMAGE_HUD 75
 
+#define DOG_DEATH 76
+#define SOLDIER_DEATH 77
+#define SS_DEATH 78
+#define OFFICIAL_DEATH 79
+#define MUTANT_DEATH 80
+
+#define GET_DEATH_ANIMATION_SPRITE(X) (X + 75)
 #define GET_BJ_FACE_FROM_HEALTH(HP) (BJ1_SPRITE + 7 - ceil(float(HP * 7)/100.0))
 #define IS_HEALTH_UP(ID) (ID == BLOOD || ID == MEDKIT || ID == FOOD)
+
+#define FRAMES_PER_DEATH_ANIMATION 5
+#define FRAMES_PER_EXPLOSION_ANIMATION 3
 
 #define CLOSED 'c'
 #define CLOSING 'C'
