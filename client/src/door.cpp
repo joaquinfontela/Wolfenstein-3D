@@ -5,8 +5,8 @@
 
 void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double dirY, double planeX, double planeY, double* zBuffer) {
-  char doorState = this->matrix->getDoorState(this->mapX, this->mapY);
 
+  char doorState = this->matrix->getDoorState(this->mapX, this->mapY);
   if (doorState == OPEN) return;
 
   float time = this->matrix->doors[this->mapX][this->mapY].timer;
@@ -14,15 +14,15 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   double rayDirY = dirY + planeY * cameraX;
 
   bool isSide = (this->side == 0);
-  double perpWallDist = ((this->mapX - posX + ((1 - stepX) >> 1)) / (rayDirX) * isSide) +
-                        ((this->mapY - posY + ((1 - stepY) >> 1)) / (rayDirY) * !isSide);
-  double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
-                 ((posX + perpWallDist * rayDirX) * !isSide);
+  double perpWallDist = (isSide * (this->mapX - posX + ((1 - stepX) >> 1)) / (rayDirX)) +
+                        (!isSide * (this->mapY - posY + ((1 - stepY) >> 1)) / (rayDirY));
+  double wallX = (isSide * (posY + perpWallDist * rayDirY)) +
+                 (!isSide * (posX + perpWallDist * rayDirX));
   wallX -= floor((wallX));
 
   int texX = int(wallX * double(BLOCKSIZE));
-  if( isSide && rayDirX > 0) texX = BLOCKSIZE - texX - 1;
-  if(!isSide && rayDirY < 0) texX = BLOCKSIZE - texX - 1;
+  bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
+  texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
   if (texX < BLOCKSIZE * (1 - time)) return;
   int lineHeight = int(this->height / perpWallDist);
 

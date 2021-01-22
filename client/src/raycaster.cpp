@@ -46,10 +46,8 @@ void Raycaster::run(){
     double zBuffer[this->width];
 
     for(int x = 0; x < this->width; x++) {
-
-      int amountOfWalls = 0;
-
-      double cameraX = 2 * x / (double)this->width - 1;
+      
+      double cameraX = (x << 1) / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraX;
       double rayDirY = dirY + planeY * cameraX;
 
@@ -61,39 +59,30 @@ void Raycaster::run(){
       double deltaDistX = std::abs(1 / rayDirX);
       double deltaDistY = std::abs(1 / rayDirY);
 
-      int stepX, stepY;
+      int stepX = 1;
+      int stepY = 1;
 
       int hit = 0;
       int texNum = 1;
       bool wasADoor;
       int side;
 
-      if (rayDirX < 0) {
-        stepX = -1;
-        sideDistX = (posX - mapX) * deltaDistX;
-      } else {
-        stepX = 1;
-        sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-      }
-
-      if (rayDirY < 0) {
-        stepY = -1;
-        sideDistY = (posY - mapY) * deltaDistY;
-      } else {
-        stepY = 1;
-        sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-      }
+      bool isRayDirXNegative = (rayDirX < 0);
+      bool isRayDirYNegative = (rayDirY < 0);
+      stepX -= (isRayDirXNegative << 1); // Swicthing signs.
+      sideDistX = (isRayDirXNegative * (posX - mapX) * deltaDistX) +
+                  (!isRayDirXNegative * (mapX + 1.0 - posX) * deltaDistX);
+      stepY -= (isRayDirYNegative << 1); // Swicthing signs.
+      sideDistY = (isRayDirYNegative * (posY - mapY) * deltaDistY) +
+                  (!isRayDirYNegative * (mapY + 1.0 - posY) * deltaDistY);
 
       while (hit == 0) {
-        if (sideDistX < sideDistY) {
-          sideDistX += deltaDistX;
-          mapX += stepX;
-          side = 0;
-        } else {
-          sideDistY += deltaDistY;
-          mapY += stepY;
-          side = 1;
-        }
+        bool isSideDistXgreaterToY = (sideDistX < sideDistY);
+        sideDistX += deltaDistX * isSideDistXgreaterToY;
+        sideDistY += deltaDistY * !isSideDistXgreaterToY;
+        mapX += stepX * isSideDistXgreaterToY;
+        mapY += stepY * !isSideDistXgreaterToY;
+        side = !isSideDistXgreaterToY;
 
         if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapY < 0) {
           mapX = INT_MAX;
@@ -111,13 +100,13 @@ void Raycaster::run(){
       }
 
       bool isSide = (side == 0);
-      double perpWallDist = ((mapX - posX + ((1 - stepX) >> 1)) / (rayDirX) * isSide) +
-                            ((mapY - posY + ((1 - stepY) >> 1)) / (rayDirY) * !isSide);
+      double perpWallDist = (isSide * (mapX - posX + ((1 - stepX) >> 1)) / (rayDirX)) +
+                            (!isSide * (mapY - posY + ((1 - stepY) >> 1)) / (rayDirY));
 
       int lineHeight = int(this->height/ perpWallDist);
 
-      double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
-                     ((posX + perpWallDist * rayDirX) * !isSide);
+      double wallX = (isSide * (posY + perpWallDist * rayDirY)) +
+                     (!isSide * (posX + perpWallDist * rayDirX));
       wallX -= floor((wallX));
 
       int texX = int(wallX * double(BLOCKSIZE));
