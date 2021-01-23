@@ -53,6 +53,10 @@ unsigned int Shootable::attack(int& ammo, float timeElapsed) {
         damage += this->shoot();
         ammo -= this->ammoLostPerShot;
       }
+      else{
+        damage = -1;
+        break;
+      }
     }
     timeSinceLastShot = 0;
   }else{

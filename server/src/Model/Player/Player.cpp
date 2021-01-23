@@ -221,7 +221,7 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
   int att = this->attack(timeElapsed);
   int range = this->getRange();
 
-  if(this->currentWeapon->getID() == 1 || this->currentWeapon->getID() == 2){
+  if(this->currentWeapon->getID() == 1 || this->currentWeapon->getID() == 2 || this->currentWeapon->getID() == 5){
     this->setShooting(false);
   }
 
