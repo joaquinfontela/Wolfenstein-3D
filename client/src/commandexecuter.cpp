@@ -114,7 +114,7 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
 void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
   Player* deadPlayer = this->players[playerId];
   int gunId = deadPlayer->weaponId;
-  double dist = players.at(this->selfId)->calculateDist(players.at(shooterId))
+  double dist = players.at(this->selfId)->calculateDist(players.at(playerId));
   int deathSpriteId = GET_DEATH_ANIMATION_SPRITE(gunId);
   // I don't need to get a new uniqueId for the sprite when I can use -1 * deadPlayer->playerId.
   // Not only it's a negative number, which means that no other texture could have the same id,
