@@ -33,6 +33,7 @@ class CommandExecuter : public Thread {
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
+  void playDyingSound(int gunId, double dist);
   SocketCommunication& socket;
   std::atomic<bool>& alive;
   std::vector<Drawable*>& sprites;

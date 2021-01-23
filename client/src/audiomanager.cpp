@@ -47,7 +47,12 @@ AudioManager::AudioManager() {
                                    "Rocket Explode.wav", // 6
                                    "Door.wav", // 7
                                    "ItemPickup.wav", // 8
-                                   "HealthPickup.wav" // 9
+                                   "HealthPickup.wav", // 9
+                                   "Dog Death.wav", // 10
+                                   "Death 1.wav", // 11
+                                   "Death 2.wav", // 12
+                                   "Player Pain 2.wav", // 13
+                                   "Enemy Pain.wav" // 14
                                   });
   int i = 1;
   for (std::string& name : names) {
