@@ -24,6 +24,7 @@ class CommandExecuter : public Thread {
   ~CommandExecuter();
   void run();
   void eraseSprite(uint32_t itemId);
+  void playDyingSound(int gunId, int playerId);
   void playExplosionSound();
  private:
   void removeSpriteWithId(uint32_t itemId);
@@ -33,7 +34,6 @@ class CommandExecuter : public Thread {
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
-  void playDyingSound(int gunId, double dist);
   SocketCommunication& socket;
   std::atomic<bool>& alive;
   std::vector<Drawable*>& sprites;

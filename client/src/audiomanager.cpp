@@ -20,6 +20,17 @@ void AudioManager::playOnVariableVolumeWithId(int id, double dist){
   audio->play();
 }
 
+void AudioManager::playOrStopOnVariableVolumeWithId(int id, double dist) {
+  std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
+  if (!(it != this->audiotracks.end())) {
+    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    return;
+  }
+  Audio* audio = it->second;
+  audio->volumeDownWithDist(dist);
+  audio->play();
+}
+
 AudioManager::~AudioManager() {
   this->garbageCollector();
 }
