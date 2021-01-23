@@ -17,6 +17,8 @@ tar zxf lua-5.4.2.tar.gz
 cd lua-5.4.2
 make linux
 sudo make install
+cd ..
+rm lua-5.4.2
 
 echo -e "\x1b[1m\x1b[32m \n [Compiling Server] \x1b[0m\n"
 cd ../../../../
