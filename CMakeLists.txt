@@ -124,6 +124,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/PlayerDropItem.cpp
         server/src/Control/Notification/ElementSwitchPosition.cpp
         server/src/Control/Notification/MissileExplotion.cpp
+        server/src/Control/Notification/PlayerDied.cpp
         server/src/Control/Command/PlayerADown.cpp
         server/src/Control/Command/PlayerSDown.cpp
         server/src/Control/Command/PlayerDDown.cpp

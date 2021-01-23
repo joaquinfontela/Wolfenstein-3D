@@ -9,6 +9,7 @@
 #include "../../../includes/Model/Item/Weapon/Knife.h"
 #include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
+#include "../../../includes/Control/Notification/PlayerDied.h"
 
 Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
                unsigned int playerID)
@@ -99,6 +100,9 @@ int Player::handleDeath(WaitingQueue<Notification*>& notis) {
     this->health = 0;
     return -1;
   }
+
+  PlayerDied* noti = new PlayerDied(this->playerID);
+  notis.push(noti);
 
   map.addAmmoDropAt(this->y + 1, this->x + 1, notis);
   this->respawn(notis);
