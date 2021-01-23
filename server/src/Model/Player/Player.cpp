@@ -38,6 +38,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
   this->planeY = 0.66;
   this->planeX = 0;
   this->shooting = false;
+  this->isAdmin = false;
 
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
@@ -72,6 +73,14 @@ Player::Player(YAMLConfigReader yamlConfigReader)
   weapons.push_back(
       weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
+}
+
+void Player::setAdmin(){
+  isAdmin = true;
+}
+
+bool Player::hasAdmin(){
+  return isAdmin;
 }
 
 void Player::setShooting(bool state){

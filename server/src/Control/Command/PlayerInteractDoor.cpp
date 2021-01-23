@@ -13,6 +13,9 @@ PlayerInteractDoor::PlayerInteractDoor(int ID) {
 
 void PlayerInteractDoor::execute(WaitingQueue<Notification*>& notifications, Game& game) {
 
+  if(!game.hasStarted())
+    return;
+    
   int x, y;
 
   std::tie(x, y) = game.moveDoor(this->playerID);  // Las coordenadas (x, y) de la puerta con la que se interactuo, si no habia ninguna tendria (-1, -1)

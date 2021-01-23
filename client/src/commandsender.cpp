@@ -84,6 +84,9 @@ void CommandSender::run() {
           case SDLK_5:
             this->update(KEY_5_DOWN);
             break;
+          case SDLK_p:
+            this->update(START_MATCH);
+            break;
         }
       } else if (event.type == SDL_KEYUP) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;

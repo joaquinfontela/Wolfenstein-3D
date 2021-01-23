@@ -24,6 +24,7 @@ class Game {
   YAMLConfigReader yamlConfigReader;
   YAMLMapReader yamlMapReader;
   std::list<Updatable*> updatables;
+  bool started;
 
   // Deberia tener una estructura que maneje los datos del configFile de YAML
 
@@ -78,8 +79,10 @@ class Game {
   // Devuelve el ID de la pared que cambio de estado, -1 si no se modifico nada.
   std::tuple<int, int> moveDoor(int playerID);
 
+  bool hasStarted();
+
   // Comienza el juego.
-  void start();
+  void start(int playerID);
 
   // Termina el juego.
   void end();

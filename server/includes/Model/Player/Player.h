@@ -28,6 +28,7 @@ class Player {
   std::vector<Weapon*> weapons;
   bool key;
   bool shooting;
+  bool isAdmin;
   WeaponFactory weaponFactory;
   Map& map;
 
@@ -54,6 +55,10 @@ class Player {
   double getY();
   double getDirX();
   double getDirY();
+
+  bool hasAdmin();
+
+  void setAdmin();
 
   // Agrega el arma indicada al vector de armas que posee el jugador.
   void addWeapon(Weapon* weapon);

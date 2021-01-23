@@ -10,6 +10,8 @@ PlayerShoot::PlayerShoot(int ID, bool keyPressed) {
 }
 
 void PlayerShoot::execute(WaitingQueue<Notification*>& notifications, Game& game) {
-
+  if(!game.hasStarted())
+    return;
+    
   game.setShooting(playerID, keyPressed);
 }

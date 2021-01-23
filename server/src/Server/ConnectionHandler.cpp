@@ -17,6 +17,7 @@
 #include "../../includes/Control/Command/PlayerDUp.h"
 #include "../../includes/Control/Command/PlayerInteractDoor.h"
 #include "../../includes/Control/Command/PlayerSwitchWeapon.h"
+#include "../../includes/Control/Command/StartGame.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
                                      WaitingQueue<Command*>& com, int playerID)
@@ -141,6 +142,11 @@ void ConnectionHandler::receiveCommands() {
 
       case KEY_5_DOWN:{
         this->commands.push(new PlayerSwitchWeapon(this->ID, 4));
+        break;
+      }
+
+      case START_MATCH:{
+        this->commands.push(new StartGame(this->ID));
         break;
       }
 

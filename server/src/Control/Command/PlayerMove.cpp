@@ -13,6 +13,9 @@ PlayerMove::PlayerMove(int ID, int x, int y) {
 
 void PlayerMove::execute(WaitingQueue<Notification*>& notifications, Game& game) {
 
+  if(!game.hasStarted())
+    return;
+    
   // Aca se usaria la clase Game para validar movimientos y en caso de tener que informar algo hacerlo.
   // La notificacion no deberia enviarse siempre, solo en el caso de que el movimiento que estoy intentando hacer sea valido.
   PlayerUpdatePosition* noti =

@@ -19,6 +19,8 @@
 Game::Game(std::string mapFile, std::string configFile)
     : yamlConfigReader(configFile), yamlMapReader(mapFile) {
   auto t1 = std::chrono::steady_clock::now();
+  started = false;
+
   MapLoader mapLoader(mapFile);
   map = mapLoader.loadMap();
   auto t2 = std::chrono::steady_clock::now();
@@ -35,9 +37,13 @@ void Game::setShooting(int playerID, bool state){
 
 void Game::addPlayer(int playerID, WaitingQueue<Notification*>& notis) {
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
-  this->sendGameStatus(notis);
 
   this->players[playerID] = newPlayer;
+
+  if(this->players.size() == 1)
+    newPlayer->setAdmin();
+
+  this->sendGameStatus(notis);
 }
 
 bool Game::forceDoorStatusChange(int x, int y) {
@@ -153,9 +159,18 @@ void Game::updatePlayerMoveSpeed(int playerID, double moveSpeed) {
 void Game::updatePlayerRotationSpeed(int playerID, double rotSpeed) {
   this->players[playerID]->updateRotationSpeed(rotSpeed);
 }
-void Game::start() {
-  // Deberia controlar la logica de iniciar el juego -> mandar la notificacion a
-  // los jugadores
+
+void Game::start(int playerID) {
+  std::map<int, Player*>::iterator it = this->players.find(playerID);
+
+  if (it != this->players.end()) {
+    if(it->second->hasAdmin())
+      started = true;
+  }
+}
+
+bool Game::hasStarted(){
+  return started;
 }
 
 void Game::end() {

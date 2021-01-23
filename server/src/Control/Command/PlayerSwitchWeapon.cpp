@@ -9,6 +9,8 @@ PlayerSwitchWeapon::PlayerSwitchWeapon(int playerID, int weaponPos) {
 }
 
 void PlayerSwitchWeapon::execute(WaitingQueue<Notification*>& notifications, Game& game) {
-
+  if(!game.hasStarted())
+    return;
+    
   game.playerSwitchWeapon(this->playerID, this->weaponPos);
 }
