@@ -7,7 +7,7 @@
 
 #define BLOOD_FRAMES 5
 #define EXPLOSION_FRAMES 30
-#define DEATH_FRAMES 50
+#define DEATH_FRAMES 1500
 
 // Apply bit masks to facilitate the sound selection.
 

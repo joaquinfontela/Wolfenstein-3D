@@ -101,8 +101,14 @@ void ConnectionHandler::receiveCommands() {
           break;
        }
 
-       case PLAYER_SHOOT: {
-         PlayerShoot* shoot = new PlayerShoot(this->ID);
+       case PLAYER_SHOOT_DOWN: {
+         PlayerShoot* shoot = new PlayerShoot(this->ID, true);
+         this->commands.push(shoot);
+         break;
+       }
+
+       case PLAYER_SHOOT_UP: {
+         PlayerShoot* shoot = new PlayerShoot(this->ID, false);
          this->commands.push(shoot);
          break;
        }

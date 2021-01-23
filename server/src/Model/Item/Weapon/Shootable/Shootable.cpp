@@ -1,4 +1,5 @@
 #include "../../../../../includes/Model/Item/Weapon/Shootable/Shootable.h"
+#include <iostream>
 
 Shootable::Shootable(unsigned int uniqueId, int newAmmo,
                      unsigned int minDamagePerBullet,
@@ -8,8 +9,8 @@ Shootable::Shootable(unsigned int uniqueId, int newAmmo,
   this->ammo = newAmmo;
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
-  this->precision = NULL;
-  this->blastFrequency = NULL;
+  this->precision = 0;
+  this->blastFrequency = 0;
 }
 
 Shootable::Shootable(unsigned int uniqueId, int newAmmo,
@@ -21,34 +22,43 @@ Shootable::Shootable(unsigned int uniqueId, int newAmmo,
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
   this->precision = precision;
-  this->blastFrequency = NULL;
+  this->blastFrequency = 0;
+  this->timeSinceLastShot = 0;
 }
 
 Shootable::Shootable(unsigned int uniqueId, int newAmmo,
                      unsigned int minDamagePerBullet,
                      unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
                      unsigned int ammoLostPerShot, unsigned int precision,
-                     unsigned int blastFrequency)
+                     float blastFrequency)
     : Weapon(uniqueId, minDamagePerBullet, maxDamagePerBullet) {
   this->ammo = newAmmo;
   this->shotsPerBlast = shotsPerBlast;
   this->ammoLostPerShot = ammoLostPerShot;
   this->precision = precision;
   this->blastFrequency = blastFrequency;
+  this->timeSinceLastShot = 0;
 }
 
 Shootable::~Shootable() {}
 
-unsigned int Shootable::attack(int& ammo) {
+unsigned int Shootable::attack(int& ammo, float timeElapsed) {
   int i;
   unsigned int damage = 0;
-  for (i = 0; i < this->shotsPerBlast; i++) {
-    if(ammo >= this->ammoLostPerShot){
-      damage += this->shoot();
-      ammo -= this->ammoLostPerShot;
-    }
 
+  if(timeSinceLastShot + timeElapsed > this->blastFrequency){
+    for (i = 0; i < this->shotsPerBlast; i++) {
+      if(ammo >= this->ammoLostPerShot){
+        damage += this->shoot();
+        ammo -= this->ammoLostPerShot;
+      }
+    }
+    timeSinceLastShot = 0;
+  }else{
+    timeSinceLastShot += timeElapsed;
+    return -1;
   }
+
   return damage;
 }
 

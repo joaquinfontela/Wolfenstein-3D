@@ -15,6 +15,7 @@ class Tile;
 class Player;
 class Item;
 class Wall;
+class Weapon;
 
 typedef std::vector<std::vector<Tile>> TileMatrix;
 

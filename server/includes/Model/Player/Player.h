@@ -4,11 +4,13 @@
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Item/Weapon/Weapon.h"
 #include "../Item/Weapon/WeaponFactory.h"
 #include "../Map/Map.h"
 
 class Map;
+class Updatable;
 
 class Player {
  private:
@@ -25,6 +27,7 @@ class Player {
   Weapon* currentWeapon;
   std::vector<Weapon*> weapons;
   bool key;
+  bool shooting;
   WeaponFactory weaponFactory;
   Map& map;
 
@@ -37,12 +40,14 @@ class Player {
   Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
   Player(YAMLConfigReader yamlConfigReader);
 
+  void setShooting(bool state);
+
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
   int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
 
   void setNotifiable(bool status);
-  
+
   // GETTERS
   unsigned int ID();
   double getX();
@@ -68,7 +73,11 @@ class Player {
 
   // Devuelve cuanto daño hace un ataque con su arma.
   // Si se queda sin balas, cambia de arma.
-  int attack();
+  int attack(float timeElapsed);
+
+  void shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
+
+  void shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
 
   // Actualiza la velocidad de movimiento.
   void updateMoveSpeed(double movSpeed);
@@ -95,7 +104,7 @@ class Player {
 
   // Actualiza la posicion del jugador dada la velocidad de movimiento y
   // rotacion.
-  void update(float timeElapsed, WaitingQueue<Notification*>& notis);
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
 
   // Equipa una llave.
   void pickupKey();

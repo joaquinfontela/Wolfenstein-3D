@@ -183,11 +183,13 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   this->window->getWindowSize(&x, &y);
   this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
   this->gun->setSlideWidth(&width);
+
   float aspectRatio = float(height) / float(width);
   width = x >> 1;
   height = width * aspectRatio;
   y -= (y + height) >> 1;
   x -= (x + width) >> 1;
+
   area.update(x + dx, (y * 120) / 91 + dy, width , height);
   this->gun->renderActualFrame(area, GUNSPRITESROW);
 }

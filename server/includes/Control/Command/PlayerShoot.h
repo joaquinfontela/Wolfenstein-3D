@@ -7,9 +7,10 @@
 class PlayerShoot : public Command {
  private:
   int playerID;
+  bool keyPressed;
 
  public:
-  PlayerShoot(int playerID);
+  PlayerShoot(int playerID, bool keyPressed);
   void execute(WaitingQueue<Notification*>& notifications, Game& game);
 };
 

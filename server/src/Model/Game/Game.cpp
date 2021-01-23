@@ -28,6 +28,11 @@ Game::Game(std::string mapFile, std::string configFile)
             << "s." << std::endl;
 }
 
+void Game::setShooting(int playerID, bool state){
+
+  this->players[playerID]->setShooting(state);
+}
+
 void Game::addPlayer(int playerID, WaitingQueue<Notification*>& notis) {
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
   this->sendGameStatus(notis);
@@ -44,35 +49,7 @@ void Game::playerSwitchWeapon(int playerID, int weaponPos) {
 }
 
 void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
-  Player* attacker = this->players[playerID];
 
-  Player* receiver = nullptr;
-  int receiverHealth = 0;
-
-  int att = attacker->attack();
-  int range = attacker->getRange();
-
-  if(range == INT_MAX){ // Por el momento, INT_MAX siginifica que lanzo un RPG. Cambiar a un metodo del estilo hasRPG();
-    double dirX = attacker->getDirX();
-    double dirY = attacker->getDirY();
-    int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
-    PlayerDropItem* noti = new PlayerDropItem(attacker->getX() + dirX + attacker->planeX/2, attacker->getY() + dirY + attacker->planeY/2, 404, uniqueId);
-    notis.push(noti);
-    RocketMissile* newMissile = new RocketMissile(attacker->getX() + dirX + attacker->planeX/2, attacker->getY() + dirY + attacker->planeY/2, dirX, dirY, uniqueId);
-    this->updatables.push_back(newMissile);
-    return; // Damage is not calculcated on shot fired, but on hit.
-  }
-
-  if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
-    ItemFactory factory;
-
-    att = int((att / sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
-    receiverHealth = receiver->takeDamage(att, notis);
-    if (receiverHealth == 0) {  // Deberia generar un evento de los items dropeados.
-
-    } else if (receiverHealth == -1) {
-    }  // Ya no deberia respawnear, deberia generar un evento de muerte.
-  }
 }
 
 void Game::generateRadiusDamage(int x, int y, WaitingQueue<Notification*>& notif){
@@ -101,7 +78,7 @@ void Game::updatePositions(float timeElapsed,
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    it->second->update(timeElapsed, notis);
+    it->second->update(timeElapsed, notis, this->updatables);
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();

@@ -3,15 +3,13 @@
 #include "../../../includes/Control/Notification/Notification.h"
 #include "../../../includes/Control/Notification/ShotsFired.h"
 
-PlayerShoot::PlayerShoot(int ID) {
+PlayerShoot::PlayerShoot(int ID, bool keyPressed) {
+  this->keyPressed = keyPressed;
   this->playerID = ID;
 
 }
 
 void PlayerShoot::execute(WaitingQueue<Notification*>& notifications, Game& game) {
 
-  ShotsFired* noti = new ShotsFired(this->playerID);
-  notifications.push(noti);
-
-  game.playerShoot(this->playerID, notifications);
+  game.setShooting(playerID, keyPressed);
 }

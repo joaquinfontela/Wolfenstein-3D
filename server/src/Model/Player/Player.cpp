@@ -10,6 +10,10 @@
 #include "../../../includes/Model/Item/Weapon/Shootable/Pistol.h"
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
 #include "../../../includes/Control/Notification/PlayerDied.h"
+#include "../../../includes/Control/Notification/ShotsFired.h"
+#include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
+
+
 
 Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
                unsigned int playerID)
@@ -33,6 +37,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
   this->playerID = playerID;
   this->planeY = 0.66;
   this->planeX = 0;
+  this->shooting = false;
 
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
@@ -67,6 +72,11 @@ Player::Player(YAMLConfigReader yamlConfigReader)
   weapons.push_back(
       weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
+}
+
+void Player::setShooting(bool state){
+  this->shooting = state;
+  this->hasToBeNotified = true;
 }
 
 bool Player::hasGunWithId(int uniqueId) {
@@ -164,7 +174,11 @@ void Player::moveTo(double x, double y) {
   this->y = y;
 }
 
-void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
+void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables) {
+
+  if(this->shooting)
+  this->shoot(timeElapsed, notis, updatables);
+
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
 
@@ -185,7 +199,47 @@ void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
   this->planeX = ((this->planeX) * cos(rotSpeed)) - (this->planeY * sin(rotSpeed));
   this->planeY = (oldPlaneX * sin(rotSpeed)) + (this->planeY * cos(rotSpeed));
 
+
   this->hasToBeNotified = true;
+}
+
+void Player::shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables){
+  double dirX = this->getDirX();
+  double dirY = this->getDirY();
+  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
+  PlayerDropItem* noti = new PlayerDropItem(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, 404, uniqueId);
+  notis.push(noti);
+  RocketMissile* newMissile = new RocketMissile(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, dirX, dirY, uniqueId);
+  updatables.push_back(newMissile);
+  return;
+}
+
+void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables){
+
+  Player* receiver = nullptr;
+
+  int att = this->attack(timeElapsed);
+  int range = this->getRange();
+
+  if(this->currentWeapon->getID() == 1 || this->currentWeapon->getID() == 2){
+    this->setShooting(false);
+  }
+
+  if(att == -1){
+    return;
+  }
+
+  if(range == INT_MAX){ // Por el momento, INT_MAX siginifica que lanzo un RPG. Cambiar a un metodo del estilo hasRPG();
+    this->shootRPG(notis, updatables);
+  }
+
+  ShotsFired* noti = new ShotsFired(this->playerID);
+  notis.push(noti);
+
+  if ((receiver = map.traceAttackFrom(this, range)) != nullptr) {
+    att = int((att / sqrt(this->calculateDistanceTo(receiver)))) % 10;
+    receiver->takeDamage(att, notis);
+  }
 }
 
 double Player::getX() { return this->x; }
@@ -196,13 +250,13 @@ double Player::getDirX() { return this->dirX; }
 
 double Player::getDirY() { return this->dirY; }
 
-int Player::attack() {
+int Player::attack(float timeElapsed) {
   // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
   // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
   // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
 
   int ammo = this->ammo;
-  int damageDealt = this->currentWeapon->attack(ammo);
+  int damageDealt = this->currentWeapon->attack(ammo, timeElapsed);
   this->ammo = ammo;
 
   if (this->ammo <= 0) {

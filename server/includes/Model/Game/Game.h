@@ -30,6 +30,9 @@ class Game {
  public:
   Game(std::string mapFile, std::string configFile);
 
+  // Sets the player shooting status.
+  void setShooting(int playerID, bool shooting);
+
   // Fuerza a una puerta a cambiar su estado. Se usa para el cierre automatico
   // de las puertas.
   bool forceDoorStatusChange(int x, int y);
