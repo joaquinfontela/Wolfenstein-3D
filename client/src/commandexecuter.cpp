@@ -62,8 +62,8 @@ void CommandExecuter::playExplosionSound() {
 }
 
 void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
-  this->lock.lock();
   std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
+  this->lock.lock();
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {

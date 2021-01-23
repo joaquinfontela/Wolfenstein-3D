@@ -11,6 +11,7 @@ Shootable::Shootable(unsigned int uniqueId, int newAmmo,
   this->ammoLostPerShot = ammoLostPerShot;
   this->precision = 0;
   this->blastFrequency = 0;
+  this->timeSinceLastShot = 0;
 }
 
 Shootable::Shootable(unsigned int uniqueId, int newAmmo,

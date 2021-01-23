@@ -25,6 +25,7 @@ class Hud {
   short movementStatus;
   int fps;
   int framesAlreadyPlayed;
+  int screenHeight, screenWidth;
   Area area;
   void playMyShootingSound();
   void renderText(const char* text, SDL_Rect* rect);

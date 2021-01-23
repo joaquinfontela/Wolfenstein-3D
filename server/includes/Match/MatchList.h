@@ -6,6 +6,7 @@
 #include "../Server/ClientCommunication.h"
 #include "../Server/ConnectionHandler.h"
 #include "Match.h"
+#include <mutex>
 
 class ClientCommunication;
 class Match;
@@ -21,6 +22,7 @@ class MatchList {
   std::map<int, Match*> matches;
   void forceShutdown();
   void matchCleanup();
+  std::mutex lock;
 
  public:
   MatchList();
