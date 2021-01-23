@@ -13,6 +13,7 @@
 #include "../../../includes/Control/Notification/PlayerDropItem.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
+#include "../../../includes/Control/UpdatableEvent/EndMatch.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Player/Player.h"
 
@@ -164,8 +165,11 @@ void Game::start(int playerID) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
   if (it != this->players.end()) {
-    if(it->second->hasAdmin())
+    if(it->second->hasAdmin()){
       started = true;
+      EndMatch* endTimer = new EndMatch();
+      this->updatables.push_back(endTimer);
+    }
   }
 }
 
@@ -174,7 +178,7 @@ bool Game::hasStarted(){
 }
 
 void Game::end() {
-  // Lo mismo pero para terminarlo.
+  started = false;
 }
 
 Game::~Game() {

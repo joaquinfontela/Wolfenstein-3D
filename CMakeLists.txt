@@ -140,6 +140,7 @@ set(SOURCE_FILES_SERVER
 
         server/src/Control/UpdatableEvent/ChangeDoorStatus.cpp
         server/src/Control/UpdatableEvent/RocketMissile.cpp
+        server/src/Control/UpdatableEvent/EndMatch.cpp
         server/src/Model/Map/Map.cpp
         server/src/Model/Map/MapLoader.cpp
         server/src/Model/Map/Tile/Tile.cpp
