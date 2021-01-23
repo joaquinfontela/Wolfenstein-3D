@@ -63,7 +63,7 @@ void CommandSender::run() {
           case SDLK_RETURN:
             if (!enterPressed) {
               enterPressed = true;
-              this->update(PLAYER_SHOOT);
+              this->update(PLAYER_SHOOT_UP);
             }
             break;
           case SDLK_e:
@@ -106,7 +106,7 @@ void CommandSender::run() {
             break;
           case SDLK_RETURN:
             enterPressed = false;
-            this->update(PLAYER_SHOOT);
+            this->update(PLAYER_SHOOT_DOWN);
             break;
           case SDLK_LEFT:
             break;

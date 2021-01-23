@@ -4,7 +4,7 @@
 // Command definitions
 #define CONNECT_TO_LOBBY 1
 #define PLAYER_POS_UPDATE 2
-#define PLAYER_SHOOT 3
+#define PLAYER_SHOOT_UP 3
 #define SHOTS_FIRED 4
 #define OPEN_DOOR 5
 #define PICK_WEAPON 6
@@ -19,6 +19,7 @@
 #define MISSILE_EXPLOTION 15
 #define ELEMENT_SWITCH_POSITION 16
 #define PLAYER_DIED 17
+#define PLAYER_SHOOT_DOWN 18
 
 /*// PowerUp ID definitions
 #define FOOD 30
