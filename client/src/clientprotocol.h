@@ -7,7 +7,7 @@
 
 #define BLOOD_FRAMES 5
 #define EXPLOSION_FRAMES 30
-#define DEATH_FRAMES 1500
+#define DEATH_FRAMES 50
 
 // Apply bit masks to facilitate the sound selection.
 
@@ -64,7 +64,7 @@
 #define HUD_SPRITE 5
 #define GREENLIGHT_SPRITE 6
 #define SMALLBARREL_SPRITE 7
-#define SOLDIERFRONT_SPRITE 8
+#define SOLDIER_FRONT 8
 #define SOLDIERRIGHT_SPRITE 9
 #define SOLDIERBACK_SPRITE 10
 #define SOLDIERLEFT_SPRITE 11
@@ -138,6 +138,11 @@
 #define SS_DEATH 78
 #define OFFICIAL_DEATH 79
 #define MUTANT_DEATH 80
+
+#define DOG_FRONT 81
+#define SS_FRONT 82
+#define OFFICIAL_FRONT 83
+#define MUTANT_FRONT 84
 
 #define GET_DEATH_ANIMATION_SPRITE(X) (X + 75)
 #define GET_GUN_ID_FROM_ANIMATION_SPRITE(X) (X - 75)

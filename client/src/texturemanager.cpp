@@ -119,7 +119,11 @@ void TextureManager::loadTextures() {
                                    "soldierdeath.png", // 77
                                    "ssdeath.png", // 78
                                    "officialdeath.png", // 79
-                                   "mutantdeath.png" // 80
+                                   "mutantdeath.png", // 80
+                                   "dog_front.png", // 81
+                                   "ss_front.png", // 82
+                                   "official_front.png", // 83
+                                   "mutant_front.png" // 84
                                   });
   int i = 1;
   for (std::string& name : names) {

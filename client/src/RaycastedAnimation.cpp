@@ -42,7 +42,7 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (texX < 0) continue;
-    else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 500))
+    else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
       this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
