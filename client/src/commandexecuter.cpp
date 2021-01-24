@@ -146,6 +146,7 @@ void CommandExecuter::run() {
         memset(&playerinfo, 0, sizeof(PlayerData));
         infogetter.receivePlayerData(playerinfo);
         uint32_t id = playerinfo.playerID;
+
         if (players.find(id) != players.end()) {
           players[id]->update(playerinfo);
         } else {

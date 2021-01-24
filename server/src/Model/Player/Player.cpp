@@ -101,7 +101,7 @@ bool Player::hasGunWithId(int uniqueId) {
 void Player::addWeapon(Weapon* weapon) { this->weapons.push_back(weapon); }
 
 bool Player::collidesWith(double x, double y) {
-  return fabs(this->x - x) < 5 && fabs(this->y - y) < 5;
+  return sqrt(pow(this->x - x, 2) + pow(this->y - y, 2)) <= 0.25;
 }
 
 void Player::respawn(WaitingQueue<Notification*>& notis) {

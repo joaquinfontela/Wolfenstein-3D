@@ -96,8 +96,8 @@ bool Map::forceDoorStatusChange(int x, int y) {
 }
 
 Player* Map::traceAttackFrom(Player* attacker, int range) {
-  double initialX = attacker->getX() + attacker->planeX/2;
-  double initialY = attacker->getY() + attacker->planeY/2;
+  double initialX = attacker->getX();
+  double initialY = attacker->getY();
 
   double dirX = attacker->getDirX() / 3.0;
   double dirY = attacker->getDirY() / 3.0;
