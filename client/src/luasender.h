@@ -9,6 +9,7 @@ public:
 
   LuaSender(SocketCommunication& s, std::atomic<bool>& alive) : CommandSender(s, alive){}
   void run();
+  void checkForQuit();
 };
 
 

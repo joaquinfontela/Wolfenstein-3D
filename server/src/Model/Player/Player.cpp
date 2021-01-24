@@ -283,10 +283,19 @@ unsigned int Player::ID() { return this->playerID; }
 void Player::updateMoveSpeed(double moveSpeed) {
    this->moveSpeed += moveSpeed;
 
+   if(this->moveSpeed < -6.5)
+     this->moveSpeed = -6.5;
+   else if(this->moveSpeed > 6.5)
+     this->moveSpeed = 6.5;
   }
 
 void Player::updateRotationSpeed(double rotSpeed) {
   this->rotSpeed += rotSpeed;
+
+  if(this->rotSpeed < -0.125)
+    this->rotSpeed = -0.125;
+  else if(this->rotSpeed > 0.125)
+    this->rotSpeed = 0.125;
 
 }
 
