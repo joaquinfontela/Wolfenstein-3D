@@ -123,7 +123,15 @@ void TextureManager::loadTextures() {
                                    "dog_front.png", // 81
                                    "ss_front.png", // 82
                                    "official_front.png", // 83
-                                   "mutant_front.png" // 84
+                                   "mutant_front.png", // 84
+                                   "soldier_sprite_back.png", // 85
+                                   "soldier_sprite_back_left.png", // 86
+                                   "soldier_sprite_back_right.png", // 87
+                                   "soldier_sprite_front.png", // 88
+                                   "soldier_sprite_front_left.png", // 89
+                                   "soldier_sprite_front_right.png", // 90
+                                   "soldier_sprite_left.png", // 91
+                                   "soldier_sprite_right.png" // 92
                                   });
   int i = 1;
   for (std::string& name : names) {

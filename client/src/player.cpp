@@ -24,10 +24,10 @@ double Player::calculateDist(int otherx, int othery) {
   return sqrt(pow(this->x - otherx,2) + pow(this->y - othery,2));
 }
 
-/*int Player::getSoldierId(double x, double y, double dirX, double dirY) {
+int Player::getSoldierId(double x, double y, double dirX, double dirY) {
   double angle = atan2(this->y - y, this->x - x) * 180 / PI;
   return 1;
-}*/
+}
 
 bool Player::hasThisUniqueId(int otherid){
   return false;
