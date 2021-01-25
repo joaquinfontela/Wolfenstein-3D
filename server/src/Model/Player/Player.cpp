@@ -25,6 +25,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
       BULLET_DROP_WHEN_DIES(
           yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
+      POINTS_PER_KILL(yamlConfigReader.getPointsPerKill()),
       key(false),
       score(0),
       dirX(-1),
@@ -58,6 +59,7 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       BULLET_DROP_WHEN_DIES(
           yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
       AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
+      POINTS_PER_KILL(yamlConfigReader.getPointsPerKill()),
       key(false),
       score(0),
       x(6.0),
@@ -173,6 +175,7 @@ void Player::fillPlayerData(PlayerData& data) {
   data.health = health;
   data.weaponID = this->currentWeapon->getID();
   data.bullets = this->ammo;
+  data.score = score;
 
 
   return;
@@ -244,10 +247,14 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
 
   ShotsFired* noti = new ShotsFired(this->playerID);
   notis.push(noti);
+  int receiverHealth = 0;
 
   if ((receiver = map.traceAttackFrom(this, range)) != nullptr) {
     att = int((att / sqrt(this->calculateDistanceTo(receiver)))) % 10;
-    receiver->takeDamage(att, notis);
+    receiverHealth = receiver->takeDamage(att, notis);
+
+    if((receiverHealth == 0) || (receiverHealth == -1))
+      this->addPoints(POINTS_PER_KILL);
   }
 }
 

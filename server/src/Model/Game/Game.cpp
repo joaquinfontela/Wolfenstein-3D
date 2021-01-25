@@ -179,6 +179,13 @@ bool Game::hasStarted(){
 
 void Game::end() {
   started = false;
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  std::cout<<"[GAME] Final Score Report:"<<std::endl;
+  for(; it != this->players.end(); ++it){
+    std::cout<<"\tID: "<<it->first<<", Score: "<<it->second->getScore()<<std::endl;
+  }
+
 }
 
 Game::~Game() {

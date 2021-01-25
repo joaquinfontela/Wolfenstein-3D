@@ -40,6 +40,7 @@ void SocketWrapper::send(PlayerData& value) {
   uint32_t health = value.health;
   uint32_t weaponID = value.weaponID;
   uint32_t ammo = value.bullets;
+  uint32_t score = value.score;
 
   this->socket.sendDouble(&value.dirX, sizeof(double));
   this->socket.sendDouble(&value.dirY, sizeof(double));
@@ -50,6 +51,7 @@ void SocketWrapper::send(PlayerData& value) {
   this->socket.send(&health, sizeof(uint32_t));
   this->socket.send(&weaponID, sizeof(uint32_t));
   this->socket.send(&ammo, sizeof(uint32_t));
+  this->socket.send(&score, sizeof(uint32_t));
 
   //this->send((const double)value.dirX);
   //this->send((const double)value.dirY);
@@ -66,6 +68,7 @@ void SocketWrapper::receivePlayerData(PlayerData& value) {
   uint32_t health = value.health;
   uint32_t weaponID = value.weaponID;
   uint32_t ammo = value.bullets;
+  uint32_t score = value.score;
 
   this->socket.receive(&value.playerID, sizeof(value.playerID));
   this->socket.receiveDouble(&value.dirX, sizeof(double));
@@ -77,12 +80,14 @@ void SocketWrapper::receivePlayerData(PlayerData& value) {
   this->socket.receive(&health, sizeof(uint32_t));
   this->socket.receive(&weaponID, sizeof(uint32_t));
   this->socket.receive(&ammo, sizeof(uint32_t));
+  this->socket.receive(&score, sizeof(uint32_t));
 
 
   value.lives = int(lives);
   value.health = int(health);
   value.weaponID = int(weaponID);
   value.bullets = int(ammo);
+  value.score = int(score);
 
 //  this->socket.receive(&value.playerID, sizeof(value.playerID));
 //  value.dirX = this->receiveDouble();

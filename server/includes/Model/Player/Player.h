@@ -14,7 +14,7 @@ class Updatable;
 
 class Player {
  private:
-  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP;
+  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP, POINTS_PER_KILL;
   double x, y;
   double dirX, dirY;
   double rotSpeed;

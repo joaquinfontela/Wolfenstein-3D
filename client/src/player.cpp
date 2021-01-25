@@ -77,8 +77,8 @@ Player::Player(PlayerData& info) {
   this->lives = info.lives;
   this->health = info.health;
   this->bullets = info.bullets;
-  //this->score = info.score;
-  this->score = 99999;
+  this->score = info.score;
+  //this->score = 99999;
 }
 
 void Player::update(PlayerData& info) {
@@ -92,8 +92,8 @@ void Player::update(PlayerData& info) {
   this->health = info.health;
   this->weaponId = info.weaponID;
   this->bullets = info.bullets;
-  //this->score = info.score;
-  this->score /= 2;
+  this->score = info.score;
+  //this->score /= 2;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);
