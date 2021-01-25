@@ -12,11 +12,12 @@ class Drawable {
   int id;
   double dist;
   int uniqueid;
+  bool hasToBeDeleted;
 
   Drawable() {}
   ~Drawable() {}
   Drawable(double x, double y, int id, int uniqueid = 0, double dist = INT_MAX) :
-           x(x), y(y), id(id), dist(dist), uniqueid(uniqueid) {}
+           x(x), y(y), id(id), dist(dist), uniqueid(uniqueid), hasToBeDeleted(false) {}
   virtual void draw(TextureManager& manager, double posX, double posY, double dirX,
                     double dirY, double planeX, double planeY, double* zBuffer);
   bool operator<(Drawable& other);

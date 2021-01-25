@@ -64,8 +64,8 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
 
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;
-  //CommandSender* sender = new CommandSender(socket, alive);
-  LuaSender* sender = new LuaSender(socket, alive);
+  CommandSender* sender = new CommandSender(socket, alive);
+  //LuaSender* sender = new LuaSender(socket, alive);
   CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, myPlayerID, audios, matrix, loader);
 
   try {

@@ -52,7 +52,7 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
     }
   }
   if (!(this->remainingFrames--)) {
-    //this->executer->playDyingSound(GET_GUN_ID_FROM_ANIMATION_SPRITE(id), -uniqueid);
-    this->executer->eraseSprite(this->uniqueid);
+    this->hasToBeDeleted = true;
+    //this->executer->eraseSprite(this->uniqueid);
   }
 }
