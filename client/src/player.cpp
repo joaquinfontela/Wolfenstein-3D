@@ -25,8 +25,27 @@ double Player::calculateDist(int otherx, int othery) {
 }
 
 int Player::getSoldierId(double x, double y, double dirX, double dirY) {
-  double angle = atan2(this->y - y, this->x - x) * 180 / PI;
-  return 1;
+  double angle = (atan2(this->y - y, this->x - x) * 180 / PI) + 180;
+  if (angle > 45 && angle < 90) {
+    return SOLDER_SPRITE_FRONT_RIGHT;
+  }
+  if (angle > 90 && angle < 135) {
+    return SOLDER_SPRITE_FRONT_RIGHT;
+  }
+  if (angle > 135 && angle < 180) {
+    return SOLDER_SPRITE_FRONT_RIGHT;
+  }
+  if (angle > 180 && angle < 225) {
+    return SOLDER_SPRITE_FRONT_LEFT;
+  }
+  if (angle > 225 && angle < 270) {
+    return SOLDER_SPRITE_FRONT_LEFT;
+  }
+  if (angle > 270 && angle < 315) {
+    return SOLDER_SPRITE_FRONT_LEFT;
+  } else {
+    return SOLDER_SPRITE_FRONT;
+  }
 }
 
 bool Player::hasThisUniqueId(int otherid){
@@ -121,35 +140,12 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   condition = (drawEndX >= width);
   drawEndX = condition * (width - 1) + !condition * drawEndX;
 
-  /*double angle = atan2(this->dirY - dirY, this->dirX - dirX);
-  if (angle < 2*PI) angle += PI;
-  if (angle > 0 && angle < PI) spriteId = 10;*/
-
   bool sameSignX = sameSign(this->dirX, dirX);
   bool sameSignY = sameSign(this->dirY, dirY);
   bool diffSignX = !sameSignX;
   bool diffSignY = !sameSignY;
 
-  //getSoldierId(posX, posY, dirX, dirY);
-
-  int spriteId;
-  switch (weaponId) {
-    case KNIFE:
-      spriteId = DOG_FRONT;
-      break;
-    case PISTOL:
-      spriteId = SOLDIER_FRONT;
-      break;
-    case MACHINEGUN:
-      spriteId = SS_FRONT;
-      break;
-    case CHAINGUN:
-      spriteId = OFFICIAL_FRONT;
-      break;
-    case ROCKETLAUNCHER:
-      spriteId = MUTANT_FRONT;
-      break;
-  }
+  int spriteId = this->getSoldierId(posX, posY, dirX, dirY);
 
   int preCalcdValue1 = (spriteScreenX - (spriteWidth >> 1));
   int preCalcdValue2 = (height - spriteHeight) >> 1;
