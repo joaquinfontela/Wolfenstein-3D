@@ -13,7 +13,7 @@ class Door : public Drawable {
        Drawable(mapX, mapY, DOOR), mapX(mapX), mapY(mapY), width(width), height(height),
        cameraX(cameraX), stepX(stepX), stepY(stepY), side(side), x(x), matrix(matrix) {}
   void draw(TextureManager& manager, double posX, double posY, double dirX,
-    double dirY, double planeX, double planeY, double* zBuffer) override;
+    double dirY, double planeX, double planeY, double* zBuffer, float diff = 0) override;
   int mapX, mapY;
   const int& x;
  private:

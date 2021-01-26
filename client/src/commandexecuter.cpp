@@ -108,7 +108,7 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
   if (x == ERROR || y == ERROR) std::cerr << "Error, no missile texture to explode found.\n";
   std::cout << "X: " << x << " Y: " << y << std::endl;
   this->sprites.push_back(new RaycastedAnimation(x, y, this, EXPLOSION, itemId,
-                                                 EXPLOSION_FRAMES, FRAMES_PER_EXPLOSION_ANIMATION));
+                                                 FRAMES_PER_EXPLOSION_ANIMATION));
 }
 
 void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
@@ -121,7 +121,7 @@ void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
   this->playDyingSound(gunId, playerId);
   RaycastedAnimation* animation = new RaycastedAnimation(deadPlayer->x, deadPlayer->y, this,
                                                  deathSpriteId, -int(playerId),
-                                                 DEATH_FRAMES, FRAMES_PER_DEATH_ANIMATION);
+                                                 FRAMES_PER_DEATH_ANIMATION);
   this->sprites.push_back(animation);
 }
 

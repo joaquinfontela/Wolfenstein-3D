@@ -78,7 +78,6 @@ Player::Player(PlayerData& info) {
   this->health = info.health;
   this->bullets = info.bullets;
   this->score = info.score;
-  //this->score = 99999;
 }
 
 void Player::update(PlayerData& info) {
@@ -93,7 +92,6 @@ void Player::update(PlayerData& info) {
   this->weaponId = info.weaponID;
   this->bullets = info.bullets;
   this->score = info.score;
-  //this->score /= 2;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);
@@ -111,7 +109,7 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 }
 
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
-                  double dirY, double planeX, double planeY, double* zBuffer) {
+                  double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
   int width, height;
   manager.getWindowSize(&width, &height);

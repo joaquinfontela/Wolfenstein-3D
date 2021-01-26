@@ -4,7 +4,7 @@
 #include <iostream>
 
 void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
-  double dirY, double planeX, double planeY, double* zBuffer) {
+  double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
   char doorState = this->matrix->getDoorState(this->mapX, this->mapY);
   if (doorState == OPEN) return;

@@ -28,6 +28,7 @@ bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
+  auto drawableTime1 = std::chrono::steady_clock::now();
   DoorTimer timer(this->matrix, this->alive);
   timer.start();
   int iters = 0;
@@ -129,6 +130,7 @@ void Raycaster::run(){
 
     }
 
+    auto drawableTime2 = std::chrono::steady_clock::now();
     this->lock.lock();
     for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(posX, posY); }
     std::sort(this->sprites.begin(), this->sprites.end(), []
@@ -140,11 +142,13 @@ void Raycaster::run(){
         delete (*it);
         it = this->sprites.erase(it);
       } else {
-        (*it)->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+        auto drawableDiff = std::chrono::duration_cast<std::chrono::milliseconds>(drawableTime2 - drawableTime1);
+        (*it)->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer, drawableDiff.count());
         ++it;
       }
     }
     this->lock.unlock();
+    drawableTime1 = drawableTime2;
 
     #ifdef FPS_FREQ
     #define FPS_FREQ 50

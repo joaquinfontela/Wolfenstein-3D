@@ -15,7 +15,7 @@ class Player : public Drawable {
   void update(PlayerData& info);
   void update(double posX, double posY, double dirX, double dirY);
   void draw(TextureManager& manager, double posX, double posY, double dirX,
-    double dirY, double planeX, double planeY, double* zBuffer) override;
+    double dirY, double planeX, double planeY, double* zBuffer, float diff) override;
   int getSoldierId(double x, double y, double dirX, double dirY);
   double calculateDist(Player* other);
   double calculateDist(int otherx, int othery);
