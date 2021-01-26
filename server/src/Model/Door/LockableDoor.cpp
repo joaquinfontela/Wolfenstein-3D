@@ -1,4 +1,5 @@
 #include "../../../includes/Model/Door/LockableDoor.h"
+#include <iostream>
 
 LockableDoor::LockableDoor() : Door() {
   locked = true;

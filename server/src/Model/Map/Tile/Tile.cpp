@@ -225,7 +225,7 @@ bool Tile::moveDoor(Player* p) {
     return false;
   }
 
-  return this->door->unlock(p);
+  return this->door->unlock(p->hasKey());
 }
 
 bool Tile::hasPlayers() { return (!this->players.empty()); }

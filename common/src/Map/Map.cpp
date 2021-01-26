@@ -36,15 +36,13 @@ void Map::updateTimers(float value) {
 }
 
 Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
-  this->doors[11][2].setDoor(true);
-  this->doors[9][5].setDoor(true);
-  this->doors[11][6].setDoor(true);
-  this->doors[7][9].setDoor(true);
-  this->doors[3][12].setDoor(true);
-  this->doors[11][13].setDoor(true);
-  this->doors[22][18].setDoor(true);
-  this->doors[6][19].setDoor(true);
-  this->doors[22][19].setDoor(true);
+
+  std::vector<Coordinate> doorCordinates = loader.getDoorCoordinates();
+
+  for(Coordinate& c: doorCordinates){
+    this->doors[c.getY() - 1][c.getX() - 1].setDoor(true);
+  }
+
   matrix = loader.getWallIdMatrix();
 }
 

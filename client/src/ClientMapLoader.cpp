@@ -42,6 +42,20 @@ int* ClientMapLoader::getWallIdMatrix() {
   return matrix;
 }
 
+std::vector<Coordinate> ClientMapLoader::getDoorCoordinates(){
+  int DOOR_FROM = yamlMapReader.getDoorsIdLimits().at(0);
+  int DOOR_TO = yamlMapReader.getDoorsIdLimits().at(1);
+  std::vector<Coordinate> coordinates;
+
+  int id = 0;
+  for(id = DOOR_FROM; id <= DOOR_TO; id++){
+    std::vector<Coordinate> pos= yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+    coordinates.insert(coordinates.end(), pos.begin(), pos.end());
+  }
+
+  return coordinates;
+}
+
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
   int FROM_ID = yamlMapReader.getWeaponsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
@@ -91,6 +105,9 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return WOODEN_WALL;
       break;
     case 201:
+      return DOOR;
+      break;
+    case 202:
       return DOOR;
       break;
 

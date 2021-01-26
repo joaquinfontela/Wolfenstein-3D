@@ -4,7 +4,7 @@
 #include <iostream>
 
 bool Player::hasKey() {
-  return true;
+  return key;
   //return this->hasTheKey;
 }
 
@@ -78,6 +78,7 @@ Player::Player(PlayerData& info) {
   this->health = info.health;
   this->bullets = info.bullets;
   this->score = info.score;
+  this->key = info.hasKey;
   //this->score = 99999;
 }
 
@@ -93,6 +94,7 @@ void Player::update(PlayerData& info) {
   this->weaponId = info.weaponID;
   this->bullets = info.bullets;
   this->score = info.score;
+  this->key = info.hasKey;
   //this->score /= 2;
 
   double oldPlaneX = planeX;

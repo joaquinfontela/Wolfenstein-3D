@@ -40,6 +40,7 @@ class Player : public Drawable {
   int score;
   bool moving;
   int healthdown;
+  bool key;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
   bool hasTheKey;

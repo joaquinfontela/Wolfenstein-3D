@@ -175,7 +175,8 @@ void Player::fillPlayerData(PlayerData& data) {
   data.health = health;
   data.weaponID = this->currentWeapon->getID();
   data.bullets = this->ammo;
-  data.score = score;
+  data.score = this->score;
+  data.hasKey = this->key;
 
 
   return;
