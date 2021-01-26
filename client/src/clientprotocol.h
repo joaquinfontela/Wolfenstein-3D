@@ -5,9 +5,9 @@
 #define HEIGHT 600
 #define WIDTH 800
 
+#define TIME_PER_ANIMATION_SLIDE 200.0
+
 #define BLOOD_FRAMES 5
-#define EXPLOSION_FRAMES 30
-#define DEATH_FRAMES 50
 
 // Apply bit masks to facilitate the sound selection.
 

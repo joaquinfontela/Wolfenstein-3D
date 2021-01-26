@@ -113,7 +113,7 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 }
 
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
-                  double dirY, double planeX, double planeY, double* zBuffer) {
+                  double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
   int width, height;
   manager.getWindowSize(&width, &height);

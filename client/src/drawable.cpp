@@ -21,7 +21,7 @@ bool Drawable::operator<(Drawable& other) {
 }
 
 void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, double* zBuffer) {
+                    double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
   int width, height;
   manager.getWindowSize(&width, &height);

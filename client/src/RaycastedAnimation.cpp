@@ -5,7 +5,7 @@
 #include <iostream>
 
 void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY, double dirX,
-          double dirY, double planeX, double planeY, double* zBuffer) {
+          double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
   int width, height;
   manager.getWindowSize(&width, &height);
@@ -39,10 +39,13 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
   condition = (spriteHeight < BLOCKSIZE);
   int preCalcdValue3 = BLOCKSIZE * condition + spriteHeight * !condition;
 
+  this->timePassed += diff;
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    std::cout << "time passed in milliseconds: " << timePassed << std::endl;
     if (texX < 0) continue;
-    else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
+    //else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
+    else if (texX + 1 == BLOCKSIZE && floor(this->timePassed/TIME_PER_ANIMATION_SLIDE) > this->frames)
       this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
@@ -51,7 +54,7 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
       manager.render(this->id, srcArea, destArea);
     }
   }
-  if (!(this->remainingFrames--)) {
+  if (this->timePassed > this->totalFrames) {
     this->hasToBeDeleted = true;
     //this->executer->eraseSprite(this->uniqueid);
   }
