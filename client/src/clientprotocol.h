@@ -55,7 +55,6 @@
 
 #define PI 3.14159265359
 #define BLOCKSIZE 64
-#define FPS_FREQ 500
 
 #define BLUEWALL 1
 #define WALL2_SPRITE 2

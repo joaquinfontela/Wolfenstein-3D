@@ -35,6 +35,7 @@ void Raycaster::run(){
 
   while(alive){
 
+    iters++;
     this->window->fillWolfenstein();
 
     double dirX = this->player->dirX;
@@ -45,6 +46,7 @@ void Raycaster::run(){
     double planeY = this->player->planeY;
 
     double zBuffer[this->width];
+    float totalTime = 0;
 
     for(int x = 0; x < this->width; x++) {
 
@@ -150,24 +152,19 @@ void Raycaster::run(){
     this->lock.unlock();
     drawableTime1 = drawableTime2;
 
-    #ifdef FPS_FREQ
-    #define FPS_FREQ 50
-    //Use this with a VM only case.
-
-    if (!(iters % FPS_FREQ)) {
-      auto t2 = std::chrono::steady_clock::now();
+    auto t2 = std::chrono::steady_clock::now();
+    totalTime += (std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1)).count();
+    if (totalTime > 1000) {
+      totalTime = 0;
       std::chrono::duration<float,std::milli> diff = t2 - t1;
-      if (!iters) this->hud.updateFpsCounter((1000)/ceil(diff.count()));
-      else this->hud.updateFpsCounter((FPS_FREQ * 1000)/ceil(diff.count()));
+      this->hud.updateFpsCounter((iters * 1000)/ceil(diff.count()));
       t1 = t2;
+      iters = 0;
       this->hud.updateBjFace();
     }
 
-    #endif
-
     this->hud.update();
     this->window->render();
-    iters++;
   }
 
   timer.join();
