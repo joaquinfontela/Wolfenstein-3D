@@ -42,7 +42,6 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
   this->timePassed += diff;
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    std::cout << "time passed in milliseconds: " << timePassed << std::endl;
     if (texX < 0) continue;
     //else if (texX + 1 == BLOCKSIZE && !(this->remainingFrames % 10))
     else if (texX + 1 == BLOCKSIZE && floor(this->timePassed/TIME_PER_ANIMATION_SLIDE) > this->frames)
@@ -53,7 +52,9 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
+  //  std::cout << "time passed in milliseconds: " << timePassed << std::endl;
   }
+
   if (this->timePassed > this->totalFrames) {
     this->hasToBeDeleted = true;
     //this->executer->eraseSprite(this->uniqueid);

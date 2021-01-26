@@ -133,22 +133,24 @@ void Raycaster::run(){
     }
 
     auto drawableTime2 = std::chrono::steady_clock::now();
+
     this->lock.lock();
     for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(posX, posY); }
     std::sort(this->sprites.begin(), this->sprites.end(), []
       (Drawable* a, Drawable* b) -> bool { return *a < *b; });
 
     std::vector<Drawable*>::iterator it = this->sprites.begin();
+    std::chrono::duration<float, std::milli> drawableDiff = drawableTime2 - drawableTime1;
+
     while (it != this->sprites.end()) {
-      if ((*it)->hasToBeDeleted) {
-        delete (*it);
-        it = this->sprites.erase(it);
-      } else {
-        auto drawableDiff = std::chrono::duration_cast<std::chrono::milliseconds>(drawableTime2 - drawableTime1);
         (*it)->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer, drawableDiff.count());
         ++it;
-      }
     }
+
+    auto end = std::remove_if(this->sprites.begin(), this->sprites.end(), [](Drawable* s){return s->hasToBeDeleted;});
+    this->sprites.erase(end, this->sprites.end());
+
+
     this->lock.unlock();
     drawableTime1 = drawableTime2;
 
