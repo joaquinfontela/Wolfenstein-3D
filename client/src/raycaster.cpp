@@ -121,13 +121,13 @@ void Raycaster::run(){
       this->manager.render(texNum, srcArea, destArea);
       zBuffer[x] = perpWallDist;
 
+      // It is not necessary to sort the doors (depending on their distance to the player)
+      // because they are already pushed in the vector as you detect them, meaning that
+      // the doors are already sorted. Thanks LIFO.
       while(!this->doors.empty()){
-        // It is not necessary to sort the doors (depending on their distance to the player)
-        // because they are already pushed in the vector as you detect them, meaning that
-        // the doors are already sorted. Thanks LIFO.
-        Door d = this->doors.back();
-        this->doors.pop_back();
+        Door& d = this->doors.back();
         d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
+        this->doors.pop_back();
       }
 
     }
@@ -149,9 +149,8 @@ void Raycaster::run(){
 
     auto end = std::remove_if(this->sprites.begin(), this->sprites.end(), [](Drawable* s){return s->hasToBeDeleted;});
     this->sprites.erase(end, this->sprites.end());
-
-
     this->lock.unlock();
+
     drawableTime1 = drawableTime2;
 
     auto t2 = std::chrono::steady_clock::now();

@@ -1,6 +1,8 @@
 #include "clientprotocol.h"
 #include "client.h"
 
+#define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
+
 static void deleteSprites(std::vector<Drawable*>& sprites) {
   for (Drawable* s : sprites) {
     if (s->isSprite()) delete s;
@@ -61,6 +63,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID << std::endl;
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList(); // Falta tener bien los ids de los sprites.
+  sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
   int exitcode = 0;

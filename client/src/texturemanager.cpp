@@ -121,17 +121,20 @@ void TextureManager::loadTextures() {
                                    "officialdeath.png", // 79
                                    "mutantdeath.png", // 80
                                    "dog_front.png", // 81
-                                   "ss_front.png", // 82
-                                   "official_front.png", // 83
-                                   "mutant_front.png", // 84
-                                   "soldier_sprite_back.png", // 85
-                                   "soldier_sprite_back_right.png", // 86
-                                   "soldier_sprite_right.png", // 87
-                                   "soldier_sprite_front_right.png", // 88
-                                   "soldier_sprite_front.png", // 89
-                                   "soldier_sprite_front_left.png", // 90
-                                   "soldier_sprite_left.png", // 91
-                                   "soldier_sprite_back_left.png" // 92
+                                   "soldier_sprite_front.png", // 82
+                                   "ss_front.png", // 83
+                                   "official_front.png", // 84
+                                   "mutant_front.png", // 85
+                                   "dogsprint.png", // 86
+                                   "soldiersprint.png", // 87
+                                   "officersprint.png", // 88
+                                   "sssprint.png", // 89
+                                   "mutantsprint.png", // 90
+                                   "dogattack.png", // 91
+                                   "soldierattack.png", // 92
+                                   "officerattack.png", // 93
+                                   "ssattack.png", // 94
+                                   "mutantattack.png", // 95
                                   });
   int i = 1;
   for (std::string& name : names) {

@@ -24,27 +24,16 @@ double Player::calculateDist(int otherx, int othery) {
   return sqrt(pow(this->x - otherx,2) + pow(this->y - othery,2));
 }
 
-int Player::getSoldierId(double x, double y, double dirX, double dirY) {
-  double angle = (atan2(this->y - y, this->x - x) * 180 / PI) + 180;
-  if (angle > 45 && angle < 90) {
-    return SOLDER_SPRITE_FRONT_RIGHT;
-  }
-  if (angle > 90 && angle < 135) {
-    return SOLDER_SPRITE_FRONT_RIGHT;
-  }
-  if (angle > 135 && angle < 180) {
-    return SOLDER_SPRITE_FRONT_RIGHT;
-  }
-  if (angle > 180 && angle < 225) {
-    return SOLDER_SPRITE_FRONT_LEFT;
-  }
-  if (angle > 225 && angle < 270) {
-    return SOLDER_SPRITE_FRONT_LEFT;
-  }
-  if (angle > 270 && angle < 315) {
-    return SOLDER_SPRITE_FRONT_LEFT;
+int Player::getSoldierId() {
+  if (this->moving) {
+    std::cout << "Se está moviendo\n";
+    return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
+  } else if (this->shooting) {
+    std::cout << "Está disparando\n";
+    return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
   } else {
-    return SOLDER_SPRITE_FRONT;
+    std::cout << "Está quieto\n";
+    return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
   }
 }
 
@@ -115,6 +104,7 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
                   double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
+  this->totalTime += diff;
   int width, height;
   manager.getWindowSize(&width, &height);
 
@@ -147,7 +137,7 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   bool diffSignX = !sameSignX;
   bool diffSignY = !sameSignY;
 
-  int spriteId = this->getSoldierId(posX, posY, dirX, dirY);
+  int spriteId = this->getSoldierId();
 
   int preCalcdValue1 = (spriteScreenX - (spriteWidth >> 1));
   int preCalcdValue2 = (height - spriteHeight) >> 1;

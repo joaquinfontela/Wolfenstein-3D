@@ -8,7 +8,7 @@ class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
   Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY),
-  playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false) {}
+  playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false), totalTime(0) {}
 
   ~Player() {}
   Player(PlayerData& info);
@@ -16,7 +16,7 @@ class Player : public Drawable {
   void update(double posX, double posY, double dirX, double dirY);
   void draw(TextureManager& manager, double posX, double posY, double dirX,
     double dirY, double planeX, double planeY, double* zBuffer, float diff) override;
-  int getSoldierId(double x, double y, double dirX, double dirY);
+  int getSoldierId();
   double calculateDist(Player* other);
   double calculateDist(int otherx, int othery);
   void startShooting();
@@ -43,6 +43,7 @@ class Player : public Drawable {
   bool key;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
+  float totalTime;
   bool hasTheKey;
   Area srcArea, destArea;
   bool shooting;
