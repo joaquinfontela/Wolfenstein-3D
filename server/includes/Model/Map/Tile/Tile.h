@@ -82,6 +82,8 @@ class Tile {
   // Devuelve true si autoriza el movimiento de un elemento posicionable a la posicion (x, y)
   bool allowMovement(double x, double y);
 
+
+
   bool hasPlayers();
 
   ~Tile();

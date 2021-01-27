@@ -58,7 +58,8 @@ Player::Player(PlayerData& info) {
 }
 
 void Player::update(PlayerData& info) {
-  this->moving = (this->x != info.posX || this->y != info.posX);
+
+  this->moving = ((fabs(this->x - info.posX) > 0.05) || (fabs(this->y - info.posY) > 0.05));
   this->healthdown = (this->health > info.health);
   this->x = info.posX;
   this->y = info.posY;
@@ -87,17 +88,14 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 }
 
 int Player::getSoldierId() {
-  if (this->shooting) { // Que cuando termine la animación setee el booleano en false.
-    std::cout << "Está disparando\n";
-    this->framesPerAnimation = 2 + (this->weaponId == KNIFE) + (this->weaponId == ROCKETLAUNCHER) * 2;
+  if (this->shooting && this->timePassed < 250) { // Que cuando termine la animación setee el booleano en false.
+    this->frames = (this->timePassed > 62.5) + (this->timePassed > 125) + (this->timePassed > 187.5);
     return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
-  } else if (this->moving) {
-    std::cout << "Se está moviendo\n";
-    this->framesPerAnimation = 5;
+  } else if (this->moving && this->timePassed < 250) {
+    this->frames = (this->timePassed > 50) + (this->timePassed > 100) + (this->timePassed > 150) + (this->timePassed > 200);
     return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
   } else {
-    std::cout << "Está quieto\n";
-    this->framesPerAnimation = 1;
+    this->frames = 0;
     return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
   }
 }
@@ -148,8 +146,6 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (texX < 0) continue;
-    else if (texX + 1 == BLOCKSIZE && floor(this->timePassed/TIME_PER_ANIMATION_SLIDE) > this->frames)
-      this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
       srcArea.update(texX + (this->frames << 6), 0, 1, preCalcdValue3);
@@ -159,8 +155,9 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   }
   if (this->timePassed > 250) {
     this->shooting = false;
+    this->moving = false;
     this->timePassed = 0;
-    this->frames = -1;
+    this->frames = 0;
   }
 }
 

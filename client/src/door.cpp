@@ -9,7 +9,9 @@ void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
   char doorState = this->matrix->getDoorState(this->mapX, this->mapY);
   if (doorState == OPEN) return;
 
+
   float time = this->matrix->doors[this->mapX][this->mapY].timer;
+
   double rayDirX = dirX + planeX * cameraX;
   double rayDirY = dirY + planeY * cameraX;
 
