@@ -127,13 +127,13 @@ void TextureManager::loadTextures() {
                                    "mutant_front.png", // 85
                                    "dogsprint.png", // 86
                                    "soldiersprint.png", // 87
-                                   "officersprint.png", // 88
-                                   "sssprint.png", // 89
+                                   "sssprint.png", // 88
+                                   "officersprint.png", // 89
                                    "mutantsprint.png", // 90
                                    "dogattack.png", // 91
                                    "soldierattack.png", // 92
-                                   "officerattack.png", // 93
-                                   "ssattack.png", // 94
+                                   "ssattack.png", // 93
+                                   "officerattack.png", // 94
                                    "mutantattack.png", // 95
                                   });
   int i = 1;
