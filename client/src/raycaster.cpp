@@ -79,7 +79,7 @@ void Raycaster::run(){
       sideDistY = (isRayDirYNegative * (posY - mapY) * deltaDistY) +
                   (!isRayDirYNegative * (mapY + 1.0 - posY) * deltaDistY);
 
-      while (hit == 0) {
+      while (!hit) {
         bool isSideDistXgreaterToY = (sideDistX < sideDistY);
         sideDistX += deltaDistX * isSideDistXgreaterToY;
         sideDistY += deltaDistY * !isSideDistXgreaterToY;

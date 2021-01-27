@@ -24,19 +24,6 @@ double Player::calculateDist(int otherx, int othery) {
   return sqrt(pow(this->x - otherx,2) + pow(this->y - othery,2));
 }
 
-int Player::getSoldierId() {
-  if (this->moving) {
-    std::cout << "Se está moviendo\n";
-    return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
-  } else if (this->shooting) {
-    std::cout << "Está disparando\n";
-    return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
-  } else {
-    std::cout << "Está quieto\n";
-    return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
-  }
-}
-
 bool Player::hasThisUniqueId(int otherid){
   return false;
 }
@@ -68,7 +55,6 @@ Player::Player(PlayerData& info) {
   this->bullets = info.bullets;
   this->score = info.score;
   this->key = info.hasKey;
-  //this->score = 99999;
 }
 
 void Player::update(PlayerData& info) {
@@ -84,7 +70,6 @@ void Player::update(PlayerData& info) {
   this->bullets = info.bullets;
   this->score = info.score;
   this->key = info.hasKey;
-  //this->score /= 2;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);
@@ -101,10 +86,26 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
   this->dirY = dirY;
 }
 
+int Player::getSoldierId() {
+  if (this->shooting) { // Que cuando termine la animación setee el booleano en false.
+    std::cout << "Está disparando\n";
+    this->framesPerAnimation = 2 + (this->weaponId == KNIFE) + (this->weaponId == ROCKETLAUNCHER) * 2;
+    return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
+  } else if (this->moving) {
+    std::cout << "Se está moviendo\n";
+    this->framesPerAnimation = 5;
+    return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
+  } else {
+    std::cout << "Está quieto\n";
+    this->framesPerAnimation = 1;
+    return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
+  }
+}
+
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
                   double dirY, double planeX, double planeY, double* zBuffer, float diff) {
 
-  this->totalTime += diff;
+  this->timePassed += diff;
   int width, height;
   manager.getWindowSize(&width, &height);
 
@@ -147,12 +148,19 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
     int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (texX < 0) continue;
+    else if (texX + 1 == BLOCKSIZE && floor(this->timePassed/TIME_PER_ANIMATION_SLIDE) > this->frames)
+      this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      srcArea.update(texX, 0, 1, preCalcdValue3);
+      srcArea.update(texX + (this->frames << 6), 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
     }
+  }
+  if (this->timePassed > 250) {
+    this->shooting = false;
+    this->timePassed = 0;
+    this->frames = -1;
   }
 }
 

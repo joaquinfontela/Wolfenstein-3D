@@ -3,12 +3,14 @@
 
 #include "../../common/includes/PlayerData.h"
 #include "drawable.h"
+#include "clientprotocol.h"
 
 class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
   Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY),
-  playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false), totalTime(0) {}
+  playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false), timePassed(0),
+  totalFrames(TIME_PER_ANIMATION_SLIDE * 5), frames(-1), framesPerAnimation(1) {}
 
   ~Player() {}
   Player(PlayerData& info);
@@ -43,7 +45,10 @@ class Player : public Drawable {
   bool key;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
-  float totalTime;
+  int framesPerAnimation;
+  int frames;
+  int totalFrames;
+  float timePassed;
   bool hasTheKey;
   Area srcArea, destArea;
   bool shooting;
