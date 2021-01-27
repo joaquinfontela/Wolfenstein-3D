@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(sdl)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -pthread -O3 -fprofile-generate -m64 -finline-functions -funroll-loops")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -O3 -finline-functions -funroll-loops")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 SET(_POSSIBLE_LUA_INCLUDE include include/lua)
