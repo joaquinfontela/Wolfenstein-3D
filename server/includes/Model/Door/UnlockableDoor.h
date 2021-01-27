@@ -12,9 +12,11 @@ class UnlockableDoor : public Door {
   bool isLocked();
   bool unlock(bool hasKey);
   bool lock();
+  void changeStatus();
 
 private:
   bool locked;
+  bool opening;
 };
 
 

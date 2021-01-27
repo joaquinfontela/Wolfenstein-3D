@@ -98,7 +98,11 @@ std::tuple<int, int> Game::moveDoor(int playerID) {
   int x, y;
   std::tie(x, y) = this->map->moveDoor(this->players[playerID]);
 
-  if (x >= 0) this->updatables.push_back(new ChangeDoorStatus(x, y));
+  if (x >= 0){
+    this->updatables.push_back(new ChangeDoorStatus(x, y, 0.5f, false)); // Hace la puerta atravesable tras 0.5 segundos.
+    this->updatables.push_back(new ChangeDoorStatus(x, y, 8.0f, true));  // Cierra la puerta tras 8 segundos.
+  }
+
 
   return std::make_tuple(x, y);
 }

@@ -6,12 +6,14 @@ class LockableDoor : public Door {
  private:
   bool locked;
   bool previouslyUnlocked;
+  bool opening;
 
  public:
   LockableDoor();
   bool isLocked();
   bool unlock(bool hasKey);
   bool lock();
+  void changeStatus();
 };
 
 #endif

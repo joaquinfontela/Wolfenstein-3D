@@ -2,7 +2,7 @@
 #include "../../../includes/Control/Notification/DoorMoving.h"
 
 
-ChangeDoorStatus::ChangeDoorStatus(int x, int y) : Updatable(), timeRequired(8.0f), x(x), y(y){}
+ChangeDoorStatus::ChangeDoorStatus(int x, int y, float timeRequired, bool requiresNotification) : Updatable(), timeRequired(timeRequired), x(x), y(y), requiresNotification(requiresNotification){}
 
 void ChangeDoorStatus::update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif){
 
@@ -20,7 +20,10 @@ void ChangeDoorStatus::update(float timeElapsed, Game& game, WaitingQueue<Notifi
 
 bool ChangeDoorStatus::notify(WaitingQueue<Notification*>& notif){
 
-  if(!this->hasToBeNotified)
+  if(done && !this->requiresNotification)
+    return true;
+
+  if(!this->hasToBeNotified || !this->requiresNotification)
     return false;
 
   DoorMoving* noti = new DoorMoving(x, y);

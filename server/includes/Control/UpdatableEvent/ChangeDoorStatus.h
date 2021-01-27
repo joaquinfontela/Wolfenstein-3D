@@ -8,10 +8,11 @@ class ChangeDoorStatus : public Updatable{
 
 private:
   float timeRequired;
+  bool requiresNotification;
   int x, y;
 
 public:
-  ChangeDoorStatus(int x, int y);
+  ChangeDoorStatus(int x, int y, float timeRequired, bool requiresNotification);
   void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif);
   bool notify(WaitingQueue<Notification*>& notif);
 

@@ -7,6 +7,7 @@ class Door {
   virtual bool isLocked() = 0;
   virtual bool unlock(bool hasKey) = 0;
   virtual bool lock() = 0;
+  virtual void changeStatus() = 0;
   ~Door() {}
 };
 
