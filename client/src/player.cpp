@@ -88,11 +88,11 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
 }
 
 int Player::getSoldierId() {
-  if (this->shooting && this->timePassed < 250) { // Que cuando termine la animación setee el booleano en false.
-    this->frames = (this->timePassed > 62.5) + (this->timePassed > 125) + (this->timePassed > 187.5);
+  if (this->shooting) { // Que cuando termine la animación setee el booleano en false.
+    this->frames = (this->timePassed > 125) + (this->timePassed > 250) + (this->timePassed > 375);
     return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
-  } else if (this->moving && this->timePassed < 250) {
-    this->frames = (this->timePassed > 50) + (this->timePassed > 100) + (this->timePassed > 150) + (this->timePassed > 200);
+  } else if (this->moving) {
+    this->frames = (this->timePassed > 100) + (this->timePassed > 200) + (this->timePassed > 300) + (this->timePassed > 400);
     return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
   } else {
     this->frames = 0;
@@ -153,7 +153,7 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
       manager.render(spriteId, srcArea, destArea);
     }
   }
-  if (this->timePassed > 250) {
+  if (this->timePassed > 500) {
     this->shooting = false;
     this->moving = false;
     this->timePassed = 0;
