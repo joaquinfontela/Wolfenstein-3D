@@ -190,7 +190,7 @@ void Player::moveTo(double x, double y) {
 void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables) {
 
   if(this->shooting)
-  this->shoot(timeElapsed, notis, updatables);
+    this->shoot(timeElapsed, notis, updatables);
 
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
 
