@@ -10,7 +10,7 @@ class Player : public Drawable {
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
   Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY),
   playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false), timePassed(0),
-  totalFrames(TIME_PER_ANIMATION_SLIDE * 5), frames(-1), framesPerAnimation(1) {}
+  totalFrames(TIME_PER_ANIMATION_SLIDE * 5), frames(-1), framesPerAnimation(1), animatingShooting(false), animatingMovement(false) {}
 
   ~Player() {}
   Player(PlayerData& info);
@@ -45,6 +45,8 @@ class Player : public Drawable {
   bool key;
 
  private: // ¡HACER QUE LOS ATRIBUTOS SEAN PRIVADOS Y ARMAR GETTERS!
+  void restartAnimationStats();
+  bool animatingShooting, animatingMovement;
   int framesPerAnimation;
   int frames;
   int totalFrames;
