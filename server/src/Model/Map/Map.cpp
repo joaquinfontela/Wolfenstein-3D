@@ -116,25 +116,20 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
     if (this->tileMatrix.at(mapX).at(mapY).checkWall())
       return nullptr;
 
-    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(
-                  rayPosX, rayPosY, attacker)) != nullptr)
+    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr)
       return p;
 
     else if (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx)) {
-      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
 
     } else if (((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) {
-      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
-    } else if ((((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) &&
-               (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx))) {
-      if ((p = this->tileMatrix.at(mapX + 1).at(mapY + 1).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+    } else if ((((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) && (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx))) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
     }
