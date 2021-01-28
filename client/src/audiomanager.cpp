@@ -1,5 +1,6 @@
 #include "sdlexception.h"
 #include "clientprotocol.h"
+#include "log.h"
 #include "audiomanager.h"
 #include <vector>
 #include <string>
@@ -12,7 +13,7 @@
 void AudioManager::playOnVariableVolumeWithId(int id, double dist){
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (!(it != this->audiotracks.end())) {
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
     return;
   }
   Audio* audio = it->second;
@@ -23,7 +24,7 @@ void AudioManager::playOnVariableVolumeWithId(int id, double dist){
 void AudioManager::playOrStopOnVariableVolumeWithId(int id, double dist) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (!(it != this->audiotracks.end())) {
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
     return;
   }
   Audio* audio = it->second;
@@ -81,13 +82,14 @@ void AudioManager::stopWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->stop();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::loadTrack(int id, Audio* audio) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
-  if (it != this->audiotracks.end())
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+  if (it != this->audiotracks.end()) {
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
+  }
   else
     this->audiotracks[id] = audio;
 }
@@ -97,7 +99,7 @@ void AudioManager::playWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->play();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::playOnMaxVolumeWithId(int id) {
@@ -105,7 +107,7 @@ void AudioManager::playOnMaxVolumeWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->playWithMaxVolume();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::garbageCollector() {

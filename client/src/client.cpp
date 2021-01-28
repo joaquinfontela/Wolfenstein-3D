@@ -1,4 +1,5 @@
 #include "clientprotocol.h"
+#include "log.h"
 #include "client.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
@@ -76,7 +77,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
     sender->start();
     caster.run();
   } catch (std::exception& e) {
-    std::cerr << e.what() << std::endl;
+    LOG(e.what());
     exitcode = ERROR;
   }
   alive = false;

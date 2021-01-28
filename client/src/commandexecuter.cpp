@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <string>
 
+#include "log.h"
 #include "audio.h"
 #include "commandexecuter.h"
 #include "RaycastedAnimation.h"
@@ -105,8 +106,7 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
       break;
     }
   }
-  if (x == ERROR || y == ERROR) std::cerr << "Error, no missile texture to explode found.\n";
-  std::cout << "X: " << x << " Y: " << y << std::endl;
+  if (x == ERROR || y == ERROR) LOG("Error, no missile texture to explode found.");
   this->sprites.push_back(new RaycastedAnimation(x, y, this, EXPLOSION, itemId,
                                                  FRAMES_PER_EXPLOSION_ANIMATION));
 }
@@ -216,6 +216,8 @@ void CommandExecuter::run() {
         this->renderExplosionAnimation(uniqueId);
       }
     } catch (SocketException& e) {
+    } catch (std::exception& e) {
+      LOG(e.what());
       break;
     }
   }

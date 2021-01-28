@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 
+#include "log.h"
 #include "area.h"
 #include "sdltexture.h"
 #include "sdlexception.h"
@@ -152,7 +153,7 @@ void TextureManager::render(int id, const Area& srcArea, const Area& destArea) {
   if (it != this->textures.end())
     it->second->render(srcArea, destArea);
   else
-    std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TEXTURE_NOT_FOUND_ERROR);
 }
 
 void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
@@ -160,7 +161,7 @@ void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
   if (it != this->textures.end())
     it->second->getSizes(w, h);
   else
-    std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TEXTURE_NOT_FOUND_ERROR);
 }
 
 void TextureManager::renderAll(int id, const Area& destArea) {
@@ -168,16 +169,17 @@ void TextureManager::renderAll(int id, const Area& destArea) {
   if (it != this->textures.end())
     it->second->renderAll(destArea);
   else
-    std::cerr << TEXTURE_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TEXTURE_NOT_FOUND_ERROR);
 }
 
 void TextureManager::loadTexture(int id, SdlTexture* texture) {
   if (this->textures.size() > TEXTURE_LIMIT) {
-    std::cout << TEXTURE_LIMIT_ERROR << std::endl;
+    LOG_WITH_ID(TEXTURE_LIMIT_ERROR);
   }
   std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
-  if (it != this->textures.end())
-    std::cerr << TEXTURE_FOUND_ERROR << id << std::endl;
+  if (it != this->textures.end()) {
+    LOG_WITH_ID(TEXTURE_NOT_FOUND_ERROR);
+  }
   else
     this->textures[id] = texture;
 }

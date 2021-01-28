@@ -90,8 +90,9 @@ MARK_AS_ADVANCED(LUA_INCLUDE_DIR LUA_LIBRARIES LUA_LIBRARY LUA_MATH_LIBRARY LUA_
 add_library(sdldemo
   src/ClientMapLoader.cpp
   src/client.cpp
-  src/area.cpp
   src/RaycastedAnimation.cpp
+  src/area.cpp
+  src/log.cpp
   src/doortimer.cpp
   src/doortile.cpp
   src/audio.cpp

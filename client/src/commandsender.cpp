@@ -1,4 +1,6 @@
 #include "commandsender.h"
+#include "clientprotocol.h"
+#include "log.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
@@ -117,7 +119,8 @@ void CommandSender::run() {
             break;
         }
       }
-    } catch (SocketException& e) {
+    } catch (std::exception& e) {
+      LOG(e.what());
       break;
     }
   }
