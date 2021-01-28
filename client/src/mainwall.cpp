@@ -3,6 +3,8 @@
 
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
+int Log::playerId = -1;
+
 int main(int argc, char** argv) {
 
   if (argc != 3) {

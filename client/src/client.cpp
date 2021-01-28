@@ -1,5 +1,6 @@
 #include "clientprotocol.h"
 #include "client.h"
+#include "log.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
 
@@ -31,6 +32,7 @@ bool Client::joinMatch(uint32_t lobbyID){
 
   socket.receive(&selfID, sizeof(selfID));
   this->myPlayerID = selfID;
+  Log::playerId = selfID;
 
   return true;
 }

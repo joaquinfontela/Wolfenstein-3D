@@ -20,7 +20,7 @@ void Log::test(const char* _file, const char* function, const int line, const ch
 
   std::ofstream logfile;
   logfile.open(LOG_FILE_NAME, std::ios::app);
-  logfile << std::put_time(localtime(&time), "%T") << " [CLIENT] File: " << file
+  logfile << std::put_time(localtime(&time), "%T") << " [PLAYER " << Log::playerId << "] File: " << file
   << " - Function: " << function << " - Line: " << line << " " << msg << std::endl;
   logfile.close();
 }
