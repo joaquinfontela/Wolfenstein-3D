@@ -47,7 +47,7 @@
 #define GAME_LOGO "wolfensteinlogo.jpg"
 #define GAME_TITLE "Wolfenstein"
 
-#define TEXTURE_LIMIT 64
+#define TEXTURE_LIMIT 200
 #define GREY 169, 168, 244
 #define CEILING_COLOR 0x7B, 0x7B, 0x7B
 #define FLOOR_COLOR 0x60, 0x60, 0x60
