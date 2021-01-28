@@ -3,40 +3,41 @@
 #include "texturemanager.h"
 #include <iostream>
 
-void Door::draw(TextureManager& manager, double posX, double posY, double dirX,
-  double dirY, double planeX, double planeY, double* zBuffer, float diff) {
+void Door::draw(TextureManager& manager, double x, double y, double dirX,
+  double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
 
-  char doorState = this->matrix->getDoorState(this->mapX, this->mapY);
+  char doorState = this->matrix->getDoorState(this->matrixXCoord, this->matrixYCoord);
   if (doorState == OPEN) return;
 
 
-  float time = this->matrix->doors[this->mapX][this->mapY].timer;
+  float time = this->matrix->doors[this->matrixXCoord][this->matrixYCoord].timer;
 
-  double rayDirX = dirX + planeX * cameraX;
-  double rayDirY = dirY + planeY * cameraX;
+  double rayDirX = dirX + planeX * cameraXCoord;
+  double rayDirY = dirY + planeY * cameraXCoord;
 
   bool isSide = (this->side == 0);
-  double perpWallDist = (isSide * (this->mapX - posX + ((1 - stepX) >> 1)) / (rayDirX)) +
-                        (!isSide * (this->mapY - posY + ((1 - stepY) >> 1)) / (rayDirY));
-  double wallX = (isSide * (posY + perpWallDist * rayDirY)) +
-                 (!isSide * (posX + perpWallDist * rayDirX));
+  double perpendicularWallDistance = (isSide * (this->matrixXCoord - x + ((1 - dx) >> 1)) / (rayDirX)) +
+                        (!isSide * (this->matrixYCoord - y + ((1 - dy) >> 1)) / (rayDirY));
+  double wallX = (isSide * (y + perpendicularWallDistance * rayDirY)) +
+                 (!isSide * (x + perpendicularWallDistance * rayDirX));
   wallX -= floor((wallX));
 
-  int texX = int(wallX * double(BLOCKSIZE));
+  int doorStripe = int(wallX * double(BLOCKSIZE));
   bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
-  texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
-  if (texX < BLOCKSIZE * (1 - time)) return;
-  int lineHeight = int(this->height / perpWallDist);
+  doorStripe = (BLOCKSIZE - doorStripe - 1) * condition + doorStripe * (!condition);
+  if (doorStripe < BLOCKSIZE * (1 - time)) return;
+  int wallHeight = int(this->height / perpendicularWallDistance);
 
+  bool tooFar = (wallHeight < BLOCKSIZE);
   if (doorState == CLOSED) {
-    Area srcArea(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-    Area destArea(x, (this->height - lineHeight) >> 1, 1, lineHeight);
+    Area srcArea(doorStripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
+    Area destArea(i, (this->height - wallHeight) >> 1, 1, wallHeight);
     manager.render(DOOR, srcArea, destArea);
   } else {
-    Area srcArea(texX - BLOCKSIZE * (1 - time), 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-    Area destArea(x, (this->height - lineHeight) >> 1, 1, lineHeight);
+    Area srcArea(doorStripe - BLOCKSIZE * (1 - time), 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
+    Area destArea(i, (this->height - wallHeight) >> 1, 1, wallHeight);
     manager.render(DOOR, srcArea, destArea);
   }
 
-  if(perpWallDist < zBuffer[x]) zBuffer[x] = perpWallDist;
+  if(perpendicularWallDistance < distanceBuffer[i]) distanceBuffer[i] = perpendicularWallDistance;
 }

@@ -112,7 +112,7 @@ void Player::restartAnimationStats() {
 }
 
 void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
-                  double dirY, double planeX, double planeY, double* zBuffer, float diff) {
+                  double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
 
   this->timePassed += diff;
   int width, height;
@@ -121,10 +121,10 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   double spriteX = this->x - posX;
   double spriteY = this->y - posY;
 
-  double invDet = 1.0 / (planeX * dirY - dirX * planeY);
+  double inverseDeterminant = 1.0 / (planeX * dirY - dirX * planeY);
 
-  double transformX = invDet * (dirY * spriteX - dirX * spriteY);
-  double transformY = invDet * (-planeY * spriteX + planeX * spriteY);
+  double transformX = inverseDeterminant * (dirY * spriteX - dirX * spriteY);
+  double transformY = inverseDeterminant * (-planeY * spriteX + planeX * spriteY);
 
   int spriteScreenX = int((width >> 1) * (1 + transformX / transformY));
 
@@ -155,11 +155,11 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   int preCalcdValue3 = BLOCKSIZE * condition + spriteHeight * !condition;
 
   for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    if (texX < 0) continue;
+    int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    if (doorStripe < 0) continue;
 
-    if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      srcArea.update(texX + (this->frames << 6), 0, 1, preCalcdValue3);
+    if (transformY > 0 && stripe > 0 && stripe < width && transformY < distanceBuffer[stripe]){
+      srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
     }

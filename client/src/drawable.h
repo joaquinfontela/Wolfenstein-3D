@@ -19,7 +19,7 @@ class Drawable {
   Drawable(double x, double y, int id, int uniqueid = 0, double dist = INT_MAX) :
            x(x), y(y), id(id), dist(dist), uniqueid(uniqueid), hasToBeDeleted(false) {}
   virtual void draw(TextureManager& manager, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, double* zBuffer, float diff);
+                    double dirY, double planeX, double planeY, double* distanceBuffer, float diff);
   bool operator<(Drawable& other);
   void loadDistanceWithCoords(int px, int py);
   virtual bool hasThisUniqueId(int otherid);

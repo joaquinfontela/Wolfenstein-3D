@@ -11,7 +11,7 @@ class RaycastedAnimation : public Drawable {
   RaycastedAnimation(double x, double y, CommandExecuter* executer, int itemId, int uniqueid, int framesPerAnimation) :
             Drawable(x, y, itemId, uniqueid), totalFrames(TIME_PER_ANIMATION_SLIDE * FRAMES_PER_EXPLOSION_ANIMATION), frames(-1), executer(executer), framesPerAnimation(framesPerAnimation), timePassed(0){}
   void draw(TextureManager& manager, double posX, double posY, double dirX,
-            double dirY, double planeX, double planeY, double* zBuffer, float diff) override;
+            double dirY, double planeX, double planeY, double* distanceBuffer, float diff) override;
  private:
   int framesPerAnimation;
   int frames;
