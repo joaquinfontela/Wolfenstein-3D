@@ -1,6 +1,5 @@
 #include "commandsender.h"
 #include "clientprotocol.h"
-#include "log.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>

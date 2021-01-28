@@ -1,5 +1,4 @@
 #include "clientprotocol.h"
-#include "log.h"
 #include "client.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100

@@ -5,7 +5,6 @@
 #include <map>
 #include <vector>
 
-#include "log.h"
 #include "area.h"
 #include "sdltexture.h"
 #include "sdlexception.h"

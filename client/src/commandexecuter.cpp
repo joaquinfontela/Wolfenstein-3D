@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <string>
 
-#include "log.h"
 #include "audio.h"
 #include "commandexecuter.h"
 #include "RaycastedAnimation.h"

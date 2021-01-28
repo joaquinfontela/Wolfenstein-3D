@@ -1,6 +1,5 @@
 #include "sdlexception.h"
 #include "clientprotocol.h"
-#include "log.h"
 #include "audiomanager.h"
 #include <vector>
 #include <string>

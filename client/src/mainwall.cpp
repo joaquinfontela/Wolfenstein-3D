@@ -1,8 +1,5 @@
 #include "client.h"
 #include "clientprotocol.h"
-#include "log.h"
-
-#include <iostream>
 
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
