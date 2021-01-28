@@ -1,20 +1,19 @@
-#include "client.h"
-#include "clientprotocol.h"
+#include "LuaClient.h"
+#include <string>
 
 #define INVALID_ARGS_ERR "Error, no hostname and/or port given."
 
+int main(int argc, char* argv[]){
 
-
-int main(int argc, char** argv) {
-
-  if (argc != 3) {
+  if (argc != 4) {
     LOG(INVALID_ARGS_ERR);
   }
 
-  Client client;
+  Lua::Client client;
   std::string mapFile = "../../common/src/YAML/map.yaml";
   std::string host = argv[1];
   std::string port = argv[2];
+  std::string scriptName = argv[3];
 
-  return client.run(host, port, 2, mapFile);
+  return client.run(host, port, 2, mapFile, scriptName);
 }

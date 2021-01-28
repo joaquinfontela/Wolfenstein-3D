@@ -5,7 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <SDL2/SDL.h>
-#include "../../common/includes/protocol.h"
+#include "../../../common/includes/protocol.h"
 
 
 typedef struct KEY_STATE{
@@ -16,19 +16,10 @@ typedef struct KEY_STATE{
 }KeyState;
 
 void LuaSender::checkForQuit(){
-  while(alive){
-    SDL_Event event;
-    SDL_WaitEvent(&event);
-    if (event.type == SDL_QUIT) {
-      uint32_t opcode = PLAYER_DISCONNECT;
-      socket.send(&opcode, sizeof(opcode));
-      socket.readShutdown();
-      socket.writeShutdown();
-      socket.close();
-      alive = false;
-      break;
-    }
+  while(getchar() != 'q'){
+
   }
+  alive = false;
 }
 
 void updateKeyState(KeyState& ks, int keyPressed){
@@ -70,7 +61,7 @@ void LuaSender::run(){
   luaL_openlibs(luaState);
   this->update(19);
 
-  if(luaL_loadfile(luaState, "../Lua/script.lua") != LUA_OK){
+  if(luaL_loadfile(luaState, scriptName.c_str()) != LUA_OK){
     std::cout<<"Failure to open Lua Script"<<std::endl;
   }
 

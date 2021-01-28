@@ -116,7 +116,9 @@ add_library(sdldemo
   ../common/src/Map/Map.cpp
   ../common/src/YAML/YAMLMapReader.cpp
   ../common/src/Coordinate/Coordinate.cpp
-  src/luasender.cpp
+  src/log.cpp
+  src/Lua/luasender.cpp
+  src/Lua/LuaClient.cpp
 )
 
 find_package(PkgConfig)
@@ -128,7 +130,15 @@ include_directories(${PROJECT_BINARY_DIR})
 add_executable (sdl-wall
   src/mainwall.cpp
 )
+add_executable (lua
+  src/Lua/lua_main.cpp
+)
 target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer SDL2_ttf)
 
 target_link_libraries(sdl-wall ${YAMLCPP_LIBRARIES})
 target_link_libraries(sdl-wall ${LUA_LIBRARIES} ${CMAKE_DL_LIBS})
+
+target_link_libraries(lua sdldemo SDL2 SDL2_image SDL2_mixer SDL2_ttf)
+
+target_link_libraries(lua ${YAMLCPP_LIBRARIES})
+target_link_libraries(lua ${LUA_LIBRARIES} ${CMAKE_DL_LIBS})
