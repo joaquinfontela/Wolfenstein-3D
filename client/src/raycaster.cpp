@@ -139,12 +139,15 @@ void Raycaster::run(){
     std::chrono::duration<float, std::milli> drawableDiff = drawableTime2 - drawableTime1;
 
     while (it != this->sprites.end()) {
+      if (!(*it)->hasToBeDeleted) {
         (*it)->draw(manager, x, y, dirX, dirY, planeX, planeY, distanceBuffer, drawableDiff.count());
         ++it;
+      } else {
+        delete (*it);
+        this->sprites.erase(it);
+      }
     }
-
-    auto end = std::remove_if(this->sprites.begin(), this->sprites.end(), [](Drawable* s){return s->hasToBeDeleted;});
-    this->sprites.erase(end, this->sprites.end());
+    
     this->lock.unlock();
 
     drawableTime1 = drawableTime2;

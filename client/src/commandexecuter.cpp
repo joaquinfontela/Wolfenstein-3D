@@ -133,9 +133,9 @@ void CommandExecuter::playDyingSound(int gunId, int playerId) {
 void CommandExecuter::run() {
 
   SocketWrapper infogetter(this->socket);
-  Audio eyeofthetiger("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
-  eyeofthetiger.volumeUp();
-  eyeofthetiger.play();
+  /*Audio music("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
+  music.volumeUp();
+  music.play();*/
   while (alive) {
     try {
       uint32_t opcode;

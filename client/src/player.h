@@ -8,7 +8,7 @@
 class Player : public Drawable {
  public:
   Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id) :
-  Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY),
+  Drawable(posX, posY, 3, id) , shooting(false), dirX(dirX), dirY(dirY), planeX(planeX), planeY(planeY), score(0), 
   playerID(id), health(100), lives(2), moving(false), bullets(8), hasTheKey(false), healthdown(false), timePassed(0),
   totalFrames(TIME_PER_ANIMATION_SLIDE * 5), frames(-1), framesPerAnimation(1), animatingShooting(false), animatingMovement(false) {}
 

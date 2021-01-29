@@ -6,7 +6,7 @@
 
 static void deleteSprites(std::vector<Drawable*>& sprites) {
   for (Drawable* s : sprites) {
-    if (s->isSprite()) delete s;
+    delete s;
   }
 }
 

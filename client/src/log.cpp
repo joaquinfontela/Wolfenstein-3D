@@ -14,11 +14,9 @@ int Log::playerId = -1;
 std::mutex Log::lock;
 
 void Log::test(const char* _file, const char* function, const int line, const char* msg) {
-
-
   std::unique_lock<std::mutex> lock(Log::lock);
   std::string file = std::string(_file);
-  file = file.substr(file.find("/src/"));
+  file = file.substr(file.find("/src/") + 5);
   std::time_t time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
   std::ofstream logfile;
