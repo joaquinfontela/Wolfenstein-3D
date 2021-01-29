@@ -101,8 +101,12 @@ void Tile::applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<N
 
   std::vector<Player*>::iterator it = this->players.begin();
 
-  for(; it != this->players.end(); ++it) {
-      (*it)->takeDamage(damage, notif);
+  while(it != this->players.end()){
+    unsigned int remainingHealth = (*it)->takeDamage(damage, notif);
+    if(remainingHealth == 0 || remainingHealth == -1)
+      continue;
+    else
+      ++it;
   }
 }
 

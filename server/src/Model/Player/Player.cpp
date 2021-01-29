@@ -222,7 +222,7 @@ void Player::shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>&
   int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
   PlayerDropItem* noti = new PlayerDropItem(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, 404, uniqueId);
   notis.push(noti);
-  RocketMissile* newMissile = new RocketMissile(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, dirX, dirY, uniqueId);
+  RocketMissile* newMissile = new RocketMissile(this->getX() + dirX, this->getY() + dirY, dirX, dirY, uniqueId, planeX/2, planeY/2);
   updatables.push_back(newMissile);
   return;
 }

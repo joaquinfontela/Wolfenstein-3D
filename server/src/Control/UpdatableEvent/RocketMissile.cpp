@@ -3,7 +3,10 @@
 #include "../../../includes/Control/Notification/ElementSwitchPosition.h"
 
 
-RocketMissile::RocketMissile(double x, double y, double dirX, double dirY, int uniqueId) : Updatable(), x(x), y(y), dirX(dirX), dirY(dirY), uniqueId(uniqueId){  }
+RocketMissile::RocketMissile(double x, double y, double dirX, double dirY, int uniqueId, double planeX, double planeY) : Updatable(), x(x), y(y), dirX(dirX), dirY(dirY), uniqueId(uniqueId){
+    this->xDisplacement = planeX;
+    this->yDisplacement = planeY;
+}
 
 void RocketMissile::update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif){
   double newX = x + dirX * (moveSpeed * (timeElapsed));
@@ -22,7 +25,7 @@ void RocketMissile::update(float timeElapsed, Game& game, WaitingQueue<Notificat
 bool RocketMissile::notify(WaitingQueue<Notification*>& notif){
 
   if(this->hasToBeNotified){
-    ElementSwitchPosition* posUpdate = new ElementSwitchPosition(this->uniqueId, this->x, this->y);
+    ElementSwitchPosition* posUpdate = new ElementSwitchPosition(this->uniqueId, this->x + xDisplacement, this->y + yDisplacement);
     notif.push(posUpdate);
 
     if(this->done){
