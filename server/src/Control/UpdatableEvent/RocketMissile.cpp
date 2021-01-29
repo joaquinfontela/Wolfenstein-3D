@@ -14,11 +14,17 @@ void RocketMissile::update(float timeElapsed, Game& game, WaitingQueue<Notificat
   this->hasToBeNotified = true;
 
 
- // Returns True if Rocket collided with another game object.
- // Even if a collision happened, settings these variables helps us know where the impact happened.
-  if(!(this->done = game.moveRocketMissileFrom(this->x, this->y, newX, newY, notif))){
-    this->x = newX;
-    this->y = newY;
+  double quarterStepX = (newX - x) / 4;
+  double quarterStepY = (newY - y) / 4;
+
+  int i = 0;
+  while(i < 4){
+    if(!(this->done = game.moveRocketMissileFrom(this->x, this->y, x + quarterStepX, y + quarterStepY, notif))){
+      x = x + quarterStepX;
+      y = y + quarterStepY;
+      i++;
+    }else
+      break;
   }
 }
 

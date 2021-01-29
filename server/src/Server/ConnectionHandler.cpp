@@ -40,16 +40,12 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerADown* command = new PlayerADown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
         case KEY_S_DOWN:{
 
           PlayerSDown* command = new PlayerSDown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
 

@@ -198,9 +198,17 @@ void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::
   double newX = x + dirX * (moveSpeed * (timeElapsed));
   double newY = y + dirY * (moveSpeed * (timeElapsed));
 
-  if (map.moveTo(x, y, newX, newY, this, notis)) {
-    x = newX;
-    y = newY;
+  double quarterStepX = (newX - x) / 4;
+  double quarterStepY = (newY - y) / 4;
+
+  int i = 0;
+  while(i < 4){
+    if(map.moveTo(x, y, x + quarterStepX, y + quarterStepY, this, notis)){
+      x = x + quarterStepX;
+      y = y + quarterStepY;
+      i++;
+    }else
+      break;
   }
 
   double oldDirX = dirX;
@@ -246,6 +254,10 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
     this->shootRPG(notis, updatables);
   }
 
+  if (this->ammo <= 0) {
+    this->currentWeapon = this->weapons.at(0);
+  }
+
   ShotsFired* noti = new ShotsFired(this->playerID);
   notis.push(noti);
   int receiverHealth = 0;
@@ -268,17 +280,10 @@ double Player::getDirX() { return this->dirX; }
 double Player::getDirY() { return this->dirY; }
 
 int Player::attack(float timeElapsed) {
-  // Deberia pedirle a su arma que ataque, devolviendo el daño que hizo.
-  // Luego le pregunto al arma cuantas balas tiene, si no tiene mas disponible,
-  // cambio a cuchillo. Setearia Notificable a true salvo que tenga cuchillo.
 
   int ammo = this->ammo;
   int damageDealt = this->currentWeapon->attack(ammo, timeElapsed);
   this->ammo = ammo;
-
-  if (this->ammo <= 0) {
-    this->currentWeapon = this->weapons.at(0);
-  }
 
   this->hasToBeNotified = true;
   return damageDealt;
