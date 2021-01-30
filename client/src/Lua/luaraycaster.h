@@ -28,6 +28,6 @@ namespace Lua {
     std::mutex& lock;
   };
 
-};
+}
 
 #endif  // LUARAYCASTER_H_

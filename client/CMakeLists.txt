@@ -119,6 +119,7 @@ add_library(sdldemo
   src/log.cpp
   src/Lua/luasender.cpp
   src/Lua/luaraycaster.cpp
+  src/Lua/luaexecuter.cpp
   src/Lua/LuaClient.cpp
 )
 
