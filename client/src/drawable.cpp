@@ -20,11 +20,9 @@ bool Drawable::operator<(Drawable& other) {
   return this->dist > other.dist;
 }
 
-void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
-
-  int width, height;
-  manager.getWindowSize(&width, &height);
+void Drawable::calculateDrawingData(int& spriteScreen, int& spriteWidth, int& spriteHeight, int& drawStart,
+                                    int& drawEnd, double& transformY, double posX, double posY, double planeX,
+                                    double planeY, double dirX, double dirY, int width, int height) {
 
   double spriteX = this->x - posX;
   double spriteY = this->y - posY;
@@ -32,36 +30,43 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   double inverseDeterminant = 1.0 / (planeX * dirY - dirX * planeY);
 
   double transformX = inverseDeterminant * (dirY * spriteX - dirX * spriteY);
-  double transformY = inverseDeterminant * (-planeY * spriteX + planeX * spriteY);
+  transformY = inverseDeterminant * (-planeY * spriteX + planeX * spriteY);
 
-  int spriteScreenX = int((width >> 1) * (1 + transformX / transformY));
+  spriteScreen = int((width >> 1) * (1 + transformX / transformY));
 
-  int spriteHeight = abs(int(height / (transformY)));
-  int drawStartY = (height - spriteHeight) >> 1;
-  drawStartY = !(drawStartY < 0) * drawStartY;
-  int drawEndY = (spriteHeight + height) >> 1;
-  bool condition = (drawEndY >= height);
-  drawEndY = condition * (height - 1) + !condition * drawEndY;
+  spriteHeight = abs(int(height / (transformY)));
+  spriteWidth = abs(int(height / (transformY)));
+  drawStart = (spriteScreen - spriteWidth) >> 1;
+  drawStart = !(drawStart < 0) * drawStart;
+  drawEnd = spriteWidth / 2 + spriteScreen;
+  bool condition = (drawEnd >= width);
+  drawEnd = condition * (width - 1) + !condition * drawEnd;
+}
 
-  int spriteWidth = abs(int(height / (transformY)));
-  int drawStartX = (spriteScreenX - spriteWidth) >> 1;
-  drawStartX = !(drawStartX < 0) * drawStartX;
-  int drawEndX = spriteWidth / 2 + spriteScreenX;
-  condition = (drawEndX >= width);
-  drawEndX = condition * (width - 1) + !condition * drawEndX;
+void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
+                    double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
 
-  int preCalcdValue1 = (spriteScreenX - (spriteWidth >> 1));
+  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width, height;
+  double transformY;
+  manager.getWindowSize(&width, &height);
+
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
+                             posX, posY, planeX, planeY, dirX, dirY, width, height);
+
+  int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
   int preCalcdValue2 = (height - spriteHeight) >> 1;
-  condition = (spriteHeight < BLOCKSIZE);
-  int preCalcdValue3 = BLOCKSIZE * condition + spriteHeight * !condition;
+  bool tooFar = (spriteHeight < BLOCKSIZE);
+  int preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
+  int preCalcdValue4 = spriteHeight;
 
-  for (int stripe = drawStartX; stripe < drawEndX; stripe++){
+  drawEnd = (drawEnd < width) ? drawEnd : width;
+  for (int stripe = drawStart; stripe < drawEnd; stripe++){
     int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (doorStripe < 0) continue;
 
-    if (transformY > 0 && stripe > 0 && stripe < width && transformY < distanceBuffer[stripe]){
+    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]){
       srcArea.update(doorStripe, 0, 1, preCalcdValue3);
-      destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
+      destArea.update(stripe, preCalcdValue2, 1, preCalcdValue4);
       manager.render(this->id, srcArea, destArea);
     }
   }

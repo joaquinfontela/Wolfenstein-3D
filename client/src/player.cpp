@@ -115,50 +115,25 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
                   double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
 
   this->timePassed += diff;
-  int width, height;
+  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width, height;
+  double transformY;
   manager.getWindowSize(&width, &height);
 
-  double spriteX = this->x - posX;
-  double spriteY = this->y - posY;
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
+                             posX, posY, planeX, planeY, dirX, dirY, width, height);
 
-  double inverseDeterminant = 1.0 / (planeX * dirY - dirX * planeY);
-
-  double transformX = inverseDeterminant * (dirY * spriteX - dirX * spriteY);
-  double transformY = inverseDeterminant * (-planeY * spriteX + planeX * spriteY);
-
-  int spriteScreenX = int((width >> 1) * (1 + transformX / transformY));
-
-  int spriteHeight = abs(int(height / (transformY)));
-  int drawStartY = (height - spriteHeight) >> 1;
-  drawStartY = !(drawStartY < 0) * drawStartY;
-  int drawEndY = (spriteHeight + height) >> 1;
-  bool condition = (drawEndY >= height);
-  drawEndY = condition * (height - 1) + !condition * drawEndY;
-
-  int spriteWidth = abs(int(height / (transformY)));
-  int drawStartX = (spriteScreenX - spriteWidth) >> 1;
-  drawStartX = !(drawStartX < 0) * drawStartX;
-  int drawEndX = spriteWidth / 2 + spriteScreenX;
-  condition = (drawEndX >= width);
-  drawEndX = condition * (width - 1) + !condition * drawEndX;
-
-  bool sameSignX = sameSign(this->dirX, dirX);
-  bool sameSignY = sameSign(this->dirY, dirY);
-  bool diffSignX = !sameSignX;
-  bool diffSignY = !sameSignY;
-
+  int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
+  int preCalcdValue2 = (height - spriteHeight) >> 1;
+  bool tooFar = (spriteHeight < BLOCKSIZE);
+  int preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
   int spriteId = this->getSoldierId();
 
-  int preCalcdValue1 = (spriteScreenX - (spriteWidth >> 1));
-  int preCalcdValue2 = (height - spriteHeight) >> 1;
-  condition = (spriteHeight < BLOCKSIZE);
-  int preCalcdValue3 = BLOCKSIZE * condition + spriteHeight * !condition;
-
-  for (int stripe = drawStartX; stripe < drawEndX; stripe++){
+  drawEnd = (drawEnd < width) ? drawEnd : width;
+  for (int stripe = drawStart; stripe < drawEnd; stripe++){
     int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (doorStripe < 0) continue;
 
-    if (transformY > 0 && stripe > 0 && stripe < width && transformY < distanceBuffer[stripe]){
+    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]){
       srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);

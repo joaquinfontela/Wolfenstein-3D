@@ -21,10 +21,15 @@ class Drawable {
   virtual void draw(TextureManager& manager, double posX, double posY, double dirX,
                     double dirY, double planeX, double planeY, double* distanceBuffer, float diff);
   bool operator<(Drawable& other);
+  bool isContained();
   void loadDistanceWithCoords(int px, int py);
   virtual bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
+
  protected:
+  void calculateDrawingData(int& spriteScreen, int& spriteWidth, int& spriteHeight, int& drawStart,
+                            int& drawEnd, double& transformY, double posX, double posY, double planeX,
+                            double planeY, double dirX, double dirY, int width, int height);
   Area srcArea, destArea;
 };
 
