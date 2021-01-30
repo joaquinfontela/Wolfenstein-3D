@@ -84,9 +84,7 @@ void Hud::renderScore() {
 }
 
 void Hud::updateGunId() {
-  // To verify that the animation has ended or that I still have one shot left
-  if (!this->movementStatus || this->player->bullets == 1)
-    this->weaponId = this->player->weaponId;
+  this->weaponId = this->player->weaponId;
 }
 
 void Hud::renderBorder() {
