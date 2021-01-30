@@ -32,10 +32,11 @@ SdlWindow::SdlWindow(int width, int height) :
   SDL_SetWindowTitle(this->window, GAME_TITLE);
   SDL_Surface* icon = IMG_Load(IMG_PATH GAME_LOGO);
   SDL_SetWindowIcon(this->window,icon);
+  this->width = width;
+  this->height = height;
 }
 
 void SdlWindow::getWindowSize(int* w, int* h) {
-  SDL_GetWindowSize(this->window, &this->width, &this->height);
   *w = this->width;
   *h = this->height;
 }

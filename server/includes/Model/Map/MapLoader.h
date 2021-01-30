@@ -12,6 +12,8 @@
 #include "../../../includes/Model/Wall/WallFactory.h"
 #include "Map.h"
 
+class Map;
+
 class MapLoader {
  private:
   YAMLMapReader yamlReader;

@@ -11,6 +11,7 @@ typedef struct PlayerData{
   int lives;
   int bullets;
   int score;
+  bool hasKey;
 } PlayerData;
 
 #endif

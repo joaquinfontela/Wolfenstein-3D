@@ -17,6 +17,7 @@
 #include "../../includes/Control/Command/PlayerDUp.h"
 #include "../../includes/Control/Command/PlayerInteractDoor.h"
 #include "../../includes/Control/Command/PlayerSwitchWeapon.h"
+#include "../../includes/Control/Command/StartGame.h"
 
 ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
                                      WaitingQueue<Command*>& com, int playerID)
@@ -39,16 +40,12 @@ void ConnectionHandler::receiveCommands() {
 
           PlayerADown* command = new PlayerADown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
         case KEY_S_DOWN:{
 
           PlayerSDown* command = new PlayerSDown(this->ID);
           this->commands.push(command);
-          std::cout << "[CONNECTION HANDLER] Player Move Opcode received"
-                    << std::endl;
           break;
         }
 
@@ -101,8 +98,14 @@ void ConnectionHandler::receiveCommands() {
           break;
        }
 
-       case PLAYER_SHOOT: {
-         PlayerShoot* shoot = new PlayerShoot(this->ID);
+       case PLAYER_SHOOT_DOWN: {
+         PlayerShoot* shoot = new PlayerShoot(this->ID, true);
+         this->commands.push(shoot);
+         break;
+       }
+
+       case PLAYER_SHOOT_UP: {
+         PlayerShoot* shoot = new PlayerShoot(this->ID, false);
          this->commands.push(shoot);
          break;
        }
@@ -135,6 +138,11 @@ void ConnectionHandler::receiveCommands() {
 
       case KEY_5_DOWN:{
         this->commands.push(new PlayerSwitchWeapon(this->ID, 4));
+        break;
+      }
+
+      case START_MATCH:{
+        this->commands.push(new StartGame(this->ID));
         break;
       }
 

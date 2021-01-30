@@ -1,4 +1,5 @@
 #include "../../../includes/Model/Door/DoorFactory.h"
+#include <iostream>
 
 Door* DoorFactory::getDoor(int doorId) {
   switch (doorId) {
@@ -7,6 +8,7 @@ Door* DoorFactory::getDoor(int doorId) {
       break;
 
     case 202:
+      std::cout<<"Adding a Lockable door."<<std::endl;
       return new LockableDoor();
       break;
 

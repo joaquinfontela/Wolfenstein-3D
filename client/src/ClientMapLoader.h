@@ -16,6 +16,7 @@ class ClientMapLoader {
   int* getWallIdMatrix();
   std::vector<Drawable*> getDrawableItemList();
   unsigned int dimx, dimy;
+  std::vector<Coordinate> getDoorCoordinates();
 
  private:
   int uniqueid;

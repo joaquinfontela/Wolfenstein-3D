@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <time.h>
+#include <limits.h>
 
 #include <functional>
 #include <iostream>
@@ -9,13 +10,18 @@
 #include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../includes/Control/Notification/PlayerDropItem.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
+#include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
+#include "../../../includes/Control/UpdatableEvent/EndMatch.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Player/Player.h"
 
 Game::Game(std::string mapFile, std::string configFile)
     : yamlConfigReader(configFile), yamlMapReader(mapFile) {
   auto t1 = std::chrono::steady_clock::now();
+  started = false;
+
   MapLoader mapLoader(mapFile);
   map = mapLoader.loadMap();
   auto t2 = std::chrono::steady_clock::now();
@@ -25,10 +31,20 @@ Game::Game(std::string mapFile, std::string configFile)
             << "s." << std::endl;
 }
 
-void Game::addPlayer(int playerID) {
+void Game::setShooting(int playerID, bool state){
+
+  this->players[playerID]->setShooting(state);
+}
+
+void Game::addPlayer(int playerID, WaitingQueue<Notification*>& notis) {
   Player* newPlayer = new Player(this->yamlConfigReader, *map, playerID);
 
   this->players[playerID] = newPlayer;
+
+  if(this->players.size() == 1)
+    newPlayer->setAdmin();
+
+  this->sendGameStatus(notis);
 }
 
 bool Game::forceDoorStatusChange(int x, int y) {
@@ -40,26 +56,23 @@ void Game::playerSwitchWeapon(int playerID, int weaponPos) {
 }
 
 void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
-  Player* attacker = this->players[playerID];
 
-  Player* receiver = nullptr;
-  int receiverHealth = 0;
+}
 
-  int att = attacker->attack();
-  int range = attacker->getRange();
+void Game::generateRadiusDamage(int x, int y, WaitingQueue<Notification*>& notif){
 
-  if ((receiver = map->traceAttackFrom(attacker, range)) != nullptr) {
-    ItemFactory factory;
+  int damage = (rand() + 1 ) % 10;
+  this->map->applyDamageOnRadiusFrom(damage, x, y, notif);
+}
 
-    att = int((att / sqrt(attacker->calculateDistanceTo(receiver)))) % 10;
-    receiverHealth = receiver->takeDamage(att, notis);
+bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY, WaitingQueue<Notification*>& notif){
 
-    if (receiverHealth ==
-        0) {  // Deberia generar un evento de los items dropeados.
-
-    } else if (receiverHealth == -1) {
-    }  // Ya no deberia respawnear, deberia generar un evento de muerte.
+  if(!map->moveTo(x, y, newX, newY)){
+    this->generateRadiusDamage(int(newX), int(newY), notif);
+    return true;
   }
+
+  return false;
 }
 
 void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
@@ -72,12 +85,12 @@ void Game::updatePositions(float timeElapsed,
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    it->second->update(timeElapsed, notis);
+    it->second->update(timeElapsed, notis, this->updatables);
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();
   for (; updatableIt != this->updatables.end(); ++updatableIt) {
-    (*updatableIt)->update(timeElapsed, (*this));
+    (*updatableIt)->update(timeElapsed, (*this), notis);
   }
 }
 
@@ -85,9 +98,24 @@ std::tuple<int, int> Game::moveDoor(int playerID) {
   int x, y;
   std::tie(x, y) = this->map->moveDoor(this->players[playerID]);
 
-  if (x >= 0) this->updatables.push_back(new ChangeDoorStatus(x, y));
+  if (x >= 0){
+    this->updatables.push_back(new ChangeDoorStatus(x, y, 0.5f, false)); // Hace la puerta atravesable tras 0.5 segundos.
+    this->updatables.push_back(new ChangeDoorStatus(x, y, 8.0f, true));  // Cierra la puerta tras 8 segundos.
+  }
+
 
   return std::make_tuple(x, y);
+}
+
+void Game::sendGameStatus(WaitingQueue<Notification*>& notis){
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  for (; it != this->players.end(); ++it) {
+    PlayerData data;
+    it->second->fillPlayerData(data);
+    PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
+    notis.push(noti);
+  }
 }
 
 void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
@@ -97,6 +125,7 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
     PlayerData data;
     if (it->second->hasToBeUpdated()) {
       it->second->fillPlayerData(data);
+      it->second->setNotifiable(false);
       PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
       notis.push(noti);
     }
@@ -135,13 +164,32 @@ void Game::updatePlayerMoveSpeed(int playerID, double moveSpeed) {
 void Game::updatePlayerRotationSpeed(int playerID, double rotSpeed) {
   this->players[playerID]->updateRotationSpeed(rotSpeed);
 }
-void Game::start() {
-  // Deberia controlar la logica de iniciar el juego -> mandar la notificacion a
-  // los jugadores
+
+void Game::start(int playerID) {
+  std::map<int, Player*>::iterator it = this->players.find(playerID);
+
+  if (it != this->players.end()) {
+    if(it->second->hasAdmin()){
+      started = true;
+      EndMatch* endTimer = new EndMatch();
+      this->updatables.push_back(endTimer);
+    }
+  }
+}
+
+bool Game::hasStarted(){
+  return started;
 }
 
 void Game::end() {
-  // Lo mismo pero para terminarlo.
+  started = false;
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  std::cout<<"[GAME] Final Score Report:"<<std::endl;
+  for(; it != this->players.end(); ++it){
+    std::cout<<"\tID: "<<it->first<<", Score: "<<it->second->getScore()<<std::endl;
+  }
+
 }
 
 Game::~Game() {
@@ -149,6 +197,12 @@ Game::~Game() {
 
   for (; it != this->players.end(); ++it) {
     delete it->second;
+  }
+
+  std::list<Updatable*>::iterator it2 = this->updatables.begin();
+
+  for (; it2 != this->updatables.end(); ++it2) {
+    delete (*it2);
   }
 
   delete this->map;

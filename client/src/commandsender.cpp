@@ -1,4 +1,5 @@
 #include "commandsender.h"
+#include "clientprotocol.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
@@ -63,7 +64,7 @@ void CommandSender::run() {
           case SDLK_RETURN:
             if (!enterPressed) {
               enterPressed = true;
-              this->update(PLAYER_SHOOT); 
+              this->update(PLAYER_SHOOT_DOWN);
             }
             break;
           case SDLK_e:
@@ -83,6 +84,9 @@ void CommandSender::run() {
             break;
           case SDLK_5:
             this->update(KEY_5_DOWN);
+            break;
+          case SDLK_p:
+            this->update(START_MATCH);
             break;
         }
       } else if (event.type == SDL_KEYUP) {
@@ -106,7 +110,7 @@ void CommandSender::run() {
             break;
           case SDLK_RETURN:
             enterPressed = false;
-            //this->update(PLAYER_SHOOT);
+            this->update(PLAYER_SHOOT_UP);
             break;
           case SDLK_LEFT:
             break;
@@ -114,7 +118,8 @@ void CommandSender::run() {
             break;
         }
       }
-    } catch (SocketException& e) {
+    } catch (std::exception& e) {
+      LOG(e.what());
       break;
     }
   }

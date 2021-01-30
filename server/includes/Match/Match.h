@@ -17,11 +17,13 @@
 class Engine;
 class ClientCommunication;
 
+
 class Match {
  private:
   std::atomic<bool> cont;
   Engine* engine;
   WaitingQueue<Command*> commands;
+  WaitingQueue<Notification*> notis;
   Game game;
 
   int ID;
@@ -34,19 +36,37 @@ class Match {
   ~Match();
   explicit Match(int lobbyID);
 
-  // Fuerza el cierre del Match.
+  /**
+    * <Forces the shutdown of the match>
+  */
   void forceShutdown();
 
-  // Devuelve si el Match tiene cierto ID o no.
+  /** 
+    * <Returns if the game has certain id>
+    *
+    * @param ID to check.
+    * @return True if match has given ID.
+  */
   bool hasID(int lobbyID);
 
-  // Comienza el Match.
+  /**
+    * <Starts the match.>
+  */
   void start();
 
-  // Devuelve si la partida efectivamente termino.
+  /**
+    * <Checks if the game has ended.>
+    *
+    * @return True if match has ended.
+  */
   bool hasEnded();
 
-  // Agrega un jugador a la partida y devuelve la instancia del ConnectionHandler que maneja la interaccion con dicho usuario.
+  /**
+    * <Adds a player to the given match if possible>
+    *
+    * @param The ClientCommunication of the player.
+    * @return The ConnectionHandler for that player, NULL if not possible
+  */
   ConnectionHandler* addPlayerToMatch(ClientCommunication* player);
 };
 

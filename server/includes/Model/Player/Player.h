@@ -4,19 +4,22 @@
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Item/Weapon/Weapon.h"
 #include "../Item/Weapon/WeaponFactory.h"
 #include "../Map/Map.h"
 
 class Map;
+class Updatable;
 
 class Player {
  private:
-  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP;
+  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP, POINTS_PER_KILL;
   double x, y;
   double dirX, dirY;
   double rotSpeed;
   double moveSpeed;
+
   unsigned int playerID;
   bool hasToBeNotified;
   int score;
@@ -24,19 +27,27 @@ class Player {
   Weapon* currentWeapon;
   std::vector<Weapon*> weapons;
   bool key;
+  bool shooting;
+  bool isAdmin;
   WeaponFactory weaponFactory;
   Map& map;
 
   int handleDeath(WaitingQueue<Notification*>& notis);
 
  public:
+   double planeX;
+   double planeY;
   // CONSTRUCTORES.
   Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
   Player(YAMLConfigReader yamlConfigReader);
 
+  void setShooting(bool state);
+
   // Recibe daño, si muere y puede respawnear se posiciona sobre su punto de
   // respawn.
   int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
+
+  void setNotifiable(bool status);
 
   // GETTERS
   unsigned int ID();
@@ -44,6 +55,10 @@ class Player {
   double getY();
   double getDirX();
   double getDirY();
+
+  bool hasAdmin();
+
+  void setAdmin();
 
   // Agrega el arma indicada al vector de armas que posee el jugador.
   void addWeapon(Weapon* weapon);
@@ -63,7 +78,11 @@ class Player {
 
   // Devuelve cuanto daño hace un ataque con su arma.
   // Si se queda sin balas, cambia de arma.
-  int attack();
+  int attack(float timeElapsed);
+
+  void shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
+
+  void shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
 
   // Actualiza la velocidad de movimiento.
   void updateMoveSpeed(double movSpeed);
@@ -90,7 +109,7 @@ class Player {
 
   // Actualiza la posicion del jugador dada la velocidad de movimiento y
   // rotacion.
-  void update(float timeElapsed, WaitingQueue<Notification*>& notis);
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
 
   // Equipa una llave.
   void pickupKey();

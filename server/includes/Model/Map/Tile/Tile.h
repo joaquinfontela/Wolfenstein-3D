@@ -52,6 +52,8 @@ class Tile {
   // Returns true if the door was succesfully opened.
   bool moveDoor(Player* p);
 
+  void applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<Notification*>& notif);
+
   // Agrega un jugador al Tile.
   void addPlayer(Player* p);
 
@@ -76,6 +78,11 @@ class Tile {
   // Devuelve true si autoriza el movimiento de un jugador a la posicion (x, y)
   bool allowMovement(double x, double y, Player* p,
                      WaitingQueue<Notification*>& notis);
+
+  // Devuelve true si autoriza el movimiento de un elemento posicionable a la posicion (x, y)
+  bool allowMovement(double x, double y);
+
+
 
   bool hasPlayers();
 

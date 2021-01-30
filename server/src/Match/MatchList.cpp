@@ -10,11 +10,13 @@ MatchList::MatchList() {}
 
 ConnectionHandler* MatchList::joinOrCreate(ClientCommunication* player,
                                            int lobbyID) {
+
+  std::unique_lock<std::mutex> lock(this->lock);
   if (this->matches.find(lobbyID) != this->matches.end()) {
     return this->matches[lobbyID]->addPlayerToMatch(player);
   }
 
-   Match* newMatch = new Match(lobbyID);
+  Match* newMatch = new Match(lobbyID);
   ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
 
   newMatch->start();

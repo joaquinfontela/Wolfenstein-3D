@@ -11,6 +11,15 @@ sudo make install
 cd ..
 rm -r -f build
 
+echo -e "\x1b[1m\x1b[32m \n [Downloading Lua] \x1b[0m\n"
+curl -R -O http://www.lua.org/ftp/lua-5.4.2.tar.gz
+tar zxf lua-5.4.2.tar.gz
+cd lua-5.4.2
+make linux
+sudo make install
+cd ..
+rm lua-5.4.2
+
 echo -e "\x1b[1m\x1b[32m \n [Compiling Server] \x1b[0m\n"
 cd ../../../../
 cmake .
@@ -20,6 +29,5 @@ echo -e "\x1b[1m\x1b[32m \n [Compiling Client] \x1b[0m\n"
 cd client/executable
 cmake .
 make
-
 
 echo -e "\x1b[1m\x1b[32m \n [Install finished] \x1b[0m\n"

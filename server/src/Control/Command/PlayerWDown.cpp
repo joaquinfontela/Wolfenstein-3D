@@ -8,6 +8,9 @@ PlayerWDown::PlayerWDown(int ID) {
 }
 
 void PlayerWDown::execute(WaitingQueue<Notification*>& notifications, Game& game) {
+  if(!game.hasStarted())
+    return;
+    
   double moveSpeed = 6.5;
   game.updatePlayerMoveSpeed(this->playerID, moveSpeed);
 }

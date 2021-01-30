@@ -79,7 +79,7 @@ void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis) {
   this->items.push_back(new Key(108, uniqueId));
   PlayerDropItem* noti = new PlayerDropItem(x, y, 108, uniqueId);
   notis.push(noti);
-  
+
   this->deleteDoor();
   this->deleteWall();
 }
@@ -95,10 +95,26 @@ void Tile::addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis) {
   this->deleteWall();
 }
 
+void Tile::applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<Notification*>& notif){
+  if(this->isWall())
+    return;
+
+  std::vector<Player*>::iterator it = this->players.begin();
+
+  while(it != this->players.end()){
+    unsigned int remainingHealth = (*it)->takeDamage(damage, notif);
+    if(remainingHealth == 0 || remainingHealth == -1)
+      continue;
+    else
+      ++it;
+  }
+}
+
+
 
 bool Tile::forceDoorStatusChange() {
-  if (this->door && this->players.size() == 0) {
-    this->door->lock();
+  if (this->door && this->players.size() == 0) { // Para que no cierre la puerta mientras haya un jugador adentro de su celda.
+    this->door->changeStatus();
     return true;
   }
 
@@ -144,6 +160,23 @@ bool Tile::allowMovement(double x, double y, Player* p,
 
   pickUpItems(x, y, p, notis);
   pickUpGuns(p, notis);
+
+  return true;
+}
+
+bool Tile::allowMovement(double x, double y) {
+    if (this->isWall()){
+       return false;
+    }
+
+    std::vector<Player*>::iterator it = this->players.begin();
+
+    for (; it != this->players.end(); ++it) {
+      if ((*it)->collidesWith(x, y)){
+        return false;
+      }
+    }
+
   return true;
 }
 
@@ -196,7 +229,7 @@ bool Tile::moveDoor(Player* p) {
     return false;
   }
 
-  return this->door->unlock(p);
+  return this->door->unlock(p->hasKey());
 }
 
 bool Tile::hasPlayers() { return (!this->players.empty()); }

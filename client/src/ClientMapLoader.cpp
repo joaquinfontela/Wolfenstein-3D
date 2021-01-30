@@ -42,6 +42,20 @@ int* ClientMapLoader::getWallIdMatrix() {
   return matrix;
 }
 
+std::vector<Coordinate> ClientMapLoader::getDoorCoordinates(){
+  int DOOR_FROM = yamlMapReader.getDoorsIdLimits().at(0);
+  int DOOR_TO = yamlMapReader.getDoorsIdLimits().at(1);
+  std::vector<Coordinate> coordinates;
+
+  int id = 0;
+  for(id = DOOR_FROM; id <= DOOR_TO; id++){
+    std::vector<Coordinate> pos= yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+    coordinates.insert(coordinates.end(), pos.begin(), pos.end());
+  }
+
+  return coordinates;
+}
+
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
   int FROM_ID = yamlMapReader.getWeaponsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
@@ -73,44 +87,47 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
   switch (yamlFileId) {
     case 301:
     case 351:
-      return 1;
+      return BLUEWALL;
       break;
 
     case 302:
     case 352:
-      return 66;
+      return PURPLEWALL;
       break;
 
     case 303:
     case 353:
-      return 18;
+      return GREY_STONE_WALL;
       break;
 
     case 304:
     case 354:
-      return 19;
+      return WOODEN_WALL;
       break;
     case 201:
-      return 20;
+      return DOOR;
+      break;
+    case 202:
+      return DOOR;
       break;
 
     case 305:
-      return 64;
+      return MOSSY;
       break;
 
     case 306:
-      return 2;
+      return WALL2_SPRITE;
       break;
     case 307:
-      return 65;
+      return BRICKWALL;
       break;
 
     case 308:
-      return 66;
+      return PURPLEWALL;
       break;
 
     case 309:
-      return 66;
+      return PURPLEWALL;
       break;
 
     default:
@@ -129,9 +146,9 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
       return CHAINGUNITEM;
       break;
 
-    /*case 5:
-      return ROCKETLAUNCERITEM;
-      break;*/
+    case 5:
+      return ROCKETLAUNCHERITEM;
+      break;
 
     case 101:
       return AMMO;
@@ -167,6 +184,10 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
 
     case 109:
       return MEDKIT;
+      break;
+
+    case 404:
+      return FLYINGMISSILE;
       break;
 
     default:

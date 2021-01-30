@@ -20,14 +20,18 @@ class CommandExecuter : public Thread {
  public:
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
                   std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
-                  AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
-  socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
-  selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
+                  AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader);
   ~CommandExecuter();
   void run();
+  void eraseSprite(uint32_t itemId);
+  void playDyingSound(int gunId, int playerId);
+  void playExplosionSound();
  private:
-  void loadNewTexture(uint32_t x, uint32_t y, uint32_t yamlId, uint32_t uniqueId);
-  void removeSpriteWithId(int itemId);
+  void removeSpriteWithId(uint32_t itemId);
+  void renderExplosionAnimation(uint32_t itemId);
+  void renderDeathAnimation(uint32_t yamlId);
+  void renderMovingSprite(double x, double y, uint32_t itemId);
+  void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
   SocketCommunication& socket;

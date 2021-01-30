@@ -11,7 +11,7 @@ class Knife : public Weapon {
   ~Knife();
   int getID();
   int getUniqueId();
-  unsigned int attack(int& ammo);
+  unsigned int attack(int& ammo, float timeElapsed);
   bool hasAmmo();
   int getRange();
 

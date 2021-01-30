@@ -23,6 +23,10 @@ int YAMLConfigReader::getMaxAmountOfBullets() {
   return data["MAX_BULLETS"].as<int>();
 }
 
+int YAMLConfigReader::getPointsPerKill(){
+  return data["POINTS_PER_KILL"].as<int>();
+}
+
 int YAMLConfigReader::getBulletAmountWhenPickUpAmmo() {
   return data["AMMO_PICK_UP"].as<int>();
 }

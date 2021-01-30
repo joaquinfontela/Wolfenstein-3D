@@ -12,7 +12,18 @@
 void AudioManager::playOnVariableVolumeWithId(int id, double dist){
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (!(it != this->audiotracks.end())) {
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
+    return;
+  }
+  Audio* audio = it->second;
+  audio->volumeDownWithDist(dist);
+  audio->play();
+}
+
+void AudioManager::playOrStopOnVariableVolumeWithId(int id, double dist) {
+  std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
+  if (!(it != this->audiotracks.end())) {
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
     return;
   }
   Audio* audio = it->second;
@@ -25,7 +36,12 @@ AudioManager::~AudioManager() {
 }
 
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
-  Audio* audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
+  Audio* audio;
+  if (i == DOOR_SOUND) {
+    audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, 20);
+  } else {
+    audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
+  }
   if (audio == NULL) {
     return false;
   }
@@ -37,9 +53,17 @@ AudioManager::AudioManager() {
   std::vector<std::string> names({ "Knife.wav", // 1
                                    "Pistol.wav", // 2
                                    "Machine Gun.wav", // 3
-                                   "Gatling Gun.wav", //4
-                                   "Door.wav", // 5
-                                   "ItemPickup.wav" // 6
+                                   "Gatling Gun.wav", // 4
+                                   "Rocket Launcher.wav", // 5
+                                   "Rocket Explode.wav", // 6
+                                   "Door.wav", // 7
+                                   "ItemPickup.wav", // 8
+                                   "HealthPickup.wav", // 9
+                                   "Dog Death.wav", // 10
+                                   "Death 1.wav", // 11
+                                   "Death 2.wav", // 12
+                                   "Player Pain 2.wav", // 13
+                                   "Enemy Pain.wav" // 14
                                   });
   int i = 1;
   for (std::string& name : names) {
@@ -57,13 +81,14 @@ void AudioManager::stopWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->stop();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::loadTrack(int id, Audio* audio) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
-  if (it != this->audiotracks.end())
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+  if (it != this->audiotracks.end()) {
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
+  }
   else
     this->audiotracks[id] = audio;
 }
@@ -73,7 +98,7 @@ void AudioManager::playWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->play();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::playOnMaxVolumeWithId(int id) {
@@ -81,7 +106,7 @@ void AudioManager::playOnMaxVolumeWithId(int id) {
   if (it != this->audiotracks.end())
     it->second->playWithMaxVolume();
   else
-    std::cerr << TRACK_NOT_FOUND_ERROR << id << std::endl;
+    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
 void AudioManager::garbageCollector() {

@@ -7,9 +7,9 @@ void DoorTimer::run() {
   int lost = 0;
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
-  std::chrono::duration<float,std::milli> diff;
+  std::chrono::duration<float,std::milli> diff = t2 - t1;
   while (this->alive) {
-    this->matrix.updateTimers(abs(diff.count()/20));
+    this->matrix.updateTimers(abs(diff.count()));
     auto t1 = std::chrono::steady_clock::now();
     auto t2 = t1;
     t2 = std::chrono::steady_clock::now();

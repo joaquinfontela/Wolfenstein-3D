@@ -7,11 +7,12 @@
 class Shootable : public Weapon {
  protected:
   unsigned int ammo;
-  unsigned int blastFrequency;
+  float blastFrequency;
   unsigned int shotsPerBlast;
   unsigned int ammoLostPerShot;
   unsigned int precision;
   unsigned int shoot();
+  float timeSinceLastShot;
 
  public:
   Shootable(unsigned int uniqueId, int newAmmo, unsigned int minDamagePerBullet,
@@ -23,10 +24,10 @@ class Shootable : public Weapon {
   Shootable(unsigned int uniqueId, int newAmmo, unsigned int minDamagePerBullet,
             unsigned maxDamagePerBullet, unsigned int shotsPerBlast,
             unsigned int ammoLostPerShot, unsigned int precision,
-            unsigned int blastFrequency);
+            float blastFrequency);
   ~Shootable();
   virtual bool hasAmmo() = 0;
-  unsigned int attack(int& ammo);
+  unsigned int attack(int& ammo, float timeElapsed);
   // bool outOfAmmo();
 };
 

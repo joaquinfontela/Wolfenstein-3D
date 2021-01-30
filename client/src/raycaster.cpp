@@ -10,15 +10,9 @@
 #include <iostream>
 #include <time.h>
 
-void Raycaster::drawDoors() {
-  /*for (auto d : doors) {
-    d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
-  }*/
-}
-
-bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
+bool Raycaster::hitDoor(const int& matrixXCoord, const int& matrixYCoord) {
   for (Door& d : doors) {
-    if (d.mapX == mapX && d.mapY == mapY) {
+    if (d.matrixXCoord == matrixXCoord && d.matrixYCoord == matrixYCoord) {
       return true;
     }
   }
@@ -28,82 +22,70 @@ bool Raycaster::hitDoor(const int& mapX, const int& mapY) {
 void Raycaster::run(){
 
   auto t1 = std::chrono::steady_clock::now();
+  auto drawableTime1 = std::chrono::steady_clock::now();
   DoorTimer timer(this->matrix, this->alive);
   timer.start();
   int iters = 0;
 
   while(alive){
 
+    iters++;
     this->window->fillWolfenstein();
 
     double dirX = this->player->dirX;
     double dirY = this->player->dirY;
-    double posX = this->player->x;
-    double posY = this->player->y;
+    double x = this->player->x;
+    double y = this->player->y;
     double planeX = this->player->planeX;
     double planeY = this->player->planeY;
 
-    double zBuffer[this->width];
+    double distanceBuffer[this->width];
+    float totalTime = 0;
 
-    for(int x = 0; x < this->width; x++) {
+    int adjustment = this->width * 3 / 200;
+    for(int i = adjustment; i < this->width - adjustment; i++) {
 
-      int amountOfWalls = 0;
+      double cameraXCoord = (i << 1) / (double)this->width - 1;
+      double rayDirX = dirX + planeX * cameraXCoord;
+      double rayDirY = dirY + planeY * cameraXCoord;
 
-      double cameraX = 2 * x / (double)this->width - 1;
-      double rayDirX = dirX + planeX * cameraX;
-      double rayDirY = dirY + planeY * cameraX;
-
-      int mapX = int(posX);
-      int mapY = int(posY);
+      int matrixXCoord = int(x);
+      int matrixYCoord = int(y);
 
       double sideDistX, sideDistY;
 
-      double deltaDistX = std::abs(1 / rayDirX);
-      double deltaDistY = std::abs(1 / rayDirY);
+      double deltaDistanceX = std::abs(1 / rayDirX);
+      double deltaDistanceY = std::abs(1 / rayDirY);
 
-      int stepX, stepY;
-
-      int hit = 0;
-      int texNum = 1;
+      int dx = 1, dy = 1, hit = 0, texNum = 1, side;
       bool wasADoor;
-      int side;
 
-      if (rayDirX < 0) {
-        stepX = -1;
-        sideDistX = (posX - mapX) * deltaDistX;
-      } else {
-        stepX = 1;
-        sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-      }
+      bool isRayDirXNegative = (rayDirX < 0);
+      bool isRayDirYNegative = (rayDirY < 0);
+      dx -= (isRayDirXNegative << 1); // Swicthing signs.
+      sideDistX = (isRayDirXNegative * (x - matrixXCoord) * deltaDistanceX) +
+                  (!isRayDirXNegative * (matrixXCoord + 1.0 - x) * deltaDistanceX);
+      dy -= (isRayDirYNegative << 1); // Swicthing signs.
+      sideDistY = (isRayDirYNegative * (y - matrixYCoord) * deltaDistanceY) +
+                  (!isRayDirYNegative * (matrixYCoord + 1.0 - y) * deltaDistanceY);
 
-      if (rayDirY < 0) {
-        stepY = -1;
-        sideDistY = (posY - mapY) * deltaDistY;
-      } else {
-        stepY = 1;
-        sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-      }
+      while (!hit) {
+        bool isSideDistXgreaterToY = (sideDistX < sideDistY);
+        sideDistX += deltaDistanceX * isSideDistXgreaterToY;
+        sideDistY += deltaDistanceY * !isSideDistXgreaterToY;
+        matrixXCoord += dx * isSideDistXgreaterToY;
+        matrixYCoord += dy * !isSideDistXgreaterToY;
+        side = !isSideDistXgreaterToY;
 
-      while (hit == 0) {
-        if (sideDistX < sideDistY) {
-          sideDistX += deltaDistX;
-          mapX += stepX;
-          side = 0;
-        } else {
-          sideDistY += deltaDistY;
-          mapY += stepY;
-          side = 1;
-        }
-
-        if (mapX >= matrix.dimx || mapY >= matrix.dimy || mapX < 0 || mapY < 0) {
-          mapX = INT_MAX;
-          mapY = INT_MAX;
+        if (matrixXCoord >= matrix.dimx || matrixYCoord >= matrix.dimy || matrixXCoord < 0 || matrixYCoord < 0) {
+          matrixXCoord = INT_MAX;
+          matrixYCoord = INT_MAX;
           hit = 1;
-        } else if ((texNum = matrix.get(mapX, mapY)) > 0) {
-          if ((wasADoor = matrix.isDoor(mapX, mapY)) && (!(this->doors.size()) || !this->hitDoor(mapX,mapY))) {
-            Door door(mapX, mapY, this->width, this->height, stepX, stepY, side, cameraX, x, &matrix);
+        } else if ((texNum = matrix.get(matrixXCoord, matrixYCoord)) > 0) {
+          if ((wasADoor = matrix.isDoor(matrixXCoord, matrixYCoord)) && (!(this->doors.size()) || !this->hitDoor(matrixXCoord,matrixYCoord))) {
+            Door door(matrixXCoord, matrixYCoord, this->width, this->height, dx, dy, side, cameraXCoord, i, &matrix);
             this->doors.push_back(door);
-            hit = (matrix.getDoorState(mapX, mapY) == CLOSED);
+            hit = (matrix.getDoorState(matrixXCoord, matrixYCoord) == CLOSED);
           } else if (!wasADoor) {
             hit = 1;
           }
@@ -111,61 +93,73 @@ void Raycaster::run(){
       }
 
       bool isSide = (side == 0);
-      double perpWallDist = ((mapX - posX + ((1 - stepX) >> 1)) / (rayDirX) * isSide) +
-                            ((mapY - posY + ((1 - stepY) >> 1)) / (rayDirY) * !isSide);
+      double perpendicularWallDistance = (isSide * (matrixXCoord - x + ((1 - dx) >> 1)) / (rayDirX)) +
+                            (!isSide * (matrixYCoord - y + ((1 - dy) >> 1)) / (rayDirY));
 
-      int lineHeight = int(this->height/ perpWallDist);
+      int wallHeight = int(this->height/ perpendicularWallDistance);
 
-      double wallX = ((posY + perpWallDist * rayDirY) * isSide) +
-                     ((posX + perpWallDist * rayDirX) * !isSide);
+      double wallX = (isSide * (y + perpendicularWallDistance * rayDirY)) +
+                     (!isSide * (x + perpendicularWallDistance * rayDirX));
       wallX -= floor((wallX));
 
-      int texX = int(wallX * double(BLOCKSIZE));
+      int doorStripe = int(wallX * double(BLOCKSIZE));
       bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
-      texX = (BLOCKSIZE - texX - 1) * condition + texX * (!condition);
+      doorStripe = (BLOCKSIZE - doorStripe - 1) * condition + doorStripe * (!condition);
 
-      srcArea.update(texX, 0, 1, (lineHeight < BLOCKSIZE) ? BLOCKSIZE : lineHeight);
-      destArea.update(x, (this->height - lineHeight) >> 1, 1, lineHeight);
+      bool tooFar = (wallHeight < BLOCKSIZE);
+      srcArea.update(doorStripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
+      destArea.update(i, (this->height - wallHeight) >> 1, 1, wallHeight);
       this->manager.render(texNum, srcArea, destArea);
-      zBuffer[x] = perpWallDist;
+      distanceBuffer[i] = perpendicularWallDistance;
 
+      // It is not necessary to sort the doors (depending on their distance to the player)
+      // because they are already pushed in the vector as you detect them, meaning that
+      // the doors are already sorted. Thanks LIFO.
       while(!this->doors.empty()){
-        // It is not necessary to sort the doors (depending on their distance to the player)
-        // because they are already pushed in the vector as you detect them, meaning that
-        // the doors are already sorted. Thanks LIFO.
-        Door d = this->doors.back();
+        Door& d = this->doors.back();
+        d.draw(manager, x, y, dirX, dirY, planeX, planeY, distanceBuffer);
         this->doors.pop_back();
-        d.draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer);
       }
 
     }
 
+    auto drawableTime2 = std::chrono::steady_clock::now();
+
     this->lock.lock();
-    for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(posX, posY); }
+    for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(x, y); }
     std::sort(this->sprites.begin(), this->sprites.end(), []
       (Drawable* a, Drawable* b) -> bool { return *a < *b; });
 
-    for (Drawable* d : this->sprites) { d->draw(manager, posX, posY, dirX, dirY, planeX, planeY, zBuffer); }
+    std::vector<Drawable*>::iterator it = this->sprites.begin();
+    std::chrono::duration<float, std::milli> drawableDiff = drawableTime2 - drawableTime1;
+
+    while (it != this->sprites.end()) {
+      if (!(*it)->hasToBeDeleted) {
+        (*it)->draw(manager, x, y, dirX, dirY, planeX, planeY, distanceBuffer, drawableDiff.count());
+        ++it;
+      } else {
+        delete (*it);
+        this->sprites.erase(it);
+      }
+    }
+
     this->lock.unlock();
 
-    #ifdef FPS_FREQ
-    #define FPS_FREQ 50
-    //Use this with a VM only case.
+    drawableTime1 = drawableTime2;
 
-    if (!(iters % FPS_FREQ)) {
-      auto t2 = std::chrono::steady_clock::now();
+    auto t2 = std::chrono::steady_clock::now();
+    totalTime += (std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1)).count();
+    if (totalTime > 1000) {
+      totalTime = 0;
       std::chrono::duration<float,std::milli> diff = t2 - t1;
-      if (!iters) this->hud.updateFpsCounter((1000)/ceil(diff.count()));
-      else this->hud.updateFpsCounter((FPS_FREQ * 1000)/ceil(diff.count()));
+      this->hud.updateFpsCounter((iters * 1000)/ceil(diff.count()));
       t1 = t2;
+      iters = 0;
       this->hud.updateBjFace();
     }
 
-    #endif
-
     this->hud.update();
     this->window->render();
-    iters++;
   }
 
   timer.join();

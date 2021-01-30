@@ -26,6 +26,25 @@ void Map::setRespawnPoints(std::vector<Coordinate> respPoints){
   this->respawnPoints = respPoints;
 }
 
+
+bool Map::withinMap(int x, int y){
+  return (x < this->dimx && y < this->dimy && x >= 0 && y >= 0);
+}
+
+void Map::applyDamageOnRadiusFrom(int damage, int x, int y, WaitingQueue<Notification*>& notif){
+
+  int radius = 2;
+
+  for(int i = x - radius; i < x + radius; i++){
+    for(int j = y - radius; j < y + radius; j++){
+      if(withinMap(i, j)){
+        this->tileMatrix[i][j].applyDamageToPlayers(damage, abs(x-i) + abs(y-j), notif);
+      }
+    }
+  }
+
+}
+
 void Map::addItemDropAt(Item* item, int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
   this->tileMatrix[y - 1][x - 1].addItemDrop(item);
@@ -97,25 +116,20 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
     if (this->tileMatrix.at(mapX).at(mapY).checkWall())
       return nullptr;
 
-    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(
-                  rayPosX, rayPosY, attacker)) != nullptr)
+    else if ((p = this->tileMatrix.at(mapX).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr)
       return p;
 
     else if (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx)) {
-      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
 
     } else if (((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) {
-      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+      if ((p = this->tileMatrix.at(mapX).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
-    } else if ((((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) &&
-               (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx))) {
-      if ((p = this->tileMatrix.at(mapX + 1).at(mapY + 1).playerCollision(
-               rayPosX, rayPosY, attacker)) != nullptr) {
+    } else if ((((mapY + 1) - rayPosY) < 0.3 && ((mapY + 1) < this->dimy)) && (((mapX + 1) - rayPosX) < 0.3 && ((mapX + 1) < this->dimx))) {
+      if ((p = this->tileMatrix.at(mapX + 1).at(mapY + 1).playerCollision(rayPosX, rayPosY, attacker)) != nullptr) {
         return p;
       }
     }
@@ -160,6 +174,13 @@ bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p,
   }
 
   return false;
+}
+
+bool Map::moveTo(double fromX, double fromY, double toX, double toY) {
+  int x = (int)toX;
+  int y = (int)toY;
+
+  return this->tileMatrix.at(x).at(y).allowMovement(toX, toY);
 }
 
 void Map::addPlayer(int x, int y, Player* p) {

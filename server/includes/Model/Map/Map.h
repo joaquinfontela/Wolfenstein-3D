@@ -15,6 +15,7 @@ class Tile;
 class Player;
 class Item;
 class Wall;
+class Weapon;
 
 typedef std::vector<std::vector<Tile>> TileMatrix;
 
@@ -38,9 +39,16 @@ class Map {
 
   void setRespawnPoints(std::vector<Coordinate> respPoints);
 
+  void applyDamageOnRadiusFrom(int damage, int x, int y, WaitingQueue<Notification*>& notif);
+
   // Mueve un jugador de (fromX, fromY) a (x, y)
   bool moveTo(double fromX, double fromY, double x, double y, Player* p,
               WaitingQueue<Notification*>& notis);
+
+  bool withinMap(int x, int y);
+
+  // Mueve un elemento, utilizado para el movimiento de elementos distintos del Jugador.
+  bool moveTo(double fromX, double fromY, double x, double y);
 
   // Verifica si las coordenadas (x, y) se salen de los limites del mapa.
   void verifyCoordinateDoesNotSurpassMapLimits(int x, int y);

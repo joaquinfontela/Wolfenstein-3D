@@ -29,13 +29,26 @@ void Hud::update() {
   this->renderKey();
   this->renderBullets();
   this->renderTypeOfGun();
+  this->renderBloodDamage();
   this->framesAlreadyPlayed++;
+}
+
+void Hud::renderBloodDamage() {
+  int healthdown;
+  if (!(healthdown = player->healthdown)) return;
+  int width, height;
+  height = this->screenHeight;
+  width = this->screenWidth;
+  area.update(13, 12, width - 26, 3*height/4 + 10);
+  this->manager.renderAll(DAMAGE_HUD, area);
+  player->healthdown = (healthdown + 1) % BLOOD_FRAMES;
 }
 
 void Hud::renderKey() {
   if (!player->hasKey()) return;
   int x, y;
-  this->window->getWindowSize(&x, &y);
+  x = this->screenWidth;
+  y = this->screenHeight;
   int width, height;
   this->manager.getTextureSizeWithId(HUDKEY, &width, &height);
   area.update((x * 547)/ 720.0, (517 * y) / 600.0, (x >> 4) / 3, (y >> 2) / 3);
@@ -45,7 +58,8 @@ void Hud::renderKey() {
 void Hud::renderScore() {
   int x, y;
   int score = player->score;
-  this->window->getWindowSize(&x, &y);
+  x = this->screenWidth;
+  y = this->screenHeight;
   int width = x / 30;
   int height = y / 6;
   x -= width + 4 * x / 5;
@@ -70,9 +84,7 @@ void Hud::renderScore() {
 }
 
 void Hud::updateGunId() {
-  // To verify that the animation has ended or that I still have one shot left
-  if (!this->movementStatus || this->player->bullets == 1)
-    this->weaponId = this->player->weaponId;
+  this->weaponId = this->player->weaponId;
 }
 
 void Hud::renderBorder() {
@@ -84,7 +96,8 @@ void Hud::renderTypeOfGun() {
   this->updateGunId();
   this->hudgun->updateFrame(weaponId-1);
   int x, y, width, height;
-  this->window->getWindowSize(&x, &y);
+  y = this->screenHeight;
+  x = this->screenWidth;
   this->manager.getTextureSizeWithId(HUDGUNS, &width, &height);
   this->hudgun->setSlideWidth(&width);
   float aspectRatio = float(height) / float(width);
@@ -130,7 +143,8 @@ void Hud::renderGunWithMovement() {
 void Hud::renderBullets() {
   int x, y;
   int bullets = player->bullets;
-  this->window->getWindowSize(&x, &y);
+  y = this->screenHeight;
+  x = this->screenWidth;
   int width = x / 30;
   int height = y / 6;
   x -= width + 300 * x / 1000;
@@ -169,14 +183,19 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   }
   this->gun->updateFrame((this->weaponId-1)*(GUN_SLICES)+animationStatus);
   int x, y, width, height;
-  this->window->getWindowSize(&x, &y);
-  this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
+  y = this->screenHeight;
+  x = this->screenWidth;
+//  this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
+  width = 1622;
+  height = 38;
   this->gun->setSlideWidth(&width);
+
   float aspectRatio = float(height) / float(width);
   width = x >> 1;
   height = width * aspectRatio;
   y -= (y + height) >> 1;
   x -= (x + width) >> 1;
+
   area.update(x + dx, (y * 120) / 91 + dy, width , height);
   this->gun->renderActualFrame(area, GUNSPRITESROW);
 }
@@ -187,16 +206,10 @@ void Hud::updateHudGun() {
 
 void Hud::renderFace() {
   int health = this->player->health;
-  int x, y;
-  this->window->getWindowSize(&x, &y);
-  int width, height, id;
-  if (health > 66) {
-    id = 13;
-  } else if (health > 33) {
-    id = 14;
-  } else {
-    id = 15;
-  }
+  int x, y, width, height, id;
+  y = this->screenHeight;
+  x = this->screenWidth;
+  id = GET_BJ_FACE_FROM_HEALTH(health);
   this->manager.getTextureSizeWithId(id, &width, &height);
   this->bjface->setSlideWidth(&width);
   area.update((x * 67)/ 160.0, (503 * y) / 600.0, (7 * x) / 80, (y << 1) / 15);
@@ -213,6 +226,12 @@ Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager, AudioManage
   if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
     throw SdlException(TTF_INIT_ERROR, TTF_GetError());
   }
+  int x, y;
+
+  window->getWindowSize(&x, &y);
+  this->screenHeight = y;
+  this->screenWidth = x;
+
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
   this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
   this->gun = new SdlAnimation(manager, FRAMES_PER_GUN_ANIMATION);
@@ -221,7 +240,8 @@ Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager, AudioManage
 
 void Hud::renderLifes() {
   int x, y;
-  this->window->getWindowSize(&x, &y);
+  y = this->screenHeight;
+  x = this->screenWidth;
   int width = x / 30;
   int height = y / 6;
   x -= width + 31 * x / 50;
@@ -236,7 +256,8 @@ void Hud::updateFpsCounter(int fps) {
 
 void Hud::renderFpsCounter() {
   int x, y;
-  this->window->getWindowSize(&x, &y);
+  y = this->screenHeight;
+  x = this->screenWidth;
   int width = x / 16;
   int height = y / 6;
   x -= width + 893 * x / 1000;
@@ -252,7 +273,8 @@ void Hud::renderFpsCounter() {
 
 void Hud::renderHealth() {
   int x, y;
-  this->window->getWindowSize(&x, &y);
+  y = this->screenHeight;
+  x = this->screenWidth;
   int width = x / 16;
   int height = y / 6;
   x -= width + 49 * x / 125;

@@ -4,7 +4,7 @@
 #include <iostream>
 
 bool Player::hasKey() {
-  return true;
+  return key;
   //return this->hasTheKey;
 }
 
@@ -22,11 +22,6 @@ double Player::calculateDist(Player* other) {
 
 double Player::calculateDist(int otherx, int othery) {
   return sqrt(pow(this->x - otherx,2) + pow(this->y - othery,2));
-}
-
-int Player::getSoldierId(double x, double y, double dirX, double dirY) {
-  double angle = atan2(this->y - y, this->x - x) * 180 / PI;
-  return 1;
 }
 
 bool Player::hasThisUniqueId(int otherid){
@@ -58,12 +53,14 @@ Player::Player(PlayerData& info) {
   this->lives = info.lives;
   this->health = info.health;
   this->bullets = info.bullets;
-  //this->score = info.score;
-  this->score = 99999;
+  this->score = info.score;
+  this->key = info.hasKey;
 }
 
 void Player::update(PlayerData& info) {
-  this->moving = (this->x != info.posX || this->y != info.posX);
+
+  this->moving = ((fabs(this->x - info.posX) > 0.05) || (fabs(this->y - info.posY) > 0.05));
+  this->healthdown = (this->health > info.health);
   this->x = info.posX;
   this->y = info.posY;
   this->dirX = info.dirX;
@@ -72,8 +69,8 @@ void Player::update(PlayerData& info) {
   this->health = info.health;
   this->weaponId = info.weaponID;
   this->bullets = info.bullets;
-  //this->score = info.score;
-  this->score /= 2;
+  this->score = info.score;
+  this->key = info.hasKey;
 
   double oldPlaneX = planeX;
   double cosVal = cos(info.rotSpeed);
@@ -90,65 +87,60 @@ void Player::update(double posX, double posY, double dirX, double dirY) {
   this->dirY = dirY;
 }
 
-void Player::draw(TextureManager& manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double* zBuffer) {
+int Player::getSoldierId() {
+  if (this->shooting || this->animatingShooting) { // Que cuando termine la animación setee el booleano en false.
+    this->frames = (this->timePassed > 125) + (this->timePassed > 250) + (this->timePassed > 375);
+    return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
+    this->animatingShooting = true;
+  } else if (this->moving || this->animatingMovement) {
+    this->frames = (this->timePassed > 100) + (this->timePassed > 200) + (this->timePassed > 300) + (this->timePassed > 400);
+    return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
+    this->animatingMovement = true;
+  } else {
+    this->frames = 0;
+    return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
+  }
+}
 
-  int width, height;
+void Player::restartAnimationStats() {
+  this->animatingShooting = false;
+  this->animatingMovement = false;
+  this->shooting = false;
+  this->moving = false;
+  this->timePassed = 0;
+  this->frames = 0;
+}
+
+void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
+                  double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
+
+  this->timePassed += diff;
+  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width, height;
+  double transformY;
   manager.getWindowSize(&width, &height);
 
-  double spriteX = this->x - posX;
-  double spriteY = this->y - posY;
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
+                             posX, posY, planeX, planeY, dirX, dirY, width, height);
 
-  double invDet = 1.0 / (planeX * dirY - dirX * planeY);
+  int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
+  int preCalcdValue2 = (height - spriteHeight) >> 1;
+  bool tooFar = (spriteHeight < BLOCKSIZE);
+  int preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
+  int spriteId = this->getSoldierId();
 
-  double transformX = invDet * (dirY * spriteX - dirX * spriteY);
-  double transformY = invDet * (-planeY * spriteX + planeX * spriteY);
+  drawEnd = (drawEnd < width) ? drawEnd : width;
+  for (int stripe = drawStart; stripe < drawEnd; stripe++){
+    int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    if (doorStripe < 0) continue;
 
-  int spriteScreenX = int((width >> 1) * (1 + transformX / transformY));
-
-  int spriteHeight = abs(int(height / (transformY)));
-
-  int drawStartY = (height - spriteHeight) >> 1;
-  if (drawStartY < 0) drawStartY = 0;
-  int drawEndY = (spriteHeight + height) >> 1;
-  if (drawEndY >= height) drawEndY = height - 1;
-
-  int spriteWidth = abs(int (height / (transformY)));
-  int drawStartX = (spriteScreenX - spriteWidth) >> 1;
-  if (drawStartX < 0) drawStartX = 0;
-  int drawEndX = spriteWidth / 2 + spriteScreenX;
-  if (drawEndX >= width) drawEndX = width - 1;
-
-  int spriteId = 3;
-  /*double angle = atan2(this->dirY - dirY, this->dirX - dirX);
-  if (angle < 2*PI) angle += PI;
-  if (angle > 0 && angle < PI) spriteId = 10;*/
-
-  bool sameSignX = sameSign(this->dirX, dirX);
-  bool sameSignY = sameSign(this->dirY, dirY);
-  bool diffSignX = !sameSignX;
-  bool diffSignY = !sameSignY;
-
-
-  getSoldierId(posX, posY, dirX, dirY);
-
-
-  if (diffSignX && diffSignY)
-    spriteId = 11;
-  else if (sameSignX && diffSignY)
-    spriteId = 8;
-  else if (diffSignX && sameSignY)
-    spriteId = 9;
-  else
-    spriteId = 10;
-
-  for (int stripe = drawStartX; stripe < drawEndX; stripe++){
-    int texX = int((((stripe - (spriteScreenX - (spriteWidth >> 1))) << 6) << 8) / spriteWidth) >> 8;
-
-    if (transformY > 0 && stripe > 0 && stripe < width && transformY < zBuffer[stripe]){
-      srcArea.update(texX, 0, 1, (spriteHeight < BLOCKSIZE) ? BLOCKSIZE : spriteHeight);
-      destArea.update(stripe, (height - spriteHeight) >> 1, 1, spriteHeight);
+    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]){
+      srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
+      destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
     }
+  }
+  if (this->timePassed > 500) {
+    this->restartAnimationStats();
   }
 }
 

@@ -8,6 +8,10 @@ PlayerADown::PlayerADown(int ID) {
 }
 
 void PlayerADown::execute(WaitingQueue<Notification*>& notifications, Game& game) {
+
+  if(!game.hasStarted())
+    return;
+
   double rotSpeed = 0.125;
   game.updatePlayerRotationSpeed(this->playerID, rotSpeed);
 }
