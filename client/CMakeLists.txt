@@ -118,6 +118,7 @@ add_library(sdldemo
   ../common/src/Coordinate/Coordinate.cpp
   src/log.cpp
   src/Lua/luasender.cpp
+  src/Lua/luaraycaster.cpp
   src/Lua/LuaClient.cpp
 )
 

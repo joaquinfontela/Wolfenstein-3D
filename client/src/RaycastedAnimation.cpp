@@ -33,11 +33,9 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
-  //  std::cout << "time passed in milliseconds: " << timePassed << std::endl;
   }
 
   if (this->timePassed > this->totalFrames) {
     this->hasToBeDeleted = true;
-    //this->executer->eraseSprite(this->uniqueid);
   }
 }
