@@ -25,6 +25,8 @@ class Raycaster {
             alive(b), manager(manager) , matrix(m) , player(player) ,
             window(window), sprites(sprites) , lock(lock) , hud(hud) {
     manager.getWindowSize(&this->width, &this->height);
+    //this->height *= 77;
+    //this->height /= 100;
     this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
     this->doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);
   }
@@ -44,7 +46,6 @@ class Raycaster {
   int width;
   int height;
   std::vector<Door> doors;
-  void drawDoors();
   double distanceToProyection;
 };
 

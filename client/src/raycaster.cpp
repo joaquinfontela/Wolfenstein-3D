@@ -10,12 +10,6 @@
 #include <iostream>
 #include <time.h>
 
-void Raycaster::drawDoors() {
-  /*for (auto d : doors) {
-    d->draw(manager, x, y, dirX, dirY, planeX, planeY, distanceBuffer);
-  }*/
-}
-
 bool Raycaster::hitDoor(const int& matrixXCoord, const int& matrixYCoord) {
   for (Door& d : doors) {
     if (d.matrixXCoord == matrixXCoord && d.matrixYCoord == matrixYCoord) {
@@ -48,7 +42,8 @@ void Raycaster::run(){
     double distanceBuffer[this->width];
     float totalTime = 0;
 
-    for(int i = 0; i < this->width; i++) {
+    int adjustment = this->width * 3 / 200;
+    for(int i = adjustment; i < this->width - adjustment; i++) {
 
       double cameraXCoord = (i << 1) / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraXCoord;
@@ -147,7 +142,7 @@ void Raycaster::run(){
         this->sprites.erase(it);
       }
     }
-    
+
     this->lock.unlock();
 
     drawableTime1 = drawableTime2;
