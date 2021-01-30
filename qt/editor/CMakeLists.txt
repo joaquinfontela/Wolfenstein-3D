@@ -34,6 +34,7 @@ set(PROJECT_SOURCES
         wall_tile_factory.cpp
         ../../common/src/YAML/YAMLMapWriter.cpp
         ../../common/src/Coordinate/Coordinate.cpp
+        map_painter.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

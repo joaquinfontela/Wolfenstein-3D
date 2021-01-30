@@ -10,12 +10,14 @@ class tiles_container : public QHBoxLayout
     tile_factory* factory;
     int cant_rows;
     QLabel* label;
+    float margin_vertical;
+    float margin_horizontal;
 
     std::vector<int> get_tile_coordinate(int x, int y);
     bool is_inside(int x, int y);
 public:
     tile* tile_clicked(int x, int y);
-    tiles_container(QString path, int cant_row, int height, tile_factory* factory);
+    tiles_container(QString path, int cant_row, tile_factory* factory);
 };
 
 #endif // TILES_CONTAINER_H
