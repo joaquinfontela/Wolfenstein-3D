@@ -16,28 +16,54 @@
         <file>logo/wolfestein_logo.png</file>
     </qresource>
     <qresource prefix="/game_element">
-        <file>elementos_mapa/paredes.png</file>
-        <file>elementos_mapa/puertas.png</file>
-        <file>elementos_mapa/paredes/PARED_PIEDRA_LADRILLO_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_PIEDRA_LADRILLO_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_TIERRA_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_TIERRA_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_AZUL_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_AZUL_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_METAL_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_METAL_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_MIX_PIEDRA_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_MIX_PIEDRA_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_AZUL_MUY_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_AZUL_OSCURA_+.png</file>
-        <file>elementos_mapa/paredes/PARED_MADERA_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_MADERA_CLARA.png</file>
-        <file>elementos_mapa/paredes/PARED_PIEDRA_OSCURA.png</file>
-        <file>elementos_mapa/paredes/PARED_PIEDRA.png</file>
-        <file>elementos_mapa/empty_tile.PNG</file>
+        <file>elementos_mapa/decoraciones/decoration_tileset.png</file>
+        <file>elementos_mapa/decoraciones/barrel.png</file>
+        <file>elementos_mapa/decoraciones/cageskeleton.png</file>
+        <file>elementos_mapa/decoraciones/flag.png</file>
+        <file>elementos_mapa/decoraciones/floorlamp.png</file>
+        <file>elementos_mapa/decoraciones/greenbarrel.png</file>
+        <file>elementos_mapa/decoraciones/greenlight.png</file>
+        <file>elementos_mapa/decoraciones/groundskeleton.png</file>
+        <file>elementos_mapa/decoraciones/heapofbones.png</file>
+        <file>elementos_mapa/decoraciones/hungskeleton.png</file>
+        <file>elementos_mapa/decoraciones/pillar.png</file>
+        <file>elementos_mapa/decoraciones/plant.png</file>
+        <file>elementos_mapa/decoraciones/spikes.png</file>
+        <file>elementos_mapa/decoraciones/table.png</file>
+        <file>elementos_mapa/decoraciones/water.png</file>
+        <file>elementos_mapa/paredes/wall_tileset.png</file>
+        <file>elementos_mapa/paredes/bluestone.png</file>
+        <file>elementos_mapa/paredes/colorstone.png</file>
+        <file>elementos_mapa/paredes/eagle.png</file>
+        <file>elementos_mapa/paredes/greystone.png</file>
+        <file>elementos_mapa/paredes/greywall.png</file>
+        <file>elementos_mapa/paredes/hitlerwall.png</file>
+        <file>elementos_mapa/paredes/mossy.png</file>
+        <file>elementos_mapa/paredes/purplestone.png</file>
+        <file>elementos_mapa/paredes/redbrick.png</file>
+        <file>elementos_mapa/paredes/skeleton.png</file>
+        <file>elementos_mapa/paredes/propaganda.png</file>
+        <file>elementos_mapa/paredes/wood.png</file>
+        <file>elementos_mapa/items/rocketlauncheritem.png</file>
+        <file>elementos_mapa/items/items_tileset.png</file>
+        <file>elementos_mapa/items/1up.png</file>
+        <file>elementos_mapa/items/ammo.png</file>
+        <file>elementos_mapa/items/blood.png</file>
+        <file>elementos_mapa/items/chaingunitem.png</file>
+        <file>elementos_mapa/items/chest.png</file>
+        <file>elementos_mapa/items/food.png</file>
+        <file>elementos_mapa/items/goldencross.png</file>
+        <file>elementos_mapa/items/goldencrown.png</file>
+        <file>elementos_mapa/items/goldencup.png</file>
+        <file>elementos_mapa/items/machinegunitem.png</file>
+        <file>elementos_mapa/items/medkit.png</file>
+        <file>elementos_mapa/puertas/door_tileset.png</file>
+        <file>elementos_mapa/puertas/dark_door.png</file>
+        <file>elementos_mapa/puertas/iron_door.png</file>
+        <file>elementos_mapa/puertas/blue_door.png</file>
+        <file>elementos_mapa/puertas/goldenkey.png</file>
     </qresource>
     <qresource prefix="/varios">
         <file>fondo_blanco.png</file>
-        <file>fondo_rojo.jpeg</file>
     </qresource>
 </RCC>

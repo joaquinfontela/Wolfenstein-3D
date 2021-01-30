@@ -16,8 +16,11 @@ SOURCES += \
     main.cpp \
     map_actions.cpp \
     map_canvas.cpp \
+    map_painter.cpp \
+    map_save.cpp \
     mousetileactions.cpp \
     my_map.cpp \
+    open_window.cpp \
     size_window.cpp \
     tile.cpp \
     tiles_container.cpp \
@@ -31,8 +34,11 @@ HEADERS += \
     item_tile_factory.h \
     map_actions.h \
     map_canvas.h \
+    map_painter.h \
+    map_save.h \
     mousetileactions.h \
     my_map.h \
+    open_window.h \
     size_window.h \
     tile.h \
     tile_factory.h \
@@ -42,6 +48,7 @@ HEADERS += \
 
 FORMS += \
     editor.ui \
+    open_window.ui \
     size_window.ui
 
 # Default rules for deployment.

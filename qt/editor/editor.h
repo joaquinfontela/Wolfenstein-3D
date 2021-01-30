@@ -3,9 +3,11 @@
 
 #include <QMainWindow>
 
+#include "map_painter.h"
 #include "map_canvas.h"
 #include "tile.h"
 #include "tiles_container.h"
+#include "my_map.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,10 +23,15 @@ class Editor : public QMainWindow {
   tiles_container* tile_container;
   map_canvas* mc;
   QWidget* map_container;
+  std::vector<int> tile_sizes;
+  int actual_tiles_size_index;
 
   Editor(QWidget* parent = nullptr);
   void initialize_tile_container();
   void initialize_map_container(int col, int row);
+  int actual_tile_size();
+  void remove_Layout (QWidget* widget);
+  void update_map_container(my_map& map);
   ~Editor();
 
  private slots:
@@ -42,8 +49,14 @@ class Editor : public QMainWindow {
 
   void on_actionItems_triggered();
 
+  void on_actionZoom_in_triggered();
+
+  void on_actionZoom_out_triggered();
+
  private:
   Ui::Editor* ui;
   void update_container(tiles_container* container);
+  void repaint_map();
+  std::vector<std::string> maps_saved;
 };
 #endif  // EDITOR_H
