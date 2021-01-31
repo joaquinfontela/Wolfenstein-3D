@@ -3,6 +3,7 @@
 #include "texturemanager.h"
 #include <iostream>
 
+
 void Door::draw(TextureManager& manager, double x, double y, double dirX,
   double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
 

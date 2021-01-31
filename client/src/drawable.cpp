@@ -20,6 +20,10 @@ bool Drawable::operator<(Drawable& other) {
   return this->dist > other.dist;
 }
 
+bool Drawable::isPlayer(){
+  return false;
+}
+
 void Drawable::calculateDrawingData(int& spriteScreen, int& spriteWidth, int& spriteHeight, int& drawStart,
                                     int& drawEnd, double& transformY, double posX, double posY, double planeX,
                                     double planeY, double dirX, double dirY, int width, int height) {

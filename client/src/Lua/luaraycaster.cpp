@@ -19,8 +19,8 @@ namespace Lua {
 
       double distanceBuffer[this->width];
 
-      int adjustment = this->width * 3 / 200;
-      for(int i = adjustment; i < this->width - adjustment; i++) {
+      //int adjustment = this->width * 3 / 200;
+      for(int i = 0; i < this->width; i++) {
 
         double cameraXCoord = (i << 1) / (double)this->width - 1;
         double rayDirX = dirX + planeX * cameraXCoord;
@@ -75,10 +75,12 @@ namespace Lua {
       }
 
       this->lock.lock();
+      this->gameState.clearVisibleItems();
       for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(x, y); }
       std::vector<Drawable*>::iterator it = this->sprites.begin();
       while (it != this->sprites.end()) {
-        // COMPLETAR xd
+        if((*it)->isContained(distanceBuffer, player->x, player->y, player->dirX, player->dirY, player->planeX, player->planeY, 300, 200))
+          this->gameState.addVisibleItem((*it));
         ++it;
       }
       this->lock.unlock();

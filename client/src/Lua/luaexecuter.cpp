@@ -15,6 +15,7 @@ namespace Lua {
 
   void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
     std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
+    gameState.clearVisibleItems();
     this->lock.lock();
     std::vector<Drawable*>::iterator it = this->sprites.begin();
     for (; it != this->sprites.end(); ++it) {
@@ -53,6 +54,7 @@ namespace Lua {
           this->socket.receive(&id, sizeof(id));
           if (id == this->selfId) continue;
           this->lock.lock();
+          gameState.clearVisibleItems();
           Player* toKill = players[id];
           players.erase(id);
           std::vector<Drawable*>::iterator it = this->sprites.begin();

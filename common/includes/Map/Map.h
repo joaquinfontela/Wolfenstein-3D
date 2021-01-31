@@ -24,6 +24,7 @@ class Map {
   char getDoorState(int x, int y);
   void switchDoorState(int x, int y);
   void forceDoorState(int x, int y);
+  int* getMatrix();
 };
 
 #endif  // TP_FINAL_MAP_H

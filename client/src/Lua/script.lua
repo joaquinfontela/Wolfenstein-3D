@@ -22,18 +22,26 @@ function isMovementValid(Input, W_STATUS, A_STATUS, D_STATUS, S_STATUS)
 end
 end
 
-function getInput(W_STATUS, A_STATUS, D_STATUS, S_STATUS)
 
-  local choices = {100, 200, 300, 400, 500, 600, 700, 800}
+
+function getInput(W_STATUS, A_STATUS, D_STATUS, S_STATUS, GameState)
+
+  local leftRight = {100, 200}
+  local upDown = {300, 400}
   local index = 0
-  print(A_STATUS)
-  print(S_STATUS)
-  print(D_STATUS)
-  print(W_STATUS)
-  repeat
-    index = math.random(1, 8)
+  local retVal = 0
 
-  until(isMovementValid(choices[index], W_STATUS, A_STATUS, D_STATUS, S_STATUS))
+  retVal = playerInSight(GameState)
+  if(retVal == 1) then
+    return 18
+  end
 
-  return choices[index]
+  retVal = facingWall(GameState)
+  if(retVal == 1) then
+    index = math.random(1, 2)
+    return leftRight[index]
+  end
+
+  index = math.random(1, 2)
+  return upDown[index]
 end

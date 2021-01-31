@@ -5,7 +5,7 @@
 #include <map>
 #include <mutex>
 #include <vector>
-
+#include "GameState.h"
 #include "../player.h"
 #include "../audiomanager.h"
 #include "../ClientMapLoader.h"
@@ -20,14 +20,15 @@ namespace Lua {
    public:
     CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
                     std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId, Map& matrix,
-                    ClientMapLoader& loader) : socket(s) , alive(alive) , sprites(sprites), players(players) ,
-                    lock(lock) , selfId(selfId) , matrix(matrix) , loader(loader) {}
+                    ClientMapLoader& loader, Lua::GameState& gameState) : socket(s) , alive(alive) , sprites(sprites), players(players) ,
+                    lock(lock) , selfId(selfId) , matrix(matrix) , loader(loader), gameState(gameState) {}
     void run();
    private:
     void removeSpriteWithId(uint32_t itemId);
     void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
     SocketCommunication& socket;
     std::atomic<bool>& alive;
+    Lua::GameState& gameState;
     std::vector<Drawable*>& sprites;
     std::map<uint32_t,Player*>& players;
     std::mutex& lock;

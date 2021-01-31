@@ -15,6 +15,24 @@ typedef struct KEY_STATE{
   int D;
 }KeyState;
 
+static int wrap_playerInSight(lua_State* luaState){
+
+  Lua::GameState* gameState = static_cast<Lua::GameState*>(lua_touserdata(luaState, 1));
+
+  int returnValue = gameState->playerInSight();
+  lua_pushnumber(luaState, returnValue);
+  return 1;
+}
+
+static int wrap_facingWall(lua_State* luaState){
+
+  Lua::GameState* gameState = static_cast<Lua::GameState*>(lua_touserdata(luaState, 1));
+
+  int returnValue = gameState->facingWall();
+  lua_pushnumber(luaState, returnValue);
+  return 1;
+}
+
 void LuaSender::checkForQuit(){
   while(getchar() != 'q'){
 
@@ -71,12 +89,17 @@ void LuaSender::run(){
     lua_pop(luaState,1);
   }
 
+  lua_register(luaState, "facingWall", wrap_facingWall);
+  lua_register(luaState, "playerInSight", wrap_playerInSight);
+
   // Llamado a la funcion que, por el momento, devuelve un input random para mandar al server.
   KeyState keyState;
   keyState.W = 0;
   keyState.S = 0;
   keyState.A = 0;
   keyState.D = 0;
+
+  std::cout<<"Mem Adress of GS: "<<this->gameState<<std::endl;
 
   while(alive){
 
@@ -85,14 +108,15 @@ void LuaSender::run(){
     lua_pushnumber(luaState, keyState.A);
     lua_pushnumber(luaState, keyState.D);
     lua_pushnumber(luaState, keyState.S);
+    lua_pushlightuserdata(luaState, this->gameState);
     // Esto no esta funcionando por ahora, el objetivo seria pasarle un struct/objeto que represente el estado del juego y que lua tome su decision.
-    if(lua_pcall(luaState, 4, 1, 0)){
+    if(lua_pcall(luaState, 5, 1, 0)){
       std::cout<<"Fallo llamando a lua: "<<lua_tostring(luaState, -1)<<std::endl;
       lua_pop(luaState, 1);
       break;
     }
 
-    std::cout<<"KeyState: A: "<<keyState.A<<", S: "<<keyState.S<<", D: "<<keyState.D<<", W: "<<keyState.W<<std::endl;
+  //  std::cout<<"KeyState: A: "<<keyState.A<<", S: "<<keyState.S<<", D: "<<keyState.D<<", W: "<<keyState.W<<std::endl;
     int n = lua_tonumber(luaState, -1);
     this->update(n);
     updateKeyState(keyState, n);
