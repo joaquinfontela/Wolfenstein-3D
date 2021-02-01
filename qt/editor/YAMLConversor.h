@@ -12,10 +12,11 @@ typedef std::vector<std::vector<std::vector<tile*>>> TileMatrix;
 class YAMLConversor {
  private:
   std::string fileName;
+  TileMatrix* createEmptyMatrix(std::vector<int> mapDimensions);
 
  public:
   YAMLConversor(std::string& fileName) : fileName(fileName) {}
-  void updateTileMatrix(TileMatrix& tileMatrix);
+  TileMatrix* updateTileMatrix();
 };
 
 #endif
