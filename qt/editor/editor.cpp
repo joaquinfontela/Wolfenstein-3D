@@ -14,7 +14,13 @@
 #include "wall_tile_factory.h"
 #include "map_painter.h"
 #include <QMessageBox>
-
+#include "open_window.h"
+#include "../../common/includes/YAML/YAMLConfigReader.h"
+#include "../../common/includes/YAML/YAMLMapReader.h"
+#include "../../common/includes/YAML/YAMLMapWriter.h"
+#include "save_window.h"
+#include "QGraphicsScene"
+#include "QGraphicsView"
 
 #define BASE_SIDE_SIZE 40
 #define PLUS_SIDE_SIZE 60
@@ -24,6 +30,7 @@
 #define ITEM_TILESET_PATH "./elementos_mapa/items/items_tileset.png"
 #define DECORATION_TILESET_PATH "./elementos_mapa/decoraciones/decoration_tileset.png"
 #define DOOR_TILESET_PATH "./elementos_mapa/puertas/door_tileset.png"
+#define RESPAWN_ICON_PATH "./elementos_mapa/otros/respawn_icon.png"
 
 void Editor::initialize_tile_container() {
   ui->element_container->setFrameStyle(QFrame::Box);
@@ -33,15 +40,21 @@ void Editor::initialize_tile_container() {
 }
 
 void Editor::initialize_map_container(int col, int row) {
-  my_map* map = new my_map(/*col, row, this->actual_tile_size()*/);
+  /*graphics_scene = new QGraphicsScene(this);
+  QGraphicsView* graphics_view = new QGraphicsView(this);
+  graphics_view->setScene(graphics_scene);
+  ui->map_scroll->setWidget(graphics_view);*/
+
+  my_map* map = new my_map(col, row, this->actual_tile_size());
   QHBoxLayout* ly = new QHBoxLayout();
   ly->addWidget(map, Qt::AlignCenter);
   ui->map_container->setLayout(ly);
-  map->paint_grill(col, row, this->actual_tile_size());
   this->map_container = ui->map_container;
   this->mc = new map_canvas(col, row);
   map_actions* ma = new map_actions(this, *map);
   ui->map_container->installEventFilter(ma);
+
+  ui->actionsafe->setEnabled(true);
 }
 
 Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
@@ -51,7 +64,8 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   this->tile_selected = NULL;
   this->tile_sizes = {BASE_SIDE_SIZE, PLUS_SIDE_SIZE, LARGE_SIDE_SIZE};
   this->actual_tiles_size_index = 0;
-  ui->map_scroll->viewport()->setUpdatesEnabled(true);
+  ui->actionsafe->setEnabled(false);
+  this->actual_map_saved = false;
 }
 
 Editor::~Editor() { delete ui; }
@@ -129,7 +143,7 @@ void Editor::on_actionItems_triggered() {
 void Editor::repaint_map(){
     int col = this->mc->cant_col;
     int row = this->mc->cant_row;
-    my_map* map = new my_map(/*col, row, this->actual_tile_size()*/);
+    my_map* map = new my_map(col, row, this->actual_tile_size());
     QHBoxLayout* ly = new QHBoxLayout();
     ly->addWidget(map, Qt::AlignCenter);
     remove_Layout(ui->map_container);
@@ -162,4 +176,42 @@ void Editor::on_actionZoom_out_triggered()
         this->actual_tiles_size_index++;
         this->repaint_map();
     }
+}
+
+void Editor::on_actionOpen_triggered()
+{
+    open_window ow(this);
+    ow.setModal(true);
+    ow.exec();
+}
+
+void Editor::save_map(){
+    if(actual_map_saved){
+        std::string name_path = this->actual_map_name + ".YAML";
+        YAMLMapWriter* map_creator = new YAMLMapWriter(name_path);
+        TileMatrix matrix = this->mc->grilla;
+        map_creator->createYamlMapFile(matrix);
+        delete map_creator;
+    }else{
+        save_window sw(this);
+        sw.setModal(true);
+        sw.exec();
+        actual_map_saved = true;
+    }
+}
+
+void Editor::on_actionsafe_triggered()
+{
+    this->save_map();
+}
+
+void Editor::on_actionRespawn_triggered()
+{
+    this->tile_selected = new tile( RESPAWN_ICON_PATH , 0, false);
+}
+
+void Editor::on_actionSave_and_exit_triggered()
+{
+    this->save_map();
+    QApplication::quit();
 }

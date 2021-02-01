@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include -std=c++11 -pthread -g")
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
@@ -35,6 +36,9 @@ set(PROJECT_SOURCES
         ../../common/src/YAML/YAMLMapWriter.cpp
         ../../common/src/Coordinate/Coordinate.cpp
         map_painter.cpp
+        map_save.cpp
+        open_window.cpp
+        save_window.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

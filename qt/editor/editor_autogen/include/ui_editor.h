@@ -43,6 +43,7 @@ public:
     QAction *actionZoom_in;
     QAction *actionZoom_out;
     QAction *actionBorrador;
+    QAction *actionRespawn;
     QWidget *centralwidget;
     QScrollArea *map_scroll;
     QWidget *map_container;
@@ -140,6 +141,8 @@ public:
         actionZoom_out->setIcon(icon11);
         actionBorrador = new QAction(Editor);
         actionBorrador->setObjectName(QString::fromUtf8("actionBorrador"));
+        actionRespawn = new QAction(Editor);
+        actionRespawn->setObjectName(QString::fromUtf8("actionRespawn"));
         centralwidget = new QWidget(Editor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         map_scroll = new QScrollArea(centralwidget);
@@ -283,6 +286,8 @@ public:
         toolBar->addSeparator();
         toolBar->addAction(actionPuertas);
         toolBar->addSeparator();
+        toolBar->addAction(actionRespawn);
+        toolBar->addSeparator();
         toolBar->addAction(actionBorrador);
 
         retranslateUi(Editor);
@@ -321,6 +326,7 @@ public:
         actionZoom_in->setText(QApplication::translate("Editor", "Zoom in", nullptr));
         actionZoom_out->setText(QApplication::translate("Editor", "Zoom out", nullptr));
         actionBorrador->setText(QApplication::translate("Editor", "Borrador", nullptr));
+        actionRespawn->setText(QApplication::translate("Editor", "Respawn", nullptr));
         menuFile->setTitle(QApplication::translate("Editor", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("Editor", "Edit", nullptr));
         menuBack_to_Manu->setTitle(QApplication::translate("Editor", "Quit", nullptr));

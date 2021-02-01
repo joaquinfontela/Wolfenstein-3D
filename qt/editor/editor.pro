@@ -21,6 +21,7 @@ SOURCES += \
     mousetileactions.cpp \
     my_map.cpp \
     open_window.cpp \
+    save_window.cpp \
     size_window.cpp \
     tile.cpp \
     tiles_container.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     mousetileactions.h \
     my_map.h \
     open_window.h \
+    save_window.h \
     size_window.h \
     tile.h \
     tile_factory.h \
@@ -49,6 +51,7 @@ HEADERS += \
 FORMS += \
     editor.ui \
     open_window.ui \
+    save_window.ui \
     size_window.ui
 
 # Default rules for deployment.
