@@ -15,10 +15,11 @@ private:
     Map& matrix;                          // Representacion Matricial del mapa.
     Player* player;                       // Jugador representado por el script de Lua.
     std::vector<Drawable*> seenObjects;   // Vector de objetos que pueden ser observados por el jugador en ese momento
+    double* distanceBuffer;
 
 public:
 
-    GameState(Map& matrix, Player* self);
+    GameState(Map& matrix, Player* self, double* distanceBuffer);
 
     // Devuelve true si tiene un jugador al alcance de su vista.
     bool playerInSight();

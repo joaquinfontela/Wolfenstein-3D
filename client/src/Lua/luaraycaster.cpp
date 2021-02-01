@@ -5,7 +5,7 @@ namespace Lua {
   void Raycaster::run() {
 
     int iters = 0;
-
+    std::cout<<distanceBuffer<<std::endl;
     while(alive){
 
       iters++;
@@ -17,7 +17,7 @@ namespace Lua {
       double planeX = this->player->planeX;
       double planeY = this->player->planeY;
 
-      double distanceBuffer[this->width];
+
 
       //int adjustment = this->width * 3 / 200;
       for(int i = 0; i < this->width; i++) {
@@ -71,13 +71,14 @@ namespace Lua {
         double perpendicularWallDistance = (isSide * (matrixXCoord - x + ((1 - dx) >> 1)) / (rayDirX)) +
                                           (!isSide * (matrixYCoord - y + ((1 - dy) >> 1)) / (rayDirY));
 
-        distanceBuffer[i] = perpendicularWallDistance;
+        this->distanceBuffer[i] = perpendicularWallDistance;
+
       }
 
       this->lock.lock();
-      this->gameState.clearVisibleItems();
       for (Drawable* d : this->sprites) { d->loadDistanceWithCoords(x, y); }
       std::vector<Drawable*>::iterator it = this->sprites.begin();
+      this->gameState.clearVisibleItems();
       while (it != this->sprites.end()) {
         if((*it)->isContained(distanceBuffer, player->x, player->y, player->dirX, player->dirY, player->planeX, player->planeY, 300, 200))
           this->gameState.addVisibleItem((*it));

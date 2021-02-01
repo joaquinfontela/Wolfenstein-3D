@@ -4,6 +4,13 @@
 #include "../commandsender.h"
 #include "GameState.h"
 
+typedef struct KEY_STATE{
+  int W;
+  int S;
+  int A;
+  int D;
+}KeyState;
+
 class LuaSender : public CommandSender{
 
 public:
@@ -13,6 +20,7 @@ public:
   }
   void run();
   void checkForQuit();
+  void stopPlayer(KeyState& ks);
 
 private:
   std::string& scriptName;

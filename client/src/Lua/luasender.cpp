@@ -8,12 +8,7 @@
 #include "../../../common/includes/protocol.h"
 
 
-typedef struct KEY_STATE{
-  int W;
-  int S;
-  int A;
-  int D;
-}KeyState;
+
 
 static int wrap_playerInSight(lua_State* luaState){
 
@@ -45,31 +40,54 @@ void updateKeyState(KeyState& ks, int keyPressed){
   switch(keyPressed){
 
     case 100:
-      ks.A = 1;
-      break;
+    ks.A = 1;
+    break;
     case 500:
-      ks.A = 0;
-      break;
+    ks.A = 0;
+    break;
     case 200:
-      ks.D = 1;
-      break;
+    ks.D = 1;
+    break;
     case 600:
-      ks.D = 0;
-      break;
+    ks.D = 0;
+    break;
     case 300:
-      ks.W = 1;
-      break;
+    ks.W = 1;
+    break;
     case 700:
-      ks.W = 0;
-      break;
+    ks.W = 0;
+    break;
     case 400:
-      ks.S = 1;
-      break;
+    ks.S = 1;
+    break;
     case 800:
-      ks.S = 0;
-      break;
+    ks.S = 0;
+    break;
   }
 }
+
+void LuaSender::stopPlayer(KeyState& ks){
+  if(ks.A == 1){
+    this->update(500);
+    updateKeyState(ks, 500);
+  }
+
+  if(ks.S == 1){
+    this->update(800);
+    updateKeyState(ks, 800);
+  }
+
+  if(ks.D == 1){
+    this->update(600);
+    updateKeyState(ks, 600);
+  }
+
+  if(ks.W == 1){
+    this->update(700);
+    updateKeyState(ks, 700);
+  }
+}
+
 void LuaSender::run(){
 
   std::thread quitThread(&LuaSender::checkForQuit, this);
@@ -103,26 +121,23 @@ void LuaSender::run(){
 
   while(alive){
 
+    std::cout<<"KeyState: A: "<<keyState.A<<", S: "<<keyState.S<<", D: "<<keyState.D<<", W: "<<keyState.W<<std::endl;
+    this->stopPlayer(keyState);
     lua_getglobal(luaState, "getInput");
-    lua_pushnumber(luaState, keyState.W);
-    lua_pushnumber(luaState, keyState.A);
-    lua_pushnumber(luaState, keyState.D);
-    lua_pushnumber(luaState, keyState.S);
     lua_pushlightuserdata(luaState, this->gameState);
     // Esto no esta funcionando por ahora, el objetivo seria pasarle un struct/objeto que represente el estado del juego y que lua tome su decision.
-    if(lua_pcall(luaState, 5, 1, 0)){
+    if(lua_pcall(luaState, 1, 1, 0)){
       std::cout<<"Fallo llamando a lua: "<<lua_tostring(luaState, -1)<<std::endl;
       lua_pop(luaState, 1);
       break;
     }
 
-  //  std::cout<<"KeyState: A: "<<keyState.A<<", S: "<<keyState.S<<", D: "<<keyState.D<<", W: "<<keyState.W<<std::endl;
     int n = lua_tonumber(luaState, -1);
     this->update(n);
     updateKeyState(keyState, n);
     //std::cout<<n<<std::endl;
     lua_pop(luaState, 1);
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
   /* Comentado el hardcodeo para testear el funcionamiento
     int input[17] = { 300, 400, 700, 800, 101, 202, 303, 404, 505, 400, 400, 400, 400, 400, 400, 400, 400};

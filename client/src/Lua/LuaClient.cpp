@@ -59,14 +59,15 @@ namespace Lua{
 
     std::vector<Drawable*> sprites = loader.getDrawableItemList();
     sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
-    Lua::GameState gameState(matrix, player);
 
 
     int exitcode = 0;
 
+    double distanceBuffer[300] = {0};
+    Lua::GameState gameState(matrix, player, distanceBuffer);
     LuaSender* sender = new LuaSender(socket, alive, scriptName, &gameState);
     Lua::CommandExecuter* worker = new Lua::CommandExecuter(this->socket, alive, sprites, players, m, myPlayerID, matrix, loader, gameState);
-    Lua::Raycaster caster(matrix, alive, 300, 200, player, sprites, m, gameState);
+    Lua::Raycaster caster(matrix, alive, 300, 200, player, sprites, m, gameState, distanceBuffer);
 
     try {
       sender->start();

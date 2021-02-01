@@ -2,7 +2,7 @@
 #include <iostream>
 namespace Lua{
 
-GameState::GameState(Map& matrix, Player* self) : matrix(matrix){ this->player = self;}
+GameState::GameState(Map& matrix, Player* self, double* distanceBuffer) : matrix(matrix){ this->player = self; this->distanceBuffer = distanceBuffer; }
 
 void GameState::addVisibleItem(Drawable* item){
   std::unique_lock<std::mutex> lock(this->lock);
@@ -44,7 +44,7 @@ bool GameState::facingWall(){
   int mapX = int(playerX);
   int mapY = int(playerY);
 
-  return (*(map + mapY + mapX * matrix.dimy) > 0);
+  return ((*(map + mapY + mapX * matrix.dimy) > 0) || this->distanceBuffer[149] <= 1);
 
 }
 
