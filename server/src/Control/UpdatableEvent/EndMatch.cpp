@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-EndMatch::EndMatch() : Updatable(), timeRequired(6000.0f){}
+EndMatch::EndMatch() : Updatable(), timeRequired(10.0f){}
 
 void EndMatch::update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif){
 
@@ -10,13 +10,11 @@ void EndMatch::update(float timeElapsed, Game& game, WaitingQueue<Notification*>
 
   if(this->timeElapsed > this->timeRequired && !done){
     if(game.hasStarted())
-      game.end();
+      game.end(notif);
 
     std::cout<<"[GAME] Ending Match..."<<std::endl;
     done = true;
   }
-
-
 }
 
 bool EndMatch::notify(WaitingQueue<Notification*>& notif){

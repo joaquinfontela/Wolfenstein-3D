@@ -5,12 +5,16 @@
 #include <limits.h>
 
 #include <functional>
+#include <algorithm>
+#include <iterator>
 #include <iostream>
 #include <string>
 #include <tuple>
 
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
 #include "../../../includes/Control/Notification/PlayerDropItem.h"
+#include "../../../includes/Control/Notification/ScoreBoard.h"
+#include "../../../includes/Control/Notification/EndMatchNotif.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 #include "../../../includes/Control/UpdatableEvent/EndMatch.h"
@@ -181,15 +185,33 @@ bool Game::hasStarted(){
   return started;
 }
 
-void Game::end() {
+void Game::end(WaitingQueue<Notification*>& queue) {
   started = false;
   std::map<int, Player*>::iterator it = this->players.begin();
 
-  std::cout<<"[GAME] Final Score Report:"<<std::endl;
-  for(; it != this->players.end(); ++it){
-    std::cout<<"\tID: "<<it->first<<", Score: "<<it->second->getScore()<<std::endl;
+  std::vector<Player*> playersvect;
+  for (; it != this->players.end(); ++it) {
+    playersvect.push_back(it->second);
+  }
+  std::sort(playersvect.begin(), playersvect.end(),
+  [](Player* a, Player* b) -> bool { return a->getScore() < b->getScore(); });
+
+  std::vector<uint32_t> scores;
+  std::vector<uint32_t> ids;
+  for (auto p : playersvect) {
+    scores.push_back(p->getScore());
+    ids.push_back(p->ID());
   }
 
+  ScoreBoard* scoreboard = new ScoreBoard(this->players.size(), ids, scores);
+  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard);
+  queue.push(endmatch);
+
+  it = this->players.begin();
+  std::cout<<"[GAME] Final Score Report:"<<std::endl;
+  for(; it != this->players.end(); ++it){
+    std::cout << "\tID: "<< it->first << ", Score: " << it->second->getScore() << std::endl;
+  }
 }
 
 Game::~Game() {

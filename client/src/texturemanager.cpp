@@ -39,6 +39,10 @@ bool TextureManager::loadAndCheckTexture(int i, const std::string& name) {
   return true;
 }
 
+SdlWindow* TextureManager::accessWindow() {
+  return this->window;
+}
+
 TextureManager::~TextureManager() {
   this->garbageCollector();
 }

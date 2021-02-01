@@ -8,6 +8,7 @@
 
 #include "player.h"
 #include "audiomanager.h"
+#include "scoreboard.h"
 #include "ClientMapLoader.h"
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
@@ -20,7 +21,7 @@ class CommandExecuter : public Thread {
  public:
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
                   std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
-                  AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader);
+                  AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader, ScoreBoard& scoreboard);
   ~CommandExecuter();
   void run();
   void playDyingSound(int gunId, int playerId);
@@ -42,6 +43,7 @@ class CommandExecuter : public Thread {
   AudioManager& audiomanager;
   Map& matrix;
   ClientMapLoader& loader;
+  ScoreBoard& scoreboard;
 };
 
 #endif  // COMMANDEXECUTER_H_
