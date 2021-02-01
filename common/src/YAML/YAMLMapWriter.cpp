@@ -20,11 +20,11 @@ void YAMLMapWriter::addItemTypesLimits() {
   this->data["weapon id start"] = 1;
   this->data["weapon id end"] = 5;
   this->data["item id start"] = 101;
-  this->data["item id end"] = 109;
+  this->data["item id end"] = 124;
   this->data["door id start"] = 201;
-  this->data["door id end"] = 202;
+  this->data["door id end"] = 203;
   this->data["wall id start"] = 301;
-  this->data["wall id end"] = 358;
+  this->data["wall id end"] = 362;
 }
 
 void YAMLMapWriter::addAllItemsToMatrix() {

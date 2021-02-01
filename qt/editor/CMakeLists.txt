@@ -27,12 +27,15 @@ set(PROJECT_SOURCES
         map_canvas.cpp
         mousetileactions.cpp
         my_map.cpp
+        PathFactory.cpp
         size_window.cpp
         tile.cpp
         tiles_container.cpp
         tileset.cpp
+        YAMLConversor.cpp
         wall_tile_factory.cpp
         ../../common/src/YAML/YAMLMapWriter.cpp
+        ../../common/src/YAML/YAMLMapReader.cpp
         ../../common/src/Coordinate/Coordinate.cpp
         map_painter.cpp
 )
