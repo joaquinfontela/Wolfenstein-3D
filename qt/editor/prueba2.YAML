@@ -1,0 +1,10 @@
+dimx: 20
+dimy: 20
+weapon id start: 1
+weapon id end: 5
+item id start: 101
+item id end: 124
+door id start: 201
+door id end: 203
+wall id start: 301
+wall id end: 362

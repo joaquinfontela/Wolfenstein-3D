@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 project(Wolfenstein3D)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include -std=c++11 -pthread -g")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 set(SOURCE_FILES_SERVER
@@ -153,6 +153,7 @@ set(SOURCE_FILES_SERVER
 
 find_package(PkgConfig)
 pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
+include_directories(${YAMLCPP_INCLUDE_DIRS})
 
 add_executable(WolfensteinTest ${SOURCE_FILES_SERVER} test/test.cpp)
 add_executable(ServerMain ${SOURCE_FILES_SERVER} serverMain.cpp)

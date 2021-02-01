@@ -8,9 +8,9 @@
 
 #define WHITE_BOX_PATH "./fondo_blanco.png"
 
-my_map::my_map(/*int col, int row, int tile_size*/) {
+my_map::my_map(int col, int row, int tile_size) {
   tiles_to_paint = 0;
-  //this->paint_grill(col, row, tile_size);
+  this->paint_grill(col, row, tile_size);
 }
 
 void my_map::paint_grill(int col, int row, int tile_size){

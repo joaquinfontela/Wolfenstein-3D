@@ -8,6 +8,7 @@
 #include "tile.h"
 #include "tiles_container.h"
 #include "my_map.h"
+#include "QGraphicsScene"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,6 +20,7 @@ class Editor : public QMainWindow {
   Q_OBJECT
 
  public:
+  std::string actual_map_name;
   tile* tile_selected;
   tiles_container* tile_container;
   map_canvas* mc;
@@ -53,10 +55,21 @@ class Editor : public QMainWindow {
 
   void on_actionZoom_out_triggered();
 
- private:
+  void on_actionOpen_triggered();
+
+  void on_actionsafe_triggered();
+
+  void on_actionRespawn_triggered();
+
+  void on_actionSave_and_exit_triggered();
+
+private:
   Ui::Editor* ui;
   void update_container(tiles_container* container);
+  void save_map();
   void repaint_map();
   std::vector<std::string> maps_saved;
+  QGraphicsScene* graphics_scene;
+  bool actual_map_saved;
 };
 #endif  // EDITOR_H

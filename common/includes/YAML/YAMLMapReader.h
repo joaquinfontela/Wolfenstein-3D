@@ -9,8 +9,6 @@
 
 #include "../Coordinate/Coordinate.h"
 
-// compile with flag -lyaml-cpp
-
 class YAMLMapReader {
  private:
   std::string fileName;
@@ -21,7 +19,7 @@ class YAMLMapReader {
 
  public:
   std::map<int, std::vector<Coordinate>> getPartialItemCoordinateMap(
-    int FROM_ID, int TO_ID);
+      int FROM_ID, int TO_ID);
   YAMLMapReader(std::string& fileName);
   std::vector<Coordinate> getTileCoordinatesWhereObjectIsIn(int objectId);
   std::vector<Coordinate> getRespawnLocations();

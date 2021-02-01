@@ -8,22 +8,18 @@ tile* door_tile_factory::get_tile(std::vector<int>& coordinates) {
   int col = coordinates[0];
   int row = coordinates[1];
   bool comulative = false;
-  QString path;
   int tipo;
   if (col == 1 && row == 1) {
-    path = "./elementos_mapa/puertas/dark_door.png";
-    tipo = 1;
+    tipo = 201;
   } else if (col == 1 && row == 2) {
-    path = "./elementos_mapa/puertas/iron_door.png";
-    tipo = 2;
+    tipo = 202;
   } else if (col == 2 && row == 1) {
-    path = "./elementos_mapa/puertas/blue_door.png";
-    tipo = 3;
+    tipo = 203;
   } else {
-    path = "./elementos_mapa/puertas/goldenkey.png";
-    tipo = 4;
+    tipo = 108;
     comulative = true;
   }
-  tile* tile = new class tile(path, tipo, comulative);
+  QString path(PathFactory().getTilePath(tipo).c_str());
+  tile* tile = new class tile(path, tipo, false);
   return tile;
 }

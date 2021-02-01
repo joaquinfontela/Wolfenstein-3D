@@ -62,6 +62,7 @@
         <file>elementos_mapa/puertas/iron_door.png</file>
         <file>elementos_mapa/puertas/blue_door.png</file>
         <file>elementos_mapa/puertas/goldenkey.png</file>
+        <file>elementos_mapa/otros/respawn_icon.png</file>
     </qresource>
     <qresource prefix="/varios">
         <file>fondo_blanco.png</file>

@@ -30,5 +30,6 @@ void size_window::on_pushButton_clicked()
         messageBox.exec();
     }else{
          this->editor->initialize_map_container(tiles_anchura, tiles_altura);
+         this->close();
     }
 }
