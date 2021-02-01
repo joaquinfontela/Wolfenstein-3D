@@ -16,6 +16,10 @@
 #define TEXTURE_LIMIT_ERROR "Error, cannot add more textures with code: "
 // Cambiar por una excepción.
 
+void TextureManager::renderText(const char* text, SDL_Rect* rect) {
+  return this->window->renderText(text, rect);
+}
+
 void TextureManager::getWindowSize(int* w, int* h) {
   return this->window->getWindowSize(w,h);
 }

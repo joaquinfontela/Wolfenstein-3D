@@ -20,6 +20,7 @@ class TextureManager{
   void loadTexture(int id, SdlTexture* texture);
   void getWindowSize(int* w, int* h);
   void getTextureSizeWithId(int id, int* w, int* h);
+  void renderText(const char* text, SDL_Rect* rect);
  private:
   SdlWindow* window;
   void garbageCollector();

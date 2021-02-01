@@ -1,7 +1,6 @@
 #ifndef HUD_H_
 #define HUD_H_
 
-#include <SDL2/SDL_ttf.h>
 #include "sdlwindow.h"
 #include "sdlanimation.h"
 #include "audiomanager.h"
@@ -14,7 +13,6 @@ class Hud {
   int width, height, weaponId;
   SdlWindow* window;
   SDL_Renderer* renderer;
-  TTF_Font* font;
   Player* player;
   TextureManager& manager;
   AudioManager& audiomanager;
@@ -28,7 +26,6 @@ class Hud {
   int screenHeight, screenWidth;
   Area area;
   void playMyShootingSound();
-  void renderText(const char* text, SDL_Rect* rect);
   void renderFpsCounter();
   void renderLifes();
   void renderFace();

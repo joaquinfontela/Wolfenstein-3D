@@ -94,6 +94,7 @@ add_library(sdldemo
   src/area.cpp
   src/log.cpp
   src/doortimer.cpp
+  src/scoreboard.cpp
   src/doortile.cpp
   src/audio.cpp
   src/hud.cpp
