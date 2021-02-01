@@ -14,6 +14,7 @@ open_window::open_window(QWidget *parent) :
     ui->setupUi(this);
     QVBoxLayout* ly = new QVBoxLayout();
     ly->setSpacing(0);
+    ly->setWidgetResizable(true);
     std::ifstream reader;
     std::string line;
     reader.open(MAP_NAME_PATH, std::ifstream::in);
