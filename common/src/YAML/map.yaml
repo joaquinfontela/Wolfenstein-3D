@@ -3,11 +3,11 @@ dimy: 25
 weapon id start: 1
 weapon id end: 5
 item id start: 101
-item id end: 109
+item id end: 124
 door id start: 201
-door id end: 202
+door id end: 203
 wall id start: 301
-wall id end: 358
+wall id end: 362
 respawn locations: [[4, 4], [24, 24], [4, 24], [14, 15]]
 3: [[3, 22]]
 4: [[3, 9]]
@@ -27,6 +27,10 @@ respawn locations: [[4, 4], [24, 24], [4, 24], [14, 15]]
 
 
 # 1: knife, 2: pistol: 3: machine gun, 4: minigun, 5: rocket launcher
-# 101: ammo, 102: blood, 103: chest, 104: cross, 105: crown, 106: cup, 107: food, 108: key, 109: kit
-# 201: unlockable door, 202: lockable door
-# 301: blue wall, 302: grey wall, 303: rock wall, 304: wooden wall, 305: mossy, 306: skeleton wall, 307: red brick wall, 308: purple wall  (all true walls, from 351-358 same texture but fake walls).
+# 101: ammo, 102: blood, 103: chest, 104: cross, 105: crown, 106: cup, 107: food, 108: key, 109: kit, 124: 1UP
+# 110: barrel, 111: cage skeleton, 112: flag, 113: floor lamp, 114: green barrel, 115: green light, 116: ground skeleton
+# 117: heap of bones, 118: hung skeleton, 119: pillar, 120: plant, 121: spikes, 122: table, 123: water
+# 201: dark door, 202: iron door, 203: blue door
+# 301: blue wall, 302: grey stone, 303: rock wall, 304: wooden wall, 305: mossy, 306: skeleton wall, 
+# 307: red brick wall, 308: purple wall, 309: eagle wall, 310: hitler wall, 311: propaganda, 312: grey wall
+#  (all true walls, from 351-362 same texture but fake walls).

@@ -1,6 +1,9 @@
 #include "LuaClient.h"
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
 #include "../log.h"
+#include "GameState.h"
+#include "luaexecuter.h"
+#include "luaraycaster.h"
 namespace Lua{
 
   void Client::connectToServer(std::string& host, std::string& port){
@@ -54,24 +57,32 @@ namespace Lua{
     std::map<uint32_t,Player*> players;
     players[this->myPlayerID] = player;
 
-    //std::vector<Drawable*> sprites = loader.getDrawableItemList();
-    //sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
+    std::vector<Drawable*> sprites = loader.getDrawableItemList();
+    sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
+
 
     int exitcode = 0;
 
-    LuaSender* sender = new LuaSender(socket, alive, scriptName);
+    double distanceBuffer[300] = {0};
+    Lua::GameState gameState(matrix, player, distanceBuffer);
+    LuaSender* sender = new LuaSender(socket, alive, scriptName, &gameState);
+    Lua::CommandExecuter* worker = new Lua::CommandExecuter(this->socket, alive, sprites, players, m, myPlayerID, matrix, loader, gameState);
+    Lua::Raycaster caster(matrix, alive, 300, 200, player, sprites, m, gameState, distanceBuffer);
 
     try {
       sender->start();
-      //caster.run();
+      worker->start();
+      caster.run();
     } catch (std::exception& e) {
       LOG(e.what());
       exitcode = ERROR;
     }
     sender->join();
+    worker->join();
     alive = false;
 
     delete player;
+    delete worker;
     delete sender;
     return exitcode;
 

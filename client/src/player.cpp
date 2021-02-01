@@ -8,6 +8,10 @@ bool Player::hasKey() {
   //return this->hasTheKey;
 }
 
+bool Player::isPlayer(){
+  return true;
+}
+
 bool Player::isSprite() {
   return false;
 }

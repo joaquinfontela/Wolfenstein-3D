@@ -11,7 +11,6 @@
 
 #include <mutex>
 #include <atomic>
-#include <unordered_set>
 #include <vector>
 #include <math.h>
 #include <iostream>
@@ -22,16 +21,13 @@ class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
             Player* player, std::vector<Drawable*>& sprites, std::mutex& lock, Hud& hud) :
-            alive(b), manager(manager) , matrix(m) , player(player) ,
-            window(window), sprites(sprites) , lock(lock) , hud(hud) {
+            alive(b), manager(manager), matrix(m), player(player),
+            window(window), sprites(sprites), lock(lock), hud(hud) {
     manager.getWindowSize(&this->width, &this->height);
-    //this->height *= 77;
-    //this->height /= 100;
-    this->distanceToProyection = floor((width/2)/(tan((PI/2) - PI/3)));
     this->doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);
   }
+  bool hitDoor(const int& matrixXCoord, const int& matrixYCoord);
   void run();
-  bool hitDoor(const int& mapX, const int& mapY);
  private:
   Area destArea;
   Area srcArea;
@@ -43,10 +39,8 @@ class Raycaster {
   std::vector<Drawable*>& sprites;
   std::mutex& lock;
   Hud& hud;
-  int width;
-  int height;
+  int width, height;
   std::vector<Door> doors;
-  double distanceToProyection;
 };
 
 #endif  // RAYCASTER_H_

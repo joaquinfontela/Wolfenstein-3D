@@ -46,17 +46,6 @@ void CommandExecuter::playDoorOpeningSound(int x, int y) {
   this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist*10);
 }
 
-void CommandExecuter::eraseSprite(uint32_t itemId) {
-  std::vector<Drawable*>::iterator it = this->sprites.begin();
-  for (; it != this->sprites.end(); ++it) {
-    if ((*it)->hasThisUniqueId(itemId)) {
-      delete (*it);
-      this->sprites.erase(it);
-      break;
-    }
-  }
-}
-
 void CommandExecuter::playExplosionSound() {
   this->audiomanager.playWithId(EXPLOSION_SOUND);
 }

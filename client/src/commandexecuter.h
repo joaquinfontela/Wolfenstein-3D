@@ -23,7 +23,6 @@ class CommandExecuter : public Thread {
                   AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader);
   ~CommandExecuter();
   void run();
-  void eraseSprite(uint32_t itemId);
   void playDyingSound(int gunId, int playerId);
   void playExplosionSound();
  private:

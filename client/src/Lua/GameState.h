@@ -13,10 +13,14 @@ class GameState{
 private:
     std::mutex lock;                      // Lock para actualizar/leer desde multiples hilos de forma segura.
     Map& matrix;                          // Representacion Matricial del mapa.
-    Player* selfPlayer;                   // Jugador representado por el script de Lua.
+    Player* player;                       // Jugador representado por el script de Lua.
     std::vector<Drawable*> seenObjects;   // Vector de objetos que pueden ser observados por el jugador en ese momento
+    double* distanceBuffer;
 
 public:
+
+    GameState(Map& matrix, Player* self, double* distanceBuffer);
+
     // Devuelve true si tiene un jugador al alcance de su vista.
     bool playerInSight();
 
@@ -29,7 +33,13 @@ public:
     // Devuelve True si el jugador tiene un item al alcance de su vista.
     bool itemInSight();
 
-    // Aca podria agregar otros tipos de chequeos booleanos para decidir.
+    // Agrega un elemento al vector de visibles.
+    void addVisibleItem(Drawable* item);
+
+    // Limpia el vector de visibles.
+    void clearVisibleItems();
+
+
 };
 
 

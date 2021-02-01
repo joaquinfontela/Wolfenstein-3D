@@ -27,6 +27,10 @@ void Map::forceDoorState(int x, int y) {
     doors[x][y].state = CLOSED;
 }
 
+int* Map::getMatrix(){
+  return this->matrix;
+}
+
 void Map::updateTimers(float value) {
   for (int i = 0; i < dimx; i++) {
     for (int j = 0; j < dimy; j++) {
