@@ -4,6 +4,9 @@
 #include "QHBoxLayout"
 #include "map_save.h"
 #include <fstream>
+#include "QScrollArea"
+#include "QMessageBox"
+#include "editor.h"
 
 #define MAP_NAME_PATH "./maps_names.txt"
 
@@ -13,8 +16,7 @@ open_window::open_window(QWidget *parent) :
 {
     ui->setupUi(this);
     QVBoxLayout* ly = new QVBoxLayout();
-    ly->setSpacing(0);
-    ly->setWidgetResizable(true);
+    ly->setSpacing(10);
     std::ifstream reader;
     std::string line;
     reader.open(MAP_NAME_PATH, std::ifstream::in);
@@ -30,9 +32,21 @@ open_window::open_window(QWidget *parent) :
 
     ui->map_saved_container->setLayout(ly);
     this->map_selected = NULL;
+    this->editor = (Editor*) parent;
 }
 
 open_window::~open_window()
 {
     delete ui;
+}
+
+void open_window::on_open_boton_clicked()
+{
+    if(this->map_selected == NULL){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","No has seleccionado un mapa!!");
+        messageBox.setFixedSize(500,200);
+        messageBox.exec();
+    }else{
+    }
 }

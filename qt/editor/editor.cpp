@@ -140,7 +140,7 @@ void Editor::on_actionItems_triggered() {
   update_container(container);
 }
 
-void Editor::repaint_map(){
+void Editor::paint_map(){
     int col = this->mc->cant_col;
     int row = this->mc->cant_row;
     my_map* map = new my_map(col, row, this->actual_tile_size());
@@ -161,7 +161,7 @@ void Editor::on_actionZoom_in_triggered()
         messageBox.exec();
     } else{
         this->actual_tiles_size_index--;
-        this->repaint_map();
+        this->paint_map();
     }
 }
 
@@ -174,7 +174,7 @@ void Editor::on_actionZoom_out_triggered()
         messageBox.exec();
     } else{
         this->actual_tiles_size_index++;
-        this->repaint_map();
+        this->paint_map();
     }
 }
 
@@ -183,6 +183,7 @@ void Editor::on_actionOpen_triggered()
     open_window ow(this);
     ow.setModal(true);
     ow.exec();
+    this->paint_map();
 }
 
 void Editor::save_map(){

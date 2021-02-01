@@ -26,19 +26,6 @@
     <string>Abrir</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="map_saved_container">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>80</y>
-     <width>491</width>
-     <height>192</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOn</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -56,6 +43,32 @@
    <property name="text">
     <string>Selecciona un mapa :</string>
    </property>
+  </widget>
+  <widget class="QScrollArea" name="map_saved_scroll">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>471</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="map_saved_container">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>455</width>
+      <height>209</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

@@ -18,6 +18,9 @@ map_canvas::map_canvas(int col,int row)
     this->cant_col = col;
     this->cant_row = row;
 }
+map_canvas::map_canvas(TileMatrix* tile_matrix){
+    this->grilla = *tile_matrix;
+}
 
 bool map_canvas::paint_tile(std::vector<int> coordinates, tile* new_tile){
     int row = coordinates[0]-1;

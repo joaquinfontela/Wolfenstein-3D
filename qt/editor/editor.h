@@ -67,9 +67,9 @@ private:
   Ui::Editor* ui;
   void update_container(tiles_container* container);
   void save_map();
-  void repaint_map();
   std::vector<std::string> maps_saved;
   QGraphicsScene* graphics_scene;
   bool actual_map_saved;
+  void paint_map();
 };
 #endif  // EDITOR_H

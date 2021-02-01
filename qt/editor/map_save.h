@@ -4,6 +4,7 @@
 #include "QPushButton"
 #include "open_window.h"
 #include "tile.h"
+#include "QListWidgetItem"
 
 class map_save : public QPushButton
 {
