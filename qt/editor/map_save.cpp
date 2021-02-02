@@ -17,9 +17,9 @@ map_save::map_save(open_window* my_window, std::string map_name)
     QFont f( "Yrsa semibold", 25);
     this->setText(QString::fromStdString(map_name));
     this->setFont(f);
-    std::string file_path = "./maps" + map_name + ".YAML";
+    std::string file_path = "./maps/" + map_name + ".YAML";
     YAMLConversor* conversor = new YAMLConversor(file_path);
-
+    this->map = *conversor->updateTileMatrix();
 }
 
 void map_save::set_map(){

@@ -20,6 +20,8 @@ map_canvas::map_canvas(int col,int row)
 }
 map_canvas::map_canvas(TileMatrix* tile_matrix){
     this->grilla = *tile_matrix;
+    this->cant_col = this->grilla.at(0).size();
+    this->cant_row = this->grilla.size();
 }
 
 bool map_canvas::paint_tile(std::vector<int> coordinates, tile* new_tile){
