@@ -1,17 +1,17 @@
 #ifndef SCOREBOARD_H_
 #define SCOREBOARD_H_
 
-#include "texturemanager.h"
+#include "sdlwindow.h"
 #include <atomic>
 #include <vector>
 
 class ScoreBoard {
  private:
-  TextureManager& manager;
+  SdlWindow* window;
   std::vector<uint32_t> ids;
   std::vector<uint32_t> scores;
  public:
-  ScoreBoard(TextureManager& manager): manager(manager), end(false) {}
+  ScoreBoard(SdlWindow* window): window(window), end(false) {}
   bool end;
   void pushId(uint32_t value);
   void pushScore(uint32_t value);

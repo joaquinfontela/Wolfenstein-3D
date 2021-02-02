@@ -1,5 +1,6 @@
 #include "commandsender.h"
 #include "clientprotocol.h"
+#include "scoreboard.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
@@ -9,7 +10,8 @@
 
 #define UINT32_SIZE sizeof(uint32_t)
 
-CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) : socket(s), alive(alive) {}
+CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive, ScoreBoard* scoreboard)
+ : socket(s), alive(alive), scoreboard(scoreboard) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(&keyType, UINT32_SIZE);

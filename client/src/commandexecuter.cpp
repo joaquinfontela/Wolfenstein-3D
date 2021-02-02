@@ -215,7 +215,6 @@ void CommandExecuter::run() {
           this->scoreboard.pushScore(value);
         }
         alive = false;
-        this->scoreboard.draw();
       }
     } catch (SocketException& e) {
     } catch (std::exception& e) {

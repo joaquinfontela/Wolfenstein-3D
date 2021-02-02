@@ -7,6 +7,7 @@
 #include "sdlwindow.h"
 #include "texturemanager.h"
 #include "clientprotocol.h"
+#include "scoreboard.h"
 #include "../../common/includes/Map/Map.h"
 
 #include <mutex>
@@ -20,9 +21,9 @@
 class Raycaster {
  public:
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b, SdlWindow* window,
-            Player* player, std::vector<Drawable*>& sprites, std::mutex& lock, Hud& hud) :
+            Player* player, std::vector<Drawable*>& sprites, std::mutex& lock, Hud& hud, ScoreBoard& scoreboard) :
             alive(b), manager(manager), matrix(m), player(player),
-            window(window), sprites(sprites), lock(lock), hud(hud) {
+            window(window), sprites(sprites), lock(lock), hud(hud), scoreboard(scoreboard) {
     manager.getWindowSize(&this->width, &this->height);
     this->doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);
   }
@@ -41,6 +42,7 @@ class Raycaster {
   Hud& hud;
   int width, height;
   std::vector<Door> doors;
+  ScoreBoard& scoreboard;
 };
 
 #endif  // RAYCASTER_H_

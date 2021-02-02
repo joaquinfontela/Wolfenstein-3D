@@ -28,7 +28,6 @@ void Raycaster::run(){
   int iters = 0;
 
   while(alive){
-
     iters++;
     this->window->fillWolfenstein();
 
@@ -163,4 +162,8 @@ void Raycaster::run(){
   }
 
   timer.join();
+  while (!this->scoreboard.end) {
+    //this->window->fillWolfenstein();
+    this->scoreboard.draw();
+  }
 }

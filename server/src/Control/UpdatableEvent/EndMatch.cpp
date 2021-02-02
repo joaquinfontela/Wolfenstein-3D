@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-EndMatch::EndMatch() : Updatable(), timeRequired(10.0f){}
+EndMatch::EndMatch() : Updatable(), timeRequired(2.0f){}
 
 void EndMatch::update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif){
 
