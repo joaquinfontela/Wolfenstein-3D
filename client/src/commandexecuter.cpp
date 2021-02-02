@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <vector>
 
 #include "audio.h"
 #include "commandexecuter.h"
@@ -11,12 +12,13 @@
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/protocol.h"
 #include "clientprotocol.h"
+#include "scoreboard.h"
 
 CommandExecuter::CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive, std::vector<Drawable*>& sprites,
                                  std::map<uint32_t,Player*>& players, std::mutex& lock, int selfId,
-                                 AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader) :
+                                 AudioManager& audiomanager, Map& matrix, ClientMapLoader& loader, ScoreBoard& scoreboard) :
                                  socket(s) , alive(alive) , sprites(sprites), players(players) , lock(lock) ,
-                                 selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) {}
+                                 selfId(selfId) , audiomanager(audiomanager) , matrix(matrix) , loader(loader) , scoreboard(scoreboard) {}
 
 void CommandExecuter::loadNewTexture(double x, double y,
                                      uint32_t yamlId, uint32_t uniqueId) {
@@ -125,7 +127,7 @@ void CommandExecuter::run() {
   /*Audio music("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
   music.volumeUp();
   music.play();*/
-  while (alive) {
+  while (true) {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
@@ -202,6 +204,18 @@ void CommandExecuter::run() {
         this->socket.receive(&uniqueId, sizeof(uniqueId));
         this->audiomanager.playWithId(EXPLOSION_SOUND);
         this->renderExplosionAnimation(uniqueId);
+      } else if (opcode == ENDING_MATCH) {
+        uint32_t numberOfPlayers;
+        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+        for (int i = 0; i < numberOfPlayers; i++) {
+          uint32_t value;
+          this->socket.receive(&value, sizeof(value));
+          this->scoreboard.pushId(value);
+          this->socket.receive(&value, sizeof(value));
+          this->scoreboard.pushScore(value);
+        }
+        alive = false;
+        this->scoreboard.draw();
       }
     } catch (SocketException& e) {
     } catch (std::exception& e) {

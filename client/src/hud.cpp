@@ -6,11 +6,9 @@
 #include "clientprotocol.h"
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include <math.h>
 #include <iostream>
 
-#define TTF_INIT_ERROR "\nError on initialization: "
 #define SIZE 25
 #define FACES_PER_IMG 3
 #define GUNS_IN_HUD 5
@@ -80,7 +78,7 @@ void Hud::renderScore() {
     x += 11 * x / 50;
   }
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(score).c_str(), &rect);
+  this->manager.renderText(std::to_string(score).c_str(), &rect);
 }
 
 void Hud::updateGunId() {
@@ -159,7 +157,7 @@ void Hud::renderBullets() {
     x += x / 50;
   }
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(bullets).c_str(), &rect);
+  this->manager.renderText(std::to_string(bullets).c_str(), &rect);
 }
 
 void Hud::playMyShootingSound() {
@@ -223,9 +221,6 @@ void Hud::updateBjFace() {
 Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager, AudioManager& audiomanager) :
   window(window), renderer(window->getRenderer()), player(player), manager(manager), fps(30),
   animationStatus(0), framesAlreadyPlayed(0), movementStatus(0), audiomanager(audiomanager) {
-  if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
-    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
-  }
   int x, y;
 
   window->getWindowSize(&x, &y);
@@ -247,7 +242,7 @@ void Hud::renderLifes() {
   x -= width + 31 * x / 50;
   y -= height - y / 200;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(player->lives).c_str(), &rect);
+  this->manager.renderText(std::to_string(player->lives).c_str(), &rect);
 }
 
 void Hud::updateFpsCounter(int fps) {
@@ -268,7 +263,7 @@ void Hud::renderFpsCounter() {
   }
   y -= height - y / 275;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(this->fps).c_str(), &rect);
+  this->manager.renderText(std::to_string(this->fps).c_str(), &rect);
 }
 
 void Hud::renderHealth() {
@@ -284,28 +279,11 @@ void Hud::renderHealth() {
   }
   y -= height - y / 275;
   SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height};
-  this->renderText(std::to_string(player->health).c_str(), &rect);
-}
-
-void Hud::renderText(const char* text, SDL_Rect* rect) {
-  SDL_Texture* texture = nullptr;
-  SDL_Surface* surface = nullptr;
-  SDL_Color color = {GREY};
-  if (!(surface = TTF_RenderText_Solid(this->font, text, color))) {
-    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
-  }
-  if (!(texture = SDL_CreateTextureFromSurface(this->renderer, surface))) {
-    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
-  }
-  SDL_RenderCopy(this->renderer, texture, NULL, rect);
-  SDL_FreeSurface(surface);
-  SDL_DestroyTexture(texture);
+  this->manager.renderText(std::to_string(player->health).c_str(), &rect);
 }
 
 Hud::~Hud() {
   delete this->bjface;
   delete this->hudgun;
   delete this->gun;
-  TTF_CloseFont(this->font);
-  TTF_Quit();
 }

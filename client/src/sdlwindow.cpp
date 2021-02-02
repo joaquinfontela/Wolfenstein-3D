@@ -12,6 +12,7 @@
 #define SDL_INIT_ERROR "\nError on initialization: "
 #define SDL_CEILING_INIT_ERROR "\nError on ceiling texture initialization "
 #define SDL_WINDOW_INIT_ERROR "\nError on window initialization: "
+#define TTF_INIT_ERROR "\nError on initialization: "
 
 SdlWindow::SdlWindow(int width, int height) :
                      width(width), height(height) {
@@ -28,12 +29,30 @@ SdlWindow::SdlWindow(int width, int height) :
   if (!(ceilingPixel = new SdlTexture(IMG_PATH "ceiling.png", *this))) {
     throw SdlException(SDL_CEILING_INIT_ERROR, SDL_GetError());
   }
+  if (TTF_Init() < 0 || !(this->font = TTF_OpenFont(FONT_PATH GAME_FONT, 100))) {
+    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
+  }
   Mix_AllocateChannels(32);
   SDL_SetWindowTitle(this->window, GAME_TITLE);
   SDL_Surface* icon = IMG_Load(IMG_PATH GAME_LOGO);
   SDL_SetWindowIcon(this->window,icon);
   this->width = width;
   this->height = height;
+}
+
+void SdlWindow::renderText(const char* text, SDL_Rect* rect) {
+  SDL_Texture* texture = nullptr;
+  SDL_Surface* surface = nullptr;
+  SDL_Color color = {GREY};
+  if (!(surface = TTF_RenderText_Solid(this->font, text, color))) {
+    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
+  }
+  if (!(texture = SDL_CreateTextureFromSurface(this->renderer, surface))) {
+    throw SdlException(TTF_INIT_ERROR, TTF_GetError());
+  }
+  SDL_RenderCopy(this->renderer, texture, NULL, rect);
+  SDL_FreeSurface(surface);
+  SDL_DestroyTexture(texture);
 }
 
 void SdlWindow::getWindowSize(int* w, int* h) {
@@ -63,6 +82,8 @@ SdlWindow::~SdlWindow() {
   this->killRenderer();
   this->killWindow();
   this->killAudio();
+  TTF_CloseFont(this->font);
+  TTF_Quit();
   SDL_Quit();
 }
 

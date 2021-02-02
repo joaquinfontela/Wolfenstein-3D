@@ -98,7 +98,7 @@ class Game {
 	* @param Initial Y Coordinate.
   * @param Final X Coordinate.
   * @param Final Y Coordinate.
-  * @param Notification Queue to inform of changes.  
+  * @param Notification Queue to inform of changes.
   * @return Boolean representing if the move was possible.
   */
   bool moveRocketMissileFrom(double x, double y, double newX, double newY, WaitingQueue<Notification*>& notif);
@@ -169,7 +169,7 @@ class Game {
 	* <Ends the game, generating specific leaderboards of the events that happened>
 	*
   */
-  void end();
+  void end(WaitingQueue<Notification*>& queue);
 
   ~Game();
 };

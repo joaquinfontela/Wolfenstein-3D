@@ -1,5 +1,6 @@
 #include "clientprotocol.h"
 #include "client.h"
+#include "scoreboard.h"
 #include "log.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
@@ -54,6 +55,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   AudioManager audios;
 
   std::mutex m;
+  ScoreBoard scoreboard(manager);
 
   std::atomic<bool> alive;
   alive = true;
@@ -71,7 +73,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive);
   //LuaSender* sender = new LuaSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, myPlayerID, audios, matrix, loader);
+  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, myPlayerID, audios, matrix, loader, scoreboard);
 
   try {
     worker->start();

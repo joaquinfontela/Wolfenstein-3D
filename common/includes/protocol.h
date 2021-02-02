@@ -21,6 +21,7 @@
 #define PLAYER_DIED 17
 #define PLAYER_SHOOT_DOWN 18
 #define START_MATCH 19
+#define ENDING_MATCH 20
 
 /*// PowerUp ID definitions
 #define FOOD 30
