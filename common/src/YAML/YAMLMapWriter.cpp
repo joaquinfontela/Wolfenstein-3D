@@ -1,5 +1,7 @@
 #include "../../includes/YAML/YAMLMapWriter.h"
 
+#include <iostream>
+
 YAMLMapWriter::YAMLMapWriter(std::string& fileName) {
   this->fileName = fileName;
 }
@@ -33,6 +35,7 @@ void YAMLMapWriter::addAllItemsToMatrix() {
   for (std::vector<std::vector<tile*>> row : tileMatrix) {
     x = 1;
     for (std::vector<tile*> column : row) {
+      std::cout << column.size() << std::endl;
       this->processMatrixPosition(column, x, y);
       x++;
     }
@@ -76,5 +79,6 @@ void YAMLMapWriter::createYamlMapFile(TileMatrix& tileMatrix) {
   this->addDimX();
   this->addDimY();
   this->addItemTypesLimits();
+  this->addAllItemsToMatrix();
   this->writeDataIntoFile();
 }
