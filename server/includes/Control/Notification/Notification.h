@@ -15,7 +15,7 @@ class Notification {
     * @param The socket required to send the notification
   */
   virtual void send(SocketCommunication& socket) = 0;
-  ~Notification(){};
+  virtual ~Notification(){};
 };
 
 #endif

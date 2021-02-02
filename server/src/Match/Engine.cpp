@@ -90,5 +90,6 @@ void Engine::sendNotifications() {
     }
 
     delete newNotification;
+    std::cout<<"Succesfully deleted noti"<<std::endl;
   }
 }

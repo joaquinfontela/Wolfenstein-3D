@@ -9,8 +9,9 @@
 class EndMatchNotif : public Notification {
  private:
   ScoreBoard* scoreboard;
+  ScoreBoard* killScoreboard;
  public:
-  EndMatchNotif(ScoreBoard* scoreboard) : scoreboard(scoreboard) {}
+  EndMatchNotif(ScoreBoard* scoreboard, ScoreBoard* kills) : scoreboard(scoreboard), killScoreboard(kills) {}
   ~EndMatchNotif();
   void send(SocketCommunication& socket);
 };

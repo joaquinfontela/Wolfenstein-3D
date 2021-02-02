@@ -204,14 +204,18 @@ void Game::end(WaitingQueue<Notification*>& queue) {
   }
 
   ScoreBoard* scoreboard = new ScoreBoard(this->players.size(), ids, scores);
-  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard);
-  queue.push(endmatch);
 
-  it = this->players.begin();
-  std::cout<<"[GAME] Final Score Report:"<<std::endl;
-  for(; it != this->players.end(); ++it){
-    std::cout << "\tID: "<< it->first << ", Score: " << it->second->getScore() << std::endl;
+  std::sort(playersvect.begin(), playersvect.end(), [](Player* a, Player* b) -> bool { return a->getKills() < b->getKills();});
+  std::vector<uint32_t> kills;
+  ids.clear();
+  for (auto p : playersvect) {
+    kills.push_back(p->getScore());
+    ids.push_back(p->ID());
   }
+
+  ScoreBoard* killScoreboard = new ScoreBoard(playersvect.size(), ids, kills);
+  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard, killScoreboard);
+  queue.push(endmatch);
 }
 
 Game::~Game() {
