@@ -39,7 +39,7 @@ void ScoreBoard::draw() {
                         + "): " + std::to_string(std::get<1>(score));
       this->renderText(val.c_str(), i+2, 0, width, height);
     }
-
+/*
     for (int i = 0; i < rows; i++) {
       std::tuple<uint32_t, uint32_t> score = this->kills[i];
       std::string val = std::to_string(i+1) + ")  Id(" + std::to_string(std::get<0>(score))
@@ -53,7 +53,7 @@ void ScoreBoard::draw() {
                         + "): " + std::to_string(std::get<1>(score));
       this->renderText(val.c_str(), i+2, 2, width, height);
     }
-
+*/
     this->window->render();
   }
 }

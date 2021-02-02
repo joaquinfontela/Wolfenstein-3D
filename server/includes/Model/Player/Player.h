@@ -20,9 +20,12 @@ class Player {
   double rotSpeed;
   double moveSpeed;
 
+  int score;
+  int kills;
+  int shotsFired;
+
   unsigned int playerID;
   bool hasToBeNotified;
-  int score;
   unsigned int health, lifeRemaining, ammo;
   Weapon* currentWeapon;
   std::vector<Weapon*> weapons;
@@ -57,6 +60,10 @@ class Player {
   double getDirY();
 
   bool hasAdmin();
+
+  int getKills();
+
+  int getShotsFired();
 
   void setAdmin();
 
