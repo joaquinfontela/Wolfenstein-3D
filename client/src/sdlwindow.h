@@ -1,6 +1,7 @@
 #ifndef __SDL_WINDOW_H__
 #define __SDL_WINDOW_H__
 #include "area.h"
+#include <SDL2/SDL_ttf.h>
 #include "sdltexture.h"
 
 class SDL_Window;
@@ -17,6 +18,7 @@ class SdlWindow {
   void fillTransparent(int r, int g, int b);
   void render();
   void getWindowSize(int* w, int* h);
+  void renderText(const char* text, SDL_Rect* rect);
   SDL_Renderer* getRenderer() const;
   void playOrStopAudio();
  private:
@@ -24,6 +26,7 @@ class SdlWindow {
   void killWindow();
   void killAudio();
   int width;
+  TTF_Font* font;
   int height;
   SDL_Window* window;
   SDL_Renderer* renderer;
