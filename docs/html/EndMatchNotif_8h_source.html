@@ -80,13 +80,14 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classEndMatchNotif.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEndMatchNotif.html">EndMatchNotif</a> : <span class="keyword">public</span> <a class="code" href="classNotification.html">Notification</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classScoreBoard.html">ScoreBoard</a>* scoreboard;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classEndMatchNotif.html">EndMatchNotif</a>(<a class="code" href="classScoreBoard.html">ScoreBoard</a>* scoreboard) : scoreboard(scoreboard) {}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  ~<a class="code" href="classEndMatchNotif.html">EndMatchNotif</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEndMatchNotif.html#ad392d3fc1948fc417301748cbe132f40">send</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classScoreBoard.html">ScoreBoard</a>* killScoreboard;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classEndMatchNotif.html">EndMatchNotif</a>(<a class="code" href="classScoreBoard.html">ScoreBoard</a>* scoreboard, <a class="code" href="classScoreBoard.html">ScoreBoard</a>* kills) : scoreboard(scoreboard), killScoreboard(kills) {}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  ~<a class="code" href="classEndMatchNotif.html">EndMatchNotif</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEndMatchNotif.html#ad392d3fc1948fc417301748cbe132f40">send</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassEndMatchNotif_html"><div class="ttname"><a href="classEndMatchNotif.html">EndMatchNotif</a></div><div class="ttdef"><b>Definition:</b> EndMatchNotif.h:9</div></div>
 <div class="ttc" id="aclassEndMatchNotif_html_ad392d3fc1948fc417301748cbe132f40"><div class="ttname"><a href="classEndMatchNotif.html#ad392d3fc1948fc417301748cbe132f40">EndMatchNotif::send</a></div><div class="ttdeci">void send(SocketCommunication &amp;socket)</div><div class="ttdef"><b>Definition:</b> EndMatchNotif.cpp:7</div></div>
 <div class="ttc" id="aclassNotification_html"><div class="ttname"><a href="classNotification.html">Notification</a></div><div class="ttdef"><b>Definition:</b> Notification.h:9</div></div>
