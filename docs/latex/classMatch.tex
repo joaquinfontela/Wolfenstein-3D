@@ -1,0 +1,81 @@
+\hypertarget{classMatch}{}\doxysection{Match Class Reference}
+\label{classMatch}\index{Match@{Match}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMatch_a4e4f101f62692545b343fac9befbf732}\label{classMatch_a4e4f101f62692545b343fac9befbf732}} 
+{\bfseries Match} (int lobby\+ID)
+\item 
+void \mbox{\hyperlink{classMatch_a5171e2c46b5dd945fa93ad14d80671d2}{force\+Shutdown}} ()
+\item 
+bool \mbox{\hyperlink{classMatch_a1eb10d2d83b093b4d6332a26d4c8c9f1}{has\+ID}} (int lobby\+ID)
+\item 
+void \mbox{\hyperlink{classMatch_a4ec0c0bcd838cc15c89ba89ef3822f45}{start}} ()
+\item 
+bool \mbox{\hyperlink{classMatch_aa806156a3b9e75ec26756eb42cbed9e5}{has\+Ended}} ()
+\item 
+\mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ \mbox{\hyperlink{classMatch_a91afc08ac1cfb106274c113c104b4b15}{add\+Player\+To\+Match}} (\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$player)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMatch_a91afc08ac1cfb106274c113c104b4b15}\label{classMatch_a91afc08ac1cfb106274c113c104b4b15}} 
+\index{Match@{Match}!addPlayerToMatch@{addPlayerToMatch}}
+\index{addPlayerToMatch@{addPlayerToMatch}!Match@{Match}}
+\doxysubsubsection{\texorpdfstring{addPlayerToMatch()}{addPlayerToMatch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ Match\+::add\+Player\+To\+Match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+$<$\+Adds a player to the given match if possible$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & \mbox{\hyperlink{classClientCommunication}{Client\+Communication}} of the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} for that player, NULL if not possible 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatch_a5171e2c46b5dd945fa93ad14d80671d2}\label{classMatch_a5171e2c46b5dd945fa93ad14d80671d2}} 
+\index{Match@{Match}!forceShutdown@{forceShutdown}}
+\index{forceShutdown@{forceShutdown}!Match@{Match}}
+\doxysubsubsection{\texorpdfstring{forceShutdown()}{forceShutdown()}}
+{\footnotesize\ttfamily void Match\+::force\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$\+Forces the shutdown of the match$>$ \mbox{\Hypertarget{classMatch_aa806156a3b9e75ec26756eb42cbed9e5}\label{classMatch_aa806156a3b9e75ec26756eb42cbed9e5}} 
+\index{Match@{Match}!hasEnded@{hasEnded}}
+\index{hasEnded@{hasEnded}!Match@{Match}}
+\doxysubsubsection{\texorpdfstring{hasEnded()}{hasEnded()}}
+{\footnotesize\ttfamily bool Match\+::has\+Ended (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$Checks if the game has ended.$>$
+
+\begin{DoxyReturn}{Returns}
+True if match has ended. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatch_a1eb10d2d83b093b4d6332a26d4c8c9f1}\label{classMatch_a1eb10d2d83b093b4d6332a26d4c8c9f1}} 
+\index{Match@{Match}!hasID@{hasID}}
+\index{hasID@{hasID}!Match@{Match}}
+\doxysubsubsection{\texorpdfstring{hasID()}{hasID()}}
+{\footnotesize\ttfamily bool Match\+::has\+ID (\begin{DoxyParamCaption}\item[{int}]{lobby\+ID }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+
+
+
+ID to check. 
+
+True if match has given ID. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatch_a4ec0c0bcd838cc15c89ba89ef3822f45}\label{classMatch_a4ec0c0bcd838cc15c89ba89ef3822f45}} 
+\index{Match@{Match}!start@{start}}
+\index{start@{start}!Match@{Match}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Match\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$Starts the match.$>$ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Match/Match.\+h\item 
+server/src/\+Match/Match.\+cpp\end{DoxyCompactItemize}

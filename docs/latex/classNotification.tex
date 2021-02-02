@@ -1,0 +1,46 @@
+\hypertarget{classNotification}{}\doxysection{Notification Class Reference}
+\label{classNotification}\index{Notification@{Notification}}
+
+
+{\ttfamily \#include $<$Notification.\+h$>$}
+
+Inheritance diagram for Notification\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classNotification}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classNotification_a22bf713a268683529596ebc90e96e51d}{send}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+The class that represents a notifiable event to be sent to the clients. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNotification_a22bf713a268683529596ebc90e96e51d}\label{classNotification_a22bf713a268683529596ebc90e96e51d}} 
+\index{Notification@{Notification}!send@{send}}
+\index{send@{send}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily virtual void Notification\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+$<$Sends the notification through the specified socket.$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & socket required to send the notification \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classDoorMoving_a2641057cd8d5afe5640dd9f2f3de9f66}{Door\+Moving}}, \mbox{\hyperlink{classElementSwitchPosition_a9152cd3f5560ce4c389a2b3f23a49869}{Element\+Switch\+Position}}, \mbox{\hyperlink{classEndMatchNotif_ad392d3fc1948fc417301748cbe132f40}{End\+Match\+Notif}}, \mbox{\hyperlink{classMissileExplotion_a48e6bb27acccf01f3e67f20e8d91f4f4}{Missile\+Explotion}}, \mbox{\hyperlink{classPlayerConnected_a4a6fc0f6d5ba9857a7e2b0116323c56f}{Player\+Connected}}, \mbox{\hyperlink{classPlayerDied_ac29d2ecc007fceb5168767472bc0b81f}{Player\+Died}}, \mbox{\hyperlink{classPlayerDisconnect_a62cc0a144ca32b3ece5ec49e990093be}{Player\+Disconnect}}, \mbox{\hyperlink{classPlayerDropItem_a349b3c187a087e9184272dc53f5c4326}{Player\+Drop\+Item}}, \mbox{\hyperlink{classPlayerPackageUpdate_a009fc4f74831be04f33bb7ef3fc26d6a}{Player\+Package\+Update}}, \mbox{\hyperlink{classPlayerPickupItem_a2c0edf75502241b7cd48bb9e4207a353}{Player\+Pickup\+Item}}, \mbox{\hyperlink{classPlayerUpdatePosition_af4769f2f4d4d42a9391074ee8ae0dc20}{Player\+Update\+Position}}, \mbox{\hyperlink{classScoreBoard_ac72b9f87233caf5c0063e476b5c21369}{Score\+Board}}, and \mbox{\hyperlink{classShotsFired_a947a24275fc0f977153b398f9d860cb3}{Shots\+Fired}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Notification/Notification.\+h\end{DoxyCompactItemize}

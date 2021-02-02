@@ -1,0 +1,82 @@
+\hypertarget{classEngine}{}\doxysection{Engine Class Reference}
+\label{classEngine}\index{Engine@{Engine}}
+
+
+{\ttfamily \#include $<$Engine.\+h$>$}
+
+Inheritance diagram for Engine\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEngine}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEngine_a94c2a2386d9031f49caabfaadd900259}\label{classEngine_a94c2a2386d9031f49caabfaadd900259}} 
+{\bfseries Engine} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classCommand}{Command}} $\ast$ $>$ \&commandQ, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notiQ, std\+::atomic$<$ bool $>$ \&c, std\+::map$<$ int, \mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$ $>$ \&play, \mbox{\hyperlink{classGame}{Game}} \&game)
+\item 
+void \mbox{\hyperlink{classEngine_a524e62ea8ef3f89a100e093bed4c4e07}{request\+Shutdown}} ()
+\item 
+void \mbox{\hyperlink{classEngine_a98400814c679347bce5d7824ae17023a}{execute\+Commands}} ()
+\item 
+void \mbox{\hyperlink{classEngine_ae2429b7d4865ca9b5d0c0411882c1699}{update}} (float time\+Elapsed)
+\item 
+void \mbox{\hyperlink{classEngine_a1a210cf30d6bd330b3649439ecd6d6cc}{run}} ()
+\item 
+void \mbox{\hyperlink{classEngine_afc5ec34e77683a5ac4eadb0a84d4feff}{send\+Notifications}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+Class that simulates the passing of time and updates the status change to the clients. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEngine_a98400814c679347bce5d7824ae17023a}\label{classEngine_a98400814c679347bce5d7824ae17023a}} 
+\index{Engine@{Engine}!executeCommands@{executeCommands}}
+\index{executeCommands@{executeCommands}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{executeCommands()}{executeCommands()}}
+{\footnotesize\ttfamily void Engine\+::execute\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$\+Pops a command and executes it$>$ \mbox{\Hypertarget{classEngine_a524e62ea8ef3f89a100e093bed4c4e07}\label{classEngine_a524e62ea8ef3f89a100e093bed4c4e07}} 
+\index{Engine@{Engine}!requestShutdown@{requestShutdown}}
+\index{requestShutdown@{requestShutdown}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{requestShutdown()}{requestShutdown()}}
+{\footnotesize\ttfamily void Engine\+::request\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$\+Forces shutdown of the engine$>$ \mbox{\Hypertarget{classEngine_a1a210cf30d6bd330b3649439ecd6d6cc}\label{classEngine_a1a210cf30d6bd330b3649439ecd6d6cc}} 
+\index{Engine@{Engine}!run@{run}}
+\index{run@{run}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Engine\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Runs the thread$>$ 
+
+Implements \mbox{\hyperlink{classThread}{Thread}}.
+
+\mbox{\Hypertarget{classEngine_afc5ec34e77683a5ac4eadb0a84d4feff}\label{classEngine_afc5ec34e77683a5ac4eadb0a84d4feff}} 
+\index{Engine@{Engine}!sendNotifications@{sendNotifications}}
+\index{sendNotifications@{sendNotifications}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{sendNotifications()}{sendNotifications()}}
+{\footnotesize\ttfamily void Engine\+::send\+Notifications (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$\+Sends the notifications to the clients$>$ \mbox{\Hypertarget{classEngine_ae2429b7d4865ca9b5d0c0411882c1699}\label{classEngine_ae2429b7d4865ca9b5d0c0411882c1699}} 
+\index{Engine@{Engine}!update@{update}}
+\index{update@{update}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed }\end{DoxyParamCaption})}
+
+$<$\+Updates the game model$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed since last update. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Match/Engine.\+h\item 
+server/src/\+Match/Engine.\+cpp\end{DoxyCompactItemize}

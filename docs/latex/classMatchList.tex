@@ -1,0 +1,42 @@
+\hypertarget{classMatchList}{}\doxysection{Match\+List Class Reference}
+\label{classMatchList}\index{MatchList@{MatchList}}
+
+
+{\ttfamily \#include $<$Match\+List.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ \mbox{\hyperlink{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}{join\+Or\+Create}} (\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$player, int lobby\+ID)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+Class that represents the current list of matches the server is hosting. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}\label{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}} 
+\index{MatchList@{MatchList}!joinOrCreate@{joinOrCreate}}
+\index{joinOrCreate@{joinOrCreate}!MatchList@{MatchList}}
+\doxysubsubsection{\texorpdfstring{joinOrCreate()}{joinOrCreate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ Match\+List\+::join\+Or\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$}]{player,  }\item[{int}]{lobby\+ID }\end{DoxyParamCaption})}
+
+$<$Tries to join a match, creates it if not found$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & clients \mbox{\hyperlink{classClientCommunication}{Client\+Communication}} \\
+\hline
+{\em The} & lobby ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The connection handler of the client, NULL if not possible 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Match/Match\+List.\+h\item 
+server/src/\+Match/Match\+List.\+cpp\end{DoxyCompactItemize}

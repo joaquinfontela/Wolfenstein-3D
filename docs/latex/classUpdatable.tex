@@ -1,0 +1,84 @@
+\hypertarget{classUpdatable}{}\doxysection{Updatable Class Reference}
+\label{classUpdatable}\index{Updatable@{Updatable}}
+
+
+{\ttfamily \#include $<$Updatable.\+h$>$}
+
+Inheritance diagram for Updatable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUpdatable}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classUpdatable_ac0cf616bf3d192fff11549b8a87f3ac4}{update}} (float time\+Elapsed, \mbox{\hyperlink{classGame}{Game}} \&game, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)=0
+\item 
+virtual bool \mbox{\hyperlink{classUpdatable_acd35a745388853cfb32d7459e0307625}{notify}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUpdatable_ad296c781a8c5dc697e3a58a2eefb95ef}\label{classUpdatable_ad296c781a8c5dc697e3a58a2eefb95ef}} 
+float {\bfseries time\+Elapsed}
+\item 
+\mbox{\Hypertarget{classUpdatable_a66ccec0789b13babd4b9ee57cb92794c}\label{classUpdatable_a66ccec0789b13babd4b9ee57cb92794c}} 
+bool {\bfseries has\+To\+Be\+Notified}
+\item 
+\mbox{\Hypertarget{classUpdatable_a1733eec3b29300be7d63e5d4b918ec27}\label{classUpdatable_a1733eec3b29300be7d63e5d4b918ec27}} 
+bool {\bfseries done}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+The class that represents a time limited event. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUpdatable_acd35a745388853cfb32d7459e0307625}\label{classUpdatable_acd35a745388853cfb32d7459e0307625}} 
+\index{Updatable@{Updatable}!notify@{notify}}
+\index{notify@{notify}!Updatable@{Updatable}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily virtual bool Updatable\+::notify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+$<$\+Notifies if needed the change of status of the event$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & notification queue to place the notification. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean representing if the event has finished. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classChangeDoorStatus_a37a5fc09bbcd4d0179e36faed8e73e3a}{Change\+Door\+Status}}, \mbox{\hyperlink{classEndMatch_ad0b838042dc25903623cfa5b0e5dcf0f}{End\+Match}}, and \mbox{\hyperlink{classRocketMissile_a8cf3a892fdf36bc15533540fa219cd5b}{Rocket\+Missile}}.
+
+\mbox{\Hypertarget{classUpdatable_ac0cf616bf3d192fff11549b8a87f3ac4}\label{classUpdatable_ac0cf616bf3d192fff11549b8a87f3ac4}} 
+\index{Updatable@{Updatable}!update@{update}}
+\index{update@{update}!Updatable@{Updatable}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Updatable\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed,  }\item[{\mbox{\hyperlink{classGame}{Game}} \&}]{game,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+$<$\+Updates the event given the elapsed time$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed since the last update. \\
+\hline
+{\em The} & game in which the event is occuring. \\
+\hline
+{\em The} & queue in which notifications are placed. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classChangeDoorStatus_a489f28796f3bafda14add7445af427f3}{Change\+Door\+Status}}, \mbox{\hyperlink{classEndMatch_a70a44657273301450455976c6828057f}{End\+Match}}, and \mbox{\hyperlink{classRocketMissile_ada193effceebfb7b0c88140f69928973}{Rocket\+Missile}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Updatable\+Event/Updatable.\+h\end{DoxyCompactItemize}

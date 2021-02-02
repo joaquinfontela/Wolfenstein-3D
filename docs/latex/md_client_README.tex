@@ -1,0 +1,80 @@
+Variables\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{int SCREEN\_WIDTH;}
+\DoxyCodeLine{int SCREEN\_HEIGHT;}
+\DoxyCodeLine{int W;}
+\DoxyCodeLine{int H;}
+\DoxyCodeLine{}
+\DoxyCodeLine{+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}
+\DoxyCodeLine{|                                                               |}
+\DoxyCodeLine{|    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+    |}
+\DoxyCodeLine{|    |                                                     |    |  Siendo SCREEN\_HEIGHT y SCREEN\_WIDTH el}
+\DoxyCodeLine{|    |                                                     |    | tamaño de toda la pantalla. W y H son el }
+\DoxyCodeLine{|    |                        W * H -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>|    | las dimensiones del espacio jugable.}
+\DoxyCodeLine{|    |                        |                            |    |  W < SCREEN\_WIDTH \& H < SCREEN\_HEIGHT ya}
+\DoxyCodeLine{|    |                        |                            |    | que una parte de la pantalla la ocupa el }
+\DoxyCodeLine{|    |                        v                            |    | HUD.}
+\DoxyCodeLine{|    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+    |}
+\DoxyCodeLine{|                                                               |}
+\DoxyCodeLine{|                                                               |}
+\DoxyCodeLine{|                                                               | <-\/-\/-\/-\/-\/+}
+\DoxyCodeLine{+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+       |}
+\DoxyCodeLine{                                            \string^                           |   }
+\DoxyCodeLine{                                            |                           |}
+\DoxyCodeLine{                                            +-\/-\/-\/-\/-\/-\/ SCREEN\_WIDTH * SCREEN\_HEIGHT}
+\DoxyCodeLine{}
+\DoxyCodeLine{Map<int,Textura> textures;}
+\DoxyCodeLine{int[n][m] map; // Cada bloque de la matriz será un cuadrado de pxp píxeles.}
+\DoxyCodeLine{List<Jugadores> players; // Imporante para saber las (x,y) de cada player, entre otros datos importantes.}
+\DoxyCodeLine{SDL\_Window window;}
+
+\end{DoxyCode}
+
+
+Código del cálculo de las coordenadas de la intersección del rayo con la pared.\+:
+
+~\newline
+
+
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{for \_ in 0,30:  // Que genere las imágenes 30 veces por segundo.}
+\DoxyCodeLine{  for i in 0,W: // Por cada columna de píxeles en el espacio de juego (sección de pantalla sin el HUD).}
+\DoxyCodeLine{    (n0,m0) = findMyCellOnTheMap(map,x,y); // Siendo n0 y m0 las coordenadas de la matriz en }
+\DoxyCodeLine{                                           // la que se encuentra mi personaje.}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    alpha = calcVisionAngle(x,y,KeyboardEvent); // O MouseEvent si se usa el mouse...}
+\DoxyCodeLine{}
+\DoxyCodeLine{    int cx,cy; // Las coordenadas donde colisiona el rayo.}
+\DoxyCodeLine{    if (pi/2 > alpha) and (alpha > 0): // Rayo mirando para adelante.}
+\DoxyCodeLine{      cy = floor(x/p) * p -\/ 1;}
+\DoxyCodeLine{    else: // Rayo mirando para atrás.}
+\DoxyCodeLine{      cy = floor(x/p) * p + p;}
+\DoxyCodeLine{    cx = x + (y -\/ cy)/tan(alpha)}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Hasta acá, (cx,cy) son las coordenadas de la primera intersección }
+\DoxyCodeLine{    // entre el rayo de visión y una celda de la matriz.}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    deltay = (pi/2 > alpha) and (alpha > 0) ? p : -\/p;}
+\DoxyCodeLine{    deltax = abs(deltay)/tan(alpha);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    while (true): // En este ciclo voy a buscar intersecciones con paredes.}
+\DoxyCodeLine{      if (isAWall(map[cx][cy])):}
+\DoxyCodeLine{        break;}
+\DoxyCodeLine{      cy += deltay; // Salgo del loop con las coordenadas de la intersección.}
+\DoxyCodeLine{      cx += deltax;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    int distanceToWall = abs(x -\/ cx)/cos(alpha) + abs(y -\/ cy)/sin(alpha);}
+\DoxyCodeLine{    distanceToWall *= cos(pi/2 -\/ alpha); // Ajustando el "{}fishbowl effect"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    int p' = (p * W) / (distanceToWall * 2 * tan(pi/2 -\/ FOV));}
+\DoxyCodeLine{    // p' representa la altura de la pared a renderizar en la columna de la actual iteración.}
+
+\end{DoxyCode}
+
+
+Con p\textquotesingle{} ya podemos calcular dibujar la tira de 1xp\textquotesingle{} píxeles que representa un cachito de textura. 

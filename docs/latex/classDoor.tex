@@ -1,0 +1,49 @@
+\hypertarget{classDoor}{}\doxysection{Door Class Reference}
+\label{classDoor}\index{Door@{Door}}
+Inheritance diagram for Door\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classDoor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}\label{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}} 
+{\bfseries Door} (int matrix\+XCoord, int matrix\+YCoord, const int \&width, const int \&height, const int \&dx, const int \&dy, int side, const double \&camera\+XCoord, const int \&i, \mbox{\hyperlink{classMap}{Map}} $\ast$matrix)
+\item 
+\mbox{\Hypertarget{classDoor_a107fa98de4d762c376362d7b97c4bf0a}\label{classDoor_a107fa98de4d762c376362d7b97c4bf0a}} 
+void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double x, double y, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff=0) override
+\item 
+\mbox{\Hypertarget{classDoor_a52571bd1f2211c444503384d34936d8e}\label{classDoor_a52571bd1f2211c444503384d34936d8e}} 
+virtual bool {\bfseries is\+Locked} ()=0
+\item 
+\mbox{\Hypertarget{classDoor_ac69f921dd55d56db6e33b1a605acd956}\label{classDoor_ac69f921dd55d56db6e33b1a605acd956}} 
+virtual bool {\bfseries unlock} (bool has\+Key)=0
+\item 
+\mbox{\Hypertarget{classDoor_af964b498e30b3990a77145b0d8235619}\label{classDoor_af964b498e30b3990a77145b0d8235619}} 
+virtual bool {\bfseries lock} ()=0
+\item 
+\mbox{\Hypertarget{classDoor_a84059ba9f4243d230cd4d5128386f9c7}\label{classDoor_a84059ba9f4243d230cd4d5128386f9c7}} 
+virtual void {\bfseries change\+Status} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}\label{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}} 
+int {\bfseries matrix\+XCoord}
+\item 
+\mbox{\Hypertarget{classDoor_a5f68d8cd5b3f01e6de4a1314359fda60}\label{classDoor_a5f68d8cd5b3f01e6de4a1314359fda60}} 
+int {\bfseries matrix\+YCoord}
+\item 
+\mbox{\Hypertarget{classDoor_a7dfda691a370e23d3091be930dd8a72c}\label{classDoor_a7dfda691a370e23d3091be930dd8a72c}} 
+const int \& {\bfseries i}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/door.\+h\item 
+server/includes/\+Model/\+Door/Door.\+h\item 
+client/src/door.\+cpp\end{DoxyCompactItemize}

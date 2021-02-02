@@ -1,0 +1,29 @@
+\hypertarget{classCommandExecuter}{}\doxysection{Command\+Executer Class Reference}
+\label{classCommandExecuter}\index{CommandExecuter@{CommandExecuter}}
+Inheritance diagram for Command\+Executer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCommandExecuter}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCommandExecuter_ad0f305fb30a1e4e776832f33e9c2e5b0}\label{classCommandExecuter_ad0f305fb30a1e4e776832f33e9c2e5b0}} 
+{\bfseries Command\+Executer} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&sprites, std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players, std\+::mutex \&lock, int self\+Id, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager, \mbox{\hyperlink{classMap}{Map}} \&matrix, \mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&loader, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} \&scoreboard)
+\item 
+\mbox{\Hypertarget{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}\label{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}} 
+void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{classCommandExecuter_a8d245fc090f4f86b5e88b2f6990df65a}\label{classCommandExecuter_a8d245fc090f4f86b5e88b2f6990df65a}} 
+void {\bfseries play\+Dying\+Sound} (int gun\+Id, int player\+Id)
+\item 
+\mbox{\Hypertarget{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}\label{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}} 
+void {\bfseries play\+Explosion\+Sound} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/commandexecuter.\+h\item 
+client/src/commandexecuter.\+cpp\end{DoxyCompactItemize}

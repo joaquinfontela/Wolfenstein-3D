@@ -1,0 +1,44 @@
+\hypertarget{classPlayerMove}{}\doxysection{Player\+Move Class Reference}
+\label{classPlayerMove}\index{PlayerMove@{PlayerMove}}
+Inheritance diagram for Player\+Move\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPlayerMove}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlayerMove_a39a4de0806f00db91f924e3d29343033}\label{classPlayerMove_a39a4de0806f00db91f924e3d29343033}} 
+{\bfseries Player\+Move} (int player\+ID, int x, int y)
+\item 
+void \mbox{\hyperlink{classPlayerMove_a4dd6c95a765367cc8cae67642fac1202}{execute}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notifications, \mbox{\hyperlink{classGame}{Game}} \&game)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayerMove_a4dd6c95a765367cc8cae67642fac1202}\label{classPlayerMove_a4dd6c95a765367cc8cae67642fac1202}} 
+\index{PlayerMove@{PlayerMove}!execute@{execute}}
+\index{execute@{execute}!PlayerMove@{PlayerMove}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Player\+Move\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notifications,  }\item[{\mbox{\hyperlink{classGame}{Game}} \&}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Executes the given command$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Queue} & of Notifications to be sent. \\
+\hline
+{\em The} & game on which to execute the given command. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classCommand_aacb8b1f4af8dddebf027a0770bb0ade6}{Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Command/Player\+Move.\+h\item 
+server/src/\+Control/\+Command/Player\+Move.\+cpp\end{DoxyCompactItemize}

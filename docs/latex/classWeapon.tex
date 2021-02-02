@@ -1,0 +1,50 @@
+\hypertarget{classWeapon}{}\doxysection{Weapon Class Reference}
+\label{classWeapon}\index{Weapon@{Weapon}}
+Inheritance diagram for Weapon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classWeapon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWeapon_a1b7443d60a0544f812c95d7a3343da60}\label{classWeapon_a1b7443d60a0544f812c95d7a3343da60}} 
+{\bfseries Weapon} (unsigned int unique\+Id, unsigned int min\+Damage\+Per\+Bullet, int max\+Damage\+Per\+Bullet)
+\item 
+\mbox{\Hypertarget{classWeapon_a328a646ae7f4fce40c6980477757b4f5}\label{classWeapon_a328a646ae7f4fce40c6980477757b4f5}} 
+{\bfseries Weapon} (unsigned int ammo)
+\item 
+\mbox{\Hypertarget{classWeapon_a2b7dc40ee47abaa10fbca90f1e4b477d}\label{classWeapon_a2b7dc40ee47abaa10fbca90f1e4b477d}} 
+virtual int {\bfseries get\+ID} ()=0
+\item 
+\mbox{\Hypertarget{classWeapon_a1d7fc9fa5cae3bf531c7c35af7502445}\label{classWeapon_a1d7fc9fa5cae3bf531c7c35af7502445}} 
+virtual int {\bfseries get\+Unique\+Id} ()=0
+\item 
+\mbox{\Hypertarget{classWeapon_a33f22d2b72ed65ea950d7e51b3b51e89}\label{classWeapon_a33f22d2b72ed65ea950d7e51b3b51e89}} 
+virtual bool {\bfseries has\+Ammo} ()=0
+\item 
+\mbox{\Hypertarget{classWeapon_a4984bf12e4e5b9b1385141db9533e26c}\label{classWeapon_a4984bf12e4e5b9b1385141db9533e26c}} 
+virtual int {\bfseries get\+Range} ()=0
+\item 
+\mbox{\Hypertarget{classWeapon_aff0d93a61b322258bf296b2e52a122d9}\label{classWeapon_aff0d93a61b322258bf296b2e52a122d9}} 
+virtual unsigned int {\bfseries attack} (int \&ammo, float time\+Elapsed)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWeapon_a1ec25c620afc7e5302013eca22368d49}\label{classWeapon_a1ec25c620afc7e5302013eca22368d49}} 
+unsigned int {\bfseries get\+Random\+Damage} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWeapon_aa0638b78802d09be918ab2448b69bb0e}\label{classWeapon_aa0638b78802d09be918ab2448b69bb0e}} 
+unsigned int {\bfseries unique\+Id}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Model/\+Item/\+Weapon/Weapon.\+h\item 
+server/src/\+Model/\+Item/\+Weapon/Weapon.\+cpp\end{DoxyCompactItemize}

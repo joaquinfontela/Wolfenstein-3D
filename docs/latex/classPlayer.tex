@@ -1,0 +1,224 @@
+\hypertarget{classPlayer}{}\doxysection{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPlayer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlayer_a93fbc84853d872993d78c14c57f52c79}\label{classPlayer_a93fbc84853d872993d78c14c57f52c79}} 
+{\bfseries Player} (double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id)
+\item 
+\mbox{\Hypertarget{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}\label{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}} 
+{\bfseries Player} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
+\item 
+\mbox{\Hypertarget{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}\label{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}} 
+void {\bfseries update} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
+\item 
+\mbox{\Hypertarget{classPlayer_ac4227840877cf5b5d3223f79d03d324e}\label{classPlayer_ac4227840877cf5b5d3223f79d03d324e}} 
+void {\bfseries update} (double posX, double posY, double dirX, double dirY)
+\item 
+\mbox{\Hypertarget{classPlayer_afcc052d2da833719ddf8eac9a186dff8}\label{classPlayer_afcc052d2da833719ddf8eac9a186dff8}} 
+void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
+\item 
+\mbox{\Hypertarget{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}\label{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}} 
+int {\bfseries get\+Soldier\+Id} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}\label{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}} 
+double {\bfseries calculate\+Dist} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
+\item 
+\mbox{\Hypertarget{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}\label{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}} 
+double {\bfseries calculate\+Dist} (int otherx, int othery)
+\item 
+\mbox{\Hypertarget{classPlayer_a41829a2125e9f9df356dfb1839073939}\label{classPlayer_a41829a2125e9f9df356dfb1839073939}} 
+void {\bfseries start\+Shooting} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}\label{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}} 
+void {\bfseries stop\+Shooting} ()
+\item 
+\mbox{\Hypertarget{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}\label{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}} 
+bool {\bfseries is\+Shooting} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a6a0b5131321ade6c0e9e30869507b587}\label{classPlayer_a6a0b5131321ade6c0e9e30869507b587}} 
+bool {\bfseries is\+Moving} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a478572d23809f9163fb6c9a3520f3dee}\label{classPlayer_a478572d23809f9163fb6c9a3520f3dee}} 
+void {\bfseries stop\+Moving} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}\label{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}} 
+bool {\bfseries has\+This\+Unique\+Id} (int otherid) override
+\item 
+\mbox{\Hypertarget{classPlayer_abb78c329add4ad99c693f5cefda89f38}\label{classPlayer_abb78c329add4ad99c693f5cefda89f38}} 
+bool {\bfseries is\+Sprite} () override
+\item 
+\mbox{\Hypertarget{classPlayer_af70c30fb29511e1d80152cc3af829b6b}\label{classPlayer_af70c30fb29511e1d80152cc3af829b6b}} 
+bool {\bfseries is\+Player} () override
+\item 
+\mbox{\Hypertarget{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}\label{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}} 
+bool {\bfseries has\+Key} ()
+\item 
+\mbox{\Hypertarget{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}\label{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}} 
+{\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader, \mbox{\hyperlink{classMap}{Map}} \&map, unsigned int player\+ID)
+\item 
+\mbox{\Hypertarget{classPlayer_a1e71588574873e1ae01834a3a59a55ae}\label{classPlayer_a1e71588574873e1ae01834a3a59a55ae}} 
+{\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader)
+\item 
+\mbox{\Hypertarget{classPlayer_a739389cfd7bc6e8a162c3dc4edc5a952}\label{classPlayer_a739389cfd7bc6e8a162c3dc4edc5a952}} 
+void {\bfseries set\+Shooting} (bool state)
+\item 
+\mbox{\Hypertarget{classPlayer_ad689c29b403c90fb2ffe0e2da10b1079}\label{classPlayer_ad689c29b403c90fb2ffe0e2da10b1079}} 
+int {\bfseries take\+Damage} (unsigned int damage, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classPlayer_a692a0f58e7c251ee7936ddd0feaf8cad}\label{classPlayer_a692a0f58e7c251ee7936ddd0feaf8cad}} 
+void {\bfseries set\+Notifiable} (bool status)
+\item 
+\mbox{\Hypertarget{classPlayer_ad6acbb8851bc6e3781c494799a0ce13e}\label{classPlayer_ad6acbb8851bc6e3781c494799a0ce13e}} 
+unsigned int {\bfseries ID} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a997e170f11ab7b27c2f48fd692f6fccf}\label{classPlayer_a997e170f11ab7b27c2f48fd692f6fccf}} 
+double {\bfseries getX} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a89886ce5de2eca6cef2a844c839eb1a8}\label{classPlayer_a89886ce5de2eca6cef2a844c839eb1a8}} 
+double {\bfseries getY} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a4a0a08554f63147f3f7421a5695824da}\label{classPlayer_a4a0a08554f63147f3f7421a5695824da}} 
+double {\bfseries get\+DirX} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a6aad5c676ea31112265d884862a2e712}\label{classPlayer_a6aad5c676ea31112265d884862a2e712}} 
+double {\bfseries get\+DirY} ()
+\item 
+\mbox{\Hypertarget{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}\label{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}} 
+bool {\bfseries has\+Admin} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a4b57f407fa30611f4d4838b9dde5e8c1}\label{classPlayer_a4b57f407fa30611f4d4838b9dde5e8c1}} 
+void {\bfseries set\+Admin} ()
+\item 
+\mbox{\Hypertarget{classPlayer_ade88917901db288ffdb56512f9d37293}\label{classPlayer_ade88917901db288ffdb56512f9d37293}} 
+void {\bfseries add\+Weapon} (\mbox{\hyperlink{classWeapon}{Weapon}} $\ast$weapon)
+\item 
+\mbox{\Hypertarget{classPlayer_a247870b14c6fb74994231320baccbb0d}\label{classPlayer_a247870b14c6fb74994231320baccbb0d}} 
+bool {\bfseries has\+Gun\+With\+Id} (int unique\+Id)
+\item 
+\mbox{\Hypertarget{classPlayer_a782ae5f3931b33bbfc248855665ae82b}\label{classPlayer_a782ae5f3931b33bbfc248855665ae82b}} 
+void {\bfseries respawn} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classPlayer_a251d3e9f488a0a6e659d5a09b9c073c5}\label{classPlayer_a251d3e9f488a0a6e659d5a09b9c073c5}} 
+double {\bfseries calculate\+Distance\+To} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
+\item 
+\mbox{\Hypertarget{classPlayer_a08992558301f3194c132eca92d231610}\label{classPlayer_a08992558301f3194c132eca92d231610}} 
+void {\bfseries fill\+Player\+Data} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&data)
+\item 
+\mbox{\Hypertarget{classPlayer_a3cabeade87c04cba05c7dc1dfabc5e5f}\label{classPlayer_a3cabeade87c04cba05c7dc1dfabc5e5f}} 
+int {\bfseries attack} (float time\+Elapsed)
+\item 
+\mbox{\Hypertarget{classPlayer_a6b32ee55911d8133cbc00c392bd5d66c}\label{classPlayer_a6b32ee55911d8133cbc00c392bd5d66c}} 
+void {\bfseries shoot} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis, std\+::list$<$ \mbox{\hyperlink{classUpdatable}{Updatable}} $\ast$ $>$ \&updatables)
+\item 
+\mbox{\Hypertarget{classPlayer_aa0649277897c173df0dedf964bfeb7a1}\label{classPlayer_aa0649277897c173df0dedf964bfeb7a1}} 
+void {\bfseries shoot\+RPG} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis, std\+::list$<$ \mbox{\hyperlink{classUpdatable}{Updatable}} $\ast$ $>$ \&updatables)
+\item 
+\mbox{\Hypertarget{classPlayer_ac60dceef4340898bfc2df0ed5820169a}\label{classPlayer_ac60dceef4340898bfc2df0ed5820169a}} 
+void {\bfseries update\+Move\+Speed} (double mov\+Speed)
+\item 
+\mbox{\Hypertarget{classPlayer_a150d6e81445911e7ff1e6952641d75fc}\label{classPlayer_a150d6e81445911e7ff1e6952641d75fc}} 
+void {\bfseries update\+Rotation\+Speed} (double rot\+Speed)
+\item 
+\mbox{\Hypertarget{classPlayer_a2c24f0c340fcc975b900c7c85da1c118}\label{classPlayer_a2c24f0c340fcc975b900c7c85da1c118}} 
+void {\bfseries move\+To} (double x, double y)
+\item 
+\mbox{\Hypertarget{classPlayer_abf3822307de18d4ec32755b013141910}\label{classPlayer_abf3822307de18d4ec32755b013141910}} 
+int {\bfseries get\+Range} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a32c5222559cc63c968d65345da98e178}\label{classPlayer_a32c5222559cc63c968d65345da98e178}} 
+void {\bfseries equip\+Weapon} (int weapon\+Pos)
+\item 
+\mbox{\Hypertarget{classPlayer_a7069a3a898dff5fc4f4129a9551ce750}\label{classPlayer_a7069a3a898dff5fc4f4129a9551ce750}} 
+bool {\bfseries collides\+With} (double x, double y)
+\item 
+\mbox{\Hypertarget{classPlayer_a8538442fda2bd09fef505eecb918107f}\label{classPlayer_a8538442fda2bd09fef505eecb918107f}} 
+bool {\bfseries has\+To\+Be\+Updated} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a5b5e0fb95ce82aace46471d00c1916bb}\label{classPlayer_a5b5e0fb95ce82aace46471d00c1916bb}} 
+void {\bfseries update} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis, std\+::list$<$ \mbox{\hyperlink{classUpdatable}{Updatable}} $\ast$ $>$ \&updatables)
+\item 
+\mbox{\Hypertarget{classPlayer_af256a032cd078633f19f7fed683d397f}\label{classPlayer_af256a032cd078633f19f7fed683d397f}} 
+void {\bfseries pickup\+Key} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}\label{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}} 
+bool {\bfseries has\+Key} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a80375111aad147d6671c43e989c2f90a}\label{classPlayer_a80375111aad147d6671c43e989c2f90a}} 
+bool {\bfseries has\+Max\+Ammo} ()
+\item 
+\mbox{\Hypertarget{classPlayer_afcdc49341ea70b0598bdbbc3447bb4cc}\label{classPlayer_afcdc49341ea70b0598bdbbc3447bb4cc}} 
+void {\bfseries pick\+Up\+Ammo} ()
+\item 
+\mbox{\Hypertarget{classPlayer_abcb15d249bed9a4ab0ab86b52b0d747a}\label{classPlayer_abcb15d249bed9a4ab0ab86b52b0d747a}} 
+int {\bfseries get\+Health} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a0c410e0f44726dc50baa54c4b3dbbf09}\label{classPlayer_a0c410e0f44726dc50baa54c4b3dbbf09}} 
+bool {\bfseries has\+Full\+Health} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a4616a5945c3f045b7cdb295504092a55}\label{classPlayer_a4616a5945c3f045b7cdb295504092a55}} 
+void {\bfseries add\+Health} (int health)
+\item 
+\mbox{\Hypertarget{classPlayer_a42f4e9ab541735d4105f7f727db14c2d}\label{classPlayer_a42f4e9ab541735d4105f7f727db14c2d}} 
+void {\bfseries add\+Points} (int points)
+\item 
+\mbox{\Hypertarget{classPlayer_a97e5447778ae6c384eedc532dcd8431d}\label{classPlayer_a97e5447778ae6c384eedc532dcd8431d}} 
+int {\bfseries get\+Score} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlayer_a33c1b79f3bd3885c420d88acee0431f7}\label{classPlayer_a33c1b79f3bd3885c420d88acee0431f7}} 
+int {\bfseries player\+ID}
+\item 
+\mbox{\Hypertarget{classPlayer_a9c36918daede2cc30229ffba50641e15}\label{classPlayer_a9c36918daede2cc30229ffba50641e15}} 
+int {\bfseries weapon\+Id}
+\item 
+\mbox{\Hypertarget{classPlayer_a70c1e9d775acdb0de11c2d03a4d3bdf2}\label{classPlayer_a70c1e9d775acdb0de11c2d03a4d3bdf2}} 
+double {\bfseries dirX}
+\item 
+\mbox{\Hypertarget{classPlayer_a20d72dcab9c6d4380fab2f1f5df549ae}\label{classPlayer_a20d72dcab9c6d4380fab2f1f5df549ae}} 
+double {\bfseries dirY}
+\item 
+\mbox{\Hypertarget{classPlayer_ad77a4f843a767190ee8cfccb204a15aa}\label{classPlayer_ad77a4f843a767190ee8cfccb204a15aa}} 
+double {\bfseries planeX}
+\item 
+\mbox{\Hypertarget{classPlayer_a5cf2f41dc1190dad931c0f8a8c8068e7}\label{classPlayer_a5cf2f41dc1190dad931c0f8a8c8068e7}} 
+double {\bfseries planeY}
+\item 
+\mbox{\Hypertarget{classPlayer_aad33b52bfe73c4c978a3135172f286a0}\label{classPlayer_aad33b52bfe73c4c978a3135172f286a0}} 
+int {\bfseries health}
+\item 
+\mbox{\Hypertarget{classPlayer_ab3300fa23175647f3ff50311dd2a7e04}\label{classPlayer_ab3300fa23175647f3ff50311dd2a7e04}} 
+int {\bfseries lives}
+\item 
+\mbox{\Hypertarget{classPlayer_a7c561d64b042d61af58c32984e6165a9}\label{classPlayer_a7c561d64b042d61af58c32984e6165a9}} 
+int {\bfseries bullets}
+\item 
+\mbox{\Hypertarget{classPlayer_ace6abae8d66534ad0a1fd6458f786a6e}\label{classPlayer_ace6abae8d66534ad0a1fd6458f786a6e}} 
+int {\bfseries score}
+\item 
+\mbox{\Hypertarget{classPlayer_aaf48c4184bee665e1f7f625dedc25adf}\label{classPlayer_aaf48c4184bee665e1f7f625dedc25adf}} 
+bool {\bfseries moving}
+\item 
+\mbox{\Hypertarget{classPlayer_a937a9ca0b598a3d9514bc36205840361}\label{classPlayer_a937a9ca0b598a3d9514bc36205840361}} 
+int {\bfseries healthdown}
+\item 
+\mbox{\Hypertarget{classPlayer_a389cf9a64a7d4393cd9de1ba801a8f84}\label{classPlayer_a389cf9a64a7d4393cd9de1ba801a8f84}} 
+bool {\bfseries key}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/player.\+h\item 
+server/includes/\+Model/\+Player/Player.\+h\item 
+client/src/player.\+cpp\item 
+server/src/\+Model/\+Player/Player.\+cpp\end{DoxyCompactItemize}

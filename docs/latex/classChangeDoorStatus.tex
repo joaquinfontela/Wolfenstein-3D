@@ -1,0 +1,77 @@
+\hypertarget{classChangeDoorStatus}{}\doxysection{Change\+Door\+Status Class Reference}
+\label{classChangeDoorStatus}\index{ChangeDoorStatus@{ChangeDoorStatus}}
+
+
+{\ttfamily \#include $<$Change\+Door\+Status.\+h$>$}
+
+Inheritance diagram for Change\+Door\+Status\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classChangeDoorStatus}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classChangeDoorStatus_a0c40167a926683e00586431dc16daa48}\label{classChangeDoorStatus_a0c40167a926683e00586431dc16daa48}} 
+{\bfseries Change\+Door\+Status} (int x, int y, float time\+Required, bool requires\+Notification)
+\item 
+void \mbox{\hyperlink{classChangeDoorStatus_a489f28796f3bafda14add7445af427f3}{update}} (float time\+Elapsed, \mbox{\hyperlink{classGame}{Game}} \&game, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+bool \mbox{\hyperlink{classChangeDoorStatus_a37a5fc09bbcd4d0179e36faed8e73e3a}{notify}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+Class that represents an event that needs to be updated in time. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classChangeDoorStatus_a37a5fc09bbcd4d0179e36faed8e73e3a}\label{classChangeDoorStatus_a37a5fc09bbcd4d0179e36faed8e73e3a}} 
+\index{ChangeDoorStatus@{ChangeDoorStatus}!notify@{notify}}
+\index{notify@{notify}!ChangeDoorStatus@{ChangeDoorStatus}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily bool Change\+Door\+Status\+::notify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Notifies of the event status and change$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & notification queue on which to notify.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean indicating if the event is finished or not. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUpdatable_acd35a745388853cfb32d7459e0307625}{Updatable}}.
+
+\mbox{\Hypertarget{classChangeDoorStatus_a489f28796f3bafda14add7445af427f3}\label{classChangeDoorStatus_a489f28796f3bafda14add7445af427f3}} 
+\index{ChangeDoorStatus@{ChangeDoorStatus}!update@{update}}
+\index{update@{update}!ChangeDoorStatus@{ChangeDoorStatus}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Change\+Door\+Status\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed,  }\item[{\mbox{\hyperlink{classGame}{Game}} \&}]{game,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Updates the event through time$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed in seconds since last update. \\
+\hline
+{\em The} & game on which to update the event. \\
+\hline
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classUpdatable_ac0cf616bf3d192fff11549b8a87f3ac4}{Updatable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Updatable\+Event/Change\+Door\+Status.\+h\item 
+server/src/\+Control/\+Updatable\+Event/Change\+Door\+Status.\+cpp\end{DoxyCompactItemize}

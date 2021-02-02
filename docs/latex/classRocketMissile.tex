@@ -1,0 +1,69 @@
+\hypertarget{classRocketMissile}{}\doxysection{Rocket\+Missile Class Reference}
+\label{classRocketMissile}\index{RocketMissile@{RocketMissile}}
+Inheritance diagram for Rocket\+Missile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRocketMissile}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRocketMissile_af60153595361d58e722f184e29114481}\label{classRocketMissile_af60153595361d58e722f184e29114481}} 
+{\bfseries Rocket\+Missile} (double x, double y, double dirX, double dirY, int unique\+Id, double planeX, double planeY)
+\item 
+void \mbox{\hyperlink{classRocketMissile_ada193effceebfb7b0c88140f69928973}{update}} (float time\+Elapsed, \mbox{\hyperlink{classGame}{Game}} \&game, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+bool \mbox{\hyperlink{classRocketMissile_a8cf3a892fdf36bc15533540fa219cd5b}{notify}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRocketMissile_a8cf3a892fdf36bc15533540fa219cd5b}\label{classRocketMissile_a8cf3a892fdf36bc15533540fa219cd5b}} 
+\index{RocketMissile@{RocketMissile}!notify@{notify}}
+\index{notify@{notify}!RocketMissile@{RocketMissile}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily bool Rocket\+Missile\+::notify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Notifies if needed the change of status of the event$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & notification queue to place the notification. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean representing if the event has finished. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUpdatable_acd35a745388853cfb32d7459e0307625}{Updatable}}.
+
+\mbox{\Hypertarget{classRocketMissile_ada193effceebfb7b0c88140f69928973}\label{classRocketMissile_ada193effceebfb7b0c88140f69928973}} 
+\index{RocketMissile@{RocketMissile}!update@{update}}
+\index{update@{update}!RocketMissile@{RocketMissile}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Rocket\+Missile\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed,  }\item[{\mbox{\hyperlink{classGame}{Game}} \&}]{game,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+$<$\+Updates the event given the elapsed time$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed since the last update. \\
+\hline
+{\em The} & game in which the event is occuring. \\
+\hline
+{\em The} & queue in which notifications are placed. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classUpdatable_ac0cf616bf3d192fff11549b8a87f3ac4}{Updatable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Updatable\+Event/Rocket\+Missile.\+h\item 
+server/src/\+Control/\+Updatable\+Event/Rocket\+Missile.\+cpp\end{DoxyCompactItemize}

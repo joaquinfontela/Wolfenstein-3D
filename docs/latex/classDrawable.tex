@@ -1,0 +1,77 @@
+\hypertarget{classDrawable}{}\doxysection{Drawable Class Reference}
+\label{classDrawable}\index{Drawable@{Drawable}}
+Inheritance diagram for Drawable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.507463cm]{classDrawable}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrawable_a2b71abdf279cf6a68cd1138682e7c008}\label{classDrawable_a2b71abdf279cf6a68cd1138682e7c008}} 
+{\bfseries Drawable} (double x, double y, int id, int uniqueid=0, double dist=INT\+\_\+\+MAX)
+\item 
+\mbox{\Hypertarget{classDrawable_a6e3564e30a2df5ec439085a825ca678e}\label{classDrawable_a6e3564e30a2df5ec439085a825ca678e}} 
+virtual void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff)
+\item 
+\mbox{\Hypertarget{classDrawable_ad667929f851dc28509919de414af2f6d}\label{classDrawable_ad667929f851dc28509919de414af2f6d}} 
+bool {\bfseries operator$<$} (\mbox{\hyperlink{classDrawable}{Drawable}} \&other)
+\item 
+\mbox{\Hypertarget{classDrawable_a0f301c945fe383553ca472eaed26d8e9}\label{classDrawable_a0f301c945fe383553ca472eaed26d8e9}} 
+bool {\bfseries is\+Contained} (double $\ast$distance\+Buffer, double posX, double posY, double dirX, double dirY, double planeX, double planeY, int width, int height)
+\item 
+\mbox{\Hypertarget{classDrawable_a8725c4a15f4c982ec0b7495d40d34aea}\label{classDrawable_a8725c4a15f4c982ec0b7495d40d34aea}} 
+void {\bfseries load\+Distance\+With\+Coords} (int px, int py)
+\item 
+\mbox{\Hypertarget{classDrawable_a4f6dedb89694f4194131b66a442b831d}\label{classDrawable_a4f6dedb89694f4194131b66a442b831d}} 
+virtual bool {\bfseries has\+This\+Unique\+Id} (int otherid)
+\item 
+\mbox{\Hypertarget{classDrawable_a261c28a65923a4ae1c7fbedc5e3a2088}\label{classDrawable_a261c28a65923a4ae1c7fbedc5e3a2088}} 
+virtual bool {\bfseries is\+Sprite} ()
+\item 
+\mbox{\Hypertarget{classDrawable_a9a8f61f7af0e9fc023c31a3e07fab10f}\label{classDrawable_a9a8f61f7af0e9fc023c31a3e07fab10f}} 
+virtual bool {\bfseries is\+Player} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrawable_a39e17b5b9f37c11dc2fbf9f789d089bb}\label{classDrawable_a39e17b5b9f37c11dc2fbf9f789d089bb}} 
+double {\bfseries x}
+\item 
+\mbox{\Hypertarget{classDrawable_a28f0f7d65873e37875733104c20c6061}\label{classDrawable_a28f0f7d65873e37875733104c20c6061}} 
+double {\bfseries y}
+\item 
+\mbox{\Hypertarget{classDrawable_aa7db919f809bd3b8eaf1c1008827ee99}\label{classDrawable_aa7db919f809bd3b8eaf1c1008827ee99}} 
+int {\bfseries id}
+\item 
+\mbox{\Hypertarget{classDrawable_a1e003768c8e078b9cc4e619f8f8b5b46}\label{classDrawable_a1e003768c8e078b9cc4e619f8f8b5b46}} 
+double {\bfseries dist}
+\item 
+\mbox{\Hypertarget{classDrawable_a492526b1c2e44dcc4e0207b974f6117f}\label{classDrawable_a492526b1c2e44dcc4e0207b974f6117f}} 
+int {\bfseries uniqueid}
+\item 
+\mbox{\Hypertarget{classDrawable_a76982d7346c7988cae52c18a96a59497}\label{classDrawable_a76982d7346c7988cae52c18a96a59497}} 
+bool {\bfseries has\+To\+Be\+Deleted}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrawable_a9fe627864ed01ea4a0676b5cb1f1af4d}\label{classDrawable_a9fe627864ed01ea4a0676b5cb1f1af4d}} 
+void {\bfseries calculate\+Drawing\+Data} (int \&sprite\+Screen, int \&sprite\+Width, int \&sprite\+Height, int \&draw\+Start, int \&draw\+End, double \&transformY, double posX, double posY, double planeX, double planeY, double dirX, double dirY, int width, int height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDrawable_aa48947113eb82558fe1e7243cb85ccb7}\label{classDrawable_aa48947113eb82558fe1e7243cb85ccb7}} 
+\mbox{\hyperlink{classArea}{Area}} {\bfseries src\+Area}
+\item 
+\mbox{\Hypertarget{classDrawable_a62fa1605aad433a12f0fa014fcb71b4e}\label{classDrawable_a62fa1605aad433a12f0fa014fcb71b4e}} 
+\mbox{\hyperlink{classArea}{Area}} {\bfseries dest\+Area}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/drawable.\+h\item 
+client/src/drawable.\+cpp\end{DoxyCompactItemize}
