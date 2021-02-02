@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tuple>
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -127,7 +128,7 @@ void CommandExecuter::run() {
   /*Audio music("../audio/Wolfenstein-3D-Orchestral-Re-rec.mp3", IS_MUSIC, MUSIC_VOLUME);
   music.volumeUp();
   music.play();*/
-  while (true) {
+  while (!this->scoreboard.hasEnded()) {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
@@ -207,13 +208,23 @@ void CommandExecuter::run() {
       } else if (opcode == ENDING_MATCH) {
         uint32_t numberOfPlayers;
         this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+        uint32_t value1;
+        uint32_t value2;
         for (int i = 0; i < numberOfPlayers; i++) {
-          uint32_t value;
-          this->socket.receive(&value, sizeof(value));
-          this->scoreboard.pushId(value);
-          this->socket.receive(&value, sizeof(value));
-          this->scoreboard.pushScore(value);
+          this->socket.receive(&value1, sizeof(value1));
+          this->socket.receive(&value2, sizeof(value2));
+          this->scoreboard.pushScore(std::make_tuple(value1, value2));
         }
+        /*for (int i = 0; i < numberOfPlayers; i++) {
+          this->socket.receive(&value1, sizeof(value1));
+          this->socket.receive(&value2, sizeof(value2));
+          this->scoreboard.pushKills(std::make_tuple(value1, value2));
+        }
+        for (int i = 0; i < numberOfPlayers; i++) {
+          this->socket.receive(&value1, sizeof(value1));
+          this->socket.receive(&value2, sizeof(value2));
+          this->scoreboard.pushShotsfired(std::make_tuple(value1, value2));
+        }*/
         alive = false;
       }
     } catch (SocketException& e) {

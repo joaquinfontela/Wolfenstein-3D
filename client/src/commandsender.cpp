@@ -23,7 +23,7 @@ void CommandSender::run() {
   bool rightPressed = false;
   bool leftPressed = false;
   bool enterPressed = false;
-  while (alive) {
+  while (true) {
     try {
       SDL_Event event;
       SDL_WaitEvent(&event);
@@ -33,10 +33,10 @@ void CommandSender::run() {
         socket.readShutdown();
         socket.writeShutdown();
         socket.close();
-        alive = false;
+        this->scoreboard->stop();
         break;
       }
-      if (event.type == SDL_KEYDOWN) {
+      if (event.type == SDL_KEYDOWN && alive) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
         switch (key.keysym.sym) {
           case SDLK_a:
@@ -91,7 +91,7 @@ void CommandSender::run() {
             this->update(START_MATCH);
             break;
         }
-      } else if (event.type == SDL_KEYUP) {
+      } else if (event.type == SDL_KEYUP && alive) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
         switch (key.keysym.sym) {
           case SDLK_a:

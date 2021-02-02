@@ -162,8 +162,5 @@ void Raycaster::run(){
   }
 
   timer.join();
-  while (!this->scoreboard.end) {
-    //this->window->fillWolfenstein();
-    this->scoreboard.draw();
-  }
+  this->scoreboard.draw();
 }
