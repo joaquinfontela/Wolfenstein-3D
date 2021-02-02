@@ -1,0 +1,59 @@
+\hypertarget{classShootable}{}\doxysection{Shootable Class Reference}
+\label{classShootable}\index{Shootable@{Shootable}}
+Inheritance diagram for Shootable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classShootable}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShootable_a5b5342cb49f79dcde3cf87cf9e3efdc2}\label{classShootable_a5b5342cb49f79dcde3cf87cf9e3efdc2}} 
+{\bfseries Shootable} (unsigned int unique\+Id, int new\+Ammo, unsigned int min\+Damage\+Per\+Bullet, unsigned max\+Damage\+Per\+Bullet, unsigned int shots\+Per\+Blast, unsigned int ammo\+Lost\+Per\+Shot)
+\item 
+\mbox{\Hypertarget{classShootable_a4302e35dd3f60fd8e3ad6b4a4c2d464d}\label{classShootable_a4302e35dd3f60fd8e3ad6b4a4c2d464d}} 
+{\bfseries Shootable} (unsigned int unique\+Id, int new\+Ammo, unsigned int min\+Damage\+Per\+Bullet, unsigned max\+Damage\+Per\+Bullet, unsigned int shots\+Per\+Blast, unsigned int ammo\+Lost\+Per\+Shot, unsigned int precision)
+\item 
+\mbox{\Hypertarget{classShootable_a9d7e6bfccd7cc5f2a3fe5b3f89b4ccfa}\label{classShootable_a9d7e6bfccd7cc5f2a3fe5b3f89b4ccfa}} 
+{\bfseries Shootable} (unsigned int unique\+Id, int new\+Ammo, unsigned int min\+Damage\+Per\+Bullet, unsigned max\+Damage\+Per\+Bullet, unsigned int shots\+Per\+Blast, unsigned int ammo\+Lost\+Per\+Shot, unsigned int precision, float blast\+Frequency)
+\item 
+\mbox{\Hypertarget{classShootable_a4ec80a8d99780f8db1b25b485f141804}\label{classShootable_a4ec80a8d99780f8db1b25b485f141804}} 
+virtual bool {\bfseries has\+Ammo} ()=0
+\item 
+\mbox{\Hypertarget{classShootable_a95ac9cf93692c2f56ebc78770931c827}\label{classShootable_a95ac9cf93692c2f56ebc78770931c827}} 
+unsigned int {\bfseries attack} (int \&ammo, float time\+Elapsed)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShootable_a7792734b7a5de69f2650b3669008fc80}\label{classShootable_a7792734b7a5de69f2650b3669008fc80}} 
+unsigned int {\bfseries shoot} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShootable_ae596e8d4a29ac93debb09f26fc2aa02c}\label{classShootable_ae596e8d4a29ac93debb09f26fc2aa02c}} 
+unsigned int {\bfseries ammo}
+\item 
+\mbox{\Hypertarget{classShootable_ad31c9a6f7a8f47465810428d39439095}\label{classShootable_ad31c9a6f7a8f47465810428d39439095}} 
+float {\bfseries blast\+Frequency}
+\item 
+\mbox{\Hypertarget{classShootable_aef2f163343bfa3d96097c9bbaabc5a9d}\label{classShootable_aef2f163343bfa3d96097c9bbaabc5a9d}} 
+unsigned int {\bfseries shots\+Per\+Blast}
+\item 
+\mbox{\Hypertarget{classShootable_ae92c783f34647111067fd1e4e636b6c6}\label{classShootable_ae92c783f34647111067fd1e4e636b6c6}} 
+unsigned int {\bfseries ammo\+Lost\+Per\+Shot}
+\item 
+\mbox{\Hypertarget{classShootable_ad6d36dbe86ccaa179a91ec083a284877}\label{classShootable_ad6d36dbe86ccaa179a91ec083a284877}} 
+unsigned int {\bfseries precision}
+\item 
+\mbox{\Hypertarget{classShootable_a9cdb2264160e1d466bc2efdcb1061cc7}\label{classShootable_a9cdb2264160e1d466bc2efdcb1061cc7}} 
+float {\bfseries time\+Since\+Last\+Shot}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Model/\+Item/\+Weapon/\+Shootable/Shootable.\+h\item 
+server/src/\+Model/\+Item/\+Weapon/\+Shootable/Shootable.\+cpp\end{DoxyCompactItemize}

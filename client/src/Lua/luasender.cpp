@@ -117,8 +117,6 @@ void LuaSender::run(){
   keyState.A = 0;
   keyState.D = 0;
 
-  std::cout<<"Mem Adress of GS: "<<this->gameState<<std::endl;
-
   while(alive){
 
     std::cout<<"KeyState: A: "<<keyState.A<<", S: "<<keyState.S<<", D: "<<keyState.D<<", W: "<<keyState.W<<std::endl;
@@ -135,15 +133,8 @@ void LuaSender::run(){
     int n = lua_tonumber(luaState, -1);
     this->update(n);
     updateKeyState(keyState, n);
-    //std::cout<<n<<std::endl;
     lua_pop(luaState, 1);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  /* Comentado el hardcodeo para testear el funcionamiento
-    int input[17] = { 300, 400, 700, 800, 101, 202, 303, 404, 505, 400, 400, 400, 400, 400, 400, 400, 400};
-    this->update(input[rand()%17]);
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  */
 
   }
   quitThread.join();

@@ -1,0 +1,124 @@
+\hypertarget{classMap}{}\doxysection{Map Class Reference}
+\label{classMap}\index{Map@{Map}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMap_a1111ebad80701ca9cc041953dfec5488}\label{classMap_a1111ebad80701ca9cc041953dfec5488}} 
+{\bfseries Map} (\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&loader)
+\item 
+\mbox{\Hypertarget{classMap_a90b7807f1e91534cdc4c65397a604359}\label{classMap_a90b7807f1e91534cdc4c65397a604359}} 
+void {\bfseries update\+Timers} (float value)
+\item 
+\mbox{\Hypertarget{classMap_a6441c61ab2d05b5df6ab50cd7f677297}\label{classMap_a6441c61ab2d05b5df6ab50cd7f677297}} 
+int {\bfseries get} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a81d692fbcb23427dbdffe2a9ecf76fba}\label{classMap_a81d692fbcb23427dbdffe2a9ecf76fba}} 
+bool {\bfseries is\+Door} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a0506b001629215a5f572055035a17f9b}\label{classMap_a0506b001629215a5f572055035a17f9b}} 
+char {\bfseries get\+Door\+State} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a0e88898b8c40926c87d106c0e9020ffb}\label{classMap_a0e88898b8c40926c87d106c0e9020ffb}} 
+void {\bfseries switch\+Door\+State} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a1834a7ad317bdd2e6a7d1e9e27b06b7d}\label{classMap_a1834a7ad317bdd2e6a7d1e9e27b06b7d}} 
+void {\bfseries force\+Door\+State} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_aff2af59b2ae472803fc3c750dd813628}\label{classMap_aff2af59b2ae472803fc3c750dd813628}} 
+int $\ast$ {\bfseries get\+Matrix} ()
+\item 
+\mbox{\Hypertarget{classMap_a22c0a427602af5f2b6f49e54b93875e0}\label{classMap_a22c0a427602af5f2b6f49e54b93875e0}} 
+{\bfseries Map} (int dimx, int dimy)
+\item 
+\mbox{\Hypertarget{classMap_a1b76eede81242370157d3061ec77da67}\label{classMap_a1b76eede81242370157d3061ec77da67}} 
+void {\bfseries add\+Item\+Drop\+At} (\mbox{\hyperlink{classItem}{Item}} $\ast$item, int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a89d4aa1844fe29f2d196fcb8dbbac3cc}\label{classMap_a89d4aa1844fe29f2d196fcb8dbbac3cc}} 
+void {\bfseries add\+Weapon\+Drop\+At} (\mbox{\hyperlink{classWeapon}{Weapon}} $\ast$weapon, int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a2a3b83e72eb4f73b5b0a3ca4f40f5a19}\label{classMap_a2a3b83e72eb4f73b5b0a3ca4f40f5a19}} 
+void {\bfseries add\+Door\+At} (\mbox{\hyperlink{classDoor}{Door}} $\ast$door, int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a0b556d71c8fc61beb772a2c91b865653}\label{classMap_a0b556d71c8fc61beb772a2c91b865653}} 
+void {\bfseries add\+Wall\+At} (\mbox{\hyperlink{classWall}{Wall}} $\ast$wall, int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_aed5b8ab99b57726f4c11ec314114878b}\label{classMap_aed5b8ab99b57726f4c11ec314114878b}} 
+void {\bfseries add\+Ammo\+Drop\+At} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_ae5cf7e4f1886716edddc08813a400c41}\label{classMap_ae5cf7e4f1886716edddc08813a400c41}} 
+void {\bfseries add\+Key\+Drop\+At} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a29071f66532b91ead20cebc5d0a8c9b1}\label{classMap_a29071f66532b91ead20cebc5d0a8c9b1}} 
+void {\bfseries add\+Ammo\+Drop\+At} (int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classMap_a7b89a0484df9cc3c7fd19ad5d15c8cdf}\label{classMap_a7b89a0484df9cc3c7fd19ad5d15c8cdf}} 
+void {\bfseries add\+Key\+Drop\+At} (int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classMap_aed78a36731e9f464b861b51b9b9127c3}\label{classMap_aed78a36731e9f464b861b51b9b9127c3}} 
+void {\bfseries remove\+Player} (int x, int y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classMap_ad346500ca54e803cb03a5a0547ea1d02}\label{classMap_ad346500ca54e803cb03a5a0547ea1d02}} 
+bool {\bfseries force\+Door\+Status\+Change} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a7666eaee0a3dde5625a18192de537a99}\label{classMap_a7666eaee0a3dde5625a18192de537a99}} 
+void {\bfseries set\+Respawn\+Points} (std\+::vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $>$ resp\+Points)
+\item 
+\mbox{\Hypertarget{classMap_aec2e00f136dabb9ec314df738eaa8db4}\label{classMap_aec2e00f136dabb9ec314df738eaa8db4}} 
+void {\bfseries apply\+Damage\+On\+Radius\+From} (int damage, int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+\mbox{\Hypertarget{classMap_a61220c03eec69390011083695e5486bf}\label{classMap_a61220c03eec69390011083695e5486bf}} 
+bool {\bfseries move\+To} (double fromX, double fromY, double x, double y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classMap_af02c51c8805b157da852306ce043eaeb}\label{classMap_af02c51c8805b157da852306ce043eaeb}} 
+bool {\bfseries within\+Map} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_ae4f6f4273e0c93c4fefbe007ee80a0e4}\label{classMap_ae4f6f4273e0c93c4fefbe007ee80a0e4}} 
+bool {\bfseries move\+To} (double fromX, double fromY, double x, double y)
+\item 
+\mbox{\Hypertarget{classMap_af3eb4f177e7057de928dfdf615de5a95}\label{classMap_af3eb4f177e7057de928dfdf615de5a95}} 
+void {\bfseries verify\+Coordinate\+Does\+Not\+Surpass\+Map\+Limits} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMap_a4b7974dc23e6aa65357af189484db06a}\label{classMap_a4b7974dc23e6aa65357af189484db06a}} 
+void {\bfseries add\+Player} (int x, int y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classMap_a01c002f01ec804d0f9819ed9ff88f7f3}\label{classMap_a01c002f01ec804d0f9819ed9ff88f7f3}} 
+std\+::tuple$<$ double, double $>$ {\bfseries handle\+Respawn} ()
+\item 
+\mbox{\Hypertarget{classMap_a9e3658e0f5993a4a1c5c7860f4aad52c}\label{classMap_a9e3658e0f5993a4a1c5c7860f4aad52c}} 
+std\+::tuple$<$ int, int $>$ {\bfseries move\+Door} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classMap_a25eec989aca60894812d551ce342b921}\label{classMap_a25eec989aca60894812d551ce342b921}} 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ {\bfseries trace\+Attack\+From} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$attacker, int range)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMap_a415d37cb5a0fcb2fc378c4d1e8f0da3a}\label{classMap_a415d37cb5a0fcb2fc378c4d1e8f0da3a}} 
+static unsigned int {\bfseries get\+And\+Increase\+By\+One\+Next\+Unique\+Item\+Id} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMap_af4b33d6793ef35c666a1f0fd3f1b8288}\label{classMap_af4b33d6793ef35c666a1f0fd3f1b8288}} 
+\mbox{\hyperlink{classDoorTile}{Door\+Tile}} {\bfseries doors} \mbox{[}25\mbox{]}\mbox{[}25\mbox{]}
+\item 
+\mbox{\Hypertarget{classMap_a4c29b9198025062730c467e266a8c218}\label{classMap_a4c29b9198025062730c467e266a8c218}} 
+int $\ast$ {\bfseries matrix}
+\item 
+\mbox{\Hypertarget{classMap_abe434c559d9f35b9c4f9b5bd32d0b674}\label{classMap_abe434c559d9f35b9c4f9b5bd32d0b674}} 
+int {\bfseries dimx}
+\item 
+\mbox{\Hypertarget{classMap_af933575f1fe003fe3193a6b1327a0e97}\label{classMap_af933575f1fe003fe3193a6b1327a0e97}} 
+int {\bfseries dimy}
+\item 
+\mbox{\Hypertarget{classMap_ae32c24012ee3bfa8c9ce00f3dd794a44}\label{classMap_ae32c24012ee3bfa8c9ce00f3dd794a44}} 
+\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \& {\bfseries loader}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+common/includes/\+Map/Map.\+h\item 
+server/includes/\+Model/\+Map/Map.\+h\item 
+common/src/\+Map/Map.\+cpp\item 
+server/src/\+Model/\+Map/Map.\+cpp\end{DoxyCompactItemize}

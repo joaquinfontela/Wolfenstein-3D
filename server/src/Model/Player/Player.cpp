@@ -40,6 +40,8 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
   this->planeX = 0;
   this->shooting = false;
   this->isAdmin = false;
+  this->kills = 0;
+  this->shotsFired = 0;
 
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
@@ -74,6 +76,9 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(
       weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+
+  this->kills = 0;
+  this->shotsFired = 0;
   this->currentWeapon = weapons.at(1);
 }
 
@@ -163,6 +168,14 @@ int Player::takeDamage(unsigned int damage,
 
 void Player::setNotifiable(bool status){
   this->hasToBeNotified = status;
+}
+
+int Player::getKills(){
+  return this->kills;
+}
+
+int Player::getShotsFired(){
+  return this->shotsFired;
 }
 
 void Player::fillPlayerData(PlayerData& data) {
@@ -266,8 +279,10 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
     att = int((att / sqrt(this->calculateDistanceTo(receiver)))) % 10;
     receiverHealth = receiver->takeDamage(att, notis);
 
-    if((receiverHealth == 0) || (receiverHealth == -1))
+    if((receiverHealth == 0) || (receiverHealth == -1)){
       this->addPoints(POINTS_PER_KILL);
+      this->kills += 1;
+    }
   }
 }
 
