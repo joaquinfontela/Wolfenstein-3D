@@ -1,23 +1,23 @@
 #include "../../../includes/Model/Game/Game.h"
 
+#include <limits.h>
 #include <math.h>
 #include <time.h>
-#include <limits.h>
 
-#include <functional>
 #include <algorithm>
-#include <iterator>
+#include <functional>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <tuple>
 
-#include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
-#include "../../../includes/Control/Notification/PlayerDropItem.h"
-#include "../../../includes/Control/Notification/ScoreBoard.h"
 #include "../../../includes/Control/Notification/EndMatchNotif.h"
+#include "../../../includes/Control/Notification/PlayerDropItem.h"
+#include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../includes/Control/Notification/ScoreBoard.h"
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
-#include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 #include "../../../includes/Control/UpdatableEvent/EndMatch.h"
+#include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Player/Player.h"
 
@@ -35,8 +35,7 @@ Game::Game(std::string mapFile, std::string configFile)
             << "s." << std::endl;
 }
 
-void Game::setShooting(int playerID, bool state){
-
+void Game::setShooting(int playerID, bool state) {
   this->players[playerID]->setShooting(state);
 }
 
@@ -45,8 +44,7 @@ void Game::addPlayer(int playerID, WaitingQueue<Notification*>& notis) {
 
   this->players[playerID] = newPlayer;
 
-  if(this->players.size() == 1)
-    newPlayer->setAdmin();
+  if (this->players.size() == 1) newPlayer->setAdmin();
 
   this->sendGameStatus(notis);
 }
@@ -59,19 +57,17 @@ void Game::playerSwitchWeapon(int playerID, int weaponPos) {
   this->players[playerID]->equipWeapon(weaponPos);
 }
 
-void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {
+void Game::playerShoot(int playerID, WaitingQueue<Notification*>& notis) {}
 
-}
-
-void Game::generateRadiusDamage(int x, int y, WaitingQueue<Notification*>& notif){
-
-  int damage = (rand() + 1 ) % 10;
+void Game::generateRadiusDamage(int x, int y,
+                                WaitingQueue<Notification*>& notif) {
+  int damage = (rand() + 1) % 10;
   this->map->applyDamageOnRadiusFrom(damage, x, y, notif);
 }
 
-bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY, WaitingQueue<Notification*>& notif){
-
-  if(!map->moveTo(x, y, newX, newY)){
+bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY,
+                                 WaitingQueue<Notification*>& notif) {
+  if (!map->moveTo(x, y, newX, newY)) {
     this->generateRadiusDamage(int(newX), int(newY), notif);
     return true;
   }
@@ -102,16 +98,17 @@ std::tuple<int, int> Game::moveDoor(int playerID) {
   int x, y;
   std::tie(x, y) = this->map->moveDoor(this->players[playerID]);
 
-  if (x >= 0){
-    this->updatables.push_back(new ChangeDoorStatus(x, y, 0.5f, false)); // Hace la puerta atravesable tras 0.5 segundos.
-    this->updatables.push_back(new ChangeDoorStatus(x, y, 8.0f, true));  // Cierra la puerta tras 8 segundos.
+  if (x >= 0) {
+    this->updatables.push_back(new ChangeDoorStatus(
+        x, y, 0.5f, false));  // Hace la puerta atravesable tras 0.5 segundos.
+    this->updatables.push_back(new ChangeDoorStatus(
+        x, y, 8.0f, true));  // Cierra la puerta tras 8 segundos.
   }
-
 
   return std::make_tuple(x, y);
 }
 
-void Game::sendGameStatus(WaitingQueue<Notification*>& notis){
+void Game::sendGameStatus(WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
@@ -173,7 +170,7 @@ void Game::start(int playerID) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
   if (it != this->players.end()) {
-    if(it->second->hasAdmin()){
+    if (it->second->hasAdmin()) {
       started = true;
       EndMatch* endTimer = new EndMatch();
       this->updatables.push_back(endTimer);
@@ -181,9 +178,7 @@ void Game::start(int playerID) {
   }
 }
 
-bool Game::hasStarted(){
-  return started;
-}
+bool Game::hasStarted() { return started; }
 
 void Game::end(WaitingQueue<Notification*>& queue) {
   started = false;
@@ -194,7 +189,9 @@ void Game::end(WaitingQueue<Notification*>& queue) {
     playersvect.push_back(it->second);
   }
   std::sort(playersvect.begin(), playersvect.end(),
-  [](Player* a, Player* b) -> bool { return a->getScore() < b->getScore(); });
+            [](Player* a, Player* b) -> bool {
+              return a->getScore() >= b->getScore();
+            });
 
   std::vector<uint32_t> scores;
   std::vector<uint32_t> ids;
@@ -205,11 +202,17 @@ void Game::end(WaitingQueue<Notification*>& queue) {
 
   ScoreBoard* scoreboard = new ScoreBoard(this->players.size(), ids, scores);
 
-  std::sort(playersvect.begin(), playersvect.end(), [](Player* a, Player* b) -> bool { return a->getKills() < b->getKills();});
+  std::sort(playersvect.begin(), playersvect.end(),
+            [](Player* a, Player* b) -> bool {
+              return a->getKills() < b->getKills();
+            });
+
   std::vector<uint32_t> kills;
   ids.clear();
   for (auto p : playersvect) {
-    kills.push_back(p->getScore());
+    std::cout << "[DEBUG] id:" << p->ID() << " kills: " << p->getKills()
+              << std::endl;
+    kills.push_back(p->getKills());
     ids.push_back(p->ID());
   }
 

@@ -1,15 +1,23 @@
 #include "../../includes/Match/Engine.h"
-#include "../../../common/includes/Socket/SocketException.h"
-#include <iostream>
-#include <time.h>
+
 #include <math.h>
+#include <time.h>
+
+#include <iostream>
+
+#include "../../../common/includes/Socket/SocketException.h"
 #define SECONDS_PER_TICK 0.033
 
-Engine::Engine(WaitingQueue<Command*>& commandQ, WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c, std::map<int, ClientCommunication*>& play, Game& game)
-    : commandQueue(commandQ), notifications(notiQ), cont(c), players(play), thisGame(game) {}
+Engine::Engine(WaitingQueue<Command*>& commandQ,
+               WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c,
+               std::map<int, ClientCommunication*>& play, Game& game)
+    : commandQueue(commandQ),
+      notifications(notiQ),
+      cont(c),
+      players(play),
+      thisGame(game) {}
 
-
-void Engine::update(float timeElapsed){
+void Engine::update(float timeElapsed) {
   this->thisGame.update(timeElapsed, this->notifications);
 }
 
@@ -17,7 +25,7 @@ void Engine::run() {
   std::thread notificationThread(&Engine::sendNotifications, this);
   std::thread commandThread(&Engine::executeCommands, this);
 
-  int rate = 1000/30;
+  int rate = 1000 / 30;
 
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
@@ -29,7 +37,6 @@ void Engine::run() {
   int lost = 0;
 
   while (cont) {
-
     this->gameLock.lock();
     update(SECONDS_PER_TICK);
     this->gameLock.unlock();
@@ -39,7 +46,7 @@ void Engine::run() {
 
     rest = rate - ceil(diff.count());
 
-    if(rest < 0){
+    if (rest < 0) {
       behind -= rest;
       lost = rate + (behind - behind % rate);
       rest = rate - behind % rate;
@@ -49,21 +56,18 @@ void Engine::run() {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(rest));
     t1 += std::chrono::milliseconds(rate);
-
-
   }
-    commandThread.join();
-    notificationThread.join();
-    std::cout << "[ENGINE] Joined threads succesfully" << std::endl;
+  commandThread.join();
+  notificationThread.join();
+  std::cout << "[ENGINE] Joined threads succesfully" << std::endl;
 }
 
-void Engine::requestShutdown(){
+void Engine::requestShutdown() {
   commandQueue.requestShutdown();
   notifications.requestShutdown();
 }
 
-void Engine::executeCommands(){
-
+void Engine::executeCommands() {
   while (cont) {
     Command* newCommand = nullptr;
     newCommand = commandQueue.pop();
@@ -79,7 +83,7 @@ void Engine::sendNotifications() {
     Notification* newNotification = nullptr;
     newNotification = notifications.pop();
     if (newNotification == nullptr) continue;
-    //std::cout << "[ENGINE] Sending Notification" << std::endl;
+    // std::cout << "[ENGINE] Sending Notification" << std::endl;
     for (auto& it : players) {
       ClientCommunication* c = it.second;
       try {
@@ -90,6 +94,5 @@ void Engine::sendNotifications() {
     }
 
     delete newNotification;
-    std::cout<<"Succesfully deleted noti"<<std::endl;
   }
 }

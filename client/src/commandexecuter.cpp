@@ -227,23 +227,29 @@ void CommandExecuter::run() {
       } else if (opcode == ENDING_MATCH) {
         uint32_t numberOfPlayers;
         this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
-        uint32_t value1;
-        uint32_t value2;
         for (int i = 0; i < numberOfPlayers; i++) {
+          uint32_t value1;
+          uint32_t value2;
           this->socket.receive(&value1, sizeof(value1));
           this->socket.receive(&value2, sizeof(value2));
           this->scoreboard.pushScore(std::make_tuple(value1, value2));
         }
-        /*for (int i = 0; i < numberOfPlayers; i++) {
+        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+        for (int i = 0; i < numberOfPlayers; i++) {
+          uint32_t value1;
+          uint32_t value2;
           this->socket.receive(&value1, sizeof(value1));
           this->socket.receive(&value2, sizeof(value2));
           this->scoreboard.pushKills(std::make_tuple(value1, value2));
-        }
-        for (int i = 0; i < numberOfPlayers; i++) {
-          this->socket.receive(&value1, sizeof(value1));
-          this->socket.receive(&value2, sizeof(value2));
-          this->scoreboard.pushShotsfired(std::make_tuple(value1, value2));
-        }*/
+        } /*
+        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+         for (int i = 0; i < numberOfPlayers; i++) {
+           uint32_t value1;
+           uint32_t value2;
+           this->socket.receive(&value1, sizeof(value1));
+           this->socket.receive(&value2, sizeof(value2));
+           this->scoreboard.pushShotsfired(std::make_tuple(value1, value2));
+         }*/
         alive = false;
       }
     } catch (SocketException& e) {
