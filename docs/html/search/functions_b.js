@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['update_280',['update',['../classChangeDoorStatus.html#a489f28796f3bafda14add7445af427f3',1,'ChangeDoorStatus::update()'],['../classEndMatch.html#a70a44657273301450455976c6828057f',1,'EndMatch::update()'],['../classRocketMissile.html#ada193effceebfb7b0c88140f69928973',1,'RocketMissile::update()'],['../classUpdatable.html#ac0cf616bf3d192fff11549b8a87f3ac4',1,'Updatable::update()'],['../classEngine.html#ae2429b7d4865ca9b5d0c0411882c1699',1,'Engine::update()'],['../classGame.html#abba8664decbad577ff7fd2f293cf4cad',1,'Game::update(float timeElapsed, WaitingQueue&lt; Notification * &gt; &amp;notis)']]],
-  ['updateplayermovespeed_281',['updatePlayerMoveSpeed',['../classGame.html#a79fa84274f78b118ef458c6c7bd31379',1,'Game']]],
-  ['updateplayerrotationspeed_282',['updatePlayerRotationSpeed',['../classGame.html#aeef3f8acebe75d7cc020f6e3c9b9156f',1,'Game']]],
-  ['updatepositions_283',['updatePositions',['../classGame.html#a08cec820d054eaf33a931c3a4df38116',1,'Game']]]
+  ['notify_321',['notify',['../classChangeDoorStatus.html#a37a5fc09bbcd4d0179e36faed8e73e3a',1,'ChangeDoorStatus::notify()'],['../classEndMatch.html#ad0b838042dc25903623cfa5b0e5dcf0f',1,'EndMatch::notify()'],['../classRocketMissile.html#a8cf3a892fdf36bc15533540fa219cd5b',1,'RocketMissile::notify()'],['../classUpdatable.html#acd35a745388853cfb32d7459e0307625',1,'Updatable::notify()']]]
 ];

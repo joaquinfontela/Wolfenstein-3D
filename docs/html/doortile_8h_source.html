@@ -74,19 +74,24 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;clientprotocol.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classDoorTile.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDoorTile.html">DoorTile</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordtype">float</span> timer;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordtype">char</span> state;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">bool</span> isDoor;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> setDoor(<span class="keywordtype">bool</span> isDoor);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">void</span> changeState();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classDoorTile.html">DoorTile</a>() : isDoor(<span class="keyword">false</span>), state(CLOSED), timer(1) {}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> updateTimer(<span class="keywordtype">float</span> update);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DOORTILE_H_</span></div>
-<div class="ttc" id="aclassDoorTile_html"><div class="ttname"><a href="classDoorTile.html">DoorTile</a></div><div class="ttdef"><b>Definition:</b> doortile.h:6</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classDoorTile.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDoorTile.html">DoorTile</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classDoorTile.html#a17d7075d4b71d2c0609e4d99ac724e32">changeState</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classDoorTile.html#a2dc86c2c812041bc2f14fbaad0cc1a77">updateTimer</a>(<span class="keywordtype">float</span> update);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classDoorTile.html">DoorTile</a>() : isDoor(<span class="keyword">false</span>), state(CLOSED), <a class="code" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">timer</a>(1) {}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">char</span> state;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">bool</span> isDoor;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">   34</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">timer</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DOORTILE_H_</span></div>
+<div class="ttc" id="aclassDoorTile_html"><div class="ttname"><a href="classDoorTile.html">DoorTile</a></div><div class="ttdoc">Represents a door state.</div><div class="ttdef"><b>Definition:</b> doortile.h:10</div></div>
+<div class="ttc" id="aclassDoorTile_html_a17d7075d4b71d2c0609e4d99ac724e32"><div class="ttname"><a href="classDoorTile.html#a17d7075d4b71d2c0609e4d99ac724e32">DoorTile::changeState</a></div><div class="ttdeci">void changeState()</div><div class="ttdoc">Sets the doortile state to CLOSING if the door is OPEN or OPENING. Sets the doortile state to OPENING...</div><div class="ttdef"><b>Definition:</b> doortile.cpp:22</div></div>
+<div class="ttc" id="aclassDoorTile_html_a2dc86c2c812041bc2f14fbaad0cc1a77"><div class="ttname"><a href="classDoorTile.html#a2dc86c2c812041bc2f14fbaad0cc1a77">DoorTile::updateTimer</a></div><div class="ttdeci">void updateTimer(float update)</div><div class="ttdoc">Updates the timer and door state if needed.</div><div class="ttdef"><b>Definition:</b> doortile.cpp:5</div></div>
+<div class="ttc" id="aclassDoorTile_html_afaf676b75329f18cd5a9f142de8c277c"><div class="ttname"><a href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">DoorTile::timer</a></div><div class="ttdeci">float timer</div><div class="ttdoc">Value that lies between 0 (fully opened) and 1 (fully closed).</div><div class="ttdef"><b>Definition:</b> doortile.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['movedoor_266',['moveDoor',['../classGame.html#a94d61d9fb3bbefee092d8599233c141e',1,'Game']]],
-  ['moverocketmissilefrom_267',['moveRocketMissileFrom',['../classGame.html#a1ec486bf11f4ccae67cd9d369baeeefd',1,'Game']]]
+  ['hasended_313',['hasEnded',['../classMatch.html#aa806156a3b9e75ec26756eb42cbed9e5',1,'Match']]],
+  ['hasid_314',['hasID',['../classMatch.html#a1eb10d2d83b093b4d6332a26d4c8c9f1',1,'Match']]],
+  ['hasstarted_315',['hasStarted',['../classGame.html#a382ac135c4eea51254ec2d0d2b2da61d',1,'Game']]]
 ];

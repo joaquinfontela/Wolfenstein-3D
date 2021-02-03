@@ -1,35 +1,161 @@
 \hypertarget{classTextureManager}{}\doxysection{Texture\+Manager Class Reference}
 \label{classTextureManager}\index{TextureManager@{TextureManager}}
+
+
+Class used to organize the textures and stop duplicates from existing.  
+
+
+
+
+{\ttfamily \#include $<$texturemanager.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTextureManager_a02ae1a96c90e030ff048b039fef94751}\label{classTextureManager_a02ae1a96c90e030ff048b039fef94751}} 
-{\bfseries Texture\+Manager} (\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window)
-\item 
+\mbox{\Hypertarget{classTextureManager_a001d6d74674961db79987e3222682576}\label{classTextureManager_a001d6d74674961db79987e3222682576}} 
+\mbox{\hyperlink{classTextureManager_a001d6d74674961db79987e3222682576}{$\sim$\+Texture\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Calls the garbage collector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTextureManager_a02ae1a96c90e030ff048b039fef94751}{Texture\+Manager}} (\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Construct a new Texture Manager object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classTextureManager_a859dd5bc435ebd53938e7c966f85e69b}\label{classTextureManager_a859dd5bc435ebd53938e7c966f85e69b}} 
-void {\bfseries load\+Textures} ()
-\item 
-\mbox{\Hypertarget{classTextureManager_a5fe6a7509f48a6d816f917c7cd97a3a5}\label{classTextureManager_a5fe6a7509f48a6d816f917c7cd97a3a5}} 
-void {\bfseries render} (int id, const \mbox{\hyperlink{classArea}{Area}} \&src\+Area, const \mbox{\hyperlink{classArea}{Area}} \&dest\+Area)
-\item 
-\mbox{\Hypertarget{classTextureManager_a5824097ecab747d82f93403fb6a47123}\label{classTextureManager_a5824097ecab747d82f93403fb6a47123}} 
-void {\bfseries render\+All} (int id, const \mbox{\hyperlink{classArea}{Area}} \&dest\+Area)
-\item 
-\mbox{\Hypertarget{classTextureManager_ad8dd7989988ab446b7e90e50b15b72c8}\label{classTextureManager_ad8dd7989988ab446b7e90e50b15b72c8}} 
-void {\bfseries load\+Texture} (int id, \mbox{\hyperlink{classSdlTexture}{Sdl\+Texture}} $\ast$texture)
-\item 
-\mbox{\Hypertarget{classTextureManager_afdb9f26c51133d6259c5c44af3483d9e}\label{classTextureManager_afdb9f26c51133d6259c5c44af3483d9e}} 
-void {\bfseries get\+Window\+Size} (int $\ast$w, int $\ast$h)
-\item 
-\mbox{\Hypertarget{classTextureManager_a06e122900d263e41df1040095252ba6b}\label{classTextureManager_a06e122900d263e41df1040095252ba6b}} 
-void {\bfseries get\+Texture\+Size\+With\+Id} (int id, int $\ast$w, int $\ast$h)
-\item 
-\mbox{\Hypertarget{classTextureManager_af31194e26770a27f67a0641333737df7}\label{classTextureManager_af31194e26770a27f67a0641333737df7}} 
-void {\bfseries render\+Text} (const char $\ast$text, SDL\+\_\+\+Rect $\ast$rect)
-\item 
+void \mbox{\hyperlink{classTextureManager_a859dd5bc435ebd53938e7c966f85e69b}{load\+Textures}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the textures needed for the game to be played. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTextureManager_a5fe6a7509f48a6d816f917c7cd97a3a5}{render}} (int id, const \mbox{\hyperlink{classArea}{Area}} \&src\+Area, const \mbox{\hyperlink{classArea}{Area}} \&dest\+Area)
+\begin{DoxyCompactList}\small\item\em Renders the texture, from the given id, to the screen. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTextureManager_a5824097ecab747d82f93403fb6a47123}{render\+All}} (int id, const \mbox{\hyperlink{classArea}{Area}} \&dest\+Area)
+\begin{DoxyCompactList}\small\item\em Renders the whole texture, from the given id, to the screen. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTextureManager_afdb9f26c51133d6259c5c44af3483d9e}{get\+Window\+Size}} (int $\ast$w, int $\ast$h)
+\begin{DoxyCompactList}\small\item\em Stores the window size. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTextureManager_a06e122900d263e41df1040095252ba6b}{get\+Texture\+Size\+With\+Id}} (int id, int $\ast$w, int $\ast$h)
+\begin{DoxyCompactList}\small\item\em Stores the texture (from the given id) size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTextureManager_af31194e26770a27f67a0641333737df7}{render\+Text}} (const char $\ast$text, SDL\+\_\+\+Rect $\ast$rect)
+\begin{DoxyCompactList}\small\item\em Renders the given text on the given area. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$ \mbox{\hyperlink{classTextureManager_a8d42728174a3238c367cfc8c3b9ae47f}{access\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to organize the textures and stop duplicates from existing. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTextureManager_a02ae1a96c90e030ff048b039fef94751}\label{classTextureManager_a02ae1a96c90e030ff048b039fef94751}} 
+\index{TextureManager@{TextureManager}!TextureManager@{TextureManager}}
+\index{TextureManager@{TextureManager}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{TextureManager()}{TextureManager()}}
+{\footnotesize\ttfamily Texture\+Manager\+::\+Texture\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Texture Manager object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the window. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classTextureManager_a8d42728174a3238c367cfc8c3b9ae47f}\label{classTextureManager_a8d42728174a3238c367cfc8c3b9ae47f}} 
-\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$ {\bfseries access\+Window} ()
-\end{DoxyCompactItemize}
+\index{TextureManager@{TextureManager}!accessWindow@{accessWindow}}
+\index{accessWindow@{accessWindow}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{accessWindow()}{accessWindow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$ Texture\+Manager\+::access\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}}. 
+
+\begin{DoxyReturn}{Returns}
+Sdl\+Window$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTextureManager_a06e122900d263e41df1040095252ba6b}\label{classTextureManager_a06e122900d263e41df1040095252ba6b}} 
+\index{TextureManager@{TextureManager}!getTextureSizeWithId@{getTextureSizeWithId}}
+\index{getTextureSizeWithId@{getTextureSizeWithId}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{getTextureSizeWithId()}{getTextureSizeWithId()}}
+{\footnotesize\ttfamily void Texture\+Manager\+::get\+Texture\+Size\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int $\ast$}]{w,  }\item[{int $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Stores the texture (from the given id) size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer storing the width in pixels. \\
+\hline
+{\em h} & Pointer storing the height in pixels. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTextureManager_afdb9f26c51133d6259c5c44af3483d9e}\label{classTextureManager_afdb9f26c51133d6259c5c44af3483d9e}} 
+\index{TextureManager@{TextureManager}!getWindowSize@{getWindowSize}}
+\index{getWindowSize@{getWindowSize}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{getWindowSize()}{getWindowSize()}}
+{\footnotesize\ttfamily void Texture\+Manager\+::get\+Window\+Size (\begin{DoxyParamCaption}\item[{int $\ast$}]{w,  }\item[{int $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Stores the window size. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer storing the width in pixels. \\
+\hline
+{\em h} & Pointer storing the height in pixels. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTextureManager_a5fe6a7509f48a6d816f917c7cd97a3a5}\label{classTextureManager_a5fe6a7509f48a6d816f917c7cd97a3a5}} 
+\index{TextureManager@{TextureManager}!render@{render}}
+\index{render@{render}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Texture\+Manager\+::render (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{src\+Area,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{dest\+Area }\end{DoxyParamCaption})}
+
+
+
+Renders the texture, from the given id, to the screen. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Texture id. \\
+\hline
+{\em src\+Area} & \mbox{\hyperlink{classArea}{Area}} to crop from. \\
+\hline
+{\em dest\+Area} & Screen drawing area. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTextureManager_a5824097ecab747d82f93403fb6a47123}\label{classTextureManager_a5824097ecab747d82f93403fb6a47123}} 
+\index{TextureManager@{TextureManager}!renderAll@{renderAll}}
+\index{renderAll@{renderAll}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{renderAll()}{renderAll()}}
+{\footnotesize\ttfamily void Texture\+Manager\+::render\+All (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{dest\+Area }\end{DoxyParamCaption})}
+
+
+
+Renders the whole texture, from the given id, to the screen. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Texture id. \\
+\hline
+{\em dest\+Area} & Screen drawing area. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTextureManager_af31194e26770a27f67a0641333737df7}\label{classTextureManager_af31194e26770a27f67a0641333737df7}} 
+\index{TextureManager@{TextureManager}!renderText@{renderText}}
+\index{renderText@{renderText}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{renderText()}{renderText()}}
+{\footnotesize\ttfamily void Texture\+Manager\+::render\+Text (\begin{DoxyParamCaption}\item[{const char $\ast$}]{text,  }\item[{SDL\+\_\+\+Rect $\ast$}]{rect }\end{DoxyParamCaption})}
+
+
+
+Renders the given text on the given area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to render. \\
+\hline
+{\em rect} & Rendering area. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

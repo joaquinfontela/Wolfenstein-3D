@@ -68,31 +68,191 @@ $(function() {
 <div class="title">AudioManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class used to organize the audio files and stop duplicates from existing.  
+ <a href="classAudioManager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="audiomanager_8h_source.html">audiomanager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0785dd15de92ca12f6e704fe0d79781a"><td class="memItemLeft" align="right" valign="top"><a id="a0785dd15de92ca12f6e704fe0d79781a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playWithId</b> (int id)</td></tr>
+<tr class="memitem:ad94dc46723c6d7cf8c81fc3772a842aa"><td class="memItemLeft" align="right" valign="top"><a id="ad94dc46723c6d7cf8c81fc3772a842aa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#ad94dc46723c6d7cf8c81fc3772a842aa">~AudioManager</a> ()</td></tr>
+<tr class="memdesc:ad94dc46723c6d7cf8c81fc3772a842aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the garbage collector. <br /></td></tr>
+<tr class="separator:ad94dc46723c6d7cf8c81fc3772a842aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59d8605c1d706e7bab47d4e8f900d09"><td class="memItemLeft" align="right" valign="top"><a id="ae59d8605c1d706e7bab47d4e8f900d09"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#ae59d8605c1d706e7bab47d4e8f900d09">AudioManager</a> ()</td></tr>
+<tr class="memdesc:ae59d8605c1d706e7bab47d4e8f900d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classAudio.html">Audio</a> Manager object, initializing every audio instance. Throws an Exception if the process fails. <br /></td></tr>
+<tr class="separator:ae59d8605c1d706e7bab47d4e8f900d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0785dd15de92ca12f6e704fe0d79781a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#a0785dd15de92ca12f6e704fe0d79781a">playWithId</a> (int id)</td></tr>
+<tr class="memdesc:a0785dd15de92ca12f6e704fe0d79781a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the choosen audio track. Throws an Exception if it fails.  <a href="classAudioManager.html#a0785dd15de92ca12f6e704fe0d79781a">More...</a><br /></td></tr>
 <tr class="separator:a0785dd15de92ca12f6e704fe0d79781a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada9ff11a9d2552e5131788f7c586ccd7"><td class="memItemLeft" align="right" valign="top"><a id="ada9ff11a9d2552e5131788f7c586ccd7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playOnMaxVolumeWithId</b> (int id)</td></tr>
+<tr class="memitem:ada9ff11a9d2552e5131788f7c586ccd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#ada9ff11a9d2552e5131788f7c586ccd7">playOnMaxVolumeWithId</a> (int id)</td></tr>
+<tr class="memdesc:ada9ff11a9d2552e5131788f7c586ccd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the choosen audio track on max volume. Throws an Exception if it fails.  <a href="classAudioManager.html#ada9ff11a9d2552e5131788f7c586ccd7">More...</a><br /></td></tr>
 <tr class="separator:ada9ff11a9d2552e5131788f7c586ccd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c3514e66043b028e320bee4ec5fdd6e"><td class="memItemLeft" align="right" valign="top"><a id="a4c3514e66043b028e320bee4ec5fdd6e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playOnVariableVolumeWithId</b> (int id, double distance)</td></tr>
+<tr class="memitem:a4c3514e66043b028e320bee4ec5fdd6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#a4c3514e66043b028e320bee4ec5fdd6e">playOnVariableVolumeWithId</a> (int id, double distance)</td></tr>
+<tr class="memdesc:a4c3514e66043b028e320bee4ec5fdd6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails.  <a href="classAudioManager.html#a4c3514e66043b028e320bee4ec5fdd6e">More...</a><br /></td></tr>
 <tr class="separator:a4c3514e66043b028e320bee4ec5fdd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82caf0300f4a160931be15394416a0d5"><td class="memItemLeft" align="right" valign="top"><a id="a82caf0300f4a160931be15394416a0d5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playOrStopOnVariableVolumeWithId</b> (int id, double distance)</td></tr>
+<tr class="memitem:a82caf0300f4a160931be15394416a0d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#a82caf0300f4a160931be15394416a0d5">playOrStopOnVariableVolumeWithId</a> (int id, double distance)</td></tr>
+<tr class="memdesc:a82caf0300f4a160931be15394416a0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays or stops the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails.  <a href="classAudioManager.html#a82caf0300f4a160931be15394416a0d5">More...</a><br /></td></tr>
 <tr class="separator:a82caf0300f4a160931be15394416a0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae18b66638d7d6e5641ab0ffb129e6fa4"><td class="memItemLeft" align="right" valign="top"><a id="ae18b66638d7d6e5641ab0ffb129e6fa4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stopWithId</b> (int id)</td></tr>
+<tr class="memitem:ae18b66638d7d6e5641ab0ffb129e6fa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioManager.html#ae18b66638d7d6e5641ab0ffb129e6fa4">stopWithId</a> (int id)</td></tr>
+<tr class="memdesc:ae18b66638d7d6e5641ab0ffb129e6fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the choosen audio track. Throws an Exception if it fails.  <a href="classAudioManager.html#ae18b66638d7d6e5641ab0ffb129e6fa4">More...</a><br /></td></tr>
 <tr class="separator:ae18b66638d7d6e5641ab0ffb129e6fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb9e427075e872a677b2759eb9bc5ec5"><td class="memItemLeft" align="right" valign="top"><a id="acb9e427075e872a677b2759eb9bc5ec5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadTrack</b> (int id, <a class="el" href="classAudio.html">Audio</a> *audio)</td></tr>
-<tr class="separator:acb9e427075e872a677b2759eb9bc5ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb9502be111e802f90ce0b451f910912"><td class="memItemLeft" align="right" valign="top"><a id="abb9502be111e802f90ce0b451f910912"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>loadAndCheckTrack</b> (int id, <a class="el" href="classAudio.html">Audio</a> *audio)</td></tr>
-<tr class="separator:abb9502be111e802f90ce0b451f910912"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class used to organize the audio files and stop duplicates from existing. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ada9ff11a9d2552e5131788f7c586ccd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9ff11a9d2552e5131788f7c586ccd7">&#9670;&nbsp;</a></span>playOnMaxVolumeWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager::playOnMaxVolumeWithId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays the choosen audio track on max volume. Throws an Exception if it fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of the sound to be played. <a class="el" href="classKey.html">Key</a> of the sounds dict. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c3514e66043b028e320bee4ec5fdd6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3514e66043b028e320bee4ec5fdd6e">&#9670;&nbsp;</a></span>playOnVariableVolumeWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager::playOnVariableVolumeWithId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of the sound to be played. <a class="el" href="classKey.html">Key</a> of the sounds dict. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82caf0300f4a160931be15394416a0d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82caf0300f4a160931be15394416a0d5">&#9670;&nbsp;</a></span>playOrStopOnVariableVolumeWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager::playOrStopOnVariableVolumeWithId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays or stops the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of the sound to be played. <a class="el" href="classKey.html">Key</a> of the sounds dict. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0785dd15de92ca12f6e704fe0d79781a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0785dd15de92ca12f6e704fe0d79781a">&#9670;&nbsp;</a></span>playWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager::playWithId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays the choosen audio track. Throws an Exception if it fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of the sound to be played. <a class="el" href="classKey.html">Key</a> of the sounds dict. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae18b66638d7d6e5641ab0ffb129e6fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18b66638d7d6e5641ab0ffb129e6fa4">&#9670;&nbsp;</a></span>stopWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager::stopWithId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops the choosen audio track. Throws an Exception if it fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of the sound to be played. <a class="el" href="classKey.html">Key</a> of the sounds dict. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="audiomanager_8h_source.html">audiomanager.h</a></li>
 <li>client/src/audiomanager.cpp</li>

@@ -73,28 +73,44 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define AUDIOMANAGER_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;audio.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classAudioManager.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAudioManager.html">AudioManager</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  ~<a class="code" href="classAudioManager.html">AudioManager</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="classAudioManager.html">AudioManager</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> playWithId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">void</span> playOnMaxVolumeWithId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> playOnVariableVolumeWithId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> distance);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> playOrStopOnVariableVolumeWithId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> distance);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> stopWithId(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> loadTrack(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <a class="code" href="classAudio.html">Audio</a>* audio);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">bool</span> loadAndCheckTrack(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <a class="code" href="classAudio.html">Audio</a>* audio);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">bool</span> loadAndCheckTrack(<span class="keywordtype">int</span> i, <span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> garbageCollector();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::map&lt;int,Audio*&gt; audiotracks;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AUDIOMANAGER_H_</span></div>
-<div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdef"><b>Definition:</b> audiomanager.h:7</div></div>
-<div class="ttc" id="aclassAudio_html"><div class="ttname"><a href="classAudio.html">Audio</a></div><div class="ttdef"><b>Definition:</b> audio.h:13</div></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;audio.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classAudioManager.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAudioManager.html">AudioManager</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classAudioManager.html#ad94dc46723c6d7cf8c81fc3772a842aa">~AudioManager</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classAudioManager.html#ae59d8605c1d706e7bab47d4e8f900d09">AudioManager</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAudioManager.html#a0785dd15de92ca12f6e704fe0d79781a">playWithId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAudioManager.html#ada9ff11a9d2552e5131788f7c586ccd7">playOnMaxVolumeWithId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAudioManager.html#a4c3514e66043b028e320bee4ec5fdd6e">playOnVariableVolumeWithId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> distance);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAudioManager.html#a82caf0300f4a160931be15394416a0d5">playOrStopOnVariableVolumeWithId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> distance);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classAudioManager.html#ae18b66638d7d6e5641ab0ffb129e6fa4">stopWithId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">bool</span> loadAndCheckTrack(<span class="keywordtype">int</span> i, <span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordtype">bool</span> loadTrack(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <a class="code" href="classAudio.html">Audio</a>* audio);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">void</span> garbageCollector();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  std::map&lt;int, Audio*&gt; audiotracks;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AUDIOMANAGER_H_</span></div>
+<div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdoc">Class used to organize the audio files and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> audiomanager.h:13</div></div>
+<div class="ttc" id="aclassAudioManager_html_a0785dd15de92ca12f6e704fe0d79781a"><div class="ttname"><a href="classAudioManager.html#a0785dd15de92ca12f6e704fe0d79781a">AudioManager::playWithId</a></div><div class="ttdeci">void playWithId(int id)</div><div class="ttdoc">Plays the choosen audio track. Throws an Exception if it fails.</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:99</div></div>
+<div class="ttc" id="aclassAudioManager_html_a4c3514e66043b028e320bee4ec5fdd6e"><div class="ttname"><a href="classAudioManager.html#a4c3514e66043b028e320bee4ec5fdd6e">AudioManager::playOnVariableVolumeWithId</a></div><div class="ttdeci">void playOnVariableVolumeWithId(int id, double distance)</div><div class="ttdoc">Plays the choosen audio track on variable volume. The greater the distance from the sound emitting en...</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:15</div></div>
+<div class="ttc" id="aclassAudioManager_html_a82caf0300f4a160931be15394416a0d5"><div class="ttname"><a href="classAudioManager.html#a82caf0300f4a160931be15394416a0d5">AudioManager::playOrStopOnVariableVolumeWithId</a></div><div class="ttdeci">void playOrStopOnVariableVolumeWithId(int id, double distance)</div><div class="ttdoc">Plays or stops the choosen audio track on variable volume. The greater the distance from the sound em...</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:26</div></div>
+<div class="ttc" id="aclassAudioManager_html_ad94dc46723c6d7cf8c81fc3772a842aa"><div class="ttname"><a href="classAudioManager.html#ad94dc46723c6d7cf8c81fc3772a842aa">AudioManager::~AudioManager</a></div><div class="ttdeci">~AudioManager()</div><div class="ttdoc">Calls the garbage collector.</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:37</div></div>
+<div class="ttc" id="aclassAudioManager_html_ada9ff11a9d2552e5131788f7c586ccd7"><div class="ttname"><a href="classAudioManager.html#ada9ff11a9d2552e5131788f7c586ccd7">AudioManager::playOnMaxVolumeWithId</a></div><div class="ttdeci">void playOnMaxVolumeWithId(int id)</div><div class="ttdoc">Plays the choosen audio track on max volume. Throws an Exception if it fails.</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:107</div></div>
+<div class="ttc" id="aclassAudioManager_html_ae18b66638d7d6e5641ab0ffb129e6fa4"><div class="ttname"><a href="classAudioManager.html#ae18b66638d7d6e5641ab0ffb129e6fa4">AudioManager::stopWithId</a></div><div class="ttdeci">void stopWithId(int id)</div><div class="ttdoc">Stops the choosen audio track. Throws an Exception if it fails.</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:81</div></div>
+<div class="ttc" id="aclassAudioManager_html_ae59d8605c1d706e7bab47d4e8f900d09"><div class="ttname"><a href="classAudioManager.html#ae59d8605c1d706e7bab47d4e8f900d09">AudioManager::AudioManager</a></div><div class="ttdeci">AudioManager()</div><div class="ttdoc">Construct a new Audio Manager object, initializing every audio instance. Throws an Exception if the p...</div><div class="ttdef"><b>Definition:</b> audiomanager.cpp:53</div></div>
+<div class="ttc" id="aclassAudio_html"><div class="ttname"><a href="classAudio.html">Audio</a></div><div class="ttdef"><b>Definition:</b> audio.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

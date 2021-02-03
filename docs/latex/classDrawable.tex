@@ -12,15 +12,12 @@ Inheritance diagram for Drawable\+:\begin{figure}[H]
 \mbox{\Hypertarget{classDrawable_a2b71abdf279cf6a68cd1138682e7c008}\label{classDrawable_a2b71abdf279cf6a68cd1138682e7c008}} 
 {\bfseries Drawable} (double x, double y, int id, int uniqueid=0, double dist=INT\+\_\+\+MAX)
 \item 
-\mbox{\Hypertarget{classDrawable_a6e3564e30a2df5ec439085a825ca678e}\label{classDrawable_a6e3564e30a2df5ec439085a825ca678e}} 
-virtual void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff)
-\item 
-\mbox{\Hypertarget{classDrawable_ad667929f851dc28509919de414af2f6d}\label{classDrawable_ad667929f851dc28509919de414af2f6d}} 
-bool {\bfseries operator$<$} (\mbox{\hyperlink{classDrawable}{Drawable}} \&other)
-\item 
-\mbox{\Hypertarget{classDrawable_a0f301c945fe383553ca472eaed26d8e9}\label{classDrawable_a0f301c945fe383553ca472eaed26d8e9}} 
-bool {\bfseries is\+Contained} (double $\ast$distance\+Buffer, double posX, double posY, double dirX, double dirY, double planeX, double planeY, int width, int height)
-\item 
+virtual void \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca678e}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff)
+\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDrawable_ad667929f851dc28509919de414af2f6d}{operator$<$}} (\mbox{\hyperlink{classDrawable}{Drawable}} \&other)
+\begin{DoxyCompactList}\small\item\em Compares objects depending on the distance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDrawable_a0f301c945fe383553ca472eaed26d8e9}{is\+Contained}} (double $\ast$distance\+Buffer, double posX, double posY, double dirX, double dirY, double planeX, double planeY, int width, int height)
+\begin{DoxyCompactList}\small\item\em Verifies if the drawable object is visible within the players field of view. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classDrawable_a8725c4a15f4c982ec0b7495d40d34aea}\label{classDrawable_a8725c4a15f4c982ec0b7495d40d34aea}} 
 void {\bfseries load\+Distance\+With\+Coords} (int px, int py)
 \item 
@@ -69,6 +66,100 @@ void {\bfseries calculate\+Drawing\+Data} (int \&sprite\+Screen, int \&sprite\+W
 \mbox{\Hypertarget{classDrawable_a62fa1605aad433a12f0fa014fcb71b4e}\label{classDrawable_a62fa1605aad433a12f0fa014fcb71b4e}} 
 \mbox{\hyperlink{classArea}{Area}} {\bfseries dest\+Area}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDrawable_a6e3564e30a2df5ec439085a825ca678e}\label{classDrawable_a6e3564e30a2df5ec439085a825ca678e}} 
+\index{Drawable@{Drawable}!draw@{draw}}
+\index{draw@{draw}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Drawable\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws the object using the raycasting algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+\hline
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+\hline
+{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+\hline
+{\em diff} & Time passed. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPlayer_afcc052d2da833719ddf8eac9a186dff8}{Player}}, \mbox{\hyperlink{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}{Raycasted\+Animation}}, and \mbox{\hyperlink{classDoor_a107fa98de4d762c376362d7b97c4bf0a}{Door}}.
+
+\mbox{\Hypertarget{classDrawable_a0f301c945fe383553ca472eaed26d8e9}\label{classDrawable_a0f301c945fe383553ca472eaed26d8e9}} 
+\index{Drawable@{Drawable}!isContained@{isContained}}
+\index{isContained@{isContained}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{isContained()}{isContained()}}
+{\footnotesize\ttfamily bool Drawable\+::is\+Contained (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance\+Buffer,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Verifies if the drawable object is visible within the players field of view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+Buffer} & \\
+\hline
+{\em posX} & \\
+\hline
+{\em posY} & \\
+\hline
+{\em dirX} & \\
+\hline
+{\em dirY} & \\
+\hline
+{\em planeX} & \\
+\hline
+{\em planeY} & \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the drawable object is visible. 
+
+false if the drawable object is not visible. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDrawable_ad667929f851dc28509919de414af2f6d}\label{classDrawable_ad667929f851dc28509919de414af2f6d}} 
+\index{Drawable@{Drawable}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Drawable\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDrawable}{Drawable}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Compares objects depending on the distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this-\/$>$dist is greater other.\+dist 
+
+false if this-\/$>$dist is equal or less other.\+dist 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

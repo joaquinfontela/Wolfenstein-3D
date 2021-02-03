@@ -1,11 +1,19 @@
 \hypertarget{classLog}{}\doxysection{Log Class Reference}
 \label{classLog}\index{Log@{Log}}
+
+
+Logs non-\/fatal errors to \char`\"{}wolfenstein.\+log\char`\"{}.  
+
+
+
+
+{\ttfamily \#include $<$log.\+h$>$}
+
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classLog_af3d4d587929c17edf4f2891a483edfa5}\label{classLog_af3d4d587929c17edf4f2891a483edfa5}} 
-static void {\bfseries test} (const char $\ast$\+\_\+file, const char $\ast$function, const int line, const char $\ast$msg)
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{classLog_af3d4d587929c17edf4f2891a483edfa5}{test}} (const char $\ast$\+\_\+file, const char $\ast$function, const int line, const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Logs an error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -15,6 +23,33 @@ static int {\bfseries player\+Id} = -\/1
 \mbox{\Hypertarget{classLog_a584c0b80890677eaf601b96816598e39}\label{classLog_a584c0b80890677eaf601b96816598e39}} 
 static std\+::mutex {\bfseries lock}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logs non-\/fatal errors to \char`\"{}wolfenstein.\+log\char`\"{}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLog_af3d4d587929c17edf4f2891a483edfa5}\label{classLog_af3d4d587929c17edf4f2891a483edfa5}} 
+\index{Log@{Log}!test@{test}}
+\index{test@{test}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void Log\+::test (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+file,  }\item[{const char $\ast$}]{function,  }\item[{const int}]{line,  }\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+file} & Caller function. \\
+\hline
+{\em function} & Caller function. \\
+\hline
+{\em line} & Caller line. \\
+\hline
+{\em msg} & \mbox{\hyperlink{classLog}{Log}} message to write. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

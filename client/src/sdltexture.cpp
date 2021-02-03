@@ -2,8 +2,8 @@
 
 #include <SDL2/SDL_image.h>
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #include "sdlexception.h"
 #include "sdlwindow.h"
@@ -42,10 +42,8 @@ int SdlTexture::renderAll(const Area& dest) const {
   return SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);
 }
 
-int SdlTexture::renderHalfOfScreen(int width, int height) const {
-  SDL_Rect sdlDest = {0, 0, width, height/2};
-  // Se pueden evitar estas macros pasándo por parámetro al constructor el támaño
-  // de pantalla (o en un update(newW, newH) por si llega a cambiar).
+int SdlTexture::renderHalf(int width, int height) const {
+  SDL_Rect sdlDest = {0, 0, width, height / 2};
   return SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);
 }
 
@@ -56,8 +54,10 @@ int SdlTexture::render(const Area& src, const Area& dest) const {
   return SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);
 }
 
-int SdlTexture::renderOnTime(int sprite, const Area& src, const Area& dest) const {
-  SDL_Rect sdlSrc = {src.getX() * sprite, src.getY(), src.getWidth(), src.getHeight()};
+int SdlTexture::renderOnTime(int sprite, const Area& src,
+                             const Area& dest) const {
+  SDL_Rect sdlSrc = {src.getX() * sprite, src.getY(), src.getWidth(),
+                     src.getHeight()};
   SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
                       dest.getHeight()};
   return SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);

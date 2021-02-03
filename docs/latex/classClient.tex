@@ -3,9 +3,35 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \mbox{\hyperlink{classClient_aa8ab7e2af270a778d23f29da0922cc68}{run}} (std\+::string \&host, std\+::string \&port, uint32\+\_\+t lobby\+ID, std\+::string \&map\+File)
+\begin{DoxyCompactList}\small\item\em Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classClient_aa8ab7e2af270a778d23f29da0922cc68}\label{classClient_aa8ab7e2af270a778d23f29da0922cc68}} 
-int {\bfseries run} (std\+::string \&host, std\+::string \&port, uint32\+\_\+t lobby\+ID, std\+::string \&map\+File)
-\end{DoxyCompactItemize}
+\index{Client@{Client}!run@{run}}
+\index{run@{run}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily int Client\+::run (\begin{DoxyParamCaption}\item[{std\+::string \&}]{host,  }\item[{std\+::string \&}]{port,  }\item[{uint32\+\_\+t}]{lobby\+ID,  }\item[{std\+::string \&}]{map\+File }\end{DoxyParamCaption})}
+
+
+
+Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & \\
+\hline
+{\em port} & \\
+\hline
+{\em lobby\+ID} & \\
+\hline
+{\em map\+File} & \mbox{\hyperlink{classMap}{Map}} yaml file name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/1 on error and 0 on success. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

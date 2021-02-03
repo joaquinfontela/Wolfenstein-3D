@@ -68,6 +68,11 @@ $(function() {
 <div class="title">SdlException Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Exception class to throw SDL errors.  
+ <a href="classSdlException.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="sdlexception_8h_source.html">sdlexception.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SdlException:</div>
 <div class="dyncontent">
@@ -77,16 +82,82 @@ Inheritance diagram for SdlException:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a347741276a36a89811831f1595538227"><td class="memItemLeft" align="right" valign="top"><a id="a347741276a36a89811831f1595538227"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SdlException</b> (const char *description, const char *sdlError)</td></tr>
+<tr class="memitem:a347741276a36a89811831f1595538227"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSdlException.html#a347741276a36a89811831f1595538227">SdlException</a> (const char *description, const char *sdlError)</td></tr>
+<tr class="memdesc:a347741276a36a89811831f1595538227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sdl Exception object.  <a href="classSdlException.html#a347741276a36a89811831f1595538227">More...</a><br /></td></tr>
 <tr class="separator:a347741276a36a89811831f1595538227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1016c8fbc02f1383906ca22af427c337"><td class="memItemLeft" align="right" valign="top"><a id="a1016c8fbc02f1383906ca22af427c337"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SdlException</b> (const char *sdlError)</td></tr>
+<tr class="memitem:a1016c8fbc02f1383906ca22af427c337"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSdlException.html#a1016c8fbc02f1383906ca22af427c337">SdlException</a> (const char *sdlError)</td></tr>
+<tr class="memdesc:a1016c8fbc02f1383906ca22af427c337"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sdl Exception object.  <a href="classSdlException.html#a1016c8fbc02f1383906ca22af427c337">More...</a><br /></td></tr>
 <tr class="separator:a1016c8fbc02f1383906ca22af427c337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62bb1be518eb98dec83f46260d9b0d5"><td class="memItemLeft" align="right" valign="top"><a id="ac62bb1be518eb98dec83f46260d9b0d5"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><b>what</b> () const noexcept</td></tr>
 <tr class="separator:ac62bb1be518eb98dec83f46260d9b0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Exception class to throw SDL errors. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a347741276a36a89811831f1595538227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347741276a36a89811831f1595538227">&#9670;&nbsp;</a></span>SdlException() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SdlException::SdlException </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>description</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sdlError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Sdl Exception object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Error description. </td></tr>
+    <tr><td class="paramname">sdlError</td><td>Sdl error description. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1016c8fbc02f1383906ca22af427c337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1016c8fbc02f1383906ca22af427c337">&#9670;&nbsp;</a></span>SdlException() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SdlException::SdlException </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sdlError</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Sdl Exception object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sdlError</td><td>Sdl error description. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="sdlexception_8h_source.html">sdlexception.h</a></li>
 <li>client/src/sdlexception.cpp</li>

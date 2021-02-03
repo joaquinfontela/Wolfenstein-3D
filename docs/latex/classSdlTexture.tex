@@ -1,29 +1,174 @@
 \hypertarget{classSdlTexture}{}\doxysection{Sdl\+Texture Class Reference}
 \label{classSdlTexture}\index{SdlTexture@{SdlTexture}}
+
+
+Class that holds key information and methods from each texture used in the game.  
+
+
+
+
+{\ttfamily \#include $<$sdltexture.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classSdlTexture_a7335b124e9790bbd244dae10bd482aa7}{Sdl\+Texture}} (const std\+::string \&filename, const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&window)
+\begin{DoxyCompactList}\small\item\em Construct a new Sdl Texture object from a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSdlTexture_a181185dcfaad6ede27c1572a39a28064}{Sdl\+Texture}} (SDL\+\_\+\+Surface $\ast$surface, const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&window)
+\begin{DoxyCompactList}\small\item\em Construct a new Sdl Texture object from a surface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSdlTexture_af6b671725a56da0c9ea0fef6cdf3f377}\label{classSdlTexture_af6b671725a56da0c9ea0fef6cdf3f377}} 
+\mbox{\hyperlink{classSdlTexture_af6b671725a56da0c9ea0fef6cdf3f377}{$\sim$\+Sdl\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sdl Texture object releasing all the allocated resources. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSdlTexture_ac912219c9836f974b795001cae57f65d}{render}} (const \mbox{\hyperlink{classArea}{Area}} \&src, const \mbox{\hyperlink{classArea}{Area}} \&dest) const
+\begin{DoxyCompactList}\small\item\em Renders the texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSdlTexture_a19326f4462b99dcdc1804f040a6b3f73}{render\+All}} (const \mbox{\hyperlink{classArea}{Area}} \&dest) const
+\begin{DoxyCompactList}\small\item\em Renders the entire texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSdlTexture_a81f76c24ccd1b9d44f55c40eeb5daedb}{render\+Half}} (int width, int height) const
+\begin{DoxyCompactList}\small\item\em Renders texture on the top half of its area (whose top left corner matches the top left of the window) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSdlTexture_abe087dd655033e4cb930eea601a3b4c8}{render\+On\+Time}} (int sprite, const \mbox{\hyperlink{classArea}{Area}} \&src, const \mbox{\hyperlink{classArea}{Area}} \&dest) const
+\begin{DoxyCompactList}\small\item\em Renders the texture shifting src\textquotesingle{}s x coordinate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSdlTexture_a0870c8108d17cbbc47964c1048e65a95}{get\+Sizes}} (int $\ast$w, int $\ast$h)
+\begin{DoxyCompactList}\small\item\em Get the texture size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that holds key information and methods from each texture used in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classSdlTexture_a7335b124e9790bbd244dae10bd482aa7}\label{classSdlTexture_a7335b124e9790bbd244dae10bd482aa7}} 
-{\bfseries Sdl\+Texture} (const std\+::string \&filename, const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&window)
-\item 
+\index{SdlTexture@{SdlTexture}!SdlTexture@{SdlTexture}}
+\index{SdlTexture@{SdlTexture}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{SdlTexture()}{SdlTexture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sdl\+Texture\+::\+Sdl\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sdl Texture object from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file to open. \\
+\hline
+{\em window} & Reference to the window. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classSdlTexture_a181185dcfaad6ede27c1572a39a28064}\label{classSdlTexture_a181185dcfaad6ede27c1572a39a28064}} 
-{\bfseries Sdl\+Texture} (SDL\+\_\+\+Surface $\ast$surface, const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&window)
-\item 
-\mbox{\Hypertarget{classSdlTexture_ac912219c9836f974b795001cae57f65d}\label{classSdlTexture_ac912219c9836f974b795001cae57f65d}} 
-int {\bfseries render} (const \mbox{\hyperlink{classArea}{Area}} \&src, const \mbox{\hyperlink{classArea}{Area}} \&dest) const
-\item 
-\mbox{\Hypertarget{classSdlTexture_a19326f4462b99dcdc1804f040a6b3f73}\label{classSdlTexture_a19326f4462b99dcdc1804f040a6b3f73}} 
-int {\bfseries render\+All} (const \mbox{\hyperlink{classArea}{Area}} \&dest) const
-\item 
-\mbox{\Hypertarget{classSdlTexture_a05a156dccc411eb987cb98a07048d512}\label{classSdlTexture_a05a156dccc411eb987cb98a07048d512}} 
-int {\bfseries render\+Half\+Of\+Screen} (int width, int height) const
-\item 
-\mbox{\Hypertarget{classSdlTexture_abe087dd655033e4cb930eea601a3b4c8}\label{classSdlTexture_abe087dd655033e4cb930eea601a3b4c8}} 
-int {\bfseries render\+On\+Time} (int sprite, const \mbox{\hyperlink{classArea}{Area}} \&src, const \mbox{\hyperlink{classArea}{Area}} \&dest) const
-\item 
+\index{SdlTexture@{SdlTexture}!SdlTexture@{SdlTexture}}
+\index{SdlTexture@{SdlTexture}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{SdlTexture()}{SdlTexture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sdl\+Texture\+::\+Sdl\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{surface,  }\item[{const \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sdl Texture object from a surface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file to open. \\
+\hline
+{\em window} & Reference to the window. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classSdlTexture_a0870c8108d17cbbc47964c1048e65a95}\label{classSdlTexture_a0870c8108d17cbbc47964c1048e65a95}} 
-void {\bfseries get\+Sizes} (int $\ast$w, int $\ast$h)
-\end{DoxyCompactItemize}
+\index{SdlTexture@{SdlTexture}!getSizes@{getSizes}}
+\index{getSizes@{getSizes}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{getSizes()}{getSizes()}}
+{\footnotesize\ttfamily void Sdl\+Texture\+::get\+Sizes (\begin{DoxyParamCaption}\item[{int $\ast$}]{w,  }\item[{int $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Get the texture size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer which will store the width. \\
+\hline
+{\em h} & Pointer which will store the height. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSdlTexture_ac912219c9836f974b795001cae57f65d}\label{classSdlTexture_ac912219c9836f974b795001cae57f65d}} 
+\index{SdlTexture@{SdlTexture}!render@{render}}
+\index{render@{render}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily int Sdl\+Texture\+::render (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{src,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{dest }\end{DoxyParamCaption}) const}
+
+
+
+Renders the texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Source area to crop the texture. \\
+\hline
+{\em dest} & Screen drawing area. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns SDL\+\_\+\+Render\+Copy\textquotesingle{}s value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSdlTexture_a19326f4462b99dcdc1804f040a6b3f73}\label{classSdlTexture_a19326f4462b99dcdc1804f040a6b3f73}} 
+\index{SdlTexture@{SdlTexture}!renderAll@{renderAll}}
+\index{renderAll@{renderAll}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{renderAll()}{renderAll()}}
+{\footnotesize\ttfamily int Sdl\+Texture\+::render\+All (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{dest }\end{DoxyParamCaption}) const}
+
+
+
+Renders the entire texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Screen drawing area. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns SDL\+\_\+\+Render\+Copy\textquotesingle{}s value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSdlTexture_a81f76c24ccd1b9d44f55c40eeb5daedb}\label{classSdlTexture_a81f76c24ccd1b9d44f55c40eeb5daedb}} 
+\index{SdlTexture@{SdlTexture}!renderHalf@{renderHalf}}
+\index{renderHalf@{renderHalf}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{renderHalf()}{renderHalf()}}
+{\footnotesize\ttfamily int Sdl\+Texture\+::render\+Half (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption}) const}
+
+
+
+Renders texture on the top half of its area (whose top left corner matches the top left of the window) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns SDL\+\_\+\+Render\+Copy\textquotesingle{}s value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSdlTexture_abe087dd655033e4cb930eea601a3b4c8}\label{classSdlTexture_abe087dd655033e4cb930eea601a3b4c8}} 
+\index{SdlTexture@{SdlTexture}!renderOnTime@{renderOnTime}}
+\index{renderOnTime@{renderOnTime}!SdlTexture@{SdlTexture}}
+\doxysubsubsection{\texorpdfstring{renderOnTime()}{renderOnTime()}}
+{\footnotesize\ttfamily int Sdl\+Texture\+::render\+On\+Time (\begin{DoxyParamCaption}\item[{int}]{sprite,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{src,  }\item[{const \mbox{\hyperlink{classArea}{Area}} \&}]{dest }\end{DoxyParamCaption}) const}
+
+
+
+Renders the texture shifting src\textquotesingle{}s x coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & Value by which src.\+x is mutiplied \\
+\hline
+{\em src} & Source area to crop the texture. \\
+\hline
+{\em dest} & Screen drawing area. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns SDL\+\_\+\+Render\+Copy\textquotesingle{}s value. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

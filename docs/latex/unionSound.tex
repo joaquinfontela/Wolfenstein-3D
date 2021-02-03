@@ -1,5 +1,14 @@
 \hypertarget{unionSound}{}\doxysection{Sound Union Reference}
 \label{unionSound}\index{Sound@{Sound}}
+
+
+This union comes in handy due to the fact that each instance of this class is either music or an audio chunk, and since both are pointers I can put them on this structure and dedice how to cast depending on some boolean value.  
+
+
+
+
+{\ttfamily \#include $<$audio.\+h$>$}
+
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,6 +19,9 @@ Mix\+\_\+\+Music $\ast$ {\bfseries music}
 Mix\+\_\+\+Chunk $\ast$ {\bfseries chunk}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+This union comes in handy due to the fact that each instance of this class is either music or an audio chunk, and since both are pointers I can put them on this structure and dedice how to cast depending on some boolean value. 
 
 The documentation for this union was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

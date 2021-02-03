@@ -3,15 +3,35 @@
 
 #include "clientprotocol.h"
 
+/**
+ * @brief Represents a door state.
+ *
+ */
 class DoorTile {
  public:
-  float timer;
+  /**
+   * @brief Sets the doortile state to CLOSING if the door is OPEN or OPENING.
+   * Sets the doortile state to OPENING if the door is CLOSED or CLOSING.
+   *
+   */
+  void changeState();
+
+  /**
+   * @brief Updates the timer and door state if needed.
+   *
+   * @param update Time update.
+   */
+  void updateTimer(float update);
+
+  DoorTile() : isDoor(false), state(CLOSED), timer(1) {}
   char state;
   bool isDoor;
-  void setDoor(bool isDoor);
-  void changeState();
-  DoorTile() : isDoor(false), state(CLOSED), timer(1) {}
-  void updateTimer(float update);
+
+  /**
+   * @brief Value that lies between 0 (fully opened) and 1 (fully closed).
+   *
+   */
+  float timer;
 };
 
 #endif  // DOORTILE_H_

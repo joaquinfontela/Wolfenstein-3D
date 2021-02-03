@@ -21,9 +21,8 @@ void {\bfseries update} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&inf
 \mbox{\Hypertarget{classPlayer_ac4227840877cf5b5d3223f79d03d324e}\label{classPlayer_ac4227840877cf5b5d3223f79d03d324e}} 
 void {\bfseries update} (double posX, double posY, double dirX, double dirY)
 \item 
-\mbox{\Hypertarget{classPlayer_afcc052d2da833719ddf8eac9a186dff8}\label{classPlayer_afcc052d2da833719ddf8eac9a186dff8}} 
-void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
-\item 
+void \mbox{\hyperlink{classPlayer_afcc052d2da833719ddf8eac9a186dff8}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
+\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}\label{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}} 
 int {\bfseries get\+Soldier\+Id} ()
 \item 
@@ -220,6 +219,44 @@ int {\bfseries healthdown}
 bool {\bfseries key}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayer_afcc052d2da833719ddf8eac9a186dff8}\label{classPlayer_afcc052d2da833719ddf8eac9a186dff8}} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the object using the raycasting algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+\hline
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+\hline
+{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+\hline
+{\em diff} & Time passed. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca678e}{Drawable}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

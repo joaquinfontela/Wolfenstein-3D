@@ -69,31 +69,64 @@ $(function() {
 <div class="title">DoorTile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a door state.  
+ <a href="classDoorTile.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="doortile_8h_source.html">doortile.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a88437ea253582b2752b2281437aca5c6"><td class="memItemLeft" align="right" valign="top"><a id="a88437ea253582b2752b2281437aca5c6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDoor</b> (bool isDoor)</td></tr>
-<tr class="separator:a88437ea253582b2752b2281437aca5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d7075d4b71d2c0609e4d99ac724e32"><td class="memItemLeft" align="right" valign="top"><a id="a17d7075d4b71d2c0609e4d99ac724e32"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>changeState</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoorTile.html#a17d7075d4b71d2c0609e4d99ac724e32">changeState</a> ()</td></tr>
+<tr class="memdesc:a17d7075d4b71d2c0609e4d99ac724e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the doortile state to CLOSING if the door is OPEN or OPENING. Sets the doortile state to OPENING if the door is CLOSED or CLOSING. <br /></td></tr>
 <tr class="separator:a17d7075d4b71d2c0609e4d99ac724e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc86c2c812041bc2f14fbaad0cc1a77"><td class="memItemLeft" align="right" valign="top"><a id="a2dc86c2c812041bc2f14fbaad0cc1a77"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateTimer</b> (float update)</td></tr>
+<tr class="memitem:a2dc86c2c812041bc2f14fbaad0cc1a77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoorTile.html#a2dc86c2c812041bc2f14fbaad0cc1a77">updateTimer</a> (float update)</td></tr>
+<tr class="memdesc:a2dc86c2c812041bc2f14fbaad0cc1a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the timer and door state if needed.  <a href="classDoorTile.html#a2dc86c2c812041bc2f14fbaad0cc1a77">More...</a><br /></td></tr>
 <tr class="separator:a2dc86c2c812041bc2f14fbaad0cc1a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:afaf676b75329f18cd5a9f142de8c277c"><td class="memItemLeft" align="right" valign="top"><a id="afaf676b75329f18cd5a9f142de8c277c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b></td></tr>
-<tr class="separator:afaf676b75329f18cd5a9f142de8c277c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95e3d84b091f794684bffded8bdcd42e"><td class="memItemLeft" align="right" valign="top"><a id="a95e3d84b091f794684bffded8bdcd42e"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a95e3d84b091f794684bffded8bdcd42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4578e8cb9dd2b3afb6f0357903c27c21"><td class="memItemLeft" align="right" valign="top"><a id="a4578e8cb9dd2b3afb6f0357903c27c21"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDoor</b></td></tr>
 <tr class="separator:a4578e8cb9dd2b3afb6f0357903c27c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf676b75329f18cd5a9f142de8c277c"><td class="memItemLeft" align="right" valign="top"><a id="afaf676b75329f18cd5a9f142de8c277c"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">timer</a></td></tr>
+<tr class="memdesc:afaf676b75329f18cd5a9f142de8c277c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value that lies between 0 (fully opened) and 1 (fully closed). <br /></td></tr>
+<tr class="separator:afaf676b75329f18cd5a9f142de8c277c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a door state. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2dc86c2c812041bc2f14fbaad0cc1a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc86c2c812041bc2f14fbaad0cc1a77">&#9670;&nbsp;</a></span>updateTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DoorTile::updateTimer </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>update</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the timer and door state if needed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">update</td><td>Time update. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="doortile_8h_source.html">doortile.h</a></li>
 <li>client/src/doortile.cpp</li>

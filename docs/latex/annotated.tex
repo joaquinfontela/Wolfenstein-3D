@@ -1,9 +1,9 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
 \item\contentsline{section}{\mbox{\hyperlink{classAmmo}{Ammo}} }{\pageref{classAmmo}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classArea}{Area}} }{\pageref{classArea}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classArea}{Area}} \\*Represents a rectangle, where the (x,y) coordinates show where the top left corner of the rectangle begins }{\pageref{classArea}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classAudio}{Audio}} }{\pageref{classAudio}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} }{\pageref{classAudioManager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \\*Class used to organize the audio files and stop duplicates from existing }{\pageref{classAudioManager}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classBlood}{Blood}} }{\pageref{classBlood}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classBlueWall}{Blue\+Wall}} }{\pageref{classBlueWall}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classChangeDoorStatus}{Change\+Door\+Status}} }{\pageref{classChangeDoorStatus}}{}
@@ -25,8 +25,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{classDoor}{Door}} }{\pageref{classDoor}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classDoorFactory}{Door\+Factory}} }{\pageref{classDoorFactory}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classDoorMoving}{Door\+Moving}} }{\pageref{classDoorMoving}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classDoorTile}{Door\+Tile}} }{\pageref{classDoorTile}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classDoorTimer}{Door\+Timer}} }{\pageref{classDoorTimer}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classDoorTile}{Door\+Tile}} \\*Represents a door state }{\pageref{classDoorTile}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classDoorTimer}{Door\+Timer}} \\*Updates map timers. We need this to run in another thread so that we can measure time without any delays that could arise, for example, from raycasting }{\pageref{classDoorTimer}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classDrawable}{Drawable}} }{\pageref{classDrawable}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classElementSwitchPosition}{Element\+Switch\+Position}} }{\pageref{classElementSwitchPosition}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classEndMatch}{End\+Match}} }{\pageref{classEndMatch}}{}
@@ -44,7 +44,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{classKit}{Kit}} }{\pageref{classKit}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classKnife}{Knife}} }{\pageref{classKnife}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classLockableDoor}{Lockable\+Door}} }{\pageref{classLockableDoor}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLog}{Log}} }{\pageref{classLog}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLog}{Log}} \\*Logs non-\/fatal errors to \char`\"{}wolfenstein.\+log\char`\"{} }{\pageref{classLog}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classLuaSender}{Lua\+Sender}} }{\pageref{classLuaSender}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classMachineGun}{Machine\+Gun}} }{\pageref{classMachineGun}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classMap}{Map}} }{\pageref{classMap}}{}
@@ -85,9 +85,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{classRocketMissile}{Rocket\+Missile}} }{\pageref{classRocketMissile}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classRockWall}{Rock\+Wall}} }{\pageref{classRockWall}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} }{\pageref{classScoreBoard}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classSdlAnimation}{Sdl\+Animation}} }{\pageref{classSdlAnimation}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classSdlException}{Sdl\+Exception}} }{\pageref{classSdlException}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classSdlTexture}{Sdl\+Texture}} }{\pageref{classSdlTexture}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSdlAnimation}{Sdl\+Animation}} \\*This class represents a non-\/raycasted which can be played at any time }{\pageref{classSdlAnimation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSdlException}{Sdl\+Exception}} \\*Exception class to throw SDL errors }{\pageref{classSdlException}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSdlTexture}{Sdl\+Texture}} \\*Class that holds key information and methods from each texture used in the game }{\pageref{classSdlTexture}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} }{\pageref{classSdlWindow}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classServer}{Server}} }{\pageref{classServer}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classShootable}{Shootable}} }{\pageref{classShootable}}{}
@@ -96,10 +96,10 @@ Here are the classes, structs, unions and interfaces with brief descriptions\+:\
 \item\contentsline{section}{\mbox{\hyperlink{classSocketException}{Socket\+Exception}} }{\pageref{classSocketException}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classSocketListener}{Socket\+Listener}} }{\pageref{classSocketListener}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classSocketWrapper}{Socket\+Wrapper}} }{\pageref{classSocketWrapper}}{}
-\item\contentsline{section}{\mbox{\hyperlink{unionSound}{Sound}} }{\pageref{unionSound}}{}
+\item\contentsline{section}{\mbox{\hyperlink{unionSound}{Sound}} \\*This union comes in handy due to the fact that each instance of this class is either music or an audio chunk, and since both are pointers I can put them on this structure and dedice how to cast depending on some boolean value }{\pageref{unionSound}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classStartGame}{Start\+Game}} }{\pageref{classStartGame}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classTestSuit}{Test\+Suit}} }{\pageref{classTestSuit}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} }{\pageref{classTextureManager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \\*Class used to organize the textures and stop duplicates from existing }{\pageref{classTextureManager}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classThread}{Thread}} }{\pageref{classThread}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classTile}{Tile}} }{\pageref{classTile}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classUnlockableDoor}{Unlockable\+Door}} }{\pageref{classUnlockableDoor}}{}

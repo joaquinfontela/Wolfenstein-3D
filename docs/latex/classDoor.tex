@@ -12,9 +12,8 @@ Inheritance diagram for Door\+:\begin{figure}[H]
 \mbox{\Hypertarget{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}\label{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}} 
 {\bfseries Door} (int matrix\+XCoord, int matrix\+YCoord, const int \&width, const int \&height, const int \&dx, const int \&dy, int side, const double \&camera\+XCoord, const int \&i, \mbox{\hyperlink{classMap}{Map}} $\ast$matrix)
 \item 
-\mbox{\Hypertarget{classDoor_a107fa98de4d762c376362d7b97c4bf0a}\label{classDoor_a107fa98de4d762c376362d7b97c4bf0a}} 
-void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double x, double y, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff=0) override
-\item 
+void \mbox{\hyperlink{classDoor_a107fa98de4d762c376362d7b97c4bf0a}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double x, double y, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff=0) override
+\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classDoor_a52571bd1f2211c444503384d34936d8e}\label{classDoor_a52571bd1f2211c444503384d34936d8e}} 
 virtual bool {\bfseries is\+Locked} ()=0
 \item 
@@ -40,6 +39,44 @@ int {\bfseries matrix\+YCoord}
 const int \& {\bfseries i}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDoor_a107fa98de4d762c376362d7b97c4bf0a}\label{classDoor_a107fa98de4d762c376362d7b97c4bf0a}} 
+\index{Door@{Door}!draw@{draw}}
+\index{draw@{draw}!Door@{Door}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Door\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the object using the raycasting algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+\hline
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+\hline
+{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+\hline
+{\em diff} & Time passed. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca678e}{Drawable}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

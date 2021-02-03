@@ -69,11 +69,16 @@ $(function() {
 <div class="title">Log Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Logs non-fatal errors to "wolfenstein.log".  
+ <a href="classLog.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="log_8h_source.html">log.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af3d4d587929c17edf4f2891a483edfa5"><td class="memItemLeft" align="right" valign="top"><a id="af3d4d587929c17edf4f2891a483edfa5"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>test</b> (const char *_file, const char *function, const int line, const char *msg)</td></tr>
+<tr class="memitem:af3d4d587929c17edf4f2891a483edfa5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLog.html#af3d4d587929c17edf4f2891a483edfa5">test</a> (const char *_file, const char *function, const int line, const char *msg)</td></tr>
+<tr class="memdesc:af3d4d587929c17edf4f2891a483edfa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error message.  <a href="classLog.html#af3d4d587929c17edf4f2891a483edfa5">More...</a><br /></td></tr>
 <tr class="separator:af3d4d587929c17edf4f2891a483edfa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -85,6 +90,68 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>playerId</b> = 
 static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b></td></tr>
 <tr class="separator:a584c0b80890677eaf601b96816598e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Logs non-fatal errors to "wolfenstein.log". </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af3d4d587929c17edf4f2891a483edfa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d4d587929c17edf4f2891a483edfa5">&#9670;&nbsp;</a></span>test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Log::test </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Logs an error message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_file</td><td>Caller function. </td></tr>
+    <tr><td class="paramname">function</td><td>Caller function. </td></tr>
+    <tr><td class="paramname">line</td><td>Caller line. </td></tr>
+    <tr><td class="paramname">msg</td><td><a class="el" href="classLog.html" title="Logs non-fatal errors to &quot;wolfenstein.log&quot;.">Log</a> message to write. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="log_8h_source.html">log.h</a></li>
 <li>client/src/log.cpp</li>

@@ -44,10 +44,10 @@ Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
   std::vector<Coordinate> doorCordinates = loader.getDoorCoordinates();
 
   for(Coordinate& c: doorCordinates){
-    this->doors[c.getY() - 1][c.getX() - 1].setDoor(true);
+    this->doors[c.getY() - 1][c.getX() - 1].isDoor = true;
   }
 
   matrix = loader.getWallIdMatrix();
 }
 
-char Map::getDoorState(int x, int y) { return this->doors[x][y].state; }
+char Map::getDoorState(int x, int y) { return this->doors[x][y].isDoor = true; }

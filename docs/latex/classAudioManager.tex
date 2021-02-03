@@ -1,29 +1,114 @@
 \hypertarget{classAudioManager}{}\doxysection{Audio\+Manager Class Reference}
 \label{classAudioManager}\index{AudioManager@{AudioManager}}
+
+
+Class used to organize the audio files and stop duplicates from existing.  
+
+
+
+
+{\ttfamily \#include $<$audiomanager.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classAudioManager_a0785dd15de92ca12f6e704fe0d79781a}\label{classAudioManager_a0785dd15de92ca12f6e704fe0d79781a}} 
-void {\bfseries play\+With\+Id} (int id)
-\item 
+\mbox{\Hypertarget{classAudioManager_ad94dc46723c6d7cf8c81fc3772a842aa}\label{classAudioManager_ad94dc46723c6d7cf8c81fc3772a842aa}} 
+\mbox{\hyperlink{classAudioManager_ad94dc46723c6d7cf8c81fc3772a842aa}{$\sim$\+Audio\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Calls the garbage collector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}\label{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}} 
+\mbox{\hyperlink{classAudioManager_ae59d8605c1d706e7bab47d4e8f900d09}{Audio\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classAudio}{Audio}} Manager object, initializing every audio instance. Throws an Exception if the process fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a0785dd15de92ca12f6e704fe0d79781a}{play\+With\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Plays the choosen audio track. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_ada9ff11a9d2552e5131788f7c586ccd7}{play\+On\+Max\+Volume\+With\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Plays the choosen audio track on max volume. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a4c3514e66043b028e320bee4ec5fdd6e}{play\+On\+Variable\+Volume\+With\+Id}} (int id, double distance)
+\begin{DoxyCompactList}\small\item\em Plays the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_a82caf0300f4a160931be15394416a0d5}{play\+Or\+Stop\+On\+Variable\+Volume\+With\+Id}} (int id, double distance)
+\begin{DoxyCompactList}\small\item\em Plays or stops the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioManager_ae18b66638d7d6e5641ab0ffb129e6fa4}{stop\+With\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Stops the choosen audio track. Throws an Exception if it fails. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to organize the audio files and stop duplicates from existing. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classAudioManager_ada9ff11a9d2552e5131788f7c586ccd7}\label{classAudioManager_ada9ff11a9d2552e5131788f7c586ccd7}} 
-void {\bfseries play\+On\+Max\+Volume\+With\+Id} (int id)
-\item 
+\index{AudioManager@{AudioManager}!playOnMaxVolumeWithId@{playOnMaxVolumeWithId}}
+\index{playOnMaxVolumeWithId@{playOnMaxVolumeWithId}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playOnMaxVolumeWithId()}{playOnMaxVolumeWithId()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+On\+Max\+Volume\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Plays the choosen audio track on max volume. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the sound to be played. \mbox{\hyperlink{classKey}{Key}} of the sounds dict. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classAudioManager_a4c3514e66043b028e320bee4ec5fdd6e}\label{classAudioManager_a4c3514e66043b028e320bee4ec5fdd6e}} 
-void {\bfseries play\+On\+Variable\+Volume\+With\+Id} (int id, double distance)
-\item 
+\index{AudioManager@{AudioManager}!playOnVariableVolumeWithId@{playOnVariableVolumeWithId}}
+\index{playOnVariableVolumeWithId@{playOnVariableVolumeWithId}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playOnVariableVolumeWithId()}{playOnVariableVolumeWithId()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+On\+Variable\+Volume\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+
+
+Plays the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the sound to be played. \mbox{\hyperlink{classKey}{Key}} of the sounds dict. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classAudioManager_a82caf0300f4a160931be15394416a0d5}\label{classAudioManager_a82caf0300f4a160931be15394416a0d5}} 
-void {\bfseries play\+Or\+Stop\+On\+Variable\+Volume\+With\+Id} (int id, double distance)
-\item 
+\index{AudioManager@{AudioManager}!playOrStopOnVariableVolumeWithId@{playOrStopOnVariableVolumeWithId}}
+\index{playOrStopOnVariableVolumeWithId@{playOrStopOnVariableVolumeWithId}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playOrStopOnVariableVolumeWithId()}{playOrStopOnVariableVolumeWithId()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+Or\+Stop\+On\+Variable\+Volume\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+
+
+Plays or stops the choosen audio track on variable volume. The greater the distance from the sound emitting entity, the lower the volume. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the sound to be played. \mbox{\hyperlink{classKey}{Key}} of the sounds dict. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAudioManager_a0785dd15de92ca12f6e704fe0d79781a}\label{classAudioManager_a0785dd15de92ca12f6e704fe0d79781a}} 
+\index{AudioManager@{AudioManager}!playWithId@{playWithId}}
+\index{playWithId@{playWithId}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{playWithId()}{playWithId()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::play\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Plays the choosen audio track. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the sound to be played. \mbox{\hyperlink{classKey}{Key}} of the sounds dict. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classAudioManager_ae18b66638d7d6e5641ab0ffb129e6fa4}\label{classAudioManager_ae18b66638d7d6e5641ab0ffb129e6fa4}} 
-void {\bfseries stop\+With\+Id} (int id)
-\item 
-\mbox{\Hypertarget{classAudioManager_acb9e427075e872a677b2759eb9bc5ec5}\label{classAudioManager_acb9e427075e872a677b2759eb9bc5ec5}} 
-void {\bfseries load\+Track} (int id, \mbox{\hyperlink{classAudio}{Audio}} $\ast$audio)
-\item 
-\mbox{\Hypertarget{classAudioManager_abb9502be111e802f90ce0b451f910912}\label{classAudioManager_abb9502be111e802f90ce0b451f910912}} 
-bool {\bfseries load\+And\+Check\+Track} (int id, \mbox{\hyperlink{classAudio}{Audio}} $\ast$audio)
-\end{DoxyCompactItemize}
+\index{AudioManager@{AudioManager}!stopWithId@{stopWithId}}
+\index{stopWithId@{stopWithId}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{stopWithId()}{stopWithId()}}
+{\footnotesize\ttfamily void Audio\+Manager\+::stop\+With\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Stops the choosen audio track. Throws an Exception if it fails. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the sound to be played. \mbox{\hyperlink{classKey}{Key}} of the sounds dict. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

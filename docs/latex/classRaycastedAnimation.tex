@@ -12,10 +12,47 @@ Inheritance diagram for Raycasted\+Animation\+:\begin{figure}[H]
 \mbox{\Hypertarget{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}\label{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}} 
 {\bfseries Raycasted\+Animation} (double x, double y, \mbox{\hyperlink{classCommandExecuter}{Command\+Executer}} $\ast$executer, int item\+Id, int uniqueid, int frames\+Per\+Animation)
 \item 
-\mbox{\Hypertarget{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}\label{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}} 
-void {\bfseries draw} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
+\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}\label{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}} 
+\index{RaycastedAnimation@{RaycastedAnimation}!draw@{draw}}
+\index{draw@{draw}!RaycastedAnimation@{RaycastedAnimation}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Raycasted\+Animation\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the object using the raycasting algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+\hline
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+\hline
+{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+\hline
+{\em diff} & Time passed. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca678e}{Drawable}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
