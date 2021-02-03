@@ -204,7 +204,7 @@ void Game::end(WaitingQueue<Notification*>& queue) {
 
   std::sort(playersvect.begin(), playersvect.end(),
             [](Player* a, Player* b) -> bool {
-              return a->getKills() < b->getKills();
+              return a->getKills() >= b->getKills();
             });
 
   std::vector<uint32_t> kills;

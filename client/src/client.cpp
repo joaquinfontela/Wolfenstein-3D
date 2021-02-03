@@ -66,15 +66,13 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
   std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID
             << std::endl;
 
-  std::vector<Drawable*> sprites =
-      loader.getDrawableItemList();  // Falta tener bien los ids de los sprites.
+  std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
   Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud,
                    scoreboard);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
-  // LuaSender* sender = new LuaSender(socket, alive);
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, sprites, players, m, myPlayerID,
                           audios, matrix, loader, scoreboard);
