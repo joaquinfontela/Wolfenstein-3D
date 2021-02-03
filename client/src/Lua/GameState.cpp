@@ -1,28 +1,33 @@
 #include "GameState.h"
+
 #include <iostream>
-namespace Lua{
+namespace Lua {
 
-GameState::GameState(Map& matrix, Player* self, double* distanceBuffer) : matrix(matrix){ this->player = self; this->distanceBuffer = distanceBuffer; }
+GameState::GameState(Map& matrix, Player* self, double* distanceBuffer)
+    : matrix(matrix) {
+  this->player = self;
+  this->distanceBuffer = distanceBuffer;
+}
 
-void GameState::addVisibleItem(Drawable* item){
+void GameState::addVisibleItem(Drawable* item) {
   std::unique_lock<std::mutex> lock(this->lock);
 
   this->seenObjects.push_back(item);
 }
 
-void GameState::clearVisibleItems(){
+void GameState::clearVisibleItems() {
   std::unique_lock<std::mutex> lock(this->lock);
 
   this->seenObjects.clear();
 }
 
-bool GameState::itemInSight(){
+bool GameState::itemInSight() {
   std::unique_lock<std::mutex> lock(this->lock);
 
   return this->seenObjects.size() > 0;
 }
 
-bool GameState::facingWall(){
+bool GameState::facingWall() {
   std::unique_lock<std::mutex> lock(this->lock);
 
   double playerX = int(this->player->x);
@@ -33,30 +38,27 @@ bool GameState::facingWall(){
   int initialX = int(playerX);
   int initialY = int(playerY);
 
-  while(initialX == int(playerX) && initialY == int(playerY)){
+  while (initialX == int(playerX) && initialY == int(playerY)) {
     playerX += dirX;
     playerY += dirY;
   }
-
 
   int* map = this->matrix.getMatrix();
 
   int mapX = int(playerX);
   int mapY = int(playerY);
 
-  return ((*(map + mapY + mapX * matrix.dimy) > 0) || this->distanceBuffer[149] <= 1);
-
+  return ((*(map + mapY + mapX * matrix.dimy) > 0) ||
+          (this->distanceBuffer[149] <= 1) || (this->distanceBuffer[151] <= 1));
 }
 
-bool GameState::playerInSight(){
+bool GameState::playerInSight() {
   std::unique_lock<std::mutex> lock(this->lock);
   std::vector<Drawable*>::iterator it = this->seenObjects.begin();
 
-
-
-  for(; it != this->seenObjects.end(); ++it){
-    if((*it)->isPlayer()){
-      std::cout<<"There is a player in sight"<<std::endl;
+  for (; it != this->seenObjects.end(); ++it) {
+    if ((*it)->isPlayer()) {
+      std::cout << "There is a player in sight" << std::endl;
       return true;
     }
   }
@@ -64,7 +66,5 @@ bool GameState::playerInSight(){
   return false;
 }
 
-bool GameState::facingDoor(){
-  return false;
-}
-}
+bool GameState::facingDoor() { return false; }
+}  // namespace Lua
