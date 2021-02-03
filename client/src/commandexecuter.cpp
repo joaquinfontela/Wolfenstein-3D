@@ -225,31 +225,9 @@ void CommandExecuter::run() {
         this->audiomanager.playWithId(EXPLOSION_SOUND);
         this->renderExplosionAnimation(uniqueId);
       } else if (opcode == ENDING_MATCH) {
-        uint32_t numberOfPlayers;
-        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
-        for (int i = 0; i < numberOfPlayers; i++) {
-          uint32_t value1;
-          uint32_t value2;
-          this->socket.receive(&value1, sizeof(value1));
-          this->socket.receive(&value2, sizeof(value2));
-          this->scoreboard.pushScore(std::make_tuple(value1, value2));
-        }
-        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
-        for (int i = 0; i < numberOfPlayers; i++) {
-          uint32_t value1;
-          uint32_t value2;
-          this->socket.receive(&value1, sizeof(value1));
-          this->socket.receive(&value2, sizeof(value2));
-          this->scoreboard.pushKills(std::make_tuple(value1, value2));
-        } /*
-        this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
-         for (int i = 0; i < numberOfPlayers; i++) {
-           uint32_t value1;
-           uint32_t value2;
-           this->socket.receive(&value1, sizeof(value1));
-           this->socket.receive(&value2, sizeof(value2));
-           this->scoreboard.pushShotsfired(std::make_tuple(value1, value2));
-         }*/
+        this->saveScores();
+        this->saveKills();
+        // this->saveShotsFired();
         alive = false;
       }
     } catch (SocketException& e) {
@@ -257,5 +235,37 @@ void CommandExecuter::run() {
       LOG(e.what());
       break;
     }
+  }
+}
+
+std::tuple<uint32_t, uint32_t> static recvTuple(SocketCommunication& socket) {
+  uint32_t value1;
+  uint32_t value2;
+  socket.receive(&value1, sizeof(value1));
+  socket.receive(&value2, sizeof(value2));
+  return std::make_tuple(value1, value2);
+}
+
+void CommandExecuter::saveShotsFired() {
+  uint32_t numberOfPlayers;
+  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  for (int i = 0; i < numberOfPlayers; i++) {
+    this->scoreboard.pushShotsfired(recvTuple(this->socket));
+  }
+}
+
+void CommandExecuter::saveScores() {
+  uint32_t numberOfPlayers;
+  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  for (int i = 0; i < numberOfPlayers; i++) {
+    this->scoreboard.pushScore(recvTuple(this->socket));
+  }
+}
+
+void CommandExecuter::saveKills() {
+  uint32_t numberOfPlayers;
+  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  for (int i = 0; i < numberOfPlayers; i++) {
+    this->scoreboard.pushKills(recvTuple(this->socket));
   }
 }

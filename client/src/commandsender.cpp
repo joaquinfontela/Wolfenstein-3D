@@ -1,17 +1,20 @@
 #include "commandsender.h"
-#include "clientprotocol.h"
-#include "scoreboard.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
+
 #include <atomic>
 #include <iostream>
+
 #include "../../common/includes/protocol.h"
+#include "clientprotocol.h"
+#include "scoreboard.h"
 
 #define UINT32_SIZE sizeof(uint32_t)
 
-CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive, ScoreBoard* scoreboard)
- : socket(s), alive(alive), scoreboard(scoreboard) {}
+CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
+                             ScoreBoard* scoreboard)
+    : socket(s), alive(alive), scoreboard(scoreboard) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(&keyType, UINT32_SIZE);
@@ -33,6 +36,7 @@ void CommandSender::run() {
         socket.readShutdown();
         socket.writeShutdown();
         socket.close();
+        alive = false;
         this->scoreboard->stop();
         break;
       }
