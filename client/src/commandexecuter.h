@@ -9,6 +9,7 @@
 #include "../../common/includes/Map/Map.h"
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
+#include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/Thread/Thread.h"
 #include "ClientMapLoader.h"
 #include "audiomanager.h"
@@ -30,6 +31,15 @@ class CommandExecuter : public Thread {
   void playExplosionSound();
 
  private:
+  void updateOrCreatePlayer();
+  void disconnectPlayer();
+  void shotsFired();
+  void openDoor();
+  void pickUpItem();
+  void playerDied();
+  void dropItem();
+  void elementSwitchPosition();
+  void explodeMissile();
   void saveShotsFired();
   void saveScores();
   void saveKills();
@@ -40,6 +50,8 @@ class CommandExecuter : public Thread {
   void loadNewTexture(double x, double y, uint32_t yamlId, uint32_t uniqueId);
   void playShootingSounds(int shooterId);
   void playDoorOpeningSound(int x, int y);
+
+  SocketWrapper infogetter;
   SocketCommunication& socket;
   std::atomic<bool>& alive;
   std::vector<Drawable*>& sprites;
