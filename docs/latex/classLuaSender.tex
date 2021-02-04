@@ -13,8 +13,8 @@ Inheritance diagram for Lua\+Sender\+:\begin{figure}[H]
 {\bfseries Lua\+Sender} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, std\+::string \&script\+Name, \mbox{\hyperlink{classLua_1_1GameState}{Lua\+::\+Game\+State}} $\ast$game\+State)
 \item 
 \mbox{\Hypertarget{classLuaSender_aa3bad73e8f9a2a58ea16d5b25c83244e}\label{classLuaSender_aa3bad73e8f9a2a58ea16d5b25c83244e}} 
-void {\bfseries run} ()
-\item 
+void \mbox{\hyperlink{classLuaSender_aa3bad73e8f9a2a58ea16d5b25c83244e}{run}} ()
+\begin{DoxyCompactList}\small\item\em While the game is being played, this method reads the player input and redirects it to the update method. If the player quits the window it sets the alive boolean reference to false and stops the scoreboard from drawing. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classLuaSender_a21ceafa753d84d7e9ed7a71ea5d66658}\label{classLuaSender_a21ceafa753d84d7e9ed7a71ea5d66658}} 
 void {\bfseries check\+For\+Quit} ()
 \item 

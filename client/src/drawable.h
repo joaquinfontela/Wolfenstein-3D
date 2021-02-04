@@ -5,6 +5,10 @@
 #include "area.h"
 #include "texturemanager.h"
 
+/**
+ * @brief Represents a non-wall nor door raycastable entity.
+ *
+ */
 class Drawable {
  public:
   double x;

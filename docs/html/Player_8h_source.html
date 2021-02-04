@@ -112,8 +112,8 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <span class="keywordtype">double</span> planeX;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keywordtype">double</span> planeY;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// CONSTRUCTORES.</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classPlayer.html">Player</a>(<a class="code" href="classYAMLConfigReader.html">YAMLConfigReader</a> yamlConfigReader, <a class="code" href="classMap.html">Map</a>&amp; map, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerID);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classPlayer.html">Player</a>(<a class="code" href="classYAMLConfigReader.html">YAMLConfigReader</a> yamlConfigReader);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classPlayer.html#a93fbc84853d872993d78c14c57f52c79">Player</a>(<a class="code" href="classYAMLConfigReader.html">YAMLConfigReader</a> yamlConfigReader, <a class="code" href="classMap.html">Map</a>&amp; map, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerID);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classPlayer.html#a93fbc84853d872993d78c14c57f52c79">Player</a>(<a class="code" href="classYAMLConfigReader.html">YAMLConfigReader</a> yamlConfigReader);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> setShooting(<span class="keywordtype">bool</span> state);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
@@ -187,13 +187,13 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="comment">// Actualiza la posicion del jugador dada la velocidad de movimiento y</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="comment">// rotacion.</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> timeElapsed, <a class="code" href="classWaitingQueue.html">WaitingQueue&lt;Notification*&gt;</a>&amp; notis, std::list&lt;Updatable*&gt;&amp; updatables);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#ac95eb474e96091904eeeec6dba63f3f6">update</a>(<span class="keywordtype">float</span> timeElapsed, <a class="code" href="classWaitingQueue.html">WaitingQueue&lt;Notification*&gt;</a>&amp; notis, std::list&lt;Updatable*&gt;&amp; updatables);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">// Equipa una llave.</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> pickupKey();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">// Devuelve si el jugador tiene una llave para abrir puertas.</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">bool</span> hasKey();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classPlayer.html#a0f129d04ab8675e894e8beca4323ad1b">hasKey</a>();</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="comment">// Devuelve true si tiene la maxima cantidad de balas.</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">bool</span> hasMaxAmmo();</div>
@@ -221,7 +221,10 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> Map.h:10</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:8</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">Player class. Holds important information about each player and is able to raycast it if it's an enem...</div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
+<div class="ttc" id="aclassPlayer_html_a0f129d04ab8675e894e8beca4323ad1b"><div class="ttname"><a href="classPlayer.html#a0f129d04ab8675e894e8beca4323ad1b">Player::hasKey</a></div><div class="ttdeci">bool hasKey()</div><div class="ttdoc">Checks for the key.</div><div class="ttdef"><b>Definition:</b> player.cpp:9</div></div>
+<div class="ttc" id="aclassPlayer_html_a93fbc84853d872993d78c14c57f52c79"><div class="ttname"><a href="classPlayer.html#a93fbc84853d872993d78c14c57f52c79">Player::Player</a></div><div class="ttdeci">Player(double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id)</div><div class="ttdoc">Construct a new Player object.</div><div class="ttdef"><b>Definition:</b> player.h:26</div></div>
+<div class="ttc" id="aclassPlayer_html_ac95eb474e96091904eeeec6dba63f3f6"><div class="ttname"><a href="classPlayer.html#ac95eb474e96091904eeeec6dba63f3f6">Player::update</a></div><div class="ttdeci">void update(PlayerData &amp;info)</div><div class="ttdoc">Updates the player info.</div><div class="ttdef"><b>Definition:</b> player.cpp:55</div></div>
 <div class="ttc" id="aclassUpdatable_html"><div class="ttname"><a href="classUpdatable.html">Updatable</a></div><div class="ttdef"><b>Definition:</b> Updatable.h:14</div></div>
 <div class="ttc" id="aclassWaitingQueue_html"><div class="ttname"><a href="classWaitingQueue.html">WaitingQueue&lt; Notification * &gt;</a></div></div>
 <div class="ttc" id="aclassWeaponFactory_html"><div class="ttname"><a href="classWeaponFactory.html">WeaponFactory</a></div><div class="ttdef"><b>Definition:</b> WeaponFactory.h:7</div></div>

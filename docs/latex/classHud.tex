@@ -1,23 +1,78 @@
 \hypertarget{classHud}{}\doxysection{Hud Class Reference}
 \label{classHud}\index{Hud@{Hud}}
+
+
+Renders all the images that appear in the hud.  
+
+
+
+
+{\ttfamily \#include $<$hud.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classHud_a224d3aeaa160cbbbc92e6d36887250a7}\label{classHud_a224d3aeaa160cbbbc92e6d36887250a7}} 
-void {\bfseries update\+Fps\+Counter} (int fps)
-\item 
-\mbox{\Hypertarget{classHud_af9ec2f89bcc54651d2413aeb5cbc53b3}\label{classHud_af9ec2f89bcc54651d2413aeb5cbc53b3}} 
-void {\bfseries update} ()
-\item 
+void \mbox{\hyperlink{classHud_a224d3aeaa160cbbbc92e6d36887250a7}{update\+Fps\+Counter}} (int fps)
+\begin{DoxyCompactList}\small\item\em Updates the fps counter. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classHud_a696c30bca39bd8f12a39c18f51a252f0}\label{classHud_a696c30bca39bd8f12a39c18f51a252f0}} 
-void {\bfseries update\+Hud\+Gun} ()
-\item 
+void \mbox{\hyperlink{classHud_a696c30bca39bd8f12a39c18f51a252f0}{update\+Hud\+Gun}} ()
+\begin{DoxyCompactList}\small\item\em Updates the gun frame about to be played. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classHud_addccafb1bede2fdf11db2be61c3df8e8}\label{classHud_addccafb1bede2fdf11db2be61c3df8e8}} 
-void {\bfseries update\+Bj\+Face} ()
-\item 
+void \mbox{\hyperlink{classHud_addccafb1bede2fdf11db2be61c3df8e8}{update\+Bj\+Face}} ()
+\begin{DoxyCompactList}\small\item\em Updates hud\textquotesingle{}s player frame about to be played. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHud_af9ec2f89bcc54651d2413aeb5cbc53b3}\label{classHud_af9ec2f89bcc54651d2413aeb5cbc53b3}} 
+void \mbox{\hyperlink{classHud_af9ec2f89bcc54651d2413aeb5cbc53b3}{update}} ()
+\begin{DoxyCompactList}\small\item\em Calls the drawing methods. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHud_a2fbb662bbc70f646e081f9206a879b66}\label{classHud_a2fbb662bbc70f646e081f9206a879b66}} 
+\mbox{\hyperlink{classHud_a2fbb662bbc70f646e081f9206a879b66}{$\sim$\+Hud}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classHud}{Hud}} object, the face, hud and gun animations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classHud_a908a2333ac1d513b664815be925c2acc}{Hud}} (\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player, \mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classHud}{Hud}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Renders all the images that appear in the hud. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classHud_a908a2333ac1d513b664815be925c2acc}\label{classHud_a908a2333ac1d513b664815be925c2acc}} 
-{\bfseries Hud} (\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player, \mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager)
-\end{DoxyCompactItemize}
+\index{Hud@{Hud}!Hud@{Hud}}
+\index{Hud@{Hud}!Hud@{Hud}}
+\doxysubsubsection{\texorpdfstring{Hud()}{Hud()}}
+{\footnotesize\ttfamily Hud\+::\+Hud (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$}]{window,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&}]{audiomanager }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classHud}{Hud}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the window. \\
+\hline
+{\em player} & Reference to the user\textquotesingle{}s playing. \\
+\hline
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em audiomanager} & Reference to the audio manager. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHud_a224d3aeaa160cbbbc92e6d36887250a7}\label{classHud_a224d3aeaa160cbbbc92e6d36887250a7}} 
+\index{Hud@{Hud}!updateFpsCounter@{updateFpsCounter}}
+\index{updateFpsCounter@{updateFpsCounter}!Hud@{Hud}}
+\doxysubsubsection{\texorpdfstring{updateFpsCounter()}{updateFpsCounter()}}
+{\footnotesize\ttfamily void Hud\+::update\+Fps\+Counter (\begin{DoxyParamCaption}\item[{int}]{fps }\end{DoxyParamCaption})}
+
+
+
+Updates the fps counter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fps} & Fps counter. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

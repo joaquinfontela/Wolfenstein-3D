@@ -20,11 +20,44 @@ void ScoreBoard::renderText(const char* text, int rows, int column, int w,
   this->window->renderText(text, &rect);
 }
 
+void ScoreBoard::renderScore(int width, int height) {
+  int rows = this->scores.size();
+  for (int i = 0; i < rows; i++) {
+    std::tuple<uint32_t, uint32_t> score = this->scores[i];
+    std::string val = std::to_string(i + 1) + ")  Id(" +
+                      std::to_string(std::get<0>(score)) +
+                      "): " + std::to_string(std::get<1>(score));
+    this->renderText(val.c_str(), i + 2, 0, width, height);
+  }
+}
+
+void ScoreBoard::renderKills(int width, int height) {
+  int rows = this->kills.size();
+  for (int i = 0; i < rows; i++) {
+    std::tuple<uint32_t, uint32_t> score = this->kills[i];
+    std::string val = std::to_string(i + 1) + ")  Id(" +
+                      std::to_string(std::get<0>(score)) +
+                      "): " + std::to_string(std::get<1>(score));
+    this->renderText(val.c_str(), i + 2, 1, width, height);
+  }
+}
+
+void ScoreBoard::renderShotsFired(int width, int height) {
+  int rows = this->shotsfired.size();
+  for (int i = 0; i < rows; i++) {
+    std::tuple<uint32_t, uint32_t> score = this->shotsfired[i];
+    std::string val = std::to_string(i + 1) + ")  Id(" +
+                      std::to_string(std::get<0>(score)) +
+                      "): " + std::to_string(std::get<1>(score));
+    this->renderText(val.c_str(), i + 2, 2, width, height);
+  }
+}
+
 void ScoreBoard::draw() {
   std::string scores = "Scores";
   std::string kills = "Kills";
   std::string shotsfired = "Shots Fired";
-  int rows = this->scores.size();
+  // int rows = this->scores.size();
   int height, width;
   SDL_Rect rect;
   while (!this->hasEnded()) {
@@ -35,35 +68,14 @@ void ScoreBoard::draw() {
             .h = height >> 2};
     this->window->fill(BLUE);
     this->window->renderText("Leaderboards", &rect);
-    rect = {.x = 0, .y = height >> 2, .w = width / 3, .h = rows * height >> 2};
+    // rect = {.x = 0, .y = height >> 2, .w = width / 3, .h = rows * height >>
+    // 2};
     this->renderText(scores.c_str(), 1, 0, width, height);
     this->renderText(kills.c_str(), 1, 1, width, height);
     this->renderText(shotsfired.c_str(), 1, 2, width, height);
-
-    for (int i = 0; i < rows; i++) {
-      std::tuple<uint32_t, uint32_t> score = this->scores[i];
-      std::string val = std::to_string(i + 1) + ")  Id(" +
-                        std::to_string(std::get<0>(score)) +
-                        "): " + std::to_string(std::get<1>(score));
-      this->renderText(val.c_str(), i + 2, 0, width, height);
-    }
-
-    for (int i = 0; i < rows; i++) {
-      std::tuple<uint32_t, uint32_t> score = this->kills[i];
-      std::string val = std::to_string(i + 1) + ")  Id(" +
-                        std::to_string(std::get<0>(score)) +
-                        "): " + std::to_string(std::get<1>(score));
-      this->renderText(val.c_str(), i + 2, 1, width, height);
-    }
-    /*
-        for (int i = 0; i < rows; i++) {
-          std::tuple<uint32_t, uint32_t> score = this->shotsfired[i];
-          std::string val = std::to_string(i+1) + ")  Id(" +
-       std::to_string(std::get<0>(score))
-                            + "): " + std::to_string(std::get<1>(score));
-          this->renderText(val.c_str(), i+2, 2, width, height);
-        }
-    */
+    this->renderShotsFired(width, height);
+    this->renderKills(width, height);
+    // this->renderShotsFired(width, height);
     this->window->render();
   }
 }

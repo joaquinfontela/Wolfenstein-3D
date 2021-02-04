@@ -69,13 +69,18 @@ $(function() {
 <div class="title">Door Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Raycastable door.  
+ <a href="classDoor.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="door_8h_source.html">door.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Door:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classDoor.png" usemap="#Door_map" alt=""/>
   <map id="Door_map" name="Door_map">
-<area href="classDrawable.html" alt="Drawable" shape="rect" coords="56,0,158,24"/>
+<area href="classDrawable.html" title="Represents a non-wall nor door raycastable entity." alt="Drawable" shape="rect" coords="56,0,158,24"/>
 <area href="classLockableDoor.html" alt="LockableDoor" shape="rect" coords="0,112,102,136"/>
 <area href="classUnlockableDoor.html" alt="UnlockableDoor" shape="rect" coords="112,112,214,136"/>
   </map>
@@ -83,11 +88,11 @@ Inheritance diagram for Door:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8d2e2244bac069be1f639ea2d06ce60e"><td class="memItemLeft" align="right" valign="top"><a id="a8d2e2244bac069be1f639ea2d06ce60e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Door</b> (int matrixXCoord, int matrixYCoord, const int &amp;width, const int &amp;height, const int &amp;dx, const int &amp;dy, int side, const double &amp;cameraXCoord, const int &amp;i, <a class="el" href="classMap.html">Map</a> *matrix)</td></tr>
+<tr class="memitem:a8d2e2244bac069be1f639ea2d06ce60e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoor.html#a8d2e2244bac069be1f639ea2d06ce60e">Door</a> (int <a class="el" href="classDoor.html#ae0b89411fc8afe77b5ef9f5c7a198c3b">matrixXCoord</a>, int matrixYCoord, const int &amp;width, const int &amp;height, const int &amp;dx, const int &amp;dy, int side, const double &amp;cameraXCoord, const int &amp;<a class="el" href="classDoor.html#a7dfda691a370e23d3091be930dd8a72c">i</a>, <a class="el" href="classMap.html">Map</a> *matrix)</td></tr>
+<tr class="memdesc:a8d2e2244bac069be1f639ea2d06ce60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classDoor.html" title="Raycastable door.">Door</a> object.  <a href="classDoor.html#a8d2e2244bac069be1f639ea2d06ce60e">More...</a><br /></td></tr>
 <tr class="separator:a8d2e2244bac069be1f639ea2d06ce60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a107fa98de4d762c376362d7b97c4bf0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoor.html#a107fa98de4d762c376362d7b97c4bf0a">draw</a> (<a class="el" href="classTextureManager.html">TextureManager</a> &amp;manager, double x, double y, double dirX, double dirY, double planeX, double planeY, double *distanceBuffer, float diff=0) override</td></tr>
-<tr class="memdesc:a107fa98de4d762c376362d7b97c4bf0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the object using the raycasting algorithm.  <a href="classDoor.html#a107fa98de4d762c376362d7b97c4bf0a">More...</a><br /></td></tr>
+<tr class="memdesc:a107fa98de4d762c376362d7b97c4bf0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raycasts the door onto the screen.  <a href="classDoor.html#a107fa98de4d762c376362d7b97c4bf0a">More...</a><br /></td></tr>
 <tr class="separator:a107fa98de4d762c376362d7b97c4bf0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52571bd1f2211c444503384d34936d8e"><td class="memItemLeft" align="right" valign="top"><a id="a52571bd1f2211c444503384d34936d8e"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isLocked</b> ()=0</td></tr>
@@ -127,13 +132,15 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isPlayer</b> 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae0b89411fc8afe77b5ef9f5c7a198c3b"><td class="memItemLeft" align="right" valign="top"><a id="ae0b89411fc8afe77b5ef9f5c7a198c3b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>matrixXCoord</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoor.html#ae0b89411fc8afe77b5ef9f5c7a198c3b">matrixXCoord</a></td></tr>
+<tr class="memdesc:ae0b89411fc8afe77b5ef9f5c7a198c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordinates for the map matrix. <br /></td></tr>
 <tr class="separator:ae0b89411fc8afe77b5ef9f5c7a198c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f68d8cd5b3f01e6de4a1314359fda60"><td class="memItemLeft" align="right" valign="top"><a id="a5f68d8cd5b3f01e6de4a1314359fda60"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>matrixYCoord</b></td></tr>
 <tr class="separator:a5f68d8cd5b3f01e6de4a1314359fda60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dfda691a370e23d3091be930dd8a72c"><td class="memItemLeft" align="right" valign="top"><a id="a7dfda691a370e23d3091be930dd8a72c"></a>
-const int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>i</b></td></tr>
+const int &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDoor.html#a7dfda691a370e23d3091be930dd8a72c">i</a></td></tr>
+<tr class="memdesc:a7dfda691a370e23d3091be930dd8a72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iteration index. <br /></td></tr>
 <tr class="separator:a7dfda691a370e23d3091be930dd8a72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classDrawable"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classDrawable')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classDrawable.html">Drawable</a></td></tr>
 <tr class="memitem:a39e17b5b9f37c11dc2fbf9f789d089bb inherit pub_attribs_classDrawable"><td class="memItemLeft" align="right" valign="top"><a id="a39e17b5b9f37c11dc2fbf9f789d089bb"></a>
@@ -169,6 +176,107 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateDrawingData<
 <a class="el" href="classArea.html">Area</a>&#160;</td><td class="memItemRight" valign="bottom"><b>destArea</b></td></tr>
 <tr class="separator:a62fa1605aad433a12f0fa014fcb71b4e inherit pro_attribs_classDrawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Raycastable door. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8d2e2244bac069be1f639ea2d06ce60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d2e2244bac069be1f639ea2d06ce60e">&#9670;&nbsp;</a></span>Door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Door::Door </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>matrixXCoord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>matrixYCoord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>side</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>cameraXCoord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMap.html">Map</a> *&#160;</td>
+          <td class="paramname"><em>matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classDoor.html" title="Raycastable door.">Door</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrixXCoord</td><td>X <a class="el" href="classCoordinate.html">Coordinate</a> for the map matrix. </td></tr>
+    <tr><td class="paramname">matrixYCoord</td><td>Y <a class="el" href="classCoordinate.html">Coordinate</a> for the map matrix. </td></tr>
+    <tr><td class="paramname">width</td><td>Screen width in pixels. </td></tr>
+    <tr><td class="paramname">height</td><td>Screen height in pixels. </td></tr>
+    <tr><td class="paramname">side</td><td>Whether the wall was hit by a ray through the side or not. </td></tr>
+    <tr><td class="paramname">i</td><td>Pixel column being renderer. </td></tr>
+    <tr><td class="paramname">matrix</td><td>Reference to the map. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a107fa98de4d762c376362d7b97c4bf0a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a107fa98de4d762c376362d7b97c4bf0a">&#9670;&nbsp;</a></span>draw()</h2>
@@ -189,13 +297,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateDrawingData<
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>posX</em>, </td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>posY</em>, </td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -246,18 +354,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateDrawingData<
 </table>
 </div><div class="memdoc">
 
-<p>Draws the object using the raycasting algorithm. </p>
+<p>Raycasts the door onto the screen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">manager</td><td>Reference to the texture manager. </td></tr>
-    <tr><td class="paramname">posX</td><td><a class="el" href="classPlayer.html">Player</a>'s X coordinate. </td></tr>
-    <tr><td class="paramname">posY</td><td><a class="el" href="classPlayer.html">Player</a>'s Y coordinate. </td></tr>
-    <tr><td class="paramname">dirX</td><td><a class="el" href="classPlayer.html">Player</a>'s X direction coordinate. </td></tr>
-    <tr><td class="paramname">dirY</td><td><a class="el" href="classPlayer.html">Player</a>'s Y direction coordinate. </td></tr>
-    <tr><td class="paramname">planeX</td><td><a class="el" href="classPlayer.html">Player</a>'s X plane coordinate. </td></tr>
-    <tr><td class="paramname">planeY</td><td><a class="el" href="classPlayer.html">Player</a>'s Y plane coordinate. </td></tr>
-    <tr><td class="paramname">distanceBuffer</td><td>Array containing the distances to the first drawable object on each pixel column. </td></tr>
-    <tr><td class="paramname">diff</td><td>Time passed. </td></tr>
+    <tr><td class="paramname">x</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a> X coordinate. </td></tr>
+    <tr><td class="paramname">y</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a> Y coordinate. </td></tr>
+    <tr><td class="paramname">dirX</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a>'s direction X coordinate. </td></tr>
+    <tr><td class="paramname">dirY</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a>'s direction Y coordinate. </td></tr>
+    <tr><td class="paramname">planeX</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a>'s plane X coordinate. </td></tr>
+    <tr><td class="paramname">planeY</td><td><a class="el" href="classPlayer.html" title="Player class. Holds important information about each player and is able to raycast it if it&#39;s an enem...">Player</a>'s plane Y coordinate. </td></tr>
+    <tr><td class="paramname">distanceBuffer</td><td>Array that maps each position to the distance to the first drawable element on the i-th pixel column. </td></tr>
+    <tr><td class="paramname">diff</td><td>Time passed since the last iteration. </td></tr>
   </table>
   </dd>
 </dl>

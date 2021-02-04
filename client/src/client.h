@@ -25,6 +25,10 @@
 #include "sdlwindow.h"
 #include "texturemanager.h"
 
+/**
+ * @brief Runs and coordinates all the main classes that execute the game.
+ *
+ */
 class Client {
  private:
   SocketCommunication socket;

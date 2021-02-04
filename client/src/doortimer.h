@@ -29,6 +29,10 @@ class DoorTimer : public Thread {
   void run();
 
  private:
+  /**
+   * @brief Map reference.
+   *
+   */
   Map& matrix;
 
   /**

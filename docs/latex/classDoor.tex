@@ -1,5 +1,14 @@
 \hypertarget{classDoor}{}\doxysection{Door Class Reference}
 \label{classDoor}\index{Door@{Door}}
+
+
+Raycastable door.  
+
+
+
+
+{\ttfamily \#include $<$door.\+h$>$}
+
 Inheritance diagram for Door\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,11 +18,10 @@ Inheritance diagram for Door\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}\label{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}} 
-{\bfseries Door} (int matrix\+XCoord, int matrix\+YCoord, const int \&width, const int \&height, const int \&dx, const int \&dy, int side, const double \&camera\+XCoord, const int \&i, \mbox{\hyperlink{classMap}{Map}} $\ast$matrix)
-\item 
+\mbox{\hyperlink{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}{Door}} (int \mbox{\hyperlink{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}{matrix\+XCoord}}, int matrix\+YCoord, const int \&width, const int \&height, const int \&dx, const int \&dy, int side, const double \&camera\+XCoord, const int \&\mbox{\hyperlink{classDoor_a7dfda691a370e23d3091be930dd8a72c}{i}}, \mbox{\hyperlink{classMap}{Map}} $\ast$matrix)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classDoor}{Door}} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDoor_a107fa98de4d762c376362d7b97c4bf0a}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double x, double y, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff=0) override
-\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Raycasts the door onto the screen. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classDoor_a52571bd1f2211c444503384d34936d8e}\label{classDoor_a52571bd1f2211c444503384d34936d8e}} 
 virtual bool {\bfseries is\+Locked} ()=0
 \item 
@@ -30,15 +38,48 @@ virtual void {\bfseries change\+Status} ()=0
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}\label{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}} 
-int {\bfseries matrix\+XCoord}
-\item 
+int \mbox{\hyperlink{classDoor_ae0b89411fc8afe77b5ef9f5c7a198c3b}{matrix\+XCoord}}
+\begin{DoxyCompactList}\small\item\em Coordinates for the map matrix. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classDoor_a5f68d8cd5b3f01e6de4a1314359fda60}\label{classDoor_a5f68d8cd5b3f01e6de4a1314359fda60}} 
 int {\bfseries matrix\+YCoord}
 \item 
 \mbox{\Hypertarget{classDoor_a7dfda691a370e23d3091be930dd8a72c}\label{classDoor_a7dfda691a370e23d3091be930dd8a72c}} 
-const int \& {\bfseries i}
-\end{DoxyCompactItemize}
+const int \& \mbox{\hyperlink{classDoor_a7dfda691a370e23d3091be930dd8a72c}{i}}
+\begin{DoxyCompactList}\small\item\em Iteration index. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Raycastable door. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}\label{classDoor_a8d2e2244bac069be1f639ea2d06ce60e}} 
+\index{Door@{Door}!Door@{Door}}
+\index{Door@{Door}!Door@{Door}}
+\doxysubsubsection{\texorpdfstring{Door()}{Door()}}
+{\footnotesize\ttfamily Door\+::\+Door (\begin{DoxyParamCaption}\item[{int}]{matrix\+XCoord,  }\item[{int}]{matrix\+YCoord,  }\item[{const int \&}]{width,  }\item[{const int \&}]{height,  }\item[{const int \&}]{dx,  }\item[{const int \&}]{dy,  }\item[{int}]{side,  }\item[{const double \&}]{camera\+XCoord,  }\item[{const int \&}]{i,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{classDoor}{Door}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix\+XCoord} & X \mbox{\hyperlink{classCoordinate}{Coordinate}} for the map matrix. \\
+\hline
+{\em matrix\+YCoord} & Y \mbox{\hyperlink{classCoordinate}{Coordinate}} for the map matrix. \\
+\hline
+{\em width} & Screen width in pixels. \\
+\hline
+{\em height} & Screen height in pixels. \\
+\hline
+{\em side} & Whether the wall was hit by a ray through the side or not. \\
+\hline
+{\em i} & Pixel column being renderer. \\
+\hline
+{\em matrix} & Reference to the map. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -46,31 +87,31 @@ const int \& {\bfseries i}
 \index{Door@{Door}!draw@{draw}}
 \index{draw@{draw}!Door@{Door}}
 \doxysubsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Door\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Door\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{diff = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Draws the object using the raycasting algorithm. 
+Raycasts the door onto the screen. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em manager} & Reference to the texture manager. \\
 \hline
-{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+{\em x} & \mbox{\hyperlink{classPlayer}{Player}} X coordinate. \\
 \hline
-{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+{\em y} & \mbox{\hyperlink{classPlayer}{Player}} Y coordinate. \\
 \hline
-{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s direction X coordinate. \\
 \hline
-{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s direction Y coordinate. \\
 \hline
-{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s plane X coordinate. \\
 \hline
-{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s plane Y coordinate. \\
 \hline
-{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+{\em distance\+Buffer} & Array that maps each position to the distance to the first drawable element on the i-\/th pixel column. \\
 \hline
-{\em diff} & Time passed. \\
+{\em diff} & Time passed since the last iteration. \\
 \hline
 \end{DoxyParams}
 

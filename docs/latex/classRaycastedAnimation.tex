@@ -1,5 +1,14 @@
 \hypertarget{classRaycastedAnimation}{}\doxysection{Raycasted\+Animation Class Reference}
 \label{classRaycastedAnimation}\index{RaycastedAnimation@{RaycastedAnimation}}
+
+
+Instances of this class are raycastable animations.  
+
+
+
+
+{\ttfamily \#include $<$Raycasted\+Animation.\+h$>$}
+
 Inheritance diagram for Raycasted\+Animation\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,12 +18,42 @@ Inheritance diagram for Raycasted\+Animation\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}\label{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}} 
-{\bfseries Raycasted\+Animation} (double x, double y, \mbox{\hyperlink{classCommandExecuter}{Command\+Executer}} $\ast$executer, int item\+Id, int uniqueid, int frames\+Per\+Animation)
-\item 
+\mbox{\hyperlink{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}{Raycasted\+Animation}} (double x, double y, \mbox{\hyperlink{classCommandExecuter}{Command\+Executer}} $\ast$executer, int item\+Id, int uniqueid, int frames\+Per\+Animation)
+\begin{DoxyCompactList}\small\item\em Construct a new Raycasted Animation object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
-\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Raycasts the actual frame of the animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Instances of this class are raycastable animations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}\label{classRaycastedAnimation_ac9ed3c4c8f4e7065969502f050ed9308}} 
+\index{RaycastedAnimation@{RaycastedAnimation}!RaycastedAnimation@{RaycastedAnimation}}
+\index{RaycastedAnimation@{RaycastedAnimation}!RaycastedAnimation@{RaycastedAnimation}}
+\doxysubsubsection{\texorpdfstring{RaycastedAnimation()}{RaycastedAnimation()}}
+{\footnotesize\ttfamily Raycasted\+Animation\+::\+Raycasted\+Animation (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{\mbox{\hyperlink{classCommandExecuter}{Command\+Executer}} $\ast$}]{executer,  }\item[{int}]{item\+Id,  }\item[{int}]{uniqueid,  }\item[{int}]{frames\+Per\+Animation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Raycasted Animation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Raycastable x coordinate. \\
+\hline
+{\em y} & Raycastable y coordinate. \\
+\hline
+{\em executer} & Reference to the command executer. \\
+\hline
+{\em item\+Id} & Texture id. \\
+\hline
+{\em uniqueid} & Unique sprite id. \\
+\hline
+{\em frames\+Per\+Animation} & Amount of frames the animation has. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -26,27 +65,27 @@ void \mbox{\hyperlink{classRaycastedAnimation_a3081dbfd5dd39507f924ee30ab4a2759}
 
 
 
-Draws the object using the raycasting algorithm. 
+Raycasts the actual frame of the animation. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em manager} & Reference to the texture manager. \\
+{\em manager} & Texture manager reference. \\
 \hline
-{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X coordinate. \\
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}} X coordinate. \\
 \hline
-{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y coordinate. \\
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}} Y coordinate. \\
 \hline
-{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X direction coordinate. \\
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s direction X coordinate. \\
 \hline
-{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y direction coordinate. \\
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s direction Y coordinate. \\
 \hline
-{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X plane coordinate. \\
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s plane X coordinate. \\
 \hline
-{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y plane coordinate. \\
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s plane Y coordinate. \\
 \hline
-{\em distance\+Buffer} & Array containing the distances to the first drawable object on each pixel column. \\
+{\em distance\+Buffer} & Array that maps each position to the distance to the first drawable element on the i-\/th pixel column. \\
 \hline
-{\em diff} & Time passed. \\
+{\em diff} & Time passed since the last iteration. \\
 \hline
 \end{DoxyParams}
 

@@ -1,5 +1,14 @@
 \hypertarget{classPlayer}{}\doxysection{Player Class Reference}
 \label{classPlayer}\index{Player@{Player}}
+
+
+\mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
 Inheritance diagram for Player\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,56 +18,41 @@ Inheritance diagram for Player\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPlayer_a93fbc84853d872993d78c14c57f52c79}\label{classPlayer_a93fbc84853d872993d78c14c57f52c79}} 
-{\bfseries Player} (double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id)
-\item 
-\mbox{\Hypertarget{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}\label{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}} 
-{\bfseries Player} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
-\item 
-\mbox{\Hypertarget{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}\label{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}} 
-void {\bfseries update} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
-\item 
-\mbox{\Hypertarget{classPlayer_ac4227840877cf5b5d3223f79d03d324e}\label{classPlayer_ac4227840877cf5b5d3223f79d03d324e}} 
-void {\bfseries update} (double posX, double posY, double dirX, double dirY)
-\item 
+\mbox{\hyperlink{classPlayer_a93fbc84853d872993d78c14c57f52c79}{Player}} (double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}{Player}} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}{update}} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
+\begin{DoxyCompactList}\small\item\em Updates the player info. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPlayer_afcc052d2da833719ddf8eac9a186dff8}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
-\begin{DoxyCompactList}\small\item\em Draws the object using the raycasting algorithm. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}\label{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}} 
-int {\bfseries get\+Soldier\+Id} ()
-\item 
-\mbox{\Hypertarget{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}\label{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}} 
-double {\bfseries calculate\+Dist} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
-\item 
-\mbox{\Hypertarget{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}\label{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}} 
-double {\bfseries calculate\+Dist} (int otherx, int othery)
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the player using the raycasting algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}{get\+Soldier\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Soldier Id. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}{calculate\+Dist}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between players. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}{calculate\+Dist}} (int otherx, int othery)
+\begin{DoxyCompactList}\small\item\em Calculates the distance from the player to the given coordinates. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a41829a2125e9f9df356dfb1839073939}\label{classPlayer_a41829a2125e9f9df356dfb1839073939}} 
-void {\bfseries start\+Shooting} ()
-\item 
+void \mbox{\hyperlink{classPlayer_a41829a2125e9f9df356dfb1839073939}{start\+Shooting}} ()
+\begin{DoxyCompactList}\small\item\em Sets the shooting boolean to true. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}\label{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}} 
-void {\bfseries stop\+Shooting} ()
-\item 
-\mbox{\Hypertarget{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}\label{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}} 
-bool {\bfseries is\+Shooting} ()
-\item 
-\mbox{\Hypertarget{classPlayer_a6a0b5131321ade6c0e9e30869507b587}\label{classPlayer_a6a0b5131321ade6c0e9e30869507b587}} 
-bool {\bfseries is\+Moving} ()
-\item 
+void \mbox{\hyperlink{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}{stop\+Shooting}} ()
+\begin{DoxyCompactList}\small\item\em Sets the shooting boolean to false. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}{is\+Shooting}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the player is sgooting or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_a6a0b5131321ade6c0e9e30869507b587}{is\+Moving}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the player is moving or not. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a478572d23809f9163fb6c9a3520f3dee}\label{classPlayer_a478572d23809f9163fb6c9a3520f3dee}} 
-void {\bfseries stop\+Moving} ()
-\item 
-\mbox{\Hypertarget{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}\label{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}} 
-bool {\bfseries has\+This\+Unique\+Id} (int otherid) override
-\item 
-\mbox{\Hypertarget{classPlayer_abb78c329add4ad99c693f5cefda89f38}\label{classPlayer_abb78c329add4ad99c693f5cefda89f38}} 
-bool {\bfseries is\+Sprite} () override
-\item 
-\mbox{\Hypertarget{classPlayer_af70c30fb29511e1d80152cc3af829b6b}\label{classPlayer_af70c30fb29511e1d80152cc3af829b6b}} 
-bool {\bfseries is\+Player} () override
-\item 
-\mbox{\Hypertarget{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}\label{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}} 
-bool {\bfseries has\+Key} ()
-\item 
+void \mbox{\hyperlink{classPlayer_a478572d23809f9163fb6c9a3520f3dee}{stop\+Moving}} ()
+\begin{DoxyCompactList}\small\item\em Sets the movement boolean to false. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}{has\+This\+Unique\+Id}} (int otherid) override
+\begin{DoxyCompactList}\small\item\em Returns false. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_abb78c329add4ad99c693f5cefda89f38}{is\+Sprite}} () override
+\begin{DoxyCompactList}\small\item\em Returns false. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_af70c30fb29511e1d80152cc3af829b6b}{is\+Player}} () override
+\begin{DoxyCompactList}\small\item\em Returns true. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}{has\+Key}} ()
+\begin{DoxyCompactList}\small\item\em Checks for the key. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}\label{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}} 
 {\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader, \mbox{\hyperlink{classMap}{Map}} \&map, unsigned int player\+ID)
 \item 
@@ -221,7 +215,93 @@ bool {\bfseries key}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlayer_a93fbc84853d872993d78c14c57f52c79}\label{classPlayer_a93fbc84853d872993d78c14c57f52c79}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{double}]{posX,  }\item[{double}]{posY,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em posY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X Direction \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y Direction \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X Plane \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y Plane \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em id} & \mbox{\hyperlink{classPlayer}{Player}} id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}\label{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&}]{info }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & Information taken from the server. Used for creating enemies. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}\label{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}} 
+\index{Player@{Player}!calculateDist@{calculateDist}}
+\index{calculateDist@{calculateDist}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{calculateDist()}{calculateDist()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Player\+::calculate\+Dist (\begin{DoxyParamCaption}\item[{int}]{otherx,  }\item[{int}]{othery }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance from the player to the given coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otherx} & X entity coordinate. \\
+\hline
+{\em othery} & Y entity coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double distance to the entity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}\label{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}} 
+\index{Player@{Player}!calculateDist@{calculateDist}}
+\index{calculateDist@{calculateDist}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{calculateDist()}{calculateDist()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Player\+::calculate\+Dist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{other }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between players. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double distance to the other player. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classPlayer_afcc052d2da833719ddf8eac9a186dff8}\label{classPlayer_afcc052d2da833719ddf8eac9a186dff8}} 
 \index{Player@{Player}!draw@{draw}}
 \index{draw@{draw}!Player@{Player}}
@@ -230,7 +310,7 @@ bool {\bfseries key}
 
 
 
-Draws the object using the raycasting algorithm. 
+Draws the player using the raycasting algorithm. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -257,6 +337,130 @@ Draws the object using the raycasting algorithm.
 
 Reimplemented from \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca678e}{Drawable}}.
 
+\mbox{\Hypertarget{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}\label{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}} 
+\index{Player@{Player}!getSoldierId@{getSoldierId}}
+\index{getSoldierId@{getSoldierId}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getSoldierId()}{getSoldierId()}}
+{\footnotesize\ttfamily int Player\+::get\+Soldier\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the Soldier Id. 
+
+\begin{DoxyReturn}{Returns}
+int Soldier id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}\label{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}} 
+\index{Player@{Player}!hasKey@{hasKey}}
+\index{hasKey@{hasKey}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{hasKey()}{hasKey()}}
+{\footnotesize\ttfamily bool Player\+::has\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for the key. 
+
+\begin{DoxyReturn}{Returns}
+true if the player has the key. 
+
+false if the player doesn\textquotesingle{}t have the key. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}\label{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}} 
+\index{Player@{Player}!hasThisUniqueId@{hasThisUniqueId}}
+\index{hasThisUniqueId@{hasThisUniqueId}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{hasThisUniqueId()}{hasThisUniqueId()}}
+{\footnotesize\ttfamily bool Player\+::has\+This\+Unique\+Id (\begin{DoxyParamCaption}\item[{int}]{otherid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns false. 
+
+\begin{DoxyReturn}{Returns}
+false 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
+
+\mbox{\Hypertarget{classPlayer_a6a0b5131321ade6c0e9e30869507b587}\label{classPlayer_a6a0b5131321ade6c0e9e30869507b587}} 
+\index{Player@{Player}!isMoving@{isMoving}}
+\index{isMoving@{isMoving}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isMoving()}{isMoving()}}
+{\footnotesize\ttfamily bool Player\+::is\+Moving (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether the player is moving or not. 
+
+\begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s moving. 
+
+false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_af70c30fb29511e1d80152cc3af829b6b}\label{classPlayer_af70c30fb29511e1d80152cc3af829b6b}} 
+\index{Player@{Player}!isPlayer@{isPlayer}}
+\index{isPlayer@{isPlayer}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isPlayer()}{isPlayer()}}
+{\footnotesize\ttfamily bool Player\+::is\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns true. 
+
+\begin{DoxyReturn}{Returns}
+true 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
+
+\mbox{\Hypertarget{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}\label{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}} 
+\index{Player@{Player}!isShooting@{isShooting}}
+\index{isShooting@{isShooting}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isShooting()}{isShooting()}}
+{\footnotesize\ttfamily bool Player\+::is\+Shooting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether the player is sgooting or not. 
+
+\begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s shooting. 
+
+false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_abb78c329add4ad99c693f5cefda89f38}\label{classPlayer_abb78c329add4ad99c693f5cefda89f38}} 
+\index{Player@{Player}!isSprite@{isSprite}}
+\index{isSprite@{isSprite}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isSprite()}{isSprite()}}
+{\footnotesize\ttfamily bool Player\+::is\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns false. 
+
+\begin{DoxyReturn}{Returns}
+false 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
+
+\mbox{\Hypertarget{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}\label{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}} 
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Player\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&}]{info }\end{DoxyParamCaption})}
+
+
+
+Updates the player info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & Info carried from the server. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
