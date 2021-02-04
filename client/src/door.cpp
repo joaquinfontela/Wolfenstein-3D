@@ -42,7 +42,7 @@ void Door::draw(TextureManager& manager, double x, double y, double dirX,
     Area srcArea(doorStripe - BLOCKSIZE * (1 - time), 0, 1,
                  tooFar * BLOCKSIZE + !tooFar * wallHeight);
     Area destArea(i, (this->height - wallHeight) >> 1, 1, wallHeight);
-    manager.render(DOOR, srcArea, destArea);
+    manager.render(this->matrix->get(matrixXCoord, matrixYCoord), srcArea, destArea);
   }
 
   if (perpendicularWallDistance < distanceBuffer[i])

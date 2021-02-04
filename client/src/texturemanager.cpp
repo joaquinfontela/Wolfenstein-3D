@@ -141,6 +141,7 @@ void TextureManager::loadTextures() {
       "ssattack.png",              // 93
       "officerattack.png",         // 94
       "mutantattack.png",          // 95
+      "lockeddoor.png"             // 96
   });
   int i = 1;
   for (std::string& name : names) {

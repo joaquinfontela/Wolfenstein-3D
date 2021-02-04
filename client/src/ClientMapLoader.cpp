@@ -108,7 +108,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return DOOR;
       break;
     case 202:
-      return DOOR;
+      return LOCKED_DOOR;
       break;
 
     case 305:
