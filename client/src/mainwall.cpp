@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
   }
 
   Client client;
-  std::string mapFile = "../../common/src/YAML/map.yaml";
+  std::string mapFile = "../../common/src/YAML/map1.yaml";
   std::string host = argv[1];
   std::string port = argv[2];
 
