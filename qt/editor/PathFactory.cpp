@@ -57,11 +57,11 @@ std::string PathFactory::getTilePath(int tileId) {
       break;
 
     case 202:
-      path = "./elementos_mapa/puertas/iron_door.png";
+      path = "./elementos_mapa/puertas/blue_door.png";
       break;
 
     case 203:
-      path = "./elementos_mapa/puertas/blue_door.png";
+      path = "./elementos_mapa/puertas/iron_door.png";
       break;
 
     case 108:
