@@ -1,11 +1,11 @@
-#include "audiomanager.h"
+#include "../includes/audiomanager.h"
 
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "clientprotocol.h"
-#include "sdlexception.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
 
 #define TRACK_INIT_ERROR "Error, track already found: "
 #define TRACK_FOUND_ERROR "Error, track found with code: "

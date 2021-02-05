@@ -1,8 +1,8 @@
-#include "ClientMapLoader.h"
+#include "../includes/ClientMapLoader.h"
 
 #include <iostream>
 
-#include "clientprotocol.h"
+#include "../includes/clientprotocol.h"
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)

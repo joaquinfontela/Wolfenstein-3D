@@ -1,4 +1,4 @@
-#include "sdlwindow.h"
+#include "../includes/sdlwindow.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -8,9 +8,9 @@
 
 #include <iostream>
 
-#include "clientprotocol.h"
-#include "sdlexception.h"
-#include "sdltexture.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
+#include "../includes/sdltexture.h"
 
 #define SDL_INIT_ERROR "\nError on initialization: "
 #define SDL_CEILING_INIT_ERROR "\nError on ceiling texture initialization "

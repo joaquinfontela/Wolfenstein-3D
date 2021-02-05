@@ -1,6 +1,6 @@
-#include "sdlanimation.h"
+#include "../includes/sdlanimation.h"
 
-#include "area.h"
+#include "../includes/area.h"
 
 void SdlAnimation::updateFrame() {
   this->pos++;

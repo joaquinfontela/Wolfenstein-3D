@@ -1,4 +1,4 @@
-#include "raycaster.h"
+#include "../includes/raycaster.h"
 
 #include <math.h>
 #include <time.h>
@@ -8,10 +8,10 @@
 #include <iostream>
 #include <vector>
 
-#include "clientprotocol.h"
-#include "door.h"
-#include "doortimer.h"
-#include "drawable.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/door.h"
+#include "../includes/doortimer.h"
+#include "../includes/drawable.h"
 
 bool Raycaster::hitDoor(const int& matrixXCoord, const int& matrixYCoord) {
   for (Door& d : doors) {

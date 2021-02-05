@@ -1,8 +1,8 @@
-#include "client.h"
+#include "../includes/client.h"
 
-#include "clientprotocol.h"
-#include "log.h"
-#include "scoreboard.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/log.h"
+#include "../includes/scoreboard.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
 

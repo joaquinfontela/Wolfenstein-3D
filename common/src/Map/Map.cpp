@@ -5,7 +5,7 @@
 
 #include "../../includes/Map/Map.h"
 
-#include "../../../client/src/doortile.h"
+#include "../../../client/includes/doortile.h"
 
 Map::~Map() {
   free(this->matrix);

@@ -1,9 +1,9 @@
-#include "door.h"
+#include "../includes/door.h"
 
 #include <iostream>
 
-#include "area.h"
-#include "texturemanager.h"
+#include "../includes/area.h"
+#include "../includes/texturemanager.h"
 
 void Door::draw(TextureManager& manager, double x, double y, double dirX,
                 double dirY, double planeX, double planeY,

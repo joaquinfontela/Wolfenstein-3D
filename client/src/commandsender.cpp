@@ -1,4 +1,4 @@
-#include "commandsender.h"
+#include "../includes/commandsender.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
@@ -7,8 +7,8 @@
 #include <iostream>
 
 #include "../../common/includes/protocol.h"
-#include "clientprotocol.h"
-#include "scoreboard.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/scoreboard.h"
 
 #define UINT32_SIZE sizeof(uint32_t)
 

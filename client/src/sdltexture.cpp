@@ -1,12 +1,12 @@
-#include "sdltexture.h"
+#include "../includes/sdltexture.h"
 
 #include <SDL2/SDL_image.h>
 
 #include <iostream>
 #include <string>
 
-#include "sdlexception.h"
-#include "sdlwindow.h"
+#include "../includes/sdlexception.h"
+#include "../includes/sdlwindow.h"
 
 #define SDL_TEXTURE_LOAD_ERROR "\nTexture loading error: "
 

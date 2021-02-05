@@ -1,4 +1,4 @@
-#include "audio.h"
+#include "../includes/audio.h"
 
 #include <SDL2/SDL_mixer.h>
 #include <math.h>
@@ -6,8 +6,8 @@
 #include <iostream>
 #include <string>
 
-#include "clientprotocol.h"
-#include "sdlexception.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
 
 Audio::~Audio() {
   if (isMusic)
