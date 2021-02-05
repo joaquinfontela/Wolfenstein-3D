@@ -262,7 +262,7 @@ void CommandExecuter::run() {
       } else if (opcode == ENDING_MATCH) {
         this->saveScores();
         this->saveKills();
-        // this->saveShotsFired();
+        this->saveShotsFired();
         alive = false;
       }
     } catch (SocketException& e) {

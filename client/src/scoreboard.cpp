@@ -73,9 +73,10 @@ void ScoreBoard::draw() {
     this->renderText(scores.c_str(), 1, 0, width, height);
     this->renderText(kills.c_str(), 1, 1, width, height);
     this->renderText(shotsfired.c_str(), 1, 2, width, height);
+    this->renderScore(width, height);
     this->renderShotsFired(width, height);
     this->renderKills(width, height);
-    // this->renderShotsFired(width, height);
+    this->renderShotsFired(width, height);
     this->window->render();
   }
 }
