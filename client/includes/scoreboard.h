@@ -55,6 +55,13 @@ class ScoreBoard {
    * @param h Screen height in pixels.
    */
   void renderText(const char* text, int row, int column, int w, int h);
+  
+  /**
+   * @brief Similar to renderText but with some values shifted to 
+   * better render the title of each column.
+   *
+   */
+  void renderTitle(const char* text, int row, int column, int w, int h);
 
  public:
   /**
