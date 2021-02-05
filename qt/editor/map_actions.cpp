@@ -6,23 +6,26 @@
 #include <QScrollEvent>
 #include "QCursor"
 #include "QEvent"
-#include "my_map.h"
-#include "tile.h"
+#include "map_scene.h"
 #include "map_painter.h"
+#include "QScrollBar"
 #include "ui_editor.h"
 
-#define MARGIN 7
-
-map_actions::map_actions(Editor* editor, my_map& map_to_paint) : map(map_to_paint){
+map_actions::map_actions(Editor* editor, map_scene* map_to_paint){
   this->editor = editor;
+  this->map = map_to_paint;
 }
 
 bool map_actions::eventFilter(QObject* obj, QEvent* event) {
-  if (event->type() == QEvent::MouseButtonPress) {
+  if (event->type() == QEvent::MouseButtonPress) {  
     QMouseEvent* me = (QMouseEvent*)event;
-    int x = me->localPos().x();
-    int y = me->localPos().y();
-    add_to_map(x, y);
+    int x = me->pos().x();
+    int y = me->pos().y();
+    if(this->editor->eraser_on == false){
+        add_to_map(x, y);
+    }else{
+        editor->mc->erase_tiles_at(this->get_coordinate(x,y));
+    }
     return true;
   }  else {
     return QObject::eventFilter(obj, event);
@@ -30,13 +33,15 @@ bool map_actions::eventFilter(QObject* obj, QEvent* event) {
 }
 
 void map_actions::add_to_map(int x, int y) {
-  if (is_inside(x, y) && editor->tile_selected != NULL) {
+  if (editor->tile_item_selected != NULL) {
     std::vector<int> coordinates = get_coordinate(x, y);
-    tile* tile = this->editor->tile_selected;
-    if (this->editor->mc->paint_tile(coordinates, tile)) {
-      Map_painter* mp = new Map_painter(this->editor->actual_tile_size(), this->map);
-      mp->paint_map(coordinates, this->editor->mc->tiles_at_coordinates(coordinates));
-      //editor->update_map_container(this->map);
+    tile_item* tile = this->editor->tile_item_selected;
+    if (this->editor->mc->paint_tile(coordinates, tile)) {        
+      Map_painter* mp = new Map_painter(this->editor->actual_tile_size(), this->map, this->editor->mc);
+      std::vector<tile_item*> tiles_at_coordinates =  this->editor->mc->tiles_at_coordinates(coordinates);
+      tile->add_to(this->editor->ui->graphics_map_container);
+      mp->paint_map(coordinates,tiles_at_coordinates);
+      this->editor->tile_item_selected = this->editor->tile_item_selected->create_copy();
     }
   }
 }
@@ -47,33 +52,26 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
   int COL = this->editor->mc->cant_col;
   int ROW = this->editor->mc->cant_row;
   int tile_size = this->editor->actual_tile_size();
+  QScrollBar* vertical_bar = this->editor->ui->graphics_map_container->verticalScrollBar();
+  QScrollBar* horizontal_bar = this->editor->ui->graphics_map_container->horizontalScrollBar();
 
   for (int i = 1; i <= COL; i++) {
-    float newColLine = i * tile_size;
-    if (x < newColLine + MARGIN) {
+    float newColLine = i * tile_size - horizontal_bar->value();
+    std::cout << "nc = " << newColLine << std::endl;
+    std::cout << "x = " << x << std::endl;
+    if (x < newColLine) {
       coordinates.push_back(i);
       break;
     }
   }
   for (int i = 1; i <= ROW; i++) {
-    float newRowLine = i * tile_size;
-    if (y < newRowLine + MARGIN) {
+    float newRowLine = i * tile_size - vertical_bar->value();
+    std::cout << "nr = " << newRowLine << std::endl;
+    std::cout << "y = " << x << std::endl;
+    if (y < newRowLine) {
       coordinates.push_back(i);
       break;
     }
   }
   return coordinates;
-}
-
-bool map_actions::is_inside(int x, int y) {
-  int tile_size = this->editor->actual_tile_size();
-  int WIDTH = tile_size * this->editor->mc->cant_col;
-  int HEIGHT = tile_size * this->editor->mc->cant_row;
-  if (x < MARGIN || x > WIDTH - MARGIN) {
-    return false;
-  }
-  if (y < MARGIN || y > HEIGHT - MARGIN) {
-    return false;
-  }
-  return true;
 }

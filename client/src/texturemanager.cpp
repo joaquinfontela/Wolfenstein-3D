@@ -1,14 +1,14 @@
-#include "texturemanager.h"
+#include "../includes/texturemanager.h"
 
 #include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 
-#include "area.h"
-#include "clientprotocol.h"
-#include "sdlexception.h"
-#include "sdltexture.h"
+#include "../includes/area.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
+#include "../includes/sdltexture.h"
 
 #define SDL_TEXTURE_INIT_ERROR "Error, couldn't be opened. "
 #define TEXTURE_NOT_FOUND_ERROR "Error, texture not found with code: "
@@ -25,7 +25,8 @@ void TextureManager::getWindowSize(int* w, int* h) {
 }
 
 void TextureManager::garbageCollector() {
-  for (std::map<int, SdlTexture*>::iterator it = this->textures.begin();
+  for (std::unordered_map<int, SdlTexture*>::iterator it =
+           this->textures.begin();
        it != this->textures.end(); ++it) {
     delete it->second;
   }
@@ -155,7 +156,7 @@ void TextureManager::loadTextures() {
 }
 
 void TextureManager::render(int id, const Area& srcArea, const Area& destArea) {
-  std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
+  std::unordered_map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->render(srcArea, destArea);
   else
@@ -163,7 +164,7 @@ void TextureManager::render(int id, const Area& srcArea, const Area& destArea) {
 }
 
 void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
-  std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
+  std::unordered_map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->getSizes(w, h);
   else
@@ -171,7 +172,7 @@ void TextureManager::getTextureSizeWithId(int id, int* w, int* h) {
 }
 
 void TextureManager::renderAll(int id, const Area& destArea) {
-  std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
+  std::unordered_map<int, SdlTexture*>::iterator it = this->textures.find(id);
   if (it != this->textures.end())
     it->second->renderAll(destArea);
   else
@@ -182,8 +183,7 @@ bool TextureManager::loadTexture(int id, SdlTexture* texture) {
   if (this->textures.size() > TEXTURE_LIMIT) {
     LOG_WITH_ID(TEXTURE_LIMIT_ERROR);
   }
-  std::map<int, SdlTexture*>::iterator it = this->textures.find(id);
-  if (it != this->textures.end()) {
+  if (this->textures.find(id) != this->textures.end()) {
     LOG_WITH_ID(TEXTURE_FOUND_ERROR);
     return false;
   } else {

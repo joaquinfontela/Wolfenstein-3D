@@ -4,50 +4,48 @@
 //
 
 #include "../../includes/Map/Map.h"
-#include "../../../client/src/doortile.h"
+
+#include "../../../client/includes/doortile.h"
 
 Map::~Map() {
-  // No se puede dejar este free acá. Debería estar en el
-  // destructor del loader. Si el lo crea el lo destruye.
   free(this->matrix);
+  free(this->doors);
 }
 
-int Map::get(int x, int y) { return *(this->matrix + y + x*dimy); }
+float Map::getTimers(int x, int y) {
+  return (this->doors + y + x * dimy)->timer;
+}
 
-bool Map::isDoor(int x, int y) { return this->doors[x][y].isDoor; }
+int Map::get(int x, int y) { return *(this->matrix + y + x * dimy); }
+
+bool Map::isDoor(int x, int y) { return (this->doors + y + x * dimy)->isDoor; }
 
 void Map::switchDoorState(int x, int y) {
-  doors[x][y].changeState();
+  (this->doors + y + x * dimy)->changeState();
 }
 
 void Map::forceDoorState(int x, int y) {
-  if (doors[x][y].state == CLOSED)
-    doors[x][y].state = OPEN;
+  if ((this->doors + y + x * dimy)->state == CLOSED)
+    (this->doors + y + x * dimy)->state = OPEN;
   else
-    doors[x][y].state = CLOSED;
+    (this->doors + y + x * dimy)->state = CLOSED;
 }
 
-int* Map::getMatrix(){
-  return this->matrix;
-}
+int* Map::getMatrix() { return this->matrix; }
 
 void Map::updateTimers(float value) {
   for (int i = 0; i < dimx; i++) {
     for (int j = 0; j < dimy; j++) {
-      this->doors[i][j].updateTimer(value);
+      (this->doors + j + i * dimy)->updateTimer(value);
     }
   }
 }
 
 Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
-
-  std::vector<Coordinate> doorCordinates = loader.getDoorCoordinates();
-
-  for(Coordinate& c: doorCordinates){
-    this->doors[c.getY() - 1][c.getX() - 1].isDoor = true;
-  }
-
+  doors = loader.getDoorIdMatrix();
   matrix = loader.getWallIdMatrix();
 }
 
-char Map::getDoorState(int x, int y) { return this->doors[x][y].isDoor = true; }
+char Map::getDoorState(int x, int y) {
+  return (this->doors + y + x * dimy)->state;
+}

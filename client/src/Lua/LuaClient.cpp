@@ -1,6 +1,6 @@
 #include "LuaClient.h"
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
-#include "../log.h"
+#include "../includes/log.h"
 #include "GameState.h"
 #include "luaexecuter.h"
 #include "luaraycaster.h"

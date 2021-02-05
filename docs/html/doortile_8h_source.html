@@ -84,14 +84,17 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">char</span> state;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">bool</span> isDoor;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">   34</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">timer</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DOORTILE_H_</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classDoorTile.html#abcd3501e279c18e970f9978192d88ab7">restart</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">   40</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">timer</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DOORTILE_H_</span></div>
 <div class="ttc" id="aclassDoorTile_html"><div class="ttname"><a href="classDoorTile.html">DoorTile</a></div><div class="ttdoc">Represents a door state.</div><div class="ttdef"><b>Definition:</b> doortile.h:10</div></div>
-<div class="ttc" id="aclassDoorTile_html_a17d7075d4b71d2c0609e4d99ac724e32"><div class="ttname"><a href="classDoorTile.html#a17d7075d4b71d2c0609e4d99ac724e32">DoorTile::changeState</a></div><div class="ttdeci">void changeState()</div><div class="ttdoc">Sets the doortile state to CLOSING if the door is OPEN or OPENING. Sets the doortile state to OPENING...</div><div class="ttdef"><b>Definition:</b> doortile.cpp:22</div></div>
+<div class="ttc" id="aclassDoorTile_html_a17d7075d4b71d2c0609e4d99ac724e32"><div class="ttname"><a href="classDoorTile.html#a17d7075d4b71d2c0609e4d99ac724e32">DoorTile::changeState</a></div><div class="ttdeci">void changeState()</div><div class="ttdoc">Sets the doortile state to CLOSING if the door is OPEN or OPENING. Sets the doortile state to OPENING...</div><div class="ttdef"><b>Definition:</b> doortile.cpp:28</div></div>
 <div class="ttc" id="aclassDoorTile_html_a2dc86c2c812041bc2f14fbaad0cc1a77"><div class="ttname"><a href="classDoorTile.html#a2dc86c2c812041bc2f14fbaad0cc1a77">DoorTile::updateTimer</a></div><div class="ttdeci">void updateTimer(float update)</div><div class="ttdoc">Updates the timer and door state if needed.</div><div class="ttdef"><b>Definition:</b> doortile.cpp:5</div></div>
-<div class="ttc" id="aclassDoorTile_html_afaf676b75329f18cd5a9f142de8c277c"><div class="ttname"><a href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">DoorTile::timer</a></div><div class="ttdeci">float timer</div><div class="ttdoc">Value that lies between 0 (fully opened) and 1 (fully closed).</div><div class="ttdef"><b>Definition:</b> doortile.h:34</div></div>
+<div class="ttc" id="aclassDoorTile_html_abcd3501e279c18e970f9978192d88ab7"><div class="ttname"><a href="classDoorTile.html#abcd3501e279c18e970f9978192d88ab7">DoorTile::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdoc">Resets all values to initial state.</div><div class="ttdef"><b>Definition:</b> doortile.cpp:22</div></div>
+<div class="ttc" id="aclassDoorTile_html_afaf676b75329f18cd5a9f142de8c277c"><div class="ttname"><a href="classDoorTile.html#afaf676b75329f18cd5a9f142de8c277c">DoorTile::timer</a></div><div class="ttdeci">float timer</div><div class="ttdoc">Value that lies between 0 (fully opened) and 1 (fully closed).</div><div class="ttdef"><b>Definition:</b> doortile.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

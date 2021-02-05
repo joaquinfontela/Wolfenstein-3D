@@ -68,19 +68,163 @@ $(function() {
 <div class="title">Raycaster Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classGame.html">Game</a> engine. Draws the game using the raycasting algorithm.  
+ <a href="classRaycaster.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="raycaster_8h_source.html">raycaster.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4b1c4df0a83bf047058bfdf0e43238f2"><td class="memItemLeft" align="right" valign="top"><a id="a4b1c4df0a83bf047058bfdf0e43238f2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Raycaster</b> (<a class="el" href="classTextureManager.html">TextureManager</a> &amp;manager, <a class="el" href="classMap.html">Map</a> &amp;m, std::atomic&lt; bool &gt; &amp;b, <a class="el" href="classSdlWindow.html">SdlWindow</a> *window, <a class="el" href="classPlayer.html">Player</a> *player, std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;sprites, std::mutex &amp;lock, <a class="el" href="classHud.html">Hud</a> &amp;hud, <a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;scoreboard)</td></tr>
+<tr class="memitem:a4b1c4df0a83bf047058bfdf0e43238f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#a4b1c4df0a83bf047058bfdf0e43238f2">Raycaster</a> (<a class="el" href="classTextureManager.html">TextureManager</a> &amp;manager, <a class="el" href="classMap.html">Map</a> &amp;m, std::atomic&lt; bool &gt; &amp;b, <a class="el" href="classSdlWindow.html">SdlWindow</a> *window, <a class="el" href="classPlayer.html">Player</a> *player, std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;sprites, std::mutex &amp;lock, <a class="el" href="classHud.html">Hud</a> &amp;hud, <a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;scoreboard)</td></tr>
+<tr class="memdesc:a4b1c4df0a83bf047058bfdf0e43238f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classRaycaster.html" title="Game engine. Draws the game using the raycasting algorithm.">Raycaster</a> object.  <a href="classRaycaster.html#a4b1c4df0a83bf047058bfdf0e43238f2">More...</a><br /></td></tr>
 <tr class="separator:a4b1c4df0a83bf047058bfdf0e43238f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0426a17e941d90eadb656fc7574e1759"><td class="memItemLeft" align="right" valign="top"><a id="a0426a17e941d90eadb656fc7574e1759"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hitDoor</b> (const int &amp;matrixXCoord, const int &amp;matrixYCoord)</td></tr>
+<tr class="memitem:a0426a17e941d90eadb656fc7574e1759"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">hitDoor</a> (const int &amp;matrixXCoord, const int &amp;matrixYCoord)</td></tr>
+<tr class="memdesc:a0426a17e941d90eadb656fc7574e1759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies if the given coordinates are from a door.  <a href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">More...</a><br /></td></tr>
 <tr class="separator:a0426a17e941d90eadb656fc7574e1759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a684354950b046a0954231a1706f1cc96"><td class="memItemLeft" align="right" valign="top"><a id="a684354950b046a0954231a1706f1cc96"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#a684354950b046a0954231a1706f1cc96">run</a> ()</td></tr>
+<tr class="memdesc:a684354950b046a0954231a1706f1cc96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the game engine. Draws the environment and updates the time for all the objects that need it. <br /></td></tr>
 <tr class="separator:a684354950b046a0954231a1706f1cc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classGame.html">Game</a> engine. Draws the game using the raycasting algorithm. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4b1c4df0a83bf047058bfdf0e43238f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b1c4df0a83bf047058bfdf0e43238f2">&#9670;&nbsp;</a></span>Raycaster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Raycaster::Raycaster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classTextureManager.html">TextureManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMap.html">Map</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::atomic&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSdlWindow.html">SdlWindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sprites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::mutex &amp;&#160;</td>
+          <td class="paramname"><em>lock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHud.html">Hud</a> &amp;&#160;</td>
+          <td class="paramname"><em>hud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;&#160;</td>
+          <td class="paramname"><em>scoreboard</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classRaycaster.html" title="Game engine. Draws the game using the raycasting algorithm.">Raycaster</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manager</td><td>Reference to the texture manager. </td></tr>
+    <tr><td class="paramname">m</td><td><a class="el" href="classMap.html" title="[CLIENT SIDE] Knows where are all the doors and walls.">Map</a> reference. </td></tr>
+    <tr><td class="paramname">b</td><td>Boolean that represents if the game has finished or not. </td></tr>
+    <tr><td class="paramname">window</td><td>Window reference. </td></tr>
+    <tr><td class="paramname">player</td><td>Reference to one's own player. </td></tr>
+    <tr><td class="paramname">sprites</td><td>Sprites vector. </td></tr>
+    <tr><td class="paramname">lock</td><td>Stops from accesing a deleted sprite. </td></tr>
+    <tr><td class="paramname">hud</td><td>Reference to the hud. </td></tr>
+    <tr><td class="paramname">scoreboard</td><td>Reference to the scoreboard. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0426a17e941d90eadb656fc7574e1759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0426a17e941d90eadb656fc7574e1759">&#9670;&nbsp;</a></span>hitDoor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Raycaster::hitDoor </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>matrixXCoord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>matrixYCoord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifies if the given coordinates are from a door. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrixXCoord</td><td></td></tr>
+    <tr><td class="paramname">matrixYCoord</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="raycaster_8h_source.html">raycaster.h</a></li>
 <li>client/src/raycaster.cpp</li>

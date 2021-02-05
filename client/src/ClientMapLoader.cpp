@@ -1,7 +1,8 @@
-#include "ClientMapLoader.h"
-#include "clientprotocol.h"
+#include "../includes/ClientMapLoader.h"
 
 #include <iostream>
+
+#include "../includes/clientprotocol.h"
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
@@ -16,40 +17,57 @@ int* ClientMapLoader::getWallIdMatrix() {
 
   int FROM_ID = yamlMapReader.getWallsIdLimits().at(0);
   int TO_ID = yamlMapReader.getWallsIdLimits().at(1);
-  std::map<int, std::vector<Coordinate>> wallTypeCoordinateMap = yamlMapReader.getWallTypeCoordinateMap();
+  std::map<int, std::vector<Coordinate>> wallTypeCoordinateMap =
+      yamlMapReader.getWallTypeCoordinateMap();
 
   int id;
   for (id = FROM_ID; id <= TO_ID; id++) {
-
-    if (!this->idIsInCoordinateMap(wallTypeCoordinateMap, id))
-      continue;
-    std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn = wallTypeCoordinateMap[id];
+    if (!this->idIsInCoordinateMap(wallTypeCoordinateMap, id)) continue;
+    std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
+        wallTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
-      matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] = this->convertYamlFileWallIdToProtocolWallSkinId(id);
+      matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] =
+          this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
   }
 
   int DOOR_FROM = yamlMapReader.getDoorsIdLimits().at(0);
   int DOOR_TO = yamlMapReader.getDoorsIdLimits().at(1);
 
-  for(id = DOOR_FROM; id <= DOOR_TO; id++){
-    std::vector<Coordinate> pos= yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+  for (id = DOOR_FROM; id <= DOOR_TO; id++) {
+    std::vector<Coordinate> pos =
+        yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
 
-    for(Coordinate& c : pos){
-        matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] = this->convertYamlFileWallIdToProtocolWallSkinId(id);
+    for (Coordinate& c : pos) {
+      matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] =
+          this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
   }
   return matrix;
 }
 
-std::vector<Coordinate> ClientMapLoader::getDoorCoordinates(){
+DoorTile* ClientMapLoader::getDoorIdMatrix() {
+  DoorTile* doors = (DoorTile*)calloc(dimx * dimy, sizeof(DoorTile));
+  std::vector<Coordinate> coords = this->getDoorCoordinates();
+  for (int i = 0; i < sizeof(doors); i += sizeof(void*)) {
+    doors[i].restart();
+  }
+  for (Coordinate& c : coords) {
+    (doors + (c.getX() - 1) + (dimy * (c.getY() - 1)))->restart();
+    (doors + (c.getX() - 1) + (dimy * (c.getY() - 1)))->isDoor = true;
+  }
+  return doors;
+}
+
+std::vector<Coordinate> ClientMapLoader::getDoorCoordinates() {
   int DOOR_FROM = yamlMapReader.getDoorsIdLimits().at(0);
   int DOOR_TO = yamlMapReader.getDoorsIdLimits().at(1);
   std::vector<Coordinate> coordinates;
 
   int id = 0;
-  for(id = DOOR_FROM; id <= DOOR_TO; id++){
-    std::vector<Coordinate> pos= yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+  for (id = DOOR_FROM; id <= DOOR_TO; id++) {
+    std::vector<Coordinate> pos =
+        yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
     coordinates.insert(coordinates.end(), pos.begin(), pos.end());
   }
 
@@ -59,18 +77,19 @@ std::vector<Coordinate> ClientMapLoader::getDoorCoordinates(){
 std::vector<Drawable*> ClientMapLoader::getDrawableItemList() {
   int FROM_ID = yamlMapReader.getWeaponsIdLimits().at(0);
   int TO_ID = yamlMapReader.getItemsIdLimits().at(1);
-  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap = yamlMapReader.getPartialItemCoordinateMap(FROM_ID, TO_ID);
+  std::map<int, std::vector<Coordinate>> itemTypeCoordinateMap =
+      yamlMapReader.getPartialItemCoordinateMap(FROM_ID, TO_ID);
   int id;
   std::vector<Drawable*> drawableItems;
 
   for (id = FROM_ID; id <= TO_ID; id++) {
     if (!this->idIsInCoordinateMap(itemTypeCoordinateMap, id)) continue;
-    std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn = itemTypeCoordinateMap[id];
+    std::vector<Coordinate> coordinatesWhereItemWithCurrentIdIsIn =
+        itemTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereItemWithCurrentIdIsIn) {
-      drawableItems.push_back(
-          new Drawable(c.getY() - 0.5 , c.getX() - 0.5,
-                       this->convertYamlFileItemIdToProtocolItemSkinId(id),
-                       uniqueid));
+      drawableItems.push_back(new Drawable(
+          c.getY() - 0.5, c.getX() - 0.5,
+          this->convertYamlFileItemIdToProtocolItemSkinId(id), uniqueid));
       uniqueid++;
     }
   }

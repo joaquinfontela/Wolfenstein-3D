@@ -1,9 +1,9 @@
-#include "door.h"
+#include "../includes/door.h"
 
 #include <iostream>
 
-#include "area.h"
-#include "texturemanager.h"
+#include "../includes/area.h"
+#include "../includes/texturemanager.h"
 
 void Door::draw(TextureManager& manager, double x, double y, double dirX,
                 double dirY, double planeX, double planeY,
@@ -12,8 +12,7 @@ void Door::draw(TextureManager& manager, double x, double y, double dirX,
       this->matrix->getDoorState(this->matrixXCoord, this->matrixYCoord);
   if (doorState == OPEN) return;
 
-  float time =
-      this->matrix->doors[this->matrixXCoord][this->matrixYCoord].timer;
+  float time = this->matrix->getTimers(this->matrixXCoord, this->matrixYCoord);
 
   double rayDirX = dirX + planeX * cameraXCoord;
   double rayDirY = dirY + planeY * cameraXCoord;
@@ -42,7 +41,8 @@ void Door::draw(TextureManager& manager, double x, double y, double dirX,
     Area srcArea(doorStripe - BLOCKSIZE * (1 - time), 0, 1,
                  tooFar * BLOCKSIZE + !tooFar * wallHeight);
     Area destArea(i, (this->height - wallHeight) >> 1, 1, wallHeight);
-    manager.render(this->matrix->get(matrixXCoord, matrixYCoord), srcArea, destArea);
+    manager.render(this->matrix->get(matrixXCoord, matrixYCoord), srcArea,
+                   destArea);
   }
 
   if (perpendicularWallDistance < distanceBuffer[i])

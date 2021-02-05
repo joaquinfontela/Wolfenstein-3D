@@ -14,74 +14,28 @@
    <string>Editor</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
-    <normaloff>:/game_icon/logo/wolfestein_logo.png</normaloff>:/game_icon/logo/wolfestein_logo.png</iconset>
+   <iconset>
+    <normaloff>logo/wolfestein_logo.png</normaloff>logo/wolfestein_logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QScrollArea" name="map_scroll">
+   <widget class="QGraphicsView" name="graphics_tiles_container">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>640</x>
       <y>20</y>
-      <width>611</width>
-      <height>501</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>1</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
-    </property>
-    <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::AdjustIgnored</enum>
-    </property>
-    <property name="widgetResizable">
-     <bool>false</bool>
-    </property>
-    <widget class="QWidget" name="map_container">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>624</width>
-       <height>505</height>
-      </rect>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="cursor">
-      <cursorShape>ArrowCursor</cursorShape>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="element_container">
-    <property name="geometry">
-     <rect>
-      <x>639</x>
-      <y>21</y>
       <width>151</width>
       <height>501</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+   </widget>
+   <widget class="QGraphicsView" name="graphics_map_container">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>21</y>
+      <width>611</width>
+      <height>501</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -103,15 +57,6 @@
     <addaction name="actionOpen"/>
     <addaction name="actionsafe"/>
    </widget>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actionCopy"/>
-    <addaction name="actionPaste"/>
-    <addaction name="actionUndo"/>
-    <addaction name="actionRedo"/>
-   </widget>
    <widget class="QMenu" name="menuBack_to_Manu">
     <property name="title">
      <string>Quit</string>
@@ -127,7 +72,6 @@
     <addaction name="actionZoom_out"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuBack_to_Manu"/>
   </widget>
@@ -631,54 +575,6 @@
     <string>Save</string>
    </property>
   </action>
-  <action name="actionCopy">
-   <property name="icon">
-    <iconset>
-     <normaloff>iconos/copy_icon.png</normaloff>iconos/copy_icon.png</iconset>
-   </property>
-   <property name="text">
-    <string>Copy</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
-   </property>
-  </action>
-  <action name="actionPaste">
-   <property name="icon">
-    <iconset>
-     <normaloff>iconos/paste_icon.png</normaloff>iconos/paste_icon.png</iconset>
-   </property>
-   <property name="text">
-    <string>Paste</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+V</string>
-   </property>
-  </action>
-  <action name="actionUndo">
-   <property name="icon">
-    <iconset>
-     <normaloff>iconos/undo_icon.png</normaloff>iconos/undo_icon.png</iconset>
-   </property>
-   <property name="text">
-    <string>Undo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
-  </action>
-  <action name="actionRedo">
-   <property name="icon">
-    <iconset>
-     <normaloff>iconos/redo_icon.png</normaloff>iconos/redo_icon.png</iconset>
-   </property>
-   <property name="text">
-    <string>Redo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Y</string>
-   </property>
-  </action>
   <action name="actionEXIT">
    <property name="icon">
     <iconset>
@@ -762,8 +658,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

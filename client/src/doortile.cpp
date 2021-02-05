@@ -1,6 +1,6 @@
-#include "doortile.h"
+#include "../includes/doortile.h"
 
-#include "clientprotocol.h"
+#include "../includes/clientprotocol.h"
 
 void DoorTile::updateTimer(float update) {
   if (state == OPEN || state == CLOSED) return;
@@ -17,6 +17,12 @@ void DoorTile::updateTimer(float update) {
       state = CLOSED;
     }
   }
+}
+
+void DoorTile::restart() {
+  this->isDoor = false;
+  this->state = CLOSED;
+  this->timer = 1;
 }
 
 void DoorTile::changeState() {

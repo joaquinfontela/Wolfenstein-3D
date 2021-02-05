@@ -1,10 +1,10 @@
-#include "player.h"
+#include "../includes/player.h"
 
 #include <math.h>
 
 #include <iostream>
 
-#include "clientprotocol.h"
+#include "../includes/clientprotocol.h"
 
 bool Player::hasKey() {
   return key;
