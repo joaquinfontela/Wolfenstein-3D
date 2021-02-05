@@ -8,6 +8,10 @@
 
 #include "sdlwindow.h"
 
+/**
+ * @brief Stores the data for the leaderboards and draws it.
+ *
+ */
 class ScoreBoard {
  private:
   SdlWindow* window;

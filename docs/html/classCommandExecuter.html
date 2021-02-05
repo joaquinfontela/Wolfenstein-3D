@@ -68,6 +68,11 @@ $(function() {
 <div class="title">CommandExecuter Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Receives the data from the server and calls the other object to keep the game running.  
+ <a href="classCommandExecuter.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="commandexecuter_8h_source.html">commandexecuter.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CommandExecuter:</div>
 <div class="dyncontent">
@@ -80,17 +85,19 @@ Inheritance diagram for CommandExecuter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad0f305fb30a1e4e776832f33e9c2e5b0"><td class="memItemLeft" align="right" valign="top"><a id="ad0f305fb30a1e4e776832f33e9c2e5b0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CommandExecuter</b> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;sprites, std::map&lt; uint32_t, <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players, std::mutex &amp;lock, int selfId, <a class="el" href="classAudioManager.html">AudioManager</a> &amp;audiomanager, <a class="el" href="classMap.html">Map</a> &amp;matrix, <a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;loader, <a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;scoreboard)</td></tr>
+<tr class="memitem:ad0f305fb30a1e4e776832f33e9c2e5b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#ad0f305fb30a1e4e776832f33e9c2e5b0">CommandExecuter</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;sprites, std::map&lt; uint32_t, <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players, std::mutex &amp;lock, int selfId, <a class="el" href="classAudioManager.html">AudioManager</a> &amp;audiomanager, <a class="el" href="classMap.html">Map</a> &amp;matrix, <a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;loader, <a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;scoreboard)</td></tr>
+<tr class="memdesc:ad0f305fb30a1e4e776832f33e9c2e5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classCommand.html">Command</a> Executer object.  <a href="classCommandExecuter.html#ad0f305fb30a1e4e776832f33e9c2e5b0">More...</a><br /></td></tr>
 <tr class="separator:ad0f305fb30a1e4e776832f33e9c2e5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7690eaa1b9c7033f1c239629460c161"><td class="memItemLeft" align="right" valign="top"><a id="ac7690eaa1b9c7033f1c239629460c161"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#ac7690eaa1b9c7033f1c239629460c161">run</a> ()</td></tr>
+<tr class="memdesc:ac7690eaa1b9c7033f1c239629460c161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the music and receives data from the server while the game is being played. <br /></td></tr>
 <tr class="separator:ac7690eaa1b9c7033f1c239629460c161"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d245fc090f4f86b5e88b2f6990df65a"><td class="memItemLeft" align="right" valign="top"><a id="a8d245fc090f4f86b5e88b2f6990df65a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playDyingSound</b> (int gunId, int playerId)</td></tr>
+<tr class="memitem:a8d245fc090f4f86b5e88b2f6990df65a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#a8d245fc090f4f86b5e88b2f6990df65a">playDyingSound</a> (int gunId, int playerId)</td></tr>
+<tr class="memdesc:a8d245fc090f4f86b5e88b2f6990df65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a dying sound depending on the player skin and the distance to it.  <a href="classCommandExecuter.html#a8d245fc090f4f86b5e88b2f6990df65a">More...</a><br /></td></tr>
 <tr class="separator:a8d245fc090f4f86b5e88b2f6990df65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf3d525e76e8cdff567ee95f8ffb5b1e"><td class="memItemLeft" align="right" valign="top"><a id="aaf3d525e76e8cdff567ee95f8ffb5b1e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playExplosionSound</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#aaf3d525e76e8cdff567ee95f8ffb5b1e">playExplosionSound</a> ()</td></tr>
+<tr class="memdesc:aaf3d525e76e8cdff567ee95f8ffb5b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the explosion sound. <br /></td></tr>
 <tr class="separator:aaf3d525e76e8cdff567ee95f8ffb5b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classThread"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classThread')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a1f53ee62bd30a7924186ef26150ce262"></a>
@@ -112,6 +119,140 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>join</b> ()</td></tr>
 <a class="el" href="classThread.html">Thread</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classThread.html">Thread</a> &amp;&amp;other)</td></tr>
 <tr class="separator:a897fb6fc681afda64868a72a377e53c7 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Receives the data from the server and calls the other object to keep the game running. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad0f305fb30a1e4e776832f33e9c2e5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0f305fb30a1e4e776832f33e9c2e5b0">&#9670;&nbsp;</a></span>CommandExecuter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommandExecuter::CommandExecuter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::atomic&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>alive</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sprites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; uint32_t, <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>players</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::mutex &amp;&#160;</td>
+          <td class="paramname"><em>lock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>selfId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classAudioManager.html">AudioManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>audiomanager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMap.html">Map</a> &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classScoreBoard.html">ScoreBoard</a> &amp;&#160;</td>
+          <td class="paramname"><em>scoreboard</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classCommand.html">Command</a> Executer object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Socket. </td></tr>
+    <tr><td class="paramname">alive</td><td>True if the game is still running. </td></tr>
+    <tr><td class="paramname">sprites</td><td>Sprites vector. </td></tr>
+    <tr><td class="paramname">players</td><td>Players mapped by their ids. </td></tr>
+    <tr><td class="paramname">lock</td><td>Stops the executer from reading an invalid sprite. </td></tr>
+    <tr><td class="paramname">selfId</td><td>Our player's id. </td></tr>
+    <tr><td class="paramname">audiomanager</td><td><a class="el" href="classAudio.html" title="Encapsulates the behaviour and data regarding the audio.">Audio</a> manager reference. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classMap.html" title="[CLIENT SIDE] Knows where are all the doors and walls.">Map</a> reference. </td></tr>
+    <tr><td class="paramname">loader</td><td><a class="el" href="classMap.html" title="[CLIENT SIDE] Knows where are all the doors and walls.">Map</a> loader reference. </td></tr>
+    <tr><td class="paramname">scoreboard</td><td>Scoreboard reference. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8d245fc090f4f86b5e88b2f6990df65a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d245fc090f4f86b5e88b2f6990df65a">&#9670;&nbsp;</a></span>playDyingSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommandExecuter::playDyingSound </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gunId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>playerId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays a dying sound depending on the player skin and the distance to it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gunId</td><td>Enemy's gun id. </td></tr>
+    <tr><td class="paramname">playerId</td><td>Enemy's id. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/<a class="el" href="commandexecuter_8h_source.html">commandexecuter.h</a></li>
 <li>client/src/commandexecuter.cpp</li>

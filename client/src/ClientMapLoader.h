@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../../common/includes/YAML/YAMLMapReader.h"
+#include "doortile.h"
 #include "drawable.h"
 
 typedef std::vector<std::vector<int>> WallIdMatrix;
@@ -14,6 +15,7 @@ class ClientMapLoader {
   ClientMapLoader(std::string& yamlFile, unsigned int dimx, unsigned int dimy);
   unsigned int convertYamlFileItemIdToProtocolItemSkinId(int yamlFileId);
   int* getWallIdMatrix();
+  DoorTile* getDoorIdMatrix();
   std::vector<Drawable*> getDrawableItemList();
   unsigned int dimx, dimy;
   std::vector<Coordinate> getDoorCoordinates();
@@ -22,8 +24,8 @@ class ClientMapLoader {
   int uniqueid;
   YAMLMapReader yamlMapReader;
   WallIdMatrix wallIdMatrix;
-  bool idIsInCoordinateMap(std::map<int, std::vector<Coordinate>>& coordinateMap,
-                           int itemId);
+  bool idIsInCoordinateMap(
+      std::map<int, std::vector<Coordinate>>& coordinateMap, int itemId);
   unsigned int convertYamlFileWallIdToProtocolWallSkinId(int yamlFileId);
 };
 

@@ -28,6 +28,12 @@ class DoorTile {
   bool isDoor;
 
   /**
+   * @brief Resets all values to initial state.
+   *
+   */
+  void restart();
+
+  /**
    * @brief Value that lies between 0 (fully opened) and 1 (fully closed).
    *
    */

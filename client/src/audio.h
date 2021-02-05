@@ -8,6 +8,10 @@
 #include "clientprotocol.h"
 #include "sound.h"
 
+/**
+ * @brief Encapsulates the behaviour and data regarding the audio.
+ *
+ */
 class Audio {
  private:
   int channel;

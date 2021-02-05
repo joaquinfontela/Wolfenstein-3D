@@ -6,14 +6,14 @@
 #include "drawable.h"
 
 /**
- * @brief Player class. Holds important information about each player and is
- * able to raycast it if it's an enemy.
+ * @brief [CLIENT SIDE] Player class. Holds important information about each
+ * player and is able to raycast it if it's an enemy.
  *
  */
 class Player : public Drawable {
  public:
   /**
-   * @brief Construct a new Player object
+   * @brief [CLIENT SIDE]  Construct a new Player object
    *
    * @param posX Player's X Coordinate.
    * @param posY Player's Y Coordinate.
@@ -49,21 +49,21 @@ class Player : public Drawable {
   ~Player() {}
 
   /**
-   * @brief Construct a new Player object
+   * @brief [CLIENT SIDE] Construct a new Player object
    *
    * @param info Information taken from the server. Used for creating enemies.
    */
   Player(PlayerData& info);
 
   /**
-   * @brief Updates the player info.
+   * @brief [CLIENT SIDE] Updates the player info.
    *
    * @param info Info carried from the server.
    */
   void update(PlayerData& info);
 
   /**
-   * @brief Draws the player using the raycasting algorithm.
+   * @brief [CLIENT SIDE] Draws the player using the raycasting algorithm.
 
    * @param manager Reference to the texture manager.
    * @param posX Player's X coordinate.
@@ -81,14 +81,14 @@ class Player : public Drawable {
             float diff) override;
 
   /**
-   * @brief Gets the Soldier Id.
+   * @brief [CLIENT SIDE] Gets the Soldier Id.
    *
    * @return int Soldier id.
    */
   int getSoldierId();
 
   /**
-   * @brief Calculates the distance between players.
+   * @brief [CLIENT SIDE] Calculates the distance between players.
    *
    * @param other
    * @return double distance to the other player.
@@ -96,7 +96,8 @@ class Player : public Drawable {
   double calculateDist(Player* other);
 
   /**
-   * @brief Calculates the distance from the player to the given coordinates.
+   * @brief [CLIENT SIDE] Calculates the distance from the player to the given
+   * coordinates.
    *
    * @param otherx X entity coordinate.
    * @param othery Y entity coordinate.
@@ -105,19 +106,19 @@ class Player : public Drawable {
   double calculateDist(int otherx, int othery);
 
   /**
-   * @brief Sets the shooting boolean to true.
+   * @brief [CLIENT SIDE] Sets the shooting boolean to true.
    *
    */
   void startShooting();
 
   /**
-   * @brief Sets the shooting boolean to false.
+   * @brief [CLIENT SIDE] Sets the shooting boolean to false.
    *
    */
   void stopShooting();
 
   /**
-   * @brief Checks whether the player is sgooting or not.
+   * @brief [CLIENT SIDE] Checks whether the player is sgooting or not.
    *
    * @return true if it's shooting.
    * @return false otherwise.
@@ -125,7 +126,7 @@ class Player : public Drawable {
   bool isShooting();
 
   /**
-   * @brief Checks whether the player is moving or not.
+   * @brief [CLIENT SIDE] Checks whether the player is moving or not.
    *
    * @return true if it's moving.
    * @return false otherwise.
@@ -133,34 +134,34 @@ class Player : public Drawable {
   bool isMoving();
 
   /**
-   * @brief Sets the movement boolean to false.
+   * @brief [CLIENT SIDE] Sets the movement boolean to false.
    *
    */
   void stopMoving();
 
   /**
-   * @brief Returns false.
+   * @brief [CLIENT SIDE] Returns false.
    *
    * @return false
    */
   bool hasThisUniqueId(int otherid) override;
 
   /**
-   * @brief Returns false.
+   * @brief [CLIENT SIDE] Returns false.
    *
    * @return false
    */
   bool isSprite() override;
 
   /**
-   * @brief Returns true.
+   * @brief [CLIENT SIDE] Returns true.
    *
    * @return true
    */
   bool isPlayer() override;
 
   /**
-   * @brief Checks for the key.
+   * @brief [CLIENT SIDE] Checks for the key.
    *
    * @return true if the player has the key.
    * @return false if the player doesn't have the key.
@@ -183,20 +184,20 @@ class Player : public Drawable {
 
  private:
   /**
-   * @brief Restarts all the attributes that animate the player or indicate some
-   * sort of movement or shooting status.
+   * @brief [CLIENT SIDE] Restarts all the attributes that animate the player or
+   * indicate some sort of movement or shooting status.
    *
    */
   void restartAnimationStats();
 
   /**
-   * @brief True if any of those actions is happening.
+   * @brief [CLIENT SIDE] True if any of those actions is happening.
    *
    */
   bool animatingShooting, animatingMovement, shooting;
 
   /**
-   * @brief Frames per animation for the raycasted enemy.
+   * @brief [CLIENT SIDE] Frames per animation for the raycasted enemy.
    *
    */
   int framesPerAnimation;

@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <map>
+#include <unordered_map>
 #include <string>
 
 #include "area.h"
@@ -116,7 +116,7 @@ class TextureManager {
    */
   bool loadTexture(int id, SdlTexture* texture);
 
-  std::map<int, SdlTexture*> textures;
+  std::unordered_map<int, SdlTexture*> textures;
 };
 
 #endif  // TEXTUREMANAGER_H_

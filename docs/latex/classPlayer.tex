@@ -2,7 +2,7 @@
 \label{classPlayer}\index{Player@{Player}}
 
 
-\mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy.  
+\mbox{[}CLIENT SIDE\mbox{]} \mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy.  
 
 
 
@@ -19,40 +19,40 @@ Inheritance diagram for Player\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPlayer_a93fbc84853d872993d78c14c57f52c79}{Player}} (double posX, double posY, double dirX, double dirY, double planeX, double planeY, int id)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Construct a new \mbox{\hyperlink{classPlayer}{Player}} object \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPlayer_a33bc40f037abdba268fa75f41d8f8e27}{Player}} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Construct a new \mbox{\hyperlink{classPlayer}{Player}} object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPlayer_ac95eb474e96091904eeeec6dba63f3f6}{update}} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&info)
-\begin{DoxyCompactList}\small\item\em Updates the player info. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Updates the player info. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPlayer_afcc052d2da833719ddf8eac9a186dff8}{draw}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, double posX, double posY, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float diff) override
-\begin{DoxyCompactList}\small\item\em Draws the player using the raycasting algorithm. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Draws the player using the raycasting algorithm. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classPlayer_a1c349d6a0af6bacb4b2ec0a29a08fd4e}{get\+Soldier\+Id}} ()
-\begin{DoxyCompactList}\small\item\em Gets the Soldier Id. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Gets the Soldier Id. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classPlayer_a186a315924e00c9a1ddb2efb5ffab276}{calculate\+Dist}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
-\begin{DoxyCompactList}\small\item\em Calculates the distance between players. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Calculates the distance between players. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classPlayer_ad4a04f779eb7e5aa80687440c0bd338b}{calculate\+Dist}} (int otherx, int othery)
-\begin{DoxyCompactList}\small\item\em Calculates the distance from the player to the given coordinates. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Calculates the distance from the player to the given coordinates. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a41829a2125e9f9df356dfb1839073939}\label{classPlayer_a41829a2125e9f9df356dfb1839073939}} 
 void \mbox{\hyperlink{classPlayer_a41829a2125e9f9df356dfb1839073939}{start\+Shooting}} ()
-\begin{DoxyCompactList}\small\item\em Sets the shooting boolean to true. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Sets the shooting boolean to true. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}\label{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}} 
 void \mbox{\hyperlink{classPlayer_a39444c55ab02f8f07fe5e638051e7cd6}{stop\+Shooting}} ()
-\begin{DoxyCompactList}\small\item\em Sets the shooting boolean to false. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Sets the shooting boolean to false. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_af8e8cf38bff2b34d92a20e699b29a6af}{is\+Shooting}} ()
-\begin{DoxyCompactList}\small\item\em Checks whether the player is sgooting or not. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Checks whether the player is sgooting or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_a6a0b5131321ade6c0e9e30869507b587}{is\+Moving}} ()
-\begin{DoxyCompactList}\small\item\em Checks whether the player is moving or not. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Checks whether the player is moving or not. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_a478572d23809f9163fb6c9a3520f3dee}\label{classPlayer_a478572d23809f9163fb6c9a3520f3dee}} 
 void \mbox{\hyperlink{classPlayer_a478572d23809f9163fb6c9a3520f3dee}{stop\+Moving}} ()
-\begin{DoxyCompactList}\small\item\em Sets the movement boolean to false. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Sets the movement boolean to false. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_a87a9cbcab9671cd1e36ce7d2dae21ba4}{has\+This\+Unique\+Id}} (int otherid) override
-\begin{DoxyCompactList}\small\item\em Returns false. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Returns false. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_abb78c329add4ad99c693f5cefda89f38}{is\+Sprite}} () override
-\begin{DoxyCompactList}\small\item\em Returns false. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Returns false. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_af70c30fb29511e1d80152cc3af829b6b}{is\+Player}} () override
-\begin{DoxyCompactList}\small\item\em Returns true. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Returns true. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}{has\+Key}} ()
-\begin{DoxyCompactList}\small\item\em Checks for the key. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Checks for the key. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}\label{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}} 
 {\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader, \mbox{\hyperlink{classMap}{Map}} \&map, unsigned int player\+ID)
 \item 
@@ -83,9 +83,6 @@ double {\bfseries get\+DirX} ()
 \mbox{\Hypertarget{classPlayer_a6aad5c676ea31112265d884862a2e712}\label{classPlayer_a6aad5c676ea31112265d884862a2e712}} 
 double {\bfseries get\+DirY} ()
 \item 
-\mbox{\Hypertarget{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}\label{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}} 
-bool {\bfseries has\+Admin} ()
-\item 
 \mbox{\Hypertarget{classPlayer_ab6da4a036a3b5535ecdb59d712ac387e}\label{classPlayer_ab6da4a036a3b5535ecdb59d712ac387e}} 
 int {\bfseries get\+Kills} ()
 \item 
@@ -95,6 +92,12 @@ int {\bfseries get\+Shots\+Fired} ()
 \mbox{\Hypertarget{classPlayer_a4b57f407fa30611f4d4838b9dde5e8c1}\label{classPlayer_a4b57f407fa30611f4d4838b9dde5e8c1}} 
 void {\bfseries set\+Admin} ()
 \item 
+\mbox{\Hypertarget{classPlayer_a97e5447778ae6c384eedc532dcd8431d}\label{classPlayer_a97e5447778ae6c384eedc532dcd8431d}} 
+int {\bfseries get\+Score} ()
+\item 
+\mbox{\Hypertarget{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}\label{classPlayer_af79f5cb7e38d252cf2a9845d7af5f777}} 
+bool {\bfseries has\+Admin} ()
+\item 
 \mbox{\Hypertarget{classPlayer_ade88917901db288ffdb56512f9d37293}\label{classPlayer_ade88917901db288ffdb56512f9d37293}} 
 void {\bfseries add\+Weapon} (\mbox{\hyperlink{classWeapon}{Weapon}} $\ast$weapon)
 \item 
@@ -103,9 +106,6 @@ bool {\bfseries has\+Gun\+With\+Id} (int unique\+Id)
 \item 
 \mbox{\Hypertarget{classPlayer_a782ae5f3931b33bbfc248855665ae82b}\label{classPlayer_a782ae5f3931b33bbfc248855665ae82b}} 
 void {\bfseries respawn} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
-\item 
-\mbox{\Hypertarget{classPlayer_a251d3e9f488a0a6e659d5a09b9c073c5}\label{classPlayer_a251d3e9f488a0a6e659d5a09b9c073c5}} 
-double {\bfseries calculate\+Distance\+To} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$other)
 \item 
 \mbox{\Hypertarget{classPlayer_a08992558301f3194c132eca92d231610}\label{classPlayer_a08992558301f3194c132eca92d231610}} 
 void {\bfseries fill\+Player\+Data} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&data)
@@ -137,9 +137,6 @@ void {\bfseries equip\+Weapon} (int weapon\+Pos)
 \mbox{\Hypertarget{classPlayer_a7069a3a898dff5fc4f4129a9551ce750}\label{classPlayer_a7069a3a898dff5fc4f4129a9551ce750}} 
 bool {\bfseries collides\+With} (double x, double y)
 \item 
-\mbox{\Hypertarget{classPlayer_a8538442fda2bd09fef505eecb918107f}\label{classPlayer_a8538442fda2bd09fef505eecb918107f}} 
-bool {\bfseries has\+To\+Be\+Updated} ()
-\item 
 \mbox{\Hypertarget{classPlayer_a5b5e0fb95ce82aace46471d00c1916bb}\label{classPlayer_a5b5e0fb95ce82aace46471d00c1916bb}} 
 void {\bfseries update} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis, std\+::list$<$ \mbox{\hyperlink{classUpdatable}{Updatable}} $\ast$ $>$ \&updatables)
 \item 
@@ -167,8 +164,11 @@ void {\bfseries add\+Health} (int health)
 \mbox{\Hypertarget{classPlayer_a42f4e9ab541735d4105f7f727db14c2d}\label{classPlayer_a42f4e9ab541735d4105f7f727db14c2d}} 
 void {\bfseries add\+Points} (int points)
 \item 
-\mbox{\Hypertarget{classPlayer_a97e5447778ae6c384eedc532dcd8431d}\label{classPlayer_a97e5447778ae6c384eedc532dcd8431d}} 
-int {\bfseries get\+Score} ()
+\mbox{\Hypertarget{classPlayer_acc95f3d52a58aba8af93d47105f3b212}\label{classPlayer_acc95f3d52a58aba8af93d47105f3b212}} 
+double {\bfseries calculate\+Distance\+To} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classPlayer_a8538442fda2bd09fef505eecb918107f}\label{classPlayer_a8538442fda2bd09fef505eecb918107f}} 
+bool {\bfseries has\+To\+Be\+Updated} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -216,7 +216,10 @@ bool {\bfseries key}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy. 
+\mbox{[}CLIENT SIDE\mbox{]} \mbox{\hyperlink{classPlayer}{Player}} class. Holds important information about each player and is able to raycast it if it\textquotesingle{}s an enemy. 
+
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+Class that represents a player controlled by a user/client 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPlayer_a93fbc84853d872993d78c14c57f52c79}\label{classPlayer_a93fbc84853d872993d78c14c57f52c79}} 
@@ -227,7 +230,7 @@ bool {\bfseries key}
 
 
 
-Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. 
+\mbox{[}CLIENT SIDE\mbox{]} Construct a new \mbox{\hyperlink{classPlayer}{Player}} object 
 
 
 \begin{DoxyParams}{Parameters}
@@ -254,7 +257,7 @@ Construct a new \mbox{\hyperlink{classPlayer}{Player}} object.
 
 
 
-Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. 
+\mbox{[}CLIENT SIDE\mbox{]} Construct a new \mbox{\hyperlink{classPlayer}{Player}} object 
 
 
 \begin{DoxyParams}{Parameters}
@@ -272,7 +275,7 @@ Construct a new \mbox{\hyperlink{classPlayer}{Player}} object.
 
 
 
-Calculates the distance from the player to the given coordinates. 
+\mbox{[}CLIENT SIDE\mbox{]} Calculates the distance from the player to the given coordinates. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -292,7 +295,7 @@ double distance to the entity.
 
 
 
-Calculates the distance between players. 
+\mbox{[}CLIENT SIDE\mbox{]} Calculates the distance between players. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -310,7 +313,7 @@ double distance to the other player.
 
 
 
-Draws the player using the raycasting algorithm. 
+\mbox{[}CLIENT SIDE\mbox{]} Draws the player using the raycasting algorithm. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -345,7 +348,7 @@ Reimplemented from \mbox{\hyperlink{classDrawable_a6e3564e30a2df5ec439085a825ca6
 
 
 
-Gets the Soldier Id. 
+\mbox{[}CLIENT SIDE\mbox{]} Gets the Soldier Id. 
 
 \begin{DoxyReturn}{Returns}
 int Soldier id. 
@@ -358,7 +361,7 @@ int Soldier id.
 
 
 
-Checks for the key. 
+\mbox{[}CLIENT SIDE\mbox{]} Checks for the key. 
 
 \begin{DoxyReturn}{Returns}
 true if the player has the key. 
@@ -373,7 +376,7 @@ false if the player doesn\textquotesingle{}t have the key.
 
 
 
-Returns false. 
+\mbox{[}CLIENT SIDE\mbox{]} Returns false. 
 
 \begin{DoxyReturn}{Returns}
 false 
@@ -390,7 +393,7 @@ Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
 
 
 
-Checks whether the player is moving or not. 
+\mbox{[}CLIENT SIDE\mbox{]} Checks whether the player is moving or not. 
 
 \begin{DoxyReturn}{Returns}
 true if it\textquotesingle{}s moving. 
@@ -405,7 +408,7 @@ false otherwise.
 
 
 
-Returns true. 
+\mbox{[}CLIENT SIDE\mbox{]} Returns true. 
 
 \begin{DoxyReturn}{Returns}
 true 
@@ -422,7 +425,7 @@ Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
 
 
 
-Checks whether the player is sgooting or not. 
+\mbox{[}CLIENT SIDE\mbox{]} Checks whether the player is sgooting or not. 
 
 \begin{DoxyReturn}{Returns}
 true if it\textquotesingle{}s shooting. 
@@ -437,7 +440,7 @@ false otherwise.
 
 
 
-Returns false. 
+\mbox{[}CLIENT SIDE\mbox{]} Returns false. 
 
 \begin{DoxyReturn}{Returns}
 false 
@@ -454,7 +457,7 @@ Reimplemented from \mbox{\hyperlink{classDrawable}{Drawable}}.
 
 
 
-Updates the player info. 
+\mbox{[}CLIENT SIDE\mbox{]} Updates the player info. 
 
 
 \begin{DoxyParams}{Parameters}

@@ -9,6 +9,11 @@ class SDL_Window;
 class SDL_Renderer;
 class SDL_Texture;
 
+/**
+ * @brief Inits the key functions to open audio and video. Manages rendering
+ * calls. Keeps the reference to the SDL_Window and SDL_Renderer.
+ *
+ */
 class SdlWindow {
  public:
   /**
