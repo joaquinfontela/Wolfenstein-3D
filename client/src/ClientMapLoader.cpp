@@ -111,13 +111,13 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 
     case 302:
     case 352:
-      return PURPLEWALL;
-      break;
-
-    case 303:
-    case 353:
       return GREY_STONE_WALL;
       break;
+
+      // case 303:
+      // case 353:
+      //   return ROCK_WALL;
+      //   break;
 
     case 304:
     case 354:
@@ -145,8 +145,20 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return PURPLEWALL;
       break;
 
-    case 309:
-      return PURPLEWALL;
+      // case 309:
+      //   return EAGLE_WALL;
+      //   break;
+
+    case 310:
+      return HITLERWALL_SPRITE;
+      break;
+
+      // case 311:
+      //   return PROPAGANDA_WALL;
+      //   break;
+
+    case 312:
+      return GREY_STONE_WALL;
       break;
 
     default:
