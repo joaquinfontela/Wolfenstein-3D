@@ -5,9 +5,6 @@
 #include "decoration_tile_factory.h"
 #include "door_tile_factory.h"
 #include "item_tile_factory.h"
-#include "map_actions.h"
-#include "mousetileactions.h"
-#include "my_map.h"
 #include "size_window.h"
 #include "tiles_container.h"
 #include "ui_editor.h"
@@ -21,6 +18,9 @@
 #include "save_window.h"
 #include "QGraphicsScene"
 #include "QGraphicsView"
+#include "map_scene.h"
+#include "tile_container_actions.h"
+#include "map_actions.h"
 
 #define BASE_SIDE_SIZE 40
 #define PLUS_SIDE_SIZE 60
@@ -33,26 +33,19 @@
 #define RESPAWN_ICON_PATH "./elementos_mapa/otros/respawn_icon.png"
 
 void Editor::initialize_tile_container() {
-  ui->element_container->setFrameStyle(QFrame::Box);
-  mouseTileActions* ef = new mouseTileActions(this);
-  ui->element_container->installEventFilter(ef);
-  this->tile_container = NULL;
+  tile_container_actions* ef = new tile_container_actions(this);
+  tiles_container_scene = new tiles_container();
+  ui->graphics_tiles_container->setScene(tiles_container_scene);
+  ui->graphics_tiles_container->setAlignment(Qt::AlignTop);
+  ui->graphics_tiles_container->installEventFilter(ef);
 }
 
 void Editor::initialize_map_container(int col, int row) {
-  /*graphics_scene = new QGraphicsScene(this);
-  QGraphicsView* graphics_view = new QGraphicsView(this);
-  graphics_view->setScene(graphics_scene);
-  ui->map_scroll->setWidget(graphics_view);*/
-
-  my_map* map = new my_map(col, row, this->actual_tile_size());
-  QHBoxLayout* ly = new QHBoxLayout();
-  ly->addWidget(map, Qt::AlignCenter);
-  ui->map_container->setLayout(ly);
-  this->map_container = ui->map_container;
+  my_map_scene = new class map_scene(this, col, row, this->actual_tile_size());
+  ui->graphics_map_container->setScene(my_map_scene);
   this->mc = new map_canvas(col, row);
-  map_actions* ma = new map_actions(this, *map);
-  ui->map_container->installEventFilter(ma);
+  map_actions* ma = new map_actions(this, my_map_scene);
+  ui->graphics_map_container->installEventFilter(ma);
 
   ui->actionsafe->setEnabled(true);
 }
@@ -60,22 +53,16 @@ void Editor::initialize_map_container(int col, int row) {
 Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   ui->setupUi(this);
   initialize_tile_container();
-  ui->map_scroll->setWidgetResizable(true);
-  this->tile_selected = NULL;
+  this->tile_item_selected = NULL;
   this->tile_sizes = {BASE_SIDE_SIZE, PLUS_SIDE_SIZE, LARGE_SIDE_SIZE};
   this->actual_tiles_size_index = 0;
   ui->actionsafe->setEnabled(false);
   this->actual_map_saved = false;
+  ui->actionZoom_out->setEnabled(false);
+  this->eraser_on = false;
 }
 
 Editor::~Editor() { delete ui; }
-
-void Editor:: update_map_container(my_map& map){
-    this->remove_Layout(ui->map_container);
-    QHBoxLayout* ly = new QHBoxLayout();
-    ly->addWidget(&map, Qt::AlignCenter);
-    ui->map_container->setLayout(ly);
-}
 
 int Editor::actual_tile_size(){
     return this->tile_sizes.at(actual_tiles_size_index);
@@ -89,92 +76,52 @@ void Editor::on_actionNew_triggered() {
   sw.exec();
 }
 
-void Editor::remove_Layout (QWidget* widget)
-{
-    QLayout* ly = widget->layout ();
-    if (ly != 0){
-        QLayoutItem *item;
-        while ((item = ly->takeAt(0)) != 0){
-            ly->removeItem(item);
-        }
-        delete ly;
-    }
-}
-
-void Editor::update_container(tiles_container* container) {
-  this->tile_container = container;
-  remove_Layout(ui->element_container);
-  ui->element_container->setLayout(container);
-  ui->element_container->show();
-}
-
 void Editor::on_actionParedes_triggered() {
   tile_factory* factory = new wall_tile_factory();
-  tiles_container* container =
-      new tiles_container( WALL_TILESET_PATH , 6, factory);
-  update_container(container);
+  this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }
 
 void Editor::on_actionPuertas_triggered() {
   tile_factory* factory = new door_tile_factory();
-  tiles_container* container =
-  new tiles_container(DOOR_TILESET_PATH, 2, factory);
-  update_container(container);
+  this->tiles_container_scene->update_tileset(DOOR_TILESET_PATH, 2, factory);
 }
 
 void Editor::on_actionBorrador_triggered() {
-  this->tile_selected = new tile( WHITE_BOX_PATH , 0, false);
+  this->eraser_on = true;
 }
 
 void Editor::on_actionDecoraciones_triggered() {
   tile_factory* factory = new decoration_tile_factory();
-  tiles_container* container =
-      new tiles_container(DECORATION_TILESET_PATH, 7, factory);
-  update_container(container);
+  this->tiles_container_scene->update_tileset(DECORATION_TILESET_PATH, 7, factory);
 }
 
 void Editor::on_actionItems_triggered() {
   tile_factory* factory = new item_tile_factory();
-  tiles_container* container =
-      new tiles_container(ITEM_TILESET_PATH, 6, factory);
-  update_container(container);
+  this->tiles_container_scene->update_tileset(ITEM_TILESET_PATH, 6, factory);
 }
 
 void Editor::paint_map(){
-    int col = this->mc->cant_col;
-    int row = this->mc->cant_row;
-    my_map* map = new my_map(col, row, this->actual_tile_size());
-    QHBoxLayout* ly = new QHBoxLayout();
-    ly->addWidget(map, Qt::AlignCenter);
-    remove_Layout(ui->map_container);
-    ui->map_container->setLayout(ly);
-    Map_painter* mp = new Map_painter(this->actual_tile_size(), *map);
-    mp->paint_all_tiles(this->mc);
 }
 
 void Editor::on_actionZoom_in_triggered()
 {
+    this->actual_tiles_size_index--;
+    this->paint_map();
     if(actual_tiles_size_index == 0){
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","Este es el minimo zoom posible");
-        messageBox.setFixedSize(500,200);
-        messageBox.exec();
-    } else{
-        this->actual_tiles_size_index--;
-        this->paint_map();
+        ui->actionZoom_in->setEnabled(false);
     }
 }
 
 void Editor::on_actionZoom_out_triggered()
 {
+    if(actual_tiles_size_index == 0){
+        ui->actionZoom_out->setEnabled(true);
+    }
+    this->actual_tiles_size_index++;
+    this->paint_map();
+
     if(actual_tiles_size_index == 2){
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","Este es el maximo zoom posible");
-        messageBox.setFixedSize(500,200);
-        messageBox.exec();
-    } else{
-        this->actual_tiles_size_index++;
-        this->paint_map();
+        ui->actionZoom_in->setEnabled(false);
     }
 }
 
@@ -208,7 +155,7 @@ void Editor::on_actionsafe_triggered()
 
 void Editor::on_actionRespawn_triggered()
 {
-    this->tile_selected = new tile( RESPAWN_ICON_PATH , 0, false);
+    this->tile_item_selected = new tile_item( RESPAWN_ICON_PATH , 0, false);
 }
 
 void Editor::on_actionSave_and_exit_triggered()

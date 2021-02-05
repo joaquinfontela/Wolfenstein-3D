@@ -5,10 +5,10 @@
 
 #include "map_painter.h"
 #include "map_canvas.h"
-#include "tile.h"
 #include "tiles_container.h"
-#include "my_map.h"
 #include "QGraphicsScene"
+#include "tile_item.h"
+#include "map_scene.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,20 +20,23 @@ class Editor : public QMainWindow {
   Q_OBJECT
 
  public:
+  Ui::Editor* ui;
   std::string actual_map_name;
-  tile* tile_selected;
+  tile_item* tile_item_selected;
   tiles_container* tile_container;
   map_canvas* mc;
   QWidget* map_container;
   std::vector<int> tile_sizes;
   int actual_tiles_size_index;
+  map_scene* my_map_scene;
+  tiles_container* tiles_container_scene;
+  bool eraser_on;
 
   Editor(QWidget* parent = nullptr);
   void initialize_tile_container();
   void initialize_map_container(int col, int row);
   int actual_tile_size();
-  void remove_Layout (QWidget* widget);
-  void update_map_container(my_map& map);
+
   ~Editor();
 
  private slots:
@@ -64,11 +67,8 @@ class Editor : public QMainWindow {
   void on_actionSave_and_exit_triggered();
 
 private:
-  Ui::Editor* ui;
-  void update_container(tiles_container* container);
   void save_map();
-  std::vector<std::string> maps_saved;
-  QGraphicsScene* graphics_scene;
+
   bool actual_map_saved;
   void paint_map();
 };

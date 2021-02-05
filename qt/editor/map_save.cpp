@@ -1,7 +1,6 @@
 #include "map_save.h"
 #include "QPushButton"
 #include "open_window.h"
-#include "tile.h"
 #include "iostream"
 #include "../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../common/includes/YAML/YAMLMapReader.h"

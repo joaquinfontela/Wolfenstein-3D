@@ -8,11 +8,11 @@
 #include "QScrollArea"
 #include "QMessageBox"
 #include "editor.h"
-#include "tile.h"
+#include "tile_item.h"
 #include "ui_open_window.h"
 #include "map_canvas.h"
 
-#define MAP_NAME_PATH "./maps_names.txt"
+#define MAP_NAME_PATH "./maps/maps_names.txt"
 
 open_window::open_window(QWidget *parent) :
     QDialog(parent),

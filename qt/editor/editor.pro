@@ -18,14 +18,13 @@ SOURCES += \
     map_canvas.cpp \
     map_painter.cpp \
     map_save.cpp \
-    mousetileactions.cpp \
-    my_map.cpp \
+    map_scene.cpp \
     open_window.cpp \
     save_window.cpp \
     size_window.cpp \
-    tile.cpp \
+    tile_container_actions.cpp \
+    tile_item.cpp \
     tiles_container.cpp \
-    tileset.cpp \
     wall_tile_factory.cpp
 
 HEADERS += \
@@ -37,15 +36,14 @@ HEADERS += \
     map_canvas.h \
     map_painter.h \
     map_save.h \
-    mousetileactions.h \
-    my_map.h \
+    map_scene.h \
     open_window.h \
     save_window.h \
     size_window.h \
-    tile.h \
+    tile_container_actions.h \
     tile_factory.h \
+    tile_item.h \
     tiles_container.h \
-    tileset.h \
     wall_tile_factory.h
 
 FORMS += \

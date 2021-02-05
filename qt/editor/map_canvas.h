@@ -3,10 +3,10 @@
 
 #include <vector>
 #include <QFrame>
-#include "tile.h"
+#include "tile_item.h"
 
 
-typedef std::vector<std::vector<std::vector<tile*>>> TileMatrix;
+typedef std::vector<std::vector<std::vector<tile_item*>>> TileMatrix;
 
 class map_canvas : public QFrame
 {
@@ -14,8 +14,9 @@ class map_canvas : public QFrame
 public:
     map_canvas(int col, int row);
     map_canvas(TileMatrix* tile_matrix);
-    bool paint_tile(std::vector<int> coordinates, tile* tile);
-    std::vector<tile*> tiles_at_coordinates(std::vector<int> coordinates);
+    bool paint_tile(std::vector<int> coordinates, tile_item* tile);
+    std::vector<tile_item*> tiles_at_coordinates(std::vector<int> coordinates);
+    void erase_tiles_at(std::vector<int> coordinates);
 
     TileMatrix grilla;
     int cant_col;

@@ -5,9 +5,9 @@
 
 #include "../../common/includes/YAML/YAMLMapReader.h"
 #include "PathFactory.h"
-#include "tile.h"
+#include "tile_item.h"
 
-typedef std::vector<std::vector<std::vector<tile*>>> TileMatrix;
+typedef std::vector<std::vector<std::vector<tile_item*>>> TileMatrix;
 
 class YAMLConversor {
  private:

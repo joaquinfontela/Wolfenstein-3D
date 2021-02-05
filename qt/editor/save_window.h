@@ -2,7 +2,7 @@
 #define SAVE_WINDOW_H
 
 #include <QDialog>
-#include "tile.h"
+#include "tile_item.h"
 #include "editor.h"
 
 namespace Ui {

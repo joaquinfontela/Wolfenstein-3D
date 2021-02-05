@@ -13,11 +13,10 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QFrame>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -41,9 +40,8 @@ public:
     QAction *actionBorrador;
     QAction *actionRespawn;
     QWidget *centralwidget;
-    QScrollArea *map_scroll;
-    QWidget *map_container;
-    QFrame *element_container;
+    QGraphicsView *graphics_tiles_container;
+    QGraphicsView *graphics_map_container;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -57,7 +55,7 @@ public:
             Editor->setObjectName(QString::fromUtf8("Editor"));
         Editor->resize(800, 609);
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/game_icon/logo/wolfestein_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("logo/wolfestein_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         Editor->setWindowIcon(icon);
         actionNew = new QAction(Editor);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
@@ -120,30 +118,12 @@ public:
         actionRespawn->setObjectName(QString::fromUtf8("actionRespawn"));
         centralwidget = new QWidget(Editor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        map_scroll = new QScrollArea(centralwidget);
-        map_scroll->setObjectName(QString::fromUtf8("map_scroll"));
-        map_scroll->setGeometry(QRect(20, 20, 611, 501));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(1);
-        sizePolicy.setHeightForWidth(map_scroll->sizePolicy().hasHeightForWidth());
-        map_scroll->setSizePolicy(sizePolicy);
-        map_scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        map_scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        map_scroll->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
-        map_scroll->setWidgetResizable(false);
-        map_container = new QWidget();
-        map_container->setObjectName(QString::fromUtf8("map_container"));
-        map_container->setEnabled(true);
-        map_container->setGeometry(QRect(0, 0, 624, 505));
-        map_container->setMaximumSize(QSize(16777215, 16777215));
-        map_container->setCursor(QCursor(Qt::ArrowCursor));
-        map_scroll->setWidget(map_container);
-        element_container = new QFrame(centralwidget);
-        element_container->setObjectName(QString::fromUtf8("element_container"));
-        element_container->setGeometry(QRect(639, 21, 151, 501));
-        element_container->setFrameShape(QFrame::StyledPanel);
-        element_container->setFrameShadow(QFrame::Raised);
+        graphics_tiles_container = new QGraphicsView(centralwidget);
+        graphics_tiles_container->setObjectName(QString::fromUtf8("graphics_tiles_container"));
+        graphics_tiles_container->setGeometry(QRect(640, 20, 151, 501));
+        graphics_map_container = new QGraphicsView(centralwidget);
+        graphics_map_container->setObjectName(QString::fromUtf8("graphics_map_container"));
+        graphics_map_container->setGeometry(QRect(15, 21, 611, 501));
         Editor->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(Editor);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
