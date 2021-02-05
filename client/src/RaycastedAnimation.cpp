@@ -27,15 +27,17 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
-    int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    if (doorStripe < 0)
+    int animationSprite =
+        int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    if (animationSprite < 0)
       continue;
-    else if (doorStripe + 1 == BLOCKSIZE &&
+    else if (animationSprite + 1 == BLOCKSIZE &&
              floor(this->timePassed / TIME_PER_ANIMATION_SLIDE) > this->frames)
       this->frames = (this->frames + 1) % this->framesPerAnimation;
 
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
-      srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
+      srcArea.update(animationSprite + (this->frames << 6), 0, 1,
+                     preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
