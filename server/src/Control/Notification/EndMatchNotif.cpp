@@ -11,10 +11,11 @@ void EndMatchNotif::send(SocketCommunication& socket) {
   socket.send(&opcode, sizeof(opcode));
   this->scoreboard->send(socket);
   this->killScoreboard->send(socket);
+  this->shotsScoreboard->send(socket);
 }
 
 EndMatchNotif::~EndMatchNotif() {
-  std::cout << "Destructor called." << std::endl;
   delete this->scoreboard;
   delete this->killScoreboard;
+  delete this->shotsScoreboard;
 }

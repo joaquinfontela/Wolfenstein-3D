@@ -210,14 +210,24 @@ void Game::end(WaitingQueue<Notification*>& queue) {
   std::vector<uint32_t> kills;
   ids.clear();
   for (auto p : playersvect) {
-    std::cout << "[DEBUG] id:" << p->ID() << " kills: " << p->getKills()
-              << std::endl;
     kills.push_back(p->getKills());
     ids.push_back(p->ID());
   }
 
   ScoreBoard* killScoreboard = new ScoreBoard(playersvect.size(), ids, kills);
-  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard, killScoreboard);
+
+  std::vector<uint32_t> shotsFired;
+  std::sort(playersvect.begin(), playersvect.end(),
+            [](Player* a, Player* b) -> bool {
+              return a->getShotsFired() >= b->getShotsFired();
+            });
+  for (auto p : playersvect) {
+    shotsFired.push_back(p->getShotsFired());
+    ids.push_back(p->ID());
+  }
+
+  ScoreBoard* shotsFiredScoreboard = new ScoreBoard(playersvect.size(), ids, shotsFired);
+  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard, killScoreboard, shotsFiredScoreboard);
   queue.push(endmatch);
 }
 

@@ -108,7 +108,7 @@ bool Player::hasGunWithId(int uniqueId) {
 void Player::addWeapon(Weapon* weapon) { this->weapons.push_back(weapon); }
 
 bool Player::collidesWith(double x, double y) {
-  return sqrt(pow(this->x - x, 2) + pow(this->y - y, 2)) <= 0.25;
+  return sqrt(pow(this->x - x, 2) + pow(this->y - y, 2)) <= 0.3;
 }
 
 void Player::respawn(WaitingQueue<Notification*>& notis) {
@@ -298,6 +298,7 @@ int Player::attack(float timeElapsed) {
 
   int ammo = this->ammo;
   int damageDealt = this->currentWeapon->attack(ammo, timeElapsed);
+  this->shotsFired += (this->ammo - ammo);
   this->ammo = ammo;
 
   this->hasToBeNotified = true;
