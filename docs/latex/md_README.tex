@@ -1,0 +1,55 @@
+\hypertarget{md_README_autotoc_md1}{}\doxysection{Trabajo Práctico Final}\label{md_README_autotoc_md1}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Padrón   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Alumno    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Padrón   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Alumno    }\\\cline{1-2}
+\endhead
+104105   &Jonathan David Rosenblatt    \\\cline{1-2}
+103924   &Joaquín Fontela    \\\cline{1-2}
+104348   &Joaquin Betz Rivera    \\\cline{1-2}
+104429   &Thiago Kovnat   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_README_autotoc_md2}{}\doxysection{Guia de Instalación}\label{md_README_autotoc_md2}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Requisitos}\label{md_README_autotoc_md3}
+Ademas de las librerias que utiliza el juego, el unico otro requisito que necesita el trabajo es contar con una computadora que utilice GNU/\+Linux como sistema operativo.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Instalación de dependencias}\label{md_README_autotoc_md4}
+Dependiendo del gestor de paquetes, el comando para instalar las dependencias puede variar. Sin embargo, los paquetes a instalar son siempre los mismos. A continuación, se deja los comandos para instalar SDL 2.\+0 y Qt5 para el correcto funcionamiento del trabajo práctico utilizando el gestor de paquetes APT utilizado en muchas distribuciones de Linux.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/dev \&\& }
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/image-\/dev -\/y \&\& }
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/mixer-\/dev -\/y \&\& }
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/ttf-\/dev -\/y \&\& }
+\DoxyCodeLine{sudo apt-\/get install qt5-\/default \&\& }
+
+\end{DoxyCode}
+ \hypertarget{md_README_autotoc_md5}{}\doxysubsection{Compilación e instalacion de librerias YAML}\label{md_README_autotoc_md5}
+Una vez instaladas las dependencias previas, se debe de utilizar el script install.\+sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{chmod +x install.sh}
+\DoxyCodeLine{./install.sh}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Ejecutar el trabajo}\label{md_README_autotoc_md6}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{Servidor}\label{md_README_autotoc_md7}
+Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./ServerMain <PORT> <configFilePath>}
+
+\end{DoxyCode}
+ Siendo PORT el puerto a utlizar y config\+File\+Path el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{Cliente}\label{md_README_autotoc_md8}
+Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./Wolfen3D <HOST> <PORT>}
+
+\end{DoxyCode}
+ Siendo HOST la direccion del servidor a utilizar, y siendo PORT el puerto en el que el servidor este aceptando clientes. 

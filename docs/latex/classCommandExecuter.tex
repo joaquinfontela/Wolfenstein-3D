@@ -1,0 +1,95 @@
+\hypertarget{classCommandExecuter}{}\doxysection{Command\+Executer Class Reference}
+\label{classCommandExecuter}\index{CommandExecuter@{CommandExecuter}}
+
+
+Receives the data from the server and calls the other object to keep the game running.  
+
+
+
+
+{\ttfamily \#include $<$commandexecuter.\+h$>$}
+
+Inheritance diagram for Command\+Executer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCommandExecuter}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCommandExecuter_ad0f305fb30a1e4e776832f33e9c2e5b0}{Command\+Executer}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&sprites, std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players, std\+::mutex \&lock, int self\+Id, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager, \mbox{\hyperlink{classMap}{Map}} \&matrix, \mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&loader, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} \&scoreboard)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classCommand}{Command}} Executer object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}\label{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}} 
+void \mbox{\hyperlink{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}{run}} ()
+\begin{DoxyCompactList}\small\item\em Starts the music and receives data from the server while the game is being played. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommandExecuter_a8d245fc090f4f86b5e88b2f6990df65a}{play\+Dying\+Sound}} (int gun\+Id, int player\+Id)
+\begin{DoxyCompactList}\small\item\em Plays a dying sound depending on the player skin and the distance to it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}\label{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}} 
+void \mbox{\hyperlink{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}{play\+Explosion\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Plays the explosion sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Receives the data from the server and calls the other object to keep the game running. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCommandExecuter_ad0f305fb30a1e4e776832f33e9c2e5b0}\label{classCommandExecuter_ad0f305fb30a1e4e776832f33e9c2e5b0}} 
+\index{CommandExecuter@{CommandExecuter}!CommandExecuter@{CommandExecuter}}
+\index{CommandExecuter@{CommandExecuter}!CommandExecuter@{CommandExecuter}}
+\doxysubsubsection{\texorpdfstring{CommandExecuter()}{CommandExecuter()}}
+{\footnotesize\ttfamily Command\+Executer\+::\+Command\+Executer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{s,  }\item[{std\+::atomic$<$ bool $>$ \&}]{alive,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&}]{sprites,  }\item[{std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&}]{players,  }\item[{std\+::mutex \&}]{lock,  }\item[{int}]{self\+Id,  }\item[{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&}]{audiomanager,  }\item[{\mbox{\hyperlink{classMap}{Map}} \&}]{matrix,  }\item[{\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&}]{loader,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} \&}]{scoreboard }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classCommand}{Command}} Executer object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Socket. \\
+\hline
+{\em alive} & True if the game is still running. \\
+\hline
+{\em sprites} & Sprites vector. \\
+\hline
+{\em players} & Players mapped by their ids. \\
+\hline
+{\em lock} & Stops the executer from reading an invalid sprite. \\
+\hline
+{\em self\+Id} & Our player\textquotesingle{}s id. \\
+\hline
+{\em audiomanager} & \mbox{\hyperlink{classAudio}{Audio}} manager reference. \\
+\hline
+{\em matrix} & \mbox{\hyperlink{classMap}{Map}} reference. \\
+\hline
+{\em loader} & \mbox{\hyperlink{classMap}{Map}} loader reference. \\
+\hline
+{\em scoreboard} & Scoreboard reference. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommandExecuter_a8d245fc090f4f86b5e88b2f6990df65a}\label{classCommandExecuter_a8d245fc090f4f86b5e88b2f6990df65a}} 
+\index{CommandExecuter@{CommandExecuter}!playDyingSound@{playDyingSound}}
+\index{playDyingSound@{playDyingSound}!CommandExecuter@{CommandExecuter}}
+\doxysubsubsection{\texorpdfstring{playDyingSound()}{playDyingSound()}}
+{\footnotesize\ttfamily void Command\+Executer\+::play\+Dying\+Sound (\begin{DoxyParamCaption}\item[{int}]{gun\+Id,  }\item[{int}]{player\+Id }\end{DoxyParamCaption})}
+
+
+
+Plays a dying sound depending on the player skin and the distance to it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gun\+Id} & Enemy\textquotesingle{}s gun id. \\
+\hline
+{\em player\+Id} & Enemy\textquotesingle{}s id. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/commandexecuter.\+h\item 
+client/src/commandexecuter.\+cpp\end{DoxyCompactItemize}

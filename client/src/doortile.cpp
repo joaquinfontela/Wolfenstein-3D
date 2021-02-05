@@ -1,7 +1,6 @@
-#include "clientprotocol.h"
-#include "doortile.h"
+#include "../includes/doortile.h"
 
-void DoorTile::setDoor(bool b) { this->isDoor = b; }
+#include "../includes/clientprotocol.h"
 
 void DoorTile::updateTimer(float update) {
   if (state == OPEN || state == CLOSED) return;
@@ -20,7 +19,15 @@ void DoorTile::updateTimer(float update) {
   }
 }
 
+void DoorTile::restart() {
+  this->isDoor = false;
+  this->state = CLOSED;
+  this->timer = 1;
+}
+
 void DoorTile::changeState() {
-  if (state == OPEN || state == OPENING) state = CLOSING;
-  else if (state == CLOSED || state == CLOSING) state = OPENING;
+  if (state == OPEN || state == OPENING)
+    state = CLOSING;
+  else if (state == CLOSED || state == CLOSING)
+    state = OPENING;
 }

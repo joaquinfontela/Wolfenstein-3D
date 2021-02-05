@@ -1,0 +1,111 @@
+\hypertarget{classSdlAnimation}{}\doxysection{Sdl\+Animation Class Reference}
+\label{classSdlAnimation}\index{SdlAnimation@{SdlAnimation}}
+
+
+This class represents a non-\/raycasted which can be played at any time.  
+
+
+
+
+{\ttfamily \#include $<$sdlanimation.\+h$>$}
+
+Inheritance diagram for Sdl\+Animation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSdlAnimation}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSdlAnimation_a0aea221760076214bea895bb592cb0a4}{Sdl\+Animation}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, int slides)
+\begin{DoxyCompactList}\small\item\em Construct a new Sdl Animation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSdlAnimation_a9bdeb8ec7ffed5a42d872b2a181fc40f}{update\+Frame}} (int newpos)
+\begin{DoxyCompactList}\small\item\em Sets new frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSdlAnimation_a1d8d65f2bc04a46c9c13449a993892d4}\label{classSdlAnimation_a1d8d65f2bc04a46c9c13449a993892d4}} 
+void \mbox{\hyperlink{classSdlAnimation_a1d8d65f2bc04a46c9c13449a993892d4}{update\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Updates the animation frame to the next one, or loops back to the beginning if it goes out of bounds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSdlAnimation_a763785359bdd81dd7f5a036aa0e879c1}{set\+Slide\+Width}} (int $\ast$width)
+\begin{DoxyCompactList}\small\item\em Given the width of the animation, it changes the value to the width of one frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSdlAnimation_a18ddbe6a31baa334ecf0a81621bcd01a}{render\+Actual\+Frame}} (\mbox{\hyperlink{classArea}{Area}} \&dest\+Area, int texture\+Id)
+\begin{DoxyCompactList}\small\item\em Renders the stored frame to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class represents a non-\/raycasted which can be played at any time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSdlAnimation_a0aea221760076214bea895bb592cb0a4}\label{classSdlAnimation_a0aea221760076214bea895bb592cb0a4}} 
+\index{SdlAnimation@{SdlAnimation}!SdlAnimation@{SdlAnimation}}
+\index{SdlAnimation@{SdlAnimation}!SdlAnimation@{SdlAnimation}}
+\doxysubsubsection{\texorpdfstring{SdlAnimation()}{SdlAnimation()}}
+{\footnotesize\ttfamily Sdl\+Animation\+::\+Sdl\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{int}]{slides }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Sdl Animation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em slides} & Amount of frames the animation has. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSdlAnimation_a18ddbe6a31baa334ecf0a81621bcd01a}\label{classSdlAnimation_a18ddbe6a31baa334ecf0a81621bcd01a}} 
+\index{SdlAnimation@{SdlAnimation}!renderActualFrame@{renderActualFrame}}
+\index{renderActualFrame@{renderActualFrame}!SdlAnimation@{SdlAnimation}}
+\doxysubsubsection{\texorpdfstring{renderActualFrame()}{renderActualFrame()}}
+{\footnotesize\ttfamily void Sdl\+Animation\+::render\+Actual\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} \&}]{dest\+Area,  }\item[{int}]{texture\+Id }\end{DoxyParamCaption})}
+
+
+
+Renders the stored frame to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Area} & Screen drawing area. \\
+\hline
+{\em texture\+Id} & Texture id to render. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSdlAnimation_a763785359bdd81dd7f5a036aa0e879c1}\label{classSdlAnimation_a763785359bdd81dd7f5a036aa0e879c1}} 
+\index{SdlAnimation@{SdlAnimation}!setSlideWidth@{setSlideWidth}}
+\index{setSlideWidth@{setSlideWidth}!SdlAnimation@{SdlAnimation}}
+\doxysubsubsection{\texorpdfstring{setSlideWidth()}{setSlideWidth()}}
+{\footnotesize\ttfamily void Sdl\+Animation\+::set\+Slide\+Width (\begin{DoxyParamCaption}\item[{int $\ast$}]{width }\end{DoxyParamCaption})}
+
+
+
+Given the width of the animation, it changes the value to the width of one frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width in pixels. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSdlAnimation_a9bdeb8ec7ffed5a42d872b2a181fc40f}\label{classSdlAnimation_a9bdeb8ec7ffed5a42d872b2a181fc40f}} 
+\index{SdlAnimation@{SdlAnimation}!updateFrame@{updateFrame}}
+\index{updateFrame@{updateFrame}!SdlAnimation@{SdlAnimation}}
+\doxysubsubsection{\texorpdfstring{updateFrame()}{updateFrame()}}
+{\footnotesize\ttfamily void Sdl\+Animation\+::update\+Frame (\begin{DoxyParamCaption}\item[{int}]{newpos }\end{DoxyParamCaption})}
+
+
+
+Sets new frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newpos} & The next frame to be rendered will be\+: newpos \% total number of frames. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/sdlanimation.\+h\item 
+client/src/sdlanimation.\+cpp\end{DoxyCompactItemize}

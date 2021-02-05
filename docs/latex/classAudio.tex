@@ -1,0 +1,82 @@
+\hypertarget{classAudio}{}\doxysection{Audio Class Reference}
+\label{classAudio}\index{Audio@{Audio}}
+
+
+Encapsulates the behaviour and data regarding the audio.  
+
+
+
+
+{\ttfamily \#include $<$audio.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAudio_a23a0f27ad07c6a3fb693190463f97186}{volume\+Down\+With\+Dist}} (double dist)
+\begin{DoxyCompactList}\small\item\em Lowers the audio depending on the distance of the entity that emitted the sound. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudio_a237711e1191967f00b29ce2d59f4dd05}\label{classAudio_a237711e1191967f00b29ce2d59f4dd05}} 
+void \mbox{\hyperlink{classAudio_a237711e1191967f00b29ce2d59f4dd05}{volume\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Turns up the volume. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAudio_a9b8caca2402cf12845c1fe73132124d3}{Audio}} (const char $\ast$name, bool is\+Music, int volume=30)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classAudio}{Audio}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudio_ae8f54deecb5f48511aaab469e80294d6}\label{classAudio_ae8f54deecb5f48511aaab469e80294d6}} 
+\mbox{\hyperlink{classAudio_ae8f54deecb5f48511aaab469e80294d6}{$\sim$\+Audio}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classAudio}{Audio}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudio_a2916f9015031bee9abb98adf0d83e7ee}\label{classAudio_a2916f9015031bee9abb98adf0d83e7ee}} 
+void \mbox{\hyperlink{classAudio_a2916f9015031bee9abb98adf0d83e7ee}{play}} ()
+\begin{DoxyCompactList}\small\item\em PLays audio. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudio_af628fdffa4dba3866e6e801fdda123ea}\label{classAudio_af628fdffa4dba3866e6e801fdda123ea}} 
+void \mbox{\hyperlink{classAudio_af628fdffa4dba3866e6e801fdda123ea}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the music from playing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudio_a5fa1d0dcf6b5e9af8fb6d5e13f430718}\label{classAudio_a5fa1d0dcf6b5e9af8fb6d5e13f430718}} 
+void \mbox{\hyperlink{classAudio_a5fa1d0dcf6b5e9af8fb6d5e13f430718}{play\+With\+Max\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em Plays sonund with max volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsulates the behaviour and data regarding the audio. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAudio_a9b8caca2402cf12845c1fe73132124d3}\label{classAudio_a9b8caca2402cf12845c1fe73132124d3}} 
+\index{Audio@{Audio}!Audio@{Audio}}
+\index{Audio@{Audio}!Audio@{Audio}}
+\doxysubsubsection{\texorpdfstring{Audio()}{Audio()}}
+{\footnotesize\ttfamily Audio\+::\+Audio (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{bool}]{is\+Music,  }\item[{int}]{volume = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classAudio}{Audio}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the audio file to load. \\
+\hline
+{\em is\+Music} & True if it\textquotesingle{}s background music, false in any other case. \\
+\hline
+{\em volume} & Starting volume. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAudio_a23a0f27ad07c6a3fb693190463f97186}\label{classAudio_a23a0f27ad07c6a3fb693190463f97186}} 
+\index{Audio@{Audio}!volumeDownWithDist@{volumeDownWithDist}}
+\index{volumeDownWithDist@{volumeDownWithDist}!Audio@{Audio}}
+\doxysubsubsection{\texorpdfstring{volumeDownWithDist()}{volumeDownWithDist()}}
+{\footnotesize\ttfamily void Audio\+::volume\+Down\+With\+Dist (\begin{DoxyParamCaption}\item[{double}]{dist }\end{DoxyParamCaption})}
+
+
+
+Lowers the audio depending on the distance of the entity that emitted the sound. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & Distance from the sound emitting entity. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/audio.\+h\item 
+client/src/audio.\+cpp\end{DoxyCompactItemize}

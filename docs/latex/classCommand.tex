@@ -1,0 +1,48 @@
+\hypertarget{classCommand}{}\doxysection{Command Class Reference}
+\label{classCommand}\index{Command@{Command}}
+
+
+{\ttfamily \#include $<$Command.\+h$>$}
+
+Inheritance diagram for Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classCommand}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classCommand_aacb8b1f4af8dddebf027a0770bb0ade6}{execute}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notifications, \mbox{\hyperlink{classGame}{Game}} \&game)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+The class that represents a player intent in the game. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommand_aacb8b1f4af8dddebf027a0770bb0ade6}\label{classCommand_aacb8b1f4af8dddebf027a0770bb0ade6}} 
+\index{Command@{Command}!execute@{execute}}
+\index{execute@{execute}!Command@{Command}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual void Command\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notifications,  }\item[{\mbox{\hyperlink{classGame}{Game}} \&}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+$<$\+Executes the given command$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Queue} & of Notifications to be sent. \\
+\hline
+{\em The} & game on which to execute the given command. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classPlayerADown_a989439540f0c27a34a7b3c248dc61f61}{Player\+ADown}}, \mbox{\hyperlink{classPlayerAUp_ad63d238c9493b4ae8f4bf93372b5fea1}{Player\+AUp}}, \mbox{\hyperlink{classPlayerDDown_a9186110f482cf0ed7bb93e1f9f00c5b7}{Player\+DDown}}, \mbox{\hyperlink{classPlayerDisconnected_a4b62fdd9aa601eb96c70067ee66d3473}{Player\+Disconnected}}, \mbox{\hyperlink{classPlayerDUp_a5a5d7ca56ad26fb31bbfac73e463bb08}{Player\+DUp}}, \mbox{\hyperlink{classPlayerInteractDoor_afa13b47d01d5f54526d9ae0a400abf39}{Player\+Interact\+Door}}, \mbox{\hyperlink{classPlayerMove_a4dd6c95a765367cc8cae67642fac1202}{Player\+Move}}, \mbox{\hyperlink{classPlayerSDown_a0c3bdb8cf9bce8c7852bf5e7b9166068}{Player\+SDown}}, \mbox{\hyperlink{classPlayerShoot_a84af50d7d4916f1e33d544b3cd5497e6}{Player\+Shoot}}, \mbox{\hyperlink{classPlayerSUp_acb7613a6732d521b949feb45c9795ec4}{Player\+SUp}}, \mbox{\hyperlink{classPlayerSwitchWeapon_af2d706ba6f4100b26035dbf397de2d95}{Player\+Switch\+Weapon}}, \mbox{\hyperlink{classPlayerWDown_a371eb953d7cda5c9ed822f42584473da}{Player\+WDown}}, \mbox{\hyperlink{classPlayerWUp_a63bccda5d2fa1b57c538f1782b2dfcda}{Player\+WUp}}, and \mbox{\hyperlink{classStartGame_a66c85e346bf14f0eb6e4880055f61909}{Start\+Game}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Control/\+Command/Command.\+h\end{DoxyCompactItemize}

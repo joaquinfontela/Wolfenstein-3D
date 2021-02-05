@@ -1,10 +1,13 @@
-#include "audio.h"
-#include "sdlexception.h"
+#include "../includes/audio.h"
+
 #include <SDL2/SDL_mixer.h>
-#include <string>
-#include <iostream>
 #include <math.h>
-#include "clientprotocol.h"
+
+#include <iostream>
+#include <string>
+
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
 
 Audio::~Audio() {
   if (isMusic)
@@ -14,25 +17,23 @@ Audio::~Audio() {
 }
 
 void Audio::volumeDownWithDist(double dist) {
-  this->volume = floor(17.0/(log(dist)));
+  this->volume = floor(17.0 / (log(dist)));
   if (isMusic)
-    Mix_VolumeMusic(this->volume); // Máx 128.
+    Mix_VolumeMusic(this->volume);  // Máx 128.
   else
-    Mix_VolumeChunk(this->audio.chunk, this->volume); // Máx 128.
+    Mix_VolumeChunk(this->audio.chunk, this->volume);  // Máx 128.
 }
 
 void Audio::play() {
-  //if (!Mix_PlayingMusic())
+  // if (!Mix_PlayingMusic())
   if (isMusic) {
     Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
   } else {
-    std::cout << "volume: " << this->volume << "\n";
     Mix_Pause(-1);
     this->channel = Mix_PlayChannel(-1, this->audio.chunk, 0);
     Mix_Resume(-1);
-    std::cout << "Playing in channel: " << channel << std::endl;
-  //else if (Mix_PausedMusic())
-  //  Mix_ResumeMusic();
+    // else if (Mix_PausedMusic())
+    //  Mix_ResumeMusic();
   }
 }
 
@@ -48,19 +49,20 @@ void Audio::playWithMaxVolume() {
   }
 }
 
-void Audio::stop(){
+void Audio::stop() {
   if (!Mix_PlayingMusic()) Mix_PauseMusic();
 }
 
 void Audio::volumeUp() {
   this->volume += 3;
   if (isMusic)
-    Mix_VolumeMusic(this->volume); // Máx 128.
+    Mix_VolumeMusic(this->volume);  // Máx 128.
   else
-    Mix_VolumeChunk(this->audio.chunk, this->volume); // Máx 128.
+    Mix_VolumeChunk(this->audio.chunk, this->volume);  // Máx 128.
 }
 
-Audio::Audio(const char* name, bool isMusic, int volume) : isMusic(isMusic), volume(volume), channel(ERROR) {
+Audio::Audio(const char* name, bool isMusic, int volume)
+    : isMusic(isMusic), volume(volume), channel(ERROR) {
   memset(&this->audio, 0, sizeof(this->audio));
   if (isMusic) {
     if (!(this->audio.music = Mix_LoadMUS(name))) {

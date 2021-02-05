@@ -1,15 +1,20 @@
-#include "commandsender.h"
-#include "clientprotocol.h"
+#include "../includes/commandsender.h"
 
 #include <SDL2/SDL.h>
 #include <time.h>
+
 #include <atomic>
 #include <iostream>
+
 #include "../../common/includes/protocol.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/scoreboard.h"
 
 #define UINT32_SIZE sizeof(uint32_t)
 
-CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive) : socket(s), alive(alive) {}
+CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
+                             ScoreBoard* scoreboard)
+    : socket(s), alive(alive), scoreboard(scoreboard) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(&keyType, UINT32_SIZE);
@@ -21,7 +26,7 @@ void CommandSender::run() {
   bool rightPressed = false;
   bool leftPressed = false;
   bool enterPressed = false;
-  while (alive) {
+  while (true) {
     try {
       SDL_Event event;
       SDL_WaitEvent(&event);
@@ -32,9 +37,10 @@ void CommandSender::run() {
         socket.writeShutdown();
         socket.close();
         alive = false;
+        this->scoreboard->stop();
         break;
       }
-      if (event.type == SDL_KEYDOWN) {
+      if (event.type == SDL_KEYDOWN && alive) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
         switch (key.keysym.sym) {
           case SDLK_a:
@@ -89,7 +95,7 @@ void CommandSender::run() {
             this->update(START_MATCH);
             break;
         }
-      } else if (event.type == SDL_KEYUP) {
+      } else if (event.type == SDL_KEYUP && alive) {
         SDL_KeyboardEvent& key = (SDL_KeyboardEvent&)event;
         switch (key.keysym.sym) {
           case SDLK_a:

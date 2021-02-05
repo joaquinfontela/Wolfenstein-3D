@@ -1,0 +1,311 @@
+\hypertarget{classGame}{}\doxysection{Game Class Reference}
+\label{classGame}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGame_a91567669fe85a7bdb64188ce579fe211}\label{classGame_a91567669fe85a7bdb64188ce579fe211}} 
+{\bfseries Game} (std\+::string map\+File, std\+::string config\+File)
+\item 
+void \mbox{\hyperlink{classGame_a0a294398a2e187b4f4f39c7e106aab97}{set\+Shooting}} (int player\+ID, bool shooting)
+\item 
+bool \mbox{\hyperlink{classGame_a127db1ad87b7276684fe68df6f53b4b0}{force\+Door\+Status\+Change}} (int x, int y)
+\item 
+void \mbox{\hyperlink{classGame_a68342574b4a470b1bbe844e475102d08}{generate\+Radius\+Damage}} (int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+\mbox{\Hypertarget{classGame_a72602ca1b90a401db42c5318925d6d57}\label{classGame_a72602ca1b90a401db42c5318925d6d57}} 
+void {\bfseries add\+Player} (int player\+ID, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+void \mbox{\hyperlink{classGame_a58b77543a8b5db9b12d05cabaaa814e4}{player\+Switch\+Weapon}} (int player\+ID, int weapon\+Pos)
+\item 
+void \mbox{\hyperlink{classGame_a69c7773f77c465606ef3bd83faacec31}{send\+Update\+Messages}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+void \mbox{\hyperlink{classGame_a52f6ea988f12b69ec98cef1a25fba797}{send\+Game\+Status}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+bool \mbox{\hyperlink{classGame_a17c1cfcb176d89cb49fc2c4669bae0c6}{remove\+Player}} (int player\+ID)
+\item 
+bool \mbox{\hyperlink{classGame_a1ec486bf11f4ccae67cd9d369baeeefd}{move\+Rocket\+Missile\+From}} (double x, double y, double newX, double newY, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+void \mbox{\hyperlink{classGame_abba8664decbad577ff7fd2f293cf4cad}{update}} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+void \mbox{\hyperlink{classGame_a08cec820d054eaf33a931c3a4df38116}{update\+Positions}} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+void \mbox{\hyperlink{classGame_a79fa84274f78b118ef458c6c7bd31379}{update\+Player\+Move\+Speed}} (int player\+ID, double move\+Speed)
+\item 
+void \mbox{\hyperlink{classGame_aeef3f8acebe75d7cc020f6e3c9b9156f}{update\+Player\+Rotation\+Speed}} (int player\+ID, double rot\+Speed)
+\item 
+void \mbox{\hyperlink{classGame_abc070149f5113eb28217476dd3e634e6}{player\+Shoot}} (int player\+ID, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{classGame_a94d61d9fb3bbefee092d8599233c141e}{move\+Door}} (int player\+ID)
+\item 
+bool \mbox{\hyperlink{classGame_a382ac135c4eea51254ec2d0d2b2da61d}{has\+Started}} ()
+\item 
+void \mbox{\hyperlink{classGame_a4a08709bec3114eb5fb62375c1cc7864}{start}} (int player\+ID)
+\item 
+void \mbox{\hyperlink{classGame_aea18869eba885a774384ca597918bce4}{end}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&queue)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
+Class that represents the game as a whole. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_aea18869eba885a774384ca597918bce4}\label{classGame_aea18869eba885a774384ca597918bce4}} 
+\index{Game@{Game}!end@{end}}
+\index{end@{end}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily void Game\+::end (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{queue }\end{DoxyParamCaption})}
+
+$<$Ends the game, generating specific leaderboards of the events that happened$>$ \mbox{\Hypertarget{classGame_a127db1ad87b7276684fe68df6f53b4b0}\label{classGame_a127db1ad87b7276684fe68df6f53b4b0}} 
+\index{Game@{Game}!forceDoorStatusChange@{forceDoorStatusChange}}
+\index{forceDoorStatusChange@{forceDoorStatusChange}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{forceDoorStatusChange()}{forceDoorStatusChange()}}
+{\footnotesize\ttfamily bool Game\+::force\+Door\+Status\+Change (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+$<$\+Forces the status of a door to change$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \mbox{\hyperlink{classCoordinate}{Coordinate}} of the door. \\
+\hline
+{\em Y} & Coordiante of the door. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a68342574b4a470b1bbe844e475102d08}\label{classGame_a68342574b4a470b1bbe844e475102d08}} 
+\index{Game@{Game}!generateRadiusDamage@{generateRadiusDamage}}
+\index{generateRadiusDamage@{generateRadiusDamage}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{generateRadiusDamage()}{generateRadiusDamage()}}
+{\footnotesize\ttfamily void Game\+::generate\+Radius\+Damage (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})}
+
+$<$\+Generates a radial damage from a center point$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \mbox{\hyperlink{classCoordinate}{Coordinate}} of the center. \\
+\hline
+{\em Y} & \mbox{\hyperlink{classCoordinate}{Coordinate}} of the center. \\
+\hline
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a382ac135c4eea51254ec2d0d2b2da61d}\label{classGame_a382ac135c4eea51254ec2d0d2b2da61d}} 
+\index{Game@{Game}!hasStarted@{hasStarted}}
+\index{hasStarted@{hasStarted}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{hasStarted()}{hasStarted()}}
+{\footnotesize\ttfamily bool Game\+::has\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$\+Checks if game has already begun$>$
+
+\begin{DoxyReturn}{Returns}
+Bool to represent if the game has begun or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a94d61d9fb3bbefee092d8599233c141e}\label{classGame_a94d61d9fb3bbefee092d8599233c141e}} 
+\index{Game@{Game}!moveDoor@{moveDoor}}
+\index{moveDoor@{moveDoor}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{moveDoor()}{moveDoor()}}
+{\footnotesize\ttfamily std\+::tuple$<$ int, int $>$ Game\+::move\+Door (\begin{DoxyParamCaption}\item[{int}]{player\+ID }\end{DoxyParamCaption})}
+
+$<$Opens, if possible, a door from the position of a player$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple representing the coordinate (x, y) of the affected door. (-\/1, -\/1) if change was not possible. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a1ec486bf11f4ccae67cd9d369baeeefd}\label{classGame_a1ec486bf11f4ccae67cd9d369baeeefd}} 
+\index{Game@{Game}!moveRocketMissileFrom@{moveRocketMissileFrom}}
+\index{moveRocketMissileFrom@{moveRocketMissileFrom}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{moveRocketMissileFrom()}{moveRocketMissileFrom()}}
+{\footnotesize\ttfamily bool Game\+::move\+Rocket\+Missile\+From (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{newX,  }\item[{double}]{newY,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})}
+
+$<$Moves the rocket missile from (x, y) to (newX, newY) if possible$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Initial} & X \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em Initial} & Y \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em Final} & X \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em Final} & Y \mbox{\hyperlink{classCoordinate}{Coordinate}}. \\
+\hline
+{\em \mbox{\hyperlink{classNotification}{Notification}}} & Queue to inform of changes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean representing if the move was possible. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_abc070149f5113eb28217476dd3e634e6}\label{classGame_abc070149f5113eb28217476dd3e634e6}} 
+\index{Game@{Game}!playerShoot@{playerShoot}}
+\index{playerShoot@{playerShoot}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{playerShoot()}{playerShoot()}}
+{\footnotesize\ttfamily void Game\+::player\+Shoot (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notis }\end{DoxyParamCaption})}
+
+$<$\+Shoots from the position and direction of the player$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em \mbox{\hyperlink{classNotification}{Notification}}} & Queue to notify of changes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a58b77543a8b5db9b12d05cabaaa814e4}\label{classGame_a58b77543a8b5db9b12d05cabaaa814e4}} 
+\index{Game@{Game}!playerSwitchWeapon@{playerSwitchWeapon}}
+\index{playerSwitchWeapon@{playerSwitchWeapon}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{playerSwitchWeapon()}{playerSwitchWeapon()}}
+{\footnotesize\ttfamily void Game\+::player\+Switch\+Weapon (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{int}]{weapon\+Pos }\end{DoxyParamCaption})}
+
+$<$\+Switches current weapon of the player to the specified slot$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em \mbox{\hyperlink{classWeapon}{Weapon}}} & slot to set as active. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a17c1cfcb176d89cb49fc2c4669bae0c6}\label{classGame_a17c1cfcb176d89cb49fc2c4669bae0c6}} 
+\index{Game@{Game}!removePlayer@{removePlayer}}
+\index{removePlayer@{removePlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{removePlayer()}{removePlayer()}}
+{\footnotesize\ttfamily bool Game\+::remove\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+ID }\end{DoxyParamCaption})}
+
+$<$Removes a player from the game.$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean if the player was removed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a52f6ea988f12b69ec98cef1a25fba797}\label{classGame_a52f6ea988f12b69ec98cef1a25fba797}} 
+\index{Game@{Game}!sendGameStatus@{sendGameStatus}}
+\index{sendGameStatus@{sendGameStatus}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{sendGameStatus()}{sendGameStatus()}}
+{\footnotesize\ttfamily void Game\+::send\+Game\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notis }\end{DoxyParamCaption})}
+
+$<$Queues update messages of the status of the game.$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a69c7773f77c465606ef3bd83faacec31}\label{classGame_a69c7773f77c465606ef3bd83faacec31}} 
+\index{Game@{Game}!sendUpdateMessages@{sendUpdateMessages}}
+\index{sendUpdateMessages@{sendUpdateMessages}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{sendUpdateMessages()}{sendUpdateMessages()}}
+{\footnotesize\ttfamily void Game\+::send\+Update\+Messages (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notis }\end{DoxyParamCaption})}
+
+$<$\+Queues update messages of the status of the players$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a0a294398a2e187b4f4f39c7e106aab97}\label{classGame_a0a294398a2e187b4f4f39c7e106aab97}} 
+\index{Game@{Game}!setShooting@{setShooting}}
+\index{setShooting@{setShooting}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setShooting()}{setShooting()}}
+{\footnotesize\ttfamily void Game\+::set\+Shooting (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{bool}]{shooting }\end{DoxyParamCaption})}
+
+$<$\+Sets the status of a given player as shooting$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em The} & status to set the player. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a4a08709bec3114eb5fb62375c1cc7864}\label{classGame_a4a08709bec3114eb5fb62375c1cc7864}} 
+\index{Game@{Game}!start@{start}}
+\index{start@{start}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Game\+::start (\begin{DoxyParamCaption}\item[{int}]{player\+ID }\end{DoxyParamCaption})}
+
+$<$Starts the game, if possible. Only the first player to connect is given admin rights$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_abba8664decbad577ff7fd2f293cf4cad}\label{classGame_abba8664decbad577ff7fd2f293cf4cad}} 
+\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Game\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notis }\end{DoxyParamCaption})}
+
+$<$\+Updates the game status given an elapdsed time$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed in seconds since last update. \\
+\hline
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a79fa84274f78b118ef458c6c7bd31379}\label{classGame_a79fa84274f78b118ef458c6c7bd31379}} 
+\index{Game@{Game}!updatePlayerMoveSpeed@{updatePlayerMoveSpeed}}
+\index{updatePlayerMoveSpeed@{updatePlayerMoveSpeed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{updatePlayerMoveSpeed()}{updatePlayerMoveSpeed()}}
+{\footnotesize\ttfamily void Game\+::update\+Player\+Move\+Speed (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{double}]{move\+Speed }\end{DoxyParamCaption})}
+
+$<$\+Changes the movement speed of a player$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em Movement} & speed value to add to the player. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_aeef3f8acebe75d7cc020f6e3c9b9156f}\label{classGame_aeef3f8acebe75d7cc020f6e3c9b9156f}} 
+\index{Game@{Game}!updatePlayerRotationSpeed@{updatePlayerRotationSpeed}}
+\index{updatePlayerRotationSpeed@{updatePlayerRotationSpeed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{updatePlayerRotationSpeed()}{updatePlayerRotationSpeed()}}
+{\footnotesize\ttfamily void Game\+::update\+Player\+Rotation\+Speed (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{double}]{rot\+Speed }\end{DoxyParamCaption})}
+
+$<$\+Changes the rotation speed of a player$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em Rotation} & speed value to add to the player. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a08cec820d054eaf33a931c3a4df38116}\label{classGame_a08cec820d054eaf33a931c3a4df38116}} 
+\index{Game@{Game}!updatePositions@{updatePositions}}
+\index{updatePositions@{updatePositions}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{updatePositions()}{updatePositions()}}
+{\footnotesize\ttfamily void Game\+::update\+Positions (\begin{DoxyParamCaption}\item[{float}]{time\+Elapsed,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notis }\end{DoxyParamCaption})}
+
+$<$\+Updates the position of all players through time$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & elapsed in seconds since last update. \\
+\hline
+{\em The} & notification Queue on which to notify of change if needed. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Model/\+Game/Game.\+h\item 
+server/src/\+Model/\+Game/Game.\+cpp\end{DoxyCompactItemize}

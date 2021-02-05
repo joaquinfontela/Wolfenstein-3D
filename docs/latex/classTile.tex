@@ -1,0 +1,75 @@
+\hypertarget{classTile}{}\doxysection{Tile Class Reference}
+\label{classTile}\index{Tile@{Tile}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTile_abfe237ad8f5923d4e46efb2cf37fde41}\label{classTile_abfe237ad8f5923d4e46efb2cf37fde41}} 
+void {\bfseries add\+Item\+Drop} (\mbox{\hyperlink{classItem}{Item}} $\ast$item)
+\item 
+\mbox{\Hypertarget{classTile_adf4b04b596ff4da6e03f63c85735a016}\label{classTile_adf4b04b596ff4da6e03f63c85735a016}} 
+void {\bfseries add\+Weapon\+Drop} (\mbox{\hyperlink{classWeapon}{Weapon}} $\ast$weapon)
+\item 
+\mbox{\Hypertarget{classTile_a16c65e443978a79d4f7debd633a30d00}\label{classTile_a16c65e443978a79d4f7debd633a30d00}} 
+void {\bfseries add\+Door} (\mbox{\hyperlink{classDoor}{Door}} $\ast$door)
+\item 
+\mbox{\Hypertarget{classTile_af822156cda47628fb248be2beff14896}\label{classTile_af822156cda47628fb248be2beff14896}} 
+void {\bfseries add\+Wall} (\mbox{\hyperlink{classWall}{Wall}} $\ast$wall)
+\item 
+\mbox{\Hypertarget{classTile_af64f8653f33a576a8004cdf4fd18260c}\label{classTile_af64f8653f33a576a8004cdf4fd18260c}} 
+void {\bfseries add\+Ammo\+Drop} ()
+\item 
+\mbox{\Hypertarget{classTile_a30a94a3dc652dfc427c3115c481ea267}\label{classTile_a30a94a3dc652dfc427c3115c481ea267}} 
+void {\bfseries add\+Key\+Drop} ()
+\item 
+\mbox{\Hypertarget{classTile_aefd497da6e5dd7993531c9ed39a2c421}\label{classTile_aefd497da6e5dd7993531c9ed39a2c421}} 
+void {\bfseries add\+Ammo\+Drop} (int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classTile_ac0ce0418bd0c15bebabea574c44d5460}\label{classTile_ac0ce0418bd0c15bebabea574c44d5460}} 
+void {\bfseries add\+Key\+Drop} (int x, int y, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classTile_a143fd50e25ffeafe7577277b98c49ee2}\label{classTile_a143fd50e25ffeafe7577277b98c49ee2}} 
+void {\bfseries pick\+Up\+Guns} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classTile_aeac16063369c6229b635e34d6f229a94}\label{classTile_aeac16063369c6229b635e34d6f229a94}} 
+bool {\bfseries move\+Door} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classTile_a04c4270fa13acb8169353b34dd1170ff}\label{classTile_a04c4270fa13acb8169353b34dd1170ff}} 
+void {\bfseries apply\+Damage\+To\+Players} (int damage, int distance\+To\+Center, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+\mbox{\Hypertarget{classTile_a42a8090989802b8aa99daff07d6196d1}\label{classTile_a42a8090989802b8aa99daff07d6196d1}} 
+void {\bfseries add\+Player} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classTile_a8ca2a163a783908630fad931d3bef832}\label{classTile_a8ca2a163a783908630fad931d3bef832}} 
+void {\bfseries pick\+Up\+Items} (double x, double y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classTile_a40b3f63713ff3dcbdd0c2651b06cbc46}\label{classTile_a40b3f63713ff3dcbdd0c2651b06cbc46}} 
+void {\bfseries remove\+Player\+From\+Tile} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classTile_a1717d2ec3b4b1af323cfdbe4b8dc8628}\label{classTile_a1717d2ec3b4b1af323cfdbe4b8dc8628}} 
+bool {\bfseries force\+Door\+Status\+Change} ()
+\item 
+\mbox{\Hypertarget{classTile_abd3ca90e23537f287aebcd44d4843267}\label{classTile_abd3ca90e23537f287aebcd44d4843267}} 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ {\bfseries player\+Collision} (double x, double y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classTile_a2ad9510a27defff9749602836def19c0}\label{classTile_a2ad9510a27defff9749602836def19c0}} 
+bool {\bfseries check\+Wall} ()
+\item 
+\mbox{\Hypertarget{classTile_ad02fec49a7b584614290a449e1f9a50d}\label{classTile_ad02fec49a7b584614290a449e1f9a50d}} 
+void {\bfseries set\+Wall} ()
+\item 
+\mbox{\Hypertarget{classTile_ab9fb0127138d1c4e01e2eb5e8b815dd5}\label{classTile_ab9fb0127138d1c4e01e2eb5e8b815dd5}} 
+bool {\bfseries allow\+Movement} (double x, double y, \mbox{\hyperlink{classPlayer}{Player}} $\ast$p, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\item 
+\mbox{\Hypertarget{classTile_ae2befc4958614f96b8562cc2cab4d036}\label{classTile_ae2befc4958614f96b8562cc2cab4d036}} 
+bool {\bfseries allow\+Movement} (double x, double y)
+\item 
+\mbox{\Hypertarget{classTile_a1dea3603c586671afe1e22a3be51a4d9}\label{classTile_a1dea3603c586671afe1e22a3be51a4d9}} 
+bool {\bfseries has\+Players} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+server/includes/\+Model/\+Map/\+Tile/Tile.\+h\item 
+common/src/\+Map/\+Tile/Tile.\+cpp\item 
+server/src/\+Model/\+Map/\+Tile/Tile.\+cpp\end{DoxyCompactItemize}

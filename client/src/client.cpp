@@ -1,22 +1,22 @@
-#include "clientprotocol.h"
-#include "client.h"
-#include "scoreboard.h"
-#include "log.h"
+#include "../includes/client.h"
+
+#include "../includes/clientprotocol.h"
+#include "../includes/log.h"
+#include "../includes/scoreboard.h"
 
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
 
-static void deleteSprites(std::vector<Drawable*>& sprites) {
+void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
   for (Drawable* s : sprites) {
     delete s;
   }
 }
 
-void Client::connectToServer(std::string& host, std::string& port){
+void Client::connectToServer(std::string& host, std::string& port) {
   this->socket.connect(host, port);
 }
 
-bool Client::joinMatch(uint32_t lobbyID){
-
+bool Client::joinMatch(uint32_t lobbyID) {
   uint32_t protocol = CONNECT_TO_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
@@ -28,8 +28,7 @@ bool Client::joinMatch(uint32_t lobbyID){
   // Connection Response
   socket.receive(&opcode, sizeof(opcode));
 
-  if(opcode != CONNECTED_OK)
-    return false;
+  if (opcode != CONNECTED_OK) return false;
 
   socket.receive(&selfID, sizeof(selfID));
   this->myPlayerID = selfID;
@@ -38,11 +37,11 @@ bool Client::joinMatch(uint32_t lobbyID){
   return true;
 }
 
-int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::string& mapFile){
-
+int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
+                std::string& mapFile) {
   this->connectToServer(host, port);
 
-  if(!this->joinMatch(lobbyID)){
+  if (!this->joinMatch(lobbyID)) {
     return ERROR;
   }
 
@@ -55,25 +54,28 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   AudioManager audios;
 
   std::mutex m;
-  ScoreBoard scoreboard(manager);
+  ScoreBoard scoreboard(&window);
 
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0);
   Hud hud(&window, player, manager, audios);
-  std::map<uint32_t,Player*> players;
+  std::map<uint32_t, Player*> players;
   players[this->myPlayerID] = player;
 
-  std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID << std::endl;
+  std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID
+            << std::endl;
 
-  std::vector<Drawable*> sprites = loader.getDrawableItemList(); // Falta tener bien los ids de los sprites.
+  std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
-  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud);
+  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud,
+                   scoreboard);
   int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket, alive);
-  //LuaSender* sender = new LuaSender(socket, alive);
-  CommandExecuter* worker = new CommandExecuter(socket, alive, sprites, players, m, myPlayerID, audios, matrix, loader, scoreboard);
+  CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
+  CommandExecuter* worker =
+      new CommandExecuter(socket, alive, sprites, players, m, myPlayerID,
+                          audios, matrix, loader, scoreboard);
 
   try {
     worker->start();
@@ -89,7 +91,6 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   delete player;
   delete sender;
   delete worker;
-  deleteSprites(sprites);
+  this->gargabeCollector(sprites);
   return exitcode;
-
 }

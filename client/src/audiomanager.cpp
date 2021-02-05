@@ -1,15 +1,18 @@
-#include "sdlexception.h"
-#include "clientprotocol.h"
-#include "audiomanager.h"
-#include <vector>
-#include <string>
+#include "../includes/audiomanager.h"
+
 #include <iostream>
+#include <string>
+#include <vector>
+
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
 
 #define TRACK_INIT_ERROR "Error, track already found: "
+#define TRACK_FOUND_ERROR "Error, track found with code: "
 #define TRACK_NOT_FOUND_ERROR "Error, track not found with code: "
 #define AUDIO_PATH "../audio/"
 
-void AudioManager::playOnVariableVolumeWithId(int id, double dist){
+void AudioManager::playOnVariableVolumeWithId(int id, double dist) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (!(it != this->audiotracks.end())) {
     LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
@@ -31,9 +34,7 @@ void AudioManager::playOrStopOnVariableVolumeWithId(int id, double dist) {
   audio->play();
 }
 
-AudioManager::~AudioManager() {
-  this->garbageCollector();
-}
+AudioManager::~AudioManager() { this->garbageCollector(); }
 
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
   Audio* audio;
@@ -42,32 +43,33 @@ bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
   } else {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
   }
-  if (audio == NULL) {
+  if (audio == NULL || !this->loadTrack(i, audio)) {
+    delete audio;
     return false;
   }
-  this->loadTrack(i, audio);
   return true;
 }
 
 AudioManager::AudioManager() {
-  std::vector<std::string> names({ "Knife.wav", // 1
-                                   "Pistol.wav", // 2
-                                   "Machine Gun.wav", // 3
-                                   "Gatling Gun.wav", // 4
-                                   "Rocket Launcher.wav", // 5
-                                   "Rocket Explode.wav", // 6
-                                   "Door.wav", // 7
-                                   "ItemPickup.wav", // 8
-                                   "HealthPickup.wav", // 9
-                                   "Dog Death.wav", // 10
-                                   "Death 1.wav", // 11
-                                   "Death 2.wav", // 12
-                                   "Player Pain 2.wav", // 13
-                                   "Enemy Pain.wav" // 14
-                                  });
+  std::vector<std::string> names({
+      "Knife.wav",            // 1
+      "Pistol.wav",           // 2
+      "Machine Gun.wav",      // 3
+      "Gatling Gun.wav",      // 4
+      "Rocket Launcher.wav",  // 5
+      "Rocket Explode.wav",   // 6
+      "Door.wav",             // 7
+      "ItemPickup.wav",       // 8
+      "HealthPickup.wav",     // 9
+      "Dog Death.wav",        // 10
+      "Death 1.wav",          // 11
+      "Death 2.wav",          // 12
+      "Player Pain 2.wav",    // 13
+      "Enemy Pain.wav"        // 14
+  });
   int i = 1;
   for (std::string& name : names) {
-    if (!this->loadAndCheckTrack(i,name)){
+    if (!this->loadAndCheckTrack(i, name)) {
       this->garbageCollector();
       throw SdlException(TRACK_NOT_FOUND_ERROR, Mix_GetError());
       break;
@@ -84,13 +86,14 @@ void AudioManager::stopWithId(int id) {
     LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
 }
 
-void AudioManager::loadTrack(int id, Audio* audio) {
+bool AudioManager::loadTrack(int id, Audio* audio) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end()) {
     LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
+    return false;
   }
-  else
-    this->audiotracks[id] = audio;
+  this->audiotracks[id] = audio;
+  return true;
 }
 
 void AudioManager::playWithId(int id) {

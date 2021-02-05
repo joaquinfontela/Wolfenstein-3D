@@ -1,48 +1,39 @@
-#include "player.h"
-#include "clientprotocol.h"
+#include "../includes/player.h"
+
 #include <math.h>
+
 #include <iostream>
+
+#include "../includes/clientprotocol.h"
 
 bool Player::hasKey() {
   return key;
-  //return this->hasTheKey;
+  // return this->hasTheKey;
 }
 
-bool Player::isPlayer(){
-  return true;
-}
+bool Player::isPlayer() { return true; }
 
-bool Player::isSprite() {
-  return false;
-}
+bool Player::isSprite() { return false; }
 
 static bool sameSign(double a, double b) {
   return ((a <= 0 && b <= 0) || (a > 0 && b > 0));
 }
 
 double Player::calculateDist(Player* other) {
-  return sqrt(pow(this->x - other->x,2) + pow(this->y - other->y,2));
+  return sqrt(pow(this->x - other->x, 2) + pow(this->y - other->y, 2));
 }
 
 double Player::calculateDist(int otherx, int othery) {
-  return sqrt(pow(this->x - otherx,2) + pow(this->y - othery,2));
+  return sqrt(pow(this->x - otherx, 2) + pow(this->y - othery, 2));
 }
 
-bool Player::hasThisUniqueId(int otherid){
-  return false;
-}
+bool Player::hasThisUniqueId(int otherid) { return false; }
 
-bool Player::isShooting() {
-  return this->shooting;
-}
+bool Player::isShooting() { return this->shooting; }
 
-bool Player::isMoving() {
-  return this->moving;
-}
+bool Player::isMoving() { return this->moving; }
 
-void Player::stopMoving() {
-  this->moving = false;
-}
+void Player::stopMoving() { this->moving = false; }
 
 Player::Player(PlayerData& info) {
   this->x = info.posX;
@@ -62,8 +53,8 @@ Player::Player(PlayerData& info) {
 }
 
 void Player::update(PlayerData& info) {
-
-  this->moving = ((fabs(this->x - info.posX) > 0.05) || (fabs(this->y - info.posY) > 0.05));
+  this->moving = ((fabs(this->x - info.posX) > 0.05) ||
+                  (fabs(this->y - info.posY) > 0.05));
   this->healthdown = (this->health > info.health);
   this->x = info.posX;
   this->y = info.posY;
@@ -84,20 +75,17 @@ void Player::update(PlayerData& info) {
   this->planeY = (oldPlaneX * sinVal) + (this->planeY * cosVal);
 }
 
-void Player::update(double posX, double posY, double dirX, double dirY) {
-  this->x = posX;
-  this->y = posY;
-  this->dirX = dirX;
-  this->dirY = dirY;
-}
-
 int Player::getSoldierId() {
-  if (this->shooting || this->animatingShooting) { // Que cuando termine la animación setee el booleano en false.
-    this->frames = (this->timePassed > 125) + (this->timePassed > 250) + (this->timePassed > 375);
+  if (this->shooting ||
+      this->animatingShooting) {  // Que cuando termine la animación setee el
+                                  // booleano en false.
+    this->frames = (this->timePassed > 125) + (this->timePassed > 250) +
+                   (this->timePassed > 375);
     return GET_SHOOTING_ANIMATION_FROM_GUNID(this->weaponId);
     this->animatingShooting = true;
   } else if (this->moving || this->animatingMovement) {
-    this->frames = (this->timePassed > 100) + (this->timePassed > 200) + (this->timePassed > 300) + (this->timePassed > 400);
+    this->frames = (this->timePassed > 100) + (this->timePassed > 200) +
+                   (this->timePassed > 300) + (this->timePassed > 400);
     return GET_MOVING_ANIMATION_FROM_GUNID(this->weaponId);
     this->animatingMovement = true;
   } else {
@@ -115,16 +103,18 @@ void Player::restartAnimationStats() {
   this->frames = 0;
 }
 
-void Player::draw(TextureManager& manager, double posX, double posY, double dirX,
-                  double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
-
+void Player::draw(TextureManager& manager, double posX, double posY,
+                  double dirX, double dirY, double planeX, double planeY,
+                  double* distanceBuffer, float diff) {
   this->timePassed += diff;
-  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width, height;
+  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width,
+      height;
   double transformY;
   manager.getWindowSize(&width, &height);
 
-  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
-                             posX, posY, planeX, planeY, dirX, dirY, width, height);
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart,
+                             drawEnd, transformY, posX, posY, planeX, planeY,
+                             dirX, dirY, width, height);
 
   int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
   int preCalcdValue2 = (height - spriteHeight) >> 1;
@@ -133,11 +123,11 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   int spriteId = this->getSoldierId();
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
-  for (int stripe = drawStart; stripe < drawEnd; stripe++){
+  for (int stripe = drawStart; stripe < drawEnd; stripe++) {
     int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (doorStripe < 0) continue;
 
-    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]){
+    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
       srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
@@ -148,10 +138,6 @@ void Player::draw(TextureManager& manager, double posX, double posY, double dirX
   }
 }
 
-void Player::startShooting() {
-  this->shooting = true;
-}
+void Player::startShooting() { this->shooting = true; }
 
-void Player::stopShooting() {
-  this->shooting = false;
-}
+void Player::stopShooting() { this->shooting = false; }

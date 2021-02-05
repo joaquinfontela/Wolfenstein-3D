@@ -1,0 +1,89 @@
+\hypertarget{classRaycaster}{}\doxysection{Raycaster Class Reference}
+\label{classRaycaster}\index{Raycaster@{Raycaster}}
+
+
+\mbox{\hyperlink{classGame}{Game}} engine. Draws the game using the raycasting algorithm.  
+
+
+
+
+{\ttfamily \#include $<$raycaster.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRaycaster_a4b1c4df0a83bf047058bfdf0e43238f2}{Raycaster}} (\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager, \mbox{\hyperlink{classMap}{Map}} \&m, std\+::atomic$<$ bool $>$ \&b, \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player, std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&sprites, std\+::mutex \&lock, \mbox{\hyperlink{classHud}{Hud}} \&hud, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} \&scoreboard)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRaycaster}{Raycaster}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRaycaster_a0426a17e941d90eadb656fc7574e1759}{hit\+Door}} (const int \&matrix\+XCoord, const int \&matrix\+YCoord)
+\begin{DoxyCompactList}\small\item\em Verifies if the given coordinates are from a door. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRaycaster_a684354950b046a0954231a1706f1cc96}\label{classRaycaster_a684354950b046a0954231a1706f1cc96}} 
+void \mbox{\hyperlink{classRaycaster_a684354950b046a0954231a1706f1cc96}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the game engine. Draws the environment and updates the time for all the objects that need it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classGame}{Game}} engine. Draws the game using the raycasting algorithm. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRaycaster_a4b1c4df0a83bf047058bfdf0e43238f2}\label{classRaycaster_a4b1c4df0a83bf047058bfdf0e43238f2}} 
+\index{Raycaster@{Raycaster}!Raycaster@{Raycaster}}
+\index{Raycaster@{Raycaster}!Raycaster@{Raycaster}}
+\doxysubsubsection{\texorpdfstring{Raycaster()}{Raycaster()}}
+{\footnotesize\ttfamily Raycaster\+::\+Raycaster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager,  }\item[{\mbox{\hyperlink{classMap}{Map}} \&}]{m,  }\item[{std\+::atomic$<$ bool $>$ \&}]{b,  }\item[{\mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$}]{window,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&}]{sprites,  }\item[{std\+::mutex \&}]{lock,  }\item[{\mbox{\hyperlink{classHud}{Hud}} \&}]{hud,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} \&}]{scoreboard }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{classRaycaster}{Raycaster}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Reference to the texture manager. \\
+\hline
+{\em m} & \mbox{\hyperlink{classMap}{Map}} reference. \\
+\hline
+{\em b} & Boolean that represents if the game has finished or not. \\
+\hline
+{\em window} & Window reference. \\
+\hline
+{\em player} & Reference to one\textquotesingle{}s own player. \\
+\hline
+{\em sprites} & Sprites vector. \\
+\hline
+{\em lock} & Stops from accesing a deleted sprite. \\
+\hline
+{\em hud} & Reference to the hud. \\
+\hline
+{\em scoreboard} & Reference to the scoreboard. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRaycaster_a0426a17e941d90eadb656fc7574e1759}\label{classRaycaster_a0426a17e941d90eadb656fc7574e1759}} 
+\index{Raycaster@{Raycaster}!hitDoor@{hitDoor}}
+\index{hitDoor@{hitDoor}!Raycaster@{Raycaster}}
+\doxysubsubsection{\texorpdfstring{hitDoor()}{hitDoor()}}
+{\footnotesize\ttfamily bool Raycaster\+::hit\+Door (\begin{DoxyParamCaption}\item[{const int \&}]{matrix\+XCoord,  }\item[{const int \&}]{matrix\+YCoord }\end{DoxyParamCaption})}
+
+
+
+Verifies if the given coordinates are from a door. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix\+XCoord} & \\
+\hline
+{\em matrix\+YCoord} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/src/raycaster.\+h\item 
+client/src/raycaster.\+cpp\end{DoxyCompactItemize}
