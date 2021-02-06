@@ -135,6 +135,7 @@ set(PROJECT_SOURCES
   src/player.cpp
   src/raycaster.cpp
   src/drawable.cpp
+  src/drawablevector.cpp
   src/audiomanager.cpp
   src/texturemanager.cpp
   src/commandsender.cpp

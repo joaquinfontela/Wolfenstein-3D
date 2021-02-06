@@ -13,6 +13,7 @@
 #include "ClientMapLoader.h"
 #include "audiomanager.h"
 #include "commandmanager.h"
+#include "drawablevector.h"
 #include "player.h"
 #include "scoreboard.h"
 
@@ -30,7 +31,6 @@ class CommandExecuter : public CommandManager {
    * @param alive True if the game is still running.
    * @param sprites Sprites vector.
    * @param players Players mapped by their ids.
-   * @param lock Stops the executer from reading an invalid sprite.
    * @param selfId Our player's id.
    * @param audiomanager Audio manager reference.
    * @param matrix Map reference.
@@ -38,8 +38,7 @@ class CommandExecuter : public CommandManager {
    * @param scoreboard Scoreboard reference.
    */
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive,
-                  std::vector<Drawable*>& sprites,
-                  std::map<uint32_t, Player*>& players, std::mutex& lock,
+                  DrawableVector& sprites, std::map<uint32_t, Player*>& players,
                   int selfId, AudioManager& audiomanager, Map& matrix,
                   ClientMapLoader& loader, ScoreBoard* scoreboard);
 
@@ -201,9 +200,8 @@ class CommandExecuter : public CommandManager {
   void playDoorOpeningSound(int x, int y);
 
   SocketWrapper infogetter;
-  std::vector<Drawable*>& sprites;
+  DrawableVector& sprites;
   std::map<uint32_t, Player*>& players;
-  std::mutex& lock;
   int selfId;
   AudioManager& audiomanager;
   Map& matrix;

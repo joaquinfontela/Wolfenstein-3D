@@ -17,15 +17,16 @@
 
 #define MUSIC_PATH "../audio/music.mp3"
 
-CommandExecuter::CommandExecuter(
-    SocketCommunication& s, std::atomic<bool>& alive,
-    std::vector<Drawable*>& sprites, std::map<uint32_t, Player*>& players,
-    std::mutex& lock, int selfId, AudioManager& audiomanager, Map& matrix,
-    ClientMapLoader& loader, ScoreBoard* scoreboard)
+CommandExecuter::CommandExecuter(SocketCommunication& s,
+                                 std::atomic<bool>& alive,
+                                 DrawableVector& sprites,
+                                 std::map<uint32_t, Player*>& players,
+                                 int selfId, AudioManager& audiomanager,
+                                 Map& matrix, ClientMapLoader& loader,
+                                 ScoreBoard* scoreboard)
     : CommandManager(scoreboard, s, alive),
       sprites(sprites),
       players(players),
-      lock(lock),
       selfId(selfId),
       audiomanager(audiomanager),
       matrix(matrix),
@@ -68,48 +69,19 @@ void CommandExecuter::playExplosionSound() {
 
 void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
   std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
-  this->lock.lock();
-  std::vector<Drawable*>::iterator it = this->sprites.begin();
-  for (; it != this->sprites.end(); ++it) {
-    if ((*it)->hasThisUniqueId(itemId)) {
-      int soundid = (*it)->id;
-      delete (*it);
-      this->sprites.erase(it);
-      if (IS_HEALTH_UP(soundid)) {
-        this->audiomanager.playWithId(HEALTH_PICKUP_SOUND);
-      } else {
-        this->audiomanager.playWithId(PICKUP_SOUND);
-      }
-      break;
-    }
-  }
-  this->lock.unlock();
+  uint32_t soundId;
+  this->sprites.removeSpriteWithIdAndGetSound(itemId, &soundId);
+  this->audiomanager.playWithId(soundId);
 }
 
 void CommandExecuter::renderMovingSprite(double x, double y, uint32_t itemId) {
-  std::vector<Drawable*>::iterator it = this->sprites.begin();
-  for (; it != this->sprites.end(); ++it) {
-    if ((*it)->hasThisUniqueId(itemId)) {
-      (*it)->x = x;
-      (*it)->y = y;
-      break;
-    }
-  }
+  this->sprites.swapCoords(x, y, itemId);
 }
 
 void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
   double x = ERROR;
   double y = ERROR;
-  std::vector<Drawable*>::iterator it = this->sprites.begin();
-  for (; it != this->sprites.end(); ++it) {
-    if ((*it)->hasThisUniqueId(itemId)) {
-      x = (*it)->x;
-      y = (*it)->y;
-      delete (*it);
-      this->sprites.erase(it);
-      break;
-    }
-  }
+  this->sprites.getCoordsAndErase(&x, &y, itemId);
   if (x == ERROR || y == ERROR)
     LOG("Error, no missile texture to explode found.");
   this->sprites.push_back(new RaycastedAnimation(
@@ -149,7 +121,7 @@ void CommandExecuter::updateOrCreatePlayer() {
     std::cout << "[GAME] Adding player with id: " << id << std::endl;
     Player* placeholder = new Player(playerinfo);
     players[id] = placeholder;
-    sprites.push_back(placeholder);
+    this->sprites.push_back(placeholder);
   }
 }
 
@@ -157,19 +129,11 @@ void CommandExecuter::disconnectPlayer() {
   uint32_t id;
   this->socket.receive(&id, sizeof(id));
   if (id == this->selfId) return;
-  this->lock.lock();
   Player* toKill = players[id];
   players.erase(id);
-  std::vector<Drawable*>::iterator it = this->sprites.begin();
-  for (; it != this->sprites.end(); ++it) {
-    if (*it == toKill) {
-      this->sprites.erase(it);
-      break;
-    }
-  }
+  this->sprites.popAndErase(toKill);
   std::cout << "[GAME] Killing player with id: " << id << std::endl;
   delete toKill;
-  this->lock.unlock();
 }
 
 void CommandExecuter::shotsFired() {
@@ -192,8 +156,7 @@ void CommandExecuter::openDoor() {
 void CommandExecuter::pickUpItem() {
   uint32_t itemId;
   this->socket.receive(&itemId, sizeof(itemId));
-  std::cout << "[GAME] Picking up item with id: " << itemId
-            << ", there are: " << sprites.size() << " items left." << std::endl;
+  std::cout << "[GAME] Picking up item with id: " << itemId << std::endl;
   this->removeSpriteWithId(itemId);
 }
 
@@ -210,8 +173,7 @@ void CommandExecuter::dropItem() {
   y = infogetter.receiveDouble();
   this->socket.receive(&yamlId, sizeof(yamlId));
   this->socket.receive(&uniqueId, sizeof(uniqueId));
-  std::cout << "[GAME] Droping item with id: " << uniqueId
-            << ", there are: " << sprites.size() << " items left." << std::endl;
+  std::cout << "[GAME] Droping item with id: " << uniqueId << std::endl;
   this->loadNewTexture(x, y, yamlId, uniqueId);
 }
 

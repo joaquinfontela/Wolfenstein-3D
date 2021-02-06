@@ -11,6 +11,7 @@
 #include "../../common/includes/Map/Map.h"
 #include "clientprotocol.h"
 #include "door.h"
+#include "drawablevector.h"
 #include "hud.h"
 #include "player.h"
 #include "texturemanager.h"
@@ -31,18 +32,15 @@ class Raycaster {
    * @param b Boolean that represents if the game has finished or not.
    * @param player Reference to one's own player.
    * @param sprites Sprites vector.
-   * @param lock Stops from accesing a deleted sprite.
    * @param hud Reference to the hud.
    */
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b,
-            Player* player, std::vector<Drawable*>& sprites,
-            std::mutex& lock, Hud& hud)
+            Player* player, DrawableVector& sprites, Hud& hud)
       : alive(b),
         manager(manager),
         matrix(m),
         player(player),
         sprites(sprites),
-        lock(lock),
         hud(hud) {
     manager.getWindowSize(&this->width, &this->height);
     this->doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);
@@ -72,8 +70,7 @@ class Raycaster {
   TextureManager& manager;
   Map& matrix;
   Player* player;
-  std::vector<Drawable*>& sprites;
-  std::mutex& lock;
+  DrawableVector& sprites;
   Hud& hud;
   int width, height;
   std::vector<Door> doors;

@@ -1,6 +1,7 @@
 #include "../includes/client.h"
 
 #include "../includes/clientprotocol.h"
+#include "../includes/drawablevector.h"
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
 
@@ -69,11 +70,13 @@ int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
-  Raycaster caster(manager, matrix, alive, player, sprites, m, hud);
+  DrawableVector spriteVector(sprites, m);
+
+  Raycaster caster(manager, matrix, alive, player, spriteVector, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
   CommandExecuter* worker =
-      new CommandExecuter(socket, alive, sprites, players, m, myPlayerID,
+      new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
                           audios, matrix, loader, &scoreboard);
 
   try {
