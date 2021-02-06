@@ -74,7 +74,7 @@ int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, sprites, players, m, myPlayerID,
-                          audios, matrix, loader, scoreboard);
+                          audios, matrix, loader, &scoreboard);
 
   try {
     worker->start();

@@ -21,9 +21,8 @@ CommandExecuter::CommandExecuter(
     SocketCommunication& s, std::atomic<bool>& alive,
     std::vector<Drawable*>& sprites, std::map<uint32_t, Player*>& players,
     std::mutex& lock, int selfId, AudioManager& audiomanager, Map& matrix,
-    ClientMapLoader& loader, ScoreBoard& scoreboard)
-    : socket(s),
-      alive(alive),
+    ClientMapLoader& loader, ScoreBoard* scoreboard)
+    : CommandManager(scoreboard, s, alive),
       sprites(sprites),
       players(players),
       lock(lock),
@@ -31,7 +30,6 @@ CommandExecuter::CommandExecuter(
       audiomanager(audiomanager),
       matrix(matrix),
       loader(loader),
-      scoreboard(scoreboard),
       infogetter(s) {}
 
 void CommandExecuter::loadNewTexture(double x, double y, uint32_t yamlId,
@@ -234,7 +232,7 @@ void CommandExecuter::explodeMissile() {
 
 void CommandExecuter::run() {
   this->audiomanager.playWithId(MUSIC);
-  while (!this->scoreboard.hasEnded()) {
+  while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
@@ -282,7 +280,7 @@ void CommandExecuter::saveShotsFired() {
   uint32_t numberOfPlayers;
   this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
   for (int i = 0; i < numberOfPlayers; i++) {
-    this->scoreboard.pushShotsfired(recvTuple(this->socket));
+    this->scoreboard->pushShotsfired(recvTuple(this->socket));
   }
 }
 
@@ -290,7 +288,7 @@ void CommandExecuter::saveScores() {
   uint32_t numberOfPlayers;
   this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
   for (int i = 0; i < numberOfPlayers; i++) {
-    this->scoreboard.pushScore(recvTuple(this->socket));
+    this->scoreboard->pushScore(recvTuple(this->socket));
   }
 }
 
@@ -298,6 +296,6 @@ void CommandExecuter::saveKills() {
   uint32_t numberOfPlayers;
   this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
   for (int i = 0; i < numberOfPlayers; i++) {
-    this->scoreboard.pushKills(recvTuple(this->socket));
+    this->scoreboard->pushKills(recvTuple(this->socket));
   }
 }

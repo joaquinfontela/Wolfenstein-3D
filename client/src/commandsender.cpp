@@ -14,7 +14,7 @@
 
 CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
                              ScoreBoard* scoreboard)
-    : socket(s), alive(alive), scoreboard(scoreboard) {}
+    : CommandManager(scoreboard, s, alive) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(&keyType, UINT32_SIZE);
