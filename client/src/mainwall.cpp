@@ -1,17 +1,27 @@
+#include <QApplication>
+
 #include "../includes/client.h"
 #include "../includes/clientprotocol.h"
-
-#define INVALID_ARGS_ERR "Error, no hostname and/or port given."
+#include "./Login/login.h"
 
 int main(int argc, char** argv) {
-  if (argc != 3) {
-    LOG(INVALID_ARGS_ERR);
+  std::string ip;
+  std::string port;
+  int game_id;
+  if (argc == 3) {
+    ip = argv[1];
+    port = argv[2];
+    game_id = 1;
+  } else {
+    QApplication a(argc, argv);
+    Login w(port, ip, game_id);
+    w.show();
+    a.exec();
+    w.hide();
   }
 
   Client client;
   std::string mapFile = "../../common/src/YAML/map1.yaml";
-  std::string host = argv[1];
-  std::string port = argv[2];
 
-  return client.run(host, port, 2, mapFile);
+  return client.run(ip, port, game_id, mapFile);
 }

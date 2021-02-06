@@ -28,7 +28,7 @@ public:
     QLineEdit *dato_ip;
     QLineEdit *dato_puerto;
     QLineEdit *dato_game;
-    QPushButton *boton_create;
+    QPushButton *button_create;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,10 +64,10 @@ public:
         dato_game = new QLineEdit(centralwidget);
         dato_game->setObjectName(QString::fromUtf8("dato_game"));
         dato_game->setGeometry(QRect(600, 430, 171, 41));
-        boton_create = new QPushButton(centralwidget);
-        boton_create->setObjectName(QString::fromUtf8("boton_create"));
-        boton_create->setGeometry(QRect(600, 480, 171, 41));
-        boton_create->setFont(font);
+        button_create = new QPushButton(centralwidget);
+        button_create->setObjectName(QString::fromUtf8("button_create"));
+        button_create->setGeometry(QRect(600, 480, 171, 41));
+        button_create->setFont(font);
         Login->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -86,7 +86,7 @@ public:
     {
         Login->setWindowTitle(QApplication::translate("Login", "Login", nullptr));
         button_join->setText(QApplication::translate("Login", "JOIN MATCH", nullptr));
-        boton_create->setText(QApplication::translate("Login", "CREATE MATCH", nullptr));
+        button_create->setText(QApplication::translate("Login", "CREATE MATCH", nullptr));
     } // retranslateUi
 
 };

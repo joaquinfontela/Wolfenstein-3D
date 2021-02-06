@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(sdl)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include  -std=c++11 -pthread -O3 -finline-functions -funroll-loops")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include -std=c++11 -pthread -O3 -finline-functions -funroll-loops")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 SET(_POSSIBLE_LUA_INCLUDE include include/lua)
@@ -87,6 +87,89 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(Lua
 
 MARK_AS_ADVANCED(LUA_INCLUDE_DIR LUA_LIBRARIES LUA_LIBRARY LUA_MATH_LIBRARY LUA_EXECUTABLE)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
+# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
+# They need to be set before the find_package(Qt5 ...) call.
+
+#if(ANDROID)
+#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
+#        set(ANDROID_EXTRA_LIBS
+#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
+#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
+#    endif()
+#endif()
+
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+
+set(PROJECT_SOURCES
+  src/mainwall.cpp
+  src/Login/login.cpp
+  src/Login/login.h
+  src/Login/login.ui
+  src/ClientMapLoader.cpp
+  src/client.cpp
+  src/RaycastedAnimation.cpp
+  src/area.cpp
+  src/log.cpp
+  src/doortimer.cpp
+  src/scoreboard.cpp
+  src/doortile.cpp
+  src/audio.cpp
+  src/hud.cpp
+  src/door.cpp
+  src/sdltexture.cpp
+  src/sdlanimation.cpp
+  src/sdlexception.cpp
+  src/sdlwindow.cpp
+  src/player.cpp
+  src/raycaster.cpp
+  src/drawable.cpp
+  src/audiomanager.cpp
+  src/texturemanager.cpp
+  src/commandsender.cpp
+  src/commandexecuter.cpp
+  ../common/src/Map/Map.cpp
+  ../common/src/Socket/SocketCommunication.cpp
+  ../common/src/Socket/SocketWrapper.cpp
+  ../common/src/Thread/Thread.cpp
+  ../common/src/Map/Map.cpp
+  ../common/src/YAML/YAMLMapReader.cpp
+  ../common/src/Coordinate/Coordinate.cpp
+)
+
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(Login
+        ${PROJECT_SOURCES}
+    )
+else()
+    if(ANDROID)
+        add_library(Login SHARED
+            ${PROJECT_SOURCES}
+        )
+    else()
+        add_executable(Login
+            ${PROJECT_SOURCES}
+        )
+    endif()
+endif()
+
+find_package(PkgConfig)
+pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
+
+target_link_libraries(Login PRIVATE Qt${QT_VERSION_MAJOR}::Widgets SDL2 SDL2_image SDL2_mixer SDL2_ttf ${YAMLCPP_LIBRARIES})
+
+
 add_library(sdldemo
   src/ClientMapLoader.cpp
   src/client.cpp
@@ -125,22 +208,12 @@ add_library(sdldemo
   src/Lua/GameState.cpp
 )
 
-find_package(PkgConfig)
-pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
-
-
 include_directories(/usr/local/include ${LUA_INCLUDE_DIR})
 include_directories(${PROJECT_BINARY_DIR})
-add_executable (sdl-wall
-  src/mainwall.cpp
-)
+
 add_executable (lua
   src/Lua/lua_main.cpp
 )
-target_link_libraries(sdl-wall sdldemo SDL2 SDL2_image SDL2_mixer SDL2_ttf)
-
-target_link_libraries(sdl-wall ${YAMLCPP_LIBRARIES})
-target_link_libraries(sdl-wall ${LUA_LIBRARIES} ${CMAKE_DL_LIBS})
 
 target_link_libraries(lua sdldemo SDL2 SDL2_image SDL2_mixer SDL2_ttf)
 

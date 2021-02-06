@@ -12,8 +12,8 @@ void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
   }
 }
 
-void Client::connectToServer(std::string& host, std::string& port) {
-  this->socket.connect(host, port);
+void Client::connectToServer(std::string& ip, std::string& port) {
+  this->socket.connect(ip, port);
 }
 
 bool Client::joinMatch(uint32_t lobbyID) {
@@ -37,9 +37,9 @@ bool Client::joinMatch(uint32_t lobbyID) {
   return true;
 }
 
-int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
+int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
                 std::string& mapFile) {
-  this->connectToServer(host, port);
+  this->connectToServer(ip, port);
 
   if (!this->joinMatch(lobbyID)) {
     return ERROR;

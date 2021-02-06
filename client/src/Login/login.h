@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+#include "../../client/includes/client.h"
 #include "string.h"
 
 QT_BEGIN_NAMESPACE
