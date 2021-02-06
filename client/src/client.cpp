@@ -59,7 +59,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0);
-  Hud hud(&window, player, manager, audios);
+  Hud hud(player, manager, audios);
   std::map<uint32_t, Player*> players;
   players[this->myPlayerID] = player;
 

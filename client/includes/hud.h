@@ -5,7 +5,6 @@
 #include "audiomanager.h"
 #include "player.h"
 #include "sdlanimation.h"
-#include "sdlwindow.h"
 #include "texturemanager.h"
 
 /**
@@ -14,9 +13,7 @@
  */
 class Hud {
  private:
-  int width, height, weaponId;
-  SdlWindow* window;
-  SDL_Renderer* renderer;
+  int weaponId;
   Player* player;
   TextureManager& manager;
   AudioManager& audiomanager;
@@ -168,8 +165,7 @@ class Hud {
    * @param manager Reference to the texture manager.
    * @param audiomanager Reference to the audio manager.
    */
-  Hud(SdlWindow* window, Player* player, TextureManager& manager,
-      AudioManager& audiomanager);
+  Hud(Player* player, TextureManager& manager, AudioManager& audiomanager);
 };
 
 #endif  // HUD_H_
