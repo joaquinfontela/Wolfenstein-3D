@@ -1,4 +1,5 @@
 #include "../includes/scoreboard.h"
+#include "../includes/sdltexture.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -9,13 +10,21 @@
 #include <string>
 #include <tuple>
 
-#define BLUE 0, 0, 176, 0
-
 void ScoreBoard::renderText(const char* text, int rows, int column, int w,
                             int h) {
   SDL_Rect rect = {.x = 5 * w / 48 + column * 15 * w / 48,
                    .y = (h * rows) / 6,
                    .w = w >> 3,
+                   .h = h >> 3};
+  this->window->renderText(text, &rect);
+}
+
+void ScoreBoard::renderTitle(const char* text, int rows, int column, int w,
+                            int h) {
+  int imgw = 9 * w / 50;
+  SDL_Rect rect = {.x = 27 * w * (column + 1)/ 250 + imgw * column,
+                   .y = 10 * (h * rows) / 50,
+                   .w = imgw,
                    .h = h >> 3};
   this->window->renderText(text, &rect);
 }
@@ -54,28 +63,25 @@ void ScoreBoard::renderShotsFired(int width, int height) {
 }
 
 void ScoreBoard::draw() {
-  std::string scores = "Scores";
-  std::string kills = "Kills";
+  std::string scores = "Scores  ";
+  std::string kills = "  Kills  ";
   std::string shotsfired = "Shots Fired";
-  // int rows = this->scores.size();
+  SdlTexture background("../media/highscores.png", *this->window);
   int height, width;
   SDL_Rect rect;
   while (!this->hasEnded()) {
     this->window->getWindowSize(&width, &height);
+    background.renderAll({ .x = 0, .y = 0, .width = width, .height = height});
     rect = {.x = (3 * width) >> 3,
-            .y = -(height >> 2) / 5,
+            .y = -(height >> 2) / 6,
             .w = width >> 2,
             .h = height >> 2};
-    this->window->fill(BLUE);
-    this->window->renderText("Leaderboards", &rect);
-    // rect = {.x = 0, .y = height >> 2, .w = width / 3, .h = rows * height >>
-    // 2};
-    this->renderText(scores.c_str(), 1, 0, width, height);
-    this->renderText(kills.c_str(), 1, 1, width, height);
-    this->renderText(shotsfired.c_str(), 1, 2, width, height);
-    this->renderShotsFired(width, height);
+    this->renderTitle(scores.c_str(), 1, 0, width, height);
+    this->renderTitle(kills.c_str(), 1, 1, width, height);
+    this->renderTitle(shotsfired.c_str(), 1, 2, width, height);
+    this->renderScore(width, height);
     this->renderKills(width, height);
-    // this->renderShotsFired(width, height);
+    this->renderShotsFired(width, height);
     this->window->render();
   }
 }

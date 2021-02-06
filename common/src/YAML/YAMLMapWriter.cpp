@@ -32,9 +32,9 @@ void YAMLMapWriter::addItemTypesLimits() {
 void YAMLMapWriter::addAllItemsToMatrix() {
   unsigned int x;
   unsigned int y = 1;
-  for (std::vector<std::vector<tile*>> row : tileMatrix) {
+  for (std::vector<std::vector<tile_item*>> row : tileMatrix) {
     x = 1;
-    for (std::vector<tile*> column : row) {
+    for (std::vector<tile_item*> column : row) {
       std::cout << column.size() << std::endl;
       this->processMatrixPosition(column, x, y);
       x++;
@@ -43,9 +43,9 @@ void YAMLMapWriter::addAllItemsToMatrix() {
   }
 }
 
-void YAMLMapWriter::processMatrixPosition(std::vector<tile*>& tiles,
+void YAMLMapWriter::processMatrixPosition(std::vector<tile_item*>& tiles,
                                           unsigned int x, unsigned int y) {
-  for (tile* t : tiles) {
+  for (tile_item* t : tiles) {
     int objectId = t->get_type();
     Coordinate coordinate(x, y);
     this->addCoordinateWhereObjectWithIdIsIn(objectId, coordinate);

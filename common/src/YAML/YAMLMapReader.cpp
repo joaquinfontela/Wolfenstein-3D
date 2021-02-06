@@ -32,7 +32,7 @@ std::vector<Coordinate> YAMLMapReader::getTileCoordinatesWhereObjectIsIn(
 
 std::vector<Coordinate> YAMLMapReader::getRespawnLocations() {
   std::vector<std::vector<int>> coordinatesData =
-      data["respawn locations"].as<std::vector<std::vector<int>>>();
+      data["0"].as<std::vector<std::vector<int>>>();
   return this->getCoordinateVectorFromVectorOfVectorsOfSizeTwo(coordinatesData);
 }
 

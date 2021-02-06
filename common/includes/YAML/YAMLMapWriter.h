@@ -3,10 +3,10 @@
 #include <fstream>
 #include <string>
 
-#include "../../../qt/editor/tile.h"
+#include "../../../qt/editor/tile_item.h"
 #include "../Coordinate/Coordinate.h"
 
-typedef std::vector<std::vector<std::vector<tile*>>> TileMatrix;
+typedef std::vector<std::vector<std::vector<tile_item*>>> TileMatrix;
 
 class YAMLMapWriter {
  private:
@@ -18,7 +18,7 @@ class YAMLMapWriter {
   void addDimY();
   void addItemTypesLimits();
   void addAllItemsToMatrix();
-  void processMatrixPosition(std::vector<tile*>& tiles, unsigned int x,
+  void processMatrixPosition(std::vector<tile_item*>& tiles, unsigned int x,
                              unsigned int y);
   void addCoordinateWhereObjectWithIdIsIn(int objectId, Coordinate& coordinate);
   void writeDataIntoFile();
