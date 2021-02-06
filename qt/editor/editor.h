@@ -25,7 +25,6 @@ class Editor : public QMainWindow {
   tile_item* tile_item_selected;
   tiles_container* tile_container;
   map_canvas* mc;
-  QWidget* map_container;
   std::vector<int> tile_sizes;
   int actual_tiles_size_index;
   map_scene* my_map_scene;

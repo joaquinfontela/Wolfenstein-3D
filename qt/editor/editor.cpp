@@ -60,6 +60,7 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   this->actual_map_saved = false;
   ui->actionZoom_out->setEnabled(false);
   this->eraser_on = false;
+  my_map_scene = NULL;
 }
 
 Editor::~Editor() { delete ui; }
@@ -100,9 +101,6 @@ void Editor::on_actionItems_triggered() {
   this->tiles_container_scene->update_tileset(ITEM_TILESET_PATH, 6, factory);
 }
 
-void Editor::paint_map(){
-}
-
 void Editor::on_actionZoom_in_triggered()
 {
     this->actual_tiles_size_index--;
@@ -130,12 +128,14 @@ void Editor::on_actionOpen_triggered()
     open_window ow(this);
     ow.setModal(true);
     ow.exec();
+    this->actual_map_saved = true;
     this->paint_map();
+    ui->actionNew->setEnabled(false);
 }
 
 void Editor::save_map(){
     if(actual_map_saved){
-        std::string name_path = this->actual_map_name + ".YAML";
+        std::string name_path = "./maps/" + this->actual_map_name + ".YAML";
         YAMLMapWriter* map_creator = new YAMLMapWriter(name_path);
         TileMatrix matrix = this->mc->grilla;
         map_creator->createYamlMapFile(matrix);
@@ -146,6 +146,16 @@ void Editor::save_map(){
         sw.exec();
         actual_map_saved = true;
     }
+}
+
+void Editor::paint_map()
+{
+    int cant_rows = mc->grilla.size();
+    int cant_col = mc->grilla.at(0).size();
+    my_map_scene->paint_grill(cant_col, cant_rows, actual_tile_size());
+    Map_painter Map_painter(actual_tile_size(), my_map_scene,
+                             mc);
+    Map_painter.paint_all_tiles();
 }
 
 void Editor::on_actionsafe_triggered()
