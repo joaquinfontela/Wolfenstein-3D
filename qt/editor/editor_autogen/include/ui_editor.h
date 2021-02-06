@@ -57,6 +57,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8("logo/wolfestein_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         Editor->setWindowIcon(icon);
+        Editor->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 52, 54);"));
         actionNew = new QAction(Editor);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
         QIcon icon1;
@@ -144,7 +145,7 @@ public:
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        QBrush brush1(QColor(239, 239, 239, 255));
+        QBrush brush1(QColor(46, 52, 54, 255));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Button, brush1);
         QBrush brush2(QColor(255, 255, 255, 255));
@@ -162,7 +163,7 @@ public:
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
         palette.setBrush(QPalette::Active, QPalette::BrightText, brush2);
         palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette.setBrush(QPalette::Active, QPalette::Base, brush2);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
         palette.setBrush(QPalette::Active, QPalette::Window, brush1);
         palette.setBrush(QPalette::Active, QPalette::Shadow, brush);
         palette.setBrush(QPalette::Active, QPalette::AlternateBase, brush3);
@@ -184,7 +185,7 @@ public:
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette.setBrush(QPalette::Inactive, QPalette::BrightText, brush2);
         palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Base, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
         palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush3);
@@ -205,7 +206,9 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        QBrush brush8(QColor(239, 239, 239, 255));
+        brush8.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush8);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)

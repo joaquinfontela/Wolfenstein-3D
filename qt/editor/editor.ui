@@ -17,6 +17,9 @@
    <iconset>
     <normaloff>logo/wolfestein_logo.png</normaloff>logo/wolfestein_logo.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(46, 52, 54);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="graphics_tiles_container">
     <property name="geometry">
@@ -91,9 +94,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
@@ -163,18 +166,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
@@ -237,9 +240,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
@@ -309,18 +312,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
@@ -383,9 +386,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
@@ -455,18 +458,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>239</red>
-         <green>239</green>
-         <blue>239</blue>
+         <red>46</red>
+         <green>52</green>
+         <blue>54</blue>
         </color>
        </brush>
       </colorrole>
