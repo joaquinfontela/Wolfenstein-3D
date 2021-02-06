@@ -1,4 +1,4 @@
-#include "area.h"
+#include "../includes/area.h"
 
 Area::Area() : x(0), y(0), width(0), height(0) {}
 

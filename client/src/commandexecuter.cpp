@@ -1,4 +1,4 @@
-#include "commandexecuter.h"
+#include "../includes/commandexecuter.h"
 
 #include <algorithm>
 #include <iostream>
@@ -10,11 +10,11 @@
 #include "../../common/includes/PlayerData.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/protocol.h"
-#include "RaycastedAnimation.h"
-#include "audio.h"
-#include "clientprotocol.h"
-#include "scoreboard.h"
-#include "texturemanager.h"
+#include "../includes/RaycastedAnimation.h"
+#include "../includes/audio.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/scoreboard.h"
+#include "../includes/texturemanager.h"
 
 #define MUSIC_PATH "../audio/music.mp3"
 
@@ -262,7 +262,7 @@ void CommandExecuter::run() {
       } else if (opcode == ENDING_MATCH) {
         this->saveScores();
         this->saveKills();
-        // this->saveShotsFired();
+        this->saveShotsFired();
         alive = false;
       }
     } catch (SocketException& e) {

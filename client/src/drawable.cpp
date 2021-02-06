@@ -1,33 +1,32 @@
-#include "drawable.h"
-#include "clientprotocol.h"
+#include "../includes/drawable.h"
+
 #include <math.h>
+
 #include <iostream>
 
-bool Drawable::isSprite() {
-  return true;
-}
+#include "../includes/clientprotocol.h"
+
+bool Drawable::isSprite() { return true; }
 
 bool Drawable::hasThisUniqueId(int otherid) {
   return (this->uniqueid == otherid);
 }
 
 // No square root for efficency sake.
-void Drawable::loadDistanceWithCoords(int px, int py){
+void Drawable::loadDistanceWithCoords(int px, int py) {
   this->dist = pow(px - this->x, 2) + pow(py - this->y, 2);
 }
 
-bool Drawable::operator<(Drawable& other) {
-  return this->dist > other.dist;
-}
+bool Drawable::operator<(Drawable& other) { return this->dist > other.dist; }
 
-bool Drawable::isPlayer(){
-  return false;
-}
+bool Drawable::isPlayer() { return false; }
 
-void Drawable::calculateDrawingData(int& spriteScreen, int& spriteWidth, int& spriteHeight, int& drawStart,
-                                    int& drawEnd, double& transformY, double posX, double posY, double planeX,
-                                    double planeY, double dirX, double dirY, int width, int height) {
-
+void Drawable::calculateDrawingData(int& spriteScreen, int& spriteWidth,
+                                    int& spriteHeight, int& drawStart,
+                                    int& drawEnd, double& transformY,
+                                    double posX, double posY, double planeX,
+                                    double planeY, double dirX, double dirY,
+                                    int width, int height) {
   double spriteX = this->x - posX;
   double spriteY = this->y - posY;
 
@@ -47,19 +46,20 @@ void Drawable::calculateDrawingData(int& spriteScreen, int& spriteWidth, int& sp
   drawEnd = condition * (width - 1) + !condition * drawEnd;
 }
 
-bool Drawable::isContained(double* distanceBuffer, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, int width, int height) {
-
+bool Drawable::isContained(double* distanceBuffer, double posX, double posY,
+                           double dirX, double dirY, double planeX,
+                           double planeY, int width, int height) {
   int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd;
   double transformY;
 
-  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
-                             posX, posY, planeX, planeY, dirX, dirY, width, height);
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart,
+                             drawEnd, transformY, posX, posY, planeX, planeY,
+                             dirX, dirY, width, height);
   drawEnd = (drawEnd < width) ? drawEnd : width;
 
   int preCalcdValue = (spriteScreen - (spriteWidth >> 1));
 
-  for (int stripe = drawStart; stripe < drawEnd; stripe++){
+  for (int stripe = drawStart; stripe < drawEnd; stripe++) {
     int doorStripe = int(((stripe - preCalcdValue) << 14) / spriteWidth) >> 8;
     if (doorStripe < 0) continue;
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
@@ -69,15 +69,17 @@ bool Drawable::isContained(double* distanceBuffer, double posX, double posY, dou
   return false;
 }
 
-void Drawable::draw(TextureManager& manager, double posX, double posY, double dirX,
-                    double dirY, double planeX, double planeY, double* distanceBuffer, float diff) {
-
-  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width, height;
+void Drawable::draw(TextureManager& manager, double posX, double posY,
+                    double dirX, double dirY, double planeX, double planeY,
+                    double* distanceBuffer, float diff) {
+  int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width,
+      height;
   double transformY;
   manager.getWindowSize(&width, &height);
 
-  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, transformY,
-                             posX, posY, planeX, planeY, dirX, dirY, width, height);
+  this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart,
+                             drawEnd, transformY, posX, posY, planeX, planeY,
+                             dirX, dirY, width, height);
 
   int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
   int preCalcdValue2 = (height - spriteHeight) >> 1;
@@ -86,11 +88,11 @@ void Drawable::draw(TextureManager& manager, double posX, double posY, double di
   int preCalcdValue4 = spriteHeight;
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
-  for (int stripe = drawStart; stripe < drawEnd; stripe++){
+  for (int stripe = drawStart; stripe < drawEnd; stripe++) {
     int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
     if (doorStripe < 0) continue;
 
-    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]){
+    if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
       srcArea.update(doorStripe, 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, preCalcdValue4);
       manager.render(this->id, srcArea, destArea);

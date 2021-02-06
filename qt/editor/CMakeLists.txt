@@ -24,15 +24,12 @@ set(PROJECT_SOURCES
         decoration_tile_factory.cpp
         door_tile_factory.cpp
         item_tile_factory.cpp
-        map_actions.cpp
         map_canvas.cpp
-        mousetileactions.cpp
-        my_map.cpp
+        map_actions.cpp
         PathFactory.cpp
         size_window.cpp
-        tile.cpp
+        tile_container_actions.cpp
         tiles_container.cpp
-        tileset.cpp
         YAMLConversor.cpp
         wall_tile_factory.cpp
         ../../common/src/YAML/YAMLMapWriter.cpp
@@ -42,6 +39,8 @@ set(PROJECT_SOURCES
         map_save.cpp
         open_window.cpp
         save_window.cpp
+        map_scene.cpp
+        tile_item.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

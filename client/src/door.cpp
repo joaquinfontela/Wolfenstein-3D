@@ -1,9 +1,9 @@
-#include "door.h"
+#include "../includes/door.h"
 
 #include <iostream>
 
-#include "area.h"
-#include "texturemanager.h"
+#include "../includes/area.h"
+#include "../includes/texturemanager.h"
 
 void Door::draw(TextureManager& manager, double x, double y, double dirX,
                 double dirY, double planeX, double planeY,
@@ -36,7 +36,7 @@ void Door::draw(TextureManager& manager, double x, double y, double dirX,
   if (doorState == CLOSED) {
     Area srcArea(doorStripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
     Area destArea(i, (this->height - wallHeight) >> 1, 1, wallHeight);
-    manager.render(DOOR, srcArea, destArea);
+    manager.render(this->matrix->get(matrixXCoord, matrixYCoord), srcArea, destArea);
   } else {
     Area srcArea(doorStripe - BLOCKSIZE * (1 - time), 0, 1,
                  tooFar * BLOCKSIZE + !tooFar * wallHeight);

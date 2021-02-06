@@ -4,9 +4,9 @@
 #include <cstring>
 #include <string>
 
-#include "../../../client/src/ClientMapLoader.h"
-#include "../../../client/src/clientprotocol.h"
-#include "../../../client/src/doortile.h"
+#include "../../../client/includes/ClientMapLoader.h"
+#include "../../../client/includes/clientprotocol.h"
+#include "../../../client/includes/doortile.h"
 
 /**
  * @brief [CLIENT SIDE] Knows where are all the doors and walls.

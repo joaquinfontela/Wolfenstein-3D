@@ -1,14 +1,14 @@
-#include "texturemanager.h"
+#include "../includes/texturemanager.h"
 
 #include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 
-#include "area.h"
-#include "clientprotocol.h"
-#include "sdlexception.h"
-#include "sdltexture.h"
+#include "../includes/area.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/sdlexception.h"
+#include "../includes/sdltexture.h"
 
 #define SDL_TEXTURE_INIT_ERROR "Error, couldn't be opened. "
 #define TEXTURE_NOT_FOUND_ERROR "Error, texture not found with code: "

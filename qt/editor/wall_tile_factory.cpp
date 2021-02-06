@@ -2,12 +2,13 @@
 
 #include <string>
 #include <utility>
+#include "PathFactory.h"
 
-#include "tile.h"
+#include "tile_item.h"
 
 wall_tile_factory::wall_tile_factory() {}
 
-tile* wall_tile_factory::get_tile(std::vector<int>& coordinates) {
+tile_item* wall_tile_factory::get_tile(std::vector<int>& coordinates) {
   int col = coordinates[0];
   int row = coordinates[1];
   int tipo;
@@ -37,6 +38,6 @@ tile* wall_tile_factory::get_tile(std::vector<int>& coordinates) {
     tipo = 304;
   }
   QString path(PathFactory().getTilePath(tipo).c_str());
-  tile* tile = new class tile(path, tipo, false);
+  tile_item* tile = new class tile_item(path, tipo, false);
   return tile;
 }

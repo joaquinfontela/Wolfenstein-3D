@@ -8,9 +8,9 @@
 #include "editor.h"
 #include <fstream>
 
-#define MAP_NAME_PATH "./maps_names.txt"
+#define MAP_NAME_PATH "./maps/maps_names.txt"
 
-typedef std::vector<std::vector<std::vector<tile*>>> TileMatrix;
+typedef std::vector<std::vector<std::vector<tile_item*>>> TileMatrix;
 
 save_window::save_window(QWidget *parent) :
     QDialog(parent),
@@ -35,11 +35,13 @@ void save_window::on_pushButton_clicked()
         messageBox.exec();
     }else{
         std::string name_str = name.toStdString();
-        std::string name_path = name_str + ".YAML";
+
+        std::string name_path = "./maps/" +  name_str + ".YAML";
         YAMLMapWriter* map_creator = new YAMLMapWriter(name_path);
         TileMatrix matrix = this->editor->mc->grilla;
         map_creator->createYamlMapFile(matrix);
         delete map_creator;
+
         this->editor->actual_map_name = name_str;
         std::ofstream writer(MAP_NAME_PATH, std::ios::out | std::ios::app);
         writer << name_str << std::endl;

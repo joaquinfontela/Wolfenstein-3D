@@ -5,7 +5,7 @@
 
 #include "../../includes/Map/Map.h"
 
-#include "../../../client/src/doortile.h"
+#include "../../../client/includes/doortile.h"
 
 Map::~Map() {
   free(this->matrix);
@@ -41,9 +41,12 @@ void Map::updateTimers(float value) {
   }
 }
 
-Map::Map(ClientMapLoader& loader) : dimx(25), dimy(25), loader(loader) {
+Map::Map(ClientMapLoader& loader) : loader(loader) {
   doors = loader.getDoorIdMatrix();
   matrix = loader.getWallIdMatrix();
+  dimx = loader.dimy;
+  dimy = loader.dimx;
+  std::cout<<dimx<<", "<<dimy<<std::endl;
 }
 
 char Map::getDoorState(int x, int y) {

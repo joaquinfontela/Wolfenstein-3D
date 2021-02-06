@@ -1,4 +1,4 @@
-#include "doortimer.h"
+#include "../includes/doortimer.h"
 
 void DoorTimer::run() {
   int rate = 1000 / 30;

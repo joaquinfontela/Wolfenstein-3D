@@ -1,8 +1,8 @@
-#include "ClientMapLoader.h"
+#include "../includes/ClientMapLoader.h"
 
 #include <iostream>
 
-#include "clientprotocol.h"
+#include "../includes/clientprotocol.h"
 
 ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
                                  unsigned int dimy)
@@ -26,6 +26,7 @@ int* ClientMapLoader::getWallIdMatrix() {
     std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
         wallTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
+      std::cout<<"Adding wall at: "<< (c.getX())<<", "<<c.getY()<<std::endl;
       matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] =
           this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }
@@ -53,8 +54,8 @@ DoorTile* ClientMapLoader::getDoorIdMatrix() {
     doors[i].restart();
   }
   for (Coordinate& c : coords) {
-    (doors + (c.getX() - 1) + (dimy * (c.getY() - 1)))->restart();
-    (doors + (c.getX() - 1) + (dimy * (c.getY() - 1)))->isDoor = true;
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->restart();
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->isDoor = true;
   }
   return doors;
 }
@@ -111,13 +112,13 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 
     case 302:
     case 352:
-      return PURPLEWALL;
-      break;
-
-    case 303:
-    case 353:
       return GREY_STONE_WALL;
       break;
+
+      // case 303:
+      // case 353:
+      //   return ROCK_WALL;
+      //   break;
 
     case 304:
     case 354:
@@ -145,8 +146,20 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return PURPLEWALL;
       break;
 
-    case 309:
-      return PURPLEWALL;
+      // case 309:
+      //   return EAGLE_WALL;
+      //   break;
+
+    case 310:
+      return HITLERWALL_SPRITE;
+      break;
+
+      // case 311:
+      //   return PROPAGANDA_WALL;
+      //   break;
+
+    case 312:
+      return GREY_STONE_WALL;
       break;
 
     default:

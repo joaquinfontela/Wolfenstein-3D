@@ -1,10 +1,10 @@
 #include "door_tile_factory.h"
 
-#include "tile.h"
+#include "tile_item.h"
 
 door_tile_factory::door_tile_factory() {}
 
-tile* door_tile_factory::get_tile(std::vector<int>& coordinates) {
+tile_item* door_tile_factory::get_tile(std::vector<int>& coordinates) {
   int col = coordinates[0];
   int row = coordinates[1];
   bool comulative = false;
@@ -20,6 +20,6 @@ tile* door_tile_factory::get_tile(std::vector<int>& coordinates) {
     comulative = true;
   }
   QString path(PathFactory().getTilePath(tipo).c_str());
-  tile* tile = new class tile(path, tipo, false);
+  tile_item* tile = new class tile_item(path, tipo, comulative);
   return tile;
 }

@@ -1,15 +1,15 @@
-#include "hud.h"
+#include "../includes/hud.h"
 
 #include <SDL2/SDL.h>
 #include <math.h>
 
 #include <iostream>
 
-#include "area.h"
-#include "clientprotocol.h"
-#include "player.h"
-#include "sdlexception.h"
-#include "sdltexture.h"
+#include "../includes/area.h"
+#include "../includes/clientprotocol.h"
+#include "../includes/player.h"
+#include "../includes/sdlexception.h"
+#include "../includes/sdltexture.h"
 
 #define SIZE 25
 #define FACES_PER_IMG 3
