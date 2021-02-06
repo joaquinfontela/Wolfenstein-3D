@@ -158,9 +158,9 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       //   return PROPAGANDA_WALL;
       //   break;
 
-    case 312:
-      return GREY_STONE_WALL;
-      break;
+      // case 312:
+      //   return GREY_STONE_WALL;
+      //   break;
 
     default:
       throw std::runtime_error("Wall id recieved not valid.");

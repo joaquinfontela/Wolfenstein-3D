@@ -43,7 +43,7 @@ void tile_item::configure_rect(int tile_size, float x, float y)
 {
     if(tile_size != 0){
         this->my_rect.setWidth(tile_size);
-        this->my_rect.setWidth(tile_size);
+        this->my_rect.setHeight(tile_size);
     }
     if(x != -1 && y!= -1){
         this->my_rect.setCoords(x,y,x+tile_size,y+tile_size);
@@ -58,7 +58,8 @@ QRectF tile_item::boundingRect() const
 
 void tile_item::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawImage(this->my_rect, this->my_image.scaled(TILE_SIZE,TILE_SIZE));
+    int tile_size = my_rect.width();
+    painter->drawImage(this->my_rect, this->my_image.scaled(tile_size, tile_size));
 }
 
 void tile_item::mousePressEvent(QGraphicsSceneMouseEvent *event)

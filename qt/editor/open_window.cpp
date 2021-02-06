@@ -8,6 +8,8 @@
 #include "QScrollArea"
 #include "QMessageBox"
 #include "editor.h"
+#include "ui_editor.h"
+#include "map_actions.h"
 #include "tile_item.h"
 #include "ui_open_window.h"
 #include "map_canvas.h"
@@ -52,7 +54,20 @@ void open_window::on_open_boton_clicked()
         messageBox.exec();
     }else{
         map_canvas* new_mc = new map_canvas(this->map_selected);
+        if(this->editor->my_map_scene == NULL){
+            int cant_rows = new_mc->grilla.size();
+            int cant_col = new_mc->grilla.at(0).size();
+            editor->my_map_scene = new class map_scene(this->editor);
+            editor->ui->graphics_map_container->setScene(editor->my_map_scene);
+            map_actions* ma = new map_actions(editor, editor->my_map_scene);
+            editor->ui->graphics_map_container->installEventFilter(ma);
+            editor->ui->actionsafe->setEnabled(true);
+
+        }else{
+           this->editor->my_map_scene->clear();
+        }
         this->editor->mc = new_mc;
+        editor->actual_map_name = this->map_name;
         this->close();
     }
 }
