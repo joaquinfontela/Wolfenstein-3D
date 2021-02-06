@@ -10,6 +10,12 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="maximumSize">
    <size>
     <width>800</width>
@@ -19,14 +25,17 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="boton_continuar">
+   <widget class="QPushButton" name="button_join">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>500</y>
-      <width>251</width>
-      <height>51</height>
+      <x>600</x>
+      <y>530</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -38,160 +47,58 @@
      </font>
     </property>
     <property name="text">
-     <string>CONTINUAR</string>
+     <string>JOIN MATCH</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="dato_ip">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>140</y>
-      <width>331</width>
-      <height>31</height>
+      <x>600</x>
+      <y>330</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
    <widget class="QLineEdit" name="dato_puerto">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>190</y>
-      <width>331</width>
-      <height>31</height>
+      <x>600</x>
+      <y>380</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="dato_nombre">
+   <widget class="QLineEdit" name="dato_game">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>90</y>
-      <width>331</width>
-      <height>31</height>
+      <x>600</x>
+      <y>430</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_nombre">
+   <widget class="QPushButton" name="boton_create">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>70</y>
-      <width>151</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>NOMBRE :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_puerto">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>180</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>PUERTO : </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_ip">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>140</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>TU IP :</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_titulo">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>-30</y>
-      <width>381</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>URW Bookman</family>
-      <pointsize>37</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>WOLFESTEIN</string>
-    </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>290</y>
-      <width>591</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>575</width>
-       <height>199</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="label_partidas">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>250</y>
-      <width>231</width>
-      <height>31</height>
+      <x>600</x>
+      <y>480</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Ubuntu Condensed</family>
-      <pointsize>17</pointsize>
+      <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Partidas Disponibles :</string>
+     <string>CREATE MATCH</string>
     </property>
    </widget>
   </widget>

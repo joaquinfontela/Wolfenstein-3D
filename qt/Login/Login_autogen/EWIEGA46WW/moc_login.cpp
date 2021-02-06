@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Login_t {
     QByteArrayData data[3];
-    char stringdata0[34];
+    char stringdata0[30];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_Login_t {
 static const qt_meta_stringdata_Login_t qt_meta_stringdata_Login = {
     {
 QT_MOC_LITERAL(0, 0, 5), // "Login"
-QT_MOC_LITERAL(1, 6, 26), // "on_boton_continuar_clicked"
-QT_MOC_LITERAL(2, 33, 0) // ""
+QT_MOC_LITERAL(1, 6, 22), // "on_button_join_clicked"
+QT_MOC_LITERAL(2, 29, 0) // ""
 
     },
-    "Login\0on_boton_continuar_clicked\0"
+    "Login\0on_button_join_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +68,7 @@ void Login::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         auto *_t = static_cast<Login *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_boton_continuar_clicked(); break;
+        case 0: _t->on_button_join_clicked(); break;
         default: ;
         }
     }
