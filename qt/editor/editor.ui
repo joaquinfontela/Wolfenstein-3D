@@ -18,7 +18,7 @@
     <normaloff>logo/wolfestein_logo.png</normaloff>logo/wolfestein_logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(46, 52, 54);</string>
+   <string notr="true">background-color: rgb(136, 138, 133);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="graphics_tiles_container">
@@ -94,9 +94,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -166,18 +166,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -240,9 +240,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -312,18 +312,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -386,9 +386,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -458,18 +458,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>46</red>
-         <green>52</green>
-         <blue>54</blue>
+         <red>136</red>
+         <green>138</green>
+         <blue>133</blue>
         </color>
        </brush>
       </colorrole>
@@ -626,10 +626,26 @@
    <property name="text">
     <string>Items</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
   </action>
   <action name="actionPuertas">
    <property name="text">
     <string>Puertas</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
   </action>
   <action name="actionZoom_in">
@@ -654,10 +670,26 @@
    <property name="text">
     <string>Borrador</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
   </action>
   <action name="actionRespawn">
    <property name="text">
     <string>Respawn</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
   </action>
  </widget>

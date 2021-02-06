@@ -63,7 +63,6 @@ void tile_item::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 
 void tile_item::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    printf("toca tile \n");
     QPoint p;
     p.setX(event->pos().x());
     p.setY(event->pos().y());

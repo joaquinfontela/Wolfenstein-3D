@@ -42,19 +42,6 @@ void Map_painter::paint_multiple_tile(std::vector<int> position,
                               position[1] + tile_mini_size);
   this->scene->addItem(tiles.at(1));
   tiles.at(1)->update();
-
-  if (tiles.size() > 2) {
-    tiles.at(2)->configure_rect(tile_mini_size, position[0] + tile_mini_size,
-                                position[1]);
-    this->scene->addItem(tiles.at(2));
-    tiles.at(2)->update();
-  }
-  if (tiles.size() > 3) {
-    tiles.at(3)->configure_rect(tile_mini_size, position[0],
-                                position[1] + tile_mini_size);
-    this->scene->addItem(tiles.at(3));
-    tiles.at(3)->update();
-  }
 }
 
 void Map_painter::paint_map(std::vector<int> coordinates,
