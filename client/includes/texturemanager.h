@@ -30,6 +30,18 @@ class TextureManager {
   TextureManager(SdlWindow* window) : window(window) {}
 
   /**
+   * @brief Calls the window render function. Updates the screen and draws over it.
+   *
+   */
+  void updateScreen();
+
+  /**
+   * @brief Draws the game background.
+   *
+   */
+  void drawBackground();
+
+  /**
    * @brief Loads all the textures needed for the game to be played.
    *
    */
@@ -53,6 +65,12 @@ class TextureManager {
    * @param destArea Screen drawing area.
    */
   void renderAll(int id, const Area& destArea);
+
+  /**
+   * @brief Renders an entire image and fills all the screen with it.
+   *
+   */
+  void renderComplete(int id);
 
   /**
    * @brief Stores the window size. Throws an Exception if it fails.

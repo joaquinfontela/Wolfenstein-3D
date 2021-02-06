@@ -31,7 +31,7 @@ void Raycaster::run() {
 
   while (alive) {
     iters++;
-    this->window->fillWolfenstein();
+    this->manager.drawBackground();
 
     double dirX = this->player->dirX;
     double dirY = this->player->dirY;
@@ -173,9 +173,8 @@ void Raycaster::run() {
     }
 
     this->hud.update();
-    this->window->render();
+    this->manager.updateScreen();
   }
 
   timer.join();
-  this->scoreboard.draw();
 }

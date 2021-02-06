@@ -21,7 +21,6 @@
 #include "hud.h"
 #include "player.h"
 #include "raycaster.h"
-#include "sdltexture.h"
 #include "sdlwindow.h"
 #include "texturemanager.h"
 

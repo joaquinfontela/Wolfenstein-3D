@@ -54,7 +54,7 @@ int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
   AudioManager audios;
 
   std::mutex m;
-  ScoreBoard scoreboard(&window);
+  ScoreBoard scoreboard(manager);
 
   std::atomic<bool> alive;
   alive = true;
@@ -69,8 +69,7 @@ int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
-  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud,
-                   scoreboard);
+  Raycaster caster(manager, matrix, alive, player, sprites, m, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
   CommandExecuter* worker =
@@ -81,6 +80,7 @@ int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
     worker->start();
     sender->start();
     caster.run();
+    scoreboard.draw();
   } catch (std::exception& e) {
     LOG(e.what());
     exitcode = ERROR;

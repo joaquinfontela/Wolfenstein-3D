@@ -11,7 +11,6 @@
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/protocol.h"
 #include "../includes/RaycastedAnimation.h"
-#include "../includes/audio.h"
 #include "../includes/clientprotocol.h"
 #include "../includes/scoreboard.h"
 #include "../includes/texturemanager.h"
@@ -234,9 +233,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  Audio music(MUSIC_PATH, IS_MUSIC, MUSIC_VOLUME);
-  music.volumeUp();
-  music.play();
+  this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard.hasEnded()) {
     try {
       uint32_t opcode;
