@@ -9,11 +9,12 @@ var searchData=
   ['clientcommunication_14',['ClientCommunication',['../classClientCommunication.html',1,'']]],
   ['clientmaploader_15',['ClientMapLoader',['../classClientMapLoader.html',1,'']]],
   ['command_16',['Command',['../classCommand.html',1,'']]],
-  ['commandexecuter_17',['CommandExecuter',['../classCommandExecuter.html',1,'CommandExecuter'],['../classCommandExecuter.html#ad0f305fb30a1e4e776832f33e9c2e5b0',1,'CommandExecuter::CommandExecuter()'],['../classLua_1_1CommandExecuter.html',1,'Lua::CommandExecuter']]],
-  ['commandsender_18',['CommandSender',['../classCommandSender.html#aa527e593a2b9cd09e6e752be18e6eabb',1,'CommandSender::CommandSender()'],['../classCommandSender.html',1,'CommandSender']]],
-  ['connectionhandler_19',['ConnectionHandler',['../classConnectionHandler.html',1,'']]],
-  ['coordinate_20',['Coordinate',['../classCoordinate.html',1,'']]],
-  ['cross_21',['Cross',['../classCross.html',1,'']]],
-  ['crown_22',['Crown',['../classCrown.html',1,'']]],
-  ['cup_23',['Cup',['../classCup.html',1,'']]]
+  ['commandexecuter_17',['CommandExecuter',['../classCommandExecuter.html',1,'CommandExecuter'],['../classCommandExecuter.html#a41cc70e9aa0bcc120bbc035bfd43ac24',1,'CommandExecuter::CommandExecuter()'],['../classLua_1_1CommandExecuter.html',1,'Lua::CommandExecuter']]],
+  ['commandmanager_18',['CommandManager',['../classCommandManager.html',1,'']]],
+  ['commandsender_19',['CommandSender',['../classCommandSender.html#aa527e593a2b9cd09e6e752be18e6eabb',1,'CommandSender::CommandSender()'],['../classCommandSender.html',1,'CommandSender']]],
+  ['connectionhandler_20',['ConnectionHandler',['../classConnectionHandler.html',1,'']]],
+  ['coordinate_21',['Coordinate',['../classCoordinate.html',1,'']]],
+  ['cross_22',['Cross',['../classCross.html',1,'']]],
+  ['crown_23',['Crown',['../classCrown.html',1,'']]],
+  ['cup_24',['Cup',['../classCup.html',1,'']]]
 ];
