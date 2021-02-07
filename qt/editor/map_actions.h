@@ -15,7 +15,6 @@ class map_actions : public QObject
 public:
     map_actions(Editor* editor, map_scene* map_to_paint);
     bool eventFilter(QObject *obj, QEvent *event);
-    bool is_inside(int x, int y);
     void add_to_map(int x, int y);
     std::vector<int> get_coordinate(int x, int y);
 };
