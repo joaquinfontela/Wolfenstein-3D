@@ -12,6 +12,7 @@ SOURCES += \
     decoration_tile_factory.cpp \
     door_tile_factory.cpp \
     editor.cpp \
+    fake_wall_tile_factory.cpp \
     item_tile_factory.cpp \
     main.cpp \
     map_actions.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     decoration_tile_factory.h \
     door_tile_factory.h \
     editor.h \
+    fake_wall_tile_factory.h \
     item_tile_factory.h \
     map_actions.h \
     map_canvas.h \

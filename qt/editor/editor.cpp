@@ -9,6 +9,7 @@
 #include "tiles_container.h"
 #include "ui_editor.h"
 #include "wall_tile_factory.h"
+#include "fake_wall_tile_factory.h"
 #include "map_painter.h"
 #include <QMessageBox>
 #include "open_window.h"
@@ -64,6 +65,7 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   ui->actionZoom_in->setEnabled(false);
   this->eraser_on = false;
   my_map_scene = NULL;
+  this->mc = NULL;
 }
 
 Editor::~Editor() { delete ui; }
@@ -139,10 +141,12 @@ void Editor::on_actionOpen_triggered()
     open_window ow(this);
     ow.setModal(true);
     ow.exec();
-    this->actual_map_saved = true;
-    this->paint_map();
-    ui->actionNew->setEnabled(false);
-    ui->actionZoom_in->setEnabled(true);
+    if(this->mc != NULL){
+        this->actual_map_saved = true;
+        this->paint_map();
+        ui->actionNew->setEnabled(false);
+        ui->actionZoom_in->setEnabled(true);
+    }
 }
 
 void Editor::save_map(){
@@ -184,4 +188,10 @@ void Editor::on_actionSave_and_exit_triggered()
 {
     this->save_map();
     QApplication::quit();
+}
+
+void Editor::on_actionParedes_Falsas_triggered()
+{
+    tile_factory* factory = new fake_wall_tile_factory();
+    this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }

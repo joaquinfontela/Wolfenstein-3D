@@ -217,15 +217,6 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="128">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
      </active>
      <inactive>
       <colorrole role="WindowText">
@@ -357,15 +348,6 @@
       <colorrole role="ToolTipText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="128">
          <red>0</red>
          <green>0</green>
          <blue>0</blue>
@@ -509,15 +491,6 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="128">
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </brush>
-      </colorrole>
      </disabled>
     </palette>
    </property>
@@ -541,13 +514,15 @@
    <addaction name="separator"/>
    <addaction name="actionParedes"/>
    <addaction name="separator"/>
-   <addaction name="actionDecoraciones"/>
+   <addaction name="actionParedes_Falsas"/>
    <addaction name="separator"/>
    <addaction name="actionItems"/>
    <addaction name="separator"/>
    <addaction name="actionPuertas"/>
    <addaction name="separator"/>
    <addaction name="actionRespawn"/>
+   <addaction name="separator"/>
+   <addaction name="actionDecoraciones"/>
    <addaction name="separator"/>
    <addaction name="actionBorrador"/>
   </widget>
@@ -682,6 +657,19 @@
   <action name="actionRespawn">
    <property name="text">
     <string>Respawn</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="actionParedes_Falsas">
+   <property name="text">
+    <string>Paredes Falsas</string>
    </property>
    <property name="font">
     <font>

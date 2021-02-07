@@ -39,6 +39,7 @@ public:
     QAction *actionZoom_out;
     QAction *actionBorrador;
     QAction *actionRespawn;
+    QAction *actionParedes_Falsas;
     QWidget *centralwidget;
     QGraphicsView *graphics_tiles_container;
     QGraphicsView *graphics_map_container;
@@ -121,6 +122,9 @@ public:
         actionRespawn = new QAction(Editor);
         actionRespawn->setObjectName(QString::fromUtf8("actionRespawn"));
         actionRespawn->setFont(font1);
+        actionParedes_Falsas = new QAction(Editor);
+        actionParedes_Falsas->setObjectName(QString::fromUtf8("actionParedes_Falsas"));
+        actionParedes_Falsas->setFont(font1);
         centralwidget = new QWidget(Editor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         graphics_tiles_container = new QGraphicsView(centralwidget);
@@ -175,11 +179,6 @@ public:
         brush6.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
-        QBrush brush7(QColor(0, 0, 0, 128));
-        brush7.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush7);
-#endif
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Light, brush2);
@@ -195,9 +194,6 @@ public:
         palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush3);
         palette.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush7);
-#endif
         palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Light, brush2);
@@ -210,14 +206,11 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        QBrush brush8(QColor(239, 239, 239, 255));
-        brush8.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush8);
+        QBrush brush7(QColor(239, 239, 239, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush7);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush7);
-#endif
         toolBar->setPalette(palette);
         toolBar->setFont(font1);
         Editor->addToolBar(Qt::TopToolBarArea, toolBar);
@@ -235,13 +228,15 @@ public:
         toolBar->addSeparator();
         toolBar->addAction(actionParedes);
         toolBar->addSeparator();
-        toolBar->addAction(actionDecoraciones);
+        toolBar->addAction(actionParedes_Falsas);
         toolBar->addSeparator();
         toolBar->addAction(actionItems);
         toolBar->addSeparator();
         toolBar->addAction(actionPuertas);
         toolBar->addSeparator();
         toolBar->addAction(actionRespawn);
+        toolBar->addSeparator();
+        toolBar->addAction(actionDecoraciones);
         toolBar->addSeparator();
         toolBar->addAction(actionBorrador);
 
@@ -266,6 +261,7 @@ public:
         actionZoom_out->setText(QApplication::translate("Editor", "Zoom out", nullptr));
         actionBorrador->setText(QApplication::translate("Editor", "Borrador", nullptr));
         actionRespawn->setText(QApplication::translate("Editor", "Respawn", nullptr));
+        actionParedes_Falsas->setText(QApplication::translate("Editor", "Paredes Falsas", nullptr));
         menuFile->setTitle(QApplication::translate("Editor", "File", nullptr));
         menuBack_to_Manu->setTitle(QApplication::translate("Editor", "Quit", nullptr));
         menuView->setTitle(QApplication::translate("Editor", "View", nullptr));

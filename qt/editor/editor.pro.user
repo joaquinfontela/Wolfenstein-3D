@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.83, 2021-02-07T13:44:25. -->
+<!-- Written by QtCreator 4.13.83, 2021-02-07T17:55:16. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -333,6 +333,7 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">editor</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
