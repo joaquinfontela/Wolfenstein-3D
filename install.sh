@@ -25,6 +25,12 @@ cd ../../../../
 cmake .
 make
 
+echo -e "\x1b[1m\x1b[32m \n [Compiling Editor] \x1b[0m\n"
+cd qt/editor/
+cmake .
+make
+cd ../../
+
 echo -e "\x1b[1m\x1b[32m \n [Compiling Client] \x1b[0m\n"
 cd client/executable
 cmake .
