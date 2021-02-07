@@ -37,6 +37,7 @@ class Player {
   bool key;
   bool shooting;
   bool isAdmin;
+  bool dead;
   WeaponFactory weaponFactory;
   Map& map;
 
@@ -91,6 +92,8 @@ class Player {
   int getShotsFired();
   void setAdmin();
   int getScore();
+
+  bool isDead();
 
   /*
    * [SERVER-SIDE] Indicates if the player has admin rights over the game
