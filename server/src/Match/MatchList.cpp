@@ -8,12 +8,27 @@
 
 MatchList::MatchList() {}
 
-ConnectionHandler* MatchList::joinOrCreate(ClientCommunication* player,
+ConnectionHandler* MatchList::join(ClientCommunication* player,
                                            int lobbyID) {
 
   std::unique_lock<std::mutex> lock(this->lock);
   if (this->matches.find(lobbyID) != this->matches.end()) {
     return this->matches[lobbyID]->addPlayerToMatch(player);
+  }
+
+  // Deberia en realidad devolver algo del estilo CONNECTION_REFUSED por el socket.
+  Match* newMatch = new Match(lobbyID);
+  ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
+
+  newMatch->start();
+  this->matches[lobbyID] = newMatch;
+  return playerHandler;
+}
+
+ConnectionHandler* MatchList::create(ClientCommunication* player, int lobbyID){
+  std::unique_lock<std::mutex> lock(this->lock);
+  if (this->matches.find(lobbyID) != this->matches.end()) {
+    // Devolver CONNECTION_REFUSED como codigo de error.
   }
 
   Match* newMatch = new Match(lobbyID);
