@@ -2,7 +2,7 @@
 
 #include "../../includes/Server/ClientCommunication.h"
 
-#define MAP_YAML_FILE_NAME "./common/src/YAML/map1.yaml"
+#define MAP_YAML_FILE_NAME "./common/src/YAML/map.yaml"
 #define CONFIG_YAML_FILE_NAME "./common/src/YAML/config.yaml"
 
 Match::Match(int lobbyID)
@@ -13,6 +13,12 @@ Match::Match(int lobbyID)
   cont = true;
 }
 
+Match::Match(int lobbyID, std::string mapFile) : ID(lobbyID),
+      playerCount(0),
+      running(true),
+      game(mapFile, CONFIG_YAML_FILE_NAME) {
+  cont = true;
+}
 Match::Match() : game(MAP_YAML_FILE_NAME, CONFIG_YAML_FILE_NAME) {}
 
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }

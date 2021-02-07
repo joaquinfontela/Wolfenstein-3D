@@ -50,6 +50,7 @@ public:
     QMenu *menuBack_to_Manu;
     QMenu *menuView;
     QToolBar *toolBar;
+    QToolBar *toolBar_2;
 
     void setupUi(QMainWindow *Editor)
     {
@@ -59,7 +60,7 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral("logo/wolfestein_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         Editor->setWindowIcon(icon);
-        Editor->setStyleSheet(QStringLiteral("background-color: rgb(136, 138, 133);"));
+        Editor->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 83);"));
         actionNew = new QAction(Editor);
         actionNew->setObjectName(QStringLiteral("actionNew"));
         QIcon icon1;
@@ -154,7 +155,7 @@ public:
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        QBrush brush1(QColor(136, 138, 133, 255));
+        QBrush brush1(QColor(85, 87, 83, 255));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Button, brush1);
         QBrush brush2(QColor(255, 255, 255, 255));
@@ -180,6 +181,9 @@ public:
         brush6.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+        QBrush brush7(QColor(0, 0, 0, 128));
+        brush7.setStyle(Qt::NoBrush);
+        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush7);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Light, brush2);
@@ -195,6 +199,9 @@ public:
         palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush3);
         palette.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+        QBrush brush8(QColor(0, 0, 0, 128));
+        brush8.setStyle(Qt::NoBrush);
+        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush8);
         palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Light, brush2);
@@ -207,14 +214,20 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        QBrush brush7(QColor(239, 239, 239, 255));
-        brush7.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush7);
+        QBrush brush9(QColor(239, 239, 239, 255));
+        brush9.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush9);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+        QBrush brush10(QColor(0, 0, 0, 128));
+        brush10.setStyle(Qt::NoBrush);
+        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush10);
         toolBar->setPalette(palette);
         toolBar->setFont(font1);
         Editor->addToolBar(Qt::TopToolBarArea, toolBar);
+        toolBar_2 = new QToolBar(Editor);
+        toolBar_2->setObjectName(QStringLiteral("toolBar_2"));
+        Editor->addToolBar(Qt::TopToolBarArea, toolBar_2);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuView->menuAction());
@@ -267,6 +280,7 @@ public:
         menuBack_to_Manu->setTitle(QApplication::translate("Editor", "Quit", Q_NULLPTR));
         menuView->setTitle(QApplication::translate("Editor", "View", Q_NULLPTR));
         toolBar->setWindowTitle(QApplication::translate("Editor", "toolBar", Q_NULLPTR));
+        toolBar_2->setWindowTitle(QApplication::translate("Editor", "toolBar_2", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -6,3 +6,5 @@ barrilete_cosmico
 esqueletos
 111
 4
+map1
+map123

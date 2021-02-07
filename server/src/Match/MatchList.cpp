@@ -5,6 +5,16 @@
 
 #include "../../includes/Match/Match.h"
 #include "../../includes/Server/ClientCommunication.h"
+#define MAP_YAML_FILE_NAME "./common/src/YAML/map"
+
+static bool fileExists(std::string& name){
+  if (FILE *file = fopen(name.c_str(), "r")) {
+        fclose(file);
+        return true;
+    } else {
+        return false;
+    }   
+}
 
 MatchList::MatchList() {}
 
@@ -25,13 +35,18 @@ ConnectionHandler* MatchList::join(ClientCommunication* player,
   return playerHandler;
 }
 
-ConnectionHandler* MatchList::create(ClientCommunication* player, int lobbyID){
+ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
   std::unique_lock<std::mutex> lock(this->lock);
-  if (this->matches.find(lobbyID) != this->matches.end()) {
-    // Devolver CONNECTION_REFUSED como codigo de error.
-  }
+ 
+  std::string mapFile = MAP_YAML_FILE_NAME + std::to_string(mapID) + ".yaml";
 
-  Match* newMatch = new Match(lobbyID);
+  if(!fileExists(mapFile))
+    return nullptr;
+
+  int lobbyID = this->matchesCreated + 1;
+  this->matchesCreated++;
+
+  Match* newMatch = new Match(lobbyID, mapFile);
   ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
 
   newMatch->start();

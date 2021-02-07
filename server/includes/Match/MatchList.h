@@ -23,6 +23,7 @@ class MatchList {
   void forceShutdown();
   void matchCleanup();
   std::mutex lock;
+  int matchesCreated = 0;
 
  public:
   MatchList();
