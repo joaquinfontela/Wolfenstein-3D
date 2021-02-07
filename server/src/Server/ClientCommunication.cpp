@@ -69,7 +69,7 @@ bool ClientCommunication::connectToLobby() {
       std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
                 << std::endl;
 
-      this->handler = this->matchList.join(this, lobbyID[0]);
+      this->handler = this->matchList.create(this, lobbyID[0]);
 
       if(this->handler != nullptr){
         uint32_t responseOpcode = CONNECTED_OK;
