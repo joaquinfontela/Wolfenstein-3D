@@ -26,6 +26,7 @@ void Audio::volumeDownWithDist(double dist) {
 
 void Audio::play() {
   // if (!Mix_PlayingMusic())
+  std::cout << "[GAME] Volume: " << this->volume << std::endl;
   if (isMusic) {
     Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
   } else {
@@ -65,6 +66,7 @@ Audio::Audio(const char* name, bool isMusic, int volume)
     : isMusic(isMusic), volume(volume), channel(ERROR) {
   memset(&this->audio, 0, sizeof(this->audio));
   if (isMusic) {
+    Mix_VolumeMusic(this->volume);  // Máx 128.
     if (!(this->audio.music = Mix_LoadMUS(name))) {
       throw SdlException(Mix_GetError());
     }

@@ -10,7 +10,7 @@ class size_window;
 
 class size_window : public QDialog
 {
-    Q_OBJECT
+    
 
 public:
     explicit size_window(QWidget *parent = nullptr);

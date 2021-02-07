@@ -514,13 +514,15 @@
    <addaction name="separator"/>
    <addaction name="actionParedes"/>
    <addaction name="separator"/>
-   <addaction name="actionDecoraciones"/>
+   <addaction name="actionParedes_Falsas"/>
    <addaction name="separator"/>
    <addaction name="actionItems"/>
    <addaction name="separator"/>
    <addaction name="actionPuertas"/>
    <addaction name="separator"/>
    <addaction name="actionRespawn"/>
+   <addaction name="separator"/>
+   <addaction name="actionDecoraciones"/>
    <addaction name="separator"/>
    <addaction name="actionBorrador"/>
   </widget>
@@ -655,6 +657,19 @@
   <action name="actionRespawn">
    <property name="text">
     <string>Respawn</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="actionParedes_Falsas">
+   <property name="text">
+    <string>Paredes Falsas</string>
    </property>
    <property name="font">
     <font>

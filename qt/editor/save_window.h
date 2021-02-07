@@ -11,7 +11,7 @@ class save_window;
 
 class save_window : public QDialog
 {
-    Q_OBJECT
+    
 
 public:
     explicit save_window(QWidget *parent = nullptr);

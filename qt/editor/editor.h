@@ -64,6 +64,8 @@ class Editor : public QMainWindow {
 
   void on_actionSave_and_exit_triggered();
 
+  void on_actionParedes_Falsas_triggered();
+
 private:
   void save_map();
 

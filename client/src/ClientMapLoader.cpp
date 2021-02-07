@@ -26,7 +26,6 @@ int* ClientMapLoader::getWallIdMatrix() {
     std::vector<Coordinate> coordinatesWhereWallWithCurrentIdIsIn =
         wallTypeCoordinateMap[id];
     for (Coordinate& c : coordinatesWhereWallWithCurrentIdIsIn) {
-      std::cout<<"Adding wall at: "<< (c.getX())<<", "<<c.getY()<<std::endl;
       matrix[(c.getY() - 1) * this->dimx + (c.getX() - 1)] =
           this->convertYamlFileWallIdToProtocolWallSkinId(id);
     }

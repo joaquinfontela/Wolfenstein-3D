@@ -7,7 +7,7 @@
 
 class tile_container_actions : public QObject
 {
-        Q_OBJECT
+        
 public:
     tile_container_actions(Editor* editor);
 

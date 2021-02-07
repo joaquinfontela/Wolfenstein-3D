@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
   if (argc == 3) {
     ip = argv[1];
     port = argv[2];
-    game_id = 1;
+    game_id = 2;
   } else {
     QApplication a(argc, argv);
     Login w(port, ip, game_id);

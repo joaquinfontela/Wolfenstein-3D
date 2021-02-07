@@ -40,6 +40,7 @@ public:
     QAction *actionZoom_out;
     QAction *actionBorrador;
     QAction *actionRespawn;
+    QAction *actionParedes_Falsas;
     QWidget *centralwidget;
     QGraphicsView *graphics_tiles_container;
     QGraphicsView *graphics_map_container;
@@ -122,6 +123,9 @@ public:
         actionRespawn = new QAction(Editor);
         actionRespawn->setObjectName(QStringLiteral("actionRespawn"));
         actionRespawn->setFont(font1);
+        actionParedes_Falsas = new QAction(Editor);
+        actionParedes_Falsas->setObjectName(QStringLiteral("actionParedes_Falsas"));
+        actionParedes_Falsas->setFont(font1);
         centralwidget = new QWidget(Editor);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         graphics_tiles_container = new QGraphicsView(centralwidget);
@@ -225,13 +229,15 @@ public:
         toolBar->addSeparator();
         toolBar->addAction(actionParedes);
         toolBar->addSeparator();
-        toolBar->addAction(actionDecoraciones);
+        toolBar->addAction(actionParedes_Falsas);
         toolBar->addSeparator();
         toolBar->addAction(actionItems);
         toolBar->addSeparator();
         toolBar->addAction(actionPuertas);
         toolBar->addSeparator();
         toolBar->addAction(actionRespawn);
+        toolBar->addSeparator();
+        toolBar->addAction(actionDecoraciones);
         toolBar->addSeparator();
         toolBar->addAction(actionBorrador);
 
@@ -256,6 +262,7 @@ public:
         actionZoom_out->setText(QApplication::translate("Editor", "Zoom out", Q_NULLPTR));
         actionBorrador->setText(QApplication::translate("Editor", "Borrador", Q_NULLPTR));
         actionRespawn->setText(QApplication::translate("Editor", "Respawn", Q_NULLPTR));
+        actionParedes_Falsas->setText(QApplication::translate("Editor", "Paredes Falsas", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("Editor", "File", Q_NULLPTR));
         menuBack_to_Manu->setTitle(QApplication::translate("Editor", "Quit", Q_NULLPTR));
         menuView->setTitle(QApplication::translate("Editor", "View", Q_NULLPTR));

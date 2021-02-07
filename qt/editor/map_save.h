@@ -8,7 +8,7 @@
 
 class map_save : public QPushButton
 {
-    Q_OBJECT
+    
 
     std::vector<std::vector<std::vector<tile_item*>>> map;
     open_window* my_window;
