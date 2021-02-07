@@ -17,7 +17,7 @@ class Log {
    * @param line Caller line.
    * @param msg Log message to write.
    */
-  void static test(const char* _file, const char* function, const int line,
+  void static log(const char* _file, const char* function, const int line,
                    const char* msg);
   static int playerId;
   static std::mutex lock;

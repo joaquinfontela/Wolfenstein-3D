@@ -3,7 +3,7 @@
 #include "log.h"
 
 #define LOG_WITH_ID(Y) LOG((Y + std::to_string(id)).c_str())
-#define LOG(ERROR) Log::test(__FILE__, __FUNCTION__, __LINE__, ERROR);
+#define LOG(ERROR) Log::log(__FILE__, __FUNCTION__, __LINE__, ERROR);
 
 #define ERROR -1
 #define HEIGHT 600
@@ -17,7 +17,7 @@
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
 #define IS_MUSIC true
-#define MUSIC_VOLUME 3
+#define MUSIC_VOLUME 7
 
 #define GET_WEAPON_SOUND(X) X
 

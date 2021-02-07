@@ -16,11 +16,28 @@ class Login : public QMainWindow {
   Q_OBJECT
 
  public:
+  /**
+   * @brief Construct a new Login object. Sets the styles for the buttons.
+   *
+   * @param host Port to connect to.
+   * @param ip Ip to connect to.
+   * @param game_id Match id.
+   */
   Login(std::string& host, std::string& ip, int& game_id);
   ~Login();
 
  private slots:
+
+  /**
+   * @brief Parses the data and joins the given match on a join match event.
+   *
+   */
   void on_button_join_clicked();
+
+  /**
+   * @brief Parses the data and creates a match on a create match event.
+   *
+   */
   void on_button_create_clicked();
 
  private:
