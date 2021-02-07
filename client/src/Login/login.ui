@@ -80,7 +80,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="boton_create">
+   <widget class="QPushButton" name="button_create">
     <property name="geometry">
      <rect>
       <x>600</x>

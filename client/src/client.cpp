@@ -1,6 +1,7 @@
 #include "../includes/client.h"
 
 #include "../includes/clientprotocol.h"
+#include "../includes/drawablevector.h"
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
 
@@ -12,12 +13,12 @@ void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
   }
 }
 
-void Client::connectToServer(std::string& host, std::string& port) {
-  this->socket.connect(host, port);
+void Client::connectToServer(std::string& ip, std::string& port) {
+  this->socket.connect(ip, port);
 }
 
 bool Client::joinMatch(uint32_t lobbyID) {
-  uint32_t protocol = CONNECT_TO_LOBBY;
+  uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
 
@@ -37,9 +38,9 @@ bool Client::joinMatch(uint32_t lobbyID) {
   return true;
 }
 
-int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
+int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
                 std::string& mapFile) {
-  this->connectToServer(host, port);
+  this->connectToServer(ip, port);
 
   if (!this->joinMatch(lobbyID)) {
     return ERROR;
@@ -54,7 +55,7 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
   AudioManager audios;
 
   std::mutex m;
-  ScoreBoard scoreboard(&window);
+  ScoreBoard scoreboard(manager);
 
   std::atomic<bool> alive;
   alive = true;
@@ -69,18 +70,20 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
-  Raycaster caster(manager, matrix, alive, &window, player, sprites, m, hud,
-                   scoreboard);
+  DrawableVector spriteVector(sprites, m);
+
+  Raycaster caster(manager, matrix, alive, player, spriteVector, hud);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
   CommandExecuter* worker =
-      new CommandExecuter(socket, alive, sprites, players, m, myPlayerID,
-                          audios, matrix, loader, scoreboard);
+      new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
+                          audios, matrix, loader, &scoreboard);
 
   try {
     worker->start();
     sender->start();
     caster.run();
+    scoreboard.draw();
   } catch (std::exception& e) {
     LOG(e.what());
     exitcode = ERROR;

@@ -6,7 +6,7 @@
 #include <tuple>
 #include <vector>
 
-#include "sdlwindow.h"
+#include "texturemanager.h"
 
 /**
  * @brief Stores the data for the leaderboards and draws it.
@@ -14,11 +14,11 @@
  */
 class ScoreBoard {
  private:
-  SdlWindow* window;
   std::vector<std::tuple<uint32_t, uint32_t>> scores;
   std::vector<std::tuple<uint32_t, uint32_t>> kills;
   std::vector<std::tuple<uint32_t, uint32_t>> shotsfired;
   bool end;
+  TextureManager& manager;
   std::mutex m;
 
   /**
@@ -77,7 +77,7 @@ class ScoreBoard {
    *
    */
   void stop();
-  ScoreBoard(SdlWindow* window) : window(window), end(false) {}
+  ScoreBoard(TextureManager& manager) : end(false) , manager(manager) {}
 
   /**
    * @brief Pushes the value sent from the server to be drawn on the

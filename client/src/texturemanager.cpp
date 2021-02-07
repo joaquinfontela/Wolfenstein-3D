@@ -16,6 +16,14 @@
 #define TEXTURE_LIMIT_ERROR "Error, cannot add more textures with code: "
 // Cambiar por una excepción.
 
+void TextureManager::drawBackground() {
+  return this->window->fillWolfenstein();
+}
+
+void TextureManager::updateScreen() {
+  return this->window->render();
+}
+
 void TextureManager::renderText(const char* text, SDL_Rect* rect) {
   return this->window->renderText(text, rect);
 }
@@ -30,6 +38,13 @@ void TextureManager::garbageCollector() {
        it != this->textures.end(); ++it) {
     delete it->second;
   }
+}
+ 
+void TextureManager::renderComplete(int id) {
+  int width, height;
+  this->window->getWindowSize(&width, &height);
+  Area dest(0, 0, width, height);
+  this->renderAll(id, dest);
 }
 
 bool TextureManager::loadAndCheckTexture(int i, const std::string& name) {
@@ -142,7 +157,8 @@ void TextureManager::loadTextures() {
       "ssattack.png",              // 93
       "officerattack.png",         // 94
       "mutantattack.png",          // 95
-      "lockeddoor.png"             // 96
+      "lockeddoor.png",            // 96
+      "highscores.png"             // 97
   });
   int i = 1;
   for (std::string& name : names) {

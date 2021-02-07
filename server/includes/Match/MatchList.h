@@ -34,7 +34,8 @@ class MatchList {
     * @param The lobby ID
     * @return The connection handler of the client, NULL if not possible
    */
-  ConnectionHandler* joinOrCreate(ClientCommunication* player, int lobbyID);
+  ConnectionHandler* join(ClientCommunication* player, int lobbyID);
+  ConnectionHandler* create(ClientCommunication* player, int lobbyID);
 
   ~MatchList();
 };
