@@ -8,7 +8,6 @@
 
 class map_actions : public QObject
 {
-    Q_OBJECT
 
     Editor* editor;
     map_scene* map;
