@@ -6,6 +6,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QMouseEvent>
 #include "iostream"
+#include <QScrollBar>
 
 #define TILE_SIZE 40
 tile_item::tile_item(QString path, int tipo, bool cumulative)
@@ -17,11 +18,16 @@ tile_item::tile_item(QString path, int tipo, bool cumulative)
     this->cumulative = cumulative;
     QRect rect(0,0,0,0);
     this->my_rect = rect;
+    this->map = NULL;
 }
 
 tile_item *tile_item::create_copy()
 {
-    return new tile_item(this->path, this->type, this->cumulative);
+    tile_item * tile = new tile_item(this->path, this->type, this->cumulative);
+    if(this->map != NULL){
+        tile->add_to(this->map);
+    }
+    return tile;
 }
 
 void tile_item::add_to(QGraphicsView *map)
@@ -65,8 +71,10 @@ void tile_item::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 void tile_item::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QPoint p;
-    p.setX(event->pos().x());
-    p.setY(event->pos().y());
+    QScrollBar* vertical_bar = this->map->verticalScrollBar();
+    QScrollBar* horizontal_bar = this->map->horizontalScrollBar();
+    p.setX(event->pos().x() - horizontal_bar->value());
+    p.setY(event->pos().y() - vertical_bar->value());
     QMouseEvent* me = new QMouseEvent(QEvent::MouseButtonPress, p, Qt::MouseButton::LeftButton, Qt::MouseButton::AllButtons, 0);
     QApplication::sendEvent(this->map, me);
 }

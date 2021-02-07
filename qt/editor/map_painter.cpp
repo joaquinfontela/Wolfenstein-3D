@@ -17,8 +17,8 @@ Map_painter::Map_painter(int tile_size, map_scene* map_to_paint,
 
 std::vector<int> Map_painter::get_position(std::vector<int> coordinates) {
   std::vector<int> position = {};
-  int x = tile_size * (coordinates[0] - 1);
-  int y = tile_size * (coordinates[1] - 1);
+  int x = tile_size * (coordinates[0] - 1) - 2;
+  int y = tile_size * (coordinates[1] - 1) - 2;
   position.push_back(x);
   position.push_back(y);
   return position;
@@ -42,6 +42,20 @@ void Map_painter::paint_multiple_tile(std::vector<int> position,
                               position[1] + tile_mini_size);
   this->scene->addItem(tiles.at(1));
   tiles.at(1)->update();
+
+  size_t tiles_to_paint = tiles.size();
+  if(tiles_to_paint > 2){
+      tiles.at(2)->configure_rect(tile_mini_size, position[0],
+                                  position[1] + tile_mini_size);
+      this->scene->addItem(tiles.at(2));
+      tiles.at(2)->update();
+  }
+  if(tiles_to_paint > 3){
+      tiles.at(3)->configure_rect(tile_mini_size, position[0] + tile_mini_size,
+                                  position[1]);
+      this->scene->addItem(tiles.at(3));
+      tiles.at(3)->update();
+  }
 }
 
 void Map_painter::paint_map(std::vector<int> coordinates,
@@ -56,7 +70,7 @@ void Map_painter::paint_map(std::vector<int> coordinates,
     this->mc->erase_tiles_at(coordinates);
     this->paint_multiple_tile(position, tile_backup);
     for (size_t x = 0; x < tile_backup.size(); x++) {
-      this->mc->paint_tile(coordinates, tile_backup.at(0));
+      this->mc->paint_tile(coordinates, tile_backup.at(x));
     }
   } else {
     this->paint_big_tile(position, tiles.at(0));

@@ -54,9 +54,9 @@ void open_window::on_open_boton_clicked()
         messageBox.exec();
     }else{
         map_canvas* new_mc = new map_canvas(this->map_selected);
-        if(this->editor->my_map_scene == NULL){
-            int cant_rows = new_mc->grilla.size();
-            int cant_col = new_mc->grilla.at(0).size();
+        int cant_rows = new_mc->grilla.size();
+        int cant_col = new_mc->grilla.at(0).size();
+        if(this->editor->my_map_scene == NULL){            
             editor->my_map_scene = new class map_scene(this->editor);
             editor->ui->graphics_map_container->setScene(editor->my_map_scene);
             map_actions* ma = new map_actions(editor, editor->my_map_scene);
@@ -67,6 +67,16 @@ void open_window::on_open_boton_clicked()
            this->editor->my_map_scene->clear();
         }
         this->editor->mc = new_mc;
+
+        for (int i = 0; i < cant_rows; i++) {
+          for (int x = 0; x < cant_col; x++) {
+                std::vector<tile_item*> tile_vector = this->editor->mc->grilla.at(i).at(x);
+                for(size_t y = 0; y < tile_vector.size(); y++){
+                    tile_vector.at(y)->add_to(this->editor->ui->graphics_map_container);
+                }
+          }
+        }
+
         editor->actual_map_name = this->map_name;
         this->close();
     }
