@@ -64,8 +64,6 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
 
   for (int i = 1; i <= COL; i++) {
     float newColLine = i * tile_size - horizontal_bar->value();
-    std::cout << "nc = " << newColLine << std::endl;
-    std::cout << "x = " << x << std::endl;
     if (x < newColLine) {
       coordinates.push_back(i);
       break;
@@ -73,8 +71,6 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
   }
   for (int i = 1; i <= ROW; i++) {
     float newRowLine = i * tile_size - vertical_bar->value();
-    std::cout << "nr = " << newRowLine << std::endl;
-    std::cout << "y = " << x << std::endl;
     if (y < newRowLine) {
       coordinates.push_back(i);
       break;

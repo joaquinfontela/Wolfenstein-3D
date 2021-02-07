@@ -38,7 +38,9 @@ AudioManager::~AudioManager() { this->garbageCollector(); }
 
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
   Audio* audio;
-  if (i == DOOR_SOUND) {
+  if (i == MUSIC) {
+    audio = new Audio((AUDIO_PATH + name).c_str(), IS_MUSIC, MUSIC_VOLUME);
+  } else if (i == DOOR_SOUND) {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, 20);
   } else {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
@@ -65,7 +67,8 @@ AudioManager::AudioManager() {
       "Death 1.wav",          // 11
       "Death 2.wav",          // 12
       "Player Pain 2.wav",    // 13
-      "Enemy Pain.wav"        // 14
+      "Enemy Pain.wav",       // 14
+      "music.mp3"             // 15 
   });
   int i = 1;
   for (std::string& name : names) {

@@ -10,6 +10,8 @@ map_scene::map_scene(QWidget* parent, int col, int row, int tile_size) : QGraphi
     this->paint_grill(col, row, tile_size);
 }
 
+map_scene::map_scene(QWidget* parent) : QGraphicsScene(parent){}
+
 void map_scene::paint_grill(int col, int row, int tile_size){
     float width = col * tile_size;
     float height = row * tile_size;

@@ -22,6 +22,9 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(117, 80, 123);</string>
+   </property>
    <property name="text">
     <string>Abrir</string>
    </property>

@@ -12,7 +12,7 @@ Class that takes the user input and sends it to the server.
 Inheritance diagram for Command\+Sender\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{classCommandSender}
+\includegraphics[height=4.000000cm]{classCommandSender}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -25,18 +25,7 @@ void \mbox{\hyperlink{classCommandSender_a243a6ea4022234982ab20441cc11300b}{upda
 \mbox{\Hypertarget{classCommandSender_a23ce0750e97b2998495e94e27ed41ca7}\label{classCommandSender_a23ce0750e97b2998495e94e27ed41ca7}} 
 virtual void \mbox{\hyperlink{classCommandSender_a23ce0750e97b2998495e94e27ed41ca7}{run}} ()
 \begin{DoxyCompactList}\small\item\em While the game is being played, this method reads the player input and redirects it to the update method. If the player quits the window it sets the alive boolean reference to false and stops the scoreboard from drawing. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classCommandSender_a7f6228aa7f1b5199729bbd6200f031b8}\label{classCommandSender_a7f6228aa7f1b5199729bbd6200f031b8}} 
-\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries scoreboard}
-\item 
-\mbox{\Hypertarget{classCommandSender_a1be9195c70fb0a755f307a02f16756f7}\label{classCommandSender_a1be9195c70fb0a755f307a02f16756f7}} 
-std\+::atomic$<$ bool $>$ \& {\bfseries alive}
-\item 
-\mbox{\Hypertarget{classCommandSender_a9bbec09695bfb4c3df110ade1a988292}\label{classCommandSender_a9bbec09695bfb4c3df110ade1a988292}} 
-\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \& {\bfseries socket}
-\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}

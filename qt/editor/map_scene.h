@@ -8,6 +8,7 @@ class map_scene : public QGraphicsScene
       Q_OBJECT
 public:
     map_scene(QWidget *parent, int col, int row, int tile_size);
+    map_scene(QWidget* parent);
     void paint_grill(int col, int row, int tile_size);
 };
 

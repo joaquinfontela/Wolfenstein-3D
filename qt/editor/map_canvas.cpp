@@ -30,14 +30,10 @@ bool map_canvas::paint_tile(std::vector<int> coordinates, tile_item* new_tile) {
   int row = coordinates[1] - 1;
   std::vector<tile_item*> vector_selected = this->grilla.at(row).at(col);
   if (vector_selected.empty() || (vector_selected[0]->accept_tile(new_tile) &&
-                                  vector_selected.size() < 4)) {
+                                  vector_selected.size() < 2)) {
     this->grilla.at(row).at(col).push_back(new_tile);
     return true;
   }
-  // QMessageBox messageBox;
-  // messageBox.critical(0,"Error","No puedes agregar este elemento aqui!");
-  // messageBox.setFixedSize(500,200);
-  // messageBox.exec();
   return false;
 }
 

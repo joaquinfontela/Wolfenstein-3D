@@ -1,0 +1,176 @@
+\hypertarget{classDrawableVector}{}\doxysection{Drawable\+Vector Class Reference}
+\label{classDrawableVector}\index{DrawableVector@{DrawableVector}}
+
+
+Holds the vector of drawable sprites and a lock, since this is a shared attribute in many threads.  
+
+
+
+
+{\ttfamily \#include $<$drawablevector.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDrawableVector_a4350b5c96ccc0f5d28ad6bde8dc8525a}{Drawable\+Vector}} (std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&sprites, std\+::mutex \&lock)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classDrawable}{Drawable}} Vector object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_a40296120e797b501d7842e50655166dc}{raycast\+Sprites}} (double x, double y, double dirX, double dirY, double planeX, double planeY, double $\ast$distance\+Buffer, float drawable\+Diff, \mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&manager)
+\begin{DoxyCompactList}\small\item\em Raycasts the sprites from the information given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_ad082a3bcc1165855215c1a1574924c85}{push\+\_\+back}} (\mbox{\hyperlink{classDrawable}{Drawable}} $\ast$drawable)
+\begin{DoxyCompactList}\small\item\em Pushes new sprite to the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_a8ece4bca2609026f6cff024536f3346f}{pop\+And\+Erase}} (\mbox{\hyperlink{classDrawable}{Drawable}} $\ast$tokill)
+\begin{DoxyCompactList}\small\item\em Erases and pops element from vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_a80046ee888b85a74b322aa61d5a8777f}{remove\+Sprite\+With\+Id\+And\+Get\+Sound}} (uint32\+\_\+t item\+Id, uint32\+\_\+t $\ast$sound\+Id)
+\begin{DoxyCompactList}\small\item\em Pops sprite from the vector and identifies the sound it should make. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_a0582f51aa9e15e977d4317a84d3432b6}{swap\+Coords}} (double x, double y, uint32\+\_\+t item\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the X and Y attributes of the sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDrawableVector_a19ff61e3be83781fdd5202c1a8d212c9}{get\+Coords\+And\+Erase}} (double $\ast$x, double $\ast$y, uint32\+\_\+t item\+Id)
+\begin{DoxyCompactList}\small\item\em Get the sprite coords and erase it afterwards. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds the vector of drawable sprites and a lock, since this is a shared attribute in many threads. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDrawableVector_a4350b5c96ccc0f5d28ad6bde8dc8525a}\label{classDrawableVector_a4350b5c96ccc0f5d28ad6bde8dc8525a}} 
+\index{DrawableVector@{DrawableVector}!DrawableVector@{DrawableVector}}
+\index{DrawableVector@{DrawableVector}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{DrawableVector()}{DrawableVector()}}
+{\footnotesize\ttfamily Drawable\+Vector\+::\+Drawable\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \&}]{sprites,  }\item[{std\+::mutex \&}]{lock }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{classDrawable}{Drawable}} Vector object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & Sprite vector. \\
+\hline
+{\em lock} & Mutex. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDrawableVector_a19ff61e3be83781fdd5202c1a8d212c9}\label{classDrawableVector_a19ff61e3be83781fdd5202c1a8d212c9}} 
+\index{DrawableVector@{DrawableVector}!getCoordsAndErase@{getCoordsAndErase}}
+\index{getCoordsAndErase@{getCoordsAndErase}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{getCoordsAndErase()}{getCoordsAndErase()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::get\+Coords\+And\+Erase (\begin{DoxyParamCaption}\item[{double $\ast$}]{x,  }\item[{double $\ast$}]{y,  }\item[{uint32\+\_\+t}]{item\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the sprite coords and erase it afterwards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Stores the x coord. \\
+\hline
+{\em y} & Stores the y coord. \\
+\hline
+{\em item\+Id} & Sprite id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrawableVector_a8ece4bca2609026f6cff024536f3346f}\label{classDrawableVector_a8ece4bca2609026f6cff024536f3346f}} 
+\index{DrawableVector@{DrawableVector}!popAndErase@{popAndErase}}
+\index{popAndErase@{popAndErase}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{popAndErase()}{popAndErase()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::pop\+And\+Erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDrawable}{Drawable}} $\ast$}]{tokill }\end{DoxyParamCaption})}
+
+
+
+Erases and pops element from vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tokill} & Element to destroy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrawableVector_ad082a3bcc1165855215c1a1574924c85}\label{classDrawableVector_ad082a3bcc1165855215c1a1574924c85}} 
+\index{DrawableVector@{DrawableVector}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDrawable}{Drawable}} $\ast$}]{drawable }\end{DoxyParamCaption})}
+
+
+
+Pushes new sprite to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drawable} & Sprite to be stored. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrawableVector_a40296120e797b501d7842e50655166dc}\label{classDrawableVector_a40296120e797b501d7842e50655166dc}} 
+\index{DrawableVector@{DrawableVector}!raycastSprites@{raycastSprites}}
+\index{raycastSprites@{raycastSprites}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{raycastSprites()}{raycastSprites()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::raycast\+Sprites (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{dirX,  }\item[{double}]{dirY,  }\item[{double}]{planeX,  }\item[{double}]{planeY,  }\item[{double $\ast$}]{distance\+Buffer,  }\item[{float}]{drawable\+Diff,  }\item[{\mbox{\hyperlink{classTextureManager}{Texture\+Manager}} \&}]{manager }\end{DoxyParamCaption})}
+
+
+
+Raycasts the sprites from the information given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \mbox{\hyperlink{classPlayer}{Player}} X Coord. \\
+\hline
+{\em y} & \mbox{\hyperlink{classPlayer}{Player}} Y Coord. \\
+\hline
+{\em dirX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X Direction Coord. \\
+\hline
+{\em dirY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y Direction Coord. \\
+\hline
+{\em planeX} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s X Plane Coord. \\
+\hline
+{\em planeY} & \mbox{\hyperlink{classPlayer}{Player}}\textquotesingle{}s Y Plane Coord. \\
+\hline
+{\em distance\+Buffer} & Buffer with all the distances calculated from the raycaster; maps each position to the distance of the first visible object. \\
+\hline
+{\em drawable\+Diff} & Time passed since the last call. \\
+\hline
+{\em manager} & Texture manager reference. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrawableVector_a80046ee888b85a74b322aa61d5a8777f}\label{classDrawableVector_a80046ee888b85a74b322aa61d5a8777f}} 
+\index{DrawableVector@{DrawableVector}!removeSpriteWithIdAndGetSound@{removeSpriteWithIdAndGetSound}}
+\index{removeSpriteWithIdAndGetSound@{removeSpriteWithIdAndGetSound}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{removeSpriteWithIdAndGetSound()}{removeSpriteWithIdAndGetSound()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::remove\+Sprite\+With\+Id\+And\+Get\+Sound (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{item\+Id,  }\item[{uint32\+\_\+t $\ast$}]{sound\+Id }\end{DoxyParamCaption})}
+
+
+
+Pops sprite from the vector and identifies the sound it should make. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Id} & Sprite id. \\
+\hline
+{\em sound\+Id} & Pointer to store the sound the sprite makes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDrawableVector_a0582f51aa9e15e977d4317a84d3432b6}\label{classDrawableVector_a0582f51aa9e15e977d4317a84d3432b6}} 
+\index{DrawableVector@{DrawableVector}!swapCoords@{swapCoords}}
+\index{swapCoords@{swapCoords}!DrawableVector@{DrawableVector}}
+\doxysubsubsection{\texorpdfstring{swapCoords()}{swapCoords()}}
+{\footnotesize\ttfamily void Drawable\+Vector\+::swap\+Coords (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{uint32\+\_\+t}]{item\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets the X and Y attributes of the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & New sprite\textquotesingle{}s x coord. \\
+\hline
+{\em y} & New sprite\textquotesingle{}s y coord. \\
+\hline
+{\em item\+Id} & Sprite id. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/includes/drawablevector.\+h\item 
+client/src/drawablevector.\+cpp\end{DoxyCompactItemize}

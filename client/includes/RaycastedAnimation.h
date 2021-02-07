@@ -2,7 +2,6 @@
 #define RAYCASTEDANIMATION_H_
 
 #include "clientprotocol.h"
-#include "commandexecuter.h"
 #include "drawable.h"
 #include "texturemanager.h"
 
@@ -22,12 +21,11 @@ class RaycastedAnimation : public Drawable {
    * @param uniqueid Unique sprite id.
    * @param framesPerAnimation Amount of frames the animation has.
    */
-  RaycastedAnimation(double x, double y, CommandExecuter* executer, int itemId,
+  RaycastedAnimation(double x, double y, int itemId,
                      int uniqueid, int framesPerAnimation)
       : Drawable(x, y, itemId, uniqueid),
         totalFrames(TIME_PER_ANIMATION_SLIDE * FRAMES_PER_EXPLOSION_ANIMATION),
         frames(-1),
-        executer(executer),
         framesPerAnimation(framesPerAnimation),
         timePassed(0) {}
 
@@ -54,7 +52,6 @@ class RaycastedAnimation : public Drawable {
   int frames;
   int totalFrames;
   float timePassed;
-  CommandExecuter* executer;
 };
 
 #endif  // RAYCASTEDANIMATION_H_

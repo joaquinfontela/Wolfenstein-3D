@@ -38,25 +38,51 @@ bool ClientCommunication::connectToLobby() {
     std::cout << "[SERVER] Client trying to join lobby" << std::endl;
     std::cout << "[SERVER] Received opcode: " << opcode[0] << std::endl;
     // Compruebo que el opcode sea el del protocolo para conexion.
-    if (opcode[0] == CONNECT_TO_LOBBY) {
+    if (opcode[0] == JOIN_LOBBY) {
       uint32_t lobbyID[1] = {0};
       this->socket.receive(lobbyID, sizeof(lobbyID));
 
-      uint32_t responseOpcode = CONNECTED_OK;
-      this->socket.send(&responseOpcode, sizeof(responseOpcode));
-
-      uint32_t playerID = this->playerID;
-      int sent = this->socket.send(&playerID, sizeof(playerID));
 
       std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
                 << std::endl;
 
-      this->handler = this->matchList.joinOrCreate(this, lobbyID[0]);
+      this->handler = this->matchList.join(this, lobbyID[0]);
 
-      return true;
+      if(this->handler != nullptr){
+        uint32_t responseOpcode = CONNECTED_OK;
+        this->socket.send(&responseOpcode, sizeof(responseOpcode));
 
-      // TODO -> Crear notificacion de que se conecto un jugador y pasar su ID.
-    } else {
+        uint32_t playerID = this->playerID;
+        int sent = this->socket.send(&playerID, sizeof(playerID));
+
+        return true;
+      }
+
+      // TODO: Send CONNECTION_ERROR
+      return false;
+
+    }else if(opcode[0] == CREATE_LOBBY){
+      uint32_t lobbyID[1] = {0};
+      this->socket.receive(lobbyID, sizeof(lobbyID));
+
+
+      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
+                << std::endl;
+
+      this->handler = this->matchList.join(this, lobbyID[0]);
+
+      if(this->handler != nullptr){
+        uint32_t responseOpcode = CONNECTED_OK;
+        this->socket.send(&responseOpcode, sizeof(responseOpcode));
+
+        uint32_t playerID = this->playerID;
+        int sent = this->socket.send(&playerID, sizeof(playerID));
+        return true;
+      }
+
+      return false;
+
+    }else{
       running = false;
       return false;
     }

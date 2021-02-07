@@ -86,7 +86,7 @@ void Hud::renderScore() {
 void Hud::updateGunId() { this->weaponId = this->player->weaponId; }
 
 void Hud::renderBorder() {
-  Area d2(0, 0, this->width, this->height);
+  Area d2(0, 0, this->screenWidth, this->screenHeight);
   this->manager.renderAll(HUD_SPRITE, d2);
 }
 
@@ -216,27 +216,18 @@ void Hud::renderFace() {
 
 void Hud::updateBjFace() { this->bjface->updateFrame(); }
 
-Hud::Hud(SdlWindow* window, Player* player, TextureManager& manager,
-         AudioManager& audiomanager)
-    : window(window),
-      renderer(window->getRenderer()),
-      player(player),
+Hud::Hud(Player* player, TextureManager& manager, AudioManager& audiomanager)
+    : player(player),
       manager(manager),
       fps(30),
       animationStatus(0),
       framesAlreadyPlayed(0),
       movementStatus(0),
       audiomanager(audiomanager) {
-  int x, y;
-
-  window->getWindowSize(&x, &y);
-  this->screenHeight = y;
-  this->screenWidth = x;
-
+  this->manager.getWindowSize(&this->screenWidth, &this->screenHeight);
   this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
   this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
   this->gun = new SdlAnimation(manager, FRAMES_PER_GUN_ANIMATION);
-  this->window->getWindowSize(&this->width, &this->height);
 }
 
 void Hud::renderLifes() {
