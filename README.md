@@ -32,6 +32,7 @@ chmod +x install.sh
 ```
 
 ## Forma de Uso
+
 ### Servidor
 Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando
 ```
@@ -45,6 +46,10 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 ```
 ./Wolfen3D
 ```
+
+## Tutorial de Uso
+
+Siendo un jugador, al entrar a la partida uno no se podrá mover ni disparar hasta que el jugador principal no apriete la _p_ para comenzar la partida. El personaje se mueve con _AWSD_, donde _A_ rota a la izquierda la visión, la _D_ rota a la derecha la visión, la _W_ te desplaza hacia adelante y por último _S_ te lleva hacia atrás. Se dispara con _ENTER_ y se cambian las armas con los números. El _1_ siempre para el cuchillo y el _2_ siempre para la pistola. El _3, 4, 5_ seleccionan la metralleta, arma de cadena y lanza misiles (siendo que se mapea por orden de entrada, es decir, si primero tomo el lanza cohetes y luego la metralleta, el _3_ mapearía al lanza cohetes, el _4_ a la metralleta y la _5_ inhabilidato).
 
 ## Apéndice de Errores
 
