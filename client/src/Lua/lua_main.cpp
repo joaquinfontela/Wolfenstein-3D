@@ -10,10 +10,10 @@ int main(int argc, char* argv[]){
   }
 
   Lua::Client client;
-  std::string mapFile = "../../common/src/YAML/map.yaml";
+
   std::string host = argv[1];
   std::string port = argv[2];
   std::string scriptName = argv[3];
 
-  return client.run(host, port, 2, mapFile, scriptName);
+  return client.run(host, port, 1, scriptName);
 }

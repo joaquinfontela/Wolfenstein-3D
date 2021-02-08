@@ -4,10 +4,32 @@
 #include "GameState.h"
 #include "luaexecuter.h"
 #include "luaraycaster.h"
+
+static bool fileExists(std::string& name){
+  if (FILE *file = fopen(name.c_str(), "r")) {
+        fclose(file);
+        return true;
+    } else {
+        return false;
+    }   
+}
+
 namespace Lua {
 
 void Client::connectToServer(std::string& host, std::string& port) {
   this->socket.connect(host, port);
+}
+
+void Client::receiveAvailableMatch(){
+
+  uint32_t amount = 0;
+  socket.receive(&amount, sizeof(amount));
+
+  for(uint32_t i = 0; i < amount; i++){
+    uint32_t id = 0;
+    socket.receive(&id, sizeof(id));
+  }
+
 }
 
 bool Client::joinMatch(uint32_t lobbyID) {
@@ -17,6 +39,8 @@ bool Client::joinMatch(uint32_t lobbyID) {
 
   // Connection Request
   socket.send(&protocol, sizeof(protocol));
+
+  receiveAvailableMatch(); // Compatibility with normal client only
   socket.send(&lobbyID, sizeof(lobbyID));
 
   // Connection Response
@@ -25,17 +49,26 @@ bool Client::joinMatch(uint32_t lobbyID) {
   if (opcode != CONNECTED_OK) return false;
 
   socket.receive(&selfID, sizeof(selfID));
+  socket.receive(&mapID, sizeof(mapID));
   this->myPlayerID = selfID;
   Log::playerId = selfID;
 
   return true;
 }
 
-int Client::run(std::string& host, std::string& port, uint32_t lobbyID,
-                std::string& mapFile, std::string& scriptName) {
+int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::string& scriptName) {
   this->connectToServer(host, port);
 
   if (!this->joinMatch(lobbyID)) {
+    std::cout<<"Error. Connection not possible"<<std::endl;
+    return ERROR;
+  }
+
+  std::string mapFile = "../../common/src/YAML/map";
+  mapFile = mapFile + std::to_string(mapID) + ".yaml";
+
+  if(!fileExists(mapFile)){
+    std::cout<<"Error. Map not found."<<std::endl;
     return ERROR;
   }
 
