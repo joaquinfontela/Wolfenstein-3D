@@ -54,8 +54,11 @@ ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
  
   std::string mapFile = MAP_YAML_FILE_NAME + std::to_string(mapID) + ".yaml";
 
-  if(!fileExists(mapFile))
+  if(!fileExists(mapFile)){
+    std::cout<<"[SERVER] Unable to create match with map ID: "<<mapID<<std::endl;
     return nullptr;
+  }
+    
 
   int lobbyID = this->matchesCreated + 1;
   this->matchesCreated++;

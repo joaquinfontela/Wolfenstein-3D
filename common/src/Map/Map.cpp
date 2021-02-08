@@ -20,8 +20,9 @@ int Map::get(int x, int y) { return *(this->matrix + y + x * dimy); }
 
 bool Map::isDoor(int x, int y) { return (this->doors + y + x * dimy)->isDoor; }
 
-void Map::switchDoorState(int x, int y) {
+bool Map::switchDoorState(int x, int y) {
   (this->doors + y + x * dimy)->changeState();
+  return (this->doors + y + x * dimy)->isFakeWall;
 }
 
 void Map::forceDoorState(int x, int y) {

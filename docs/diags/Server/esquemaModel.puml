@@ -1,0 +1,70 @@
+@startuml
+
+class Game{
+    + void updatePositions(float timeElapsed, WaitingQueue<Notification*>& notis)
+    + void addPlayer(int playerID, WaitingQueue<Notification*>& notis)
+    + bool removePlayer(int playerID)
+    + std::tuple<int, int> moveDoor(int playerID)
+    + void start(int playerID);
+    + void end(WaitingQueue<Notification*>& queue)
+}
+
+class Player{
+    + void update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables)
+    + bool collidesWith(double x, double y)
+    + int attack(float timeElapsed)
+    + int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis)
+    
+}
+
+class Map{
+    + Player* traceAttackFrom(Player* attacker, int range)
+    + std::tuple<int, int> moveDoor(Player* p)
+    + bool moveTo(double fromX, double fromY, double x, double y, Player* p,
+              WaitingQueue<Notification*>& notis)
+}
+
+class Tile{
+    + void applyDamageToPlayers(int damage, int distanceToCenter, WaitingQueue<Notification*>& notif)
+    + bool allowMovement(double x, double y, Player* p, WaitingQueue<Notification*>& notis)
+}
+
+class Item{
+    + virtual void pickUp(Player* p)
+    + virtual bool canBePickedUpBy(Player* p)
+}
+
+class Weapon{
+    + unsigned int getRandomDamage()
+    + virtual int getRange()
+}
+
+class Door{
+    + virtual bool isLocked()
+    + virtual void changeStatus()
+}
+
+class Updatable{
+    + virtual void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif)
+    + virtual bool notify(WaitingQueue<Notification*>& notif)
+
+}
+
+
+Game-->Player
+Game-->Map
+Player-->Map
+Map..>Player
+Map-->Tile
+Tile-->Player
+Tile-->Item
+Player..>Item
+Item..>Player
+Player-->Weapon
+Tile-->Weapon
+Tile-->Door
+Game-->Updatable
+Player..>Updatable
+
+
+@enduml

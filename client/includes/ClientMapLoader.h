@@ -27,6 +27,8 @@ class ClientMapLoader {
   // Returns a vector with all the Coordinates where there is a door.
   std::vector<Coordinate> getDoorCoordinates();
 
+  std::vector<Coordinate> getFakeWallCoordinates();
+
  private:
   int uniqueid;
   YAMLMapReader yamlMapReader;

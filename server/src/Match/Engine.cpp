@@ -77,6 +77,14 @@ void Engine::executeCommands() {
     this->gameLock.unlock();
     delete newCommand;
   }
+
+    while(!commandQueue.isEmpty()){
+    Command* n = nullptr;
+    n = commandQueue.pop();
+    if (n == nullptr) break;
+    
+    delete n;
+  }
 }
 void Engine::sendNotifications() {
   while (cont) {
@@ -94,5 +102,14 @@ void Engine::sendNotifications() {
     }
 
     delete newNotification;
+  }
+
+  
+  while(!notifications.isEmpty()){
+    Notification* n = nullptr;
+    n = notifications.pop();
+    if (n == nullptr) break;
+    
+    delete n;
   }
 }

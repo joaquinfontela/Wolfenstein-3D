@@ -9,7 +9,7 @@ class MachineGun : public Shootable {
              unsigned int precision, float blastFrequency)
       : Shootable(uniqueId, newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
-        ID(3) {std::cout<<"Creating machineGun with BF: "<<blastFrequency<<std::endl;}
+        ID(3) {}
   ~MachineGun();
   int getID();
   int getUniqueId();

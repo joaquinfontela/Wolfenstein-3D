@@ -152,8 +152,10 @@ void CommandExecuter::openDoor() {
   this->socket.receive(&y, sizeof(y));
   std::cout << "[GAME] Switching door state at: " << x << ", " << y
             << std::endl;
-  matrix.switchDoorState(x, y);
-  this->playDoorOpeningSound(x, y);
+  if(!matrix.switchDoorState(x, y)){
+    this->playDoorOpeningSound(x, y);
+  }
+  
 }
 
 void CommandExecuter::pickUpItem() {
