@@ -57,6 +57,8 @@ bool ClientCommunication::connectToLobby() {
         this->socket.send(&responseOpcode, sizeof(responseOpcode));
         uint32_t mapID = this->matchList.getMapID(lobbyID);
 
+        std::cout<<"[SERVER] Client joining match: "<<int(lobbyID)<<std::endl;
+
         uint32_t playerID = this->playerID;
         this->socket.send(&playerID, sizeof(playerID));
         this->socket.send(&mapID, sizeof(mapID));
