@@ -36,7 +36,7 @@ map_canvas::map_canvas(TileMatrix* tile_matrix) {
     }
 }
 
-bool map_canvas::paint_tile(std::vector<int> coordinates, tile_item* new_tile) {
+bool map_canvas::add_tile(std::vector<int> coordinates, tile_item* new_tile) {
   int col = coordinates[0] - 1;
   int row = coordinates[1] - 1;
   std::vector<tile_item*> vector_selected = this->grilla.at(row).at(col);

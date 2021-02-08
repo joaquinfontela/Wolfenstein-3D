@@ -70,7 +70,7 @@ void Map_painter::paint_map(std::vector<int> coordinates,
     this->mc->erase_tiles_at(coordinates);
     this->paint_multiple_tile(position, tile_backup);
     for (size_t x = 0; x < tile_backup.size(); x++) {
-      this->mc->paint_tile(coordinates, tile_backup.at(x));
+      this->mc->add_tile(coordinates, tile_backup.at(x));
     }
   } else {
     this->paint_big_tile(position, tiles.at(0));
