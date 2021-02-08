@@ -4,7 +4,6 @@
 
 TileMatrix* YAMLConversor::updateTileMatrix() {
   YAMLMapReader yamlMapReader(this->fileName);
-  tile_factory tileFactory;
   TileMatrix* tileMatrix =
       this->createEmptyMatrix(yamlMapReader.getMapDimensions());
   std::map<int, std::vector<Coordinate>> itemCoordinateMap =
@@ -16,7 +15,7 @@ TileMatrix* YAMLConversor::updateTileMatrix() {
     for (Coordinate c : coordinates) {
       QString path(pathFactory.getTilePath(id).c_str());
       tile_item* t = new tile_item(
-          path, id, tileFactory.isCumulative(id, yamlMapReader));  // provisory
+          path, id, tile_factory::isCumulative(id, yamlMapReader));  // provisory
       tileMatrix->at(c.getY() - 1)[c.getX() - 1].push_back(t);
     }
   }

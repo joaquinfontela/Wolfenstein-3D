@@ -32,6 +32,14 @@ set(PROJECT_SOURCES
         login.cpp
         login.h
         login.ui
+        create_window.cpp
+        create_window.h
+        create_window.ui
+        join_window.cpp
+        join_window.h
+        join_window.ui
+        match_id.cpp
+        match_id.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

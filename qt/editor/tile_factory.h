@@ -9,8 +9,8 @@
 
 class tile_factory {
  private:
-  bool isDoor(int tileItemId, std::vector<int>& doorsIdsLimits);
-  bool isWall(int tileItemId, std::vector<int>& wallsIdsLimits);
+  static bool isDoor(int tileItemId, std::vector<int>& doorsIdsLimits);
+  static bool isWall(int tileItemId, std::vector<int>& wallsIdsLimits);
 
  public:
   /**
@@ -22,7 +22,7 @@ class tile_factory {
    */
   virtual tile_item* get_tile(std::vector<int>& coordinates) = 0;
 
-  bool isCumulative(int tileItemId, YAMLMapReader& yamlMapReader);
+  static bool isCumulative(int tileItemId, YAMLMapReader& yamlMapReader);
 };
 
 #endif  // TILE_FACTORY_H

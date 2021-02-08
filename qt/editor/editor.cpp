@@ -70,7 +70,12 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   this->mc = NULL;
 }
 
-Editor::~Editor() { delete ui; }
+Editor::~Editor() {
+    if(this->mc != NULL){
+
+    }
+    delete ui;
+}
 
 int Editor::actual_tile_size(){
     return this->tile_sizes.at(actual_tiles_size_index);
@@ -196,8 +201,4 @@ void Editor::on_actionParedes_Falsas_triggered()
 {
     tile_factory* factory = new fake_wall_tile_factory();
     this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
-}
-
-Editor::~Editor(){
-
 }
