@@ -26,14 +26,54 @@ class MapLoader {
   unsigned int wallIdStart;
   unsigned int wallIdEnd;
   std::map<int, std::vector<Coordinate>> itemCoordinateMap;
+
+  /*
+   * [SERVER-SIDE] Adds all the weapons in itemCoordinateMap to map.
+   *
+   * @param map a map of a game.
+   *
+   */
   void addWeaponsToMap(Map* map);
+
+  /*
+   * [SERVER-SIDE] Adds all the items in itemCoordinateMap to map.
+   *
+   * @param map a map of a game.
+   *
+   */
   void addItemsToMap(Map* map);
+
+  /*
+   * [SERVER-SIDE] Adds all the doors in itemCoordinateMap to map.
+   *
+   * @param map a map of a game.
+   *
+   */
   void addDoorsToMap(Map* map);
+
+  /*
+   * [SERVER-SIDE] Adds all the walls in itemCoordinateMap to map.
+   *
+   * @param map a map of a game.
+   *
+   */
   void addWallsToMap(Map* map);
+
+  /*
+   * @return Returns true if itemId is a key in itemCoordinateMap, or
+   * false otherwise.
+   *
+   * @param itemId
+   */
   bool idIsInItemCoordinateMap(int itemId);
 
  public:
   MapLoader(std::string& yamlFile);
+
+  /*
+   * @return a dynamic pointer to a map loaded with the data in the yaml file
+   * given in the constructor.
+   */
   Map* loadMap();
 };
 

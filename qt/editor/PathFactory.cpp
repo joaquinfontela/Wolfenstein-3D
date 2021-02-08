@@ -125,50 +125,62 @@ std::string PathFactory::getTilePath(int tileId) {
       break;
 
     case 301:
+    case 351:
       path = "./elementos_mapa/paredes/bluestone.png";
       break;
 
     case 303:
+    case 353:
       path = "./elementos_mapa/paredes/colorstone.png";
       break;
 
     case 309:
+    case 359:
       path = "./elementos_mapa/paredes/eagle.png";
       break;
 
     case 302:
+    case 352:
       path = "./elementos_mapa/paredes/greystone.png";
       break;
 
     case 310:
+    case 360:
       path = "./elementos_mapa/paredes/hitlerwall.png";
       break;
 
     case 305:
+    case 355:
       path = "./elementos_mapa/paredes/mossy.png";
       break;
 
     case 311:
+    case 361:
       path = "./elementos_mapa/paredes/propaganda.png";
       break;
 
     case 308:
+    case 358:
       path = "./elementos_mapa/paredes/purplestone.png";
       break;
 
     case 307:
+    case 357:
       path = "./elementos_mapa/paredes/redbrick.png";
       break;
 
     case 306:
+    case 356:
       path = "./elementos_mapa/paredes/skeleton.png";
       break;
 
     case 312:
+    case 362:
       path = "./elementos_mapa/paredes/greywall.png";
       break;
 
     case 304:
+    case 354:
       path = "./elementos_mapa/paredes/wood.png";
       break;
 

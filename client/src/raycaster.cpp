@@ -43,8 +43,9 @@ void Raycaster::run() {
     double distanceBuffer[this->width];
     float totalTime = 0;
 
-    int adjustment = this->width * 3 / 200;
-    for (int i = adjustment; i < this->width - adjustment; i++) {
+    //int adjustment = this->width * 3 / 200;
+    //for (int i = adjustment; i < this->width - adjustment; i++) {
+    for (int i = 0; i < this->width; i++) {
       double cameraXCoord = (i << 1) / (double)this->width - 1;
       double rayDirX = dirX + planeX * cameraXCoord;
       double rayDirY = dirY + planeY * cameraXCoord;

@@ -217,6 +217,62 @@ unsigned int ClientMapLoader::convertYamlFileItemIdToProtocolItemSkinId(
       return MEDKIT;
       break;
 
+    case 110:
+      return SMALLBARREL_SPRITE;
+      break;
+
+    case 111:
+      return CAGESKELETON;
+      break;
+
+    case 112:
+      return FLAG;
+      break;
+
+    case 113:
+      return FLOORLAMP;
+      break;
+
+    case 114:
+      return GREENBARREL;
+      break;
+
+    case 115:
+      return GREENLIGHT_SPRITE;
+      break;
+
+    case 116:
+      return GROUNDSKELETON;
+      break;
+
+    case 117:
+      return HEAPOFBONES;
+      break;
+
+    case 118:
+      return HUNGSKELETON;
+      break;
+
+    case 119:
+      return PILLAR;
+      break;
+
+    case 120:
+      return PLANT;
+      break;
+
+    case 121:
+      return SPIKES;
+      break;
+
+    case 122:
+      return TABLE;
+      break;
+
+    case 123:
+      return WATER;
+      break;
+
     case 404:
       return FLYINGMISSILE;
       break;

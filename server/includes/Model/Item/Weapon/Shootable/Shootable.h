@@ -1,8 +1,9 @@
 #ifndef SHOOTABLE_H
 #define SHOOTABLE_H
 
-#include "../Weapon.h"
 #include <climits>
+
+#include "../Weapon.h"
 
 class Shootable : public Weapon {
  protected:
@@ -11,6 +12,12 @@ class Shootable : public Weapon {
   unsigned int shotsPerBlast;
   unsigned int ammoLostPerShot;
   unsigned int precision;
+
+  /*
+   * [SERVER-SIDE] Simulates a shot of a bullet.
+   *
+   * @return the damage of a single shot.
+   */
   unsigned int shoot();
   float timeSinceLastShot;
 
