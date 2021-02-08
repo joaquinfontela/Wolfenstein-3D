@@ -47,7 +47,6 @@ Map::Map(ClientMapLoader& loader) : loader(loader) {
   matrix = loader.getWallIdMatrix();
   dimx = loader.dimy;
   dimy = loader.dimx;
-  std::cout<<dimx<<", "<<dimy<<std::endl;
 }
 
 char Map::getDoorState(int x, int y) {
