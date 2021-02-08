@@ -60,7 +60,7 @@ void CommandExecuter::playShootingSounds(int shooterId) {
 void CommandExecuter::playDoorOpeningSound(int x, int y) {
   double dist = players.at(this->selfId)->calculateDist(x, y);
   if (dist < 0) dist = 1;
-  this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist * 10);
+  this->audiomanager.playOnVariableVolumeWithId(matrix.getDoorSound(x,y), dist * 10);
 }
 
 void CommandExecuter::playExplosionSound() {
@@ -196,7 +196,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  //this->audiomanager.playWithId(MUSIC);
+  this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;

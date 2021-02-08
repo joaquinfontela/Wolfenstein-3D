@@ -101,6 +101,15 @@ class Map {
    * @return int* Pointer to the first value of the dynamic matrix.
    */
   int* getMatrix();
+
+  /**
+   * @brief [CLIENT SIDE] Returns the sound code for the given door coordinates.
+   *
+   * @param x Door X Coord.
+   * @param y Door Y Coord.
+   * @return Sound code.
+   */
+  int getDoorSound(int x, int y);
 };
 
 #endif  // TP_FINAL_MAP_H

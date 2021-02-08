@@ -4,7 +4,7 @@
 //
 
 #include "../../includes/Map/Map.h"
-
+#include "../../../client/includes/clientprotocol.h"
 #include "../../../client/includes/doortile.h"
 
 Map::~Map() {
@@ -51,4 +51,9 @@ Map::Map(ClientMapLoader& loader) : loader(loader) {
 
 char Map::getDoorState(int x, int y) {
   return (this->doors + y + x * dimy)->state;
+}
+
+int Map::getDoorSound(int x, int y) {
+  bool isFakeWall = (this->doors + y + x * dimy)->isFakeWall;
+  return (DOOR_SOUND * !isFakeWall + SECRET_DOOR_SOUND * isFakeWall);
 }
