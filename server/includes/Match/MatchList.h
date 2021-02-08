@@ -23,6 +23,7 @@ class MatchList {
   void forceShutdown();
   void matchCleanup();
   std::mutex lock;
+  int matchesCreated = 0;
 
  public:
   MatchList();
@@ -34,7 +35,8 @@ class MatchList {
    * @param lobbyID The lobby ID
    * @return The connection handler of the client, NULL if not possible
    */
-  ConnectionHandler* joinOrCreate(ClientCommunication* player, int lobbyID);
+  ConnectionHandler* join(ClientCommunication* player, int lobbyID);
+  ConnectionHandler* create(ClientCommunication* player, int lobbyID);
 
   ~MatchList();
 };

@@ -23,13 +23,14 @@ bool map_actions::eventFilter(QObject* obj, QEvent* event) {
     QMouseEvent* me = (QMouseEvent*)event;
     int x = me->pos().x();
     int y = me->pos().y();
+
     if (this->editor->eraser_on == false) {
-      add_to_map(x, y);
+        add_to_map(x, y);
     } else {
-      editor->mc->erase_tiles_at(this->get_coordinate(x, y));
+        editor->mc->erase_tiles_at(this->get_coordinate(x, y));
     }
-    return true;
-  } else {
+    return true;  
+  }else {
     return QObject::eventFilter(obj, event);
   }
 }
@@ -57,10 +58,9 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
   int COL = this->editor->mc->cant_col;
   int ROW = this->editor->mc->cant_row;
   int tile_size = this->editor->actual_tile_size();
-  QScrollBar* vertical_bar =
-      this->editor->ui->graphics_map_container->verticalScrollBar();
-  QScrollBar* horizontal_bar =
-      this->editor->ui->graphics_map_container->horizontalScrollBar();
+
+  QScrollBar* vertical_bar = this->editor->ui->graphics_map_container->verticalScrollBar();
+  QScrollBar* horizontal_bar = this->editor->ui->graphics_map_container->horizontalScrollBar();
 
   for (int i = 1; i <= COL; i++) {
     float newColLine = i * tile_size - horizontal_bar->value();

@@ -11,7 +11,7 @@ void Client::connectToServer(std::string& host, std::string& port) {
 }
 
 bool Client::joinMatch(uint32_t lobbyID) {
-  uint32_t protocol = CONNECT_TO_LOBBY;
+  uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
 

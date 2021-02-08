@@ -2,7 +2,7 @@
 #define __PROTOCOL_H__
 
 // Command definitions
-#define CONNECT_TO_LOBBY 1
+#define JOIN_LOBBY 1
 #define PLAYER_POS_UPDATE 2
 #define PLAYER_SHOOT_UP 3
 #define SHOTS_FIRED 4
@@ -22,6 +22,7 @@
 #define PLAYER_SHOOT_DOWN 18
 #define START_MATCH 19
 #define ENDING_MATCH 20
+#define CREATE_LOBBY 21
 
 /*// PowerUp ID definitions
 #define FOOD 30
@@ -51,5 +52,6 @@
 // RESPONSE DEFINITIONS
 
 #define CONNECTED_OK 1
+#define CONNECTION_REFUSED 2
 
 #endif

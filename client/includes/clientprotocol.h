@@ -3,7 +3,7 @@
 #include "log.h"
 
 #define LOG_WITH_ID(Y) LOG((Y + std::to_string(id)).c_str())
-#define LOG(ERROR) Log::test(__FILE__, __FUNCTION__, __LINE__, ERROR);
+#define LOG(ERROR) Log::log(__FILE__, __FUNCTION__, __LINE__, ERROR);
 
 #define ERROR -1
 #define HEIGHT 600
@@ -17,7 +17,7 @@
 
 #define TIMES_THE_AUDIO_IS_PLAYED 1
 #define IS_MUSIC true
-#define MUSIC_VOLUME 3
+#define MUSIC_VOLUME 7
 
 #define GET_WEAPON_SOUND(X) X
 
@@ -35,6 +35,7 @@
 #define SS_DEATH_SOUND 12
 #define OFFICIAL_DEATH_SOUND 13
 #define MUTANT_DEATH_SOUND 14
+#define MUSIC 15
 
 #define GET_DEATH_SOUND(X) (X+DOG_DEATH_SOUND-1)
 
@@ -159,6 +160,7 @@
 #define OFFICER_ATTACK 94
 #define MUTANT_ATTACK 95
 #define LOCKED_DOOR 96
+#define HIGHSCORE 97
 
 #define GET_STANDING_IMG_FROM_GUNID(X) (X + DOG_FRONT - 1)
 #define GET_MOVING_ANIMATION_FROM_GUNID(X) (DOG_SPRINT - 1 + X)

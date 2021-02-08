@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
   if (argc == 3) {
     ip = argv[1];
     port = argv[2];
-    game_id = 1;
+    game_id = 2;
   } else {
     QApplication a(argc, argv);
     Login w(port, ip, game_id);
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
   }
 
   Client client;
-  std::string mapFile = "../../common/src/YAML/map1.yaml";
+  std::string mapFile = "../../common/src/YAML/map123.yaml";
 
   return client.run(ip, port, game_id, mapFile);
 }

@@ -23,7 +23,6 @@ class Editor : public QMainWindow {
   Ui::Editor* ui;
   std::string actual_map_name;
   tile_item* tile_item_selected;
-  tiles_container* tile_container;
   map_canvas* mc;
   std::vector<int> tile_sizes;
   int actual_tiles_size_index;
@@ -64,6 +63,8 @@ class Editor : public QMainWindow {
   void on_actionRespawn_triggered();
 
   void on_actionSave_and_exit_triggered();
+
+  void on_actionParedes_Falsas_triggered();
 
 private:
   void save_map();

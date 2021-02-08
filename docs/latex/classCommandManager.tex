@@ -1,0 +1,43 @@
+\hypertarget{classCommandManager}{}\doxysection{Command\+Manager Class Reference}
+\label{classCommandManager}\index{CommandManager@{CommandManager}}
+
+
+Abstraction for any class that needs to send and receive information from the server and know if the game is still being played.  
+
+
+
+
+{\ttfamily \#include $<$commandmanager.\+h$>$}
+
+Inheritance diagram for Command\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classCommandManager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCommandManager_a26f0443c7b77fc482c9cc62ff55da298}\label{classCommandManager_a26f0443c7b77fc482c9cc62ff55da298}} 
+{\bfseries Command\+Manager} (\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard, \mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket, std\+::atomic$<$ bool $>$ \&alive)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCommandManager_a2cb6d904e58e2edba0848a725a59fc94}\label{classCommandManager_a2cb6d904e58e2edba0848a725a59fc94}} 
+\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries scoreboard}
+\item 
+\mbox{\Hypertarget{classCommandManager_a16d843ac4072ffbdb09fe750892c3ba5}\label{classCommandManager_a16d843ac4072ffbdb09fe750892c3ba5}} 
+\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \& {\bfseries socket}
+\item 
+\mbox{\Hypertarget{classCommandManager_a3fd3799c7616260fe8aa282362eeee54}\label{classCommandManager_a3fd3799c7616260fe8aa282362eeee54}} 
+std\+::atomic$<$ bool $>$ \& {\bfseries alive}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstraction for any class that needs to send and receive information from the server and know if the game is still being played. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/includes/commandmanager.\+h\end{DoxyCompactItemize}

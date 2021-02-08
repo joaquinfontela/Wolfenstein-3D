@@ -41,6 +41,7 @@ set(PROJECT_SOURCES
         save_window.cpp
         map_scene.cpp
         tile_item.cpp
+        fake_wall_tile_factory.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

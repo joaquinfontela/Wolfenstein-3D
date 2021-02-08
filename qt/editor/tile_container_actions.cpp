@@ -2,6 +2,8 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include "tiles_container.h"
+#include "QApplication"
+#include "ui_editor.h"
 
 tile_container_actions::tile_container_actions(Editor* editor){
     this->editor = editor;
@@ -21,7 +23,7 @@ bool tile_container_actions::eventFilter(QObject *obj, QEvent *event){
                }
            }
            return true;
-        } else{
+        }else{
             return QObject::eventFilter(obj, event);
         }
 }

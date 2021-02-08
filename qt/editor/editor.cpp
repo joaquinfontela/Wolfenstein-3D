@@ -9,6 +9,7 @@
 #include "tiles_container.h"
 #include "ui_editor.h"
 #include "wall_tile_factory.h"
+#include "fake_wall_tile_factory.h"
 #include "map_painter.h"
 #include <QMessageBox>
 #include "open_window.h"
@@ -48,6 +49,8 @@ void Editor::initialize_map_container(int col, int row) {
   ui->graphics_map_container->installEventFilter(ma);
 
   ui->actionsafe->setEnabled(true);
+  ui->actionZoom_in->setEnabled(true);
+  ui->actionNew->setEnabled(false);
 }
 
 Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
@@ -59,8 +62,10 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   ui->actionsafe->setEnabled(false);
   this->actual_map_saved = false;
   ui->actionZoom_out->setEnabled(false);
+  ui->actionZoom_in->setEnabled(false);
   this->eraser_on = false;
   my_map_scene = NULL;
+  this->mc = NULL;
 }
 
 Editor::~Editor() { delete ui; }
@@ -103,23 +108,31 @@ void Editor::on_actionItems_triggered() {
 
 void Editor::on_actionZoom_in_triggered()
 {
-    this->actual_tiles_size_index--;
+    this->actual_tiles_size_index++;
+    map_canvas* new_mc = new map_canvas(&mc->grilla);
+    this->mc->grilla.clear();
+    this->my_map_scene->clear();
+    this->mc = new_mc;
     this->paint_map();
-    if(actual_tiles_size_index == 0){
+
+    ui->actionZoom_out->setEnabled(true);
+    if(this->actual_tiles_size_index == 2){
         ui->actionZoom_in->setEnabled(false);
     }
 }
 
 void Editor::on_actionZoom_out_triggered()
 {
-    if(actual_tiles_size_index == 0){
-        ui->actionZoom_out->setEnabled(true);
-    }
-    this->actual_tiles_size_index++;
+    this->actual_tiles_size_index--;
+    map_canvas* new_mc = new map_canvas(&mc->grilla);
+    this->mc->grilla.clear();
+    this->my_map_scene->clear();
+    this->mc = new_mc;
     this->paint_map();
 
-    if(actual_tiles_size_index == 2){
-        ui->actionZoom_in->setEnabled(false);
+    ui->actionZoom_in->setEnabled(true);
+    if(this->actual_tiles_size_index == 0){
+        ui->actionZoom_out->setEnabled(false);
     }
 }
 
@@ -128,9 +141,12 @@ void Editor::on_actionOpen_triggered()
     open_window ow(this);
     ow.setModal(true);
     ow.exec();
-    this->actual_map_saved = true;
-    this->paint_map();
-    ui->actionNew->setEnabled(false);
+    if(this->mc != NULL){
+        this->actual_map_saved = true;
+        this->paint_map();
+        ui->actionNew->setEnabled(false);
+        ui->actionZoom_in->setEnabled(true);
+    }
 }
 
 void Editor::save_map(){
@@ -172,4 +188,10 @@ void Editor::on_actionSave_and_exit_triggered()
 {
     this->save_map();
     QApplication::quit();
+}
+
+void Editor::on_actionParedes_Falsas_triggered()
+{
+    tile_factory* factory = new fake_wall_tile_factory();
+    this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }

@@ -35,4 +35,5 @@ void map_scene::paint_grill(int col, int row, int tile_size){
       painter.drawLine(0, newV - 1, width, newV - 1);
     }
     this->addPixmap(pm);
+    this->setSceneRect(0,0, width, height);
 }

@@ -10,9 +10,10 @@
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
-#include "../../common/includes/Thread/Thread.h"
 #include "ClientMapLoader.h"
 #include "audiomanager.h"
+#include "commandmanager.h"
+#include "drawablevector.h"
 #include "player.h"
 #include "scoreboard.h"
 
@@ -21,7 +22,7 @@
  * the game running.
  *
  */
-class CommandExecuter : public Thread {
+class CommandExecuter : public CommandManager {
  public:
   /**
    * @brief Construct a new Command Executer object.
@@ -30,7 +31,6 @@ class CommandExecuter : public Thread {
    * @param alive True if the game is still running.
    * @param sprites Sprites vector.
    * @param players Players mapped by their ids.
-   * @param lock Stops the executer from reading an invalid sprite.
    * @param selfId Our player's id.
    * @param audiomanager Audio manager reference.
    * @param matrix Map reference.
@@ -38,10 +38,9 @@ class CommandExecuter : public Thread {
    * @param scoreboard Scoreboard reference.
    */
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive,
-                  std::vector<Drawable*>& sprites,
-                  std::map<uint32_t, Player*>& players, std::mutex& lock,
+                  DrawableVector& sprites, std::map<uint32_t, Player*>& players,
                   int selfId, AudioManager& audiomanager, Map& matrix,
-                  ClientMapLoader& loader, ScoreBoard& scoreboard);
+                  ClientMapLoader& loader, ScoreBoard* scoreboard);
 
   ~CommandExecuter();
 
@@ -201,16 +200,12 @@ class CommandExecuter : public Thread {
   void playDoorOpeningSound(int x, int y);
 
   SocketWrapper infogetter;
-  SocketCommunication& socket;
-  std::atomic<bool>& alive;
-  std::vector<Drawable*>& sprites;
+  DrawableVector& sprites;
   std::map<uint32_t, Player*>& players;
-  std::mutex& lock;
   int selfId;
   AudioManager& audiomanager;
   Map& matrix;
   ClientMapLoader& loader;
-  ScoreBoard& scoreboard;
 };
 
 typedef std::map<uint32_t, Player*>::iterator iterator_t;

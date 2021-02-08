@@ -85,7 +85,8 @@ void Game::updatePositions(float timeElapsed,
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    it->second->update(timeElapsed, notis, this->updatables);
+    if(!it->second->isDead())
+      it->second->update(timeElapsed, notis, this->updatables);
   }
 
   std::list<Updatable*>::iterator updatableIt = this->updatables.begin();
@@ -112,10 +113,14 @@ void Game::sendGameStatus(WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    PlayerData data;
-    it->second->fillPlayerData(data);
-    PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
-    notis.push(noti);
+    
+    if(!it->second->isDead()){
+      PlayerData data;
+      it->second->fillPlayerData(data);
+      PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
+      notis.push(noti);
+    }
+    
   }
 }
 
@@ -124,7 +129,7 @@ void Game::sendUpdateMessages(WaitingQueue<Notification*>& notis) {
 
   for (; it != this->players.end(); ++it) {
     PlayerData data;
-    if (it->second->hasToBeUpdated()) {
+    if (it->second->hasToBeUpdated() && !it->second->isDead()) {
       it->second->fillPlayerData(data);
       it->second->setNotifiable(false);
       PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);

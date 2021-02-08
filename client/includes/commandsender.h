@@ -5,14 +5,14 @@
 
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Socket/SocketException.h"
-#include "../../common/includes/Thread/Thread.h"
+#include "commandmanager.h"
 #include "scoreboard.h"
 
 /**
  * @brief Class that takes the user input and sends it to the server.
  *
  */
-class CommandSender : public Thread {
+class CommandSender : public CommandManager {
  public:
   /**
    * @brief Construct a new Command Sender object
@@ -39,11 +39,6 @@ class CommandSender : public Thread {
    *
    */
   virtual void run();
-
- protected:
-  ScoreBoard* scoreboard;
-  std::atomic<bool>& alive;
-  SocketCommunication& socket;
 };
 
 #endif  // COMMANDSENDER_H_

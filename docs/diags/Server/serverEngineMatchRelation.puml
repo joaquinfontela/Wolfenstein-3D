@@ -1,0 +1,76 @@
+@startuml
+
+
+class Engine{
+
+    + void run()
+    + void executeCommands()
+    + void update(float timeElapsed)
+    + void sendNotifications()
+
+}
+
+class Game{
+
+    + void addPlayer(int playerID, WaitingQueue<Notification*>& notifications)
+    + void update(float timeElapsed, WaitingQueue<Notification*>& notifications)
+    + void start(int playerID)
+    + void end(WaitingQueue<Notification*>& notifications)
+    
+
+}
+
+
+
+class Match{
+    + void start()
+    + ConnectionHandler* addPlayerToMatch(ClientCommunication* player)
+}
+
+class ConnectionHandler{
+    + void run()
+    + void receiveCommands()
+}
+
+class WaitingQueue<T>{
+    + void push(T)
+    + T pop()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Match-->ClientCommunication
+
+Match..>ConnectionHandler
+
+Match-->Engine
+
+ConnectionHandler-->WaitingQueue
+
+Engine-->WaitingQueue
+
+
+
+ClientCommunication-->ConnectionHandler
+
+Match-->Game
+
+Engine-->Game
+
+Game..>WaitingQueue
+
+
+
+@enduml

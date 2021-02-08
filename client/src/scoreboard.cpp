@@ -1,5 +1,6 @@
 #include "../includes/scoreboard.h"
-#include "../includes/sdltexture.h"
+#include "../includes/texturemanager.h"
+#include "../includes/clientprotocol.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -16,7 +17,7 @@ void ScoreBoard::renderText(const char* text, int rows, int column, int w,
                    .y = (h * rows) / 6,
                    .w = w >> 3,
                    .h = h >> 3};
-  this->window->renderText(text, &rect);
+  this->manager.renderText(text, &rect);
 }
 
 void ScoreBoard::renderTitle(const char* text, int rows, int column, int w,
@@ -26,7 +27,7 @@ void ScoreBoard::renderTitle(const char* text, int rows, int column, int w,
                    .y = 10 * (h * rows) / 50,
                    .w = imgw,
                    .h = h >> 3};
-  this->window->renderText(text, &rect);
+  this->manager.renderText(text, &rect);
 }
 
 void ScoreBoard::renderScore(int width, int height) {
@@ -66,12 +67,11 @@ void ScoreBoard::draw() {
   std::string scores = "Scores  ";
   std::string kills = "  Kills  ";
   std::string shotsfired = "Shots Fired";
-  SdlTexture background("../media/highscores.png", *this->window);
   int height, width;
   SDL_Rect rect;
   while (!this->hasEnded()) {
-    this->window->getWindowSize(&width, &height);
-    background.renderAll({ .x = 0, .y = 0, .width = width, .height = height});
+    this->manager.getWindowSize(&width, &height);
+    this->manager.renderComplete(HIGHSCORE);
     rect = {.x = (3 * width) >> 3,
             .y = -(height >> 2) / 6,
             .w = width >> 2,
@@ -82,7 +82,7 @@ void ScoreBoard::draw() {
     this->renderScore(width, height);
     this->renderKills(width, height);
     this->renderShotsFired(width, height);
-    this->window->render();
+    this->manager.updateScreen();
   }
 }
 

@@ -12,13 +12,10 @@ class tiles_container : public QGraphicsScene
     int cant_rows;
     QGraphicsPixmapItem* pm_item;
     float margin_vertical;
-    float margin_horizontal;
-    QLabel* label;
 
     std::vector<int> get_tile_coordinate(int x, int y);
     bool is_inside(int x, int y);
     void paint_grill(int cant_row);
-
 public:
     tile_item* tile_clicked(int x, int y);
     void update_tileset(QString path, int cant_row, tile_factory* factory);

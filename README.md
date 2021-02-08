@@ -23,7 +23,7 @@ sudo apt-get install libsdl2-mixer-dev -y &&
 sudo apt-get install libsdl2-ttf-dev -y && 
 sudo apt-get install qt5-default && 
 ```
-## Compilación e instalacion de librerias YAML
+## Configuración, compilación e instalacion de librerias YAML
 Una vez instaladas las dependencias previas, se debe de utilizar el script install.sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere.
 
 ```
@@ -31,7 +31,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## Ejecutar el trabajo
+## Forma de Uso
 ### Servidor
 Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando
 ```
@@ -46,3 +46,5 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 ./Wolfen3D <HOST> <PORT>
 ```
 Siendo HOST la direccion del servidor a utilizar, y siendo PORT el puerto en el que el servidor este aceptando clientes.
+
+## Apéndice de Errores

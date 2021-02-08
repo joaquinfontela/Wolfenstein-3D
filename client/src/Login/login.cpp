@@ -62,4 +62,25 @@ void Login::on_button_join_clicked() {
   }
 }
 
-void Login::on_button_create_clicked() {}
+void Login::on_button_create_clicked() {
+  /*QString ip = ui->dato_ip->text();
+  QString game_id = ui->dato_game->text();
+  QString port = ui->dato_puerto->text();
+  auto parseSpaces = [](const std::string& s) {
+    size_t end = s.find_last_not_of(WHITESPACE);
+    std::string ans = (end == std::string::npos) ? "" : s.substr(0, end + 1);
+    size_t start = ans.find_first_not_of(WHITESPACE);
+    return (start == std::string::npos) ? "" : ans.substr(start);
+  };
+  if (port.isEmpty() || game_id.isEmpty() || ip.isEmpty()) {
+    QMessageBox messageBox;
+    messageBox.critical(0, "Error", "Complete all the boxes.");
+    messageBox.setFixedSize(800, 600);
+    messageBox.exec();
+  } else {
+    my_ip = parseSpaces(ip.toStdString());
+    my_host = parseSpaces(port.toStdString());
+    my_game_id = game_id.toInt();
+    QApplication::quit();
+  }*/
+}

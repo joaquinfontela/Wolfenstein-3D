@@ -74,10 +74,10 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../../qt/editor/tile.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../../qt/editor/tile_item.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../Coordinate/Coordinate.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">typedef</span> std::vector&lt;std::vector&lt;std::vector&lt;tile*&gt;&gt;&gt; TileMatrix;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">typedef</span> std::vector&lt;std::vector&lt;std::vector&lt;tile_item*&gt;&gt;&gt; TileMatrix;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classYAMLMapWriter.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classYAMLMapWriter.html">YAMLMapWriter</a> {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; <span class="keyword">private</span>:</div>
@@ -89,7 +89,7 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> addDimY();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> addItemTypesLimits();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> addAllItemsToMatrix();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> processMatrixPosition(std::vector&lt;tile*&gt;&amp; tiles, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> processMatrixPosition(std::vector&lt;tile_item*&gt;&amp; tiles, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x,</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> addCoordinateWhereObjectWithIdIsIn(<span class="keywordtype">int</span> objectId, <a class="code" href="classCoordinate.html">Coordinate</a>&amp; coordinate);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> writeDataIntoFile();</div>

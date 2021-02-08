@@ -11,6 +11,7 @@
 #include "../../../includes/Model/Item/Weapon/Weapon.h"
 #include "../../../includes/Control/Notification/PlayerDied.h"
 #include "../../../includes/Control/Notification/ShotsFired.h"
+#include "../../../includes/Control/Notification/PlayerDisconnect.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 
 
@@ -40,6 +41,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
   this->planeX = 0;
   this->shooting = false;
   this->isAdmin = false;
+  this->dead = false;
   this->kills = 0;
   this->shotsFired = 0;
 
@@ -80,6 +82,11 @@ Player::Player(YAMLConfigReader yamlConfigReader)
   this->kills = 0;
   this->shotsFired = 0;
   this->currentWeapon = weapons.at(1);
+  this->dead = false;
+}
+
+bool Player::isDead(){
+  return this->dead;
 }
 
 void Player::setAdmin(){
@@ -122,21 +129,25 @@ void Player::respawn(WaitingQueue<Notification*>& notis) {
 }
 
 int Player::handleDeath(WaitingQueue<Notification*>& notis) {
-  if (this->lifeRemaining == 0) {
-    this->health = 0;
-    return -1;
-  }
 
   PlayerDied* noti = new PlayerDied(this->playerID);
   notis.push(noti);
-
   map.addAmmoDropAt(this->y + 1, this->x + 1, notis);
-  this->respawn(notis);
   if (this->key) {
     this->key = false;
     map.addKeyDropAt(this->y + 1, this->x + 1, notis);
   }
 
+  if (this->lifeRemaining == 0) {
+    this->map.removePlayer(int(this->x), int(this->y), this);
+    PlayerDisconnect* disconnect = new PlayerDisconnect(this->playerID);
+    notis.push(disconnect);
+    this->dead = true;
+    this->health = 0;
+    return -1;
+  }
+
+  this->respawn(notis);
   this->lifeRemaining -= 1;
   this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
 
