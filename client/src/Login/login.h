@@ -15,7 +15,7 @@ class Login;
 QT_END_NAMESPACE
 
 class Login : public QMainWindow {
-  Q_OBJECT
+  
 
  public:
   /**
