@@ -2,7 +2,7 @@
 class Area {
     + void update(int x, int y, int width, int height)
 }
-class Drawable {
+abstract class Drawable {
     + void draw(TextureManager& manager, ...)
 }
 class SdlTexture {

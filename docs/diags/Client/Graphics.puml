@@ -15,7 +15,7 @@ class Door {
     - int mapY
     - Map& map
 }
-class Drawable {
+abstract class Drawable {
     - double x, y
     - bool hasToBeDeleted
     - uint32_t spriteId

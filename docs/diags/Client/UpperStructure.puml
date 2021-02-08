@@ -1,10 +1,17 @@
 @startuml
-class Client
+class Client {
+  - Socket& socket
+  - uint32_t myPlayerID
+  - bool joinMatch(uint32_t lobbyID)
+  - void connectToServer(string& ip, string& port)
+  - void gargabeCollector(vector<Drawable*>& sprites)
+  + int run(int myPlayerID, std::string& mapFile)
+}
 class CommandExecuter
 class CommandManager {
-    - bool& alive
-    - Socket& socket
-    - ScoreBoard& scoreboard
+    # bool& alive
+    # Socket& socket
+    # ScoreBoard& scoreboard
 }
 class CommandSender 
 class Log {
@@ -12,12 +19,7 @@ class Log {
     - {static} mutex& lock
     + {static} log(char* filename, char* function, int line, char* msg)
 }
-class Login {
-    - Ui::Login* ui
-    - string& ip, host, game_id
-    + void on_button_create_clicked()
-    + void on_button_join_clicked()
-}
+package Login {}
 class Raycaster {
     + bool& alive
 }
@@ -33,19 +35,24 @@ class ScoreBoard {
     + void draw()
 }
 class Socket
-class Thread {
+abstract class Thread {
     - {abstract} void run()
 }
 class TextureManager
 
 CommandExecuter --|> CommandManager 
 CommandSender --|> CommandManager
-CommandManager -up-|> Thread
-CommandManager -right-> Socket
-CommandManager --> ScoreBoard
-Client -left-> Raycaster
-Client -right-> CommandManager
-Client -up-> Log
-Client -down-> Login
-ScoreBoard -right-> TextureManager
+CommandManager -left-|> Thread
+CommandManager --> Socket
+CommandManager -left-> ScoreBoard
+Client --> Raycaster
+Client -up-> CommandManager
+Client --> Log
+Client --> Socket
+Login --> Socket
+ScoreBoard --> TextureManager
+
+circle main
+main --> Client
+main --> Login
 @enduml
