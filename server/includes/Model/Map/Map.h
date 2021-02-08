@@ -221,10 +221,10 @@ class Map {
    *
    * @return The unique ID the new item should use
    */
-  static unsigned int getAndIncreaseByOneNextUniqueItemId();
+  unsigned int getAndIncreaseByOneNextUniqueItemId();
 
  private:
-  static unsigned int nextId;
+  unsigned int nextId;
   std::vector<Coordinate> respawnPoints;
   int dimx;
   int dimy;
