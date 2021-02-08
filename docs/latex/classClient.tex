@@ -12,7 +12,10 @@ Runs and coordinates all the main classes that execute the game.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{classClient_aa8ab7e2af270a778d23f29da0922cc68}{run}} (std\+::string \&host, std\+::string \&port, uint32\+\_\+t lobby\+ID, std\+::string \&map\+File)
+\mbox{\Hypertarget{classClient_af29a83cfd8dff516e5d8a9df8c5464bd}\label{classClient_af29a83cfd8dff516e5d8a9df8c5464bd}} 
+{\bfseries Client} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket)
+\item 
+int \mbox{\hyperlink{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}{run}} (int my\+Player\+ID, std\+::string \&map\+File)
 \begin{DoxyCompactList}\small\item\em Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -20,11 +23,11 @@ int \mbox{\hyperlink{classClient_aa8ab7e2af270a778d23f29da0922cc68}{run}} (std\+
 Runs and coordinates all the main classes that execute the game. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classClient_aa8ab7e2af270a778d23f29da0922cc68}\label{classClient_aa8ab7e2af270a778d23f29da0922cc68}} 
+\mbox{\Hypertarget{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}\label{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}} 
 \index{Client@{Client}!run@{run}}
 \index{run@{run}!Client@{Client}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily int Client\+::run (\begin{DoxyParamCaption}\item[{std\+::string \&}]{host,  }\item[{std\+::string \&}]{port,  }\item[{uint32\+\_\+t}]{lobby\+ID,  }\item[{std\+::string \&}]{map\+File }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Client\+::run (\begin{DoxyParamCaption}\item[{int}]{my\+Player\+ID,  }\item[{std\+::string \&}]{map\+File }\end{DoxyParamCaption})}
 
 
 

@@ -73,22 +73,31 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0944cc42ca8b7aa1d49fc2be1da5e82d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConnectionHandler.html">ConnectionHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatchList.html#a0944cc42ca8b7aa1d49fc2be1da5e82d">joinOrCreate</a> (<a class="el" href="classClientCommunication.html">ClientCommunication</a> *player, int lobbyID)</td></tr>
-<tr class="separator:a0944cc42ca8b7aa1d49fc2be1da5e82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0fcf995b8d5b559c651b7f71b6a270a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConnectionHandler.html">ConnectionHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatchList.html#ad0fcf995b8d5b559c651b7f71b6a270a">join</a> (<a class="el" href="classClientCommunication.html">ClientCommunication</a> *player, int lobbyID)</td></tr>
+<tr class="separator:ad0fcf995b8d5b559c651b7f71b6a270a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7fd54815f1c81f22c0ebc8ebd68d9e8"><td class="memItemLeft" align="right" valign="top"><a id="ab7fd54815f1c81f22c0ebc8ebd68d9e8"></a>
+<a class="el" href="classConnectionHandler.html">ConnectionHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (<a class="el" href="classClientCommunication.html">ClientCommunication</a> *player, int mapID)</td></tr>
+<tr class="separator:ab7fd54815f1c81f22c0ebc8ebd68d9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f3c0b21a537bcf27e48a95b5e751b2"><td class="memItemLeft" align="right" valign="top"><a id="a99f3c0b21a537bcf27e48a95b5e751b2"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAvailableMatches</b> ()</td></tr>
+<tr class="separator:a99f3c0b21a537bcf27e48a95b5e751b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c092539f4976a9eb90c7d041df28297"><td class="memItemLeft" align="right" valign="top"><a id="a8c092539f4976a9eb90c7d041df28297"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMapID</b> (int lobbyID)</td></tr>
+<tr class="separator:a8c092539f4976a9eb90c7d041df28297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h1><a class="anchor" id="DESCRIPTION"></a>
 &lt;br&gt;</h1>
 <p>Class that represents the current list of matches the server is hosting. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0944cc42ca8b7aa1d49fc2be1da5e82d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0944cc42ca8b7aa1d49fc2be1da5e82d">&#9670;&nbsp;</a></span>joinOrCreate()</h2>
+<a id="ad0fcf995b8d5b559c651b7f71b6a270a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0fcf995b8d5b559c651b7f71b6a270a">&#9670;&nbsp;</a></span>join()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classConnectionHandler.html">ConnectionHandler</a> * MatchList::joinOrCreate </td>
+          <td class="memname"><a class="el" href="classConnectionHandler.html">ConnectionHandler</a> * MatchList::join </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classClientCommunication.html">ClientCommunication</a> *&#160;</td>
           <td class="paramname"><em>player</em>, </td>
@@ -109,8 +118,8 @@ Public Member Functions</h2></td></tr>
 <p>&lt;Tries to join a match, creates it if not found&gt;</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">The</td><td>clients <a class="el" href="classClientCommunication.html">ClientCommunication</a> </td></tr>
-    <tr><td class="paramname">The</td><td>lobby ID </td></tr>
+    <tr><td class="paramname">player</td><td>The clients <a class="el" href="classClientCommunication.html">ClientCommunication</a> </td></tr>
+    <tr><td class="paramname">lobbyID</td><td>The lobby ID </td></tr>
   </table>
   </dd>
 </dl>

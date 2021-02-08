@@ -78,10 +78,17 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classDoorFactory.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDoorFactory.html">DoorFactory</a> {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="classDoor.html">Door</a>* getDoor(<span class="keywordtype">int</span> doorId);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">   * [SERVER-SIDE] Receives a doorId and returns the corresponding door.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">   * @param doorId integer that represents a door type.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">   * @return a dynamic pointer to a door if the id is valid, nullptr otherwise.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classDoor.html">Door</a>* getDoor(<span class="keywordtype">int</span> doorId);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassDoorFactory_html"><div class="ttname"><a href="classDoorFactory.html">DoorFactory</a></div><div class="ttdef"><b>Definition:</b> DoorFactory.h:8</div></div>
 <div class="ttc" id="aclassDoor_html"><div class="ttname"><a href="classDoor.html">Door</a></div><div class="ttdoc">Raycastable door.</div><div class="ttdef"><b>Definition:</b> door.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->

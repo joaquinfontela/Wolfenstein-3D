@@ -7,7 +7,16 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ \mbox{\hyperlink{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}{join\+Or\+Create}} (\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$player, int lobby\+ID)
+\mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ \mbox{\hyperlink{classMatchList_ad0fcf995b8d5b559c651b7f71b6a270a}{join}} (\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$player, int lobby\+ID)
+\item 
+\mbox{\Hypertarget{classMatchList_ab7fd54815f1c81f22c0ebc8ebd68d9e8}\label{classMatchList_ab7fd54815f1c81f22c0ebc8ebd68d9e8}} 
+\mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ {\bfseries create} (\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$player, int map\+ID)
+\item 
+\mbox{\Hypertarget{classMatchList_a99f3c0b21a537bcf27e48a95b5e751b2}\label{classMatchList_a99f3c0b21a537bcf27e48a95b5e751b2}} 
+std\+::vector$<$ int $>$ {\bfseries get\+Available\+Matches} ()
+\item 
+\mbox{\Hypertarget{classMatchList_a8c092539f4976a9eb90c7d041df28297}\label{classMatchList_a8c092539f4976a9eb90c7d041df28297}} 
+int {\bfseries get\+Map\+ID} (int lobby\+ID)
 \end{DoxyCompactItemize}
 
 
@@ -16,19 +25,19 @@
 Class that represents the current list of matches the server is hosting. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}\label{classMatchList_a0944cc42ca8b7aa1d49fc2be1da5e82d}} 
-\index{MatchList@{MatchList}!joinOrCreate@{joinOrCreate}}
-\index{joinOrCreate@{joinOrCreate}!MatchList@{MatchList}}
-\doxysubsubsection{\texorpdfstring{joinOrCreate()}{joinOrCreate()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ Match\+List\+::join\+Or\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$}]{player,  }\item[{int}]{lobby\+ID }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classMatchList_ad0fcf995b8d5b559c651b7f71b6a270a}\label{classMatchList_ad0fcf995b8d5b559c651b7f71b6a270a}} 
+\index{MatchList@{MatchList}!join@{join}}
+\index{join@{join}!MatchList@{MatchList}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classConnectionHandler}{Connection\+Handler}} $\ast$ Match\+List\+::join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClientCommunication}{Client\+Communication}} $\ast$}]{player,  }\item[{int}]{lobby\+ID }\end{DoxyParamCaption})}
 
 $<$Tries to join a match, creates it if not found$>$
 
 
 \begin{DoxyParams}{Parameters}
-{\em The} & clients \mbox{\hyperlink{classClientCommunication}{Client\+Communication}} \\
+{\em player} & The clients \mbox{\hyperlink{classClientCommunication}{Client\+Communication}} \\
 \hline
-{\em The} & lobby ID \\
+{\em lobby\+ID} & The lobby ID \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

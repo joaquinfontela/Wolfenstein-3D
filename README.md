@@ -60,7 +60,7 @@ Para moverse, se utiliza el sistema clásico de movimiento: _w_ para moverse par
 ### Armas
 Para el uso de las armas, el _enter_ significa disparar mientras que las teclas _1_, _2_, _3_, _4_ y _5_ le permiten al jugador cambiar de armas. El _1_ siempre indica cambiar al cuchillo mientras que el _2_ indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
 
-<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/RPG.png"/></p>
+<br><p align="center"><img src="./docs/screenshots/RPG.png"/></p>
 
 Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.
 
@@ -69,21 +69,21 @@ Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible 
 El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:
 
 
-<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/LockedDoor.png"/></p>
+<br><p align="center"><img src="./docs/screenshots/LockedDoor.png"/></p>
 
 Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar del piso para poder ser abierta. Una vez que la puerta se haya abierto una vez con llave, cualquier jugador, tenga llave o no, podrá abrirla.
 
-<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/UnlockableDoor.png"/></p>
+<br><p align="center"><img src="./docs/screenshots/UnlockableDoor.png"/></p>
 
 Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.
 
 ### Drops
 
-<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/Drops.png"/></p>
+<br><p align="center"><img src="./docs/screenshots/Drops.png"/></p>
 
 El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen: Armas, munición, llaves, tesoros y medikits. Basta con caminar por encima de ellos y, de ser posible, los agarra automaticamente.
 
-<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/Treasure.png"/></p>
+<br><p align="center"><img src="./docs/screenshots/Treasure.png"/></p>
 
 Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!
 
@@ -94,7 +94,7 @@ El sistema puede tener glitches que causen, o no, diferentes tipos de interferen
 
 El mismo, en caso de que se necesite, escribe en el archivo _"wolfenstein.log"_ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.
 
-Llamando a la macro `LOG(std::string errorMsg)` se llama al método estático de la clase `Log` que recibe el archivo, la función, la línea y `errorMsg` para escribirlos en el log con el formato antes escrito.
+Llamando a la macro `LOG(const char* errorMsg)` se llama al método estático de la clase `Log` que recibe el archivo, la función, la línea y `errorMsg` para escribirlos en el log con el formato antes escrito.
 
 ### Clasificación de Errores
 

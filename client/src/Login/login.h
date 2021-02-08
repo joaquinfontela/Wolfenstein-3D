@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 
-#include "string.h"
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/protocol.h"
+#include "string.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -13,8 +13,13 @@ class Login;
 }
 QT_END_NAMESPACE
 
+/**
+ * @brief Qt window for the login screen. Joins or creates a match for the
+ * player.
+ *
+ */
 class Login : public QMainWindow {
-
+  Q_OBJECT
  public:
   /**
    * @brief Construct a new Login object. Sets the styles for the buttons.
@@ -50,8 +55,10 @@ class Login : public QMainWindow {
 
   std::vector<int> availableMatches;
 
-  bool joinLobby();
+  /**
+   * @brief Receives from the given socket the ongoing match ids.
+   *
+   */
   void receiveAvailableMatches();
-  bool createLobby();
 };
 #endif  // LOGIN_H

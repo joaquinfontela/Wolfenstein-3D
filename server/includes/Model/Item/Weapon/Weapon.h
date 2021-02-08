@@ -44,8 +44,8 @@ class Weapon {
   virtual int getRange() = 0;
 
   /*
-   * [SERVER-SIDE] Recieves the ammo left and time elapsed since last shot
-   * attempt, and returns the damage caused by the attack.
+   * @brief [SERVER-SIDE] Recieves the ammo left and time elapsed since last
+   * shot attempt, and returns the damage caused by the attack.
    *
    * @param ammo reference to an integer that represents the ammo left.
    *

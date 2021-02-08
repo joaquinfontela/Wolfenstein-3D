@@ -13,8 +13,8 @@ class WeaponFactory {
   WeaponFactory(std::string& configFileName);
 
   /*
-   * [SERVER-SIDE] Receives an weaponId and returns the corresponding weapon
-   * with id weaponUniqueId.
+   * @brief [SERVER-SIDE] Receives an weaponId and returns the corresponding
+   * weapon with id weaponUniqueId.
    *
    * @param weaponId integer that represents a weapon type.
    *

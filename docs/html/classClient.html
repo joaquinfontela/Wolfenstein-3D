@@ -76,15 +76,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8ab7e2af270a778d23f29da0922cc68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#aa8ab7e2af270a778d23f29da0922cc68">run</a> (std::string &amp;host, std::string &amp;port, uint32_t lobbyID, std::string &amp;mapFile)</td></tr>
-<tr class="memdesc:aa8ab7e2af270a778d23f29da0922cc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it's loader), audio and texture managers, sprite list and raycaster engine, among others.  <a href="classClient.html#aa8ab7e2af270a778d23f29da0922cc68">More...</a><br /></td></tr>
-<tr class="separator:aa8ab7e2af270a778d23f29da0922cc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29a83cfd8dff516e5d8a9df8c5464bd"><td class="memItemLeft" align="right" valign="top"><a id="af29a83cfd8dff516e5d8a9df8c5464bd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Client</b> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;socket)</td></tr>
+<tr class="separator:af29a83cfd8dff516e5d8a9df8c5464bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb89d40cce27fcb5f52958c3db4dc95a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">run</a> (int myPlayerID, std::string &amp;mapFile)</td></tr>
+<tr class="memdesc:aeb89d40cce27fcb5f52958c3db4dc95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it's loader), audio and texture managers, sprite list and raycaster engine, among others.  <a href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">More...</a><br /></td></tr>
+<tr class="separator:aeb89d40cce27fcb5f52958c3db4dc95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Runs and coordinates all the main classes that execute the game. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa8ab7e2af270a778d23f29da0922cc68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8ab7e2af270a778d23f29da0922cc68">&#9670;&nbsp;</a></span>run()</h2>
+<a id="aeb89d40cce27fcb5f52958c3db4dc95a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb89d40cce27fcb5f52958c3db4dc95a">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -92,20 +95,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int Client::run </td>
           <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>host</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>lobbyID</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>myPlayerID</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

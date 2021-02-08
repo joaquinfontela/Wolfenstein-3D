@@ -114,6 +114,14 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
   src/mainwall.cpp
+  src/Login/create_window.cpp
+  src/Login/create_window.h
+  src/Login/create_window.ui
+  src/Login/join_window.cpp
+  src/Login/join_window.h
+  src/Login/join_window.ui
+  src/Login/match_id.cpp
+  src/Login/match_id.h
   src/Login/login.cpp
   src/Login/login.h
   src/Login/login.ui

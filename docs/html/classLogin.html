@@ -68,6 +68,11 @@ $(function() {
 <div class="title">Login Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Qt window for the login screen. Joins or creates a match for the player.  
+ <a href="classLogin.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="login_8h_source.html">login.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Login:</div>
 <div class="dyncontent">
@@ -77,10 +82,57 @@ Inheritance diagram for Login:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab48bd92322794ea2d7abf5b593af1588"><td class="memItemLeft" align="right" valign="top"><a id="ab48bd92322794ea2d7abf5b593af1588"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Login</b> (std::string &amp;host, std::string &amp;ip, int &amp;game_id)</td></tr>
-<tr class="separator:ab48bd92322794ea2d7abf5b593af1588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a858e0f70c1acef538bb41cf6a44045d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogin.html#a858e0f70c1acef538bb41cf6a44045d7">Login</a> (int &amp;player_id, int &amp;map_id, <a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;socket)</td></tr>
+<tr class="memdesc:a858e0f70c1acef538bb41cf6a44045d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classLogin.html" title="Qt window for the login screen. Joins or creates a match for the player.">Login</a> object. Sets the styles for the buttons.  <a href="classLogin.html#a858e0f70c1acef538bb41cf6a44045d7">More...</a><br /></td></tr>
+<tr class="separator:a858e0f70c1acef538bb41cf6a44045d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Qt window for the login screen. Joins or creates a match for the player. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a858e0f70c1acef538bb41cf6a44045d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a858e0f70c1acef538bb41cf6a44045d7">&#9670;&nbsp;</a></span>Login()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Login::Login </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>player_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>map_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td>
+          <td class="paramname"><em>socket</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classLogin.html" title="Qt window for the login screen. Joins or creates a match for the player.">Login</a> object. Sets the styles for the buttons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>Port to connect to. </td></tr>
+    <tr><td class="paramname">ip</td><td>Ip to connect to. </td></tr>
+    <tr><td class="paramname">game_id</td><td><a class="el" href="classMatch.html">Match</a> id. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/src/Login/<a class="el" href="login_8h_source.html">login.h</a></li>
 <li>client/src/Login/login.cpp</li>
