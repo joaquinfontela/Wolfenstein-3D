@@ -5,11 +5,10 @@
 #include "editor.h"
 #include "map_scene.h"
 #include <vector>
+#include "ui_editor.h"
 
 class map_actions : public QObject
 {
-    Q_OBJECT
-
     Editor* editor;
     map_scene* map;
 public:

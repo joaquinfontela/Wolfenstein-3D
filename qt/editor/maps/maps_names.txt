@@ -6,3 +6,4 @@ barrilete_cosmico
 esqueletos
 111
 4
+borde

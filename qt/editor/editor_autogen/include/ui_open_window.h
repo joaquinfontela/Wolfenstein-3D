@@ -35,7 +35,7 @@ public:
         open_boton = new QPushButton(open_window);
         open_boton->setObjectName(QString::fromUtf8("open_boton"));
         open_boton->setGeometry(QRect(130, 290, 321, 25));
-        open_boton->setStyleSheet(QString::fromUtf8("background-color: rgb(117, 80, 123);"));
+        open_boton->setStyleSheet(QString::fromUtf8(""));
         label = new QLabel(open_window);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(60, 10, 431, 41));

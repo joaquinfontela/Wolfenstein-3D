@@ -13,6 +13,7 @@
 #include "tile_item.h"
 #include "ui_open_window.h"
 #include "map_canvas.h"
+#include "iostream"
 
 #define MAP_NAME_PATH "./maps/maps_names.txt"
 
@@ -56,6 +57,8 @@ void open_window::on_open_boton_clicked()
         map_canvas* new_mc = new map_canvas(this->map_selected);
         int cant_rows = new_mc->grilla.size();
         int cant_col = new_mc->grilla.at(0).size();
+        std::cout << "filas = " << cant_rows << std::endl;
+        std::cout << "col = " << cant_col << std::endl;
         if(this->editor->my_map_scene == NULL){            
             editor->my_map_scene = new class map_scene(this->editor);
             editor->ui->graphics_map_container->setScene(editor->my_map_scene);

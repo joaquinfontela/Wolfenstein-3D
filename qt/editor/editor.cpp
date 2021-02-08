@@ -23,6 +23,7 @@
 #include "tile_container_actions.h"
 #include "map_actions.h"
 
+#define MINI_SIDE_SIZE 20
 #define BASE_SIDE_SIZE 40
 #define PLUS_SIDE_SIZE 60
 #define LARGE_SIDE_SIZE 80
@@ -57,8 +58,8 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
   ui->setupUi(this);
   initialize_tile_container();
   this->tile_item_selected = NULL;
-  this->tile_sizes = {BASE_SIDE_SIZE, PLUS_SIDE_SIZE, LARGE_SIDE_SIZE};
-  this->actual_tiles_size_index = 0;
+  this->tile_sizes = {MINI_SIDE_SIZE, BASE_SIDE_SIZE, PLUS_SIDE_SIZE, LARGE_SIDE_SIZE};
+  this->actual_tiles_size_index = 1;
   ui->actionsafe->setEnabled(false);
   this->actual_map_saved = false;
   ui->actionZoom_out->setEnabled(false);
@@ -116,7 +117,7 @@ void Editor::on_actionZoom_in_triggered()
     this->paint_map();
 
     ui->actionZoom_out->setEnabled(true);
-    if(this->actual_tiles_size_index == 2){
+    if(this->actual_tiles_size_index == 3){
         ui->actionZoom_in->setEnabled(false);
     }
 }

@@ -20,7 +20,7 @@ tile_item* item_tile_factory::get_tile(std::vector<int>& coordinates) {
     tipo = 103;
   } else if (col == 2 && row == 5) {
     tipo = 107;
-  } else if (col == 1 && row == 6) {
+  } else if (col == 2 && row == 6) {
     tipo = 104;
   } else if (col == 1 && row == 5) {
     tipo = 105;

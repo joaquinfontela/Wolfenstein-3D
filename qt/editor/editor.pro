@@ -26,7 +26,7 @@ SOURCES += \
     tile_container_actions.cpp \
     tile_item.cpp \
     tiles_container.cpp \
-    wall_tile_factory.cpp
+    wall_tile_factory.cpp 
 
 HEADERS += \
     decoration_tile_factory.h \

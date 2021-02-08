@@ -4,6 +4,7 @@
 #include <QObject>
 #include "tiles_container.h"
 #include "editor.h"
+#include "ui_editor.h"
 
 class tile_container_actions : public QObject
 {

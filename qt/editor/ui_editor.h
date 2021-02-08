@@ -33,6 +33,7 @@ public:
     QAction *actionEXIT;
     QAction *actionSave_and_exit;
     QAction *actionParedes;
+    QAction *actionParedes_Falsas;
     QAction *actionDecoraciones;
     QAction *actionItems;
     QAction *actionPuertas;
@@ -92,6 +93,14 @@ public:
         font.setBold(true);
         font.setWeight(75);
         actionParedes->setFont(font);
+        actionParedes_Falsas = new QAction(Editor);
+        actionParedes_Falsas->setObjectName(QStringLiteral("actionParedes_Falsas"));
+        QFont font0;
+        font0.setFamily(QStringLiteral("Ubuntu Condensed"));
+        font0.setPointSize(14);
+        font0.setBold(true);
+        font0.setWeight(75);
+        actionParedes_Falsas->setFont(font0);
         actionDecoraciones = new QAction(Editor);
         actionDecoraciones->setObjectName(QStringLiteral("actionDecoraciones"));
         QFont font1;
@@ -230,6 +239,8 @@ public:
         toolBar->addSeparator();
         toolBar->addAction(actionParedes);
         toolBar->addSeparator();
+        toolBar->addAction(actionParedes_Falsas);
+        toolBar->addSeparator();
         toolBar->addAction(actionDecoraciones);
         toolBar->addSeparator();
         toolBar->addAction(actionItems);
@@ -254,6 +265,7 @@ public:
         actionEXIT->setText(QApplication::translate("Editor", "Exit", Q_NULLPTR));
         actionSave_and_exit->setText(QApplication::translate("Editor", "Save and exit", Q_NULLPTR));
         actionParedes->setText(QApplication::translate("Editor", "Paredes", Q_NULLPTR));
+        actionParedes_Falsas->setText(QApplication::translate("Editor", "Paredes Falsas", Q_NULLPTR));
         actionDecoraciones->setText(QApplication::translate("Editor", "Decoraciones", Q_NULLPTR));
         actionItems->setText(QApplication::translate("Editor", "Items", Q_NULLPTR));
         actionPuertas->setText(QApplication::translate("Editor", "Puertas", Q_NULLPTR));
