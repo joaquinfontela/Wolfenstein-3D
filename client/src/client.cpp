@@ -55,6 +55,7 @@ bool Client::joinMatch(uint32_t lobbyID) {
 int Client::run(int myPlayerID, std::string& mapFile) {
 
   if(myPlayerID == -1){
+    std::cout<<"Unable to connect"<<std::endl;
     return ERROR;
   }
 

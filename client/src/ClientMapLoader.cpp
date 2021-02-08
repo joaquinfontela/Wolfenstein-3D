@@ -55,8 +55,34 @@ DoorTile* ClientMapLoader::getDoorIdMatrix() {
   for (Coordinate& c : coords) {
     (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->restart();
     (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->isDoor = true;
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->isFakeWall = false;
+  }
+
+  coords.clear();
+  coords = this->getFakeWallCoordinates();
+  for (Coordinate& c : coords) {
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->restart();
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->isDoor = true;
+    (doors + (c.getX() - 1) + (dimx * (c.getY() - 1)))->isFakeWall = true;
   }
   return doors;
+}
+
+std::vector<Coordinate> ClientMapLoader::getFakeWallCoordinates(){
+
+  int WALL_FROM = yamlMapReader.getWallsIdLimits().at(0) + 50;
+  int WALL_TO = yamlMapReader.getWallsIdLimits().at(1);
+  std::vector<Coordinate> coordinates;
+
+  int id = 0;
+  for (id = WALL_FROM; id <= WALL_TO; id++) {
+    std::vector<Coordinate> pos =
+        yamlMapReader.getTileCoordinatesWhereObjectIsIn(id);
+    coordinates.insert(coordinates.end(), pos.begin(), pos.end());
+  }
+
+  return coordinates;
+
 }
 
 std::vector<Coordinate> ClientMapLoader::getDoorCoordinates() {
@@ -114,10 +140,10 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return GREY_STONE_WALL;
       break;
 
-      // case 303:
-      // case 353:
-      //   return ROCK_WALL;
-      //   break;
+    case 303:
+    case 353:
+      return COLORSTONE;
+      break;
 
     case 304:
     case 354:
@@ -130,36 +156,45 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return LOCKED_DOOR;
       break;
 
+    case 355:
     case 305:
       return MOSSY;
       break;
 
+    case 356:
     case 306:
       return WALL2_SPRITE;
       break;
+
+    case 357:  
     case 307:
       return BRICKWALL;
       break;
 
+    case 358:
     case 308:
       return PURPLEWALL;
       break;
 
-      // case 309:
-      //   return EAGLE_WALL;
-      //   break;
+    case 359:
+    case 309:
+      return WALL_3;
+      break;
 
+    case 360:
     case 310:
       return HITLERWALL_SPRITE;
       break;
 
-      // case 311:
-      //   return PROPAGANDA_WALL;
-      //   break;
+    case 361:
+    case 311:
+     return EAGLE_WALL;
+      break;
 
-      // case 312:
-      //   return GREY_STONE_WALL;
-      //   break;
+    case 362:
+    case 312:
+      return GREY_STONE_WALL;
+      break;
 
     default:
       throw std::runtime_error("Wall id recieved not valid.");

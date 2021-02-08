@@ -8,7 +8,6 @@ Door* DoorFactory::getDoor(int doorId) {
       break;
 
     case 202:
-      std::cout<<"Adding a Lockable door."<<std::endl;
       return new LockableDoor();
       break;
 

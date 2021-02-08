@@ -21,6 +21,7 @@ void DoorTile::updateTimer(float update) {
 
 void DoorTile::restart() {
   this->isDoor = false;
+  this->isFakeWall = false;
   this->state = CLOSED;
   this->timer = 1;
 }

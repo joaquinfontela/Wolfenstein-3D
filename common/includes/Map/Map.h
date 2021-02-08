@@ -83,8 +83,9 @@ class Map {
    *
    * @param x
    * @param y
+   * @return True if its a fake wall, false otherwise.
    */
-  void switchDoorState(int x, int y);
+  bool switchDoorState(int x, int y);
 
   /**
    * @brief [CLIENT SIDE] If the given door is closed it switches to open and

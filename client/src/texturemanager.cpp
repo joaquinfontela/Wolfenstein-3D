@@ -158,7 +158,10 @@ void TextureManager::loadTextures() {
       "officerattack.png",         // 94
       "mutantattack.png",          // 95
       "lockeddoor.png",            // 96
-      "highscores.png"             // 97
+      "highscores.png",            // 97
+      "colorstone.png",            // 98
+      "wall3.png",                 // 99
+      "eagle.png"                  // 100
   });
   int i = 1;
   for (std::string& name : names) {

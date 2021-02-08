@@ -9,7 +9,7 @@ class Minigun : public Shootable {
           unsigned int precision, float blastFrequency)
       : Shootable(uniqueId, newAmmo, minDamagePerBullet, maxDamagePerBullet,
                   shotsPerBlast, ammoLostPerShot, precision, blastFrequency),
-        ID(4) {std::cout<<"Creating miniGun with BF: "<<blastFrequency<<std::endl;}
+        ID(4) {}
   ~Minigun();
   int getID();
   int getUniqueId();
