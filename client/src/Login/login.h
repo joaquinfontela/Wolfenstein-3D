@@ -15,6 +15,7 @@ QT_END_NAMESPACE
 
 class Login : public QMainWindow {
 
+ Q_OBJECT
  public:
   /**
    * @brief Construct a new Login object. Sets the styles for the buttons.

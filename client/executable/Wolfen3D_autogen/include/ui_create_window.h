@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'create_window.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_CREATE_WINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -28,19 +31,19 @@ public:
     void setupUi(QDialog *create_window)
     {
         if (create_window->objectName().isEmpty())
-            create_window->setObjectName(QString::fromUtf8("create_window"));
+            create_window->setObjectName(QStringLiteral("create_window"));
         create_window->resize(321, 171);
         pushButton = new QPushButton(create_window);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(80, 120, 151, 25));
         map_id_line = new QLineEdit(create_window);
-        map_id_line->setObjectName(QString::fromUtf8("map_id_line"));
+        map_id_line->setObjectName(QStringLiteral("map_id_line"));
         map_id_line->setGeometry(QRect(60, 60, 191, 41));
         label = new QLabel(create_window);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 10, 221, 41));
         QFont font;
-        font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
+        font.setFamily(QStringLiteral("Ubuntu Condensed"));
         font.setPointSize(19);
         font.setBold(true);
         font.setWeight(75);
@@ -53,9 +56,9 @@ public:
 
     void retranslateUi(QDialog *create_window)
     {
-        create_window->setWindowTitle(QApplication::translate("create_window", "Dialog", nullptr));
-        pushButton->setText(QApplication::translate("create_window", "CREATE MATCH", nullptr));
-        label->setText(QApplication::translate("create_window", "WRITE A MAP ID : ", nullptr));
+        create_window->setWindowTitle(QApplication::translate("create_window", "Dialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("create_window", "CREATE MATCH", Q_NULLPTR));
+        label->setText(QApplication::translate("create_window", "WRITE A MAP ID : ", Q_NULLPTR));
     } // retranslateUi
 
 };
