@@ -18,21 +18,32 @@ static bool fileExists(std::string& name){
 
 MatchList::MatchList() {}
 
-ConnectionHandler* MatchList::join(ClientCommunication* player,
-                                           int lobbyID) {
+ConnectionHandler* MatchList::join(ClientCommunication* player, int lobbyID) {
 
   std::unique_lock<std::mutex> lock(this->lock);
+ 
   if (this->matches.find(lobbyID) != this->matches.end()) {
+    SocketCommunication& socket = player->getSock();
+    uint32_t mapID = uint32_t(this->matches[lobbyID]->getMapID());
+    socket.send(&mapID, sizeof(mapID));
     return this->matches[lobbyID]->addPlayerToMatch(player);
   }
 
-  // Deberia en realidad devolver algo del estilo CONNECTION_REFUSED por el socket.
-  Match* newMatch = new Match(lobbyID);
-  ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
+  return nullptr;
+}
 
-  newMatch->start();
-  this->matches[lobbyID] = newMatch;
-  return playerHandler;
+std::vector<int> MatchList::getAvailableMatches(){
+  std::vector<int> availableMatches;
+
+  std::map<int, Match*>::iterator it = this->matches.begin();
+
+  for(; it != this->matches.end(); ++it){
+
+    if(it->second->isJoinable())
+      availableMatches.push_back(it->first);
+  }
+
+  return availableMatches;
 }
 
 ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
@@ -46,7 +57,7 @@ ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
   int lobbyID = this->matchesCreated + 1;
   this->matchesCreated++;
 
-  Match* newMatch = new Match(lobbyID, mapFile);
+  Match* newMatch = new Match(lobbyID, mapFile, mapID);
   ConnectionHandler* playerHandler = newMatch->addPlayerToMatch(player);
 
   newMatch->start();

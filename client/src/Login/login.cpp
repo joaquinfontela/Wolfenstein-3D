@@ -15,12 +15,13 @@
   "* { background-color: rgba(0, 0, 0, 200); color: #ffffff}"
 #define WHITESPACE ' '
 
-Login::Login(std::string& host, std::string& ip, int& game_id)
+Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
     : QMainWindow(nullptr),
       ui(new Ui::Login),
-      my_host(host),
-      my_ip(ip),
-      my_game_id(game_id) {
+      player_id(player_id),
+      map_id(map_id)
+      socket(socket);
+      {
   ui->setupUi(this);
   QPixmap bkgnd("../media/loginscreen.png");
   bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -58,6 +59,43 @@ void Login::on_button_join_clicked() {
     my_ip = parseSpaces(ip.toStdString());
     my_host = parseSpaces(port.toStdString());
     my_game_id = game_id.toInt();
+
+
+    // PARTE DE CONECTARSE A UNA PARTIDA
+
+    this->socket.connect(my_ip, my_host);
+
+    uint32_t protocol = JOIN_LOBBY;
+    uint32_t opcode;
+    uint32_t selfID;
+    uint32_t mapID;
+
+    // Connection Request
+    socket.send(&protocol, sizeof(protocol));
+
+    receiveAvailableMatches(); //recibo las partidas disponibles
+    uint32_t lobbyID = -1;
+    
+    
+    // QT
+
+     
+    socket.send(&lobbyID, sizeof(lobbyID));
+    // Connection Response
+    socket.receive(&opcode, sizeof(opcode));
+
+    if (opcode != CONNECTED_OK){
+      this->player_id = -1;
+      QApplication::quit();
+      return;
+    }
+      
+    socket.receive(&selfID, sizeof(selfID));
+    socket.receive(&mapID, sizeof(mapID));
+    
+    this->player_id = selfID;
+    this->map_id = mapID;
+
     QApplication::quit();
   }
 }
@@ -83,4 +121,43 @@ void Login::on_button_create_clicked() {
     my_game_id = game_id.toInt();
     QApplication::quit();
   }*/
+}
+
+void Login::receiveAvailableMatches(){
+
+  uint32_t amountOfMatches = 0;
+  this->socket.receive(&amountOfMatches, sizeof(amountOfMatches));
+
+  for(uint32_t i = 0; i < amountOfMatches; i++){
+
+    uint32_t matchID;
+    this->socket.receive(&matchID, sizeof(matchID));
+    this->availableMatches.push_back(matchID);
+  }
+}
+
+void Login::joinLobby(){
+
+  uint32_t protocol = JOIN_LOBBY;
+  uint32_t opcode;
+  uint32_t selfID;
+
+  // Connection Request
+  socket.send(&protocol, sizeof(protocol));
+
+  receiveAvailableMatches();
+  
+
+  // Connection Response
+  socket.receive(&opcode, sizeof(opcode));
+
+  if (opcode != CONNECTED_OK) return false;
+
+  socket.receive(&selfID, sizeof(selfID));
+  this->player_id = selfID;
+  
+
+  return true;
+
+
 }

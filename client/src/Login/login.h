@@ -5,6 +5,8 @@
 
 #include "../../client/includes/client.h"
 #include "string.h"
+#include "../../../common/includes/Socket/SocketCommunication.h"
+#include "../../../common/includes/protocol.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,7 +25,7 @@ class Login : public QMainWindow {
    * @param ip Ip to connect to.
    * @param game_id Match id.
    */
-  Login(std::string& host, std::string& ip, int& game_id);
+  Login(int& player_id, int& map_id, SocketCommunication& socket);
   ~Login();
 
  private slots:
@@ -42,8 +44,16 @@ class Login : public QMainWindow {
 
  private:
   Ui::Login* ui;
-  std::string& my_host;
-  std::string& my_ip;
-  int& my_game_id;
+  std::string my_host;
+  std::string my_ip;
+  SocketCommunication& socket;
+  int& player_id;
+  int& map_id;
+
+  std::vector<int> availableMatches;
+
+  bool joinLobby();
+  void receiveAvailableMatches();
+  bool createLobby();
 };
 #endif  // LOGIN_H

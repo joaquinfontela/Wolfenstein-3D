@@ -29,6 +29,8 @@ class ClientCommunication : public Thread {
                       MatchList& matches);
 
   unsigned int ID();
+
+  void sendAvailableMatchData(std::vector<int>& matches);
   bool isAlive();
   SocketCommunication& getSock();
 
