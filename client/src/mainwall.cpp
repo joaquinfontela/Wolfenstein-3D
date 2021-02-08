@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
   }
 
   Client client;
-  std::string mapFile = "../../common/src/YAML/map1.yaml";
+  std::string mapFile = "../../common/src/YAML/map.yaml";
 
   return client.run(ip, port, game_id, mapFile);
 }
