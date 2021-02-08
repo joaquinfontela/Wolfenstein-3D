@@ -35,9 +35,11 @@ chmod +x install.sh
 
 ### Servidor
 Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando
+
 ```
-./ServerMain <PORT> <configFilePath>
+./ServerMain <PORT> 
 ```
+
 Siendo PORT el puerto a utlizar y configFilePath el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.
 
 ### Cliente
@@ -87,6 +89,19 @@ El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen: Armas
 
 Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!
 
+### Editor 
+
+Para usar el editor hay que correr `./editor` en la carpeta `/editor`. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
+
+<br><p align="center"><img src="./docs/screenshots/Login.png"/></p>
+
+Luego uno puede seleccionar _Join Match_ si quiere entrar a una partida existente.
+
+<br><p align="center"><img src="./docs/screenshots/JoinMatch.png"/></p>
+
+O _Create Match_ para crear una propia.
+
+<br><p align="center"><img src="./docs/screenshots/CreateMatch.png"/></p>
 
 ## Apéndice de Errores
 
