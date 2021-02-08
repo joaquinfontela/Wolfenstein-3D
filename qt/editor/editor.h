@@ -24,8 +24,6 @@ class Editor : public QMainWindow {
   std::string actual_map_name;
   tile_item* tile_item_selected;
   map_canvas* mc;
-  std::vector<int> tile_sizes;
-  int actual_tiles_size_index;
   map_scene* my_map_scene;
   tiles_container* tiles_container_scene;
   bool eraser_on;
@@ -145,5 +143,8 @@ class Editor : public QMainWindow {
    * @brief Paints the map.
    */
   void paint_map();
+
+  std::vector<int> tile_sizes;
+  int actual_tiles_size_index;
 };
 #endif  // EDITOR_H
