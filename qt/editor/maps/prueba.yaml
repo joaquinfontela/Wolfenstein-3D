@@ -8,6 +8,25 @@ door id start: 201
 door id end: 203
 wall id start: 301
 wall id end: 362
+353:
+  -
+    - 5
+    - 2
+  -
+    - 14
+    - 4
+  -
+    - 4
+    - 6
+  -
+    - 8
+    - 8
+  -
+    - 13
+    - 8
+  -
+    - 4
+    - 9
 124:
   -
     - 9
