@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="editor"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="editor">
+				<Option output="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
+					<Add directory="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+					<Add directory="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor_autogen/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 editor"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="editor/fast">
+				<Option output="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
+					<Add directory="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+					<Add directory="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor_autogen/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 editor/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="editor_autogen">
+				<Option working_dir="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 editor_autogen"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/common/src/Coordinate/Coordinate.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/common/src/YAML/YAMLMapReader.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/common/src/YAML/YAMLMapWriter.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/PathFactory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/PathFactory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/YAMLConversor.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/YAMLConversor.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/decoration_tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/decoration_tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/door_tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/door_tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor.ui">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/editor_autogen/mocs_compilation.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/fake_wall_tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/fake_wall_tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/item_tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/item_tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/main.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_actions.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_actions.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_canvas.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_canvas.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_painter.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_painter.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_save.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_save.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_scene.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/map_scene.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/open_window.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/open_window.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/save_window.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/save_window.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/size_window.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/size_window.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_container_actions.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_container_actions.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_item.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tile_item.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tiles_container.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/tiles_container.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/wall_tile_factory.cpp">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/wall_tile_factory.h">
+			<Option target="editor"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/joaquin/Escritorio/facultad/taller_1/tp_grupal/tp-final-taller/qt/editor/../../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
