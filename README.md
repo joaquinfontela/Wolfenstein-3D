@@ -94,7 +94,7 @@ El sistema puede tener glitches que causen, o no, diferentes tipos de interferen
 
 El mismo, en caso de que se necesite, escribe en el archivo _"wolfenstein.log"_ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.
 
-Llamando a la macro `LOG(std::string errorMsg)` se llama al método estático de la clase `Log` que recibe el archivo, la función, la línea y `errorMsg` para escribirlos en el log con el formato antes escrito.
+Llamando a la macro `LOG(const char* errorMsg)` se llama al método estático de la clase `Log` que recibe el archivo, la función, la línea y `errorMsg` para escribirlos en el log con el formato antes escrito.
 
 ### Clasificación de Errores
 
