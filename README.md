@@ -45,7 +45,6 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 ```
 ./Wolfen3D
 ```
-Siendo HOST la direccion del servidor a utilizar, y siendo PORT el puerto en el que el servidor este aceptando clientes.
 
 ## Apéndice de Errores
 
