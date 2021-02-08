@@ -36,7 +36,7 @@ void save_window::on_pushButton_clicked()
     }else{
         std::string name_str = name.toStdString();
 
-        std::string name_path = "./maps/" +  name_str + ".YAML";
+        std::string name_path = "./maps/" +  name_str + ".yaml";
         YAMLMapWriter* map_creator = new YAMLMapWriter(name_path);
         TileMatrix matrix = this->editor->mc->grilla;
         map_creator->createYamlMapFile(matrix);

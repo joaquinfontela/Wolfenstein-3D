@@ -78,11 +78,11 @@ void Map_painter::paint_map(std::vector<int> coordinates,
 }
 
 void Map_painter::paint_all_tiles() {
-  for (int i = 1; i < mc->cant_row; i++) {
-    for (int x = 1; x < mc->cant_row; x++) {
-      std::vector<tile_item*> tiles = mc->tiles_at_coordinates({i, x});
+  for (int i = 0; i < mc->cant_row; i++) {
+    for (int x = 0; x < mc->cant_row; x++) {
+      std::vector<tile_item*> tiles = mc->tiles_at_coordinates({i+1, x+1});
       if (!tiles.empty() && tiles.at(0) != 0) {
-        this->paint_map({i, x}, tiles);
+        this->paint_map({i+1, x+1}, tiles);
       }
     }
   }

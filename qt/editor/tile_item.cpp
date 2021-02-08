@@ -81,6 +81,5 @@ void tile_item::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void tile_item::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    //this->editor->graphics_scene->addItem(this);
     QGraphicsItem::mouseReleaseEvent(event);
 }

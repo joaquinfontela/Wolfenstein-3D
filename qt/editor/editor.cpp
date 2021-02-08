@@ -51,6 +51,7 @@ void Editor::initialize_map_container(int col, int row) {
 
   ui->actionsafe->setEnabled(true);
   ui->actionZoom_in->setEnabled(true);
+  ui->actionZoom_out->setEnabled(true);
   ui->actionNew->setEnabled(false);
 }
 
@@ -152,7 +153,7 @@ void Editor::on_actionOpen_triggered()
 
 void Editor::save_map(){
     if(actual_map_saved){
-        std::string name_path = "./maps/" + this->actual_map_name + ".YAML";
+        std::string name_path = "./maps/" + this->actual_map_name + ".yaml";
         YAMLMapWriter* map_creator = new YAMLMapWriter(name_path);
         TileMatrix matrix = this->mc->grilla;
         map_creator->createYamlMapFile(matrix);
@@ -195,4 +196,8 @@ void Editor::on_actionParedes_Falsas_triggered()
 {
     tile_factory* factory = new fake_wall_tile_factory();
     this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
+}
+
+Editor::~Editor(){
+
 }

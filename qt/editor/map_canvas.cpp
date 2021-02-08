@@ -63,3 +63,7 @@ void map_canvas::erase_tiles_at(std::vector<int> coordinates) {
       this->grilla.at(row).at(col).pop_back();
   }
 }
+
+map_canvas::~map_canvas(){
+
+}
