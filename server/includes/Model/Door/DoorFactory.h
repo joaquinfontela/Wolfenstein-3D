@@ -8,7 +8,7 @@
 class DoorFactory {
  public:
   /*
-   * [SERVER-SIDE] Receives a doorId and returns the corresponding door.
+   * @brief [SERVER-SIDE] Receives a doorId and returns the corresponding door.
    *
    * @param doorId integer that represents a door type.
    *

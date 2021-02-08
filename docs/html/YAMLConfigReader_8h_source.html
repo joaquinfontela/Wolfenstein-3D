@@ -89,17 +89,23 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">int</span> getMaxHealth();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">int</span> getMaxReviveTimes();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">int</span> getMaxHealthToBeAbleToPickUpBloodItem();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">int</span> getHealthSumWhenPickingUpItem(<span class="keywordtype">int</span> itemId);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">int</span> getPointsSumWhenPickingUpItem(<span class="keywordtype">int</span> itemId);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::vector&lt;int&gt; getMinAndMaxDamagePerBullet();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">int</span> getPointsPerKill();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">float</span> getBlastFrequency(<span class="keywordtype">int</span> weaponId);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">int</span> getShotsPerBlast(<span class="keywordtype">int</span> weaponId);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">int</span> ammoLostPerShot(<span class="keywordtype">int</span> weaponId);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">float</span> precision(<span class="keywordtype">int</span> weaponId);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">// Returns the health that gets the player when he picks up the item with id</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// itemId.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">int</span> getHealthSumWhenPickingUpItem(<span class="keywordtype">int</span> itemId);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// Returns the points that will be added to the score of the player when he</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// picks up the item with id itemId.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">int</span> getPointsSumWhenPickingUpItem(<span class="keywordtype">int</span> itemId);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  std::vector&lt;int&gt; getMinAndMaxDamagePerBullet();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">int</span> getPointsPerKill();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">float</span> getBlastFrequency(<span class="keywordtype">int</span> weaponId);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">int</span> getShotsPerBlast(<span class="keywordtype">int</span> weaponId);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">int</span> ammoLostPerShot(<span class="keywordtype">int</span> weaponId);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">float</span> precision(<span class="keywordtype">int</span> weaponId);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassYAMLConfigReader_html"><div class="ttname"><a href="classYAMLConfigReader.html">YAMLConfigReader</a></div><div class="ttdef"><b>Definition:</b> YAMLConfigReader.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -84,20 +84,43 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  std::string fileName;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  YAML::Node data;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  TileMatrix tileMatrix;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  YAML::Node getData();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> addDimX();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> addDimY();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> addItemTypesLimits();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> addAllItemsToMatrix();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> processMatrixPosition(std::vector&lt;tile_item*&gt;&amp; tiles, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> addCoordinateWhereObjectWithIdIsIn(<span class="keywordtype">int</span> objectId, <a class="code" href="classCoordinate.html">Coordinate</a>&amp; coordinate);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> writeDataIntoFile();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">// Returns a node with the data of the file given.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  YAML::Node getData();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment">// Writes the X dimension of the map in the file.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> addDimX();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// Writes the Y dimension of the map in the file.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> addDimY();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="classYAMLMapWriter.html">YAMLMapWriter</a>(std::string&amp; fileName);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> createYamlMapFile(TileMatrix&amp; tileMatrix);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// Writes the first id and the last id of each type of item (or object) of the</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// map in the file.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> addItemTypesLimits();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// Adds all the items of the TileMatrix to the map that will be written in</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="comment">// the file.</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span> addAllItemsToMatrix();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// Adds all the items of one coordinate of the TileMatrix, to the map that</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// will be written in the file.</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> processMatrixPosition(std::vector&lt;tile_item*&gt;&amp; tiles, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// Adds the coordinate recieved as another value of the vector of coordinates</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// associated to the key objectId.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">void</span> addCoordinateWhereObjectWithIdIsIn(<span class="keywordtype">int</span> objectId, <a class="code" href="classCoordinate.html">Coordinate</a>&amp; coordinate);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Writes the data accumulated in the YAMLNode into the file.</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> writeDataIntoFile();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classYAMLMapWriter.html">YAMLMapWriter</a>(std::string&amp; fileName);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// Creates the map file with extension &#39;.yaml&#39; and name fileName with the data</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// in tileMatrix.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> createYamlMapFile(TileMatrix&amp; tileMatrix);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
 <div class="ttc" id="aclassCoordinate_html"><div class="ttname"><a href="classCoordinate.html">Coordinate</a></div><div class="ttdef"><b>Definition:</b> Coordinate.h:6</div></div>
 <div class="ttc" id="aclassYAMLMapWriter_html"><div class="ttname"><a href="classYAMLMapWriter.html">YAMLMapWriter</a></div><div class="ttdef"><b>Definition:</b> YAMLMapWriter.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->

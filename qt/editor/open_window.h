@@ -14,7 +14,7 @@ class open_window : public QDialog
     Q_OBJECT
 
 public:
-    explicit open_window(QWidget *parent);
+    explicit open_window(QWidget *parent, bool* map_was_changed);
     ~open_window();
      std::vector<std::vector<std::vector<tile_item*>>>* map_selected;
      std::string map_name;
@@ -25,6 +25,7 @@ private:
     Ui::open_window *ui;
     std::vector<std::string> maps_saved;
     Editor* editor; 
+    bool* map_was_changed;
 };
 
 #endif // OPEN_WINDOW_H

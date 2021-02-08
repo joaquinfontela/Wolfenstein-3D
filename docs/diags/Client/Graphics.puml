@@ -1,0 +1,82 @@
+@startuml
+class CommandExecuter {
+    - bool& alive
+    - DrawableVector& sprites
+    + void loadNewTexture(...)
+    + void removeSpriteWithId(uint32_t id)
+    + void renderMovingSprite(...)
+    + void renderExplosionAnimation(uint32_t id)
+    + void renderDeathAnimation(uint32_t id)
+    + void updateOrCreatePlayer()
+    + void disconnectPlayer()
+}
+class Door {
+    - int mapX
+    - int mapY
+    - Map& map
+}
+abstract class Drawable {
+    - double x, y
+    - bool hasToBeDeleted
+    - uint32_t spriteId
+    - uint32_t uniqueId
+    + void draw(...)
+    + bool isContained(...)
+    + bool operator<(Drawable& other)
+    + void loadDistanceWithCoords(int x, int y)
+    # void calculateDrawingData(...)
+    + {abstract} bool isSprite()
+    + {abstract} bool isPlayer()
+}
+class DrawableVector {
+    - mutex& lock
+    - vector<Drawable*>& sprites
+    + void raycastSprites(...)
+    + void push_back(Drawable*)
+    + void popAndErase(Drawable*)
+    + void swapCoords(double x, double y, uint32_t id)
+    + void getCoordsAndErase(double* x, double* y, uint32_t id)
+}
+class Hud {
+    + void updateFpsCounter(int fps)
+    + void update()
+}
+class Player {
+    + void update(PlayerData& info)
+    + double calculateDist(Player& other)
+    + double calculateDist(int x, int y)
+    + void startShooting()
+    + void stopShooting()
+    + bool isShooting()
+    + void stopMoving()
+    + bool isMoving()
+    + bool hasKey()
+}
+class Raycaster {
+    - bool& alive
+    + void run()
+}
+class RaycastedAnimation {
+    - int pos
+    - int framesPerAnimation
+    - float timePassed
+}
+class SdlAnimation {
+    - int pos
+    - int framesPerAnimation
+    + void updateFrame()
+    + void renderFrame()
+    + void setSlideWidth(int* width)
+}
+
+CommandExecuter --> DrawableVector
+Door -up-|> Drawable
+DrawableVector --> Drawable
+Hud --> DrawableVector
+Raycaster -left-> DrawableVector
+Hud --> Player
+Player -left-|> Drawable
+Raycaster --> Hud
+RaycastedAnimation -up-|> Drawable
+SdlAnimation -up-|> Drawable
+@enduml

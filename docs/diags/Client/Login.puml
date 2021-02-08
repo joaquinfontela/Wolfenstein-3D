@@ -1,0 +1,40 @@
+@startuml
+package Login {
+    class JoinWindow {
+        + int myMatchId
+        - Ui::JoinWindow* ui
+        + void onJoinButtonClicked()
+    }
+    class CreateWindow {
+        + int myMatchId
+        - Ui::CreateWindow* ui
+        + void onCreateButtonClicked()
+    }
+    class MatchId {
+        - join_window* my_window
+        - int my_match_id
+        - void set_match_id()
+        + match_id(join_window* my_window, int id)
+    }
+    class Login {
+        - Ui::Login* ui;
+        - Socket& socket;
+        - int& player_id, int& map_id;
+        - vector<int> availableMatches;
+        - void receiveAvailableMatches()
+        + void onButtonCreateClicked();
+        + void onButtonJoinClicked();
+        + Login(int& player_id, int& map_id, SocketCommunication& socket)
+    }
+}
+
+class Socket
+
+Login -down-> Socket
+Login --> JoinWindow
+Login --> CreateWindow
+
+JoinWindow --> Login
+
+MatchId -right-> JoinWindow
+@enduml

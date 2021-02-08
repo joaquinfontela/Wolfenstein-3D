@@ -1,0 +1,27 @@
+@startuml
+class Area {
+    + void update(int x, int y, int width, int height)
+}
+abstract class Drawable {
+    + void draw(TextureManager& manager, ...)
+}
+class SdlTexture {
+    - int id
+    + void render(Area srcArea, Area destArea);
+}
+class SdlWindow {
+    + void getWindowSize(int* width, int* height)
+    + void render();
+    + void renderText(const char* text, SDL_Rect* rect);
+}
+class TextureManager {
+    - map<int,SdlTexture*> textures
+    + void render(int id, Area srcArea, Area destArea);
+}
+
+Drawable --> TextureManager
+SdlTexture -right-> SdlWindow
+SdlWindow -down-> Area
+TextureManager --> SdlWindow
+TextureManager --> SdlTexture
+@endumll

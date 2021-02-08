@@ -15,10 +15,36 @@ class tile_item : public QGraphicsItem
      QGraphicsView* map;
 public:
     tile_item(QString path, int tipo, bool cumulative);
+    /**
+     * @brief make a copy of this tile item and get it pointer.
+     *
+     * @return a pointer to a tile_item.
+     */
     tile_item* create_copy();
+
+    /**
+     * @brief set the map atributte.
+     *
+     * @param map a QGraphicView.
+     */
     void add_to(QGraphicsView* map);
+
+    /**
+     * @param tile a pointer to a tile_item.
+     *
+     * @return return a bolean that represent if this tile and the
+     * tile passed by param can be together in a cell.
+     */
     bool accept_tile(tile_item* tile);
     int get_type();
+
+    /**
+     * @brief update the rect atributte.
+     *
+     * @param tile_size an int that represents the side size of the tile_item.
+     * @param x a float that represent the x position where this will be painted.
+     * @param y a float that represent the y position where this will be painted.
+     */
     void configure_rect(int tile_size = 0, float x = -1, float y = -1);
     QRectF boundingRect() const override;
 

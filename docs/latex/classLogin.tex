@@ -1,5 +1,14 @@
 \hypertarget{classLogin}{}\doxysection{Login Class Reference}
 \label{classLogin}\index{Login@{Login}}
+
+
+Qt window for the login screen. Joins or creates a match for the player.  
+
+
+
+
+{\ttfamily \#include $<$login.\+h$>$}
+
 Inheritance diagram for Login\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,9 +18,33 @@ Inheritance diagram for Login\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classLogin_ab48bd92322794ea2d7abf5b593af1588}\label{classLogin_ab48bd92322794ea2d7abf5b593af1588}} 
-{\bfseries Login} (std\+::string \&host, std\+::string \&ip, int \&game\+\_\+id)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classLogin_a858e0f70c1acef538bb41cf6a44045d7}{Login}} (int \&player\+\_\+id, int \&map\+\_\+id, \mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classLogin}{Login}} object. Sets the styles for the buttons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Qt window for the login screen. Joins or creates a match for the player. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLogin_a858e0f70c1acef538bb41cf6a44045d7}\label{classLogin_a858e0f70c1acef538bb41cf6a44045d7}} 
+\index{Login@{Login}!Login@{Login}}
+\index{Login@{Login}!Login@{Login}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily Login\+::\+Login (\begin{DoxyParamCaption}\item[{int \&}]{player\+\_\+id,  }\item[{int \&}]{map\+\_\+id,  }\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{socket }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classLogin}{Login}} object. Sets the styles for the buttons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Port to connect to. \\
+\hline
+{\em ip} & Ip to connect to. \\
+\hline
+{\em game\+\_\+id} & \mbox{\hyperlink{classMatch}{Match}} id. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

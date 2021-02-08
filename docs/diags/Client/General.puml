@@ -1,0 +1,89 @@
+@startuml
+class Area
+class Audio
+class AudioManager
+class Client
+class ClientMapLoader
+class CommandExecuter
+class CommandManager
+class CommandSender
+class Door
+class DoorTile
+class DoorTimer
+abstract class Drawable
+class DrawableVector
+class Hud
+class Log
+package Login {}
+class Player
+class Raycaster
+class RaycastedAnimation
+class ScoreBoard
+class SdlAnimation
+class SdlTexture
+class SdlWindow
+class TextureManager
+
+class Map
+class Socket
+abstract class Thread
+
+circle Main
+
+AudioManager --> Audio
+
+Client -up-> Log
+Client --> CommandManager 
+Client -left-> Raycaster
+Main --> Login
+Main --> Client
+
+CommandExecuter --> Map
+CommandExecuter --> DrawableVector
+CommandExecuter --> AudioManager
+CommandExecuter --> ClientMapLoader
+CommandExecuter --|> CommandManager 
+
+CommandManager --|> Thread
+CommandManager --> ScoreBoard
+CommandManager --> Socket
+
+CommandSender --|> CommandManager 
+
+Door -down-|> Drawable
+
+DoorTimer --|> Thread
+DoorTimer --> Map
+
+Drawable --> TextureManager
+
+DrawableVector --> Drawable
+
+Map --> DoorTile
+Map --> DoorTimer
+
+Hud --> Player
+Hud --> TextureManager
+Hud --> AudioManager
+
+Player -down-|> Drawable
+
+RaycastedAnimation -down-|> Drawable
+
+Raycaster --> DoorTimer
+Raycaster --> DrawableVector
+Raycaster --> Map
+Raycaster --> Hud
+Raycaster -right-> TextureManager
+
+ScoreBoard --> TextureManager
+
+SdlAnimation -down-|> Drawable
+
+SdlWindow -right-> Area
+
+SdlTexture -right-> SdlWindow 
+
+TextureManager --> SdlTexture
+TextureManager --> SdlWindow
+@enduml

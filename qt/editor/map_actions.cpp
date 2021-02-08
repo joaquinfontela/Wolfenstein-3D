@@ -39,7 +39,7 @@ void map_actions::add_to_map(int x, int y) {
   if (editor->tile_item_selected != NULL) {
     std::vector<int> coordinates = get_coordinate(x, y);
     tile_item* tile = this->editor->tile_item_selected;
-    if (this->editor->mc->paint_tile(coordinates, tile)) {
+    if (this->editor->mc->add_tile(coordinates, tile)) {
       Map_painter* mp = new Map_painter(this->editor->actual_tile_size(),
                                         this->map, this->editor->mc);
       std::vector<tile_item*> tiles_at_coordinates =

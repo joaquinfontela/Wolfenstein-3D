@@ -29,7 +29,7 @@ class MapLoader {
   std::map<int, std::vector<Coordinate>> itemCoordinateMap;
 
   /*
-   * [SERVER-SIDE] Adds all the weapons in itemCoordinateMap to map.
+   * @brief [SERVER-SIDE] Adds all the weapons in itemCoordinateMap to map.
    *
    * @param map a map of a game.
    *
@@ -37,7 +37,7 @@ class MapLoader {
   void addWeaponsToMap(Map* map);
 
   /*
-   * [SERVER-SIDE] Adds all the items in itemCoordinateMap to map.
+   * @brief [SERVER-SIDE] Adds all the items in itemCoordinateMap to map.
    *
    * @param map a map of a game.
    *
@@ -45,7 +45,7 @@ class MapLoader {
   void addItemsToMap(Map* map);
 
   /*
-   * [SERVER-SIDE] Adds all the doors in itemCoordinateMap to map.
+   * @brief [SERVER-SIDE] Adds all the doors in itemCoordinateMap to map.
    *
    * @param map a map of a game.
    *
@@ -53,7 +53,7 @@ class MapLoader {
   void addDoorsToMap(Map* map);
 
   /*
-   * [SERVER-SIDE] Adds all the walls in itemCoordinateMap to map.
+   * @brief [SERVER-SIDE] Adds all the walls in itemCoordinateMap to map.
    *
    * @param map a map of a game.
    *

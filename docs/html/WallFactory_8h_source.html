@@ -80,10 +80,17 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classWallFactory.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWallFactory.html">WallFactory</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classWall.html">Wall</a>* getWall(<span class="keywordtype">int</span> wallId);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">   * [SERVER-SIDE] Receives a wallId and returns the corresponding wall.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">   * @param wallId integer that represents a wall type.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">   * @return a dynamic pointer to a wall if the id is valid, nullptr otherwise.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classWall.html">Wall</a>* getWall(<span class="keywordtype">int</span> wallId);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassWallFactory_html"><div class="ttname"><a href="classWallFactory.html">WallFactory</a></div><div class="ttdef"><b>Definition:</b> WallFactory.h:10</div></div>
 <div class="ttc" id="aclassWall_html"><div class="ttname"><a href="classWall.html">Wall</a></div><div class="ttdef"><b>Definition:</b> Wall.h:4</div></div>
 </div><!-- fragment --></div><!-- contents -->

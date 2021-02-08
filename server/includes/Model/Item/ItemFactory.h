@@ -13,8 +13,8 @@ class ItemFactory {
   ItemFactory(std::string& configFileName);
 
   /*
-   * [SERVER-SIDE] Receives an itemTypeId and returns the corresponding item
-   * with id uniqueId.
+   * @brief [SERVER-SIDE] Receives an itemTypeId and returns the corresponding
+   * item with id uniqueId.
    *
    * @param itemTypeId integer that represents a item type.
    *

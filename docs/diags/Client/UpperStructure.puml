@@ -1,0 +1,58 @@
+@startuml
+class Client {
+  - Socket& socket
+  - uint32_t myPlayerID
+  - bool joinMatch(uint32_t lobbyID)
+  - void connectToServer(string& ip, string& port)
+  - void gargabeCollector(vector<Drawable*>& sprites)
+  + int run(int myPlayerID, std::string& mapFile)
+}
+class CommandExecuter
+class CommandManager {
+    # bool& alive
+    # Socket& socket
+    # ScoreBoard& scoreboard
+}
+class CommandSender 
+class Log {
+    - {static} int playerId
+    - {static} mutex& lock
+    + {static} log(char* filename, char* function, int line, char* msg)
+}
+package Login {}
+class Raycaster {
+    + bool& alive
+}
+class ScoreBoard {
+    - TextureManager& manager
+    - mutex& scoreBoardLock
+    - vector<tuple<int, int>> scores
+    - vector<tuple<int, int>> highscores
+    - vector<tuple<int, int>> kills
+    + void pushScores(tuple<int, int>>)
+    + void pushHightScores(tuple<int, int>>)
+    + void pushKills(tuple<int, int>>)
+    + void draw()
+}
+class Socket
+abstract class Thread {
+    - {abstract} void run()
+}
+class TextureManager
+
+CommandExecuter --|> CommandManager 
+CommandSender --|> CommandManager
+CommandManager -left-|> Thread
+CommandManager --> Socket
+CommandManager -left-> ScoreBoard
+Client --> Raycaster
+Client -up-> CommandManager
+Client --> Log
+Client --> Socket
+Login --> Socket
+ScoreBoard --> TextureManager
+
+circle main
+main --> Client
+main --> Login
+@enduml
