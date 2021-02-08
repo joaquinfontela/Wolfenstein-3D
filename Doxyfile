@@ -975,6 +975,7 @@ EXCLUDE_PATTERNS      += */qt/*
 EXCLUDE_PATTERNS      += */client/executable/*
 EXCLUDE_PATTERNS      += */CMakeFiles/*
 EXCLUDE_PATTERNS      += */client/src/Login/Login_autogen/*
+EXCLUDE_PATTERNS      += */client/src/build-Login-my_pc-Debug/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
