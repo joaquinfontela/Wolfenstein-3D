@@ -27,6 +27,7 @@ class Match {
   Game game;
 
   int ID;
+  int mapID;
   unsigned int playerCount;
   bool running;
   std::map<int, ClientCommunication*> players;
@@ -34,7 +35,7 @@ class Match {
  public:
   Match();
   ~Match();
-  Match(int lobbyID, std::string mapFile);
+  Match(int lobbyID, std::string mapFile, int mapID);
   explicit Match(int lobbyID);
 
   /**
@@ -69,6 +70,10 @@ class Match {
     * @return The ConnectionHandler for that player, NULL if not possible
   */
   ConnectionHandler* addPlayerToMatch(ClientCommunication* player);
+
+  int getMapID();
+
+  bool isJoinable();
 };
 
 #endif

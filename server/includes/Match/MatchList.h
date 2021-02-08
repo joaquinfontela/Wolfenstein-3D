@@ -25,6 +25,8 @@ class MatchList {
   std::mutex lock;
   int matchesCreated = 0;
 
+  
+
  public:
   MatchList();
 
@@ -36,7 +38,8 @@ class MatchList {
    * @return The connection handler of the client, NULL if not possible
    */
   ConnectionHandler* join(ClientCommunication* player, int lobbyID);
-  ConnectionHandler* create(ClientCommunication* player, int lobbyID);
+  ConnectionHandler* create(ClientCommunication* player, int mapID);
+  std::vector<int> getAvailableMatches();
 
   ~MatchList();
 };

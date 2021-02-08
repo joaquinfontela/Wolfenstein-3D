@@ -42,14 +42,15 @@ bool ClientCommunication::connectToLobby() {
     std::cout << "[SERVER] Received opcode: " << opcode[0] << std::endl;
     // Compruebo que el opcode sea el del protocolo para conexion.
     if (opcode[0] == JOIN_LOBBY) {
-      uint32_t lobbyID[1] = {0};
-      this->socket.receive(lobbyID, sizeof(lobbyID));
+      
+      std::vector<int> availableMatches = this->matchList.getAvailableMatches();
+      sendAvailableMatchData(availableMatches);
 
 
-      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
-                << std::endl;
+      uint32_t lobbyID = -1;
+      this->socket.receive(&lobbyID, sizeof(lobbyID));
 
-      this->handler = this->matchList.join(this, lobbyID[0]);
+      this->handler = this->matchList.join(this, lobbyID);
 
       if(this->handler != nullptr){
         uint32_t responseOpcode = CONNECTED_OK;
@@ -59,10 +60,8 @@ bool ClientCommunication::connectToLobby() {
         int sent = this->socket.send(&playerID, sizeof(playerID));
 
         return true;
-      }
-
-      // TODO: Send CONNECTION_ERROR
-      return false;
+      }else
+        return false;
 
     }else if(opcode[0] == CREATE_LOBBY){
       uint32_t lobbyID[1] = {0};
@@ -81,9 +80,8 @@ bool ClientCommunication::connectToLobby() {
         uint32_t playerID = this->playerID;
         int sent = this->socket.send(&playerID, sizeof(playerID));
         return true;
-      }
-
-      return false;
+      }else
+        return false;
 
     }else{
       running = false;
@@ -94,6 +92,19 @@ bool ClientCommunication::connectToLobby() {
     running = false;
     return false;
   }
+}
+
+void ClientCommunication::sendAvailableMatchData(std::vector<int>& matches){
+
+  uint32_t amountOfMatches = matches.size();
+  this->socket.send(&amountOfMatches, sizeof(amountOfMatches));
+
+  for(auto& match : matches){
+    uint32_t id = match;
+    this->socket.send(&id, sizeof(id));
+  }
+
+
 }
 
 SocketCommunication& ClientCommunication::getSock() { return this->socket; }

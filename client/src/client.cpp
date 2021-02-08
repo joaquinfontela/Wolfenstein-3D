@@ -38,11 +38,9 @@ bool Client::joinMatch(uint32_t lobbyID) {
   return true;
 }
 
-int Client::run(std::string& ip, std::string& port, uint32_t lobbyID,
-                std::string& mapFile) {
-  this->connectToServer(ip, port);
-
-  if (!this->joinMatch(lobbyID)) {
+int Client::run(int myPlayerID, std::string& mapFile) {
+ 
+  if(myPlayerID == -1){
     return ERROR;
   }
 

@@ -2,26 +2,25 @@
 
 #include "../includes/client.h"
 #include "../includes/clientprotocol.h"
+#include "../../common/includes/Socket/SocketCommunication.h"
 #include "./Login/login.h"
 
 int main(int argc, char** argv) {
-  std::string ip;
-  std::string port;
-  int game_id;
-  if (argc == 3) {
-    ip = argv[1];
-    port = argv[2];
-    game_id = 2;
-  } else {
-    QApplication a(argc, argv);
-    Login w(port, ip, game_id);
-    w.show();
-    a.exec();
-    w.hide();
-  }
+  int map_id;
+  int player_id;
+  SocketCommunication socket(-1);
 
-  Client client;
-  std::string mapFile = "../../common/src/YAML/map123.yaml";
 
-  return client.run(ip, port, game_id, mapFile);
+  QApplication a(argc, argv);
+  Login w(player_id, map_id, socket);
+  w.show();
+  a.exec();
+  w.hide();
+  
+
+  Client client(socket);
+  std::string mapFile = "../../common/src/YAML/map";
+  mapFile = mapFile + std::to_string(map_id) + ".yaml";
+
+  return client.run(player_id, mapFile);
 }

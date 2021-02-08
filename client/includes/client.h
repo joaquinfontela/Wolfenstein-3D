@@ -30,7 +30,7 @@
  */
 class Client {
  private:
-  SocketCommunication socket;
+  SocketCommunication& socket;
   uint32_t myPlayerID = -1;
 
   /**
@@ -58,7 +58,7 @@ class Client {
   void gargabeCollector(std::vector<Drawable*>& sprites);
 
  public:
-  Client() : socket(-1) {}
+  Client(SocketCommunication& socket) : socket(socket) {}
 
   /**
    * @brief Starts, runs and deletes all the objects involving the game. Creates
@@ -71,8 +71,7 @@ class Client {
    * @param mapFile Map yaml file name.
    * @return int -1 on error and 0 on success.
    */
-  int run(std::string& host, std::string& port, uint32_t lobbyID,
-          std::string& mapFile);
+  int run(int myPlayerID, std::string& mapFile);
 };
 
 #endif

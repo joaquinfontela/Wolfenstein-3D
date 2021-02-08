@@ -13,10 +13,12 @@ Match::Match(int lobbyID)
   cont = true;
 }
 
-Match::Match(int lobbyID, std::string mapFile) : ID(lobbyID),
+Match::Match(int lobbyID, std::string mapFile, int mapID) : ID(lobbyID),
       playerCount(0),
       running(true),
       game(mapFile, CONFIG_YAML_FILE_NAME) {
+
+  this->mapID = mapID;
   cont = true;
 }
 Match::Match() : game(MAP_YAML_FILE_NAME, CONFIG_YAML_FILE_NAME) {}
@@ -36,12 +38,20 @@ ConnectionHandler* Match::addPlayerToMatch(ClientCommunication* player) {
   return playerHandler;
 }
 
+int Match::getMapID(){
+  return this->mapID;
+}
+
 void Match::start() {
   engine = new Engine(commands, notis, cont, players, this->game);
   engine->start();
 }
 
 bool Match::hasEnded() { return !running; }
+
+bool Match::isJoinable(){
+  return (!this->game.hasStarted());
+}
 
 Match::~Match() {
   cont = false;
