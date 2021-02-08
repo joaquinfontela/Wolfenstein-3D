@@ -23,13 +23,16 @@ ConnectionHandler* MatchList::join(ClientCommunication* player, int lobbyID) {
   std::unique_lock<std::mutex> lock(this->lock);
  
   if (this->matches.find(lobbyID) != this->matches.end()) {
-    SocketCommunication& socket = player->getSock();
-    uint32_t mapID = uint32_t(this->matches[lobbyID]->getMapID());
-    socket.send(&mapID, sizeof(mapID));
     return this->matches[lobbyID]->addPlayerToMatch(player);
   }
 
   return nullptr;
+}
+
+int MatchList::getMapID(int lobbyID){
+   if (this->matches.find(lobbyID) != this->matches.end()) {
+    return this->matches[lobbyID]->getMapID();
+  }
 }
 
 std::vector<int> MatchList::getAvailableMatches(){

@@ -24,14 +24,15 @@ class Client {
  private:
   SocketCommunication socket;
   uint32_t myPlayerID = -1;
+  uint32_t mapID = -1;
 
+  void receiveAvailableMatch();
   bool joinMatch(uint32_t lobbyID);
   void connectToServer(std::string& host, std::string& port);
 
  public:
   Client() : socket(-1) {}
-  int run(std::string& host, std::string& port, uint32_t lobbyID,
-          std::string& mapFile, std::string& scriptName);
+  int run(std::string& host, std::string& port, uint32_t lobbyID, std::string& scriptName);
 };
 }  // namespace Lua
 

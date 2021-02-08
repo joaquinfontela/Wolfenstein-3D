@@ -40,6 +40,7 @@ class MatchList {
   ConnectionHandler* join(ClientCommunication* player, int lobbyID);
   ConnectionHandler* create(ClientCommunication* player, int mapID);
   std::vector<int> getAvailableMatches();
+  int getMapID(int lobbyID);
 
   ~MatchList();
 };
