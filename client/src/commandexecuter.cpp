@@ -118,6 +118,10 @@ void CommandExecuter::updateOrCreatePlayer() {
     players[id]->update(playerinfo);
   } else {
     Player* placeholder = new Player(playerinfo);
+    if (!placeholder) {
+      LOG(COULD_NOT_CREATE_PLAYER);
+      return;
+    }
     std::cout << "[GAME] Adding player with id: " << id << std::endl;
     players[id] = placeholder;
     this->sprites.push_back(placeholder);

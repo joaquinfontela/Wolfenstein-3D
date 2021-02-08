@@ -21,6 +21,8 @@
 
 #define GET_WEAPON_SOUND(X) X
 
+/* AUDIO CODES */
+
 #define KNIFE_SOUND 1
 #define PISTOL_SOUND 2
 #define MACHINEGUN_SOUND 3
@@ -60,6 +62,8 @@
 
 #define PI 3.14159265359
 #define BLOCKSIZE 64
+
+/* SPRITE CODES */
 
 #define BLUEWALL 1
 #define WALL2_SPRITE 2
@@ -178,5 +182,7 @@
 #define OPEN 'o'
 #define OPENING 'O'
 #define DOOR_ANIMATION_TIME 1.0
+
+#define COULD_NOT_CREATE_PLAYER "Fatal error, the player couldn't be created."
 
 #endif  // CLIENTPROTOCOL_H_
