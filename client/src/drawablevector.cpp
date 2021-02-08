@@ -33,8 +33,11 @@ void DrawableVector::raycastSprites(double x, double y, double dirX,
 }
 
 void DrawableVector::push_back(Drawable* drawable) {
-  if (!drawable) LOG("Error, can't push a null pointer as a sprite.");
-  else this->sprites.push_back(drawable);
+  if (!drawable) {
+    LOG("Error, can't push a null pointer as a sprite.");
+  } else {
+   this->sprites.push_back(drawable);
+  }
 }
 
 void DrawableVector::removeSpriteWithIdAndGetSound(uint32_t itemId,
