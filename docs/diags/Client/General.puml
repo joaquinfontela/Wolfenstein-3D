@@ -10,11 +10,11 @@ class CommandSender
 class Door
 class DoorTile
 class DoorTimer
-class Drawable
+abstract class Drawable
 class DrawableVector
 class Hud
 class Log
-class Login
+package Login {}
 class Player
 class Raycaster
 class RaycastedAnimation
@@ -26,14 +26,17 @@ class TextureManager
 
 class Map
 class Socket
-class Thread
+abstract class Thread
+
+circle Main
 
 AudioManager --> Audio
 
 Client -up-> Log
 Client --> CommandManager 
 Client -left-> Raycaster
-Client --> Login
+Main --> Login
+Main --> Client
 
 CommandExecuter --> Map
 CommandExecuter --> DrawableVector
