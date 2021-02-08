@@ -113,14 +113,15 @@ void Game::sendGameStatus(WaitingQueue<Notification*>& notis) {
   std::map<int, Player*>::iterator it = this->players.begin();
 
   for (; it != this->players.end(); ++it) {
-    
+
     if(!it->second->isDead()){
+      std::cout << "tu quieres una manzana?"<< it->second->ID() << std::endl;
       PlayerData data;
       it->second->fillPlayerData(data);
       PlayerPackageUpdate* noti = new PlayerPackageUpdate(it->first, data);
       notis.push(noti);
     }
-    
+
   }
 }
 

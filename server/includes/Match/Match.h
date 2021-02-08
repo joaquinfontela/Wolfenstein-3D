@@ -34,6 +34,7 @@ class Match {
  public:
   Match();
   ~Match();
+  Match(int lobbyID, std::string mapFile);
   explicit Match(int lobbyID);
 
   /**

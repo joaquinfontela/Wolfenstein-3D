@@ -114,12 +114,11 @@ void CommandExecuter::updateOrCreatePlayer() {
   memset(&playerinfo, 0, sizeof(PlayerData));
   infogetter.receivePlayerData(playerinfo);
   uint32_t id = playerinfo.playerID;
-
   if (players.find(id) != players.end()) {
     players[id]->update(playerinfo);
   } else {
-    std::cout << "[GAME] Adding player with id: " << id << std::endl;
     Player* placeholder = new Player(playerinfo);
+    std::cout << "[GAME] Adding player with id: " << id << std::endl;
     players[id] = placeholder;
     this->sprites.push_back(placeholder);
   }

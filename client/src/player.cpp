@@ -50,6 +50,17 @@ Player::Player(PlayerData& info) {
   this->bullets = info.bullets;
   this->score = info.score;
   this->key = info.hasKey;
+  this->shooting = false;
+  this->moving = false;
+  this->hasTheKey = false;
+  this->healthdown = false;
+  this->timePassed = 0;
+  this->totalFrames = TIME_PER_ANIMATION_SLIDE * 5;
+  this->frames = 0;
+  this->framesPerAnimation = 1;
+  this->animatingShooting = false;
+  this->animatingMovement = false;
+  this->hasToBeDeleted = false;
 }
 
 void Player::update(PlayerData& info) {
@@ -124,11 +135,11 @@ void Player::draw(TextureManager& manager, double posX, double posY,
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
-    int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    if (doorStripe < 0) continue;
+    int playerStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    if (playerStripe < 0) continue;
 
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
-      srcArea.update(doorStripe + (this->frames << 6), 0, 1, preCalcdValue3);
+      srcArea.update(playerStripe + (this->frames << 6), 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(spriteId, srcArea, destArea);
     }

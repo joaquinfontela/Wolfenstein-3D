@@ -18,7 +18,13 @@ class YAMLConfigReader {
   int getMaxHealth();
   int getMaxReviveTimes();
   int getMaxHealthToBeAbleToPickUpBloodItem();
+
+  // Returns the health that gets the player when he picks up the item with id
+  // itemId.
   int getHealthSumWhenPickingUpItem(int itemId);
+
+  // Returns the points that will be added to the score of the player when he
+  // picks up the item with id itemId.
   int getPointsSumWhenPickingUpItem(int itemId);
   std::vector<int> getMinAndMaxDamagePerBullet();
   int getPointsPerKill();

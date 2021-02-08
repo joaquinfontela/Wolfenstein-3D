@@ -13,6 +13,12 @@ Match::Match(int lobbyID)
   cont = true;
 }
 
+Match::Match(int lobbyID, std::string mapFile) : ID(lobbyID),
+      playerCount(0),
+      running(true),
+      game(mapFile, CONFIG_YAML_FILE_NAME) {
+  cont = true;
+}
 Match::Match() : game(MAP_YAML_FILE_NAME, CONFIG_YAML_FILE_NAME) {}
 
 bool Match::hasID(int lobbyID) { return this->ID == lobbyID; }

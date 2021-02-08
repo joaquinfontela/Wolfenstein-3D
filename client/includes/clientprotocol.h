@@ -6,8 +6,8 @@
 #define LOG(ERROR) Log::log(__FILE__, __FUNCTION__, __LINE__, ERROR);
 
 #define ERROR -1
-#define HEIGHT 600
-#define WIDTH 800
+#define HEIGHT 100
+#define WIDTH 160
 
 #define TIME_PER_ANIMATION_SLIDE 200.0
 

@@ -5,4 +5,3 @@
 #include "EWIEGA46WW/moc_open_window.cpp"
 #include "EWIEGA46WW/moc_save_window.cpp"
 #include "EWIEGA46WW/moc_size_window.cpp"
-#include "EWIEGA46WW/moc_tile_container_actions.cpp"
