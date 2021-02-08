@@ -55,9 +55,11 @@ bool ClientCommunication::connectToLobby() {
       if(this->handler != nullptr){
         uint32_t responseOpcode = CONNECTED_OK;
         this->socket.send(&responseOpcode, sizeof(responseOpcode));
+        uint32_t mapID = this->matchList.getMapID(lobbyID);
 
         uint32_t playerID = this->playerID;
-        int sent = this->socket.send(&playerID, sizeof(playerID));
+        this->socket.send(&playerID, sizeof(playerID));
+        this->socket.send(&mapID, sizeof(mapID));
 
         return true;
       }else

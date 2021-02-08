@@ -5,8 +5,11 @@
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
 
-#define MAP_NOT_FOUND_ERROR "Error, map not found: "
+#include <exception>
 
+#define MAP_NOT_FOUND_ERROR "Error, map not found: "
+#define COULD_NOT_CREATE_EXECUTER "Fatal error, the executer couldn't be created."
+#define COULD_NOT_CREATE_SENDER "Fatal error, the sender couldn't be created."
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
 
 static bool fileExists(std::string& name){
@@ -15,7 +18,7 @@ static bool fileExists(std::string& name){
         return true;
     } else {
         return false;
-    }   
+    }
 }
 
 void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
@@ -50,12 +53,12 @@ bool Client::joinMatch(uint32_t lobbyID) {
 }
 
 int Client::run(int myPlayerID, std::string& mapFile) {
- 
+
   if(myPlayerID == -1){
     return ERROR;
   }
 
-  if(!fileExists(mapFile)){ 
+  if(!fileExists(mapFile)){
     std::string error = MAP_NOT_FOUND_ERROR + mapFile;
     LOG(error.c_str());
     return ERROR;
@@ -77,6 +80,11 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   std::atomic<bool> alive;
   alive = true;
   Player* player = new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0);
+
+  if (!player) {
+    throw std::runtime_error(COULD_NOT_CREATE_PLAYER);
+  }
+
   Hud hud(player, manager, audios);
   std::map<uint32_t, Player*> players;
   players[this->myPlayerID] = player;
@@ -95,6 +103,12 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
                           audios, matrix, loader, &scoreboard);
+
+  if (!sender) {
+    throw std::runtime_error(COULD_NOT_CREATE_SENDER);
+  } else if (!worker) {
+    throw std::runtime_error(COULD_NOT_CREATE_EXECUTER);
+  }
 
   try {
     worker->start();

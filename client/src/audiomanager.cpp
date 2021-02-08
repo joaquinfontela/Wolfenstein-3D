@@ -68,7 +68,7 @@ AudioManager::AudioManager() {
       "Death 2.wav",          // 12
       "Player Pain 2.wav",    // 13
       "Enemy Pain.wav",       // 14
-      "music.mp3"             // 15 
+      "music.mp3"             // 15
   });
   int i = 1;
   for (std::string& name : names) {
@@ -92,7 +92,7 @@ void AudioManager::stopWithId(int id) {
 bool AudioManager::loadTrack(int id, Audio* audio) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
   if (it != this->audiotracks.end()) {
-    LOG_WITH_ID(TRACK_NOT_FOUND_ERROR);
+    LOG_WITH_ID(TRACK_FOUND_ERROR);
     return false;
   }
   this->audiotracks[id] = audio;
