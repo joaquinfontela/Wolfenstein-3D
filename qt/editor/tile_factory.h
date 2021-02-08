@@ -8,6 +8,13 @@
 
 class tile_factory {
  public:
+  /**
+   * @brief get a pointer to a tile_item depending on the coordinates of the
+   * click in the matrix.
+   *
+   * @param coordinates a vector representing a coordinate.
+   * @return a dynamic pointer to a tile_item.
+   */
   virtual tile_item* get_tile(std::vector<int>& coordinates) = 0;
 };
 

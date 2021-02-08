@@ -11,6 +11,18 @@ class ItemFactory {
  public:
   ItemFactory();
   ItemFactory(std::string& configFileName);
+
+  /*
+   * [SERVER-SIDE] Receives an itemTypeId and returns the corresponding item
+   * with id uniqueId.
+   *
+   * @param itemTypeId integer that represents a item type.
+   *
+   * @param uniqueId integer that differentiates an item from any other one.
+   *
+   * @return a dynamic pointer to a item if itemTypeId is valid, nullptr
+   * otherwise.
+   */
   Item* getItem(int itemTypeId, int uniqueId);
 };
 
