@@ -49,7 +49,29 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 
 ## Tutorial de Uso
 
-Siendo un jugador, al entrar a la partida uno no se podrá mover ni disparar hasta que el jugador principal no apriete la _p_ para comenzar la partida. El personaje se mueve con _AWSD_, donde _A_ rota a la izquierda la visión, la _D_ rota a la derecha la visión, la _W_ te desplaza hacia adelante y por último _S_ te lleva hacia atrás. Se dispara con _ENTER_ y se cambian las armas con los números. El _1_ siempre para el cuchillo y el _2_ siempre para la pistola. El _3, 4, 5_ seleccionan la metralleta, arma de cadena y lanza misiles (siendo que se mapea por orden de entrada, es decir, si primero tomo el lanza cohetes y luego la metralleta, el _3_ mapearía al lanza cohetes, el _4_ a la metralleta y la _5_ inhabilidato).
+### Iniciar Partida
+
+Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla _p_ que indica al servidor que el admin desea comenzar la partida.
+
+### Movimiento
+
+Para moverse, se utiliza el sistema clásico de movimiento: _w_ para moverse para adelante, _s_ para moverse hacia atras, _a_ para rotar la camara hacia la izquierda y _d_ para rotar la camara hacia la derecha.
+
+### Armas
+Para el uso de las armas, el _enter_ significa disparar mientras que las teclas _1_, _2_, _3_, _4_ y _5_ le permiten al jugador cambiar de armas. El _1_ siempre indica cambiar al cuchillo mientras que el _2_ indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
+
+### Puertas 
+
+El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:
+
+
+<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/LockedDoor.png"/></p>
+
+Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar del piso para poder ser abierta. Una vez que la puerta se haya abierto una vez con llave, cualquier jugador, tenga llave o no, podrá abrirla.
+
+<br><p align="center"><img src="https://github.com/joaquinfontela/tp-final-taller/blob/master/screenshots/UnlockableDoor.png"/></p>
+
+Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.
 
 ## Apéndice de Errores
 
