@@ -15,7 +15,7 @@ TileMatrix* YAMLConversor::updateTileMatrix() {
     for (Coordinate c : coordinates) {
       QString path(pathFactory.getTilePath(id).c_str());
       tile_item* t = new tile_item(
-          path, id, tile_factory::isCumulative(id, yamlMapReader));  // provisory
+          path, id, tile_factory::isCumulative(id, yamlMapReader));
       tileMatrix->at(c.getY() - 1)[c.getX() - 1].push_back(t);
     }
   }

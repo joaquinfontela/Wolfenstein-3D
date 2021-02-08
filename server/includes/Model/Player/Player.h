@@ -13,13 +13,14 @@ class Map;
 class Updatable;
 
 /**
-  * @section DESCRIPTION
-  * Class that represents a player controlled by a user/client
-  */
+ * @section DESCRIPTION
+ * Class that represents a player controlled by a user/client
+ */
 
 class Player {
  private:
-  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP, POINTS_PER_KILL;
+  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP,
+      POINTS_PER_KILL;
   double x, y;
   double dirX, dirY;
   double rotSpeed;
@@ -42,7 +43,8 @@ class Player {
   Map& map;
 
   /*
-   * [SERVER-SIDE] Handles the players death, and respawns to new position if possible
+   * @brief [SERVER-SIDE] Handles the players death, and respawns to new
+   * position if possible
    *
    * @param Notification queue to notify if needed
    * @return 0 if respawn was possible, -1 otherwise
@@ -50,15 +52,15 @@ class Player {
   int handleDeath(WaitingQueue<Notification*>& notis);
 
  public:
-   double planeX;
-   double planeY;
+  double planeX;
+  double planeY;
 
   // CONSTRUCTORS
   Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
   Player(YAMLConfigReader yamlConfigReader);
 
   /*
-   * [SERVER-SIDE] Sets the shooting state as requested
+   * @brief [SERVER-SIDE] Sets the shooting state as requested
    *
    * @param Boolean that represents if the player intends to shoot.
    *
@@ -66,17 +68,20 @@ class Player {
   void setShooting(bool state);
 
   /*
-   * [SERVER-SIDE] Receives the indicated damage, if killed drops the required items and, if possible, respawns.
+   * @brief [SERVER-SIDE] Receives the indicated damage, if killed drops the
+   * required items and, if possible, respawns.
    *
    * @param Damage received
-   * @param Queue of notifications on which to send, if required, new drops notification.
+   * @param Queue of notifications on which to send, if required, new drops
+   * notification.
    *
-   * @return 0 if killed and respawned, -1 if killed and unable to respawn. Remaining health otherwise.
+   * @return 0 if killed and respawned, -1 if killed and unable to respawn.
+   * Remaining health otherwise.
    */
   int takeDamage(unsigned int damage, WaitingQueue<Notification*>& notis);
 
   /*
-   * [SERVER-SIDE] Sets the notifiable status as requested.
+   * @brief [SERVER-SIDE] Sets the notifiable status as requested.
    *
    * @param The status to set.
    */
@@ -96,21 +101,21 @@ class Player {
   bool isDead();
 
   /*
-   * [SERVER-SIDE] Indicates if the player has admin rights over the game
+   * @brief [SERVER-SIDE] Indicates if the player has admin rights over the game
    *
    * @return True if players has admin rights, false otherwise.
    */
   bool hasAdmin();
 
   /*
-   * [SERVER-SIDE] Adds the indicated weapon to the inventory.
+   * @brief [SERVER-SIDE] Adds the indicated weapon to the inventory.
    *
    * @param The weapon to add to the inventory
    */
   void addWeapon(Weapon* weapon);
 
   /*
-   * [SERVER-SIDE] Indicates if the player has a gun with indicated ID
+   * @brief [SERVER-SIDE] Indicates if the player has a gun with indicated ID
    *
    * @param ID of the gun to check on the players inventory.
    *
@@ -119,14 +124,14 @@ class Player {
   bool hasGunWithId(int uniqueId);
 
   /*
-   * [SERVER-SIDE] Respawns the player onto a new position on the map.
+   * @brief [SERVER-SIDE] Respawns the player onto a new position on the map.
    *
    * @param The notification Queue on which to send notification if required.
    */
   void respawn(WaitingQueue<Notification*>& notis);
 
   /*
-   * [SERVER-SIDE] Calculates distance to another specified player.
+   * @brief [SERVER-SIDE] Calculates distance to another specified player.
    *
    * @param The other player to calculate the distance
    *
@@ -134,14 +139,15 @@ class Player {
   double calculateDistanceTo(Player* other);
 
   /*
-   * [SERVER-SIDE] Fills the struct PlayerData with the appropiate values for this player
+   * @brief [SERVER-SIDE] Fills the struct PlayerData with the appropiate values
+  for this player
    *
    * @param The struct on which to set the data
    */
   void fillPlayerData(PlayerData& data);
 
   /*
-   * [SERVER-SIDE] If possible, shoots the current weapon of the player.
+   * @brief [SERVER-SIDE] If possible, shoots the current weapon of the player.
    *
    * @param Time elapsed since last server update.
    *
@@ -150,38 +156,44 @@ class Player {
   int attack(float timeElapsed);
 
   /*
-   * [SERVER-SIDE] Shoots, if possible, current weapon and applies damage if required.
+   * @brief [SERVER-SIDE] Shoots, if possible, current weapon and applies damage
+   * if required.
    *
    * @param Time elapsed since last server update.
    * @param Notification Queue on which to notify of any events if required
    * @param Updatables list if player shoots an updatable weapon.
    */
-  void shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
+  void shoot(float timeElapsed, WaitingQueue<Notification*>& notis,
+             std::list<Updatable*>& updatables);
 
   /*
-   * [SERVER-SIDE] Shoots the RPG, creating an instance of an updatable rocket.
+   * @brief [SERVER-SIDE] Shoots the RPG, creating an instance of an updatable
+   * rocket.
    *
    * @param The notification queue on which to notify if required
    * @param Updatables list to push the new instance of Rocket.
    */
-  void shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
+  void shootRPG(WaitingQueue<Notification*>& notis,
+                std::list<Updatable*>& updatables);
 
   /*
-   * [SERVER-SIDE] Updates the movement speed of the player by the specified value
+   * @brief [SERVER-SIDE] Updates the movement speed of the player by the
+   * specified value
    *
    * @param The movement speed to add to the player
    */
   void updateMoveSpeed(double movSpeed);
 
-   /*
-   * [SERVER-SIDE] Updates the rotation speed of the player by the specified value
+  /*
+   * @brief [SERVER-SIDE] Updates the rotation speed of the player by the
+   * specified value
    *
    * @param The rotation speed to add to the player
    */
   void updateRotationSpeed(double rotSpeed);
 
   /*
-   * [SERVER-SIDE] Moves the player to the specfied coordinate (x, y)
+   * @brief [SERVER-SIDE] Moves the player to the specfied coordinate (x, y)
    *
    * @param X Coordinate
    * @param Y Coordinate
@@ -189,21 +201,21 @@ class Player {
   void moveTo(double x, double y);
 
   /*
-   * [SERVER-SIDE] Return the range the current weapon of the player has.
+   * @brief [SERVER-SIDE] Return the range the current weapon of the player has.
    *
    * @return The range of the current weapon
    */
   int getRange();
 
   /*
-   * [SERVER-SIDE] Switches the active weapon to the specified slot
+   * @brief [SERVER-SIDE] Switches the active weapon to the specified slot
    *
    * @param The slot to set as active
    */
   void equipWeapon(int weaponPos);
 
   /*
-   * [SERVER-SIDE] Checks collision with a coordinate (x, y)
+   * @brief [SERVER-SIDE] Checks collision with a coordinate (x, y)
    *
    * @param X Coordinate
    * @param Y Coordinate
@@ -213,67 +225,70 @@ class Player {
   bool collidesWith(double x, double y);
 
   /*
-   * [SERVER-SIDE] Checks if the player has to be updated
+   * @brief [SERVER-SIDE] Checks if the player has to be updated
    *
    * @return True if the player has to be updated, false otherwise.
   bool hasToBeUpdated();
 
   /*
-   * [SERVER-SIDE] Updates, if required, position and shooting status of the current player
+   * @brief [SERVER-SIDE] Updates, if required, position and shooting status of
+  the current player
    *
    * @param Time elapsed since last update
    * @param Notification queue on which to push new notifications
    * @param Updatable list to push new updatables event if required
    */
-  void update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables);
+  void update(float timeElapsed, WaitingQueue<Notification*>& notis,
+              std::list<Updatable*>& updatables);
 
   /*
-   * [SERVER-SIDE] Pick ups key, setting key status to true
+   * @brief [SERVER-SIDE] Pick ups key, setting key status to true
    */
   void pickupKey();
 
   /*
-   * [SERVER-SIDE] Checks if player has a key
+   * @brief [SERVER-SIDE] Checks if player has a key
    *
    * @return True if player has a key, false otherwise.
    */
   bool hasKey();
 
   /*
-   * [SERVER-SIDE] Checks if player has max ammo
+   * @brief [SERVER-SIDE] Checks if player has max ammo
    *
    * @return True if player has max ammo, false otherwise.
    */
   bool hasMaxAmmo();
 
   /*
-   * [SERVER-SIDE] Pick ups ammo, adding to existing amount up to specified limit.
+   * @brief [SERVER-SIDE] Pick ups ammo, adding to existing amount up to
+   * specified limit.
    */
   void pickUpAmmo();
 
   /*
-   * [SERVER-SIDE] Gives current health of the player.
+   * @brief [SERVER-SIDE] Gives current health of the player.
    *
    * @return The health of the player
    */
   int getHealth();
 
   /*
-   * [SERVER-SIDE] Checks if the player has max health.
+   * @brief [SERVER-SIDE] Checks if the player has max health.
    *
    * @return True if the player has max health, false otherwise
    */
   bool hasFullHealth();
 
   /*
-   * [SERVER-SIDE] Adds health onto the players health pool.
+   * @brief [SERVER-SIDE] Adds health onto the players health pool.
    *
    * @param The health to add.
    */
   void addHealth(int health);
 
-   /*
-   * [SERVER-SIDE] Adds points to the player.
+  /*
+   * @brief [SERVER-SIDE] Adds points to the player.
    *
    * @param The points to add.
    */
@@ -282,7 +297,6 @@ class Player {
   double calculateDistanceTo(Player* p);
 
   bool hasToBeUpdated();
-
 
   ~Player();
 };

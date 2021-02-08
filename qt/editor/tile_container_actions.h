@@ -12,10 +12,9 @@ class tile_container_actions : public QObject
 public:
     tile_container_actions(Editor* editor);
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;
 private:
     Editor* editor;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 };
 
 #endif // TILE_CONTAINER_ACTIONS_H

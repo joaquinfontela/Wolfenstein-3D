@@ -11,7 +11,7 @@ class Door {
   virtual bool isLocked() = 0;
 
   /*
-   * [SERVER-SIDE] Unlocks the door.
+   * @brief [SERVER-SIDE] Unlocks the door.
    *
    * @return a boolean determining if the door was unlocked by the execution of
    * the function or not (if it was already unlocked, it returns false).
@@ -19,14 +19,14 @@ class Door {
   virtual bool unlock(bool hasKey) = 0;
 
   /*
-   * [SERVER-SIDE] locks the door.cC
+   * @brief [SERVER-SIDE] locks the door
    *
    * @return true
    */
   virtual bool lock() = 0;
 
   /*
-   * [SERVER-SIDE] Unlocks the door if locked, and sets opening to false;
+   * @brief [SERVER-SIDE] Unlocks the door if locked, and sets opening to false;
    * otherwise it locks the door.
    */
   virtual void changeStatus() = 0;

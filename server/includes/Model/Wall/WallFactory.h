@@ -10,7 +10,7 @@
 class WallFactory {
  public:
   /*
-   * [SERVER-SIDE] Receives a wallId and returns the corresponding wall.
+   * @brief [SERVER-SIDE] Receives a wallId and returns the corresponding wall.
    *
    * @param wallId integer that represents a wall type.
    *

@@ -23,7 +23,7 @@ class Item {
   virtual bool canBePickedUpBy(Player* p) = 0;
 
   /*
-   * [SERVER-SIDE] Player p picks up this item.
+   * @brief [SERVER-SIDE] Player p picks up this item.
    *
    * @param p a pointer to a player.
    */
