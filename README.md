@@ -51,6 +51,20 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 
 ## Tutorial de Uso
 
+### Login
+
+Para acceder al login del juego debemos correr `./Wolfen3D` en la carpeta `client/executable`. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
+
+<br><p align="center"><img src="./docs/screenshots/Login.png"/></p>
+
+Luego uno puede seleccionar _Join Match_ si quiere entrar a una partida existente.
+
+<br><p align="center"><img src="./docs/screenshots/JoinMatch.png"/></p>
+
+O _Create Match_ para crear una propia.
+
+<br><p align="center"><img src="./docs/screenshots/CreateMatch.png"/></p>
+
 ### Iniciar Partida
 
 Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla _p_ que indica al servidor que el admin desea comenzar la partida.
@@ -91,17 +105,7 @@ Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra
 
 ### Editor 
 
-Para usar el editor hay que correr `./editor` en la carpeta `/editor`. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
-
-<br><p align="center"><img src="./docs/screenshots/Login.png"/></p>
-
-Luego uno puede seleccionar _Join Match_ si quiere entrar a una partida existente.
-
-<br><p align="center"><img src="./docs/screenshots/JoinMatch.png"/></p>
-
-O _Create Match_ para crear una propia.
-
-<br><p align="center"><img src="./docs/screenshots/CreateMatch.png"/></p>
+***COMPLETAR***
 
 ## Apéndice de Errores
 
