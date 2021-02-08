@@ -1,0 +1,56 @@
+@startuml
+
+class Server{
+    + run()
+}
+
+
+
+class ClientAccepter{
+    + void run()
+}
+
+class ClientCommunication{
+    - bool connectToLobby()
+}
+
+class MatchList{
+    + ConnectionHandler* join(int lobbyID)
+    + ConnectionHandler* create(int mapID)
+}
+
+class Match{
+    + void start()
+    + ConnectionHandler* addPlayerToMatch(ClientCommunication* player)
+}
+
+class ConnectionHandler{
+    + void run()
+    + void receiveCommands()
+}
+
+
+
+Server..>ClientAccepter
+
+
+
+ClientAccepter->MatchList
+
+MatchList-->Match
+
+ClientAccepter-->ClientCommunication
+
+MatchList..>ClientCommunication
+
+Match-->ClientCommunication
+
+Match..>ConnectionHandler
+
+Server..>MatchList
+
+ClientCommunication-->ConnectionHandler
+
+MatchList..>ConnectionHandler
+
+@enduml

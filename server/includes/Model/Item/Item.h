@@ -12,9 +12,21 @@ class Item {
  public:
   Item() {}
   Item(int itemID, int id) : id(id), itemID(itemID) {}
-  int getID(){ return id;}
-  int getItemID(){return itemID;}
+  int getID() { return id; }
+  int getItemID() { return itemID; }
+
+  /*
+   * @param p a pointer to a player.
+   *
+   * @return a boolean determining if this item can be picked up by p.
+   */
   virtual bool canBePickedUpBy(Player* p) = 0;
+
+  /*
+   * [SERVER-SIDE] Player p picks up this item.
+   *
+   * @param p a pointer to a player.
+   */
   virtual void pickUp(Player* p) = 0;
   ~Item() {}
 };

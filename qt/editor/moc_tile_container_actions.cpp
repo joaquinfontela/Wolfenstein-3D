@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'map_scene.h'
+** Meta object code from reading C++ file 'tile_container_actions.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../map_scene.h"
+#include "tile_container_actions.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'map_scene.h' doesn't include <QObject>."
+#error "The header file 'tile_container_actions.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,25 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_map_scene_t {
+struct qt_meta_stringdata_tile_container_actions_t {
     QByteArrayData data[1];
-    char stringdata0[10];
+    char stringdata0[23];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_map_scene_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_tile_container_actions_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_map_scene_t qt_meta_stringdata_map_scene = {
+static const qt_meta_stringdata_tile_container_actions_t qt_meta_stringdata_tile_container_actions = {
     {
-QT_MOC_LITERAL(0, 0, 9) // "map_scene"
+QT_MOC_LITERAL(0, 0, 22) // "tile_container_actions"
 
     },
-    "map_scene"
+    "tile_container_actions"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_map_scene[] = {
+static const uint qt_meta_data_tile_container_actions[] = {
 
  // content:
        7,       // revision
@@ -54,7 +54,7 @@ static const uint qt_meta_data_map_scene[] = {
        0        // eod
 };
 
-void map_scene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void tile_container_actions::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -62,28 +62,28 @@ void map_scene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     Q_UNUSED(_a);
 }
 
-const QMetaObject map_scene::staticMetaObject = {
-    { &QGraphicsScene::staticMetaObject, qt_meta_stringdata_map_scene.data,
-      qt_meta_data_map_scene,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject tile_container_actions::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_tile_container_actions.data,
+      qt_meta_data_tile_container_actions,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *map_scene::metaObject() const
+const QMetaObject *tile_container_actions::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *map_scene::qt_metacast(const char *_clname)
+void *tile_container_actions::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_map_scene.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_tile_container_actions.stringdata0))
         return static_cast<void*>(this);
-    return QGraphicsScene::qt_metacast(_clname);
+    return QObject::qt_metacast(_clname);
 }
 
-int map_scene::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int tile_container_actions::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QGraphicsScene::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

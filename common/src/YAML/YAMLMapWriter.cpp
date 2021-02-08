@@ -35,7 +35,6 @@ void YAMLMapWriter::addAllItemsToMatrix() {
   for (std::vector<std::vector<tile_item*>> row : tileMatrix) {
     x = 1;
     for (std::vector<tile_item*> column : row) {
-      std::cout << column.size() << std::endl;
       this->processMatrixPosition(column, x, y);
       x++;
     }

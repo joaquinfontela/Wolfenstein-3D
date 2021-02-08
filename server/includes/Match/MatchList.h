@@ -2,11 +2,11 @@
 #define __MATCH_LIST_H__
 
 #include <map>
+#include <mutex>
 
 #include "../Server/ClientCommunication.h"
 #include "../Server/ConnectionHandler.h"
 #include "Match.h"
-#include <mutex>
 
 class ClientCommunication;
 class Match;
@@ -14,8 +14,8 @@ class Match;
 typedef std::map<int, Match*>::iterator iterator_t;
 
 /**
-  * @section DESCRIPTION
-  * Class that represents the current list of matches the server is hosting.
+ * @section DESCRIPTION
+ * Class that represents the current list of matches the server is hosting.
  */
 class MatchList {
  private:
@@ -23,16 +23,17 @@ class MatchList {
   void forceShutdown();
   void matchCleanup();
   std::mutex lock;
+  int matchesCreated = 0;
 
  public:
   MatchList();
 
   /**
-    * <Tries to join a match, creates it if not found>
-    *
-    * @param The clients ClientCommunication
-    * @param The lobby ID
-    * @return The connection handler of the client, NULL if not possible
+   * <Tries to join a match, creates it if not found>
+   *
+   * @param player The clients ClientCommunication
+   * @param lobbyID The lobby ID
+   * @return The connection handler of the client, NULL if not possible
    */
   ConnectionHandler* join(ClientCommunication* player, int lobbyID);
   ConnectionHandler* create(ClientCommunication* player, int lobbyID);

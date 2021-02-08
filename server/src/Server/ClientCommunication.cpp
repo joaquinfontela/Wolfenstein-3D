@@ -21,6 +21,9 @@ void ClientCommunication::run() {
   if (connectToLobby()) {
     this->handler->run();
     delete this->handler;
+  }else{
+    uint32_t opcode = CONNECTION_REFUSED;
+    this->socket.send(&opcode, sizeof(opcode));
   }
 
 
@@ -66,7 +69,7 @@ bool ClientCommunication::connectToLobby() {
       this->socket.receive(lobbyID, sizeof(lobbyID));
 
 
-      std::cout << "[SERVER] Client joining lobby: " << int(lobbyID[0])
+      std::cout << "[SERVER] Client creating lobby: " << int(lobbyID[0])
                 << std::endl;
 
       this->handler = this->matchList.create(this, lobbyID[0]);
