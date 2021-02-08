@@ -44,6 +44,8 @@ int Client::run(int myPlayerID, std::string& mapFile) {
     return ERROR;
   }
 
+  this->myPlayerID = myPlayerID;
+
   SdlWindow window(WIDTH, HEIGHT);
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);

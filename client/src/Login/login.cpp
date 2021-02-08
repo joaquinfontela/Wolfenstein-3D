@@ -19,8 +19,8 @@ Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
     : QMainWindow(nullptr),
       ui(new Ui::Login),
       player_id(player_id),
-      map_id(map_id)
-      socket(socket);
+      map_id(map_id),
+      socket(socket)
       {
   ui->setupUi(this);
   QPixmap bkgnd("../media/loginscreen.png");
@@ -58,7 +58,7 @@ void Login::on_button_join_clicked() {
   } else {
     my_ip = parseSpaces(ip.toStdString());
     my_host = parseSpaces(port.toStdString());
-    my_game_id = game_id.toInt();
+   // my_game_id = game_id.toInt();
 
 
     // PARTE DE CONECTARSE A UNA PARTIDA
@@ -136,7 +136,7 @@ void Login::receiveAvailableMatches(){
   }
 }
 
-void Login::joinLobby(){
+bool Login::joinLobby(){
 
   uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;
