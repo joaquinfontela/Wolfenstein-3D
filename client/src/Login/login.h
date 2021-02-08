@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-#include "../../client/includes/client.h"
 #include "string.h"
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/protocol.h"
@@ -15,7 +14,6 @@ class Login;
 QT_END_NAMESPACE
 
 class Login : public QMainWindow {
-  
 
  public:
   /**

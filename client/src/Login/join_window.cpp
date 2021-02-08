@@ -4,20 +4,19 @@
 #include "match_id.h"
 #include <QMessageBox>
 
-join_window::join_window(QWidget *parent, uint32_t &lobbyID, std::vector<int> availableMatches) :
+join_window::join_window(QWidget *parent, std::vector<int> availableMatches) :
     QDialog(parent),
-    ui(new Ui::join_window),
-    match_id(lobbyID)
+    ui(new Ui::join_window)
     {
     ui->setupUi(this);
     QVBoxLayout* ly = new QVBoxLayout();
     ly->setSpacing(10);
-
     for(size_t i = 0; i < availableMatches.size(); i++){
-        match_id* mid = new class match_id(this, availableMatches.at(i));
-        ly->addWidget(mid,0,Qt::AlignTop);
+        match_id* new_match_id = new class match_id(this, availableMatches.at(i));
+        ly->addWidget(new_match_id,0,Qt::AlignTop);
      }
     ui->id_container->setLayout(ly);
+    my_match_id = -1;
 }
 
 join_window::~join_window()
@@ -25,9 +24,14 @@ join_window::~join_window()
     delete ui;
 }
 
+uint32_t join_window::get_match_id()
+{
+    return (uint32_t)this->my_match_id;
+}
+
 void join_window::on_join_button_clicked()
 {
-    if(this->match_id == -1){
+    if(this->my_match_id == -1){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","No has seleccionado un mapa!!");
         messageBox.setFixedSize(500,200);

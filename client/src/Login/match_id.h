@@ -4,12 +4,12 @@
 #include <QPushButton>
 #include "join_window.h"
 
-class match_id: public QPushButton
+class match_id : public QPushButton
 {
     Q_OBJECT
 private:
     join_window* my_window;
-    int match_id;
+    int my_match_id;
 private slots:
     void set_match_id();
 
