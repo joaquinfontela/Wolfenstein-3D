@@ -38,11 +38,11 @@ class Tile {
   void addDoor(Door* door);
   void addWall(Wall* wall);
 
-  void addAmmoDrop();
-  void addKeyDrop();
+  void addAmmoDrop(int uniqueId);
+  void addKeyDrop(int uniqueId);
 
-  void addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis);
-  void addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis);
+  void addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis, int uniqueId);
+  void addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis, int uniqueId);
 
   // Guns within the Tile will be added to the Players inventory if he does not
   // currently own the weapon.

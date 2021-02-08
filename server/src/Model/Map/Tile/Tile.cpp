@@ -61,21 +61,20 @@ void Tile::addWall(Wall* wall) {
   this->deleteWeaponDrops();
 }
 
-void Tile::addAmmoDrop() {
-  this->items.push_back(new Ammo(101, Map::getAndIncreaseByOneNextUniqueItemId()));
+void Tile::addAmmoDrop(int uniqueId) {
+  this->items.push_back(new Ammo(101, uniqueId));
   this->deleteDoor();
   this->deleteWall();
 }
 
-void Tile::addKeyDrop() {
-  this->items.push_back(new Key(108, Map::getAndIncreaseByOneNextUniqueItemId()));
+void Tile::addKeyDrop(int uniqueId) {
+  this->items.push_back(new Key(108, uniqueId));
   this->deleteDoor();
   this->deleteWall();
 }
 
-void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis) {
-  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
-
+void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis, int uniqueId) {
+  
   this->items.push_back(new Key(108, uniqueId));
   PlayerDropItem* noti = new PlayerDropItem(x, y, 108, uniqueId);
   notis.push(noti);
@@ -84,9 +83,8 @@ void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis) {
   this->deleteWall();
 }
 
-void Tile::addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis) {
+void Tile::addAmmoDrop(int x, int y, WaitingQueue<Notification*>& notis, int uniqueId) {
 
-  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
   this->items.push_back(new Ammo(101, uniqueId));
 
   PlayerDropItem* noti = new PlayerDropItem(x, y, 101, uniqueId);

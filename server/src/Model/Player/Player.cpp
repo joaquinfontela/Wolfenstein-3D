@@ -47,10 +47,8 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
 
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this);
-  weapons.push_back(
-      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(
-      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(1, map.getAndIncreaseByOneNextUniqueItemId()));
+  weapons.push_back(weaponFactory.getWeapon(2, map.getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
 }
 
@@ -75,9 +73,9 @@ Player::Player(YAMLConfigReader yamlConfigReader)
       hasToBeNotified(false),
       map(map) {
   weapons.push_back(
-      weaponFactory.getWeapon(1, Map::getAndIncreaseByOneNextUniqueItemId()));
+      weaponFactory.getWeapon(1, map.getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(
-      weaponFactory.getWeapon(2, Map::getAndIncreaseByOneNextUniqueItemId()));
+      weaponFactory.getWeapon(2, map.getAndIncreaseByOneNextUniqueItemId()));
 
   this->kills = 0;
   this->shotsFired = 0;
@@ -251,7 +249,7 @@ void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::
 void Player::shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables){
   double dirX = this->getDirX();
   double dirY = this->getDirY();
-  int uniqueId = Map::getAndIncreaseByOneNextUniqueItemId();
+  int uniqueId = map.getAndIncreaseByOneNextUniqueItemId();
   PlayerDropItem* noti = new PlayerDropItem(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, 404, uniqueId);
   notis.push(noti);
   RocketMissile* newMissile = new RocketMissile(this->getX() + dirX, this->getY() + dirY, dirX, dirY, uniqueId, planeX/2, planeY/2);
