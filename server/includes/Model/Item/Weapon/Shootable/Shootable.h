@@ -14,7 +14,7 @@ class Shootable : public Weapon {
   unsigned int precision;
 
   /*
-   * [SERVER-SIDE] Simulates a shot of a bullet.
+   * @brief [SERVER-SIDE] Simulates a shot of a bullet.
    *
    * @return the damage of a single shot.
    */
