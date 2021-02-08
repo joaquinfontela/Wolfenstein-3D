@@ -21,14 +21,14 @@ Dependiendo del gestor de paquetes, el comando para instalar las dependencias pu
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{sudo apt-\/get install libsdl2-\/dev \&\& }
-\DoxyCodeLine{sudo apt-\/get install libsdl2-\/image-\/dev -\/y \&\& }
-\DoxyCodeLine{sudo apt-\/get install libsdl2-\/mixer-\/dev -\/y \&\& }
-\DoxyCodeLine{sudo apt-\/get install libsdl2-\/ttf-\/dev -\/y \&\& }
-\DoxyCodeLine{sudo apt-\/get install qt5-\/default \&\& }
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/dev \&\&}
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/image-\/dev -\/y \&\&}
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/mixer-\/dev -\/y \&\&}
+\DoxyCodeLine{sudo apt-\/get install libsdl2-\/ttf-\/dev -\/y \&\&}
+\DoxyCodeLine{sudo apt-\/get install qt5-\/default \&\&}
 
 \end{DoxyCode}
- \hypertarget{md_README_autotoc_md5}{}\doxysubsection{Compilación e instalacion de librerias YAML}\label{md_README_autotoc_md5}
+ \hypertarget{md_README_autotoc_md5}{}\doxysubsection{Configuración, compilación e instalacion de librerias YAML}\label{md_README_autotoc_md5}
 Una vez instaladas las dependencias previas, se debe de utilizar el script install.\+sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere.
 
 
@@ -37,7 +37,7 @@ Una vez instaladas las dependencias previas, se debe de utilizar el script insta
 \DoxyCodeLine{./install.sh}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Ejecutar el trabajo}\label{md_README_autotoc_md6}
+\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Forma de Uso}\label{md_README_autotoc_md6}
 \hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{Servidor}\label{md_README_autotoc_md7}
 Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando 
 \begin{DoxyCode}{0}
@@ -49,7 +49,73 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./Wolfen3D <HOST> <PORT>}
+\DoxyCodeLine{./Wolfen3D}
 
 \end{DoxyCode}
- Siendo HOST la direccion del servidor a utilizar, y siendo PORT el puerto en el que el servidor este aceptando clientes. 
+\hypertarget{md_README_autotoc_md9}{}\doxysubsection{Tutorial de Uso}\label{md_README_autotoc_md9}
+\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{Iniciar Partida}\label{md_README_autotoc_md10}
+Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla {\itshape p} que indica al servidor que el admin desea comenzar la partida.\hypertarget{md_README_autotoc_md11}{}\doxysubsubsection{Movimiento}\label{md_README_autotoc_md11}
+Para moverse, se utiliza el sistema clásico de movimiento\+: {\itshape w} para moverse para adelante, {\itshape s} para moverse hacia atras, {\itshape a} para rotar la camara hacia la izquierda y {\itshape d} para rotar la camara hacia la derecha.\hypertarget{md_README_autotoc_md12}{}\doxysubsubsection{Armas}\label{md_README_autotoc_md12}
+Para el uso de las armas, el {\itshape enter} significa disparar mientras que las teclas {\itshape 1}, {\itshape 2}, {\itshape 3}, {\itshape 4} y {\itshape 5} le permiten al jugador cambiar de armas. El {\itshape 1} siempre indica cambiar al cuchillo mientras que el {\itshape 2} indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
+
+~\newline
+
+
+
+
+Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.\hypertarget{md_README_autotoc_md13}{}\doxysubsubsection{Puertas}\label{md_README_autotoc_md13}
+El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas\+:
+
+~\newline
+
+
+
+
+Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar del piso para poder ser abierta. Una vez que la puerta se haya abierto una vez con llave, cualquier jugador, tenga llave o no, podrá abrirla.
+
+~\newline
+
+
+
+
+Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.\hypertarget{md_README_autotoc_md14}{}\doxysubsubsection{Drops}\label{md_README_autotoc_md14}
+~\newline
+
+
+
+
+El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen\+: Armas, munición, llaves, tesoros y medikits. Basta con caminar por encima de ellos y, de ser posible, los agarra automaticamente.
+
+~\newline
+
+
+
+
+Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!\hypertarget{md_README_autotoc_md15}{}\doxysubsection{Apéndice de Errores}\label{md_README_autotoc_md15}
+El sistema puede tener glitches que causen, o no, diferentes tipos de interferencias en la experiencia del usuario. Para notificar esto y para generar un registro de potenciales problemas que aparecen se usa un log de errores.
+
+El mismo, en caso de que se necesite, escribe en el archivo \+\_\+\char`\"{}wolfenstein.\+log\char`\"{}\+\_\+ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.
+
+Llamando a la macro {\ttfamily LOG(const char$\ast$ error\+Msg)} se llama al método estático de la clase {\ttfamily \mbox{\hyperlink{classLog}{Log}}} que recibe el archivo, la función, la línea y {\ttfamily error\+Msg} para escribirlos en el log con el formato antes escrito.\hypertarget{md_README_autotoc_md16}{}\doxysubsubsection{Clasificación de Errores}\label{md_README_autotoc_md16}
+Los potenciales mensajes de errores que pueden aparecer son\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \char`\"{}\+Error, track not found with code\+: \mbox{[}\+CODE NUMBER\mbox{]}\char`\"{}}\+: Ocurre en el {\ttfamily audiomanager.\+cpp} cuando no se encuentra el track con el código dado. Para saber que track es el que falla se puede abrir el {\ttfamily \mbox{\hyperlink{clientprotocol_8h_source}{clientprotocol.\+h}}} en el cliente y buscar el que nombre de archivo con el código dado causa el problema. ~\newline
+
+\item {\ttfamily \char`\"{}\+Error, texture already found with code\+: \mbox{[}\+CODE NUMBER\mbox{]}\char`\"{}}\+: Ocurre en el {\ttfamily audiomanager.\+cpp} al inicializar los audio tracks. Ocurre si se lee el mismo archivo dos veces. Para saber que track es el que falla se puede abrir el {\ttfamily \mbox{\hyperlink{clientprotocol_8h_source}{clientprotocol.\+h}}} en el cliente y buscar el que nombre de archivo con el código dado causa el problema. ~\newline
+
+\item {\ttfamily \char`\"{}\+Error, no missile texture to explode found.\char`\"{}}\+: Si se reporta este error, signfica que no se pudieron encontrar las coordenadas del último frame del misil en el aire. Glitch no fatal.
+\item {\ttfamily \char`\"{}\+Error, no hostname and/or port given.\char`\"{}}\+: Error de Lua que ocurre cuando no se pasan los argumentos correspondientes al ejecutable.
+\item {\ttfamily \char`\"{}\+Error, cannot add more textures with code\+: \char`\"{}}\+: Ocurre cuando se intenta añadir una cantidad de texturas mayor al límite recomendado. Es un error no fatal que puede ser ignorado o arreglado modificando el límite de texturas en {\ttfamily \mbox{\hyperlink{clientprotocol_8h_source}{clientprotocol.\+h}}} (cambiar la macro {\ttfamily TEXTURE\+\_\+\+LIMIT}).
+\item {\ttfamily \char`\"{}\+Error, texture not found with code\+: \char`\"{}}\+: Ocurre en el {\ttfamily texturemanager.\+cpp} cuando no se encuentra la imagen con el código dado. Para saber que imagen es el que falla se puede abrir el {\ttfamily \mbox{\hyperlink{clientprotocol_8h_source}{clientprotocol.\+h}}} en el cliente y buscar el que nombre de archivo con el código dado causa el problema. ~\newline
+
+\item {\ttfamily \char`\"{}\+Error, texture already found with code\+: \mbox{[}\+CODE NUMBER\mbox{]}\char`\"{}}\+: Ocurre en el {\ttfamily texturemanager.\+cpp} al inicializar las Sdl\+Textures. Ocurre si se lee la misma imagen dos veces. Para saber que archivo es el que falla se puede abrir el {\ttfamily \mbox{\hyperlink{clientprotocol_8h_source}{clientprotocol.\+h}}} en el cliente y buscar el que nombre de archivo con el código dado causa el problema. ~\newline
+
+\item {\ttfamily \char`\"{}\+Error, map not found\+: \mbox{[}\+FILE NAME\mbox{]}\char`\"{}}\+: Sube este error si no se encuentra el .yaml del mapa correspondiente.
+\item {\ttfamily \char`\"{}\+Fatal error, the player couldn\textquotesingle{}t be created.\char`\"{}}\+: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del jugador. Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.
+\item {\ttfamily \char`\"{}\+Fatal error, the executer couldn\textquotesingle{}t be created.\char`\"{}}\+: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del \mbox{\hyperlink{classCommandExecuter}{Command\+Executer}} (responsable de recibir información del server). Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.
+\item {\ttfamily \char`\"{}\+Fatal error, the sender couldn\textquotesingle{}t be created.\char`\"{}}\+: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del \mbox{\hyperlink{classCommandSender}{Command\+Sender}} (responsable de mandar información del server). Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.
+\item {\ttfamily \char`\"{}\+Error, can\textquotesingle{}t push a null pointer as a sprite.\char`\"{}}\+: Ocurre si se intenta guardar un sprite nulo. Puede ser la consecuencia de no tener los recursos para crear estas instancias; en tal caso se debería cerrar cualquier proceso que de forma innecesaria tome recursos.
+\item Cualquier otro tipo de error loggeado es el el resultado de llamar al método {\ttfamily what()} de la excepción que haya finalizado la vida del programa y es fatal. 
+\end{DoxyItemize}

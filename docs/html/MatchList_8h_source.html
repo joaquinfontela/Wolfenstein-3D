@@ -73,11 +73,11 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __MATCH_LIST_H__</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../Server/ClientCommunication.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../Server/ConnectionHandler.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Match.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../Server/ClientCommunication.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../Server/ConnectionHandler.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Match.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="classClientCommunication.html">ClientCommunication</a>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="classMatch.html">Match</a>;</div>
@@ -90,20 +90,26 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> forceShutdown();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> matchCleanup();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  std::mutex lock;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classMatchList.html">MatchList</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">int</span> matchesCreated = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classConnectionHandler.html">ConnectionHandler</a>* <a class="code" href="classMatchList.html#a0944cc42ca8b7aa1d49fc2be1da5e82d">joinOrCreate</a>(<a class="code" href="classClientCommunication.html">ClientCommunication</a>* player, <span class="keywordtype">int</span> lobbyID);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  ~<a class="code" href="classMatchList.html">MatchList</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classMatchList.html">MatchList</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classConnectionHandler.html">ConnectionHandler</a>* <a class="code" href="classMatchList.html#ad0fcf995b8d5b559c651b7f71b6a270a">join</a>(<a class="code" href="classClientCommunication.html">ClientCommunication</a>* player, <span class="keywordtype">int</span> lobbyID);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classConnectionHandler.html">ConnectionHandler</a>* create(<a class="code" href="classClientCommunication.html">ClientCommunication</a>* player, <span class="keywordtype">int</span> mapID);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::vector&lt;int&gt; getAvailableMatches();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">int</span> getMapID(<span class="keywordtype">int</span> lobbyID);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  ~<a class="code" href="classMatchList.html">MatchList</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassClientCommunication_html"><div class="ttname"><a href="classClientCommunication.html">ClientCommunication</a></div><div class="ttdef"><b>Definition:</b> ClientCommunication.h:17</div></div>
 <div class="ttc" id="aclassConnectionHandler_html"><div class="ttname"><a href="classConnectionHandler.html">ConnectionHandler</a></div><div class="ttdef"><b>Definition:</b> ConnectionHandler.h:8</div></div>
 <div class="ttc" id="aclassMatchList_html"><div class="ttname"><a href="classMatchList.html">MatchList</a></div><div class="ttdef"><b>Definition:</b> MatchList.h:20</div></div>
-<div class="ttc" id="aclassMatchList_html_a0944cc42ca8b7aa1d49fc2be1da5e82d"><div class="ttname"><a href="classMatchList.html#a0944cc42ca8b7aa1d49fc2be1da5e82d">MatchList::joinOrCreate</a></div><div class="ttdeci">ConnectionHandler * joinOrCreate(ClientCommunication *player, int lobbyID)</div><div class="ttdef"><b>Definition:</b> MatchList.cpp:11</div></div>
+<div class="ttc" id="aclassMatchList_html_ad0fcf995b8d5b559c651b7f71b6a270a"><div class="ttname"><a href="classMatchList.html#ad0fcf995b8d5b559c651b7f71b6a270a">MatchList::join</a></div><div class="ttdeci">ConnectionHandler * join(ClientCommunication *player, int lobbyID)</div><div class="ttdef"><b>Definition:</b> MatchList.cpp:21</div></div>
 <div class="ttc" id="aclassMatch_html"><div class="ttname"><a href="classMatch.html">Match</a></div><div class="ttdef"><b>Definition:</b> Match.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

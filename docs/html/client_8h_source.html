@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classClient.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClient.html">Client</a> {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classSocketCommunication.html">SocketCommunication</a> socket;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  uint32_t myPlayerID = -1;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">bool</span> joinMatch(uint32_t lobbyID);</div>
@@ -107,15 +107,14 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">void</span> gargabeCollector(std::vector&lt;Drawable*&gt;&amp; sprites);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classClient.html">Client</a>() : socket(-1) {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classClient.html">Client</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket) : socket(socket) {}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classClient.html#aa8ab7e2af270a778d23f29da0922cc68">run</a>(std::string&amp; host, std::string&amp; port, uint32_t lobbyID,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          std::string&amp; mapFile);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">run</a>(<span class="keywordtype">int</span> myPlayerID, std::string&amp; mapFile);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassClient_html"><div class="ttname"><a href="classClient.html">Client</a></div><div class="ttdoc">Runs and coordinates all the main classes that execute the game.</div><div class="ttdef"><b>Definition:</b> client.h:31</div></div>
-<div class="ttc" id="aclassClient_html_aa8ab7e2af270a778d23f29da0922cc68"><div class="ttname"><a href="classClient.html#aa8ab7e2af270a778d23f29da0922cc68">Client::run</a></div><div class="ttdeci">int run(std::string &amp;host, std::string &amp;port, uint32_t lobbyID, std::string &amp;mapFile)</div><div class="ttdoc">Starts, runs and deletes all the objects involving the game. Creates and deletes the window,...</div><div class="ttdef"><b>Definition:</b> client.cpp:41</div></div>
+<div class="ttc" id="aclassClient_html_aeb89d40cce27fcb5f52958c3db4dc95a"><div class="ttname"><a href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">Client::run</a></div><div class="ttdeci">int run(int myPlayerID, std::string &amp;mapFile)</div><div class="ttdoc">Starts, runs and deletes all the objects involving the game. Creates and deletes the window,...</div><div class="ttdef"><b>Definition:</b> client.cpp:55</div></div>
 <div class="ttc" id="aclassSocketCommunication_html"><div class="ttname"><a href="classSocketCommunication.html">SocketCommunication</a></div><div class="ttdef"><b>Definition:</b> SocketCommunication.h:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

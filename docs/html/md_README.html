@@ -87,18 +87,18 @@ Requisitos</h2>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Instalación de dependencias</h2>
 <p>Dependiendo del gestor de paquetes, el comando para instalar las dependencias puede variar. Sin embargo, los paquetes a instalar son siempre los mismos. A continuación, se deja los comandos para instalar SDL 2.0 y Qt5 para el correcto funcionamiento del trabajo práctico utilizando el gestor de paquetes APT utilizado en muchas distribuciones de Linux.</p>
-<div class="fragment"><div class="line">sudo apt-get install libsdl2-dev &amp;&amp; </div>
-<div class="line">sudo apt-get install libsdl2-image-dev -y &amp;&amp; </div>
-<div class="line">sudo apt-get install libsdl2-mixer-dev -y &amp;&amp; </div>
-<div class="line">sudo apt-get install libsdl2-ttf-dev -y &amp;&amp; </div>
-<div class="line">sudo apt-get install qt5-default &amp;&amp; </div>
+<div class="fragment"><div class="line">sudo apt-get install libsdl2-dev &amp;&amp;</div>
+<div class="line">sudo apt-get install libsdl2-image-dev -y &amp;&amp;</div>
+<div class="line">sudo apt-get install libsdl2-mixer-dev -y &amp;&amp;</div>
+<div class="line">sudo apt-get install libsdl2-ttf-dev -y &amp;&amp;</div>
+<div class="line">sudo apt-get install qt5-default &amp;&amp;</div>
 </div><!-- fragment --> <h2><a class="anchor" id="autotoc_md5"></a>
-Compilación e instalacion de librerias YAML</h2>
+Configuración, compilación e instalacion de librerias YAML</h2>
 <p>Una vez instaladas las dependencias previas, se debe de utilizar el script install.sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere.</p>
 <div class="fragment"><div class="line">chmod +x install.sh</div>
 <div class="line">./install.sh</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
-Ejecutar el trabajo</h2>
+Forma de Uso</h2>
 <h3><a class="anchor" id="autotoc_md7"></a>
 Servidor</h3>
 <p>Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando </p><div class="fragment"><div class="line">./ServerMain &lt;PORT&gt; &lt;configFilePath&gt;</div>
@@ -106,8 +106,70 @@ Servidor</h3>
 <h3><a class="anchor" id="autotoc_md8"></a>
 Cliente</h3>
 <p>Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando</p>
-<div class="fragment"><div class="line">./Wolfen3D &lt;HOST&gt; &lt;PORT&gt;</div>
-</div><!-- fragment --><p> Siendo HOST la direccion del servidor a utilizar, y siendo PORT el puerto en el que el servidor este aceptando clientes. </p>
+<div class="fragment"><div class="line">./Wolfen3D</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Tutorial de Uso</h2>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Iniciar Partida</h3>
+<p>Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla <em>p</em> que indica al servidor que el admin desea comenzar la partida.</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
+Movimiento</h3>
+<p>Para moverse, se utiliza el sistema clásico de movimiento: <em>w</em> para moverse para adelante, <em>s</em> para moverse hacia atras, <em>a</em> para rotar la camara hacia la izquierda y <em>d</em> para rotar la camara hacia la derecha.</p>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Armas</h3>
+<p>Para el uso de las armas, el <em>enter</em> significa disparar mientras que las teclas <em>1</em>, <em>2</em>, <em>3</em>, <em>4</em> y <em>5</em> le permiten al jugador cambiar de armas. El <em>1</em> siempre indica cambiar al cuchillo mientras que el <em>2</em> indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.</p>
+<p align="center"><br  />
+</p>
+<p><img src="./docs/screenshots/RPG.png" alt="" class="inline"/></p>
+<p>Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.</p>
+<h3><a class="anchor" id="autotoc_md13"></a>
+Puertas</h3>
+<p>El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:</p>
+<p align="center"><br  />
+</p>
+<p><img src="./docs/screenshots/LockedDoor.png" alt="" class="inline"/></p>
+<p>Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar del piso para poder ser abierta. Una vez que la puerta se haya abierto una vez con llave, cualquier jugador, tenga llave o no, podrá abrirla.</p>
+<p align="center"><br  />
+</p>
+<p><img src="./docs/screenshots/UnlockableDoor.png" alt="" class="inline"/></p>
+<p>Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.</p>
+<h3><a class="anchor" id="autotoc_md14"></a>
+Drops</h3>
+<p align="center"><br  />
+</p>
+<p><img src="./docs/screenshots/Drops.png" alt="" class="inline"/></p>
+<p>El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen: Armas, munición, llaves, tesoros y medikits. Basta con caminar por encima de ellos y, de ser posible, los agarra automaticamente.</p>
+<p align="center"><br  />
+</p>
+<p><img src="./docs/screenshots/Treasure.png" alt="" class="inline"/></p>
+<p>Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!</p>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Apéndice de Errores</h2>
+<p>El sistema puede tener glitches que causen, o no, diferentes tipos de interferencias en la experiencia del usuario. Para notificar esto y para generar un registro de potenciales problemas que aparecen se usa un log de errores.</p>
+<p>El mismo, en caso de que se necesite, escribe en el archivo _"wolfenstein.log"_ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.</p>
+<p>Llamando a la macro <code>LOG(const char* errorMsg)</code> se llama al método estático de la clase <code><a class="el" href="classLog.html" title="Logs non-fatal errors to &quot;wolfenstein.log&quot;.">Log</a></code> que recibe el archivo, la función, la línea y <code>errorMsg</code> para escribirlos en el log con el formato antes escrito.</p>
+<h3><a class="anchor" id="autotoc_md16"></a>
+Clasificación de Errores</h3>
+<p>Los potenciales mensajes de errores que pueden aparecer son:</p>
+<ul>
+<li><code>"Error, track not found with code: [CODE NUMBER]"</code>: Ocurre en el <code>audiomanager.cpp</code> cuando no se encuentra el track con el código dado. Para saber que track es el que falla se puede abrir el <code><a class="el" href="clientprotocol_8h_source.html">clientprotocol.h</a></code> en el cliente y buscar el que nombre de archivo con el código dado causa el problema. <br  />
+</li>
+<li><code>"Error, texture already found with code: [CODE NUMBER]"</code>: Ocurre en el <code>audiomanager.cpp</code> al inicializar los audio tracks. Ocurre si se lee el mismo archivo dos veces. Para saber que track es el que falla se puede abrir el <code><a class="el" href="clientprotocol_8h_source.html">clientprotocol.h</a></code> en el cliente y buscar el que nombre de archivo con el código dado causa el problema. <br  />
+</li>
+<li><code>"Error, no missile texture to explode found."</code>: Si se reporta este error, signfica que no se pudieron encontrar las coordenadas del último frame del misil en el aire. Glitch no fatal.</li>
+<li><code>"Error, no hostname and/or port given."</code>: Error de Lua que ocurre cuando no se pasan los argumentos correspondientes al ejecutable.</li>
+<li><code>"Error, cannot add more textures with code: "</code>: Ocurre cuando se intenta añadir una cantidad de texturas mayor al límite recomendado. Es un error no fatal que puede ser ignorado o arreglado modificando el límite de texturas en <code><a class="el" href="clientprotocol_8h_source.html">clientprotocol.h</a></code> (cambiar la macro <code>TEXTURE_LIMIT</code>).</li>
+<li><code>"Error, texture not found with code: "</code>: Ocurre en el <code>texturemanager.cpp</code> cuando no se encuentra la imagen con el código dado. Para saber que imagen es el que falla se puede abrir el <code><a class="el" href="clientprotocol_8h_source.html">clientprotocol.h</a></code> en el cliente y buscar el que nombre de archivo con el código dado causa el problema. <br  />
+</li>
+<li><code>"Error, texture already found with code: [CODE NUMBER]"</code>: Ocurre en el <code>texturemanager.cpp</code> al inicializar las SdlTextures. Ocurre si se lee la misma imagen dos veces. Para saber que archivo es el que falla se puede abrir el <code><a class="el" href="clientprotocol_8h_source.html">clientprotocol.h</a></code> en el cliente y buscar el que nombre de archivo con el código dado causa el problema. <br  />
+</li>
+<li><code>"Error, map not found: [FILE NAME]"</code>: Sube este error si no se encuentra el .yaml del mapa correspondiente.</li>
+<li><code>"Fatal error, the player couldn't be created."</code>: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del jugador. Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.</li>
+<li><code>"Fatal error, the executer couldn't be created."</code>: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del <a class="el" href="classCommandExecuter.html" title="Receives the data from the server and calls the other object to keep the game running.">CommandExecuter</a> (responsable de recibir información del server). Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.</li>
+<li><code>"Fatal error, the sender couldn't be created."</code>: Surge si la máquina no puede, por la razon que sea, crear dinámicamente una instancia del <a class="el" href="classCommandSender.html" title="Class that takes the user input and sends it to the server.">CommandSender</a> (responsable de mandar información del server). Si es ocasionado por una falta de recursos se debería cerrar cualquier proceso que de forma innecesaria coma recursos.</li>
+<li><code>"Error, can't push a null pointer as a sprite."</code>: Ocurre si se intenta guardar un sprite nulo. Puede ser la consecuencia de no tener los recursos para crear estas instancias; en tal caso se debería cerrar cualquier proceso que de forma innecesaria tome recursos.</li>
+<li>Cualquier otro tipo de error loggeado es el el resultado de llamar al método <code>what()</code> de la excepción que haya finalizado la vida del programa y es fatal. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
