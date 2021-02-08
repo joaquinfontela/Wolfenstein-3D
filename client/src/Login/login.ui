@@ -54,23 +54,13 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>330</y>
-      <width>171</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="dato_puerto">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
       <y>380</y>
       <width>171</width>
       <height>41</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="dato_game">
+   <widget class="QLineEdit" name="dato_puerto">
     <property name="geometry">
      <rect>
       <x>600</x>

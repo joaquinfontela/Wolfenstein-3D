@@ -10,6 +10,8 @@
 #include "QString"
 #include "iostream"
 #include "string.h"
+#include "join_window.h"
+#include "create_window.h"
 
 #define BLACK_BUTTON_OR_BOX \
   "* { background-color: rgba(0, 0, 0, 200); color: #ffffff}"
@@ -19,8 +21,8 @@ Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
     : QMainWindow(nullptr),
       ui(new Ui::Login),
       player_id(player_id),
-      map_id(map_id)
-      socket(socket);
+      map_id(map_id),
+      socket(socket)
       {
   ui->setupUi(this);
   QPixmap bkgnd("../media/loginscreen.png");
@@ -58,8 +60,6 @@ void Login::on_button_join_clicked() {
   } else {
     my_ip = parseSpaces(ip.toStdString());
     my_host = parseSpaces(port.toStdString());
-    my_game_id = game_id.toInt();
-
 
     // PARTE DE CONECTARSE A UNA PARTIDA
 
@@ -77,8 +77,9 @@ void Login::on_button_join_clicked() {
     uint32_t lobbyID = -1;
     
     
-    // QT
-
+    join_window jw(this, lobbyID, this->availableMatches);
+    jw.setModal(true);
+    jw.exec();
      
     socket.send(&lobbyID, sizeof(lobbyID));
     // Connection Response

@@ -12,8 +12,12 @@ class join_window : public QDialog
     Q_OBJECT
 
 public:
-    explicit join_window(QWidget *parent = nullptr);
+    explicit join_window(QWidget *parent = nullptr, uint32_t& lobbyID = -1, std::vector<int> availableMatches = {});
     ~join_window();
+    uint32_t& match_id;
+
+private slots:
+    void on_join_button_clicked();
 
 private:
     Ui::join_window *ui;
