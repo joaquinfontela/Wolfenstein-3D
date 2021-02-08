@@ -7,9 +7,10 @@
 #include <iostream>
 #include <tuple>
 
-unsigned int Map::nextId = 1;
+
 
 Map::Map(int dimx, int dimy) {
+  this->nextId = 1;
   this->dimx = dimx;
   this->dimy = dimy;
   for (int x = 0; x < dimy; x++) {
@@ -67,22 +68,22 @@ void Map::addWallAt(Wall* wall, int x, int y) {
 
 void Map::addAmmoDropAt(int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[y - 1][x - 1].addAmmoDrop();
+  this->tileMatrix[y - 1][x - 1].addAmmoDrop(this->getAndIncreaseByOneNextUniqueItemId());
 }
 
 void Map::addAmmoDropAt(int x, int y, WaitingQueue<Notification*>& notis) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[y - 1][x - 1].addAmmoDrop(x, y, notis);
+  this->tileMatrix[y - 1][x - 1].addAmmoDrop(x, y, notis, this->getAndIncreaseByOneNextUniqueItemId());
 }
 
 void Map::addKeyDropAt(int x, int y) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[y - 1][x - 1].addKeyDrop();
+  this->tileMatrix[y - 1][x - 1].addKeyDrop(this->getAndIncreaseByOneNextUniqueItemId());
 }
 
 void Map::addKeyDropAt(int x, int y, WaitingQueue<Notification*>& notis) {
   this->verifyCoordinateDoesNotSurpassMapLimits(x, y);
-  this->tileMatrix[y - 1][x - 1].addKeyDrop(x, y, notis);
+  this->tileMatrix[y - 1][x - 1].addKeyDrop(x, y, notis, this->getAndIncreaseByOneNextUniqueItemId());
 }
 
 void Map::verifyCoordinateDoesNotSurpassMapLimits(int x, int y) {
@@ -188,8 +189,8 @@ void Map::addPlayer(int x, int y, Player* p) {
 }
 
 unsigned int Map::getAndIncreaseByOneNextUniqueItemId() {
-  Map::nextId++;
-  return (Map::nextId - 1);
+  nextId++;
+  return (nextId - 1);
 }
 
 void Map::removePlayer(int x, int y, Player* p) {

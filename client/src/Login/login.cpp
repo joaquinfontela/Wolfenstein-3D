@@ -137,7 +137,7 @@ void Login::receiveAvailableMatches(){
   }
 }
 
-void Login::joinLobby(){
+bool Login::joinLobby(){
 
   uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;

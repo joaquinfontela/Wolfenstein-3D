@@ -5,7 +5,18 @@
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
 
+#define MAP_NOT_FOUND_ERROR "Error, map not found: "
+
 #define MAX_NUMBER_OF_TEXTURES_PER_FRAME 100
+
+static bool fileExists(std::string& name){
+  if (FILE *file = fopen(name.c_str(), "r")) {
+        fclose(file);
+        return true;
+    } else {
+        return false;
+    }   
+}
 
 void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
   for (Drawable* s : sprites) {
@@ -43,6 +54,14 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   if(myPlayerID == -1){
     return ERROR;
   }
+
+  if(!fileExists(mapFile)){ 
+    std::string error = MAP_NOT_FOUND_ERROR + mapFile;
+    LOG(error.c_str());
+    return ERROR;
+  }
+
+  this->myPlayerID = myPlayerID;
 
   SdlWindow window(WIDTH, HEIGHT);
   ClientMapLoader loader(mapFile, 24, 24);

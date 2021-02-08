@@ -33,8 +33,7 @@ void MapLoader::addWeaponsToMap(Map* map) {
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereWeaponIsIn) {
       map->addWeaponDropAt(
-          weaponFactory.getWeapon(currentId,
-                                  Map::getAndIncreaseByOneNextUniqueItemId()),
+          weaponFactory.getWeapon(currentId, map->getAndIncreaseByOneNextUniqueItemId()),
           c.getX(), c.getY());
       // std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
       //        << std::endl;
@@ -51,8 +50,7 @@ void MapLoader::addItemsToMap(Map* map) {
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereItemIsIn) {
       map->addItemDropAt(
-          itemFactory.getItem(currentId,
-                              Map::getAndIncreaseByOneNextUniqueItemId()),
+          itemFactory.getItem(currentId, map->getAndIncreaseByOneNextUniqueItemId()),
           c.getX(), c.getY());
       //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
       //              << std::endl;

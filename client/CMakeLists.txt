@@ -150,16 +150,16 @@ set(PROJECT_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(Login
+    qt_add_executable(Wolfen3D
         ${PROJECT_SOURCES}
     )
 else()
     if(ANDROID)
-        add_library(Login SHARED
+        add_library(Wolfen3D SHARED
             ${PROJECT_SOURCES}
         )
     else()
-        add_executable(Login
+        add_executable(Wolfen3D
             ${PROJECT_SOURCES}
         )
     endif()
@@ -168,7 +168,7 @@ endif()
 find_package(PkgConfig)
 pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
 
-target_link_libraries(Login PRIVATE Qt${QT_VERSION_MAJOR}::Widgets SDL2 SDL2_image SDL2_mixer SDL2_ttf ${YAMLCPP_LIBRARIES})
+target_link_libraries(Wolfen3D PRIVATE Qt${QT_VERSION_MAJOR}::Widgets SDL2 SDL2_image SDL2_mixer SDL2_ttf ${YAMLCPP_LIBRARIES})
 
 
 add_library(sdldemo
