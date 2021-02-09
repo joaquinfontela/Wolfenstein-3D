@@ -89,9 +89,6 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   std::map<uint32_t, Player*> players;
   players[this->myPlayerID] = player;
 
-  std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID
-            << std::endl;
-
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 

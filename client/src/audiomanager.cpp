@@ -68,7 +68,8 @@ AudioManager::AudioManager() {
       "Death 2.wav",          // 12
       "Player Pain 2.wav",    // 13
       "Enemy Pain.wav",       // 14
-      "music.mp3"             // 15
+      "music.mp3",            // 15
+      "Secret Entrance.wav"   // 16
   });
   int i = 1;
   for (std::string& name : names) {

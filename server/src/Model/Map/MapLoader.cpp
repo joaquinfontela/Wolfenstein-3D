@@ -1,4 +1,5 @@
 #include "../../../includes/Model/Map/MapLoader.h"
+#define UNLOCKABLE_DOOR 201
 
 MapLoader::MapLoader(std::string& yamlFile) : yamlReader(yamlFile) {
   this->weaponIdStart = yamlReader.getWeaponsIdLimits().at(0);
@@ -35,8 +36,7 @@ void MapLoader::addWeaponsToMap(Map* map) {
       map->addWeaponDropAt(
           weaponFactory.getWeapon(currentId, map->getAndIncreaseByOneNextUniqueItemId()),
           c.getX(), c.getY());
-      // std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-      //        << std::endl;
+
     }
   }
 }
@@ -49,11 +49,10 @@ void MapLoader::addItemsToMap(Map* map) {
     std::vector<Coordinate> coordinatesWhereItemIsIn =
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereItemIsIn) {
-      map->addItemDropAt(
-          itemFactory.getItem(currentId, map->getAndIncreaseByOneNextUniqueItemId()),
-          c.getX(), c.getY());
-      //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-      //              << std::endl;
+      Item* item = itemFactory.getItem(currentId, map->getAndIncreaseByOneNextUniqueItemId());
+      if(!item)
+        continue;
+      map->addItemDropAt(item, c.getX(), c.getY());
     }
   }
 }
@@ -67,8 +66,7 @@ void MapLoader::addDoorsToMap(Map* map) {
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereDoorIsIn) {
       map->addDoorAt(doorFactory.getDoor(currentId), c.getX(), c.getY());
-      //  std::cout << "(" << c.getX() << ", " << c.getY() << "): " << currentId
-      //            << std::endl;
+
     }
   }
 }
@@ -76,12 +74,16 @@ void MapLoader::addDoorsToMap(Map* map) {
 void MapLoader::addWallsToMap(Map* map) {
   int currentId;
   WallFactory wallFactory;
+  DoorFactory df;
   for (currentId = this->wallIdStart; currentId <= wallIdEnd; currentId++) {
     if (!idIsInItemCoordinateMap(currentId)) continue;
     std::vector<Coordinate> coordinatesWhereWallIsIn =
         itemCoordinateMap.at(currentId);
     for (Coordinate c : coordinatesWhereWallIsIn) {
-      map->addWallAt(wallFactory.getWall(currentId), c.getX(), c.getY());
+      if(currentId >= this->wallIdStart + 50){
+        map->addDoorAt(df.getDoor(UNLOCKABLE_DOOR), c.getX(), c.getY());
+      }else
+        map->addWallAt(new BlueWall(true), c.getX(), c.getY());
     }
   }
 }

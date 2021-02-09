@@ -1,27 +1,44 @@
 #ifndef MAP_CANVAS_H
 #define MAP_CANVAS_H
 
-#include <vector>
 #include <QFrame>
-#include "tile_item.h"
+#include <vector>
 
+#include "tile_item.h"
 
 typedef std::vector<std::vector<std::vector<tile_item*>>> TileMatrix;
 
-class map_canvas : public QFrame
-{
+class map_canvas : public QFrame {
+ public:
+  map_canvas(int col, int row);
+  map_canvas(TileMatrix* tile_matrix);
+  ~map_canvas();
 
-public:
-    map_canvas(int col, int row);
-    map_canvas(TileMatrix* tile_matrix);
-    ~map_canvas();
-    bool add_tile(std::vector<int> coordinates, tile_item* tile);
-    std::vector<tile_item*> tiles_at_coordinates(std::vector<int> coordinates);
-    void erase_tiles_at(std::vector<int> coordinates);
+  /**
+   * @brief Adds the tile to the coordinates recieved.
+   *
+   * @param coordinates a two-sized vector that represents a coordinate.
+   * @param tile a pointer to the tile item that will be added.
+   * @return true if the tile was added correctly, or false otherwise.
+   */
+  bool add_tile(std::vector<int> coordinates, tile_item* tile);
+  /**
+   * @brief get the tile items that are in the position of coordinates.
+   * @param coordinates a two-sized vector that represents a coordinate .
+   * @return a vector of pointers to tile items that are in coordinates.
+   */
+  std::vector<tile_item*> tiles_at_coordinates(std::vector<int> coordinates);
+  /**
+   * @brief Erases and deletes the dynamic pointers of all the tiles present at
+   * coordinates.
+   *
+   * @param coordinates a two-sized vector that represents a coordinate.
+   */
+  void erase_tiles_at(std::vector<int> coordinates);
 
-    TileMatrix grilla;
-    int cant_col;
-    int cant_row;
+  TileMatrix grilla;
+  int cant_col;
+  int cant_row;
 };
 
-#endif // MAP_CANVAS_H
+#endif  // MAP_CANVAS_H

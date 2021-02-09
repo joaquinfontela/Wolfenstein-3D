@@ -26,6 +26,7 @@ class DoorTile {
   DoorTile() : isDoor(false), state(CLOSED), timer(1) {}
   char state;
   bool isDoor;
+  bool isFakeWall;
 
   /**
    * @brief Resets all values to initial state.

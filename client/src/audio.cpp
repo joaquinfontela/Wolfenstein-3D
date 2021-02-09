@@ -26,7 +26,6 @@ void Audio::volumeDownWithDist(double dist) {
 
 void Audio::play() {
   // if (!Mix_PlayingMusic())
-  std::cout << "[GAME] Volume: " << this->volume << std::endl;
   if (isMusic) {
     Mix_PlayMusic(this->audio.music, TIMES_THE_AUDIO_IS_PLAYED);
   } else {

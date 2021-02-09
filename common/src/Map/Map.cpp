@@ -4,7 +4,7 @@
 //
 
 #include "../../includes/Map/Map.h"
-
+#include "../../../client/includes/clientprotocol.h"
 #include "../../../client/includes/doortile.h"
 
 Map::~Map() {
@@ -20,8 +20,9 @@ int Map::get(int x, int y) { return *(this->matrix + y + x * dimy); }
 
 bool Map::isDoor(int x, int y) { return (this->doors + y + x * dimy)->isDoor; }
 
-void Map::switchDoorState(int x, int y) {
+bool Map::switchDoorState(int x, int y) {
   (this->doors + y + x * dimy)->changeState();
+  return (this->doors + y + x * dimy)->isFakeWall;
 }
 
 void Map::forceDoorState(int x, int y) {
@@ -46,9 +47,13 @@ Map::Map(ClientMapLoader& loader) : loader(loader) {
   matrix = loader.getWallIdMatrix();
   dimx = loader.dimy;
   dimy = loader.dimx;
-  std::cout<<dimx<<", "<<dimy<<std::endl;
 }
 
 char Map::getDoorState(int x, int y) {
   return (this->doors + y + x * dimy)->state;
+}
+
+int Map::getDoorSound(int x, int y) {
+  bool isFakeWall = (this->doors + y + x * dimy)->isFakeWall;
+  return (DOOR_SOUND * !isFakeWall + SECRET_DOOR_SOUND * isFakeWall);
 }

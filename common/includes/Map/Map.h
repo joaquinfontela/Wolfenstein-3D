@@ -83,8 +83,9 @@ class Map {
    *
    * @param x
    * @param y
+   * @return True if its a fake wall, false otherwise.
    */
-  void switchDoorState(int x, int y);
+  bool switchDoorState(int x, int y);
 
   /**
    * @brief [CLIENT SIDE] If the given door is closed it switches to open and
@@ -101,6 +102,15 @@ class Map {
    * @return int* Pointer to the first value of the dynamic matrix.
    */
   int* getMatrix();
+
+  /**
+   * @brief [CLIENT SIDE] Returns the sound code for the given door coordinates.
+   *
+   * @param x Door X Coord.
+   * @param y Door Y Coord.
+   * @return Sound code.
+   */
+  int getDoorSound(int x, int y);
 };
 
 #endif  // TP_FINAL_MAP_H
