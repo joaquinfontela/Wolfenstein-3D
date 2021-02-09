@@ -230,7 +230,9 @@ bool Tile::moveDoor(Player* p) {
   return this->door->unlock(p->hasKey());
 }
 
-bool Tile::hasPlayers() { return (!this->players.empty()); }
+bool Tile::hasPlayers() { 
+  return ((!this->players.empty()) && (this->wall == nullptr) && (this->door == nullptr)); 
+  }
 
 Tile::~Tile() {
   this->deleteWeaponDrops();

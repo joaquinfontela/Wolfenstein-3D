@@ -148,7 +148,7 @@ std::tuple<double, double> Map::handleRespawn() {
     c = this->getRandomRespawn();
     randomTileHasPlayersInIt = this->tileHasPlayers(c);
   }
-  return std::make_tuple(c.getX() - 1, c.getY() - 1);
+  return std::make_tuple(c.getY() - 1, c.getX() - 1);
 }
 
 Coordinate Map::getRandomRespawn() {

@@ -1,5 +1,5 @@
 #include "../../../includes/Model/Map/MapLoader.h"
-#define UNLOCKABLE_DOOR 201
+#define UNLOCKABLE_DOOR 202
 
 MapLoader::MapLoader(std::string& yamlFile) : yamlReader(yamlFile) {
   this->weaponIdStart = yamlReader.getWeaponsIdLimits().at(0);

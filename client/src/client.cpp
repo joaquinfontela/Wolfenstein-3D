@@ -4,6 +4,7 @@
 #include "../includes/drawablevector.h"
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
+#include "../includes/configReader.h"
 
 #include <exception>
 
@@ -64,9 +65,13 @@ int Client::run(int myPlayerID, std::string& mapFile) {
     return ERROR;
   }
 
+  ConfigReader config("../YAMLConfig/screenDimensions.yaml");
+  int height = config.getHeight();
+  int width = config.getWidth();
+
   this->myPlayerID = myPlayerID;
 
-  SdlWindow window(WIDTH, HEIGHT);
+  SdlWindow window(width, height);
   std::cout<<"[CLIENT] Map Init Load"<<std::endl;
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);

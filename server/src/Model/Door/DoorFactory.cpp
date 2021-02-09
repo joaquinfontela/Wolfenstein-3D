@@ -3,11 +3,11 @@
 
 Door* DoorFactory::getDoor(int doorId) {
   switch (doorId) {
-    case 201:
+    case 202:
       return new UnlockableDoor();
       break;
 
-    case 202:
+    case 201:
       return new LockableDoor();
       break;
 

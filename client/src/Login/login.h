@@ -59,6 +59,6 @@ class Login : public QMainWindow {
    * @brief Receives from the given socket the ongoing match ids.
    *
    */
-  void receiveAvailableMatches();
+  bool receiveAvailableMatches();
 };
 #endif  // LOGIN_H
