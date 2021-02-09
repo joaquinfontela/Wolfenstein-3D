@@ -59,7 +59,8 @@ void CommandExecuter::playShootingSounds(int shooterId) {
 void CommandExecuter::playDoorOpeningSound(int x, int y) {
   double dist = players.at(this->selfId)->calculateDist(x, y);
   if (dist < 0) dist = 1;
-  this->audiomanager.playOnVariableVolumeWithId(matrix.getDoorSound(x,y), dist * 10);
+  this->audiomanager.playOnVariableVolumeWithId(matrix.getDoorSound(x, y),
+                                                dist * 10);
 }
 
 void CommandExecuter::playExplosionSound() {
@@ -148,8 +149,6 @@ void CommandExecuter::openDoor() {
   this->socket.receive(&y, sizeof(y));
   matrix.switchDoorState(x, y);
   this->playDoorOpeningSound(x, y);
-
-
 }
 
 void CommandExecuter::pickUpItem() {
@@ -195,7 +194,7 @@ void CommandExecuter::run() {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
-      if (opcode == PLAYER_UPDATE_PACKAGE) {  // Cambiar por switch
+      if (opcode == PLAYER_UPDATE_PACKAGE) {
         this->updateOrCreatePlayer();
       } else if (opcode == PLAYER_DISCONNECT) {
         this->disconnectPlayer();
