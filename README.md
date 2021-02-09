@@ -105,7 +105,11 @@ Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra
 
 ### Editor 
 
-***COMPLETAR***
+<br><p align="center"><img src="./docs/screenshots/editor.png"/></p>
+
+El editor es intuitivo y simple. Seleccionar File->New para crear un mapa, File->Open para abrir un mapa existente o File->Save para guardar un mapa creado. Si es la primera vez que se guarda el mapa creado, se pedira un nombre que debera seguir el estandar de nombre: "map" seguido del ID del mapa, que es un numero arbitrario elegido por el usuario. 
+
+Dentro del editor, en la barra superior hay distintas secciones que indican diferentes elementos posicionables: Paredes, Puertas, Items, etc. Basta con clickear la imagen deseada y elegir en que celda del mapa ponerla. El borrador permite elegir una celda y eliminar sus contenidos, mientras que respawn elige posiciones para que los jugadores reaparezcan (***Como minimo, deberá haber 1 punto de respawn***)
 
 ## Apéndice de Errores
 

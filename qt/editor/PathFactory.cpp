@@ -184,6 +184,10 @@ std::string PathFactory::getTilePath(int tileId) {
       path = "./elementos_mapa/paredes/wood.png";
       break;
 
+    case 0:
+      path = "./elementos_mapa/otros/respawn_icon.png";
+      break;
+
     default:
       break;
   }
