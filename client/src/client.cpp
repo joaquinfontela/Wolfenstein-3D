@@ -55,7 +55,6 @@ bool Client::joinMatch(uint32_t lobbyID) {
 int Client::run(int myPlayerID, std::string& mapFile) {
 
   if(myPlayerID == -1){
-    std::cout<<"Unable to connect"<<std::endl;
     return ERROR;
   }
 
@@ -89,9 +88,6 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   Hud hud(player, manager, audios);
   std::map<uint32_t, Player*> players;
   players[this->myPlayerID] = player;
-
-  std::cout << "[CLIENT] Player Succesfully connected with ID: " << myPlayerID
-            << std::endl;
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);

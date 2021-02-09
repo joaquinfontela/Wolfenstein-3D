@@ -29,11 +29,9 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
     int animationStripe =
         int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    std::cout << animationStripe << std::endl;
     if (animationStripe < 0 || this->timePassed > this->totalFrames)
       continue;
-    else if (/*animationStripe + 1 == BLOCKSIZE - 4 &&*/
-             floor(this->timePassed / TIME_PER_ANIMATION_SLIDE) > this->frames)
+    else if (floor(this->timePassed / TIME_PER_ANIMATION_SLIDE) > this->frames)
       this->frames = (this->frames + 1) % this->framesPerAnimation;
 
 
