@@ -5,7 +5,7 @@
 
 #include "../../includes/Match/Match.h"
 #include "../../includes/Server/ClientCommunication.h"
-#define MAP_YAML_FILE_NAME "./common/src/YAML/map"
+#define MAP_YAML_FILE_NAME "./common/src/YAML/Maps/map"
 
 static bool fileExists(std::string& name){
   if (FILE *file = fopen(name.c_str(), "r")) {
