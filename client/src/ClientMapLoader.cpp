@@ -149,10 +149,10 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
     case 354:
       return WOODEN_WALL;
       break;
-    case 201:
+    case 202:
       return DOOR;
       break;
-    case 202:
+    case 201:
       return LOCKED_DOOR;
       break;
 
@@ -178,7 +178,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 
     case 359:
     case 309:
-      return WALL_3;
+      return EAGLE_WALL;
       break;
 
     case 360:
@@ -188,7 +188,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 
     case 361:
     case 311:
-     return EAGLE_WALL;
+     return WALL_3;
       break;
 
     case 362:

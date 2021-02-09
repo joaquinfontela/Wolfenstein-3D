@@ -69,7 +69,12 @@ void Login::on_button_join_clicked() {
     // Connection Request
     socket.send(&protocol, sizeof(protocol));
 
-    receiveAvailableMatches();  // recibo las partidas disponibles
+    if(!receiveAvailableMatches()){ // recibo las partidas disponibles
+        std::cout<<"[LOGIN] No matches available..."<<std::endl;
+        this->player_id = -1;
+        QApplication::quit();
+        return;
+    }  
 
     join_window jw(this, this->availableMatches);
     jw.setModal(true);
@@ -152,13 +157,18 @@ void Login::on_button_create_clicked() {
   }
 }
 
-void Login::receiveAvailableMatches() {
+bool Login::receiveAvailableMatches() {
   uint32_t amountOfMatches = 0;
   this->socket.receive(&amountOfMatches, sizeof(amountOfMatches));
+
+  if(amountOfMatches == 0)
+    return false;
 
   for (uint32_t i = 0; i < amountOfMatches; i++) {
     uint32_t matchID;
     this->socket.receive(&matchID, sizeof(matchID));
     this->availableMatches.push_back(matchID);
   }
+
+  return true;
 }
