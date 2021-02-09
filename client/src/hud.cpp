@@ -36,11 +36,7 @@ void Hud::update() {
 void Hud::renderBloodDamage() {
   int healthdown;
   if (!(healthdown = player->healthdown)) return;
-  int width, height;
-  height = this->screenHeight;
-  width = this->screenWidth;
-  area.update(13, 12, width - 26, 3 * height / 4 + 10);
-  this->manager.renderAll(DAMAGE_HUD, area);
+  this->manager.renderComplete(DAMAGE_HUD);
   player->healthdown = (healthdown + 1) % BLOOD_FRAMES;
 }
 
