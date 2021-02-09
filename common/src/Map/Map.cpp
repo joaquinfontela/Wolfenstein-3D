@@ -4,6 +4,7 @@
 //
 
 #include "../../includes/Map/Map.h"
+
 #include "../../../client/includes/clientprotocol.h"
 #include "../../../client/includes/doortile.h"
 
@@ -42,7 +43,7 @@ void Map::updateTimers(float value) {
   }
 }
 
-Map::Map(ClientMapLoader& loader) : loader(loader) {
+Map::Map(ClientMapLoader& loader) {
   doors = loader.getDoorIdMatrix();
   matrix = loader.getWallIdMatrix();
   dimx = loader.dimy;
