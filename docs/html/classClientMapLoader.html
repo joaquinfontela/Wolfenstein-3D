@@ -76,7 +76,8 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ClientMapLoader</b> (std::string &amp;yamlFile, unsigned int dimx, unsigned int dimy)</td></tr>
 <tr class="separator:acb568407567ac8ebbcb4eff887f12ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a076d49dc759b32eaf963727b05ff3a7c"><td class="memItemLeft" align="right" valign="top"><a id="a076d49dc759b32eaf963727b05ff3a7c"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>convertYamlFileItemIdToProtocolItemSkinId</b> (int yamlFileId)</td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientMapLoader.html#a076d49dc759b32eaf963727b05ff3a7c">convertYamlFileItemIdToProtocolItemSkinId</a> (int yamlFileId)</td></tr>
+<tr class="memdesc:a076d49dc759b32eaf963727b05ff3a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the id of a item in the yaml file, to the id that represents that same item in the protocol. <br /></td></tr>
 <tr class="separator:a076d49dc759b32eaf963727b05ff3a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac43d65d11dd489581dd787eb1cd098ec"><td class="memItemLeft" align="right" valign="top"><a id="ac43d65d11dd489581dd787eb1cd098ec"></a>
 int *&#160;</td><td class="memItemRight" valign="bottom"><b>getWallIdMatrix</b> ()</td></tr>
@@ -84,12 +85,13 @@ int *&#160;</td><td class="memItemRight" valign="bottom"><b>getWallIdMatrix</b> 
 <tr class="memitem:a1bfa1401dd145c987e6af06975619be4"><td class="memItemLeft" align="right" valign="top"><a id="a1bfa1401dd145c987e6af06975619be4"></a>
 <a class="el" href="classDoorTile.html">DoorTile</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getDoorIdMatrix</b> ()</td></tr>
 <tr class="separator:a1bfa1401dd145c987e6af06975619be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a697dc614c2fe75c26e435f57561ae389"><td class="memItemLeft" align="right" valign="top"><a id="a697dc614c2fe75c26e435f57561ae389"></a>
-std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDrawableItemList</b> ()</td></tr>
+<tr class="memitem:a697dc614c2fe75c26e435f57561ae389"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientMapLoader.html#a697dc614c2fe75c26e435f57561ae389">getDrawableItemList</a> ()</td></tr>
 <tr class="separator:a697dc614c2fe75c26e435f57561ae389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd3e832548a1b7fd64ecbea8a23ae32e"><td class="memItemLeft" align="right" valign="top"><a id="acd3e832548a1b7fd64ecbea8a23ae32e"></a>
-std::vector&lt; <a class="el" href="classCoordinate.html">Coordinate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDoorCoordinates</b> ()</td></tr>
+<tr class="memitem:acd3e832548a1b7fd64ecbea8a23ae32e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCoordinate.html">Coordinate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientMapLoader.html#acd3e832548a1b7fd64ecbea8a23ae32e">getDoorCoordinates</a> ()</td></tr>
 <tr class="separator:acd3e832548a1b7fd64ecbea8a23ae32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b48caf760035a0f2768787a8c95c5b2"><td class="memItemLeft" align="right" valign="top"><a id="a7b48caf760035a0f2768787a8c95c5b2"></a>
+std::vector&lt; <a class="el" href="classCoordinate.html">Coordinate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFakeWallCoordinates</b> ()</td></tr>
+<tr class="separator:a7b48caf760035a0f2768787a8c95c5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -100,6 +102,43 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>dimx</b></td>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>dimy</b></td></tr>
 <tr class="separator:a381ab7251b9871c35ca0d8cf8b208a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acd3e832548a1b7fd64ecbea8a23ae32e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd3e832548a1b7fd64ecbea8a23ae32e">&#9670;&nbsp;</a></span>getDoorCoordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classCoordinate.html">Coordinate</a> &gt; ClientMapLoader::getDoorCoordinates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the Coordinates where there is a door. </dd></dl>
+
+</div>
+</div>
+<a id="a697dc614c2fe75c26e435f57561ae389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697dc614c2fe75c26e435f57561ae389">&#9670;&nbsp;</a></span>getDrawableItemList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classDrawable.html">Drawable</a> * &gt; ClientMapLoader::getDrawableItemList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the drawable items. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>client/includes/<a class="el" href="ClientMapLoader_8h_source.html">ClientMapLoader.h</a></li>
 <li>client/src/ClientMapLoader.cpp</li>

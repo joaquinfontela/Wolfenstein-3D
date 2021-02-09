@@ -39,12 +39,16 @@ Una vez instaladas las dependencias previas, se debe de utilizar el script insta
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md6}{}\doxysubsection{Forma de Uso}\label{md_README_autotoc_md6}
 \hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{Servidor}\label{md_README_autotoc_md7}
-Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando 
+Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./ServerMain <PORT> <configFilePath>}
+\DoxyCodeLine{./ServerMain <PORT> }
 
 \end{DoxyCode}
- Siendo PORT el puerto a utlizar y config\+File\+Path el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{Cliente}\label{md_README_autotoc_md8}
+
+
+Siendo PORT el puerto a utlizar y config\+File\+Path el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{Cliente}\label{md_README_autotoc_md8}
 Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando
 
 
@@ -53,9 +57,29 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md9}{}\doxysubsection{Tutorial de Uso}\label{md_README_autotoc_md9}
-\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{Iniciar Partida}\label{md_README_autotoc_md10}
-Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla {\itshape p} que indica al servidor que el admin desea comenzar la partida.\hypertarget{md_README_autotoc_md11}{}\doxysubsubsection{Movimiento}\label{md_README_autotoc_md11}
-Para moverse, se utiliza el sistema clásico de movimiento\+: {\itshape w} para moverse para adelante, {\itshape s} para moverse hacia atras, {\itshape a} para rotar la camara hacia la izquierda y {\itshape d} para rotar la camara hacia la derecha.\hypertarget{md_README_autotoc_md12}{}\doxysubsubsection{Armas}\label{md_README_autotoc_md12}
+\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{Login}\label{md_README_autotoc_md10}
+Para acceder al login del juego debemos correr {\ttfamily ./\+Wolfen3D} en la carpeta {\ttfamily client/executable}. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
+
+~\newline
+
+
+
+
+Luego uno puede seleccionar {\itshape Join \mbox{\hyperlink{classMatch}{Match}}} si quiere entrar a una partida existente.
+
+~\newline
+
+
+
+
+O {\itshape Create \mbox{\hyperlink{classMatch}{Match}}} para crear una propia.
+
+~\newline
+
+
+\hypertarget{md_README_autotoc_md11}{}\doxysubsubsection{Iniciar Partida}\label{md_README_autotoc_md11}
+Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla {\itshape p} que indica al servidor que el admin desea comenzar la partida.\hypertarget{md_README_autotoc_md12}{}\doxysubsubsection{Movimiento}\label{md_README_autotoc_md12}
+Para moverse, se utiliza el sistema clásico de movimiento\+: {\itshape w} para moverse para adelante, {\itshape s} para moverse hacia atras, {\itshape a} para rotar la camara hacia la izquierda y {\itshape d} para rotar la camara hacia la derecha.\hypertarget{md_README_autotoc_md13}{}\doxysubsubsection{Armas}\label{md_README_autotoc_md13}
 Para el uso de las armas, el {\itshape enter} significa disparar mientras que las teclas {\itshape 1}, {\itshape 2}, {\itshape 3}, {\itshape 4} y {\itshape 5} le permiten al jugador cambiar de armas. El {\itshape 1} siempre indica cambiar al cuchillo mientras que el {\itshape 2} indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
 
 ~\newline
@@ -63,7 +87,7 @@ Para el uso de las armas, el {\itshape enter} significa disparar mientras que la
 
 
 
-Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.\hypertarget{md_README_autotoc_md13}{}\doxysubsubsection{Puertas}\label{md_README_autotoc_md13}
+Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.\hypertarget{md_README_autotoc_md14}{}\doxysubsubsection{Puertas}\label{md_README_autotoc_md14}
 El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas\+:
 
 ~\newline
@@ -78,7 +102,7 @@ Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar 
 
 
 
-Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.\hypertarget{md_README_autotoc_md14}{}\doxysubsubsection{Drops}\label{md_README_autotoc_md14}
+Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.\hypertarget{md_README_autotoc_md15}{}\doxysubsubsection{Drops}\label{md_README_autotoc_md15}
 ~\newline
 
 
@@ -91,12 +115,20 @@ El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen\+: Arm
 
 
 
-Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!\hypertarget{md_README_autotoc_md15}{}\doxysubsection{Apéndice de Errores}\label{md_README_autotoc_md15}
+Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!\hypertarget{md_README_autotoc_md16}{}\doxysubsubsection{Editor}\label{md_README_autotoc_md16}
+~\newline
+
+
+
+
+El editor es intuitivo y simple. Seleccionar File-\/$>$New para crear un mapa, File-\/$>$Open para abrir un mapa existente o File-\/$>$Save para guardar un mapa creado. Si es la primera vez que se guarda el mapa creado, se pedira un nombre que debera seguir el estandar de nombre\+: \char`\"{}map\char`\"{} seguido del ID del mapa, que es un numero arbitrario elegido por el usuario.
+
+Dentro del editor, en la barra superior hay distintas secciones que indican diferentes elementos posicionables\+: Paredes, Puertas, Items, etc. Basta con clickear la imagen deseada y elegir en que celda del mapa ponerla. El borrador permite elegir una celda y eliminar sus contenidos, mientras que respawn elige posiciones para que los jugadores reaparezcan ({\itshape {\bfseries{Como minimo, deberá haber 1 punto de respawn}}})\hypertarget{md_README_autotoc_md17}{}\doxysubsection{Apéndice de Errores}\label{md_README_autotoc_md17}
 El sistema puede tener glitches que causen, o no, diferentes tipos de interferencias en la experiencia del usuario. Para notificar esto y para generar un registro de potenciales problemas que aparecen se usa un log de errores.
 
 El mismo, en caso de que se necesite, escribe en el archivo \+\_\+\char`\"{}wolfenstein.\+log\char`\"{}\+\_\+ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.
 
-Llamando a la macro {\ttfamily LOG(const char$\ast$ error\+Msg)} se llama al método estático de la clase {\ttfamily \mbox{\hyperlink{classLog}{Log}}} que recibe el archivo, la función, la línea y {\ttfamily error\+Msg} para escribirlos en el log con el formato antes escrito.\hypertarget{md_README_autotoc_md16}{}\doxysubsubsection{Clasificación de Errores}\label{md_README_autotoc_md16}
+Llamando a la macro {\ttfamily LOG(const char$\ast$ error\+Msg)} se llama al método estático de la clase {\ttfamily \mbox{\hyperlink{classLog}{Log}}} que recibe el archivo, la función, la línea y {\ttfamily error\+Msg} para escribirlos en el log con el formato antes escrito.\hypertarget{md_README_autotoc_md18}{}\doxysubsubsection{Clasificación de Errores}\label{md_README_autotoc_md18}
 Los potenciales mensajes de errores que pueden aparecer son\+:
 
 

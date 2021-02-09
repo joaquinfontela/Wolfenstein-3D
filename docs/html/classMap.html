@@ -99,15 +99,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0506b001629215a5f572055035a17f9b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0506b001629215a5f572055035a17f9b">getDoorState</a> (int x, int y)</td></tr>
 <tr class="memdesc:a0506b001629215a5f572055035a17f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] Get the <a class="el" href="classDoor.html" title="Raycastable door.">Door</a>'s State.  <a href="classMap.html#a0506b001629215a5f572055035a17f9b">More...</a><br /></td></tr>
 <tr class="separator:a0506b001629215a5f572055035a17f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e88898b8c40926c87d106c0e9020ffb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0e88898b8c40926c87d106c0e9020ffb">switchDoorState</a> (int x, int y)</td></tr>
-<tr class="memdesc:a0e88898b8c40926c87d106c0e9020ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] Calls the method changeState() on the given door.  <a href="classMap.html#a0e88898b8c40926c87d106c0e9020ffb">More...</a><br /></td></tr>
-<tr class="separator:a0e88898b8c40926c87d106c0e9020ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5fa0bd2de0d5a5b8cf6ccf320301f3a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#af5fa0bd2de0d5a5b8cf6ccf320301f3a">switchDoorState</a> (int x, int y)</td></tr>
+<tr class="memdesc:af5fa0bd2de0d5a5b8cf6ccf320301f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] Calls the method changeState() on the given door.  <a href="classMap.html#af5fa0bd2de0d5a5b8cf6ccf320301f3a">More...</a><br /></td></tr>
+<tr class="separator:af5fa0bd2de0d5a5b8cf6ccf320301f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1834a7ad317bdd2e6a7d1e9e27b06b7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a1834a7ad317bdd2e6a7d1e9e27b06b7d">forceDoorState</a> (int x, int y)</td></tr>
 <tr class="memdesc:a1834a7ad317bdd2e6a7d1e9e27b06b7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] If the given door is closed it switches to open and the other way around.  <a href="classMap.html#a1834a7ad317bdd2e6a7d1e9e27b06b7d">More...</a><br /></td></tr>
 <tr class="separator:a1834a7ad317bdd2e6a7d1e9e27b06b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff2af59b2ae472803fc3c750dd813628"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#aff2af59b2ae472803fc3c750dd813628">getMatrix</a> ()</td></tr>
 <tr class="memdesc:aff2af59b2ae472803fc3c750dd813628"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] Get the Matrix.  <a href="classMap.html#aff2af59b2ae472803fc3c750dd813628">More...</a><br /></td></tr>
 <tr class="separator:aff2af59b2ae472803fc3c750dd813628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90752eb040e580cc8e1d928b2715180"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#aa90752eb040e580cc8e1d928b2715180">getDoorSound</a> (int x, int y)</td></tr>
+<tr class="memdesc:aa90752eb040e580cc8e1d928b2715180"><td class="mdescLeft">&#160;</td><td class="mdescRight">[CLIENT SIDE] Returns the sound code for the given door coordinates.  <a href="classMap.html#aa90752eb040e580cc8e1d928b2715180">More...</a><br /></td></tr>
+<tr class="separator:aa90752eb040e580cc8e1d928b2715180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22c0a427602af5f2b6f49e54b93875e0"><td class="memItemLeft" align="right" valign="top"><a id="a22c0a427602af5f2b6f49e54b93875e0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> (int dimx, int dimy)</td></tr>
 <tr class="separator:a22c0a427602af5f2b6f49e54b93875e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,9 +192,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>dimx</b></td></tr>
 <tr class="memitem:af933575f1fe003fe3193a6b1327a0e97"><td class="memItemLeft" align="right" valign="top"><a id="af933575f1fe003fe3193a6b1327a0e97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>dimy</b></td></tr>
 <tr class="separator:af933575f1fe003fe3193a6b1327a0e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae32c24012ee3bfa8c9ce00f3dd794a44"><td class="memItemLeft" align="right" valign="top"><a id="ae32c24012ee3bfa8c9ce00f3dd794a44"></a>
-<a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>loader</b></td></tr>
-<tr class="separator:ae32c24012ee3bfa8c9ce00f3dd794a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>[CLIENT SIDE] Knows where are all the doors and walls. </p>
@@ -295,6 +295,44 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>dimy</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="aa90752eb040e580cc8e1d928b2715180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa90752eb040e580cc8e1d928b2715180">&#9670;&nbsp;</a></span>getDoorSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Map::getDoorSound </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>[CLIENT SIDE] Returns the sound code for the given door coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td><a class="el" href="classDoor.html" title="Raycastable door.">Door</a> X Coord. </td></tr>
+    <tr><td class="paramname">y</td><td><a class="el" href="classDoor.html" title="Raycastable door.">Door</a> Y Coord. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="unionSound.html" title="This union comes in handy due to the fact that each instance of this class is either music or an audi...">Sound</a> code. </dd></dl>
 
 </div>
 </div>
@@ -434,14 +472,14 @@ false </dd></dl>
 
 </div>
 </div>
-<a id="a0e88898b8c40926c87d106c0e9020ffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e88898b8c40926c87d106c0e9020ffb">&#9670;&nbsp;</a></span>switchDoorState()</h2>
+<a id="af5fa0bd2de0d5a5b8cf6ccf320301f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5fa0bd2de0d5a5b8cf6ccf320301f3a">&#9670;&nbsp;</a></span>switchDoorState()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Map::switchDoorState </td>
+          <td class="memname">bool Map::switchDoorState </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -468,6 +506,7 @@ false </dd></dl>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if its a fake wall, false otherwise. </dd></dl>
 
 </div>
 </div>
