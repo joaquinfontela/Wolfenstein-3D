@@ -48,6 +48,7 @@ public:
     void update_tileset(QString path, int cant_row, tile_factory* factory);
     tiles_container(QString path, int cant_row, tile_factory* factory);
     tiles_container();
+    ~tiles_container();
     bool is_empty();
 };
 

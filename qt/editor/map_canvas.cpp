@@ -65,5 +65,13 @@ void map_canvas::erase_tiles_at(std::vector<int> coordinates) {
 }
 
 map_canvas::~map_canvas(){
-
+    for (int i = 0; i < cant_row; i++) {
+        for (int x = 0; x < cant_col; x++) {
+            int row = i;
+            int col = x;
+            for(tile_item* tile : this->grilla.at(row).at(col)){
+                delete tile;
+            }
+        }
+    }
 }

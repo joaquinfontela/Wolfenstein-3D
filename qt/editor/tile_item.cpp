@@ -65,10 +65,9 @@ void tile_item::mousePressEvent(QGraphicsSceneMouseEvent *event) {
   QScrollBar *horizontal_bar = this->map->horizontalScrollBar();
   p.setX(event->pos().x() - horizontal_bar->value());
   p.setY(event->pos().y() - vertical_bar->value());
-  QMouseEvent *me =
-      new QMouseEvent(QEvent::MouseButtonPress, p, Qt::MouseButton::LeftButton,
+  QMouseEvent me(QEvent::MouseButtonPress, p, Qt::MouseButton::LeftButton,
                       Qt::MouseButton::AllButtons, 0);
-  QApplication::sendEvent(this->map, me);
+  QApplication::sendEvent(this->map, &me);
 }
 
 void tile_item::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)

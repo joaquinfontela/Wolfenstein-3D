@@ -26,6 +26,11 @@ tiles_container::tiles_container(){
     this->pm_item = NULL;
 }
 
+tiles_container::~tiles_container()
+{
+    delete this->pm_item;
+}
+
 bool tiles_container::is_empty()
 {
     if(this->pm_item == NULL){

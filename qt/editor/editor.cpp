@@ -35,19 +35,19 @@
 #define RESPAWN_ICON_PATH "./elementos_mapa/otros/respawn_icon.png"
 
 void Editor::initialize_tile_container() {
-  tile_container_actions* ef = new tile_container_actions(this);
+  tile_container_actions ef(this);
   tiles_container_scene = new tiles_container();
   ui->graphics_tiles_container->setScene(tiles_container_scene);
   ui->graphics_tiles_container->setAlignment(Qt::AlignTop);
-  ui->graphics_tiles_container->installEventFilter(ef);
+  ui->graphics_tiles_container->installEventFilter(&ef);
 }
 
 void Editor::initialize_map_container(int col, int row) {
   my_map_scene = new class map_scene(this, col, row, this->actual_tile_size());
   ui->graphics_map_container->setScene(my_map_scene);
   this->mc = new map_canvas(col, row);
-  map_actions* ma = new map_actions(this, my_map_scene);
-  ui->graphics_map_container->installEventFilter(ma);
+  map_actions ma(this, my_map_scene);
+  ui->graphics_map_container->installEventFilter(&ma);
 
   ui->actionsafe->setEnabled(true);
   ui->actionZoom_in->setEnabled(true);
@@ -71,9 +71,9 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
 }
 
 Editor::~Editor() {
-    if(this->mc != NULL){
-
-    }
+    delete this->mc;
+    delete this->my_map_scene;
+    delete this->tiles_container_scene;
     delete ui;
 }
 
@@ -90,13 +90,13 @@ void Editor::on_actionNew_triggered() {
 }
 
 void Editor::on_actionParedes_triggered() {
-  tile_factory* factory = new wall_tile_factory();
-  this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
+  wall_tile_factory factory;
+  this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, &factory);
 }
 
 void Editor::on_actionPuertas_triggered() {
-  tile_factory* factory = new door_tile_factory();
-  this->tiles_container_scene->update_tileset(DOOR_TILESET_PATH, 2, factory);
+  door_tile_factory factory;
+  this->tiles_container_scene->update_tileset(DOOR_TILESET_PATH, 2, &factory);
 }
 
 void Editor::on_actionBorrador_triggered() {
@@ -104,20 +104,20 @@ void Editor::on_actionBorrador_triggered() {
 }
 
 void Editor::on_actionDecoraciones_triggered() {
-  tile_factory* factory = new decoration_tile_factory();
-  this->tiles_container_scene->update_tileset(DECORATION_TILESET_PATH, 7, factory);
+  decoration_tile_factory factory;
+  this->tiles_container_scene->update_tileset(DECORATION_TILESET_PATH, 7, &factory);
 }
 
 void Editor::on_actionItems_triggered() {
-  tile_factory* factory = new item_tile_factory();
-  this->tiles_container_scene->update_tileset(ITEM_TILESET_PATH, 6, factory);
+  item_tile_factory factory;
+  this->tiles_container_scene->update_tileset(ITEM_TILESET_PATH, 6, &factory);
 }
 
 void Editor::on_actionZoom_in_triggered()
 {
     this->actual_tiles_size_index++;
     map_canvas* new_mc = new map_canvas(&mc->grilla);
-    this->mc->grilla.clear();
+    delete this->mc;
     this->my_map_scene->clear();
     this->mc = new_mc;
     this->paint_map();
@@ -132,7 +132,7 @@ void Editor::on_actionZoom_out_triggered()
 {
     this->actual_tiles_size_index--;
     map_canvas* new_mc = new map_canvas(&mc->grilla);
-    this->mc->grilla.clear();
+    delete this->mc;
     this->my_map_scene->clear();
     this->mc = new_mc;
     this->paint_map();
@@ -154,6 +154,7 @@ void Editor::on_actionOpen_triggered()
         this->paint_map();
         ui->actionNew->setEnabled(false);
         ui->actionZoom_in->setEnabled(true);
+        ui->actionZoom_out->setEnabled(true);
     }
 }
 
@@ -189,6 +190,7 @@ void Editor::on_actionsafe_triggered()
 
 void Editor::on_actionRespawn_triggered()
 {
+    delete this->tile_item_selected;
     this->tile_item_selected = new tile_item( RESPAWN_ICON_PATH , 0, false);
 }
 
@@ -200,6 +202,6 @@ void Editor::on_actionSave_and_exit_triggered()
 
 void Editor::on_actionParedes_Falsas_triggered()
 {
-    tile_factory* factory = new fake_wall_tile_factory();
-    this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
+    fake_wall_tile_factory factory;
+    this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, &factory);
 }

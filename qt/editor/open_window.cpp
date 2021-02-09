@@ -42,9 +42,17 @@ open_window::open_window(QWidget *parent, bool* map_was_changed) :
     this->map_was_changed = map_was_changed;
 }
 
-open_window::~open_window()
-{
-    delete ui;
+open_window::~open_window(){
+    QLayout* layout = ui->map_saved_container->layout();
+    if (layout != 0){
+        QLayoutItem *item;
+        while ((item = layout->takeAt(0)) != 0){
+            layout->removeItem (item);
+            delete item;
+        }
+        delete ui->map_saved_container->layout();
+        delete ui;
+    }
 }
 
 void open_window::on_open_boton_clicked()
@@ -68,6 +76,7 @@ void open_window::on_open_boton_clicked()
         }else{
            this->editor->my_map_scene->clear();
         }
+        delete this->editor->mc;
         this->editor->mc = new_mc;
 
         for (int i = 0; i < cant_rows; i++) {
