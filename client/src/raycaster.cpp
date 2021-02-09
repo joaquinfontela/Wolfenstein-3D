@@ -43,6 +43,9 @@ void Raycaster::run() {
     double distanceBuffer[this->width];
     float totalTime = 0;
 
+    // Possible optimization that could be implemented, but the width should
+    // be adjusted everywhere vvvvv
+
     //int adjustment = this->width * 3 / 200;
     //for (int i = adjustment; i < this->width - adjustment; i++) {
     for (int i = 0; i < this->width; i++) {
@@ -110,14 +113,12 @@ void Raycaster::run() {
                      (!isSide * (x + perpendicularWallDistance * rayDirX));
       wallX -= floor((wallX));
 
-      int doorStripe = int(wallX * double(BLOCKSIZE));
+      int stripe = int(wallX * double(BLOCKSIZE));
       bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
-      doorStripe =
-          (BLOCKSIZE - doorStripe - 1) * condition + doorStripe * (!condition);
+      stripe = (BLOCKSIZE - stripe - 1) * condition + stripe * (!condition);
 
       bool tooFar = (wallHeight < BLOCKSIZE);
-      srcArea.update(doorStripe, 0, 1,
-                     tooFar * BLOCKSIZE + !tooFar * wallHeight);
+      srcArea.update(stripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
       destArea.update(i, (this->height - wallHeight) >> 1, 1, wallHeight);
       this->manager.render(texNum, srcArea, destArea);
       distanceBuffer[i] = perpendicularWallDistance;

@@ -107,7 +107,6 @@ void Hud::renderTypeOfGun() {
 
 void Hud::renderGun() {
   if (player->isMoving()) {
-    // std::cout << "Se está moviendo " << movementStatus << std::endl;
     this->renderGunWithMovement();
     if (this->movementStatus > FRAMES_PER_MOVEMENT) {
       player->stopMoving();
@@ -115,7 +114,6 @@ void Hud::renderGun() {
     }
   } else {
     this->renderGunWithShifts();
-    // std::cout << "No se está moviendo\n";
   }
 }
 /*
@@ -133,8 +131,6 @@ void Hud::renderGunWithMovement() {
   int dx = sinval * 10;
   int dy = sinval * cos(movementStatus >> 2) * 6;
   int updatefreq = this->fps / (FRAMES_PER_MOVEMENT << 1);
-  // std::cout << "Update freq: " << updatefreq  << " status: " <<
-  // movementStatus << std::endl;
   this->renderGunWithShifts(dx, dy + 2, updatefreq);
   if (!(updatefreq) || !(this->framesAlreadyPlayed % updatefreq))
     movementStatus++;
@@ -163,7 +159,6 @@ void Hud::renderBullets() {
 }
 
 void Hud::playMyShootingSound() {
-  std::cout << "[CLIENT] Shooting my gun." << std::endl;
   int weaponId = this->player->weaponId;
   int soundId = GET_WEAPON_SOUND(weaponId);
   this->audiomanager.playOnMaxVolumeWithId(soundId);

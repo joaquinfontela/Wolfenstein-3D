@@ -25,7 +25,7 @@ class RaycastedAnimation : public Drawable {
                      int uniqueid, int framesPerAnimation)
       : Drawable(x, y, itemId, uniqueid),
         totalFrames(TIME_PER_ANIMATION_SLIDE * FRAMES_PER_EXPLOSION_ANIMATION),
-        frames(-1),
+        frames(0),
         framesPerAnimation(framesPerAnimation),
         timePassed(0) {}
 

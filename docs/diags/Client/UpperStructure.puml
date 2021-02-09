@@ -47,7 +47,7 @@ CommandManager --> Socket
 CommandManager -left-> ScoreBoard
 Client --> Raycaster
 Client -up-> CommandManager
-Client --> Log
+Client ..> Log
 Client --> Socket
 Login --> Socket
 ScoreBoard --> TextureManager

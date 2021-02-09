@@ -48,7 +48,7 @@ YAMLMapReader::getPartialItemCoordinateMap(int FROM_ID, int TO_ID) {
 }
 
 std::map<int, std::vector<Coordinate>> YAMLMapReader::getItemCoordinateMap() {
-  int FROM_ID = this->getWeaponsIdLimits().at(0);
+  int FROM_ID = 0;
   int TO_ID = this->getWallsIdLimits().at(1);
   return this->getPartialItemCoordinateMap(FROM_ID, TO_ID);
 }
