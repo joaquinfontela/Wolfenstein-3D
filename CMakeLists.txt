@@ -155,8 +155,6 @@ find_package(PkgConfig)
 pkg_check_modules(YAMLCPP REQUIRED yaml-cpp>=0.5)
 include_directories(${YAMLCPP_INCLUDE_DIRS})
 
-add_executable(WolfensteinTest ${SOURCE_FILES_SERVER} test/test.cpp)
 add_executable(ServerMain ${SOURCE_FILES_SERVER} serverMain.cpp)
 
-target_link_libraries(WolfensteinTest ${YAMLCPP_LIBRARIES})
 target_link_libraries(ServerMain ${YAMLCPP_LIBRARIES})
