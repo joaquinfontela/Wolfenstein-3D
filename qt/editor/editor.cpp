@@ -40,6 +40,7 @@ void Editor::initialize_tile_container() {
   ui->graphics_tiles_container->setScene(tiles_container_scene);
   ui->graphics_tiles_container->setAlignment(Qt::AlignTop);
   ui->graphics_tiles_container->installEventFilter(ef);
+  QObject::connect(tiles_container_scene, &QObject::destroyed, ef, &QObject::deleteLater);
 }
 
 void Editor::initialize_map_container(int col, int row) {
@@ -48,6 +49,7 @@ void Editor::initialize_map_container(int col, int row) {
   this->mc = new map_canvas(col, row);
   map_actions* ma = new map_actions(this, my_map_scene);
   ui->graphics_map_container->installEventFilter(ma);
+  QObject::connect(my_map_scene, &QObject::destroyed, ma, &QObject::deleteLater);
 
   ui->actionsafe->setEnabled(true);
   ui->actionZoom_in->setEnabled(true);
@@ -71,9 +73,10 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
 }
 
 Editor::~Editor() {
-    if(this->mc != NULL){
-
-    }
+    delete this->tile_item_selected;
+    delete this->mc;
+    delete this->my_map_scene;
+    delete this->tiles_container_scene;
     delete ui;
 }
 
@@ -90,12 +93,12 @@ void Editor::on_actionNew_triggered() {
 }
 
 void Editor::on_actionParedes_triggered() {
-  tile_factory* factory = new wall_tile_factory();
+  wall_tile_factory* factory = new wall_tile_factory();
   this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }
 
 void Editor::on_actionPuertas_triggered() {
-  tile_factory* factory = new door_tile_factory();
+  door_tile_factory* factory = new door_tile_factory();
   this->tiles_container_scene->update_tileset(DOOR_TILESET_PATH, 2, factory);
 }
 
@@ -104,12 +107,12 @@ void Editor::on_actionBorrador_triggered() {
 }
 
 void Editor::on_actionDecoraciones_triggered() {
-  tile_factory* factory = new decoration_tile_factory();
+  decoration_tile_factory* factory = new decoration_tile_factory();
   this->tiles_container_scene->update_tileset(DECORATION_TILESET_PATH, 7, factory);
 }
 
 void Editor::on_actionItems_triggered() {
-  tile_factory* factory = new item_tile_factory();
+  item_tile_factory* factory = new item_tile_factory();
   this->tiles_container_scene->update_tileset(ITEM_TILESET_PATH, 6, factory);
 }
 
@@ -117,7 +120,7 @@ void Editor::on_actionZoom_in_triggered()
 {
     this->actual_tiles_size_index++;
     map_canvas* new_mc = new map_canvas(&mc->grilla);
-    this->mc->grilla.clear();
+    delete this->mc;
     this->my_map_scene->clear();
     this->mc = new_mc;
     this->paint_map();
@@ -132,7 +135,7 @@ void Editor::on_actionZoom_out_triggered()
 {
     this->actual_tiles_size_index--;
     map_canvas* new_mc = new map_canvas(&mc->grilla);
-    this->mc->grilla.clear();
+    delete this->mc;
     this->my_map_scene->clear();
     this->mc = new_mc;
     this->paint_map();
@@ -154,6 +157,7 @@ void Editor::on_actionOpen_triggered()
         this->paint_map();
         ui->actionNew->setEnabled(false);
         ui->actionZoom_in->setEnabled(true);
+        ui->actionZoom_out->setEnabled(true);
     }
 }
 
@@ -189,7 +193,9 @@ void Editor::on_actionsafe_triggered()
 
 void Editor::on_actionRespawn_triggered()
 {
+    delete this->tile_item_selected;
     this->tile_item_selected = new tile_item( RESPAWN_ICON_PATH , 0, false);
+    this->eraser_on = false;
 }
 
 void Editor::on_actionSave_and_exit_triggered()
@@ -200,6 +206,6 @@ void Editor::on_actionSave_and_exit_triggered()
 
 void Editor::on_actionParedes_Falsas_triggered()
 {
-    tile_factory* factory = new fake_wall_tile_factory();
+    fake_wall_tile_factory* factory = new fake_wall_tile_factory();
     this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }

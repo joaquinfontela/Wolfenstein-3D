@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+123
+1
+sssss
+=======
 prueba
 789
 321
 map000
 9
 1
+>>>>>>> 7f2e1db0ddcc208b96ecd8db2efda336fb4cd692

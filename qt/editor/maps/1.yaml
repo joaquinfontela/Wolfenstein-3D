@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+dimx: 15
+dimy: 15
+=======
 dimx: 50
 dimy: 50
+>>>>>>> 7f2e1db0ddcc208b96ecd8db2efda336fb4cd692
 weapon id start: 1
 weapon id end: 5
 item id start: 101
@@ -8,6 +13,16 @@ door id start: 201
 door id end: 203
 wall id start: 301
 wall id end: 362
+<<<<<<< HEAD
+110:
+  -
+    - 10
+    - 3
+302:
+  -
+    - 3
+    - 4
+=======
 305:
   -
     - 1
@@ -3135,3 +3150,4 @@ wall id end: 362
   -
     - 38
     - 49
+>>>>>>> 7f2e1db0ddcc208b96ecd8db2efda336fb4cd692

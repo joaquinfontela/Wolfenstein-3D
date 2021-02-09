@@ -24,6 +24,13 @@ tiles_container::tiles_container(QString path, int cant_row, tile_factory* facto
 
 tiles_container::tiles_container(){
     this->pm_item = NULL;
+    this->factory = NULL;
+}
+
+tiles_container::~tiles_container()
+{
+    delete this->pm_item;
+    delete this->factory;
 }
 
 bool tiles_container::is_empty()
@@ -39,14 +46,16 @@ void tiles_container::update_tileset(QString path, int cant_row, tile_factory *f
     int height = ROW_HEIGHT*cant_row;
     this->cant_rows = cant_row;
     this->margin_vertical = HEIGHT_CONTAINER - height;
-    this->factory = factory;
 
     if(this->pm_item != NULL){
         delete this->pm_item;
+        delete this->factory;
     }
 
+    this->factory = factory;
     QPixmap* pm = new QPixmap(path);
     QPixmap pm_scaled = pm->scaled(WIDTH, height);
+
 
     QPainter painter(&pm_scaled);
     QPen pen(Qt::black, 0, Qt::SolidLine);
@@ -68,6 +77,7 @@ void tiles_container::update_tileset(QString path, int cant_row, tile_factory *f
     QGraphicsPixmapItem* pm_ = new QGraphicsPixmapItem(pm_scaled);
     this->addItem(pm_);
     this->pm_item = pm_;
+    delete pm;
 }
 
 

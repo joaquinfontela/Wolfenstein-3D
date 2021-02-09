@@ -18,6 +18,7 @@ bool tile_container_actions::eventFilter(QObject *obj, QEvent *event){
            if(!(this->editor->tiles_container_scene->is_empty())){
                tile_item* tile_clicked = this->editor->tiles_container_scene->tile_clicked(x, y);
                if(tile_clicked != NULL){
+                   delete this->editor->tile_item_selected;
                    this->editor->tile_item_selected = tile_clicked;
                    this->editor->eraser_on = false;
                }

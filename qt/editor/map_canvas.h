@@ -36,6 +36,8 @@ class map_canvas : public QFrame {
    */
   void erase_tiles_at(std::vector<int> coordinates);
 
+  bool is_empty();
+
   TileMatrix grilla;
   int cant_col;
   int cant_row;

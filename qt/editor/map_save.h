@@ -10,7 +10,7 @@ class map_save : public QPushButton
 {
     Q_OBJECT
 
-    std::vector<std::vector<std::vector<tile_item*>>> map;
+    std::vector<std::vector<std::vector<tile_item*>>>* map;
     open_window* my_window;
     std::string map_name;
 
@@ -19,6 +19,7 @@ private slots:
 
 public:
     map_save(open_window* my_window, std::string map);
+    ~map_save();
 };
 
 #endif // MAP_SAVE_H

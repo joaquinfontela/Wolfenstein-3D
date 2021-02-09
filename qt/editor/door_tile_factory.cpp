@@ -19,7 +19,7 @@ tile_item* door_tile_factory::get_tile(std::vector<int>& coordinates) {
     tipo = 108;
     comulative = true;
   }
-  QString path(PathFactory().getTilePath(tipo).c_str());
+  std::string path(PathFactory().getTilePath(tipo).c_str());
   tile_item* tile = new class tile_item(path, tipo, comulative);
   return tile;
 }

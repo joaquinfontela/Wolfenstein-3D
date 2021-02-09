@@ -11,10 +11,10 @@ class tile_item : public QGraphicsItem
      int type;
      QImage my_image;
      QRect my_rect;
-     QString path;
+     std::string path;
      QGraphicsView* map;
 public:
-    tile_item(QString path, int tipo, bool cumulative);
+    tile_item(std::string path, int tipo, bool cumulative);
     /**
      * @brief make a copy of this tile item and get it pointer.
      *

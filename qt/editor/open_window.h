@@ -23,7 +23,6 @@ private slots:
 
 private:
     Ui::open_window *ui;
-    std::vector<std::string> maps_saved;
     Editor* editor; 
     bool* map_was_changed;
 };

@@ -81,7 +81,7 @@ void Map_painter::paint_all_tiles() {
   for (int i = 0; i < mc->cant_row; i++) {
     for (int x = 0; x < mc->cant_row; x++) {
       std::vector<tile_item*> tiles = mc->tiles_at_coordinates({i+1, x+1});
-      if (!tiles.empty() && tiles.at(0) != 0) {
+      if (!tiles.empty()) {
         this->paint_map({i+1, x+1}, tiles);
       }
     }

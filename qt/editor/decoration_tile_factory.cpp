@@ -37,7 +37,7 @@ tile_item* decoration_tile_factory::get_tile(std::vector<int>& coordinates) {
   } else {
     tipo = 123;
   }
-  QString path(PathFactory().getTilePath(tipo).c_str());
+  std::string path(PathFactory().getTilePath(tipo).c_str());
   tile_item* tile = new class tile_item(path, tipo, true);
   return tile;
 }
