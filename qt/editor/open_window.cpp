@@ -76,7 +76,7 @@ void open_window::on_open_boton_clicked()
         }else{
            this->editor->my_map_scene->clear();
         }
-        delete this->editor->mc;
+        //delete this->editor->mc;
         this->editor->mc = new_mc;
 
         for (int i = 0; i < cant_rows; i++) {
