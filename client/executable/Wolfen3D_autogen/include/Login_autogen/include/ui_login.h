@@ -45,6 +45,9 @@ public:
         sizePolicy.setHeightForWidth(Login->sizePolicy().hasHeightForWidth());
         Login->setSizePolicy(sizePolicy);
         Login->setMaximumSize(QSize(800, 600));
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../qt/editor/logo/wolfestein_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Login->setWindowIcon(icon);
         Login->setStyleSheet(QStringLiteral(""));
         centralwidget = new QWidget(Login);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));

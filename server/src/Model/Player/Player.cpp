@@ -50,6 +50,7 @@ Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
   weapons.push_back(weaponFactory.getWeapon(1, map.getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(weaponFactory.getWeapon(2, map.getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
+  std::cout<<"Player spawning at: "<<this->x<<", "<<this->y<<std::endl;
 }
 
 Player::Player(YAMLConfigReader yamlConfigReader)
