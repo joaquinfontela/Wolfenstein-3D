@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../qt/editor/logo/wolfestein_logo.png</normaloff>../../../qt/editor/logo/wolfestein_logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
