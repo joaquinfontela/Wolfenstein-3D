@@ -43,7 +43,9 @@ class DoorTimer {
     + void run()
 }
 class Map {
-    - ClientMapLoader& loader
+    + DoorTile* doors;
+    + int* matrix
+    + int dimx, dimy
     + void updateTimers(float time)
     + bool isDoor(int x, int y)
     + char getDoorState(int x, int y)
@@ -54,10 +56,11 @@ class Map {
 CommandExecuter --> Map
 CommandExecuter --> AudioManager
 CommandExecuter --> ClientMapLoader
-CommandExecuter -left-|> CommandManager 
 AudioManager --> Audio
 Map -up-> DoorTile
 Map --> DoorTimer
 Map ..> ClientMapLoader
 DoorTimer --> Map
+
+DoorTimer -right-|> Thread
 @enduml

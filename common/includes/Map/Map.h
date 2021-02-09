@@ -18,7 +18,6 @@ class Map {
   int* matrix;
   int dimx;
   int dimy;
-  ClientMapLoader& loader;
 
   /**
    * @brief [CLIENT SIDE] Construct a new Map object

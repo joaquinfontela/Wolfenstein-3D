@@ -1,0 +1,15 @@
+@startuml
+?-> ":CommandExecuter": run
+":CommandExecuter" --> ":Socket": recv(&opcode)
+":CommandExecuter" --> ":CommandExecuter": explodeMissile
+activate ":CommandExecuter"
+":CommandExecuter" --> ":Socket": recv(&uniqueId)
+":CommandExecuter" --> ":AudioManager": playWithId(EXPLOSION_SOUND)
+activate ":AudioManager"
+":AudioManager" --> ":Audio": play()
+deactivate ":AudioManager"
+":CommandExecuter" -> ":CommandExecuter": renderExplosionAnimation(uniqueId) 
+activate ":CommandExecuter"
+deactivate ":CommandExecuter"
+deactivate ":CommandExecuter"
+@enduml
