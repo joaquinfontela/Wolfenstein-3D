@@ -33,6 +33,8 @@ class ClientMapLoader {
    */
   std::vector<Coordinate> getDoorCoordinates();
 
+  std::vector<Coordinate> getFakeWallCoordinates();
+
  private:
   int uniqueid;
   YAMLMapReader yamlMapReader;

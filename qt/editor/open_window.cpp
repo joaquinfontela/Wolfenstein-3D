@@ -17,7 +17,7 @@
 
 #define MAP_NAME_PATH "./maps/maps_names.txt"
 
-open_window::open_window(QWidget *parent) :
+open_window::open_window(QWidget *parent, bool* map_was_changed) :
     QDialog(parent),
     ui(new Ui::open_window)
 {
@@ -39,6 +39,7 @@ open_window::open_window(QWidget *parent) :
     ui->map_saved_container->setLayout(ly);
     this->map_selected = NULL;
     this->editor = (Editor*) parent;
+    this->map_was_changed = map_was_changed;
 }
 
 open_window::~open_window()
@@ -77,8 +78,8 @@ void open_window::on_open_boton_clicked()
                 }
           }
         }
-
         editor->actual_map_name = this->map_name;
+        *this->map_was_changed = true;
         this->close();
     }
 }

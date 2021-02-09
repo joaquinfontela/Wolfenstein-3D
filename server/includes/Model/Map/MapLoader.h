@@ -10,6 +10,7 @@
 #include "../../../includes/Model/Item/ItemFactory.h"
 #include "../../../includes/Model/Item/Weapon/WeaponFactory.h"
 #include "../../../includes/Model/Wall/WallFactory.h"
+#include "../../../includes/Model/Wall/BlueWall.h"
 #include "Map.h"
 
 class Map;

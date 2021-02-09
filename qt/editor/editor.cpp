@@ -145,10 +145,11 @@ void Editor::on_actionZoom_out_triggered()
 
 void Editor::on_actionOpen_triggered()
 {
-    open_window ow(this);
+    bool map_was_changed = false;
+    open_window ow(this, &map_was_changed);
     ow.setModal(true);
     ow.exec();
-    if(this->mc != NULL){
+    if(this->mc != NULL && map_was_changed){
         this->actual_map_saved = true;
         this->paint_map();
         ui->actionNew->setEnabled(false);

@@ -48,7 +48,6 @@ CommandExecuter::~CommandExecuter() {
 
 void CommandExecuter::playShootingSounds(int shooterId) {
   if (shooterId != this->selfId) {
-    std::cout << "[GAME] Playing enemy shooting sound. \n";
     int weaponId = players.at(shooterId)->weaponId;
     int soundId = GET_WEAPON_SOUND(weaponId);
     double dist =
@@ -60,7 +59,7 @@ void CommandExecuter::playShootingSounds(int shooterId) {
 void CommandExecuter::playDoorOpeningSound(int x, int y) {
   double dist = players.at(this->selfId)->calculateDist(x, y);
   if (dist < 0) dist = 1;
-  this->audiomanager.playOnVariableVolumeWithId(DOOR_SOUND, dist * 10);
+  this->audiomanager.playOnVariableVolumeWithId(matrix.getDoorSound(x,y), dist * 10);
 }
 
 void CommandExecuter::playExplosionSound() {
@@ -68,7 +67,6 @@ void CommandExecuter::playExplosionSound() {
 }
 
 void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
-  std::cout << "[GAME] Removing sprite with id: " << itemId << std::endl;
   uint32_t soundId;
   this->sprites.removeSpriteWithIdAndGetSound(itemId, &soundId);
   this->audiomanager.playWithId(soundId);
@@ -122,7 +120,6 @@ void CommandExecuter::updateOrCreatePlayer() {
       LOG(COULD_NOT_CREATE_PLAYER);
       return;
     }
-    std::cout << "[GAME] Adding player with id: " << id << std::endl;
     players[id] = placeholder;
     this->sprites.push_back(placeholder);
   }
@@ -135,7 +132,6 @@ void CommandExecuter::disconnectPlayer() {
   Player* toKill = players[id];
   players.erase(id);
   this->sprites.popAndErase(toKill);
-  std::cout << "[GAME] Killing player with id: " << id << std::endl;
   delete toKill;
 }
 
@@ -150,16 +146,15 @@ void CommandExecuter::openDoor() {
   uint32_t x, y;
   this->socket.receive(&x, sizeof(x));
   this->socket.receive(&y, sizeof(y));
-  std::cout << "[GAME] Switching door state at: " << x << ", " << y
-            << std::endl;
   matrix.switchDoorState(x, y);
   this->playDoorOpeningSound(x, y);
+
+
 }
 
 void CommandExecuter::pickUpItem() {
   uint32_t itemId;
   this->socket.receive(&itemId, sizeof(itemId));
-  std::cout << "[GAME] Picking up item with id: " << itemId << std::endl;
   this->removeSpriteWithId(itemId);
 }
 
@@ -176,7 +171,6 @@ void CommandExecuter::dropItem() {
   y = infogetter.receiveDouble();
   this->socket.receive(&yamlId, sizeof(yamlId));
   this->socket.receive(&uniqueId, sizeof(uniqueId));
-  std::cout << "[GAME] Droping item with id: " << uniqueId << std::endl;
   this->loadNewTexture(x, y, yamlId, uniqueId);
 }
 
@@ -196,7 +190,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  //this->audiomanager.playWithId(MUSIC);
+  this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;

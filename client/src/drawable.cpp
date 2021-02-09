@@ -60,8 +60,8 @@ bool Drawable::isContained(double* distanceBuffer, double posX, double posY,
   int preCalcdValue = (spriteScreen - (spriteWidth >> 1));
 
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
-    int doorStripe = int(((stripe - preCalcdValue) << 14) / spriteWidth) >> 8;
-    if (doorStripe < 0) continue;
+    int drawableStripe = int(((stripe - preCalcdValue) << 14) / spriteWidth) >> 8;
+    if (drawableStripe < 0) continue;
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
       return true;
     }
@@ -89,11 +89,11 @@ void Drawable::draw(TextureManager& manager, double posX, double posY,
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
-    int doorStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
-    if (doorStripe < 0) continue;
+    int drawableStripe = int(((stripe - preCalcdValue1) << 14) / spriteWidth) >> 8;
+    if (drawableStripe < 0) continue;
 
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
-      srcArea.update(doorStripe, 0, 1, preCalcdValue3);
+      srcArea.update(drawableStripe, 0, 1, preCalcdValue3);
       destArea.update(stripe, preCalcdValue2, 1, preCalcdValue4);
       manager.render(this->id, srcArea, destArea);
     }
