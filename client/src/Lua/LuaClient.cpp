@@ -64,11 +64,11 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
     return ERROR;
   }
 
-  std::string mapFile = "../../common/src/YAML/map";
+  std::string mapFile = "../../common/src/YAML/Maps/map";
   mapFile = mapFile + std::to_string(mapID) + ".yaml";
 
   if(!fileExists(mapFile)){
-    std::cout<<"Error. Map not found."<<std::endl;
+    std::cout<<"Error. Map not found with id: "<<mapID<<std::endl;
     return ERROR;
   }
 
