@@ -40,6 +40,7 @@ void Editor::initialize_tile_container() {
   ui->graphics_tiles_container->setScene(tiles_container_scene);
   ui->graphics_tiles_container->setAlignment(Qt::AlignTop);
   ui->graphics_tiles_container->installEventFilter(ef);
+  QObject::connect(tiles_container_scene, &QObject::destroyed, ef, &QObject::deleteLater);
 }
 
 void Editor::initialize_map_container(int col, int row) {
@@ -48,6 +49,7 @@ void Editor::initialize_map_container(int col, int row) {
   this->mc = new map_canvas(col, row);
   map_actions* ma = new map_actions(this, my_map_scene);
   ui->graphics_map_container->installEventFilter(ma);
+  QObject::connect(my_map_scene, &QObject::destroyed, ma, &QObject::deleteLater);
 
   ui->actionsafe->setEnabled(true);
   ui->actionZoom_in->setEnabled(true);
@@ -71,6 +73,7 @@ Editor::Editor(QWidget* parent) : QMainWindow(parent), ui(new Ui::Editor){
 }
 
 Editor::~Editor() {
+    delete this->tile_item_selected;
     delete this->mc;
     delete this->my_map_scene;
     delete this->tiles_container_scene;
@@ -192,6 +195,7 @@ void Editor::on_actionRespawn_triggered()
 {
     delete this->tile_item_selected;
     this->tile_item_selected = new tile_item( RESPAWN_ICON_PATH , 0, false);
+    this->eraser_on = false;
 }
 
 void Editor::on_actionSave_and_exit_triggered()

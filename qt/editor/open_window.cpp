@@ -27,12 +27,22 @@ open_window::open_window(QWidget *parent, bool* map_was_changed) :
     std::ifstream reader;
     std::string line;
     reader.open(MAP_NAME_PATH, std::ifstream::in);
+    bool is_first_iteration = true;
+    map_save* last_ms;
     while (reader.good()) {
         std::getline(reader, line, '\n');
         if(line.empty()){
             continue;
         }
         map_save* ms = new map_save(this, line);
+        if(is_first_iteration){
+            QObject::connect(ly, &QObject::destroyed, ms, &QObject::deleteLater);
+            last_ms = ms;
+            is_first_iteration = false;
+        }else{
+            QObject::connect(last_ms, &QObject::destroyed, ms, &QObject::deleteLater);
+            last_ms = ms;
+        }
         ly->addWidget(ms,0,Qt::AlignTop);
      }
     reader.close();
@@ -43,16 +53,8 @@ open_window::open_window(QWidget *parent, bool* map_was_changed) :
 }
 
 open_window::~open_window(){
-    QLayout* layout = ui->map_saved_container->layout();
-    if (layout != 0){
-        QLayoutItem *item;
-        while ((item = layout->takeAt(0)) != 0){
-            layout->removeItem (item);
-            delete item;
-        }
-        delete ui->map_saved_container->layout();
-        delete ui;
-    }
+    delete this->ui->map_saved_container->layout();
+    delete ui;
 }
 
 void open_window::on_open_boton_clicked()
@@ -71,12 +73,13 @@ void open_window::on_open_boton_clicked()
             editor->ui->graphics_map_container->setScene(editor->my_map_scene);
             map_actions* ma = new map_actions(editor, editor->my_map_scene);
             editor->ui->graphics_map_container->installEventFilter(ma);
+            QObject::connect(editor->my_map_scene, &QObject::destroyed, ma, &QObject::deleteLater);
             editor->ui->actionsafe->setEnabled(true);
 
         }else{
            this->editor->my_map_scene->clear();
         }
-        //delete this->editor->mc;
+        delete this->editor->mc;
         this->editor->mc = new_mc;
 
         for (int i = 0; i < cant_rows; i++) {

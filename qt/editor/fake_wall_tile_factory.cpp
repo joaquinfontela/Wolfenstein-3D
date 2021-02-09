@@ -33,7 +33,7 @@ tile_item *fake_wall_tile_factory::get_tile(std::vector<int> &coordinates)
     } else {
       tipo = 354;
     }
-    QString path(PathFactory().getTilePath(tipo).c_str());
+    std::string path(PathFactory().getTilePath(tipo).c_str());
     tile_item* tile = new class tile_item(path, tipo, false);
     return tile;
 }

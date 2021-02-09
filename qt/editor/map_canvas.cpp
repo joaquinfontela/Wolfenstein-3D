@@ -34,6 +34,16 @@ map_canvas::map_canvas(TileMatrix* tile_matrix) {
       }
       grilla.push_back(new_row);
     }
+  for (int a = 0; a < cant_row; a++) {
+      for (int b = 0; b < cant_col; b++) {
+          int row = a;
+          int col = b;
+          size_t size = tile_matrix->at(row).at(col).size();
+          for(size_t y = 0; y < size; y++){
+              delete tile_matrix->at(row).at(col).at(y);
+          }
+      }
+  }
 }
 
 bool map_canvas::add_tile(std::vector<int> coordinates, tile_item* new_tile) {
@@ -64,13 +74,27 @@ void map_canvas::erase_tiles_at(std::vector<int> coordinates) {
   }
 }
 
-map_canvas::~map_canvas(){
+bool map_canvas::is_empty()
+{
+    bool find_element = false;
     for (int i = 0; i < cant_row; i++) {
-        for (int x = 0; x < cant_col; x++) {
-            int row = i;
-            int col = x;
-            for(tile_item* tile : this->grilla.at(row).at(col)){
-                delete tile;
+        if(!grilla.at(i).empty()){
+            find_element = true;
+        }
+    }
+    return find_element;
+}
+
+map_canvas::~map_canvas(){
+    if(is_empty() == false){
+        for (int i = 0; i < cant_row; i++) {
+            for (int x = 0; x < cant_col; x++) {
+                int row = i;
+                int col = x;
+                size_t size = grilla.at(row).at(col).size();
+                for(size_t y = 0; y < size; y++){
+                    delete grilla.at(row).at(col).at(y);
+                }
             }
         }
     }

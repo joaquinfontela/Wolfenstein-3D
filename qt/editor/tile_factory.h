@@ -30,6 +30,7 @@ class tile_factory {
    * @return boolean that represents if the tile with the id is cumulative or not.
    */
   static bool isCumulative(int tileItemId, YAMLMapReader& yamlMapReader);
+  virtual ~tile_factory(){};
 };
 
 #endif  // TILE_FACTORY_H

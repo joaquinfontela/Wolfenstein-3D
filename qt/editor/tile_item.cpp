@@ -10,11 +10,9 @@
 #include "QImage"
 #include "iostream"
 
-#define TILE_SIZE 40
-
-tile_item::tile_item(QString path, int tipo, bool cumulative) {
+tile_item::tile_item(std::string path, int tipo, bool cumulative) {
   this->path = path;
-  QImage image(path);
+  QImage image(QString::fromStdString(path));
   this->my_image = image;
   this->type = tipo;
   this->cumulative = cumulative;
@@ -23,8 +21,9 @@ tile_item::tile_item(QString path, int tipo, bool cumulative) {
   this->map = NULL;
 }
 
-tile_item *tile_item::create_copy() {
-  tile_item *tile = new tile_item(this->path, this->type, this->cumulative);
+tile_item* tile_item::create_copy() {
+    std::string place_holder = this->path;
+  tile_item *tile = new tile_item(place_holder, this->type, this->cumulative);
   if (this->map != NULL) {
     tile->add_to(this->map);
   }

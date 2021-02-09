@@ -46,8 +46,8 @@ void map_actions::add_to_map(int x, int y) {
           this->editor->mc->tiles_at_coordinates(coordinates);
       tile->add_to(this->editor->ui->graphics_map_container);
       mp.paint_map(coordinates, tiles_at_coordinates);
-      this->editor->tile_item_selected =
-          this->editor->tile_item_selected->create_copy();
+      tile_item* new_tile = this->editor->mc->tiles_at_coordinates(coordinates).back()->create_copy();
+      this->editor->tile_item_selected = new_tile;
     }
   }
 }

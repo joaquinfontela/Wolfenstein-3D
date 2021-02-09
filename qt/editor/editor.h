@@ -146,5 +146,7 @@ class Editor : public QMainWindow {
 
   std::vector<int> tile_sizes;
   int actual_tiles_size_index;
+  //tile_container_actions* tca;
+  //map_actions* ma;
 };
 #endif  // EDITOR_H
