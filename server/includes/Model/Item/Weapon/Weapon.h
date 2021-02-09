@@ -9,8 +9,7 @@ class Weapon {
   unsigned int maxDamagePerBullet;
 
  protected:
-  // faltan cosas como el fire rate, precision y los datos particulares que
-  // hagan falta.
+
   unsigned int uniqueId;
 
   /*

@@ -16,9 +16,11 @@ int main(int argc, char** argv) {
   w.show();
   a.exec();
   w.hide();
+
+  
  
   Client client(socket);
-  std::string mapFile = "../../common/src/YAML/map";
+  std::string mapFile = "../../common/src/YAML/Maps/map";
   mapFile = mapFile + std::to_string(map_id) + ".yaml";
 
   return client.run(player_id, mapFile);
