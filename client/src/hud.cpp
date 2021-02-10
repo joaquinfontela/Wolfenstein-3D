@@ -162,7 +162,6 @@ void Hud::playMyShootingSound() {
 
 int Hud::getGunFrame() {
   bool minigunShooting = (this->player->isShooting() && weaponId == CHAINGUN);
-  std::cout << animationStatus << std::endl;
   if (minigunShooting && animationStatus == 4 && this->player->minigunShooting) {
     animationStatus = 2;
   }

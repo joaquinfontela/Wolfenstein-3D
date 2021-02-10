@@ -43,6 +43,17 @@ SdlWindow::SdlWindow(int width, int height) : width(width), height(height) {
   this->height = height;
 }
 
+int SdlWindow::goFullScreen() {
+  SDL_DisplayMode dm;
+  if (SDL_GetDesktopDisplayMode(0,&dm) != 0) {
+    LOG(SDL_GetError());
+  } else {
+    this->width = dm.w;
+    this->height = dm.h;
+  }
+  return SDL_SetWindowFullscreen(this->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+}
+
 void SdlWindow::renderText(const char* text, SDL_Rect* rect) {
   SDL_Texture* texture = nullptr;
   SDL_Surface* surface = nullptr;

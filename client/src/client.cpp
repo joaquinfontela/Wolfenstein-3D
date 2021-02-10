@@ -72,10 +72,15 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   this->myPlayerID = myPlayerID;
 
   SdlWindow window(width, height);
-  std::cout<<"[CLIENT] Map Init Load"<<std::endl;
+  if (config.fullScreen()) {
+    if (window.goFullScreen() != 0) {
+      LOG(SDL_GetError());
+    }
+  }
+  std::cout << height << " " << width << std::endl;
+
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);
-  std::cout<<"[CLIENT] Map Loaded"<<std::endl;
 
   TextureManager manager(&window);
   manager.loadTextures();
