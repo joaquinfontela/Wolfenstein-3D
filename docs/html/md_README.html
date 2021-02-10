@@ -103,14 +103,19 @@ Forma de Uso</h2>
 Servidor</h3>
 <p>Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando</p>
 <div class="fragment"><div class="line">./ServerMain &lt;PORT&gt; </div>
-</div><!-- fragment --><p>Siendo PORT el puerto a utlizar y configFilePath el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.</p>
+</div><!-- fragment --><p>Siendo PORT el puerto a utlizar.</p>
 <h3><a class="anchor" id="autotoc_md8"></a>
 Cliente</h3>
 <p>Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando</p>
 <div class="fragment"><div class="line">./Wolfen3D</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md9"></a>
+Lua</h3>
+<p>Para correr un script de lua, entrar a client/executable y ejecutar el siguiente comando</p>
+<div class="fragment"><div class="line">./lua &lt;Host&gt; &lt;Port&gt; &lt;scriptPath&gt; &lt;LobbyID&gt;</div>
+</div><!-- fragment --><p> Siendo scriptPath el path al archivo de extension .lua que simule el input del usuario, y siendo LobbyID el ID del lobby al que se desea añadir al jugador controlado por el script </p>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Tutorial de Uso</h2>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Login</h3>
 <p>Para acceder al login del juego debemos correr <code>./Wolfen3D</code> en la carpeta <code>client/executable</code>. El mismo posee dos cajas de texto donde se puede ingresar el host y port.</p>
 <p align="center"><br  />
@@ -124,20 +129,20 @@ Login</h3>
 <p align="center"><br  />
 </p>
 <p><img src="./docs/screenshots/CreateMatch.png" alt="" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md12"></a>
 Iniciar Partida</h3>
 <p>Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla <em>p</em> que indica al servidor que el admin desea comenzar la partida.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 Movimiento</h3>
 <p>Para moverse, se utiliza el sistema clásico de movimiento: <em>w</em> para moverse para adelante, <em>s</em> para moverse hacia atras, <em>a</em> para rotar la camara hacia la izquierda y <em>d</em> para rotar la camara hacia la derecha.</p>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md14"></a>
 Armas</h3>
 <p>Para el uso de las armas, el <em>enter</em> significa disparar mientras que las teclas <em>1</em>, <em>2</em>, <em>3</em>, <em>4</em> y <em>5</em> le permiten al jugador cambiar de armas. El <em>1</em> siempre indica cambiar al cuchillo mientras que el <em>2</em> indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.</p>
 <p align="center"><br  />
 </p>
 <p><img src="./docs/screenshots/RPG.png" alt="" class="inline"/></p>
 <p>Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.</p>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Puertas</h3>
 <p>El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:</p>
 <p align="center"><br  />
@@ -148,7 +153,7 @@ Puertas</h3>
 </p>
 <p><img src="./docs/screenshots/UnlockableDoor.png" alt="" class="inline"/></p>
 <p>Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.</p>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Drops</h3>
 <p align="center"><br  />
 </p>
@@ -158,19 +163,19 @@ Drops</h3>
 </p>
 <p><img src="./docs/screenshots/Treasure.png" alt="" class="inline"/></p>
 <p>Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!</p>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 Editor</h3>
 <p align="center"><br  />
 </p>
 <p><img src="./docs/screenshots/editor.png" alt="" class="inline"/></p>
 <p>El editor es intuitivo y simple. Seleccionar File-&gt;New para crear un mapa, File-&gt;Open para abrir un mapa existente o File-&gt;Save para guardar un mapa creado. Si es la primera vez que se guarda el mapa creado, se pedira un nombre que debera seguir el estandar de nombre: "map" seguido del ID del mapa, que es un numero arbitrario elegido por el usuario.</p>
 <p>Dentro del editor, en la barra superior hay distintas secciones que indican diferentes elementos posicionables: Paredes, Puertas, Items, etc. Basta con clickear la imagen deseada y elegir en que celda del mapa ponerla. El borrador permite elegir una celda y eliminar sus contenidos, mientras que respawn elige posiciones para que los jugadores reaparezcan (<em><b>Como minimo, deberá haber 1 punto de respawn</b></em>)</p>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Apéndice de Errores</h2>
 <p>El sistema puede tener glitches que causen, o no, diferentes tipos de interferencias en la experiencia del usuario. Para notificar esto y para generar un registro de potenciales problemas que aparecen se usa un log de errores.</p>
 <p>El mismo, en caso de que se necesite, escribe en el archivo _"wolfenstein.log"_ (ubicado en el mismo directorio donde se encuentra el ejecutable del cliente) la información correspondiente.</p>
 <p>Llamando a la macro <code>LOG(const char* errorMsg)</code> se llama al método estático de la clase <code><a class="el" href="classLog.html" title="Logs non-fatal errors to &quot;wolfenstein.log&quot;.">Log</a></code> que recibe el archivo, la función, la línea y <code>errorMsg</code> para escribirlos en el log con el formato antes escrito.</p>
-<h3><a class="anchor" id="autotoc_md18"></a>
+<h3><a class="anchor" id="autotoc_md19"></a>
 Clasificación de Errores</h3>
 <p>Los potenciales mensajes de errores que pueden aparecer son:</p>
 <ul>

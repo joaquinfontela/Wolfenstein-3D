@@ -103,7 +103,7 @@ int Client::run(int myPlayerID, std::string& mapFile) {
 
   Raycaster caster(manager, matrix, alive, player, spriteVector, hud);
   int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
+  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, player);
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
                           audios, matrix, loader, &scoreboard);

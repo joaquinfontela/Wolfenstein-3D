@@ -1,4 +1,5 @@
 #include "YAMLConversor.h"
+#include "../../common/includes/YAML/YAMLMapReader.h"
 
 #include "tile_factory.h"
 

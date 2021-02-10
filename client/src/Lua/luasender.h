@@ -15,7 +15,7 @@ class LuaSender : public CommandSender {
  public:
   LuaSender(SocketCommunication& s, std::atomic<bool>& alive,
             std::string& scriptName, Lua::GameState* gameState)
-      : CommandSender(s, alive, nullptr), scriptName(scriptName) {
+      : CommandSender(s, alive, nullptr, nullptr), scriptName(scriptName) {
     this->gameState = gameState;
   }
   void run();

@@ -146,7 +146,7 @@ std::string PathFactory::getTilePath(int tileId) {
 
     case 310:
     case 360:
-      path = "./elementos_mapa/paredes/hitlerwall.png";
+      path = "./elementos_mapa/paredes/wall5";
       break;
 
     case 305:

@@ -50,8 +50,7 @@ void CommandExecuter::playShootingSounds(int shooterId) {
   if (shooterId != this->selfId) {
     int weaponId = players.at(shooterId)->weaponId;
     int soundId = GET_WEAPON_SOUND(weaponId);
-    double dist =
-        players.at(this->selfId)->calculateDist(players.at(shooterId));
+    double dist = players.at(selfId)->calculateDist(players.at(shooterId));
     this->audiomanager.playOnVariableVolumeWithId(soundId, dist);
   }
 }
@@ -189,7 +188,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  this->audiomanager.playWithId(MUSIC);
+  //this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;

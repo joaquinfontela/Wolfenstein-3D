@@ -7,6 +7,7 @@
 #include "../../common/includes/Socket/SocketException.h"
 #include "commandmanager.h"
 #include "scoreboard.h"
+#include "player.h"
 
 /**
  * @brief Class that takes the user input and sends it to the server.
@@ -22,7 +23,7 @@ class CommandSender : public CommandManager {
    * @param scoreboard Reference to the scoreboard drawer.
    */
   CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
-                ScoreBoard* scoreboard);
+                ScoreBoard* scoreboard, Player* player);
 
   /**
    * @brief Sends through the socket the user input encoded on a uint32_t.
@@ -39,6 +40,9 @@ class CommandSender : public CommandManager {
    *
    */
   virtual void run();
+
+ private:
+  Player* player;
 };
 
 #endif  // COMMANDSENDER_H_

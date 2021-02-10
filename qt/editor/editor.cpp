@@ -209,3 +209,11 @@ void Editor::on_actionParedes_Falsas_triggered()
     fake_wall_tile_factory* factory = new fake_wall_tile_factory();
     this->tiles_container_scene->update_tileset(WALL_TILESET_PATH , 6, factory);
 }
+
+void Editor::on_actionSave_as_triggered()
+{
+    save_window sw(this);
+    sw.setModal(true);
+    sw.exec();
+    actual_map_saved = true;
+}
