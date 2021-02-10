@@ -43,6 +43,10 @@ SdlWindow::SdlWindow(int width, int height) : width(width), height(height) {
   this->height = height;
 }
 
+void SdlWindow::goFullScreen() {
+  SDL_SetWindowFullscreen(this->window, SDL_WINDOW_FULLSCREEN);
+}
+
 void SdlWindow::renderText(const char* text, SDL_Rect* rect) {
   SDL_Texture* texture = nullptr;
   SDL_Surface* surface = nullptr;

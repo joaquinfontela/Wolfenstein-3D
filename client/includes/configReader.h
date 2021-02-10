@@ -14,6 +14,7 @@ public:
     ConfigReader(std::string fileName);
     int getWidth();
     int getHeight();
+    bool fullScreen();
 };
 
 #endif

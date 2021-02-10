@@ -1,5 +1,8 @@
 #include "../includes/configReader.h"
 
+bool ConfigReader::fullScreen() {
+  return true;
+}
 
 ConfigReader::ConfigReader(std::string fileName){
     this->fileName = fileName;

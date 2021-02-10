@@ -29,7 +29,7 @@ class ScoreBoard {
    * @param rows Row to render to.
    * @param list <id, score> Tuple vector.
    */
-  void renderScores(int width, int height, int cpl,
+  void renderScores(int width, int height, int col,
      std::vector<std::tuple<uint32_t, uint32_t>>& list);
 
   /**
