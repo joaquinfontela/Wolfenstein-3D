@@ -13,9 +13,9 @@
 
 void ScoreBoard::renderText(const char* text, int rows, int column, int w,
                             int h) {
-  SDL_Rect rect = {.x = 5 * w / 48 + column * 15 * w / 48,
+  SDL_Rect rect = {.x = w / 15 + column * (2 * w / 15 + w / 5),
                    .y = (h * rows) / 6,
-                   .w = w >> 3,
+                   .w = w / 5,
                    .h = h >> 3};
   this->manager.renderText(text, &rect);
 }
@@ -30,43 +30,19 @@ void ScoreBoard::renderTitle(const char* text, int rows, int column, int w,
   this->manager.renderText(text, &rect);
 }
 
-void ScoreBoard::renderScore(int width, int height) {
-  int rows = this->scores.size();
+void ScoreBoard::renderScores(int width, int height, int row,
+                         std::vector<std::tuple<uint32_t, uint32_t>>& list) {
+  int rows = list.size();
   for (int i = 0; i < rows; i++) {
-    std::tuple<uint32_t, uint32_t> score = this->scores[i];
-    std::string val = std::to_string(i + 1) + ")  Id(" +
+    std::tuple<uint32_t, uint32_t> score = list[i];
+    std::string val = "Player " +
                       std::to_string(std::get<0>(score)) +
-                      "): " + std::to_string(std::get<1>(score));
-    this->renderText(val.c_str(), i + 2, 0, width, height);
-  }
-}
-
-void ScoreBoard::renderKills(int width, int height) {
-  int rows = this->kills.size();
-  for (int i = 0; i < rows; i++) {
-    std::tuple<uint32_t, uint32_t> score = this->kills[i];
-    std::string val = std::to_string(i + 1) + ")  Id(" +
-                      std::to_string(std::get<0>(score)) +
-                      "): " + std::to_string(std::get<1>(score));
-    this->renderText(val.c_str(), i + 2, 1, width, height);
-  }
-}
-
-void ScoreBoard::renderShotsFired(int width, int height) {
-  int rows = this->shotsfired.size();
-  for (int i = 0; i < rows; i++) {
-    std::tuple<uint32_t, uint32_t> score = this->shotsfired[i];
-    std::string val = std::to_string(i + 1) + ")  Id(" +
-                      std::to_string(std::get<0>(score)) +
-                      "): " + std::to_string(std::get<1>(score));
-    this->renderText(val.c_str(), i + 2, 2, width, height);
+                      ": " + std::to_string(std::get<1>(score));
+    this->renderText(val.c_str(), i + 2, row, width, height);
   }
 }
 
 void ScoreBoard::draw() {
-  std::string scores = "Scores  ";
-  std::string kills = "  Kills  ";
-  std::string shotsfired = "Shots Fired";
   int height, width;
   SDL_Rect rect;
   while (!this->hasEnded()) {
@@ -76,12 +52,9 @@ void ScoreBoard::draw() {
             .y = -(height >> 2) / 6,
             .w = width >> 2,
             .h = height >> 2};
-    this->renderTitle(scores.c_str(), 1, 0, width, height);
-    this->renderTitle(kills.c_str(), 1, 1, width, height);
-    this->renderTitle(shotsfired.c_str(), 1, 2, width, height);
-    this->renderScore(width, height);
-    this->renderKills(width, height);
-    this->renderShotsFired(width, height);
+    this->renderScores(width, height, 0, scores);
+    this->renderScores(width, height, 1, kills);
+    this->renderScores(width, height, 2, shotsfired);
     this->manager.updateScreen();
   }
 }

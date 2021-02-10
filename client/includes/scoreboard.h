@@ -26,24 +26,11 @@ class ScoreBoard {
    *
    * @param width Screen width in pixels.
    * @param height Screen height in pixels.
+   * @param rows Row to render to.
+   * @param list <id, score> Tuple vector.
    */
-  void renderScore(int width, int height);
-
-  /**
-   * @brief Renders the top killers from the leaderboards.
-   *
-   * @param width Screen width in pixels.
-   * @param height Screen height in pixels.
-   */
-  void renderKills(int width, int height);
-
-  /**
-   * @brief Renders the top shooters from the leaderboards.
-   *
-   * @param width Screen width in pixels.
-   * @param height Screen height in pixels.
-   */
-  void renderShotsFired(int width, int height);
+  void renderScores(int width, int height, int rows,
+     std::vector<std::tuple<uint32_t, uint32_t>>& list);
 
   /**
    * @brief Renders text aligned to look well for the leaderboards.
@@ -55,9 +42,9 @@ class ScoreBoard {
    * @param h Screen height in pixels.
    */
   void renderText(const char* text, int row, int column, int w, int h);
-  
+
   /**
-   * @brief Similar to renderText but with some values shifted to 
+   * @brief Similar to renderText but with some values shifted to
    * better render the title of each column.
    *
    */
