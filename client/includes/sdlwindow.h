@@ -33,10 +33,10 @@ class SdlWindow {
   ~SdlWindow();
 
   /**
-   * @brief When summoned, switches the window to fullscreen mode.
-   *
+   * @brief When summoned, switches the window to fullscreen mode. 
+   * @returns int sdl fullScreen return code.
    */
-  void goFullScreen(); 
+  int goFullScreen();
 
   /**
    * @brief Sets renderer rgb and alpha values.

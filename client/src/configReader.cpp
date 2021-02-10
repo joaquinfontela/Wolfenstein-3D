@@ -1,9 +1,5 @@
 #include "../includes/configReader.h"
 
-bool ConfigReader::fullScreen() {
-  return true;
-}
-
 ConfigReader::ConfigReader(std::string fileName){
     this->fileName = fileName;
     this->data = this->getData();
@@ -19,4 +15,8 @@ int ConfigReader::getHeight(){
 
 int ConfigReader::getWidth(){
     return data["WIDTH"].as<int>();
+}
+
+bool ConfigReader::fullScreen() {
+  return data["FULLSCREEN"].as<int>();
 }

@@ -73,8 +73,11 @@ int Client::run(int myPlayerID, std::string& mapFile) {
 
   SdlWindow window(width, height);
   if (config.fullScreen()) {
-    window.goFullScreen();
+    if (window.goFullScreen() != 0) {
+      LOG(SDL_GetError());
+    }
   }
+  std::cout << height << " " << width << std::endl;
 
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);
