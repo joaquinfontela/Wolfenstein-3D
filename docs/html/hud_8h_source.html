@@ -93,60 +93,61 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">int</span> framesAlreadyPlayed;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">int</span> screenHeight, screenWidth;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classArea.html">Area</a> area;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> playMyShootingSound();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">int</span> getGunFrame();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> renderFpsCounter();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> playMyShootingSound();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> renderLifes();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> renderFpsCounter();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> renderFace();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> renderLifes();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">void</span> renderHealth();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">void</span> renderFace();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> renderTypeOfGun();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> renderHealth();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> renderGun();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> renderScore();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">void</span> renderTypeOfGun();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> renderGun();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> renderGunWithShifts(<span class="keywordtype">int</span> dx = 0, <span class="keywordtype">int</span> dy = 0, <span class="keywordtype">int</span> updatefreq = 16);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> renderGunWithMovement();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">void</span> renderBorder();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">void</span> renderScore();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> renderGunWithShifts(<span class="keywordtype">int</span> dx = 0, <span class="keywordtype">int</span> dy = 0, <span class="keywordtype">int</span> updatefreq = 16);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">void</span> renderGunWithMovement();</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> renderKey();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> renderBorder();</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">void</span> renderBullets();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">void</span> renderKey();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> updateGunId();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">void</span> renderBloodDamage();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">updateFpsCounter</a>(<span class="keywordtype">int</span> fps);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">updateHudGun</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordtype">void</span> renderBullets();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">void</span> updateGunId();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">void</span> renderBloodDamage();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">updateFpsCounter</a>(<span class="keywordtype">int</span> fps);</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">updateBjFace</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">updateHudGun</a>();</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#af9ec2f89bcc54651d2413aeb5cbc53b3">update</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">updateBjFace</a>();</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <a class="code" href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">~Hud</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#af9ec2f89bcc54651d2413aeb5cbc53b3">update</a>();</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <a class="code" href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud</a>(<a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classAudioManager.html">AudioManager</a>&amp; audiomanager);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;};</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// HUD_H_</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <a class="code" href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">~Hud</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <a class="code" href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud</a>(<a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classAudioManager.html">AudioManager</a>&amp; audiomanager);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// HUD_H_</span></div>
 <div class="ttc" id="aclassArea_html"><div class="ttname"><a href="classArea.html">Area</a></div><div class="ttdoc">Represents a rectangle, where the (x,y) coordinates show where the top left corner of the rectangle b...</div><div class="ttdef"><b>Definition:</b> area.h:9</div></div>
 <div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdoc">Class used to organize the audio files and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> audiomanager.h:13</div></div>
 <div class="ttc" id="aclassHud_html"><div class="ttname"><a href="classHud.html">Hud</a></div><div class="ttdoc">Renders all the images that appear in the hud.</div><div class="ttdef"><b>Definition:</b> hud.h:14</div></div>
-<div class="ttc" id="aclassHud_html_a224d3aeaa160cbbbc92e6d36887250a7"><div class="ttname"><a href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">Hud::updateFpsCounter</a></div><div class="ttdeci">void updateFpsCounter(int fps)</div><div class="ttdoc">Updates the fps counter.</div><div class="ttdef"><b>Definition:</b> hud.cpp:240</div></div>
-<div class="ttc" id="aclassHud_html_a2fbb662bbc70f646e081f9206a879b66"><div class="ttname"><a href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">Hud::~Hud</a></div><div class="ttdeci">~Hud()</div><div class="ttdoc">Destroy the Hud object, the face, hud and gun animations.</div><div class="ttdef"><b>Definition:</b> hud.cpp:275</div></div>
-<div class="ttc" id="aclassHud_html_a696c30bca39bd8f12a39c18f51a252f0"><div class="ttname"><a href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">Hud::updateHudGun</a></div><div class="ttdeci">void updateHudGun()</div><div class="ttdoc">Updates the gun frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:198</div></div>
-<div class="ttc" id="aclassHud_html_ab0d224dd277601a5ed7d9d14b13a03c4"><div class="ttname"><a href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud::Hud</a></div><div class="ttdeci">Hud(Player *player, TextureManager &amp;manager, AudioManager &amp;audiomanager)</div><div class="ttdoc">Construct a new Hud object.</div><div class="ttdef"><b>Definition:</b> hud.cpp:214</div></div>
-<div class="ttc" id="aclassHud_html_addccafb1bede2fdf11db2be61c3df8e8"><div class="ttname"><a href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">Hud::updateBjFace</a></div><div class="ttdeci">void updateBjFace()</div><div class="ttdoc">Updates hud's player frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:212</div></div>
+<div class="ttc" id="aclassHud_html_a224d3aeaa160cbbbc92e6d36887250a7"><div class="ttname"><a href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">Hud::updateFpsCounter</a></div><div class="ttdeci">void updateFpsCounter(int fps)</div><div class="ttdoc">Updates the fps counter.</div><div class="ttdef"><b>Definition:</b> hud.cpp:245</div></div>
+<div class="ttc" id="aclassHud_html_a2fbb662bbc70f646e081f9206a879b66"><div class="ttname"><a href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">Hud::~Hud</a></div><div class="ttdeci">~Hud()</div><div class="ttdoc">Destroy the Hud object, the face, hud and gun animations.</div><div class="ttdef"><b>Definition:</b> hud.cpp:280</div></div>
+<div class="ttc" id="aclassHud_html_a696c30bca39bd8f12a39c18f51a252f0"><div class="ttname"><a href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">Hud::updateHudGun</a></div><div class="ttdeci">void updateHudGun()</div><div class="ttdoc">Updates the gun frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:203</div></div>
+<div class="ttc" id="aclassHud_html_ab0d224dd277601a5ed7d9d14b13a03c4"><div class="ttname"><a href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud::Hud</a></div><div class="ttdeci">Hud(Player *player, TextureManager &amp;manager, AudioManager &amp;audiomanager)</div><div class="ttdoc">Construct a new Hud object.</div><div class="ttdef"><b>Definition:</b> hud.cpp:219</div></div>
+<div class="ttc" id="aclassHud_html_addccafb1bede2fdf11db2be61c3df8e8"><div class="ttname"><a href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">Hud::updateBjFace</a></div><div class="ttdeci">void updateBjFace()</div><div class="ttdoc">Updates hud's player frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:217</div></div>
 <div class="ttc" id="aclassHud_html_af9ec2f89bcc54651d2413aeb5cbc53b3"><div class="ttname"><a href="classHud.html#af9ec2f89bcc54651d2413aeb5cbc53b3">Hud::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Calls the drawing methods.</div><div class="ttdef"><b>Definition:</b> hud.cpp:21</div></div>
 <div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">[CLIENT SIDE] Player class. Holds important information about each player and is able to raycast it i...</div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
 <div class="ttc" id="aclassSdlAnimation_html"><div class="ttname"><a href="classSdlAnimation.html">SdlAnimation</a></div><div class="ttdoc">This class represents a non-raycasted which can be played at any time.</div><div class="ttdef"><b>Definition:</b> sdlanimation.h:12</div></div>

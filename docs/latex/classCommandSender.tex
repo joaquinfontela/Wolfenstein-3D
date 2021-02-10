@@ -18,7 +18,7 @@ Inheritance diagram for Command\+Sender\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classCommandSender_aa527e593a2b9cd09e6e752be18e6eabb}{Command\+Sender}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard)
+\mbox{\hyperlink{classCommandSender_a918dc494a61eb71967948e023a00cf35}{Command\+Sender}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classCommand}{Command}} Sender object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCommandSender_a243a6ea4022234982ab20441cc11300b}{update}} (uint32\+\_\+t key\+Type)
 \begin{DoxyCompactList}\small\item\em Sends through the socket the user input encoded on a uint32\+\_\+t. \end{DoxyCompactList}\item 
@@ -32,11 +32,11 @@ virtual void \mbox{\hyperlink{classCommandSender_a23ce0750e97b2998495e94e27ed41c
 Class that takes the user input and sends it to the server. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classCommandSender_aa527e593a2b9cd09e6e752be18e6eabb}\label{classCommandSender_aa527e593a2b9cd09e6e752be18e6eabb}} 
+\mbox{\Hypertarget{classCommandSender_a918dc494a61eb71967948e023a00cf35}\label{classCommandSender_a918dc494a61eb71967948e023a00cf35}} 
 \index{CommandSender@{CommandSender}!CommandSender@{CommandSender}}
 \index{CommandSender@{CommandSender}!CommandSender@{CommandSender}}
 \doxysubsubsection{\texorpdfstring{CommandSender()}{CommandSender()}}
-{\footnotesize\ttfamily Command\+Sender\+::\+Command\+Sender (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{s,  }\item[{std\+::atomic$<$ bool $>$ \&}]{alive,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$}]{scoreboard }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Command\+Sender\+::\+Command\+Sender (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{s,  }\item[{std\+::atomic$<$ bool $>$ \&}]{alive,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$}]{scoreboard,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
 
 
 

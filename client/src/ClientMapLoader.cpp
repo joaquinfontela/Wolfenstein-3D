@@ -166,7 +166,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
       return WALL2_SPRITE;
       break;
 
-    case 357:  
+    case 357:
     case 307:
       return BRICKWALL;
       break;
@@ -183,7 +183,7 @@ unsigned int ClientMapLoader::convertYamlFileWallIdToProtocolWallSkinId(
 
     case 360:
     case 310:
-      return HITLERWALL_SPRITE;
+      return WALL5_SPRITE;
       break;
 
     case 361:
