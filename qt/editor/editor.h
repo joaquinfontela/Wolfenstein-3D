@@ -131,7 +131,12 @@ class Editor : public QMainWindow {
    */
   void on_actionParedes_Falsas_triggered();
 
- private:
+  /**
+   * @brief Specifies what has to be done when pressing the SAVE AS.
+   */
+  void on_actionSave_as_triggered();
+
+private:
   /**
    * @brief Return an empty matrix with mapDimensions dimensions.
    */
@@ -146,7 +151,5 @@ class Editor : public QMainWindow {
 
   std::vector<int> tile_sizes;
   int actual_tiles_size_index;
-  //tile_container_actions* tca;
-  //map_actions* ma;
 };
 #endif  // EDITOR_H

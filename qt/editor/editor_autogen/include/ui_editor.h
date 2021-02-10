@@ -40,6 +40,7 @@ public:
     QAction *actionBorrador;
     QAction *actionRespawn;
     QAction *actionParedes_Falsas;
+    QAction *actionSave_as;
     QWidget *centralwidget;
     QGraphicsView *graphics_tiles_container;
     QGraphicsView *graphics_map_container;
@@ -126,6 +127,9 @@ public:
         actionParedes_Falsas = new QAction(Editor);
         actionParedes_Falsas->setObjectName(QString::fromUtf8("actionParedes_Falsas"));
         actionParedes_Falsas->setFont(font1);
+        actionSave_as = new QAction(Editor);
+        actionSave_as->setObjectName(QString::fromUtf8("actionSave_as"));
+        actionSave_as->setIcon(icon3);
         centralwidget = new QWidget(Editor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         graphics_tiles_container = new QGraphicsView(centralwidget);
@@ -240,6 +244,7 @@ public:
         menuFile->addAction(actionNew);
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionsafe);
+        menuFile->addAction(actionSave_as);
         menuBack_to_Manu->addAction(actionEXIT);
         menuBack_to_Manu->addAction(actionSave_and_exit);
         menuView->addAction(actionZoom_in);
@@ -282,6 +287,7 @@ public:
         actionBorrador->setText(QApplication::translate("Editor", "Borrador", nullptr));
         actionRespawn->setText(QApplication::translate("Editor", "Respawn", nullptr));
         actionParedes_Falsas->setText(QApplication::translate("Editor", "Paredes Falsas", nullptr));
+        actionSave_as->setText(QApplication::translate("Editor", "Save as", nullptr));
         menuFile->setTitle(QApplication::translate("Editor", "File", nullptr));
         menuBack_to_Manu->setTitle(QApplication::translate("Editor", "Quit", nullptr));
         menuView->setTitle(QApplication::translate("Editor", "View", nullptr));

@@ -37,7 +37,6 @@
         <file>elementos_mapa/paredes/eagle.png</file>
         <file>elementos_mapa/paredes/greystone.png</file>
         <file>elementos_mapa/paredes/greywall.png</file>
-        <file>elementos_mapa/paredes/wall5.png</file>
         <file>elementos_mapa/paredes/mossy.png</file>
         <file>elementos_mapa/paredes/purplestone.png</file>
         <file>elementos_mapa/paredes/redbrick.png</file>
@@ -63,6 +62,7 @@
         <file>elementos_mapa/puertas/blue_door.png</file>
         <file>elementos_mapa/puertas/goldenkey.png</file>
         <file>elementos_mapa/otros/respawn_icon.png</file>
+        <file>elementos_mapa/paredes/wall5</file>
     </qresource>
     <qresource prefix="/varios">
         <file>fondo_blanco.png</file>

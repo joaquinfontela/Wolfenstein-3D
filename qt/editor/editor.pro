@@ -9,6 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    PathFactory.cpp \
+    YAMLConversor.cpp \
     decoration_tile_factory.cpp \
     door_tile_factory.cpp \
     editor.cpp \
@@ -29,6 +31,8 @@ SOURCES += \
     wall_tile_factory.cpp 
 
 HEADERS += \
+    PathFactory.h \
+    YAMLConversor.h \
     decoration_tile_factory.h \
     door_tile_factory.h \
     editor.h \
@@ -61,3 +65,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+DISTFILES += \
+    ../../common/src/YAML/config.yaml
