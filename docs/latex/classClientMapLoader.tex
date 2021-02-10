@@ -7,19 +7,20 @@
 {\bfseries Client\+Map\+Loader} (std\+::string \&yaml\+File, unsigned int dimx, unsigned int dimy)
 \item 
 \mbox{\Hypertarget{classClientMapLoader_a076d49dc759b32eaf963727b05ff3a7c}\label{classClientMapLoader_a076d49dc759b32eaf963727b05ff3a7c}} 
-unsigned int {\bfseries convert\+Yaml\+File\+Item\+Id\+To\+Protocol\+Item\+Skin\+Id} (int yaml\+File\+Id)
-\item 
+unsigned int \mbox{\hyperlink{classClientMapLoader_a076d49dc759b32eaf963727b05ff3a7c}{convert\+Yaml\+File\+Item\+Id\+To\+Protocol\+Item\+Skin\+Id}} (int yaml\+File\+Id)
+\begin{DoxyCompactList}\small\item\em Converts the id of a item in the yaml file, to the id that represents that same item in the protocol. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classClientMapLoader_ac43d65d11dd489581dd787eb1cd098ec}\label{classClientMapLoader_ac43d65d11dd489581dd787eb1cd098ec}} 
 int $\ast$ {\bfseries get\+Wall\+Id\+Matrix} ()
 \item 
 \mbox{\Hypertarget{classClientMapLoader_a1bfa1401dd145c987e6af06975619be4}\label{classClientMapLoader_a1bfa1401dd145c987e6af06975619be4}} 
 \mbox{\hyperlink{classDoorTile}{Door\+Tile}} $\ast$ {\bfseries get\+Door\+Id\+Matrix} ()
 \item 
-\mbox{\Hypertarget{classClientMapLoader_a697dc614c2fe75c26e435f57561ae389}\label{classClientMapLoader_a697dc614c2fe75c26e435f57561ae389}} 
-std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ {\bfseries get\+Drawable\+Item\+List} ()
+std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ \mbox{\hyperlink{classClientMapLoader_a697dc614c2fe75c26e435f57561ae389}{get\+Drawable\+Item\+List}} ()
 \item 
-\mbox{\Hypertarget{classClientMapLoader_acd3e832548a1b7fd64ecbea8a23ae32e}\label{classClientMapLoader_acd3e832548a1b7fd64ecbea8a23ae32e}} 
-std\+::vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $>$ {\bfseries get\+Door\+Coordinates} ()
+std\+::vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $>$ \mbox{\hyperlink{classClientMapLoader_acd3e832548a1b7fd64ecbea8a23ae32e}{get\+Door\+Coordinates}} ()
+\item 
+\mbox{\Hypertarget{classClientMapLoader_a7b48caf760035a0f2768787a8c95c5b2}\label{classClientMapLoader_a7b48caf760035a0f2768787a8c95c5b2}} 
+std\+::vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $>$ {\bfseries get\+Fake\+Wall\+Coordinates} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -30,6 +31,27 @@ unsigned int {\bfseries dimx}
 \mbox{\Hypertarget{classClientMapLoader_a381ab7251b9871c35ca0d8cf8b208a76}\label{classClientMapLoader_a381ab7251b9871c35ca0d8cf8b208a76}} 
 unsigned int {\bfseries dimy}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classClientMapLoader_acd3e832548a1b7fd64ecbea8a23ae32e}\label{classClientMapLoader_acd3e832548a1b7fd64ecbea8a23ae32e}} 
+\index{ClientMapLoader@{ClientMapLoader}!getDoorCoordinates@{getDoorCoordinates}}
+\index{getDoorCoordinates@{getDoorCoordinates}!ClientMapLoader@{ClientMapLoader}}
+\doxysubsubsection{\texorpdfstring{getDoorCoordinates()}{getDoorCoordinates()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $>$ Client\+Map\+Loader\+::get\+Door\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector with all the Coordinates where there is a door. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classClientMapLoader_a697dc614c2fe75c26e435f57561ae389}\label{classClientMapLoader_a697dc614c2fe75c26e435f57561ae389}} 
+\index{ClientMapLoader@{ClientMapLoader}!getDrawableItemList@{getDrawableItemList}}
+\index{getDrawableItemList@{getDrawableItemList}!ClientMapLoader@{ClientMapLoader}}
+\doxysubsubsection{\texorpdfstring{getDrawableItemList()}{getDrawableItemList()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classDrawable}{Drawable}} $\ast$ $>$ Client\+Map\+Loader\+::get\+Drawable\+Item\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector with all the drawable items. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -9,12 +9,13 @@
 #include "../../common/includes/protocol.h"
 #include "../includes/clientprotocol.h"
 #include "../includes/scoreboard.h"
+#include "../includes/player.h"
 
 #define UINT32_SIZE sizeof(uint32_t)
 
 CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
-                             ScoreBoard* scoreboard)
-    : CommandManager(scoreboard, s, alive) {}
+                             ScoreBoard* scoreboard, Player* player)
+    : CommandManager(scoreboard, s, alive), player(player) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(&keyType, UINT32_SIZE);
@@ -117,6 +118,8 @@ void CommandSender::run() {
           case SDLK_RETURN:
             enterPressed = false;
             this->update(PLAYER_SHOOT_UP);
+            if (this->player)
+              this->player->minigunShooting = false;
             break;
           case SDLK_LEFT:
             break;

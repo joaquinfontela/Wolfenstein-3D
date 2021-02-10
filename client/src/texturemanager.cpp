@@ -39,7 +39,7 @@ void TextureManager::garbageCollector() {
     delete it->second;
   }
 }
- 
+
 void TextureManager::renderComplete(int id) {
   int width, height;
   this->window->getWindowSize(&width, &height);
@@ -73,7 +73,7 @@ void TextureManager::loadTextures() {
       "soldierright.png",          // 9
       "soldierback.png",           // 10
       "soldierleft.png",           // 11
-      "hitlerwall.png",            // 12
+      "wall5.png",                 // 12
       "bj1.png",                   // 13
       "bj2.png",                   // 14
       "bj3.png",                   // 15
