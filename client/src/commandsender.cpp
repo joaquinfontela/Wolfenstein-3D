@@ -118,7 +118,8 @@ void CommandSender::run() {
           case SDLK_RETURN:
             enterPressed = false;
             this->update(PLAYER_SHOOT_UP);
-            this->player->minigunShooting = false;
+            if (this->player)
+              this->player->minigunShooting = false;
             break;
           case SDLK_LEFT:
             break;

@@ -188,8 +188,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  if (selfId % 2)
-    this->audiomanager.playWithId(MUSIC);
+  this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;
