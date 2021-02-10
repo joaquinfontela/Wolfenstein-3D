@@ -106,6 +106,7 @@ int Player::getSoldierId() {
 }
 
 void Player::restartAnimationStats() {
+  this->minigunShooting = false;
   this->animatingShooting = false;
   this->animatingMovement = false;
   this->shooting = false;
@@ -149,6 +150,12 @@ void Player::draw(TextureManager& manager, double posX, double posY,
   }
 }
 
-void Player::startShooting() { this->shooting = true; }
+void Player::startShooting() {
+   this->shooting = true;
+   this->minigunShooting = true;
+ }
 
-void Player::stopShooting() { this->shooting = false; }
+void Player::stopShooting() {
+  this->shooting = false;
+  this->minigunShooting = false;
+}
