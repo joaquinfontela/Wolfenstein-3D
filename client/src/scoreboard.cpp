@@ -30,7 +30,7 @@ void ScoreBoard::renderTitle(const char* text, int rows, int column, int w,
   this->manager.renderText(text, &rect);
 }
 
-void ScoreBoard::renderScores(int width, int height, int row,
+void ScoreBoard::renderScores(int width, int height, int col,
                          std::vector<std::tuple<uint32_t, uint32_t>>& list) {
   int rows = list.size();
   for (int i = 0; i < rows; i++) {
@@ -38,7 +38,7 @@ void ScoreBoard::renderScores(int width, int height, int row,
     std::string val = "Player " +
                       std::to_string(std::get<0>(score)) +
                       ": " + std::to_string(std::get<1>(score));
-    this->renderText(val.c_str(), i + 2, row, width, height);
+    this->renderText(val.c_str(), i + 2, col, width, height);
   }
 }
 
@@ -53,8 +53,8 @@ void ScoreBoard::draw() {
             .w = width >> 2,
             .h = height >> 2};
     this->renderScores(width, height, 0, scores);
-    this->renderScores(width, height, 1, kills);
-    this->renderScores(width, height, 2, shotsfired);
+    this->renderScores(width, height, 1, shotsfired);
+    this->renderScores(width, height, 2, kills);
     this->manager.updateScreen();
   }
 }
