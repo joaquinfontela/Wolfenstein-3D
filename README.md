@@ -40,7 +40,7 @@ Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del 
 ./ServerMain <PORT> 
 ```
 
-Siendo PORT el puerto a utlizar y configFilePath el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.
+Siendo PORT el puerto a utlizar.
 
 ### Cliente
 Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando
@@ -48,7 +48,13 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 ```
 ./Wolfen3D
 ```
+### Lua
+Para correr un script de lua, entrar a client/executable y ejecutar el siguiente comando
 
+```
+./lua <Host> <Port> <scriptPath> <LobbyID>
+```
+Siendo scriptPath el path al archivo de extension .lua que simule el input del usuario, y siendo LobbyID el ID del lobby al que se desea añadir al jugador controlado por el script
 ## Tutorial de Uso
 
 ### Login
