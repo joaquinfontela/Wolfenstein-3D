@@ -177,7 +177,7 @@ void Game::start(int playerID) {
   if (it != this->players.end()) {
     if (it->second->hasAdmin()) {
       started = true;
-      EndMatch* endTimer = new EndMatch();
+      EndMatch* endTimer = new EndMatch(yamlConfigReader.getMatchLength());
       this->updatables.push_back(endTimer);
     }
   }

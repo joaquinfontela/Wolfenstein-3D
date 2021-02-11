@@ -71,3 +71,7 @@ int YAMLConfigReader::ammoLostPerShot(int weaponId) {
 float YAMLConfigReader::precision(int weaponId) {
   return data["PRECISION"][weaponId].as<float>();
 }
+
+float YAMLConfigReader::getMatchLength(){
+  return data["MATCH_LENGTH"].as<float>();
+}

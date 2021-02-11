@@ -39,6 +39,8 @@ class YAMLConfigReader {
   int ammoLostPerShot(int weaponId);
   // @param weaponId represents a weapon type.
   float precision(int weaponId);
+
+  float getMatchLength();
 };
 
 #endif

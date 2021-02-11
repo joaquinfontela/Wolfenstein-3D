@@ -11,7 +11,7 @@ private:
 
 
 public:
-  EndMatch();
+  EndMatch(float timeRequired);
   void update(float timeElapsed, Game& game, WaitingQueue<Notification*>& notif);
   bool notify(WaitingQueue<Notification*>& notif);
 
