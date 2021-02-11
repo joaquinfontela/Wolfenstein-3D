@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "17"
+			"value" : "16"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "5"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -119,7 +119,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/joaquin/Escritorio/Clion/clion-2020.2.3/bin/cmake/linux/bin/cmake"
+			"value" : "/usr/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +131,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/joaquin/Escritorio/Clion/clion-2020.2.3/bin/cmake/linux/bin/cpack"
+			"value" : "/usr/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/joaquin/Escritorio/Clion/clion-2020.2.3/bin/cmake/linux/bin/ctest"
+			"value" : "/usr/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -755,7 +755,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/joaquin/Escritorio/Clion/clion-2020.2.3/bin/cmake/linux/share/cmake-3.17"
+			"value" : "/usr/share/cmake-3.16"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",

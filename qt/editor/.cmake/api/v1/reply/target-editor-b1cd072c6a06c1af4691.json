@@ -163,7 +163,6 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
 				"fragment" : "-lyaml-cpp",
 				"role" : "libraries"
 			},

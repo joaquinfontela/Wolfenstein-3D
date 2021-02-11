@@ -27,12 +27,14 @@ bool \mbox{\hyperlink{classMap_a81d692fbcb23427dbdffe2a9ecf76fba}{is\+Door}} (in
 \begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Checks if coordinates are on a door. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{classMap_a0506b001629215a5f572055035a17f9b}{get\+Door\+State}} (int x, int y)
 \begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Get the \mbox{\hyperlink{classDoor}{Door}}\textquotesingle{}s State. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classMap_a0e88898b8c40926c87d106c0e9020ffb}{switch\+Door\+State}} (int x, int y)
+bool \mbox{\hyperlink{classMap_af5fa0bd2de0d5a5b8cf6ccf320301f3a}{switch\+Door\+State}} (int x, int y)
 \begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Calls the method change\+State() on the given door. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMap_a1834a7ad317bdd2e6a7d1e9e27b06b7d}{force\+Door\+State}} (int x, int y)
 \begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} If the given door is closed it switches to open and the other way around. \end{DoxyCompactList}\item 
 int $\ast$ \mbox{\hyperlink{classMap_aff2af59b2ae472803fc3c750dd813628}{get\+Matrix}} ()
 \begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Get the Matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMap_aa90752eb040e580cc8e1d928b2715180}{get\+Door\+Sound}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em \mbox{[}CLIENT SIDE\mbox{]} Returns the sound code for the given door coordinates. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMap_a22c0a427602af5f2b6f49e54b93875e0}\label{classMap_a22c0a427602af5f2b6f49e54b93875e0}} 
 {\bfseries Map} (int dimx, int dimy)
 \item 
@@ -113,9 +115,6 @@ int {\bfseries dimx}
 \item 
 \mbox{\Hypertarget{classMap_af933575f1fe003fe3193a6b1327a0e97}\label{classMap_af933575f1fe003fe3193a6b1327a0e97}} 
 int {\bfseries dimy}
-\item 
-\mbox{\Hypertarget{classMap_ae32c24012ee3bfa8c9ce00f3dd794a44}\label{classMap_ae32c24012ee3bfa8c9ce00f3dd794a44}} 
-\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \& {\bfseries loader}
 \end{DoxyCompactItemize}
 
 
@@ -177,6 +176,26 @@ int {\bfseries dimy}
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_aa90752eb040e580cc8e1d928b2715180}\label{classMap_aa90752eb040e580cc8e1d928b2715180}} 
+\index{Map@{Map}!getDoorSound@{getDoorSound}}
+\index{getDoorSound@{getDoorSound}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getDoorSound()}{getDoorSound()}}
+{\footnotesize\ttfamily int Map\+::get\+Door\+Sound (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+\mbox{[}CLIENT SIDE\mbox{]} Returns the sound code for the given door coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \mbox{\hyperlink{classDoor}{Door}} X Coord. \\
+\hline
+{\em y} & \mbox{\hyperlink{classDoor}{Door}} Y Coord. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{unionSound}{Sound}} code. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classMap_a0506b001629215a5f572055035a17f9b}\label{classMap_a0506b001629215a5f572055035a17f9b}} 
 \index{Map@{Map}!getDoorState@{getDoorState}}
@@ -253,11 +272,11 @@ true
 
 false 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classMap_a0e88898b8c40926c87d106c0e9020ffb}\label{classMap_a0e88898b8c40926c87d106c0e9020ffb}} 
+\mbox{\Hypertarget{classMap_af5fa0bd2de0d5a5b8cf6ccf320301f3a}\label{classMap_af5fa0bd2de0d5a5b8cf6ccf320301f3a}} 
 \index{Map@{Map}!switchDoorState@{switchDoorState}}
 \index{switchDoorState@{switchDoorState}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{switchDoorState()}{switchDoorState()}}
-{\footnotesize\ttfamily void Map\+::switch\+Door\+State (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Map\+::switch\+Door\+State (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
 
 
 
@@ -270,6 +289,9 @@ false
 {\em y} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if its a fake wall, false otherwise. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classMap_a90b7807f1e91534cdc4c65397a604359}\label{classMap_a90b7807f1e91534cdc4c65397a604359}} 
 \index{Map@{Map}!updateTimers@{updateTimers}}
 \index{updateTimers@{updateTimers}!Map@{Map}}

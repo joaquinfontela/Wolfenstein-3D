@@ -12,6 +12,8 @@
  */
 class Player : public Drawable {
  public:
+   bool minigunShooting = false;
+
   /**
    * @brief [CLIENT SIDE]  Construct a new Player object
    *

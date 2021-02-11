@@ -26,6 +26,12 @@ class Hud {
   int framesAlreadyPlayed;
   int screenHeight, screenWidth;
   Area area;
+   /**
+    * @brief Computes the frame to render for the shooting gun.
+    *
+    * @return int frame to render.
+    */
+  int getGunFrame();
 
   /**
    * @brief Plays shooting sound from the player's gun.

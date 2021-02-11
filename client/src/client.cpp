@@ -72,10 +72,15 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   this->myPlayerID = myPlayerID;
 
   SdlWindow window(width, height);
-  std::cout<<"[CLIENT] Map Init Load"<<std::endl;
+  if (config.fullScreen()) {
+    if (window.goFullScreen() != 0) {
+      LOG(SDL_GetError());
+    }
+  }
+  std::cout << height << " " << width << std::endl;
+
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);
-  std::cout<<"[CLIENT] Map Loaded"<<std::endl;
 
   TextureManager manager(&window);
   manager.loadTextures();
@@ -103,7 +108,7 @@ int Client::run(int myPlayerID, std::string& mapFile) {
 
   Raycaster caster(manager, matrix, alive, player, spriteVector, hud);
   int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket, alive, &scoreboard);
+  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, player);
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
                           audios, matrix, loader, &scoreboard);

@@ -36,11 +36,7 @@ void Hud::update() {
 void Hud::renderBloodDamage() {
   int healthdown;
   if (!(healthdown = player->healthdown)) return;
-  int width, height;
-  height = this->screenHeight;
-  width = this->screenWidth;
-  area.update(13, 12, width - 26, 3 * height / 4 + 10);
-  this->manager.renderAll(DAMAGE_HUD, area);
+  this->manager.renderComplete(DAMAGE_HUD);
   player->healthdown = (healthdown + 1) % BLOOD_FRAMES;
 }
 
@@ -164,19 +160,27 @@ void Hud::playMyShootingSound() {
   this->audiomanager.playOnMaxVolumeWithId(soundId);
 }
 
+int Hud::getGunFrame() {
+  bool minigunShooting = (this->player->isShooting() && weaponId == CHAINGUN);
+  if (minigunShooting && animationStatus == 4 && this->player->minigunShooting) {
+    animationStatus = 2;
+  }
+  if (animationStatus == 2) this->playMyShootingSound();
+  return ((this->weaponId - 1) * (GUN_SLICES) + animationStatus);
+}
+
 void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   if (this->player->isShooting() &&
       (!(this->fps >> 4) || !(this->framesAlreadyPlayed % (this->fps >> 4)))) {
     // This ^^^^^ is there if this->fps < updatefreq
     // which could result in a zero division error.
-    if (!animationStatus) this->playMyShootingSound();
     animationStatus++;
     if (animationStatus >= 5) {
       animationStatus = 0;
       this->player->stopShooting();
     }
   }
-  this->gun->updateFrame((this->weaponId - 1) * (GUN_SLICES) + animationStatus);
+  this->gun->updateFrame(this->getGunFrame());
   int x, y, width, height;
   y = this->screenHeight;
   x = this->screenWidth;
