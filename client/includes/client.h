@@ -53,13 +53,6 @@ class Client {
   void connectToServer(std::string& host, std::string& port);
 
   /**
-   * @brief Deletes all the sprites dynamically allocated.
-   *
-   * @param sprites List of values to be deleted.
-   */
-  void gargabeCollector(std::vector<Drawable*>& sprites);
-
-  /**
    * @brief Creates the window, and sets is to fullscreen if needed.
    *
    */

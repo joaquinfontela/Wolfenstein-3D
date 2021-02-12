@@ -30,6 +30,16 @@ void DrawableVector::raycastSprites(double x, double y, double dirX,
   }
 }
 
+DrawableVector::~DrawableVector() {
+  this->garbageCollector();
+}
+
+void DrawableVector::garbageCollector() {
+  for (Drawable* s : this->sprites) {
+    delete s;
+  }
+}
+
 void DrawableVector::push_back(Drawable* drawable) {
   if (!drawable) {
     LOG("Error, can't push a null pointer as a sprite.");

@@ -22,12 +22,6 @@ static bool fileExists(std::string& name){
     }
 }
 
-void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
-  for (Drawable* s : sprites) {
-    delete s;
-  }
-}
-
 void Client::connectToServer(std::string& ip, std::string& port) {
   this->socket.connect(ip, port);
 }
@@ -145,6 +139,5 @@ int Client::run(std::string& mapFile) {
   worker->join();
   delete sender;
   delete worker;
-  this->gargabeCollector(sprites);
   return exitcode;
 }
