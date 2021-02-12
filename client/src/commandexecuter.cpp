@@ -87,6 +87,11 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
 }
 
 void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
+
+  if(this->players.find(playerId) == this->players.end()){
+    return;
+  }
+
   Player* deadPlayer = this->players[playerId];
   int gunId = deadPlayer->weaponId;
   int deathSpriteId = GET_DEATH_ANIMATION_SPRITE(gunId);
