@@ -23,6 +23,8 @@
   - [Movimiento](#movimiento)
   - [Armas](#armas) 
   - [Puertas](#puertas) 
+    - [Puertas Bloqueadas](#puertas-bloqueadas) 
+    - [Puertas Normales](#puertas-normales) 
   - [Drops](#drops)
   - [Editor](#editor) 
 - [Apéndice de Errores](#apéndice-de-errores)
@@ -104,9 +106,13 @@ Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible 
 
 El jugador podrá interactuar con las puertas para generar cambios en el mapa. Este puede intentar abrirlas acercándose lo suficiente y aprentándo la _E_. Hay dos tipos de puertas:
 
+### Puertas Bloqueadas
+
 <br><p align="center"><img src="./docs/screenshots/LockedDoor.png"/></p>
 
 Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar del piso para poder ser abierta. Una vez que la puerta se haya abierto una vez con llave, cualquier jugador, tenga llave o no, podrá abrirla.
+
+### Puertas Normales
 
 <br><p align="center"><img src="./docs/screenshots/UnlockableDoor.png"/></p>
 
