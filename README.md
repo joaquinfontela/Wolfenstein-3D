@@ -27,7 +27,7 @@
   - [Editor](##editor) 
 - [Apéndice de Errores](#apéndice-de-errores)
   - [Clasificación de Errores](##clasificación-de-errores)
-
+ 
 # Guia de Instalación
 ## Requisitos
 Ademas de las librerias que utiliza el juego, el unico otro requisito que necesita el trabajo es contar con una computadora que utilice GNU/Linux como sistema operativo.
