@@ -13,6 +13,8 @@ function getInput(GameState)
   end
 
   -- If facing Wall, switch to random direction
+  -- La idea es dar una API así de específica? Tal vez podrías tener una primitiva getInSightObject y que te diga
+  -- qué es lo que tenés en frente (no está mal, pero ojo con las apis que exponen)
   retVal = facingWall(GameState)
   if(retVal == 1) then
     index = math.random(1, 2)

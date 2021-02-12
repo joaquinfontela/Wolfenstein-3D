@@ -14,7 +14,8 @@
 #include "../../../includes/Control/Notification/PlayerDisconnect.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 
-
+// Es común que el Player quede así de grande en este tipo de TP, pero no está bien. Una manera práctica de mitigar
+// eso es sacarle toda la lógica de adentro y delegarla en partes cohesivas
 
 Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
                unsigned int playerID)

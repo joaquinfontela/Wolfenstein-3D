@@ -21,6 +21,7 @@ void ClientAccepter::run() {
       std::cout << "[SERVER] Accepting new client..." << std::endl;
 
       this->peers.push_back(peer);
+      // Por qué no limpiar acá?
       //clientCleanup();
     } catch (SocketException& e) {
       while (!this->peers.empty()) {

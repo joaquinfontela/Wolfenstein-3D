@@ -185,6 +185,7 @@ void Game::start(int playerID) {
 
 bool Game::hasStarted() { return started; }
 
+// Este es tal vez el punto más flojo del código del server, se agregó al final a las apuradas tal vez?
 void Game::end(WaitingQueue<Notification*>& queue) {
   started = false;
   std::map<int, Player*>::iterator it = this->players.begin();

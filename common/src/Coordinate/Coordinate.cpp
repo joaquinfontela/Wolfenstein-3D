@@ -21,6 +21,8 @@ int Coordinate::getX() { return this->x; }
 int Coordinate::getY() { return this->y; }
 
 std::vector<int> Coordinate::getVector() {
+  // sería más performante guardar el vector directamente, y devolver una referencia constante
+  // sino cada vez que llaman a esto tienen construcciones y copias de objetos
   std::vector<int> vec;
   vec.push_back(this->x);
   vec.push_back(this->y);

@@ -17,6 +17,8 @@
   "* { background-color: rgba(0, 0, 0, 200); color: #ffffff}"
 #define WHITESPACE ' '
 
+// La modularizacion de esta clase quedo medio pobre
+
 Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
     : QMainWindow(nullptr),
       ui(new Ui::Login),

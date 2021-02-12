@@ -53,6 +53,7 @@ bool Client::joinMatch(uint32_t lobbyID) {
   return true;
 }
 
+// Esta función se podría separar por "etapas" y crear una clase cohesiva por cada una
 int Client::run(int myPlayerID, std::string& mapFile) {
 
   if(myPlayerID == -1){

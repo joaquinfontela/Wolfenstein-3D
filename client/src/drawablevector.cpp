@@ -85,6 +85,7 @@ void DrawableVector::getCoordsAndErase(double* x, double* y, uint32_t itemId) {
       break;
     }
   }
+  // usar RAII
   this->lock.unlock();
 }
 

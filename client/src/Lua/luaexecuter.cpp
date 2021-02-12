@@ -37,6 +37,7 @@ void CommandExecuter::run() {
     try {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
+      // Manejar cada opcode en una función distinta
       if (opcode == PLAYER_UPDATE_PACKAGE) {  // Cambiar por switch
         PlayerData playerinfo;
         memset(&playerinfo, 0, sizeof(PlayerData));

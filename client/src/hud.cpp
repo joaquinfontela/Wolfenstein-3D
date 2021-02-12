@@ -273,6 +273,7 @@ void Hud::renderHealth() {
 }
 
 Hud::~Hud() {
+  // Con 3 objetitos RAII esto no haría falta y haría safe el constructor
   delete this->bjface;
   delete this->hudgun;
   delete this->gun;

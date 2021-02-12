@@ -126,6 +126,8 @@ void Tile::pickUpItems(double x, double y, Player* p,
   // Por ahora hago que agarre todos los que estan en la misma celda, en
   // realidad el item deberia tener un hitbox y deberia preguntarle a cada uno
   // si estoy en rango para agarrarlo.
+  // 
+  // Igual esto no es para nada grave, no se nota al jugar
   std::vector<Item*>::iterator it = this->items.begin();
 
   while (it != this->items.end()) {

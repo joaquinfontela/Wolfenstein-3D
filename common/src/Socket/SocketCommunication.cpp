@@ -41,10 +41,14 @@ SocketCommunication& SocketCommunication::operator=(
 }
 
 SocketCommunication::SocketCommunication(SocketCommunication&& other) {
+  // acá también hay que considerar si this es other
   this->fd = other.fd;
   other.fd = -1;
 }
 
+// Este método es bastante feo que sea público porque de alguna manera está rompiendo el encapsulamiento 
+// del file descriptor. Tal vez un friend puede ayudar a que solamente una clase pueda usarlo y no cualquiera
+// (pero no sé si friend se lleva bien con los constructores, la verdad...)
 SocketCommunication::SocketCommunication(int fd) { this->fd = fd; }
 
 void SocketCommunication::connect(const std::string& hostname,
@@ -78,6 +82,7 @@ void SocketCommunication::connect(const std::string& hostname,
   return;
 }
 
+// Enviar y recibir tiras de  BYTES (uint8_t, char, unsigned char, lo que sea que ocupe 1B)
 int SocketCommunication::send(const uint32_t* message,
                               unsigned int messageLength) {
   if (!message) {
