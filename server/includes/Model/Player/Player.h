@@ -1,6 +1,8 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
+#include "../Position/Position.h"
+#include "PlayerConfig.h"
 #include "../../../../common/includes/PlayerData.h"
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../Control/Notification/Notification.h"
@@ -9,9 +11,10 @@
 #include "../Item/Weapon/WeaponFactory.h"
 #include "../Map/Map.h"
 
+
 class Map;
 class Updatable;
-
+class Position;
 /**
  * @section DESCRIPTION
  * Class that represents a player controlled by a user/client
@@ -19,26 +22,22 @@ class Updatable;
 
 class Player {
  private:
-  const unsigned int MAX_HEALTH, MAX_AMMO, BULLET_DROP_WHEN_DIES, AMMO_PICK_UP,
-      POINTS_PER_KILL;
-  double x, y;
-  double dirX, dirY;
-  double rotSpeed;
-  double moveSpeed;
+  PlayerConfig config;
+  Position* position;
 
   int score;
   int kills;
   int shotsFired;
-
-  unsigned int playerID;
-  bool hasToBeNotified;
-  unsigned int health, lifeRemaining, ammo;
-  Weapon* currentWeapon;
-  std::vector<Weapon*> weapons;
   bool key;
   bool shooting;
   bool isAdmin;
   bool dead;
+  bool hasToBeNotified;
+
+  unsigned int playerID;
+  unsigned int health, lifeRemaining, ammo;
+  Weapon* currentWeapon;
+  std::vector<Weapon*> weapons;
   WeaponFactory weaponFactory;
   Map& map;
 
@@ -57,7 +56,7 @@ class Player {
 
   // CONSTRUCTORS
   Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID);
-  Player(YAMLConfigReader yamlConfigReader);
+
 
   /*
    * @brief [SERVER-SIDE] Sets the shooting state as requested
@@ -93,6 +92,8 @@ class Player {
   double getY();
   double getDirX();
   double getDirY();
+  double getPlaneX();
+  double getPlaneY();
   int getKills();
   int getShotsFired();
   void setAdmin();
@@ -124,19 +125,12 @@ class Player {
   bool hasGunWithId(int uniqueId);
 
   /*
-   * @brief [SERVER-SIDE] Respawns the player onto a new position on the map.
+   * @brief [SERVER-SIDE] Process the final death of the player, removing him from the map.
    *
-   * @param The notification Queue on which to send notification if required.
+   * @param The notification queue to notify of death
+   * @return -1 to indicate player can no longer respawn
    */
-  void respawn(WaitingQueue<Notification*>& notis);
-
-  /*
-   * @brief [SERVER-SIDE] Calculates distance to another specified player.
-   *
-   * @param The other player to calculate the distance
-   *
-   * @return The distance to that player, as a double value.
-  double calculateDistanceTo(Player* other);
+  int processFinalDeath(WaitingQueue<Notification*>& notis);
 
   /*
    * @brief [SERVER-SIDE] Fills the struct PlayerData with the appropiate values

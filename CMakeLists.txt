@@ -82,6 +82,7 @@ set(SOURCE_FILES_SERVER
         server/src/Match/Engine.cpp
         server/src/Model/Player/Player.cpp
         server/src/Model/Game/Game.cpp
+        server/src/Model/Position/Position.cpp
 
         common/src/YAML/YAMLMapReader.cpp
         common/src/YAML/YAMLConfigReader.cpp

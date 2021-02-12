@@ -14,74 +14,24 @@
 #include "../../../includes/Control/Notification/PlayerDisconnect.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
 
+Player::Player(YAMLConfigReader yamlConfigReader, Map& map, unsigned int playerID) : config(yamlConfigReader), map(map) {
 
-
-Player::Player(YAMLConfigReader yamlConfigReader, Map& map,
-               unsigned int playerID)
-    : health(yamlConfigReader.getMaxHealth()),
-      MAX_HEALTH(yamlConfigReader.getMaxHealth()),
-      lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
-      ammo(yamlConfigReader.getBulletAmountAtStart()),
-      MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(
-          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
-      AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
-      POINTS_PER_KILL(yamlConfigReader.getPointsPerKill()),
-      key(false),
-      score(0),
-      dirX(-1),
-      dirY(0),
-      rotSpeed(0.0),
-      moveSpeed(0.0),
-      hasToBeNotified(false),
-      map(map) {
-
+  this->health = config.MAX_HEALTH;
+  this->lifeRemaining = config.MAX_RESPAWN;
+  this->ammo = config.AMMO_AT_START;
+  this->key = false;
+  this->score = 0;
+  this->hasToBeNotified = false;
   this->playerID = playerID;
-  this->planeY = 0.66;
-  this->planeX = 0;
   this->shooting = false;
   this->isAdmin = false;
   this->dead = false;
   this->kills = 0;
   this->shotsFired = 0;
-
-  std::tie(this->x, this->y) = map.handleRespawn();
-  map.addPlayer(this->x, this->y, this);
+  this->position = new Position(this, this->map);
   weapons.push_back(weaponFactory.getWeapon(1, map.getAndIncreaseByOneNextUniqueItemId()));
   weapons.push_back(weaponFactory.getWeapon(2, map.getAndIncreaseByOneNextUniqueItemId()));
   this->currentWeapon = weapons.at(1);
-  std::cout<<"Player spawning at: "<<this->x<<", "<<this->y<<std::endl;
-}
-
-Player::Player(YAMLConfigReader yamlConfigReader)
-    : health(yamlConfigReader.getMaxHealth()),
-      MAX_HEALTH(yamlConfigReader.getMaxHealth()),
-      lifeRemaining(yamlConfigReader.getMaxReviveTimes()),
-      ammo(yamlConfigReader.getBulletAmountAtStart()),
-      MAX_AMMO(yamlConfigReader.getMaxAmountOfBullets()),
-      BULLET_DROP_WHEN_DIES(
-          yamlConfigReader.getBulletAmountDropWhenPlayerDies()),
-      AMMO_PICK_UP(yamlConfigReader.getBulletAmountWhenPickUpAmmo()),
-      POINTS_PER_KILL(yamlConfigReader.getPointsPerKill()),
-      key(false),
-      score(0),
-      x(6.0),
-      y(4.0),
-      dirX(-1),
-      dirY(0),
-      rotSpeed(0.0),
-      moveSpeed(0.0),
-      hasToBeNotified(false),
-      map(map) {
-  weapons.push_back(
-      weaponFactory.getWeapon(1, map.getAndIncreaseByOneNextUniqueItemId()));
-  weapons.push_back(
-      weaponFactory.getWeapon(2, map.getAndIncreaseByOneNextUniqueItemId()));
-
-  this->kills = 0;
-  this->shotsFired = 0;
-  this->currentWeapon = weapons.at(1);
-  this->dead = false;
 }
 
 bool Player::isDead(){
@@ -111,58 +61,57 @@ bool Player::hasGunWithId(int uniqueId) {
   return false;
 }
 
-void Player::addWeapon(Weapon* weapon) { this->weapons.push_back(weapon); }
-
-bool Player::collidesWith(double x, double y) {
-  return sqrt(pow(this->x - x, 2) + pow(this->y - y, 2)) <= 0.3;
+void Player::addWeapon(Weapon* weapon) {
+  this->weapons.push_back(weapon);
 }
 
-void Player::respawn(WaitingQueue<Notification*>& notis) {
-  double x, y;
+bool Player::collidesWith(double x, double y) {
+  return this->position->collidesWith(x, y);
+}
 
-  std::tie(x, y) = map.handleRespawn();
-  map.moveTo(this->x, this->y, x, y, this, notis);
+int Player::processFinalDeath(WaitingQueue<Notification*>& notis){
+  this->map.removePlayer(int(this->position->getX()), int(this->position->getX()), this);
 
-  this->x = x;
-  this->y = y;
+  PlayerDisconnect* disconnect = new PlayerDisconnect(this->playerID);
+  notis.push(disconnect);
+
+  this->dead = true;
+  this->health = 0;
+  return -1;
 }
 
 int Player::handleDeath(WaitingQueue<Notification*>& notis) {
-
   PlayerDied* noti = new PlayerDied(this->playerID);
   notis.push(noti);
-  map.addAmmoDropAt(this->y + 1, this->x + 1, notis);
+  map.addAmmoDropAt(this->position->getY() + 1, this->position->getX() + 1, notis);
   if (this->key) {
     this->key = false;
-    map.addKeyDropAt(this->y + 1, this->x + 1, notis);
+    map.addKeyDropAt(this->position->getY() + 1, this->position->getX() + 1, notis);
   }
 
   if (this->lifeRemaining == 0) {
-    this->map.removePlayer(int(this->x), int(this->y), this);
-    PlayerDisconnect* disconnect = new PlayerDisconnect(this->playerID);
-    notis.push(disconnect);
-    this->dead = true;
-    this->health = 0;
-    return -1;
+    return this->processFinalDeath(notis);
   }
 
-  this->respawn(notis);
+  this->position->respawn(this->map, notis);
   this->lifeRemaining -= 1;
-  this->health = this->MAX_HEALTH;  // Deberia restaurar la vida al maximo.
+  this->health = config.MAX_HEALTH;
 
-  if (this->ammo < this->BULLET_DROP_WHEN_DIES)
+  if (this->ammo < config.BULLET_DROP_WHEN_DIES)
     this->ammo = 0;
   else
-    this->ammo -= this->BULLET_DROP_WHEN_DIES;
+    this->ammo -= config.BULLET_DROP_WHEN_DIES;
 
-  return 0;  // Devuelvo valor indicando que mi vida quedo en 0.
+  return 0;
 }
 
 double Player::calculateDistanceTo(Player* p) {
-  return sqrt(pow(this->x - p->getX(), 2) + pow(this->y - p->getY(), 2));
+  return sqrt(pow(this->getX() - p->getX(), 2) + pow(this->getY() - p->getY(), 2));
 }
 
-bool Player::hasToBeUpdated() { return this->hasToBeNotified; }
+bool Player::hasToBeUpdated() {
+  return this->hasToBeNotified;
+}
 
 int Player::takeDamage(unsigned int damage,
                        WaitingQueue<Notification*>& notis) {
@@ -189,11 +138,7 @@ int Player::getShotsFired(){
 }
 
 void Player::fillPlayerData(PlayerData& data) {
-  data.posX = this->x;
-  data.posY = this->y;
-  data.dirX = this->dirX;
-  data.dirY = this->dirY;
-  data.rotSpeed = this->rotSpeed;
+  this->position->fillData(data);
   data.lives = lifeRemaining;
   data.health = health;
   data.weaponID = this->currentWeapon->getID();
@@ -201,13 +146,10 @@ void Player::fillPlayerData(PlayerData& data) {
   data.score = this->score;
   data.hasKey = this->key;
 
-
   return;
 }
 
 void Player::moveTo(double x, double y) {
-  this->x = x;
-  this->y = y;
 }
 
 void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables) {
@@ -215,45 +157,19 @@ void Player::update(float timeElapsed, WaitingQueue<Notification*>& notis, std::
   if(this->shooting)
     this->shoot(timeElapsed, notis, updatables);
 
-  if (moveSpeed == 0.0 && rotSpeed == 0.0) return;
-
-
-  double newX = x + dirX * (moveSpeed * (timeElapsed));
-  double newY = y + dirY * (moveSpeed * (timeElapsed));
-
-  double quarterStepX = (newX - x) / 4;
-  double quarterStepY = (newY - y) / 4;
-
-  int i = 0;
-  while(i < 4){
-    if(map.moveTo(x, y, x + quarterStepX, y + quarterStepY, this, notis)){
-      x = x + quarterStepX;
-      y = y + quarterStepY;
-      i++;
-    }else
-      break;
-  }
-
-  double oldDirX = dirX;
-
-  dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-  dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-
-  double oldPlaneX = this->planeX;
-  this->planeX = ((this->planeX) * cos(rotSpeed)) - (this->planeY * sin(rotSpeed));
-  this->planeY = (oldPlaneX * sin(rotSpeed)) + (this->planeY * cos(rotSpeed));
-
-
-  this->hasToBeNotified = true;
+  if(this->position->update(this->map, timeElapsed, notis))
+    this->hasToBeNotified = true;
 }
 
 void Player::shootRPG(WaitingQueue<Notification*>& notis, std::list<Updatable*>& updatables){
   double dirX = this->getDirX();
   double dirY = this->getDirY();
   int uniqueId = map.getAndIncreaseByOneNextUniqueItemId();
-  PlayerDropItem* noti = new PlayerDropItem(this->getX() + dirX + this->planeX/2, this->getY() + dirY + this->planeY/2, 404, uniqueId);
+
+  PlayerDropItem* noti = new PlayerDropItem(this->getX() + dirX + this->getPlaneX()/2, this->getY() + dirY + this->getPlaneY()/2, 404, uniqueId);
   notis.push(noti);
-  RocketMissile* newMissile = new RocketMissile(this->getX() + dirX, this->getY() + dirY, dirX, dirY, uniqueId, planeX/2, planeY/2);
+
+  RocketMissile* newMissile = new RocketMissile(this->getX() + dirX, this->getY() + dirY, dirX, dirY, uniqueId, this->getPlaneX()/2, this->getPlaneY()/2);
   updatables.push_back(newMissile);
   return;
 }
@@ -273,7 +189,7 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
     return;
   }
 
-  if(range == INT_MAX){ // Por el momento, INT_MAX siginifica que lanzo un RPG. Cambiar a un metodo del estilo hasRPG();
+  if(range == INT_MAX){
     this->shootRPG(notis, updatables);
   }
 
@@ -290,19 +206,27 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
     receiverHealth = receiver->takeDamage(att, notis);
 
     if((receiverHealth == 0) || (receiverHealth == -1)){
-      this->addPoints(POINTS_PER_KILL);
+      this->addPoints(config.POINTS_PER_KILL);
       this->kills += 1;
     }
   }
 }
 
-double Player::getX() { return this->x; }
+double Player::getX() {
+  return this->position->getX();
+}
 
-double Player::getY() { return this->y; }
+double Player::getY() {
+  return this->position->getY();
+}
 
-double Player::getDirX() { return this->dirX; }
+double Player::getDirX() {
+  return this->position->getDirX();
+}
 
-double Player::getDirY() { return this->dirY; }
+double Player::getDirY() {
+  return this->position->getDirY();
+}
 
 int Player::attack(float timeElapsed) {
 
@@ -315,27 +239,20 @@ int Player::attack(float timeElapsed) {
   return damageDealt;
 }
 
-int Player::getRange() { return this->currentWeapon->getRange(); }
+int Player::getRange() {
+  return this->currentWeapon->getRange();
+}
 
-unsigned int Player::ID() { return this->playerID; }
+unsigned int Player::ID() {
+  return this->playerID;
+}
 
 void Player::updateMoveSpeed(double moveSpeed) {
-   this->moveSpeed += moveSpeed;
-
-   if(this->moveSpeed < -6.5)
-     this->moveSpeed = -6.5;
-   else if(this->moveSpeed > 6.5)
-     this->moveSpeed = 6.5;
-  }
+    this->position->updateMoveSpeed(moveSpeed);
+}
 
 void Player::updateRotationSpeed(double rotSpeed) {
-  this->rotSpeed += rotSpeed;
-
-  if(this->rotSpeed < -0.125)
-    this->rotSpeed = -0.125;
-  else if(this->rotSpeed > 0.125)
-    this->rotSpeed = 0.125;
-
+  this->position->updateRotationSpeed(rotSpeed);
 }
 
 void Player::equipWeapon(int weaponPos) {
@@ -345,35 +262,64 @@ void Player::equipWeapon(int weaponPos) {
   this->hasToBeNotified = true;
 }
 
-void Player::pickupKey() { this->key = true; }
+void Player::pickupKey() {
+  this->key = true;
+}
 
-bool Player::hasKey() { return key; }
+bool Player::hasKey() {
+  return key;
+}
 
-bool Player::hasMaxAmmo() { return ammo >= this->MAX_AMMO; }
+bool Player::hasMaxAmmo() {
+  return ammo >= config.MAX_AMMO;
+}
 
 void Player::pickUpAmmo() {
-  if (this->ammo == 0) this->currentWeapon = this->weapons.at(1);
+  if (this->ammo == 0)
+    this->currentWeapon = this->weapons.at(1);
 
-  ammo += this->AMMO_PICK_UP;
-  if (ammo > this->MAX_AMMO) ammo = this->MAX_AMMO;
+  ammo += config.AMMO_PICK_UP;
+  if (ammo > config.MAX_AMMO)
+    ammo = config.MAX_AMMO;
+
   this->hasToBeNotified = true;
 }
 
-int Player::getHealth() { return this->health; }
+int Player::getHealth() {
+  return this->health;
+}
 
-bool Player::hasFullHealth() { return this->health == this->MAX_HEALTH; }
+bool Player::hasFullHealth() {
+  return this->health == config.MAX_AMMO;
+}
 
 void Player::addHealth(int health) {
   this->health += health;
-  if (this->health > MAX_HEALTH) this->health = this->MAX_HEALTH;
+
+  if (this->health > config.MAX_HEALTH)
+    this->health = config.MAX_HEALTH;
+
   this->hasToBeNotified = true;
 }
 
-void Player::addPoints(int points) { this->score += points; }
+double Player::getPlaneX(){
+  return this->position->getPlaneX();
+}
 
-int Player::getScore() { return this->score; }
+double Player::getPlaneY(){
+  return this->position->getPlaneY();
+}
+
+void Player::addPoints(int points) {
+  this->score += points;
+}
+
+int Player::getScore() {
+  return this->score;
+}
 
 Player::~Player() {
+  delete this->position;
   std::vector<Weapon*>::iterator it = this->weapons.begin();
 
   for (; it != this->weapons.end(); ++it) {
