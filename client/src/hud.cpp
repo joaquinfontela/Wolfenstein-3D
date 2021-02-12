@@ -88,17 +88,17 @@ void Hud::renderBorder() {
 
 void Hud::renderTypeOfGun() {
   this->updateGunId();
-  this->hudgun->updateFrame(weaponId - 1);
+  this->hudgun.animation->updateFrame(weaponId - 1);
   int x, y, width, height;
   y = this->screenHeight;
   x = this->screenWidth;
   this->manager.getTextureSizeWithId(HUDGUNS, &width, &height);
-  this->hudgun->setSlideWidth(&width);
+  this->hudgun.animation->setSlideWidth(&width);
   float aspectRatio = float(height) / float(width);
   width = (x * 9) / 50;
   height = width * aspectRatio;
   area.update((63 * x) / 80, (33 * y) / 40, width, height);
-  this->hudgun->renderActualFrame(area, HUDGUNS);
+  this->hudgun.animation->renderActualFrame(area, HUDGUNS);
 }
 
 void Hud::renderGun() {
@@ -180,14 +180,14 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
       this->player->stopShooting();
     }
   }
-  this->gun->updateFrame(this->getGunFrame());
+  this->gun.animation->updateFrame(this->getGunFrame());
   int x, y, width, height;
   y = this->screenHeight;
   x = this->screenWidth;
   //  this->manager.getTextureSizeWithId(GUNSPRITESROW, &width, &height);
   width = 1622;
   height = 38;
-  this->gun->setSlideWidth(&width);
+  this->gun.animation->setSlideWidth(&width);
 
   float aspectRatio = float(height) / float(width);
   width = x >> 1;
@@ -196,10 +196,10 @@ void Hud::renderGunWithShifts(int dx, int dy, int updatefreq) {
   x -= (x + width) >> 1;
 
   area.update(x + dx, (y * 120) / 91 + dy, width, height);
-  this->gun->renderActualFrame(area, GUNSPRITESROW);
+  this->gun.animation->renderActualFrame(area, GUNSPRITESROW);
 }
 
-void Hud::updateHudGun() { this->hudgun->updateFrame(); }
+void Hud::updateHudGun() { this->hudgun.animation->updateFrame(); }
 
 void Hud::renderFace() {
   int health = this->player->health;
@@ -208,12 +208,12 @@ void Hud::renderFace() {
   x = this->screenWidth;
   id = GET_BJ_FACE_FROM_HEALTH(health);
   this->manager.getTextureSizeWithId(id, &width, &height);
-  this->bjface->setSlideWidth(&width);
+  this->bjface.animation->setSlideWidth(&width);
   area.update((x * 67) / 160.0, (503 * y) / 600.0, (7 * x) / 80, (y << 1) / 15);
-  this->bjface->renderActualFrame(area, id);
+  this->bjface.animation->renderActualFrame(area, id);
 }
 
-void Hud::updateBjFace() { this->bjface->updateFrame(); }
+void Hud::updateBjFace() { this->bjface.animation->updateFrame(); }
 
 Hud::Hud(Player* player, TextureManager& manager, AudioManager& audiomanager)
     : player(player),
@@ -222,11 +222,11 @@ Hud::Hud(Player* player, TextureManager& manager, AudioManager& audiomanager)
       animationStatus(0),
       framesAlreadyPlayed(0),
       movementStatus(0),
-      audiomanager(audiomanager) {
+      audiomanager(audiomanager),
+      bjface(manager, FACES_PER_IMG),
+      hudgun(manager, GUNS_IN_HUD),
+      gun(manager, FRAMES_PER_GUN_ANIMATION) {
   this->manager.getWindowSize(&this->screenWidth, &this->screenHeight);
-  this->bjface = new SdlAnimation(manager, FACES_PER_IMG);
-  this->hudgun = new SdlAnimation(manager, GUNS_IN_HUD);
-  this->gun = new SdlAnimation(manager, FRAMES_PER_GUN_ANIMATION);
 }
 
 void Hud::renderLifes() {
@@ -274,10 +274,4 @@ void Hud::renderHealth() {
   y -= height - y / 275;
   SDL_Rect rect = {.x = x, .y = y, .w = width, .h = height};
   this->manager.renderText(std::to_string(player->health).c_str(), &rect);
-}
-
-Hud::~Hud() {
-  delete this->bjface;
-  delete this->hudgun;
-  delete this->gun;
 }

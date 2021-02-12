@@ -4,7 +4,7 @@
 #include "area.h"
 #include "audiomanager.h"
 #include "player.h"
-#include "sdlanimation.h"
+#include "HudAnimations.h"
 #include "texturemanager.h"
 
 /**
@@ -17,9 +17,9 @@ class Hud {
   Player* player;
   TextureManager& manager;
   AudioManager& audiomanager;
-  SdlAnimation* hudgun;
-  SdlAnimation* bjface;
-  SdlAnimation* gun;
+  HudAnimations hudgun;
+  HudAnimations bjface;
+  HudAnimations gun;
   short animationStatus;
   short movementStatus;
   int fps;
@@ -156,12 +156,6 @@ class Hud {
    *
    */
   void update();
-
-  /**
-   * @brief Destroy the Hud object, the face, hud and gun animations.
-   *
-   */
-  ~Hud();
 
   /**
    * @brief Construct a new Hud object

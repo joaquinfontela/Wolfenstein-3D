@@ -32,6 +32,8 @@ class Client {
  private:
   SocketCommunication& socket;
   uint32_t myPlayerID = -1;
+  SdlWindow* window;
+  Player* player;
 
   /**
    * @brief Gets a player id given a lobbyid.
@@ -57,21 +59,25 @@ class Client {
    */
   void gargabeCollector(std::vector<Drawable*>& sprites);
 
+  /**
+   * @brief Creates the window, and sets is to fullscreen if needed.
+   *
+   */
+  void buildWindow();
+
  public:
-  Client(SocketCommunication& socket) : socket(socket) {}
+  ~Client();
+  Client(SocketCommunication& socket, int myPlayerID);
 
   /**
    * @brief Starts, runs and deletes all the objects involving the game. Creates
    * and deletes the window, map (and it's loader), audio and texture managers,
    * sprite list and raycaster engine, among others.
    *
-   * @param host
-   * @param port
-   * @param lobbyID
    * @param mapFile Map yaml file name.
    * @return int -1 on error and 0 on success.
    */
-  int run(int myPlayerID, std::string& mapFile);
+  int run(std::string& mapFile);
 };
 
 #endif
