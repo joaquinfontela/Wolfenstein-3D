@@ -22,12 +22,6 @@ static bool fileExists(std::string& name){
     }
 }
 
-void Client::gargabeCollector(std::vector<Drawable*>& sprites) {
-  for (Drawable* s : sprites) {
-    delete s;
-  }
-}
-
 void Client::connectToServer(std::string& ip, std::string& port) {
   this->socket.connect(ip, port);
 }
@@ -53,11 +47,42 @@ bool Client::joinMatch(uint32_t lobbyID) {
   return true;
 }
 
-int Client::run(int myPlayerID, std::string& mapFile) {
+void Client::buildWindow() {
+  ConfigReader config("../YAMLConfig/screenDimensions.yaml");
+  int height = config.getHeight();
+  int width = config.getWidth();
 
-  if(myPlayerID == -1){
-    return ERROR;
+  this->window = new SdlWindow(width, height);
+
+  if (window == NULL) {
+    throw std::runtime_error("Can't build the window object.");
   }
+
+  if (config.fullScreen()) {
+    if (window->goFullScreen() != 0) {
+      LOG(SDL_GetError());
+    }
+  }
+}
+
+Client::Client(SocketCommunication& socket, int myPlayerID) :
+              socket(socket), myPlayerID(myPlayerID),
+              player(new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0)) {
+  if (!player) {
+    throw std::runtime_error(COULD_NOT_CREATE_PLAYER);
+  }
+  if(this->myPlayerID < 0){
+    throw std::runtime_error("Can't have a negative player id.");
+  }
+  this->buildWindow();
+}
+
+Client::~Client() {
+  delete this->window;
+  delete this->player;
+}
+
+int Client::run(std::string& mapFile) {
 
   if(!fileExists(mapFile)){
     std::string error = MAP_NOT_FOUND_ERROR + mapFile;
@@ -65,24 +90,10 @@ int Client::run(int myPlayerID, std::string& mapFile) {
     return ERROR;
   }
 
-  ConfigReader config("../YAMLConfig/screenDimensions.yaml");
-  int height = config.getHeight();
-  int width = config.getWidth();
-
-  this->myPlayerID = myPlayerID;
-
-  SdlWindow window(width, height);
-  if (config.fullScreen()) {
-    if (window.goFullScreen() != 0) {
-      LOG(SDL_GetError());
-    }
-  }
-  std::cout << height << " " << width << std::endl;
-
   ClientMapLoader loader(mapFile, 24, 24);
   Map matrix(loader);
 
-  TextureManager manager(&window);
+  TextureManager manager(window);
   manager.loadTextures();
   AudioManager audios;
 
@@ -91,11 +102,6 @@ int Client::run(int myPlayerID, std::string& mapFile) {
 
   std::atomic<bool> alive;
   alive = true;
-  Player* player = new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0);
-
-  if (!player) {
-    throw std::runtime_error(COULD_NOT_CREATE_PLAYER);
-  }
 
   Hud hud(player, manager, audios);
   std::map<uint32_t, Player*> players;
@@ -131,9 +137,7 @@ int Client::run(int myPlayerID, std::string& mapFile) {
   alive = false;
   sender->join();
   worker->join();
-  delete player;
   delete sender;
   delete worker;
-  this->gargabeCollector(sprites);
   return exitcode;
 }

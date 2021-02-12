@@ -9,7 +9,7 @@ void DrawableVector::raycastSprites(double x, double y, double dirX,
                                     double dirY, double planeX, double planeY,
                                     double* distanceBuffer, float drawableDiff,
                                     TextureManager& manager) {
-  this->lock.lock();
+  std::unique_lock<std::mutex> lock(this->lock);
   for (Drawable* d : this->sprites) {
     d->loadDistanceWithCoords(x, y);
   }
@@ -28,8 +28,16 @@ void DrawableVector::raycastSprites(double x, double y, double dirX,
       this->sprites.erase(it);
     }
   }
+}
 
-  this->lock.unlock();
+DrawableVector::~DrawableVector() {
+  this->garbageCollector();
+}
+
+void DrawableVector::garbageCollector() {
+  for (Drawable* s : this->sprites) {
+    delete s;
+  }
 }
 
 void DrawableVector::push_back(Drawable* drawable) {
@@ -42,7 +50,7 @@ void DrawableVector::push_back(Drawable* drawable) {
 
 void DrawableVector::removeSpriteWithIdAndGetSound(uint32_t itemId,
                                                    uint32_t* soundId) {
-  this->lock.lock();
+  std::unique_lock<std::mutex> lock(this->lock);
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
@@ -57,11 +65,10 @@ void DrawableVector::removeSpriteWithIdAndGetSound(uint32_t itemId,
       break;
     }
   }
-  this->lock.unlock();
 }
 
 void DrawableVector::swapCoords(double x, double y, uint32_t itemId) {
-  this->lock.lock();
+  std::unique_lock<std::mutex> lock(this->lock);
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
@@ -70,11 +77,10 @@ void DrawableVector::swapCoords(double x, double y, uint32_t itemId) {
       break;
     }
   }
-  this->lock.unlock();
 }
 
 void DrawableVector::getCoordsAndErase(double* x, double* y, uint32_t itemId) {
-  this->lock.lock();
+  std::unique_lock<std::mutex> lock(this->lock);
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if ((*it)->hasThisUniqueId(itemId)) {
@@ -85,11 +91,10 @@ void DrawableVector::getCoordsAndErase(double* x, double* y, uint32_t itemId) {
       break;
     }
   }
-  this->lock.unlock();
 }
 
 void DrawableVector::popAndErase(Drawable* toKill) {
-  this->lock.lock();
+  std::unique_lock<std::mutex> lock(this->lock);
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if (*it == toKill) {
@@ -97,5 +102,4 @@ void DrawableVector::popAndErase(Drawable* toKill) {
       break;
     }
   }
-  this->lock.unlock();
 }

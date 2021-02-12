@@ -16,6 +16,13 @@ class DrawableVector {
   std::mutex& lock;
   std::vector<Drawable*>& sprites;
 
+  /**
+   * @brief Deletes all the sprites dynamically allocated.
+   *
+   * @param sprites List of values to be deleted.
+   */
+  void garbageCollector();
+
  public:
   /**
    * @brief Construct a new Drawable Vector object.
@@ -82,6 +89,12 @@ class DrawableVector {
    * @param itemId Sprite id.
    */
   void getCoordsAndErase(double* x, double* y, uint32_t itemId);
+
+  /**
+   * @brief Releases all the resources.
+   *
+   */
+  ~DrawableVector();
 };
 
 #endif  // DRAWABLEVECTOR_H_
