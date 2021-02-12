@@ -91,7 +91,7 @@ Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna acci
 
 ## Movimiento
 
-Para moverse, se utiliza el sistema clásico de movimiento: _w_ para moverse para adelante, _s_ para moverse hacia atras, _a_ para rotar la camara hacia la izquierda y _d_ para rotar la camara hacia la derecha.
+Para moverse, se utiliza el sistema clásico de movimiento: _W_ para moverse para adelante, _S_ para moverse hacia atras, _A_ para rotar la camara hacia la izquierda y _D_ para rotar la camara hacia la derecha.
 
 ## Armas
 Para el uso de las armas, el _enter_ significa disparar mientras que las teclas _1_, _2_, _3_, _4_ y _5_ le permiten al jugador cambiar de armas. El _1_ siempre indica cambiar al cuchillo mientras que el _2_ indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
@@ -102,8 +102,7 @@ Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible 
 
 ## Puertas 
 
-El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:
-
+El jugador podrá interactuar con las puertas para generar cambios en el mapa. Este puede intentar abrirlas acercándose lo suficiente y aprentándo la _E_. Hay dos tipos de puertas:
 
 <br><p align="center"><img src="./docs/screenshots/LockedDoor.png"/></p>
 
