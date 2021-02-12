@@ -147,8 +147,8 @@ set(SOURCE_FILES_SERVER
         server/src/Model/Map/MapLoader.cpp
         server/src/Model/Map/Tile/Tile.cpp
 
-        test/CPPUnit.h
-        test/CPPUnit.cpp
+        tests/CPPUnit.h
+        tests/CPPUnit.cpp
         )
 
 find_package(PkgConfig)
