@@ -14,19 +14,19 @@
   - [Requisitos](##requisitos)
   - [Instalación de dependencias](##instalación-de-dependencias)
   - [Configuración, compilación e instalacion de librerias YAML](##configuración,-compilación-e-instalacion-de-librerias-yaml)
-  - [Forma de Uso](##forma-de-uso)
-    - [Servidor](###servidor)
-    - [Cliente](###cliente) 
-  - [Tutorial de Uso](##tutorial-de-uso)
-    - [Login](###login)
-    - [Iniciar Partida](###iniciar-partida) 
-    - [Movimiento](###movimiento)
-    - [Armas](###armas) 
-    - [Puertas](###puertas) 
-    - [Drops](###drops)
-    - [Editor](###editor) 
-  - [Apéndice de Errores](##apéndice-de-errores)
-    - [Clasificación de Errores](###clasificación-de-errores)
+- [Forma de Uso](#forma-de-uso)
+  - [Servidor](##servidor)
+  - [Cliente](##cliente) 
+- [Tutorial de Uso](#tutorial-de-uso)
+  - [Login](##login)
+  - [Iniciar Partida](##iniciar-partida) 
+  - [Movimiento](##movimiento)
+  - [Armas](##armas) 
+  - [Puertas](##puertas) 
+  - [Drops](##drops)
+  - [Editor](##editor) 
+- [Apéndice de Errores](#apéndice-de-errores)
+  - [Clasificación de Errores](##clasificación-de-errores)
 
 # Guia de Instalación
 ## Requisitos
@@ -69,9 +69,9 @@ Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la 
 ./Wolfen3D
 ```
 
-## Tutorial de Uso
+# Tutorial de Uso
 
-### Login
+## Login
 
 Para acceder al login del juego debemos correr `./Wolfen3D` en la carpeta `client/executable`. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
 
@@ -85,22 +85,22 @@ O _Create Match_ para crear una propia.
 
 <br><p align="center"><img src="./docs/screenshots/CreateMatch.png"/></p>
 
-### Iniciar Partida
+## Iniciar Partida
 
 Una vez creada la partida, ningun jugador podrá moverse o ejecutar ninguna accion hasta que el admin de la partida (aquel que la haya creado) no aprete la tecla _p_ que indica al servidor que el admin desea comenzar la partida.
 
-### Movimiento
+## Movimiento
 
 Para moverse, se utiliza el sistema clásico de movimiento: _w_ para moverse para adelante, _s_ para moverse hacia atras, _a_ para rotar la camara hacia la izquierda y _d_ para rotar la camara hacia la derecha.
 
-### Armas
+## Armas
 Para el uso de las armas, el _enter_ significa disparar mientras que las teclas _1_, _2_, _3_, _4_ y _5_ le permiten al jugador cambiar de armas. El _1_ siempre indica cambiar al cuchillo mientras que el _2_ indica cambiar a la pistola. Las otras 3 teclas le permiten al jugador cambiar a armas que haya agarrado del piso, en el orden en el que las agarró.
 
 <br><p align="center"><img src="./docs/screenshots/RPG.png"/></p>
 
 Esta arma es el RPG, requiere 5 balas por disparo y genera un proyectil visible que genera daño en area desde la zona de impacto. Hay que tener cuidado, ya que tambien puede dañar al usuario.
 
-### Puertas 
+## Puertas 
 
 El jugador podrá interactuar con las puertas para generar cambios en el mapa. Hay dos tipos de puertas:
 
@@ -113,7 +113,7 @@ Esta puerta es una puerta bloqueada, requiere de una llave que se puede agarrar 
 
 Esta puerta es desbloqueable en cualquier momento por cualquier jugador, tenga llave o no.
 
-### Drops
+## Drops
 
 <br><p align="center"><img src="./docs/screenshots/Drops.png"/></p>
 
@@ -123,7 +123,7 @@ El mapa cuenta con drops distribuidos a lo largo del mapa. Estos incluyen: Armas
 
 Este es el drop de tesoro, da una cantidad importante de puntos cuando se agarra. Darle prioridad a estos para ganar la partida!
 
-### Editor 
+## Editor 
 
 <br><p align="center"><img src="./docs/screenshots/editor.png"/></p>
 
@@ -131,7 +131,7 @@ El editor es intuitivo y simple. Seleccionar File->New para crear un mapa, File-
 
 Dentro del editor, en la barra superior hay distintas secciones que indican diferentes elementos posicionables: Paredes, Puertas, Items, etc. Basta con clickear la imagen deseada y elegir en que celda del mapa ponerla. El borrador permite elegir una celda y eliminar sus contenidos, mientras que respawn elige posiciones para que los jugadores reaparezcan (***Como minimo, deberá haber 1 punto de respawn***)
 
-## Apéndice de Errores
+# Apéndice de Errores
 
 El sistema puede tener glitches que causen, o no, diferentes tipos de interferencias en la experiencia del usuario. Para notificar esto y para generar un registro de potenciales problemas que aparecen se usa un log de errores.
 
@@ -139,7 +139,7 @@ El mismo, en caso de que se necesite, escribe en el archivo _"wolfenstein.log"_ 
 
 Llamando a la macro `LOG(const char* errorMsg)` se llama al método estático de la clase `Log` que recibe el archivo, la función, la línea y `errorMsg` para escribirlos en el log con el formato antes escrito.
 
-### Clasificación de Errores
+## Clasificación de Errores
 
 Los potenciales mensajes de errores que pueden aparecer son:
 
