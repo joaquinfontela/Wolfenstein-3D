@@ -8,6 +8,26 @@
 | 104348 | Joaquin Betz Rivera       |
 | 104429 | Thiago Kovnat             |
 
+**Tabla de Contenidos** 
+
+- [Guia de Instalacion](# Guia de Instalación)
+  - [Requisitos](## Requisitos)
+  - [Instalación de dependencias](## Instalación de dependencias)
+  - [Configuración, compilación e instalacion de librerias YAML](## Configuración, compilación e instalacion de librerias YAML)
+  - [Forma de Uso](## Forma de Uso)
+    - [Servidor](### Servidor)
+    - [Cliente](### Cliente) 
+  - [Tutorial de Uso](## Tutorial de Uso)
+    - [Login](### Login)
+    - [Iniciar Partida](### Iniciar Partida) 
+    - [Movimiento](### Movimiento)
+    - [Armas](### Armas) 
+    - [Puertas](### Puertas) 
+    - [Drops](### Drops)
+    - [Editor](### Editor) 
+  - [Apéndice de Errores](## Apéndice de Errores)
+    - [Clasificación de Errores](### Clasificación de Errores)
+
 # Guia de Instalación
 ## Requisitos
 Ademas de las librerias que utiliza el juego, el unico otro requisito que necesita el trabajo es contar con una computadora que utilice GNU/Linux como sistema operativo.
