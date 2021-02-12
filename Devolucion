@@ -1,0 +1,32 @@
+Algo hace que no termine el install.sh porque la carpeta client/executable no tiene un archivo CMakeLists.txt.
+    Les agregué un stub (archivito vacío) y salió andando, pero hay que ver por qué se está incluyendo ese directorio.
+
+La idea del instalador es que post corrida del script, yo pueda correr:
+    $ ServerMain args
+y ya no necesite estar parado en la misma carpeta:
+    $ ./ServerMain args
+(y así para todos los ejecutables)
+
+Me da tantas náuseas como el juego original, muy bien logrado!! XD
+Estaría bueno un cartel o algo que diga "Presione la P para comenzar la partida". Leyendo lo sé, pero la gui no queda intuitiva sino
+
+El cliente me consume 3 cores enteros en un i3, hablamos de esto en discord
+
+Por favor, saquen las imágenes de Hitler del juego.
+
+El cliente está muy bien logrado (salvo el alto consumo de cpu) pero el código tiene métodos bastante largos que se pueden desarmar un poco. Creo que en este proceso habría que invertir unas horas en limpiar eso para que esté para el 10.
+Se podría agregar también un bucle para que inicie de nuevo al terminar, y algún feedback para el usuario cuando mete un número de mapa que no existe (hoy hay que ver el log del server), tal vez no hay que salir sino pedirle que ingrese el número de nuevo. Esto también se soluciona si hacen un fetch de los mapas como charlamos el día de la primer entrega
+
+Para la comunicación:
+1. se olvidaron de contemplar el endianness!! esto entre dos computadoras con endian distinto no anda
+2. en el socket trabajar a nivel de bytes, no de enteros ni de doubles. El USUARIO del socket puede saber de enteros o tipos de dato
+
+En el servidor SI veo el sleep que le falta al cliente para no consumir tanta CPU, si lo hicieron personas distintas, uno puede ayudar al otro
+
+El código del server está más que suficientemente objetoso para este TP, les marqué un par de posibles mejoras pero creo que terminar de pulir
+
+Cosas particulares del código y posibles mejoras las puse ahí mismo. Si hacen lo poco que estoy marcando y no rompen nada este tp va a tener una excelente nota
+
+La documentación está muy completa, y +1 por haber usado Doxygen en todos lados (falta la E en el manual de usuario, no? es lo único que encontré). Como sugerencia para mostrar el TP pueden armar un videito como demo, colgarlo en YouTube, y agregar el link al readme
+
+En cuanto a robustez y performance, no se me cayó ninguno de los dos procesos y después de correrlo un rato con valgrind no ví leaks
