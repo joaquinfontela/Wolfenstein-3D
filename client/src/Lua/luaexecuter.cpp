@@ -31,6 +31,82 @@ void CommandExecuter::removeSpriteWithId(uint32_t itemId) {
   this->lock.unlock();
 }
 
+void CommandExecuter::disconnectPlayer() {
+  uint32_t id;
+  this->socket.receive(&id, sizeof(id));
+  if (id == this->selfId) return;
+  this->lock.lock();
+  gameState.clearVisibleItems();
+  Player* toKill = players[id];
+  players.erase(id);
+  std::vector<Drawable*>::iterator it = this->sprites.begin();
+  for (; it != this->sprites.end(); ++it) {
+    if (*it == toKill) {
+      this->sprites.erase(it);
+      break;
+    }
+  }
+  std::cout << "[GAME] Killing player with id: " << id << std::endl;
+  delete toKill;
+  this->lock.unlock();
+}
+
+void CommandExecuter::openDoor() {
+  uint32_t x, y;
+  this->socket.receive(&x, sizeof(x));
+  this->socket.receive(&y, sizeof(y));
+  std::cout << "[GAME] Switching door state at: " << x << ", " << y
+            << std::endl;
+  matrix.switchDoorState(x, y);
+}
+
+void CommandExecuter::pickUpItem() {
+  uint32_t itemId;
+  this->socket.receive(&itemId, sizeof(itemId));
+  std::cout << "[GAME] Picking up item with id: " << itemId
+            << ", there are: " << sprites.size() << " items left."
+            << std::endl;
+  this->removeSpriteWithId(itemId);
+}
+
+void CommandExecuter::dropItem(SocketWrapper& infogetter) {
+  uint32_t yamlId, uniqueId;
+  double x, y;
+  x = infogetter.receiveDouble();
+  y = infogetter.receiveDouble();
+  this->socket.receive(&yamlId, sizeof(yamlId));
+  this->socket.receive(&uniqueId, sizeof(uniqueId));
+  std::cout << "[GAME] Droping item with id: " << uniqueId
+            << ", there are: " << sprites.size() << " items left."
+            << std::endl;
+  this->loadNewTexture(x, y, yamlId, uniqueId);
+}
+
+void CommandExecuter::switchElementPosition(SocketWrapper& infogetter) {
+  uint32_t uniqueId;
+  this->socket.receive(&uniqueId, sizeof(uniqueId));
+  double x = infogetter.receiveDouble();
+  double y = infogetter.receiveDouble();
+}
+
+void CommandExecuter::updateOrCreatePlayer(SocketWrapper& infogetter) {
+  PlayerData playerinfo;
+  memset(&playerinfo, 0, sizeof(PlayerData));
+  infogetter.receivePlayerData(playerinfo);
+  uint32_t id = playerinfo.playerID;
+  if (players.find(id) != players.end()) {
+    players[id]->update(playerinfo);
+  } else {
+    Player* placeholder = new Player(playerinfo);
+    if (!placeholder) {
+      LOG(COULD_NOT_CREATE_PLAYER);
+      return;
+    }
+    players[id] = placeholder;
+    this->sprites.push_back(placeholder);
+  }
+}
+
 void CommandExecuter::run() {
   SocketWrapper infogetter(this->socket);
   while (alive) {
@@ -38,73 +114,23 @@ void CommandExecuter::run() {
       uint32_t opcode;
       socket.receive(&opcode, sizeof(opcode));
       if (opcode == PLAYER_UPDATE_PACKAGE) {  // Cambiar por switch
-        PlayerData playerinfo;
-        memset(&playerinfo, 0, sizeof(PlayerData));
-        infogetter.receivePlayerData(playerinfo);
-        uint32_t id = playerinfo.playerID;
-
-        if (players.find(id) != players.end()) {
-          players[id]->update(playerinfo);
-        } else {
-          std::cout << "[GAME] Adding player with id: " << id << std::endl;
-          Player* placeholder = new Player(playerinfo);
-          players[id] = placeholder;
-          sprites.push_back(placeholder);
-        }
+        this->updateOrCreatePlayer(infogetter);
       } else if (opcode == PLAYER_DISCONNECT) {
-        uint32_t id;
-        this->socket.receive(&id, sizeof(id));
-        if (id == this->selfId) continue;
-        this->lock.lock();
-        gameState.clearVisibleItems();
-        Player* toKill = players[id];
-        players.erase(id);
-        std::vector<Drawable*>::iterator it = this->sprites.begin();
-        for (; it != this->sprites.end(); ++it) {
-          if (*it == toKill) {
-            this->sprites.erase(it);
-            break;
-          }
-        }
-        std::cout << "[GAME] Killing player with id: " << id << std::endl;
-        delete toKill;
-        this->lock.unlock();
+        this->disconnectPlayer();
       } else if (opcode == SHOTS_FIRED) {
         uint32_t shooterId;
         this->socket.receive(&shooterId, sizeof(shooterId));
       } else if (opcode == OPEN_DOOR) {
-        uint32_t x, y;
-        this->socket.receive(&x, sizeof(x));
-        this->socket.receive(&y, sizeof(y));
-        std::cout << "[GAME] Switching door state at: " << x << ", " << y
-                  << std::endl;
-        matrix.switchDoorState(x, y);
+        this->openDoor();
       } else if (opcode == PLAYER_PICKUP_ITEM) {
-        uint32_t itemId;
-        this->socket.receive(&itemId, sizeof(itemId));
-        std::cout << "[GAME] Picking up item with id: " << itemId
-                  << ", there are: " << sprites.size() << " items left."
-                  << std::endl;
-        this->removeSpriteWithId(itemId);
+        this->pickUpItem();
       } else if (opcode == PLAYER_DIED) {
         uint32_t playerId;
         this->socket.receive(&playerId, sizeof(playerId));
       } else if (opcode == PLAYER_DROP_ITEM) {
-        uint32_t yamlId, uniqueId;
-        double x, y;
-        x = infogetter.receiveDouble();
-        y = infogetter.receiveDouble();
-        this->socket.receive(&yamlId, sizeof(yamlId));
-        this->socket.receive(&uniqueId, sizeof(uniqueId));
-        std::cout << "[GAME] Droping item with id: " << uniqueId
-                  << ", there are: " << sprites.size() << " items left."
-                  << std::endl;
-        this->loadNewTexture(x, y, yamlId, uniqueId);
+        this->dropItem(infogetter);
       } else if (opcode == ELEMENT_SWITCH_POSITION) {
-        uint32_t uniqueId;
-        this->socket.receive(&uniqueId, sizeof(uniqueId));
-        double x = infogetter.receiveDouble();
-        double y = infogetter.receiveDouble();
+        this->switchElementPosition(infogetter);
       } else if (opcode == MISSILE_EXPLOTION) {
         uint32_t uniqueId;
         this->socket.receive(&uniqueId, sizeof(uniqueId));
