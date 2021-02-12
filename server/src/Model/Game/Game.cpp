@@ -14,7 +14,7 @@
 #include "../../../includes/Control/Notification/EndMatchNotif.h"
 #include "../../../includes/Control/Notification/PlayerDropItem.h"
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
-#include "../../../includes/Control/Notification/ScoreBoard.h"
+
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Control/UpdatableEvent/EndMatch.h"
 #include "../../../includes/Control/UpdatableEvent/RocketMissile.h"
@@ -185,14 +185,8 @@ void Game::start(int playerID) {
 
 bool Game::hasStarted() { return started; }
 
-void Game::end(WaitingQueue<Notification*>& queue) {
-  started = false;
-  std::map<int, Player*>::iterator it = this->players.begin();
+ScoreBoard* Game::generateScoreboard(std::vector<Player*>& playersvect){
 
-  std::vector<Player*> playersvect;
-  for (; it != this->players.end(); ++it) {
-    playersvect.push_back(it->second);
-  }
   std::sort(playersvect.begin(), playersvect.end(),
             [](Player* a, Player* b) -> bool {
               return a->getScore() >= b->getScore();
@@ -205,23 +199,30 @@ void Game::end(WaitingQueue<Notification*>& queue) {
     ids.push_back(p->ID());
   }
 
-  ScoreBoard* scoreboard = new ScoreBoard(this->players.size(), ids, scores);
+  return new ScoreBoard(playersvect.size(), ids, scores);
+}
 
+ScoreBoard* Game::generateKillScoreboard(std::vector<Player*>& playersvect){
   std::sort(playersvect.begin(), playersvect.end(),
             [](Player* a, Player* b) -> bool {
               return a->getKills() >= b->getKills();
             });
 
   std::vector<uint32_t> kills;
-  ids.clear();
+  std::vector<uint32_t> ids;
   for (auto p : playersvect) {
     kills.push_back(p->getKills());
     ids.push_back(p->ID());
   }
 
-  ScoreBoard* killScoreboard = new ScoreBoard(playersvect.size(), ids, kills);
+  return new ScoreBoard(playersvect.size(), ids, kills);
+}
 
+// Averiguar si se puede pasar a un solo metodo que reciba un lambda con el sorting requerido.
+ScoreBoard* Game::generateShotsFiredScoreBoard(std::vector<Player*>& playersvect){
   std::vector<uint32_t> shotsFired;
+  std::vector<uint32_t> ids;
+
   std::sort(playersvect.begin(), playersvect.end(),
             [](Player* a, Player* b) -> bool {
               return a->getShotsFired() >= b->getShotsFired();
@@ -231,8 +232,19 @@ void Game::end(WaitingQueue<Notification*>& queue) {
     ids.push_back(p->ID());
   }
 
-  ScoreBoard* shotsFiredScoreboard = new ScoreBoard(playersvect.size(), ids, shotsFired);
-  EndMatchNotif* endmatch = new EndMatchNotif(scoreboard, killScoreboard, shotsFiredScoreboard);
+  return new ScoreBoard(playersvect.size(), ids, shotsFired);
+}
+
+void Game::end(WaitingQueue<Notification*>& queue) {
+  started = false;
+  std::map<int, Player*>::iterator it = this->players.begin();
+
+  std::vector<Player*> playersvect;
+  for (; it != this->players.end(); ++it) {
+    playersvect.push_back(it->second);
+  }
+
+  EndMatchNotif* endmatch = new EndMatchNotif(generateScoreboard(playersvect), generateKillScoreboard(playersvect), generateShotsFiredScoreBoard(playersvect));
   queue.push(endmatch);
 }
 

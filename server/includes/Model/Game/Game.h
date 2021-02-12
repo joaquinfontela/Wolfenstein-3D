@@ -9,6 +9,7 @@
 #include "../../../../common/includes/Queue/WaitingQueue.h"
 #include "../../../../common/includes/YAML/YAMLConfigReader.h"
 #include "../../Control/Notification/Notification.h"
+#include "../../Control/Notification/ScoreBoard.h"
 #include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Map/Map.h"
 #include "../Map/MapLoader.h"
@@ -164,6 +165,10 @@ class Game {
 	* @param Player ID of the intended player.
   */
   void start(int playerID);
+
+  ScoreBoard* generateKillScoreboard(std::vector<Player*>& players);
+  ScoreBoard* generateScoreboard(std::vector<Player*>& players);
+  ScoreBoard* generateShotsFiredScoreBoard(std::vector<Player*>& players);
 
   /**
 	* <Ends the game, generating specific leaderboards of the events that happened>

@@ -81,6 +81,7 @@ set(SOURCE_FILES_SERVER
         server/src/Match/Match.cpp
         server/src/Match/Engine.cpp
         server/src/Model/Player/Player.cpp
+        server/src/Model/Player/WeaponInventory.cpp
         server/src/Model/Game/Game.cpp
         server/src/Model/Position/Position.cpp
 

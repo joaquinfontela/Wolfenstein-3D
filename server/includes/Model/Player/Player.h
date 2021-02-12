@@ -8,7 +8,7 @@
 #include "../../Control/Notification/Notification.h"
 #include "../../Control/UpdatableEvent/Updatable.h"
 #include "../Item/Weapon/Weapon.h"
-#include "../Item/Weapon/WeaponFactory.h"
+#include "WeaponInventory.h"
 #include "../Map/Map.h"
 
 
@@ -24,6 +24,7 @@ class Player {
  private:
   PlayerConfig config;
   Position* position;
+  WeaponInventory inventory;
 
   int score;
   int kills;
@@ -35,10 +36,8 @@ class Player {
   bool hasToBeNotified;
 
   unsigned int playerID;
-  unsigned int health, lifeRemaining, ammo;
-  Weapon* currentWeapon;
-  std::vector<Weapon*> weapons;
-  WeaponFactory weaponFactory;
+  unsigned int health, lifeRemaining;
+
   Map& map;
 
   /*
@@ -147,7 +146,7 @@ class Player {
    *
    * @return Damage the player would inflict if the bullet hits.
    */
-  int attack(float timeElapsed);
+  int attack(float timeElapsed, WaitingQueue<Notification*>& noti);
 
   /*
    * @brief [SERVER-SIDE] Shoots, if possible, current weapon and applies damage
@@ -185,14 +184,6 @@ class Player {
    * @param The rotation speed to add to the player
    */
   void updateRotationSpeed(double rotSpeed);
-
-  /*
-   * @brief [SERVER-SIDE] Moves the player to the specfied coordinate (x, y)
-   *
-   * @param X Coordinate
-   * @param Y Coordinate
-   */
-  void moveTo(double x, double y);
 
   /*
    * @brief [SERVER-SIDE] Return the range the current weapon of the player has.
