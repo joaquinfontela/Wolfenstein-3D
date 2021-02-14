@@ -163,8 +163,9 @@ class Game {
 	* <Starts the game, if possible. Only the first player to connect is given admin rights>
 	*
 	* @param Player ID of the intended player.
+  * @param Notification Queue to notify of changes.
   */
-  void start(int playerID);
+  void start(int playerID, WaitingQueue<Notification*>& notif);
 
   ScoreBoard* generateKillScoreboard(std::vector<Player*>& players);
   ScoreBoard* generateScoreboard(std::vector<Player*>& players);

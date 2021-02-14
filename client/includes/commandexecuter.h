@@ -12,6 +12,7 @@
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "ClientMapLoader.h"
 #include "audiomanager.h"
+#include "startingscreen.h"
 #include "commandmanager.h"
 #include "drawablevector.h"
 #include "player.h"
@@ -40,7 +41,8 @@ class CommandExecuter : public CommandManager {
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive,
                   DrawableVector& sprites, std::map<uint32_t, Player*>& players,
                   int selfId, AudioManager& audiomanager, Map& matrix,
-                  ClientMapLoader& loader, ScoreBoard* scoreboard);
+                  ClientMapLoader& loader, ScoreBoard* scoreboard,
+                  StartingScreen& startingscreen);
 
   ~CommandExecuter();
 
@@ -200,6 +202,7 @@ class CommandExecuter : public CommandManager {
   void playDoorOpeningSound(int x, int y);
 
   SocketWrapper infogetter;
+  StartingScreen& startingscreen;
   DrawableVector& sprites;
   std::map<uint32_t, Player*>& players;
   int selfId;

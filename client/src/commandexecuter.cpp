@@ -23,7 +23,8 @@ CommandExecuter::CommandExecuter(SocketCommunication& s,
                                  std::map<uint32_t, Player*>& players,
                                  int selfId, AudioManager& audiomanager,
                                  Map& matrix, ClientMapLoader& loader,
-                                 ScoreBoard* scoreboard)
+                                 ScoreBoard* scoreboard,
+                                 StartingScreen& startingscreen)
     : CommandManager(scoreboard, s, alive),
       sprites(sprites),
       players(players),
@@ -31,7 +32,8 @@ CommandExecuter::CommandExecuter(SocketCommunication& s,
       audiomanager(audiomanager),
       matrix(matrix),
       loader(loader),
-      infogetter(s) {}
+      infogetter(s),
+      startingscreen(startingscreen) {}
 
 void CommandExecuter::loadNewTexture(double x, double y, uint32_t yamlId,
                                      uint32_t uniqueId) {
@@ -202,6 +204,8 @@ void CommandExecuter::run() {
         this->updateOrCreatePlayer();
       } else if (opcode == PLAYER_DISCONNECT) {
         this->disconnectPlayer();
+      } else if (opcode == STARTING_MATCH) {
+        this->startingscreen.stopDrawing();
       } else if (opcode == SHOTS_FIRED) {
         this->shotsFired();
       } else if (opcode == OPEN_DOOR) {

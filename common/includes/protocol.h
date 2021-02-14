@@ -23,17 +23,7 @@
 #define START_MATCH 19
 #define ENDING_MATCH 20
 #define CREATE_LOBBY 21
-
-/*// PowerUp ID definitions
-#define FOOD 30
-#define MEDIKIT 31
-#define BLOOD 32
-#define BULLETS 33
-#define CHEST 34
-#define CROSS 35
-#define CROWN 36
-#define CUP 37
-#define KEY 38*/
+#define STARTING_MATCH 22
 
 #define KEY_A_DOWN 100
 #define KEY_D_DOWN 200

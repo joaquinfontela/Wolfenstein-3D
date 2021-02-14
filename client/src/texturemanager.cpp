@@ -161,7 +161,8 @@ void TextureManager::loadTextures() {
       "highscores.png",            // 97
       "colorstone.png",            // 98
       "wall3.png",                 // 99
-      "eagle.png"                  // 100
+      "eagle.png",                 // 100
+      "waitingforhost.png"         // 101
   });
   int i = 1;
   for (std::string& name : names) {

@@ -14,6 +14,7 @@
 #include "../../../includes/Control/Notification/EndMatchNotif.h"
 #include "../../../includes/Control/Notification/PlayerDropItem.h"
 #include "../../../includes/Control/Notification/PlayerPackageUpdate.h"
+#include "../../../includes/Control/Notification/StartingMatch.h"
 
 #include "../../../includes/Control/UpdatableEvent/ChangeDoorStatus.h"
 #include "../../../includes/Control/UpdatableEvent/EndMatch.h"
@@ -171,7 +172,7 @@ void Game::updatePlayerRotationSpeed(int playerID, double rotSpeed) {
   this->players[playerID]->updateRotationSpeed(rotSpeed);
 }
 
-void Game::start(int playerID) {
+void Game::start(int playerID, WaitingQueue<Notification*>& notif) {
   std::map<int, Player*>::iterator it = this->players.find(playerID);
 
   if (it != this->players.end()) {
@@ -179,6 +180,7 @@ void Game::start(int playerID) {
       started = true;
       EndMatch* endTimer = new EndMatch(yamlConfigReader.getMatchLength());
       this->updatables.push_back(endTimer);
+      notif.push(new StartingMatch());
     }
   }
 }

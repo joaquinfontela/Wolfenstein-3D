@@ -124,6 +124,7 @@ set(SOURCE_FILES_SERVER
         server/src/Control/Notification/DoorMoving.cpp
         server/src/Control/Notification/ScoreBoard.cpp
         server/src/Control/Notification/EndMatchNotif.cpp
+        server/src/Control/Notification/StartingMatch.cpp
         server/src/Control/Notification/PlayerPickupItem.cpp
         server/src/Control/Notification/PlayerDropItem.cpp
         server/src/Control/Notification/ElementSwitchPosition.cpp

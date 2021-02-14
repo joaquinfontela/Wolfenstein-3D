@@ -4,6 +4,7 @@
 #include "../includes/drawablevector.h"
 #include "../includes/log.h"
 #include "../includes/scoreboard.h"
+#include "../includes/startingscreen.h"
 #include "../includes/configReader.h"
 
 #include <exception>
@@ -99,6 +100,7 @@ int Client::run(std::string& mapFile) {
 
   std::mutex m;
   ScoreBoard scoreboard(manager);
+  StartingScreen starting(manager);
 
   std::atomic<bool> alive;
   alive = true;
@@ -112,12 +114,12 @@ int Client::run(std::string& mapFile) {
 
   DrawableVector spriteVector(sprites, m);
 
-  Raycaster caster(manager, matrix, alive, player, spriteVector, hud);
+  Raycaster caster(manager, matrix, alive, player, spriteVector, hud, starting);
   int exitcode = 0;
   CommandSender* sender = new CommandSender(socket, alive, &scoreboard, player);
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
-                          audios, matrix, loader, &scoreboard);
+                          audios, matrix, loader, &scoreboard, starting);
 
   if (!sender) {
     throw std::runtime_error(COULD_NOT_CREATE_SENDER);

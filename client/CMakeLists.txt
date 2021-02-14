@@ -129,6 +129,7 @@ set(PROJECT_SOURCES
   src/client.cpp
   src/RaycastedAnimation.cpp
   src/HudAnimations.cpp
+  src/startingscreen.cpp
   src/area.cpp
   src/log.cpp
   src/doortimer.cpp
@@ -193,6 +194,7 @@ add_library(sdldemo
   src/audio.cpp
   src/hud.cpp
   src/door.cpp
+  src/startingscreen.cpp
   src/HudAnimations.cpp
   src/sdltexture.cpp
   src/sdlanimation.cpp
