@@ -25,7 +25,7 @@ void Engine::run() {
   std::thread notificationThread(&Engine::sendNotifications, this);
   std::thread commandThread(&Engine::executeCommands, this);
 
-  int rate = 1000 / 30;
+  int rate = 1000 / 90;
 
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
@@ -82,7 +82,7 @@ void Engine::executeCommands() {
     Command* n = nullptr;
     n = commandQueue.pop();
     if (n == nullptr) break;
-    
+
     delete n;
   }
 }
@@ -104,12 +104,12 @@ void Engine::sendNotifications() {
     delete newNotification;
   }
 
-  
+
   while(!notifications.isEmpty()){
     Notification* n = nullptr;
     n = notifications.pop();
     if (n == nullptr) break;
-    
+
     delete n;
   }
 }

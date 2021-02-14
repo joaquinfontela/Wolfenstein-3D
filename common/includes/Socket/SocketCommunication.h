@@ -29,8 +29,6 @@ class SocketCommunication {
 
   int receiveDouble(double* buffer, unsigned int bufLength);
 
-
-
   // Cierra el canal de escritura del socket.
   void writeShutdown();
 
