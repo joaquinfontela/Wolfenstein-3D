@@ -35,8 +35,8 @@ bool Position::update(Map& map, float timeElapsed, WaitingQueue<Notification*>& 
   if (moveSpeed == 0.0 && rotSpeed == 0.0) return false;
 
 
-  double newX = x + dirX * (moveSpeed * (timeElapsed));
-  double newY = y + dirY * (moveSpeed * (timeElapsed));
+  double newX = this->x + this->dirX * (this->moveSpeed * (timeElapsed));
+  double newY = this->y + this->dirY * (this->moveSpeed * (timeElapsed));
 
   double quarterStepX = (newX - x) / 4;
   double quarterStepY = (newY - y) / 4;
@@ -51,10 +51,10 @@ bool Position::update(Map& map, float timeElapsed, WaitingQueue<Notification*>& 
       break;
   }
 
-  double oldDirX = dirX;
+  double oldDirX = this->dirX;
 
-  dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-  dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+  this->dirX = this->dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+  this->dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
 
   double oldPlaneX = this->planeX;
   this->planeX = ((this->planeX) * cos(rotSpeed)) - (this->planeY * sin(rotSpeed));

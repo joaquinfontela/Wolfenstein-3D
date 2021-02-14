@@ -25,7 +25,7 @@ void Engine::run() {
   std::thread notificationThread(&Engine::sendNotifications, this);
   std::thread commandThread(&Engine::executeCommands, this);
 
-  int rate = 1000 / 90;
+  int rate = 1000 / 30;
 
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
