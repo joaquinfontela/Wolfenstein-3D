@@ -42,6 +42,8 @@ bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
     audio = new Audio((AUDIO_PATH + name).c_str(), IS_MUSIC, MUSIC_VOLUME);
   } else if (i == DOOR_SOUND) {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, 20);
+  } else if (IS_GUN_SOUND(i)) {
+    audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, 80);
   } else {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC);
   }
