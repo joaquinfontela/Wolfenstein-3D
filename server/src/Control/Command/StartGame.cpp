@@ -9,5 +9,5 @@ StartGame::StartGame(int ID) {
 
 void StartGame::execute(WaitingQueue<Notification*>& notifications, Game& game) {
   if(!game.hasStarted())
-    game.start(this->playerID);
+    game.start(this->playerID, notifications);
 }

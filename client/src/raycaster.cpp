@@ -12,7 +12,6 @@
 #include "../includes/door.h"
 #include "../includes/doortimer.h"
 #include "../includes/drawable.h"
-#include <stdio.h>
 
 bool Raycaster::hitDoor(const int& matrixXCoord, const int& matrixYCoord) {
   for (Door& d : doors) {
@@ -24,31 +23,13 @@ bool Raycaster::hitDoor(const int& matrixXCoord, const int& matrixYCoord) {
 }
 
 void Raycaster::run() {
-
-  // Init Time Stamps
-  auto start = std::chrono::system_clock::now();
-  auto end = std::chrono::system_clock::now();
+  this->startingscreen.draw();
   auto t1 = std::chrono::steady_clock::now();
   auto drawableTime1 = std::chrono::steady_clock::now();
   DoorTimer timer(this->matrix, this->alive);
   timer.start();
-
-
   int iters = 0;
-
   while (alive) {
-    start = std::chrono::system_clock::now();
-    std::chrono::duration<double, std::milli> timePerFrame = start - end;
-
-    if (timePerFrame.count() < 16.6)
-    {
-        std::chrono::duration<double, std::milli> delta(16.6 - timePerFrame.count());
-        auto deltaMs = std::chrono::duration_cast<std::chrono::milliseconds>(delta);
-        std::this_thread::sleep_for(std::chrono::milliseconds(deltaMs.count()));
-    }
-
-    end = std::chrono::system_clock::now();
-    //std::chrono::duration<double, std::milli> sleep_time = end - start;
     iters++;
     this->manager.drawBackground();
 
@@ -176,7 +157,6 @@ void Raycaster::run() {
 
     this->hud.update();
     this->manager.updateScreen();
-
   }
 
   timer.join();

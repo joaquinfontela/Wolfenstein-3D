@@ -14,6 +14,7 @@
 #include "drawablevector.h"
 #include "hud.h"
 #include "player.h"
+#include "startingscreen.h"
 #include "texturemanager.h"
 
 #define MAX_NUMBER_OF_DOORS_PER_FRAME 10
@@ -35,13 +36,15 @@ class Raycaster {
    * @param hud Reference to the hud.
    */
   Raycaster(TextureManager& manager, Map& m, std::atomic<bool>& b,
-            Player* player, DrawableVector& sprites, Hud& hud)
+            Player* player, DrawableVector& sprites, Hud& hud,
+            StartingScreen& startingscreen)
       : alive(b),
         manager(manager),
         matrix(m),
         player(player),
         sprites(sprites),
-        hud(hud) {
+        hud(hud),
+        startingscreen(startingscreen) {
     manager.getWindowSize(&this->width, &this->height);
     this->doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);
   }
@@ -66,6 +69,7 @@ class Raycaster {
  private:
   Area destArea;
   Area srcArea;
+  StartingScreen& startingscreen;
   std::atomic<bool>& alive;
   TextureManager& manager;
   Map& matrix;
