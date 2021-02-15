@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "../../../common/includes/Socket/SocketCommunication.h"
+#include "../../../common/includes/Socket/SocketException.h"
 #include "../../../common/includes/protocol.h"
 #include "string.h"
 
@@ -52,6 +53,10 @@ class Login : public QMainWindow {
   SocketCommunication& socket;
   int& player_id;
   int& map_id;
+
+  bool connectToLobby(std::string& host, std::string& port);
+  bool createLobby();
+  bool joinLobby();
 
   std::vector<int> availableMatches;
 

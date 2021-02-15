@@ -39,6 +39,58 @@ Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
 
 Login::~Login() { delete ui; }
 
+bool Login::connectToLobby(std::string& host, std::string& port){
+
+  try{
+    this->socket.connect(host, port);
+    return true;
+  }catch(SocketException& e){
+    QMessageBox messageBox;
+    messageBox.critical(0, "Error", "Server Unavailable.");
+    messageBox.setFixedSize(800, 600);
+    messageBox.exec();
+    return false;
+  }
+}
+
+bool Login::joinLobby(){
+  uint32_t protocol = JOIN_LOBBY;
+  uint32_t opcode;
+  uint32_t selfID;
+  uint32_t mapID;
+
+  // Connection Request
+  socket.send(&protocol, sizeof(protocol));
+  if(!receiveAvailableMatches()){
+      QMessageBox messageBox;
+      messageBox.critical(0, "Error", "No Matches Available.");
+      messageBox.setFixedSize(800, 600);
+      messageBox.exec();
+      std::cout<<"[LOGIN] No matches available..."<<std::endl;
+      return false;
+  }
+
+  join_window jw(this, this->availableMatches);
+  jw.setModal(true);
+  jw.exec();
+
+  uint32_t lobbyID = jw.get_match_id();
+
+  socket.send(&lobbyID, sizeof(lobbyID));
+  socket.receive(&opcode, sizeof(opcode));
+  if (opcode != CONNECTED_OK) {
+    return false;
+  }
+
+  socket.receive(&selfID, sizeof(selfID));
+  socket.receive(&mapID, sizeof(mapID));
+
+  this->player_id = selfID;
+  this->map_id = mapID;
+
+  return true;
+}
+
 void Login::on_button_join_clicked() {
   QString ip = ui->dato_ip->text();
   QString port = ui->dato_puerto->text();
@@ -59,47 +111,48 @@ void Login::on_button_join_clicked() {
 
     // PARTE DE CONECTARSE A UNA PARTIDA
 
-    this->socket.connect(my_ip, my_host);
-
-    uint32_t protocol = JOIN_LOBBY;
-    uint32_t opcode;
-    uint32_t selfID;
-    uint32_t mapID;
-
-    // Connection Request
-    socket.send(&protocol, sizeof(protocol));
-
-    if(!receiveAvailableMatches()){ // recibo las partidas disponibles
-        std::cout<<"[LOGIN] No matches available..."<<std::endl;
-        this->player_id = -1;
-        QApplication::quit();
-        return;
-    }  
-
-    join_window jw(this, this->availableMatches);
-    jw.setModal(true);
-    jw.exec();
-
-    uint32_t lobbyID = jw.get_match_id();
-
-    socket.send(&lobbyID, sizeof(lobbyID));
-    // Connection Response
-    socket.receive(&opcode, sizeof(opcode));
-
-    if (opcode != CONNECTED_OK) {
+    if(!connectToLobby(my_ip, my_host)){
       this->player_id = -1;
       QApplication::quit();
       return;
     }
 
-    socket.receive(&selfID, sizeof(selfID));
-    socket.receive(&mapID, sizeof(mapID));
-
-    this->player_id = selfID;
-    this->map_id = mapID;
+    if(!joinLobby()){
+      std::cout<<"[LOGIN] Failure to join lobby"<<std::endl;
+      this->player_id = -1;
+    }
 
     QApplication::quit();
   }
+}
+
+bool Login::createLobby(){
+
+  uint32_t protocol = CREATE_LOBBY;
+  uint32_t opcode;
+  uint32_t selfID;
+  uint32_t map_ID;
+
+  socket.send(&protocol, sizeof(protocol));
+
+  create_window cw(this);
+  cw.setModal(true);
+  cw.exec();
+  map_ID = cw.get_map_id();
+
+  socket.send(&map_ID, sizeof(map_ID));
+  socket.receive(&opcode, sizeof(opcode));
+
+  if (opcode != CONNECTED_OK) {
+    return false;
+  }
+
+  socket.receive(&selfID, sizeof(selfID));
+  this->player_id = selfID;
+  this->map_id = map_ID;
+
+  return true;
+
 }
 
 void Login::on_button_create_clicked() {
@@ -120,38 +173,16 @@ void Login::on_button_create_clicked() {
     my_ip = parseSpaces(ip.toStdString());
     my_host = parseSpaces(port.toStdString());
 
-    // PARTE DE CONECTARSE A UNA PARTIDA
-
-    this->socket.connect(my_ip, my_host);
-
-    uint32_t protocol = CREATE_LOBBY;
-    uint32_t opcode;
-    uint32_t selfID;
-    uint32_t map_ID;
-
-    // Connection Request
-    socket.send(&protocol, sizeof(protocol));
-
-    create_window cw(this);
-    cw.setModal(true);
-    cw.exec();
-
-    map_ID = cw.get_map_id();
-
-    socket.send(&map_ID, sizeof(map_ID));
-    // Connection Response
-    socket.receive(&opcode, sizeof(opcode));
-
-    if (opcode != CONNECTED_OK) {
+    if(!connectToLobby(my_ip, my_host)){
       this->player_id = -1;
       QApplication::quit();
       return;
     }
 
-    socket.receive(&selfID, sizeof(selfID));
-
-    this->player_id = selfID;
-    this->map_id = map_ID;
+    if(!createLobby()){
+      std::cout<<"[LOGIN] Failure creating lobby"<<std::endl;
+      this->player_id = -1;
+    }
 
     QApplication::quit();
   }

@@ -16,7 +16,7 @@ int Game::start(){
   Hud hud(players.getSelf(), manager, audios);
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
-  DrawableVector spriteVector(sprites, m);
+  DrawableVector spriteVector(sprites);
   Map matrix(loader);
 
   Raycaster caster(manager, matrix, alive, players.getSelf(), spriteVector, hud, starting);

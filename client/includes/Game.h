@@ -29,7 +29,6 @@ private:
   uint32_t myPlayerID;
   SocketCommunication& socket;
   AudioManager audios;
-  std::mutex m;
   TextureManager manager;
   ScoreBoard scoreboard;
   StartingScreen starting;

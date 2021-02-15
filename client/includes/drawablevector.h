@@ -13,7 +13,7 @@
  */
 class DrawableVector {
  private:
-  std::mutex& lock;
+  std::mutex lock;
   std::vector<Drawable*>& sprites;
 
   /**
@@ -30,8 +30,8 @@ class DrawableVector {
    * @param sprites Sprite vector.
    * @param lock Mutex.
    */
-  DrawableVector(std::vector<Drawable*>& sprites, std::mutex& lock)
-      : sprites(sprites), lock(lock) {}
+  DrawableVector(std::vector<Drawable*>& sprites)
+      : sprites(sprites) {}
 
   /**
    * @brief Raycasts the sprites from the information given.
