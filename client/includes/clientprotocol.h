@@ -18,6 +18,8 @@
 #define TIMES_THE_AUDIO_IS_PLAYED 1
 #define IS_MUSIC true
 #define MUSIC_VOLUME 7
+#define DOOR_VOLUME 20
+#define SHOOTING_VOLUME 7
 
 #define GET_WEAPON_SOUND(X) X
 
