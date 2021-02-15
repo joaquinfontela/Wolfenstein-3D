@@ -137,6 +137,7 @@ set(PROJECT_SOURCES
   src/doortile.cpp
   src/audio.cpp
   src/hud.cpp
+  src/fileloader.cpp
   src/door.cpp
   src/sdltexture.cpp
   src/sdlanimation.cpp
@@ -205,6 +206,7 @@ add_library(sdldemo
   src/raycaster.cpp
   src/drawable.cpp
   src/audiomanager.cpp
+  src/fileloader.cpp
   src/texturemanager.cpp
   src/playermap.cpp
   src/commandsender.cpp

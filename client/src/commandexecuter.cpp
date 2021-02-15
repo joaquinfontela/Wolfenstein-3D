@@ -191,7 +191,7 @@ void CommandExecuter::explodeMissile() {
 }
 
 void CommandExecuter::run() {
-  //this->audiomanager.playWithId(MUSIC);
+  this->audiomanager.playWithId(MUSIC);
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;

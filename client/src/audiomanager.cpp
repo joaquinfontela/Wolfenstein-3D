@@ -2,16 +2,15 @@
 
 #include <iostream>
 #include <string>
-#include <fstream>
 #include <vector>
 
 #include "../includes/clientprotocol.h"
 #include "../includes/sdlexception.h"
+#include "../includes/fileloader.h"
 
 #define TRACK_INIT_ERROR "Error, track already found: "
 #define TRACK_FOUND_ERROR "Error, track found with code: "
 #define TRACK_NOT_FOUND_ERROR "Error, track not found with code: "
-#define AUDIO_PATH "../audio/"
 
 void AudioManager::playOnVariableVolumeWithId(int id, double dist) {
   std::map<int, Audio*>::iterator it = this->audiotracks.find(id);
@@ -56,24 +55,8 @@ bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
 }
 
 AudioManager::AudioManager() {
-  std::vector<std::string> names({
-      "Knife.wav",            // 1
-      "Pistol.wav",           // 2
-      "Machine Gun.wav",      // 3
-      "Gatling Gun.wav",      // 4
-      "Rocket Launcher.wav",  // 5
-      "Rocket Explode.wav",   // 6
-      "Door.wav",             // 7
-      "ItemPickup.wav",       // 8
-      "HealthPickup.wav",     // 9
-      "Dog Death.wav",        // 10
-      "Death 1.wav",          // 11
-      "Death 2.wav",          // 12
-      "Player Pain 2.wav",    // 13
-      "Enemy Pain.wav",       // 14
-      "music.mp3",            // 15
-      "Secret Entrance.wav"   // 16
-  });
+  std::vector<std::string> names;
+  FileLoader::loadFromFile(names, AUDIO_PATH "audiolist.txt");
   int i = 1;
   for (std::string& name : names) {
     if (!this->loadAndCheckTrack(i, name)) {
