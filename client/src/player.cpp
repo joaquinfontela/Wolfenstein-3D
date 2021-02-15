@@ -50,17 +50,22 @@ Player::Player(PlayerData& info) {
   this->bullets = info.bullets;
   this->score = info.score;
   this->key = info.hasKey;
-  this->shooting = false;
-  this->moving = false;
   this->hasTheKey = false;
   this->healthdown = false;
-  this->timePassed = 0;
   this->totalFrames = TIME_PER_ANIMATION_SLIDE * 5;
-  this->frames = 0;
   this->framesPerAnimation = 1;
+  this->hasToBeDeleted = false;
+  this->restartAnimationStats();
+}
+
+void Player::restartAnimationStats() {
+  this->minigunShooting = false;
   this->animatingShooting = false;
   this->animatingMovement = false;
-  this->hasToBeDeleted = false;
+  this->shooting = false;
+  this->moving = false;
+  this->timePassed = 0;
+  this->frames = 0;
 }
 
 void Player::update(PlayerData& info) {
@@ -103,16 +108,6 @@ int Player::getSoldierId() {
     this->frames = 0;
     return GET_STANDING_IMG_FROM_GUNID(this->weaponId);
   }
-}
-
-void Player::restartAnimationStats() {
-  this->minigunShooting = false;
-  this->animatingShooting = false;
-  this->animatingMovement = false;
-  this->shooting = false;
-  this->moving = false;
-  this->timePassed = 0;
-  this->frames = 0;
 }
 
 void Player::draw(TextureManager& manager, double posX, double posY,

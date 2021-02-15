@@ -60,6 +60,10 @@ SdlWindow* TextureManager::accessWindow() { return this->window; }
 
 TextureManager::~TextureManager() { this->garbageCollector(); }
 
+TextureManager::TextureManager(SdlWindow* window) : window(window) {
+  this->loadTextures();
+}
+
 void TextureManager::loadTextures() {
   std::vector<std::string> names({
       "wall.png",                  // 1

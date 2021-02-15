@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <vector>
 
 #include "../includes/clientprotocol.h"

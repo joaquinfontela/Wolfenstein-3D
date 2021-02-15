@@ -89,24 +89,16 @@ int Client::run(std::string& mapFile) {
 
   ClientMapLoader loader(mapFile);
   Map matrix(loader);
-
   TextureManager manager(window);
-  manager.loadTextures();
   AudioManager audios;
-
   std::mutex m;
   ScoreBoard scoreboard(manager);
   StartingScreen starting(manager);
-
-  std::atomic<bool> alive;
-  alive = true;
-
+  std::atomic<bool> alive; alive = true;
   PlayerMap players(this->myPlayerID);
   Hud hud(players.getSelf(), manager, audios);
-
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
-
   DrawableVector spriteVector(sprites, m);
 
   Raycaster caster(manager, matrix, alive, players.getSelf(), spriteVector, hud, starting);

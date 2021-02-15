@@ -27,7 +27,7 @@ class TextureManager {
    *
    * @param window Reference to the window.
    */
-  TextureManager(SdlWindow* window) : window(window) {}
+  TextureManager(SdlWindow* window);
 
   /**
    * @brief Calls the window render function. Updates the screen and draws over it.
@@ -40,12 +40,6 @@ class TextureManager {
    *
    */
   void drawBackground();
-
-  /**
-   * @brief Loads all the textures needed for the game to be played.
-   *
-   */
-  void loadTextures();
 
   /**
    * @brief Renders the texture, from the given id, to the screen. Throws an
@@ -105,6 +99,12 @@ class TextureManager {
 
  private:
   SdlWindow* window;
+
+  /**
+   * @brief Loads all the textures needed for the game to be played.
+   *
+   */
+  void loadTextures();
 
   /**
    * @brief Deletes all the textures created on init.
