@@ -76,6 +76,9 @@ class Drawable {
                    int width, int height);
 
   void loadDistanceWithCoords(int px, int py);
+  void getPreCalculatedValues(int& preCalcdValue1, int& preCalcdValue2,
+                              int& preCalcdValue3, bool& tooFar, int spriteScreen,
+                              int spriteHeight, int spriteWidth, int height);
   virtual bool hasThisUniqueId(int otherid);
   virtual bool isSprite();
   virtual bool isPlayer();

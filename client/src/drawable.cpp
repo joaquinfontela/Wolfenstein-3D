@@ -69,23 +69,31 @@ bool Drawable::isContained(double* distanceBuffer, double posX, double posY,
   return false;
 }
 
+void Drawable::getPreCalculatedValues(int& preCalcdValue1, int& preCalcdValue2,
+                            int& preCalcdValue3, bool& tooFar, int spriteScreen,
+                            int spriteHeight, int spriteWidth, int height) {
+  preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
+  preCalcdValue2 = (height - spriteHeight) >> 1;
+  tooFar = (spriteHeight < BLOCKSIZE);
+  preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
+}
+
 void Drawable::draw(TextureManager& manager, double posX, double posY,
                     double dirX, double dirY, double planeX, double planeY,
                     double* distanceBuffer, float diff) {
+
   int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width,
-      height;
+  height, preCalcdValue1, preCalcdValue2, preCalcdValue3;
   double transformY;
+  bool tooFar;
+
   manager.getWindowSize(&width, &height);
 
   this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart,
                              drawEnd, transformY, posX, posY, planeX, planeY,
                              dirX, dirY, width, height);
-
-  int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
-  int preCalcdValue2 = (height - spriteHeight) >> 1;
-  bool tooFar = (spriteHeight < BLOCKSIZE);
-  int preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
-  int preCalcdValue4 = spriteHeight;
+  this->getPreCalculatedValues(preCalcdValue1, preCalcdValue2, preCalcdValue3,
+                               tooFar, spriteScreen, spriteHeight, spriteWidth, height);
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
@@ -94,7 +102,7 @@ void Drawable::draw(TextureManager& manager, double posX, double posY,
 
     if (transformY > 0 && stripe > 0 && transformY < distanceBuffer[stripe]) {
       srcArea.update(drawableStripe, 0, 1, preCalcdValue3);
-      destArea.update(stripe, preCalcdValue2, 1, preCalcdValue4);
+      destArea.update(stripe, preCalcdValue2, 1, spriteHeight);
       manager.render(this->id, srcArea, destArea);
     }
   }

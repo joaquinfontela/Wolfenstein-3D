@@ -9,21 +9,20 @@ void RaycastedAnimation::draw(TextureManager& manager, double posX, double posY,
                               double dirX, double dirY, double planeX,
                               double planeY, double* distanceBuffer,
                               float diff) {
-  this->timePassed += diff;
 
+  this->timePassed += diff;
   int spriteScreen, spriteWidth, spriteHeight, drawStart, drawEnd, width,
-      height;
+      height, preCalcdValue1, preCalcdValue2, preCalcdValue3;
   double transformY;
   manager.getWindowSize(&width, &height);
+  bool tooFar;
 
   this->calculateDrawingData(spriteScreen, spriteWidth, spriteHeight, drawStart,
                              drawEnd, transformY, posX, posY, planeX, planeY,
                              dirX, dirY, width, height);
 
-  int preCalcdValue1 = (spriteScreen - (spriteWidth >> 1));
-  int preCalcdValue2 = (height - spriteHeight) >> 1;
-  bool tooFar = (spriteHeight < BLOCKSIZE);
-  int preCalcdValue3 = BLOCKSIZE * tooFar + spriteHeight * !tooFar;
+  this->getPreCalculatedValues(preCalcdValue1, preCalcdValue2, preCalcdValue3,
+                             tooFar, spriteScreen, spriteHeight, spriteWidth, height);
 
   drawEnd = (drawEnd < width) ? drawEnd : width;
   for (int stripe = drawStart; stripe < drawEnd; stripe++) {
