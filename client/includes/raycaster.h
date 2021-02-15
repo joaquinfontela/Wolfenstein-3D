@@ -78,6 +78,39 @@ class Raycaster {
   Hud& hud;
   int width, height;
   std::vector<Door> doors;
+  double dirX, dirY, x, y, planeX, planeY;
+
+  /**
+   * @brief Sleeps the engine thread to cap the fps on 60.
+   *
+   */
+  void sleep(float diff);
+
+  /**
+   * @brief Takes coordinate-like information from the player.
+   *
+   */
+  void getPlayerData();
+
+  /**
+   * @brief Raycasts the game walls and objects iterating through every pixel column.
+   *
+   */
+  void rayCastGame(double* distanceBuffer);
+
+  /**
+   * @brief Permorms the DDA algorithm with the given data, to calculate wall and door hits.
+   *
+   */
+  void DDA(int& side, int& texNum, int& i, int& dx, int& dy, int& matrixXCoord,
+          int& matrixYCoord, double& sideDistX, double& sideDistY,
+          double& deltaDistanceX, double& deltaDistanceY, double& cameraXCoord);
+
+  /**
+   * @brief Draws doors and pops them out of their vector.
+   *
+   */
+  void drawDoors(double* distanceBuffer);
 };
 
 #endif  // RAYCASTER_H_

@@ -2,6 +2,15 @@
 
 namespace Lua {
 
+  void Raycaster::getPlayerData() {
+    this->dirX = this->player->dirX;
+    this->dirY = this->player->dirY;
+    this->x = this->player->x;
+    this->y = this->player->y;
+    this->planeX = this->player->planeX;
+    this->planeY = this->player->planeY;
+  }
+
   void Raycaster::run() {
 
     int iters = 0;
@@ -10,14 +19,7 @@ namespace Lua {
 
       iters++;
 
-      double dirX = this->player->dirX;
-      double dirY = this->player->dirY;
-      double x = this->player->x;
-      double y = this->player->y;
-      double planeX = this->player->planeX;
-      double planeY = this->player->planeY;
-
-
+      this->getPlayerData();
 
       //int adjustment = this->width * 3 / 200;
       for(int i = 0; i < this->width; i++) {

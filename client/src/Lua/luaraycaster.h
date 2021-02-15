@@ -41,6 +41,8 @@ class Raycaster {
   Player* player;
   std::vector<Drawable*>& sprites;
   std::mutex& lock;
+  double dirX, dirY, x, y, planeX, planeY;
+  void getPlayerData();
 };
 
 }  // namespace Lua
