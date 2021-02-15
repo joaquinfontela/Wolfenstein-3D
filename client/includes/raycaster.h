@@ -110,7 +110,15 @@ class Raycaster {
    * @brief Draws doors and pops them out of their vector.
    *
    */
-  void drawDoors(double* distanceBuffer);
+   void drawDoors(double* distanceBuffer);
+
+   /**
+    * @brief Draws walls from the DDA generated data.
+    *
+    */
+   void drawWalls(int& side, int& texNum, int& i, int& dx, int& dy,
+                double* distanceBuffer, int& matrixXCoord, int& matrixYCoord,
+                double rayDirX, double rayDirY);
 };
 
 #endif  // RAYCASTER_H_

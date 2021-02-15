@@ -84,6 +84,31 @@ void Raycaster::drawDoors(double* distanceBuffer) {
   }
 }
 
+void Raycaster::drawWalls(int& side, int& texNum, int& i, int& dx, int& dy,
+             double* distanceBuffer, int& matrixXCoord, int& matrixYCoord,
+             double rayDirX, double rayDirY) {
+  bool isSide = (side == 0);
+  double perpendicularWallDistance =
+      (isSide * (matrixXCoord - x + ((1 - dx) >> 1)) / (rayDirX)) +
+      (!isSide * (matrixYCoord - y + ((1 - dy) >> 1)) / (rayDirY));
+
+  int wallHeight = int(this->height / perpendicularWallDistance);
+
+  double wallX = (isSide * (y + perpendicularWallDistance * rayDirY)) +
+                 (!isSide * (x + perpendicularWallDistance * rayDirX));
+  wallX -= floor((wallX));
+
+  int stripe = int(wallX * double(BLOCKSIZE));
+  bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
+  stripe = (BLOCKSIZE - stripe - 1) * condition + stripe * (!condition);
+
+  bool tooFar = (wallHeight < BLOCKSIZE);
+  srcArea.update(stripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
+  destArea.update(i, (this->height - wallHeight) >> 1, 1, wallHeight);
+  this->manager.render(texNum, srcArea, destArea);
+  distanceBuffer[i] = perpendicularWallDistance;
+}
+
 void Raycaster::rayCastGame(double* distanceBuffer) {
   for (int i = 0; i < this->width; i++) {
     double cameraXCoord = (i << 1) / (double)this->width - 1;
@@ -112,28 +137,8 @@ void Raycaster::rayCastGame(double* distanceBuffer) {
 
     this->DDA(side, texNum, i, dx, dy, matrixXCoord, matrixYCoord, sideDistX,
               sideDistY, deltaDistanceX, deltaDistanceY, cameraXCoord);
-
-    bool isSide = (side == 0);
-    double perpendicularWallDistance =
-        (isSide * (matrixXCoord - x + ((1 - dx) >> 1)) / (rayDirX)) +
-        (!isSide * (matrixYCoord - y + ((1 - dy) >> 1)) / (rayDirY));
-
-    int wallHeight = int(this->height / perpendicularWallDistance);
-
-    double wallX = (isSide * (y + perpendicularWallDistance * rayDirY)) +
-                   (!isSide * (x + perpendicularWallDistance * rayDirX));
-    wallX -= floor((wallX));
-
-    int stripe = int(wallX * double(BLOCKSIZE));
-    bool condition = ((isSide && rayDirX > 0) || (!isSide && rayDirY < 0));
-    stripe = (BLOCKSIZE - stripe - 1) * condition + stripe * (!condition);
-
-    bool tooFar = (wallHeight < BLOCKSIZE);
-    srcArea.update(stripe, 0, 1, tooFar * BLOCKSIZE + !tooFar * wallHeight);
-    destArea.update(i, (this->height - wallHeight) >> 1, 1, wallHeight);
-    this->manager.render(texNum, srcArea, destArea);
-    distanceBuffer[i] = perpendicularWallDistance;
-
+    this->drawWalls(side, texNum, i, dx, dy, distanceBuffer, matrixXCoord,
+                    matrixYCoord, rayDirX, rayDirY);
     this->drawDoors(distanceBuffer);
   }
 }
