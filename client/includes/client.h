@@ -25,7 +25,7 @@
 #include "texturemanager.h"
 
 /**
- * @brief Runs and coordinates all the main classes that execute the game.
+ * @brief Connects to the server and calls the game object.
  *
  */
 class Client {
@@ -54,12 +54,8 @@ class Client {
   Client(SocketCommunication& socket, int myPlayerID);
 
   /**
-   * @brief Starts, runs and deletes all the objects involving the game. Creates
-   * and deletes the window, map (and it's loader), audio and texture managers,
-   * sprite list and raycaster engine, among others.
+   * @brief Starts the game object.
    *
-   * @param mapFile Map yaml file name.
-   * @return int -1 on error and 0 on success.
    */
   int run(std::string& mapFile);
 };

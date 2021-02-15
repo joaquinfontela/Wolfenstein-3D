@@ -24,6 +24,10 @@
 #include "sdlwindow.h"
 #include "texturemanager.h"
 
+/**
+ * @brief Runs and coordinates all the main classes that execute the game.
+ *
+ */
 class Game{
 private:
   uint32_t myPlayerID;
@@ -38,6 +42,13 @@ private:
 
 public:
   Game(SocketCommunication& socket, SdlWindow* window, uint32_t myPlayerID, std::string& mapFile);
+
+  /**
+   * @brief Starts, runs and deletes all the objects involving the game. Creates
+   * and deletes the window, map (and it's loader), audio and texture managers,
+   * sprite list and raycaster engine, among others.
+   *
+   */
   int start();
 };
 
