@@ -25,7 +25,7 @@
 #include "texturemanager.h"
 
 /**
- * @brief Connects to the server and calls the game object.
+ * @brief Creates SDL Window and instantiates Game object. Checks if received data is valid.
  *
  */
 class Client {
