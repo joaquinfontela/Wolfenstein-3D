@@ -34,14 +34,6 @@ class Client {
   uint32_t myPlayerID = -1;
   SdlWindow* window;
 
-  /**
-   * @brief Gets a player id given a lobbyid.
-   *
-   * @param lobbyID
-   * @return true if the operation is successful.
-   * @return false if there is no connection.
-   */
-  bool joinMatch(uint32_t lobbyID);
 
   /**
    * @brief Connects to the game server.

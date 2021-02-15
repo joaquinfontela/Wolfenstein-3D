@@ -155,7 +155,8 @@ void Raycaster::run() {
   while (alive) {
 
     start = std::chrono::system_clock::now();
-    this->sleep((start - end).count());
+    std::chrono::duration<double, std::milli> timePerFrame = start - end;
+    this->sleep(timePerFrame.count());
     end = std::chrono::system_clock::now();
 
     iters++;

@@ -137,6 +137,7 @@ set(PROJECT_SOURCES
   src/doortile.cpp
   src/audio.cpp
   src/hud.cpp
+  src/Game.cpp
   src/fileloader.cpp
   src/door.cpp
   src/sdltexture.cpp

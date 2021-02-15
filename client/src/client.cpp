@@ -7,6 +7,7 @@
 #include "../includes/startingscreen.h"
 #include "../includes/configReader.h"
 #include "../includes/playermap.h"
+#include "../includes/Game.h"
 
 #include <exception>
 
@@ -26,27 +27,6 @@ static bool fileExists(std::string& name){
 
 void Client::connectToServer(std::string& ip, std::string& port) {
   this->socket.connect(ip, port);
-}
-
-bool Client::joinMatch(uint32_t lobbyID) {
-  uint32_t protocol = CREATE_LOBBY;
-  uint32_t opcode;
-  uint32_t selfID;
-
-  // Connection Request
-  socket.send(&protocol, sizeof(protocol));
-  socket.send(&lobbyID, sizeof(lobbyID));
-
-  // Connection Response
-  socket.receive(&opcode, sizeof(opcode));
-
-  if (opcode != CONNECTED_OK) return false;
-
-  socket.receive(&selfID, sizeof(selfID));
-  this->myPlayerID = selfID;
-  Log::playerId = selfID;
-
-  return true;
 }
 
 void Client::buildWindow() {
@@ -87,46 +67,6 @@ int Client::run(std::string& mapFile) {
     return ERROR;
   }
 
-  ClientMapLoader loader(mapFile);
-  Map matrix(loader);
-  TextureManager manager(window);
-  AudioManager audios;
-  std::mutex m;
-  ScoreBoard scoreboard(manager);
-  StartingScreen starting(manager);
-  std::atomic<bool> alive; alive = true;
-  PlayerMap players(this->myPlayerID);
-  Hud hud(players.getSelf(), manager, audios);
-  std::vector<Drawable*> sprites = loader.getDrawableItemList();
-  sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
-  DrawableVector spriteVector(sprites, m);
-
-  Raycaster caster(manager, matrix, alive, players.getSelf(), spriteVector, hud, starting);
-  int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, players.getSelf());
-  CommandExecuter* worker =
-      new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
-                          audios, matrix, loader, &scoreboard, starting);
-
-  if (!sender) {
-    throw std::runtime_error(COULD_NOT_CREATE_SENDER);
-  } else if (!worker) {
-    throw std::runtime_error(COULD_NOT_CREATE_EXECUTER);
-  }
-
-  try {
-    worker->start();
-    sender->start();
-    caster.run();
-    scoreboard.draw();
-  } catch (std::exception& e) {
-    LOG(e.what());
-    exitcode = ERROR;
-  }
-  alive = false;
-  sender->join();
-  worker->join();
-  delete sender;
-  delete worker;
-  return exitcode;
+  Game game(this->socket, this->window, this->myPlayerID, mapFile);
+  return game.start();
 }
