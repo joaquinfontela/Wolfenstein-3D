@@ -22,6 +22,8 @@ class CommandManager : public Thread {
   CommandManager(ScoreBoard* scoreboard, SocketCommunication& socket,
                  std::atomic<bool>& alive)
       : scoreboard(scoreboard), socket(socket), alive(alive) {}
+  ~CommandManager() {}
+  virtual void run() = 0;
 };
 
 #endif  // COMMANDMANAGER_H_

@@ -77,6 +77,7 @@ bool Game::moveRocketMissileFrom(double x, double y, double newX, double newY,
 }
 
 void Game::update(float timeElapsed, WaitingQueue<Notification*>& notis) {
+  if (!started) return;
   this->updatePositions(timeElapsed, notis);
   this->sendUpdateMessages(notis);
 }

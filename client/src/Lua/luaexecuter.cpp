@@ -5,6 +5,7 @@
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/protocol.h"
 #include "../includes/clientprotocol.h"
+#include "../includes/playermap.h"
 
 namespace Lua {
 
@@ -37,8 +38,8 @@ void CommandExecuter::disconnectPlayer() {
   if (id == this->selfId) return;
   this->lock.lock();
   gameState.clearVisibleItems();
-  Player* toKill = players[id];
-  players.erase(id);
+  Player* toKill = players.dict[id];
+  players.dict.erase(id);
   std::vector<Drawable*>::iterator it = this->sprites.begin();
   for (; it != this->sprites.end(); ++it) {
     if (*it == toKill) {
@@ -94,15 +95,15 @@ void CommandExecuter::updateOrCreatePlayer(SocketWrapper& infogetter) {
   memset(&playerinfo, 0, sizeof(PlayerData));
   infogetter.receivePlayerData(playerinfo);
   uint32_t id = playerinfo.playerID;
-  if (players.find(id) != players.end()) {
-    players[id]->update(playerinfo);
+  if (players.dict.find(id) != players.dict.end()) {
+    players.dict[id]->update(playerinfo);
   } else {
     Player* placeholder = new Player(playerinfo);
     if (!placeholder) {
       LOG(COULD_NOT_CREATE_PLAYER);
       return;
     }
-    players[id] = placeholder;
+    players.dict[id] = placeholder;
     this->sprites.push_back(placeholder);
   }
 }

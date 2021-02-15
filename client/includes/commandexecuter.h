@@ -16,6 +16,7 @@
 #include "commandmanager.h"
 #include "drawablevector.h"
 #include "player.h"
+#include "playermap.h"
 #include "scoreboard.h"
 
 /**
@@ -39,12 +40,12 @@ class CommandExecuter : public CommandManager {
    * @param scoreboard Scoreboard reference.
    */
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive,
-                  DrawableVector& sprites, std::map<uint32_t, Player*>& players,
+                  DrawableVector& sprites, PlayerMap& players,
                   int selfId, AudioManager& audiomanager, Map& matrix,
                   ClientMapLoader& loader, ScoreBoard* scoreboard,
                   StartingScreen& startingscreen);
 
-  ~CommandExecuter();
+  ~CommandExecuter() {}
 
   /**
    * @brief Starts the music and receives data from the server while the game is
@@ -204,7 +205,7 @@ class CommandExecuter : public CommandManager {
   SocketWrapper infogetter;
   StartingScreen& startingscreen;
   DrawableVector& sprites;
-  std::map<uint32_t, Player*>& players;
+  PlayerMap& players;
   int selfId;
   AudioManager& audiomanager;
   Map& matrix;

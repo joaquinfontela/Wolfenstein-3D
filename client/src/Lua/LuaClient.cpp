@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "luaexecuter.h"
 #include "luaraycaster.h"
+#include "../includes/playermap.h"
 
 static bool fileExists(std::string& name){
   if (FILE *file = fopen(name.c_str(), "r")) {
@@ -11,7 +12,7 @@ static bool fileExists(std::string& name){
         return true;
     } else {
         return false;
-    }   
+    }
 }
 
 namespace Lua {
@@ -72,16 +73,14 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
     return ERROR;
   }
 
-  ClientMapLoader loader(mapFile, 24, 24);
+  ClientMapLoader loader(mapFile);
   Map matrix(loader);
 
   std::mutex m;
   std::atomic<bool> alive;
   alive = true;
-  Player* player = new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0);
 
-  std::map<uint32_t, Player*> players;
-  players[this->myPlayerID] = player;
+  PlayerMap players(this->myPlayerID);
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
@@ -89,12 +88,12 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   int exitcode = 0;
 
   double distanceBuffer[300] = {0};
-  Lua::GameState gameState(matrix, player, distanceBuffer);
+  Lua::GameState gameState(matrix, players.getSelf(), distanceBuffer);
   LuaSender* sender = new LuaSender(socket, alive, scriptName, &gameState);
   Lua::CommandExecuter* worker =
       new Lua::CommandExecuter(this->socket, alive, sprites, players, m,
                                myPlayerID, matrix, loader, gameState);
-  Lua::Raycaster caster(matrix, alive, 300, 200, player, sprites, m, gameState,
+  Lua::Raycaster caster(matrix, alive, 300, 200, players.getSelf(), sprites, m, gameState,
                         distanceBuffer);
 
   try {
@@ -109,7 +108,6 @@ int Client::run(std::string& host, std::string& port, uint32_t lobbyID, std::str
   worker->join();
   alive = false;
 
-  delete player;
   delete worker;
   delete sender;
   return exitcode;

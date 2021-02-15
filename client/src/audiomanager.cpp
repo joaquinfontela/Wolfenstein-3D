@@ -39,7 +39,7 @@ AudioManager::~AudioManager() { this->garbageCollector(); }
 bool AudioManager::loadAndCheckTrack(int i, const std::string& name) {
   Audio* audio;
   if (i == MUSIC) {
-    audio = new Audio((AUDIO_PATH + name).c_str(), IS_MUSIC, MUSIC_VOLUME);
+    audio = new Audio((AUDIO_PATH + name).c_str(),  IS_MUSIC, MUSIC_VOLUME);
   } else if (i == DOOR_SOUND) {
     audio = new Audio((AUDIO_PATH + name).c_str(), !IS_MUSIC, DOOR_VOLUME);
   } else if (IS_GUN_SOUND(i)) {

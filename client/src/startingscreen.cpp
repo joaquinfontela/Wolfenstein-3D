@@ -2,7 +2,10 @@
 #include "../includes/texturemanager.h"
 #include "../includes/clientprotocol.h"
 
+#include <iostream>
+
 void StartingScreen::stopDrawing() {
+  std::cout << "a\n";
   this->drawing = false;
 }
 

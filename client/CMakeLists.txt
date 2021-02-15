@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(sdl)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include -std=c++11 -pthread -O3 -finline-functions -funroll-loops")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/lib -I/usr/local/include -std=c++11 -pthread -g -O3 -finline-functions -funroll-loops")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lyaml-cpp")
 
 SET(_POSSIBLE_LUA_INCLUDE include include/lua)
@@ -141,6 +141,7 @@ set(PROJECT_SOURCES
   src/sdltexture.cpp
   src/sdlanimation.cpp
   src/sdlexception.cpp
+  src/playermap.cpp
   src/sdlwindow.cpp
   src/player.cpp
   src/raycaster.cpp
@@ -205,6 +206,7 @@ add_library(sdldemo
   src/drawable.cpp
   src/audiomanager.cpp
   src/texturemanager.cpp
+  src/playermap.cpp
   src/commandsender.cpp
   src/commandexecuter.cpp
   ../common/src/Map/Map.cpp

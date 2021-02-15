@@ -12,7 +12,7 @@ typedef std::vector<std::vector<int>> WallIdMatrix;
 
 class ClientMapLoader {
  public:
-  ClientMapLoader(std::string& yamlFile, unsigned int dimx, unsigned int dimy);
+  ClientMapLoader(std::string& yamlFile);
 
   /**
    * @brief   Converts the id of a item in the yaml file, to the id that

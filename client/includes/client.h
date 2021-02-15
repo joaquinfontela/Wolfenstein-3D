@@ -33,7 +33,6 @@ class Client {
   SocketCommunication& socket;
   uint32_t myPlayerID = -1;
   SdlWindow* window;
-  Player* player;
 
   /**
    * @brief Gets a player id given a lobbyid.

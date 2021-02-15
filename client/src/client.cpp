@@ -6,6 +6,7 @@
 #include "../includes/scoreboard.h"
 #include "../includes/startingscreen.h"
 #include "../includes/configReader.h"
+#include "../includes/playermap.h"
 
 #include <exception>
 
@@ -67,12 +68,8 @@ void Client::buildWindow() {
 }
 
 Client::Client(SocketCommunication& socket, int myPlayerID) :
-              socket(socket), myPlayerID(myPlayerID),
-              player(new Player(3.0, 3.0, -1.0, 0.0, 0.0, 0.66, 0)) {
-  if (!player) {
-    throw std::runtime_error(COULD_NOT_CREATE_PLAYER);
-  }
-  if(this->myPlayerID < 0){
+              socket(socket), myPlayerID(myPlayerID) {
+  if (this->myPlayerID < 0){
     throw std::runtime_error("Can't have a negative player id.");
   }
   this->buildWindow();
@@ -80,18 +77,17 @@ Client::Client(SocketCommunication& socket, int myPlayerID) :
 
 Client::~Client() {
   delete this->window;
-  delete this->player;
 }
 
 int Client::run(std::string& mapFile) {
 
-  if(!fileExists(mapFile)){
+  if (!fileExists(mapFile)){
     std::string error = MAP_NOT_FOUND_ERROR + mapFile;
     LOG(error.c_str());
     return ERROR;
   }
 
-  ClientMapLoader loader(mapFile, 24, 24);
+  ClientMapLoader loader(mapFile);
   Map matrix(loader);
 
   TextureManager manager(window);
@@ -105,18 +101,17 @@ int Client::run(std::string& mapFile) {
   std::atomic<bool> alive;
   alive = true;
 
-  Hud hud(player, manager, audios);
-  std::map<uint32_t, Player*> players;
-  players[this->myPlayerID] = player;
+  PlayerMap players(this->myPlayerID);
+  Hud hud(players.getSelf(), manager, audios);
 
   std::vector<Drawable*> sprites = loader.getDrawableItemList();
   sprites.reserve(MAX_NUMBER_OF_TEXTURES_PER_FRAME);
 
   DrawableVector spriteVector(sprites, m);
 
-  Raycaster caster(manager, matrix, alive, player, spriteVector, hud, starting);
+  Raycaster caster(manager, matrix, alive, players.getSelf(), spriteVector, hud, starting);
   int exitcode = 0;
-  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, player);
+  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, players.getSelf());
   CommandExecuter* worker =
       new CommandExecuter(socket, alive, spriteVector, players, myPlayerID,
                           audios, matrix, loader, &scoreboard, starting);

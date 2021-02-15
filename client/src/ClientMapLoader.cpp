@@ -4,8 +4,7 @@
 
 #include "../includes/clientprotocol.h"
 
-ClientMapLoader::ClientMapLoader(std::string& yamlFile, unsigned int dimx,
-                                 unsigned int dimy)
+ClientMapLoader::ClientMapLoader(std::string& yamlFile)
     : yamlMapReader(yamlFile), uniqueid(1) {
   std::vector<int> mapDimensions = yamlMapReader.getMapDimensions();
   this->dimx = mapDimensions.at(0);

@@ -14,6 +14,7 @@
 #include "../includes/ClientMapLoader.h"
 #include "../includes/audiomanager.h"
 #include "../includes/player.h"
+#include "../includes/playermap.h"
 #include "GameState.h"
 
 namespace Lua {
@@ -22,7 +23,7 @@ class CommandExecuter : public Thread {
  public:
   CommandExecuter(SocketCommunication& s, std::atomic<bool>& alive,
                   std::vector<Drawable*>& sprites,
-                  std::map<uint32_t, Player*>& players, std::mutex& lock,
+                  PlayerMap& players, std::mutex& lock,
                   int selfId, Map& matrix, ClientMapLoader& loader,
                   Lua::GameState& gameState)
       : socket(s),
@@ -34,7 +35,10 @@ class CommandExecuter : public Thread {
         matrix(matrix),
         loader(loader),
         gameState(gameState) {}
+
   void run();
+
+  ~CommandExecuter() {}
 
  private:
   void removeSpriteWithId(uint32_t itemId);
@@ -49,7 +53,7 @@ class CommandExecuter : public Thread {
   std::atomic<bool>& alive;
   Lua::GameState& gameState;
   std::vector<Drawable*>& sprites;
-  std::map<uint32_t, Player*>& players;
+  PlayerMap& players;
   std::mutex& lock;
   int selfId;
   Map& matrix;

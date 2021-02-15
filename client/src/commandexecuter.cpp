@@ -12,6 +12,7 @@
 #include "../../common/includes/protocol.h"
 #include "../includes/RaycastedAnimation.h"
 #include "../includes/clientprotocol.h"
+#include "../includes/playermap.h"
 #include "../includes/scoreboard.h"
 #include "../includes/texturemanager.h"
 
@@ -20,7 +21,7 @@
 CommandExecuter::CommandExecuter(SocketCommunication& s,
                                  std::atomic<bool>& alive,
                                  DrawableVector& sprites,
-                                 std::map<uint32_t, Player*>& players,
+                                 PlayerMap& players,
                                  int selfId, AudioManager& audiomanager,
                                  Map& matrix, ClientMapLoader& loader,
                                  ScoreBoard* scoreboard,
@@ -42,23 +43,18 @@ void CommandExecuter::loadNewTexture(double x, double y, uint32_t yamlId,
   this->sprites.push_back(new Drawable(y, x, itemId, uniqueId));
 }
 
-CommandExecuter::~CommandExecuter() {
-  /*for (iterator_t it = this->players.begin(); it != this->players.end();
-  ++it){ delete it->second;
-  }*/
-}
-
 void CommandExecuter::playShootingSounds(int shooterId) {
   if (shooterId != this->selfId) {
-    int weaponId = players.at(shooterId)->weaponId;
+    int weaponId = this->players.dict.at(shooterId)->weaponId;
     int soundId = GET_WEAPON_SOUND(weaponId);
-    double dist = players.at(selfId)->calculateDist(players.at(shooterId));
+    double dist = this->players.dict.at(selfId)->calculateDist(
+                                        this->players.dict.at(shooterId));
     this->audiomanager.playOnVariableVolumeWithId(soundId, dist);
   }
 }
 
 void CommandExecuter::playDoorOpeningSound(int x, int y) {
-  double dist = players.at(this->selfId)->calculateDist(x, y);
+  double dist = this->players.dict.at(this->selfId)->calculateDist(x, y);
   if (dist < 0) dist = 1;
   this->audiomanager.playOnVariableVolumeWithId(matrix.getDoorSound(x, y),
                                                 dist * 10);
@@ -90,11 +86,11 @@ void CommandExecuter::renderExplosionAnimation(uint32_t itemId) {
 
 void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
 
-  if(this->players.find(playerId) == this->players.end()){
+  if (!this->players.isContained(playerId)){
     return;
   }
 
-  Player* deadPlayer = this->players[playerId];
+  Player* deadPlayer = this->players.dict[playerId];
   int gunId = deadPlayer->weaponId;
   int deathSpriteId = GET_DEATH_ANIMATION_SPRITE(gunId);
   // I don't need to get a new uniqueId for the sprite when I can use -1 *
@@ -110,7 +106,7 @@ void CommandExecuter::renderDeathAnimation(uint32_t playerId) {
 
 void CommandExecuter::playDyingSound(int gunId, int playerId) {
   int soundId = GET_DEATH_SOUND(gunId);
-  double dist = players.at(this->selfId)->calculateDist(players.at(playerId));
+  double dist = players.dict.at(this->selfId)->calculateDist(players.dict.at(playerId));
   this->audiomanager.playOrStopOnVariableVolumeWithId(soundId, dist);
 }
 
@@ -119,15 +115,15 @@ void CommandExecuter::updateOrCreatePlayer() {
   memset(&playerinfo, 0, sizeof(PlayerData));
   infogetter.receivePlayerData(playerinfo);
   uint32_t id = playerinfo.playerID;
-  if (players.find(id) != players.end()) {
-    players[id]->update(playerinfo);
+  if (players.isContained(id)) {
+    players.dict[id]->update(playerinfo);
   } else {
     Player* placeholder = new Player(playerinfo);
     if (!placeholder) {
       LOG(COULD_NOT_CREATE_PLAYER);
       return;
     }
-    players[id] = placeholder;
+    players.dict[id] = placeholder;
     this->sprites.push_back(placeholder);
   }
 }
@@ -136,8 +132,8 @@ void CommandExecuter::disconnectPlayer() {
   uint32_t id;
   this->socket.receive(&id, sizeof(id));
   if (id == this->selfId) return;
-  Player* toKill = players[id];
-  players.erase(id);
+  Player* toKill = players.dict[id];
+  players.dict.erase(id);
   this->sprites.popAndErase(toKill);
   delete toKill;
 }
@@ -145,7 +141,7 @@ void CommandExecuter::disconnectPlayer() {
 void CommandExecuter::shotsFired() {
   uint32_t shooterId;
   this->socket.receive(&shooterId, sizeof(shooterId));
-  this->players.at(shooterId)->startShooting();
+  this->players.dict.at(shooterId)->startShooting();
   this->playShootingSounds(shooterId);
 }
 
