@@ -15,6 +15,9 @@ WolfensteinTest
 *log
 *log.txt
 lua
-client/src/Login/Login_autogen 
+client/src/Login/Login_autogen
 qt/editor/editor_autogen
 client/executable/Wolfen3D
+client/executable/sdldemo_autogen
+client/executable/lua_autogen
+client/executable/Wolfen3D_autogen
