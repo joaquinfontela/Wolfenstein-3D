@@ -113,7 +113,6 @@ void Login::on_button_join_clicked() {
 
     if(!connectToLobby(my_ip, my_host)){
       this->player_id = -1;
-      QApplication::quit();
       return;
     }
 
@@ -175,7 +174,6 @@ void Login::on_button_create_clicked() {
 
     if(!connectToLobby(my_ip, my_host)){
       this->player_id = -1;
-      QApplication::quit();
       return;
     }
 
