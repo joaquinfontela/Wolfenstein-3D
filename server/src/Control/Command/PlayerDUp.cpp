@@ -10,7 +10,7 @@ PlayerDUp::PlayerDUp(int ID) {
 void PlayerDUp::execute(WaitingQueue<Notification*>& notifications, Game& game) {
   if(!game.hasStarted())
     return;
-    
-  double rotSpeed = 0.125;
+
+  double rotSpeed = 0.1;
   game.updatePlayerRotationSpeed(this->playerID, rotSpeed);
 }
