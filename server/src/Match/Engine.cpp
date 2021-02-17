@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "../../../common/includes/Socket/SocketException.h"
-#define SECONDS_PER_TICK 0.033
+#define SECONDS_PER_TICK 0.016
 
 Engine::Engine(WaitingQueue<Command*>& commandQ,
                WaitingQueue<Notification*>& notiQ, std::atomic<bool>& c,
@@ -25,7 +25,7 @@ void Engine::run() {
   std::thread notificationThread(&Engine::sendNotifications, this);
   std::thread commandThread(&Engine::executeCommands, this);
 
-  int rate = 1000 / 30;
+  int rate = 1000 / 60;
 
   auto t1 = std::chrono::steady_clock::now();
   auto t2 = t1;
