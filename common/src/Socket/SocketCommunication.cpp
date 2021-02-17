@@ -40,12 +40,16 @@ SocketCommunication& SocketCommunication::operator=(
   return *this;
 }
 
+SocketCommunication::SocketCommunication(SocketListener& listener) {
+  this->fd = listener._accept();
+}
+
 SocketCommunication::SocketCommunication(SocketCommunication&& other) {
   this->fd = other.fd;
   other.fd = -1;
 }
 
-SocketCommunication::SocketCommunication(int fd) { this->fd = fd; }
+SocketCommunication::SocketCommunication() : fd(-1) {}
 
 void SocketCommunication::connect(const std::string& hostname,
                                   const std::string& port) {

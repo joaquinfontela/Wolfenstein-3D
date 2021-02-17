@@ -1,6 +1,9 @@
 #ifndef __SOCKET_COMMUNICATION_H__
 #define __SOCKET_COMMUNICATION_H__
 #include <string>
+#include "SocketListener.h"
+
+class SocketListener;
 
 class SocketCommunication {
  private:
@@ -8,8 +11,8 @@ class SocketCommunication {
 
  public:
   // Crea el socket con el file descriptor dado.
-  SocketCommunication(int fd);
-
+  SocketCommunication();
+  SocketCommunication(SocketListener& listener);
   SocketCommunication(SocketCommunication&& other);
 
   SocketCommunication& operator=(SocketCommunication&& other);

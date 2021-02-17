@@ -68,7 +68,7 @@ void SocketListener::bind(const std::string& port) {
   return;
 }
 
-SocketCommunication SocketListener::accept() {
+int SocketListener::_accept() {
   struct sockaddr_in address;
   socklen_t addressLength = (socklen_t)sizeof(address);
 
@@ -78,7 +78,7 @@ SocketCommunication SocketListener::accept() {
     throw SocketException();
   }
 
-  return std::move(SocketCommunication(fd));
+  return fd;
 }
 
 void SocketListener::close() {

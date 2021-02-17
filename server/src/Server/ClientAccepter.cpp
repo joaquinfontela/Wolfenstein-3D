@@ -14,7 +14,7 @@ void ClientAccepter::run() {
   while (1) {
     try {
       ClientCommunication* peer = new ClientCommunication(
-          std::move(this->socket.accept()), playerID, matchList);
+          SocketCommunication(this->socket), playerID, matchList);
       playerID++;
       peer->start();
 
