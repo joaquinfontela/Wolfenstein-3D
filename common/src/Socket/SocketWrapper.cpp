@@ -1,5 +1,6 @@
 #include "../../includes/Socket/SocketWrapper.h"
 #include <iostream>
+#include <arpa/inet.h>
 
 #define BYTESIZE sizeof(char)
 
@@ -45,7 +46,7 @@ void SocketWrapper::receive(double* value) {
 
 void SocketWrapper::send(uint32_t value) {
   b32_t sendable;
-  sendable.u32 = value;
+  sendable.u32 = htonl(value);
   this->socket.send(&sendable.c[0], BYTESIZE);
   this->socket.send(&sendable.c[1], BYTESIZE);
   this->socket.send(&sendable.c[2], BYTESIZE);
@@ -58,7 +59,7 @@ void SocketWrapper::receive(uint32_t* value) {
   this->socket.receive(&receivable.c[1], BYTESIZE);
   this->socket.receive(&receivable.c[2], BYTESIZE);
   this->socket.receive(&receivable.c[3], BYTESIZE);
-  *value = receivable.u32;
+  *value = ntohl(receivable.u32);
 }
 
 void SocketWrapper::send(PlayerData& value) {
