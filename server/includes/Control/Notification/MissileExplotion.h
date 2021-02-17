@@ -11,7 +11,7 @@ class MissileExplotion : public Notification {
  public:
   MissileExplotion(int uniqueId);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

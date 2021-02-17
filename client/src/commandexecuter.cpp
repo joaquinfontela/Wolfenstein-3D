@@ -130,7 +130,7 @@ void CommandExecuter::updateOrCreatePlayer() {
 
 void CommandExecuter::disconnectPlayer() {
   uint32_t id;
-  this->socket.receive(&id, sizeof(id));
+  this->socket.receive(&id);
   if (id == this->selfId) return;
   Player* toKill = players.dict[id];
   players.dict.erase(id);
@@ -140,52 +140,53 @@ void CommandExecuter::disconnectPlayer() {
 
 void CommandExecuter::shotsFired() {
   uint32_t shooterId;
-  this->socket.receive(&shooterId, sizeof(shooterId));
+  this->socket.receive(&shooterId);
   this->players.dict.at(shooterId)->startShooting();
   this->playShootingSounds(shooterId);
 }
 
 void CommandExecuter::openDoor() {
   uint32_t x, y;
-  this->socket.receive(&x, sizeof(x));
-  this->socket.receive(&y, sizeof(y));
+  this->socket.receive(&x);
+  this->socket.receive(&y);
   matrix.switchDoorState(x, y);
   this->playDoorOpeningSound(x, y);
 }
 
 void CommandExecuter::pickUpItem() {
   uint32_t itemId;
-  this->socket.receive(&itemId, sizeof(itemId));
+  this->socket.receive(&itemId);
   this->removeSpriteWithId(itemId);
 }
 
 void CommandExecuter::playerDied() {
   uint32_t playerId;
-  this->socket.receive(&playerId, sizeof(playerId));
+  this->socket.receive(&playerId);
   if (playerId != this->selfId) this->renderDeathAnimation(playerId);
 }
 
 void CommandExecuter::dropItem() {
   uint32_t yamlId, uniqueId;
   double x, y;
-  x = infogetter.receiveDouble();
-  y = infogetter.receiveDouble();
-  this->socket.receive(&yamlId, sizeof(yamlId));
-  this->socket.receive(&uniqueId, sizeof(uniqueId));
+  this->socket.receive(&x);
+  this->socket.receive(&y);
+  this->socket.receive(&yamlId);
+  this->socket.receive(&uniqueId);
   this->loadNewTexture(x, y, yamlId, uniqueId);
 }
 
 void CommandExecuter::elementSwitchPosition() {
   uint32_t uniqueId;
-  this->socket.receive(&uniqueId, sizeof(uniqueId));
-  double x = infogetter.receiveDouble();
-  double y = infogetter.receiveDouble();
+  double x, y;
+  this->socket.receive(&uniqueId);
+  this->socket.receive(&x);
+  this->socket.receive(&y);
   this->renderMovingSprite(x, y, uniqueId);
 }
 
 void CommandExecuter::explodeMissile() {
   uint32_t uniqueId;
-  this->socket.receive(&uniqueId, sizeof(uniqueId));
+  this->socket.receive(&uniqueId);
   this->audiomanager.playWithId(EXPLOSION_SOUND);
   this->renderExplosionAnimation(uniqueId);
 }
@@ -195,7 +196,7 @@ void CommandExecuter::run() {
   while (!this->scoreboard->hasEnded()) {
     try {
       uint32_t opcode;
-      socket.receive(&opcode, sizeof(opcode));
+      socket.receive(&opcode);
       if (opcode == PLAYER_UPDATE_PACKAGE) {
         this->updateOrCreatePlayer();
       } else if (opcode == PLAYER_DISCONNECT) {
@@ -230,17 +231,17 @@ void CommandExecuter::run() {
   }
 }
 
-std::tuple<uint32_t, uint32_t> static recvTuple(SocketCommunication& socket) {
+std::tuple<uint32_t, uint32_t> static recvTuple(SocketWrapper& socket) {
   uint32_t value1;
   uint32_t value2;
-  socket.receive(&value1, sizeof(value1));
-  socket.receive(&value2, sizeof(value2));
+  socket.receive(&value1);
+  socket.receive(&value2);
   return std::make_tuple(value1, value2);
 }
 
 void CommandExecuter::saveShotsFired() {
   uint32_t numberOfPlayers;
-  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  this->socket.receive(&numberOfPlayers);
   for (int i = 0; i < numberOfPlayers; i++) {
     this->scoreboard->pushShotsfired(recvTuple(this->socket));
   }
@@ -248,7 +249,7 @@ void CommandExecuter::saveShotsFired() {
 
 void CommandExecuter::saveScores() {
   uint32_t numberOfPlayers;
-  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  this->socket.receive(&numberOfPlayers);
   for (int i = 0; i < numberOfPlayers; i++) {
     this->scoreboard->pushScore(recvTuple(this->socket));
   }
@@ -256,7 +257,7 @@ void CommandExecuter::saveScores() {
 
 void CommandExecuter::saveKills() {
   uint32_t numberOfPlayers;
-  this->socket.receive(&numberOfPlayers, sizeof(numberOfPlayers));
+  this->socket.receive(&numberOfPlayers);
   for (int i = 0; i < numberOfPlayers; i++) {
     this->scoreboard->pushKills(recvTuple(this->socket));
   }

@@ -7,7 +7,7 @@
 class StartingMatch : public Notification {
  public:
   StartingMatch() {}
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

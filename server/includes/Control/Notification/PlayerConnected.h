@@ -11,7 +11,7 @@ class PlayerConnected : public Notification {
  public:
   PlayerConnected(int playerID, int x, int y);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

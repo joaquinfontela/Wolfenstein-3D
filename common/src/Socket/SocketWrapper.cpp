@@ -1,24 +1,64 @@
 #include "../../includes/Socket/SocketWrapper.h"
 #include <iostream>
 
+#define BYTESIZE sizeof(char)
+
 typedef union Floating {
   double d;
-  uint32_t u32[2];
   char c[8];
 } floating_t;
+
+typedef union b32 {
+  uint32_t u32;
+  char c[4];
+} b32_t;
+
+SocketCommunication& SocketWrapper::getSocket() {
+  return this->socket;
+}
 
 void SocketWrapper::send(double value) {
   floating_t sendable;
   sendable.d = value;
-  this->socket.send(&sendable.u32[0], sizeof(uint32_t));
-  this->socket.send(&sendable.u32[1], sizeof(uint32_t));
+  this->socket.send(&sendable.c[0], BYTESIZE);
+  this->socket.send(&sendable.c[1], BYTESIZE);
+  this->socket.send(&sendable.c[2], BYTESIZE);
+  this->socket.send(&sendable.c[3], BYTESIZE);
+  this->socket.send(&sendable.c[4], BYTESIZE);
+  this->socket.send(&sendable.c[5], BYTESIZE);
+  this->socket.send(&sendable.c[6], BYTESIZE);
+  this->socket.send(&sendable.c[7], BYTESIZE);
 }
 
-double SocketWrapper::receiveDouble() {
-  floating_t sendable = {0};
-  this->socket.receive(&sendable.u32[0], sizeof(uint32_t));
-  this->socket.receive(&sendable.u32[1], sizeof(uint32_t));
-  return sendable.d;
+void SocketWrapper::receive(double* value) {
+  floating_t receivable = {0};
+  this->socket.receive(&receivable.c[0], BYTESIZE);
+  this->socket.receive(&receivable.c[1], BYTESIZE);
+  this->socket.receive(&receivable.c[2], BYTESIZE);
+  this->socket.receive(&receivable.c[3], BYTESIZE);
+  this->socket.receive(&receivable.c[4], BYTESIZE);
+  this->socket.receive(&receivable.c[5], BYTESIZE);
+  this->socket.receive(&receivable.c[6], BYTESIZE);
+  this->socket.receive(&receivable.c[7], BYTESIZE);
+  *value = receivable.d;
+}
+
+void SocketWrapper::send(uint32_t value) {
+  b32_t sendable;
+  sendable.u32 = value;
+  this->socket.send(&sendable.c[0], BYTESIZE);
+  this->socket.send(&sendable.c[1], BYTESIZE);
+  this->socket.send(&sendable.c[2], BYTESIZE);
+  this->socket.send(&sendable.c[3], BYTESIZE);
+}
+
+void SocketWrapper::receive(uint32_t* value) {
+  b32_t receivable = {0};
+  this->socket.receive(&receivable.c[0], BYTESIZE);
+  this->socket.receive(&receivable.c[1], BYTESIZE);
+  this->socket.receive(&receivable.c[2], BYTESIZE);
+  this->socket.receive(&receivable.c[3], BYTESIZE);
+  *value = receivable.u32;
 }
 
 void SocketWrapper::send(PlayerData& value) {
@@ -35,12 +75,12 @@ void SocketWrapper::send(PlayerData& value) {
   this->send(value.posX);
   this->send(value.posY);
   this->send(value.rotSpeed);
-  this->socket.send(&lives, sizeof(uint32_t));
-  this->socket.send(&health, sizeof(uint32_t));
-  this->socket.send(&weaponID, sizeof(uint32_t));
-  this->socket.send(&ammo, sizeof(uint32_t));
-  this->socket.send(&score, sizeof(uint32_t));
-  this->socket.send(&key, sizeof(uint32_t));
+  this->send(lives);
+  this->send(health);
+  this->send(weaponID);
+  this->send(ammo);
+  this->send(score);
+  this->send(key);
 }
 
 void SocketWrapper::receivePlayerData(PlayerData& value) {
@@ -51,19 +91,18 @@ void SocketWrapper::receivePlayerData(PlayerData& value) {
   uint32_t score = value.score;
   uint32_t key = value.hasKey;
 
-  this->socket.receive(&value.playerID, sizeof(value.playerID));
-  value.dirX = this->receiveDouble();
-  value.dirY = this->receiveDouble();
-  value.posX = this->receiveDouble();
-  value.posY = this->receiveDouble();
-  value.rotSpeed = this->receiveDouble();
-  this->socket.receive(&lives, sizeof(uint32_t));
-  this->socket.receive(&health, sizeof(uint32_t));
-  this->socket.receive(&weaponID, sizeof(uint32_t));
-  this->socket.receive(&ammo, sizeof(uint32_t));
-  this->socket.receive(&score, sizeof(uint32_t));
-  this->socket.receive(&key, sizeof(uint32_t));
-
+  this->receive(&value.playerID);
+  this->receive(&value.dirX);
+  this->receive(&value.dirY);
+  this->receive(&value.posX);
+  this->receive(&value.posY);
+  this->receive(&value.rotSpeed);
+  this->receive(&lives);
+  this->receive(&health);
+  this->receive(&weaponID);
+  this->receive(&ammo);
+  this->receive(&score);
+  this->receive(&key);
 
   value.lives = int(lives);
   value.health = int(health);

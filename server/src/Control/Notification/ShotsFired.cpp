@@ -4,14 +4,14 @@
 
 ShotsFired::ShotsFired(int playerID) : playerID(playerID){}
 
-void ShotsFired::send(SocketCommunication& socket){
+void ShotsFired::send(SocketWrapper& socket){
 
   uint32_t opcode = SHOTS_FIRED;
 
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t playerID = this->playerID;
 
-  socket.send(&playerID, sizeof(playerID));
+  socket.send(playerID);
 
 }

@@ -13,7 +13,7 @@ class PlayerPackageUpdate : public Notification {
  public:
   PlayerPackageUpdate(int playerID, PlayerData data);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

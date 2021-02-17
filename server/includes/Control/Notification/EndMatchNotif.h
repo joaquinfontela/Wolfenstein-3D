@@ -14,7 +14,7 @@ class EndMatchNotif : public Notification {
  public:
   EndMatchNotif(ScoreBoard* scoreboard, ScoreBoard* kills, ScoreBoard* shotsFired) : scoreboard(scoreboard), killScoreboard(kills), shotsScoreboard(shotsFired) {}
   ~EndMatchNotif();
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

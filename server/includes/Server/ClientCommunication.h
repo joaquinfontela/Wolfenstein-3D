@@ -5,7 +5,7 @@
 #include <queue>
 
 #include "../../../common/includes/Queue/WaitingQueue.h"
-#include "../../../common/includes/Socket/SocketCommunication.h"
+#include "../../../common/includes/Socket/SocketWrapper.h"
 #include "../../../common/includes/Thread/Thread.h"
 #include "../../includes/Control/Command/Command.h"
 #include "../../includes/Control/Notification/Notification.h"
@@ -17,6 +17,7 @@ class MatchList;
 class ClientCommunication : public Thread {
  private:
   SocketCommunication socket;
+  SocketWrapper wrapper;
   uint32_t playerID;
   MatchList& matchList;
   bool running;
@@ -32,7 +33,7 @@ class ClientCommunication : public Thread {
 
   void sendAvailableMatchData(std::vector<int>& matches);
   bool isAlive();
-  SocketCommunication& getSock();
+  SocketWrapper& getSock();
 
   void run();
 };

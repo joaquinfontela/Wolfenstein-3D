@@ -13,7 +13,7 @@ static bool fileExists(std::string& name){
         return true;
     } else {
         return false;
-    }   
+    }
 }
 
 MatchList::MatchList() {}
@@ -21,7 +21,7 @@ MatchList::MatchList() {}
 ConnectionHandler* MatchList::join(ClientCommunication* player, int lobbyID) {
 
   std::unique_lock<std::mutex> lock(this->lock);
- 
+
   if (this->matches.find(lobbyID) != this->matches.end()) {
     return this->matches[lobbyID]->addPlayerToMatch(player);
   }
@@ -30,9 +30,10 @@ ConnectionHandler* MatchList::join(ClientCommunication* player, int lobbyID) {
 }
 
 int MatchList::getMapID(int lobbyID){
-   if (this->matches.find(lobbyID) != this->matches.end()) {
+  if (this->matches.find(lobbyID) != this->matches.end()) {
     return this->matches[lobbyID]->getMapID();
   }
+  return -1;
 }
 
 std::vector<int> MatchList::getAvailableMatches(){
@@ -51,14 +52,14 @@ std::vector<int> MatchList::getAvailableMatches(){
 
 ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
   std::unique_lock<std::mutex> lock(this->lock);
- 
+
   std::string mapFile = MAP_YAML_FILE_NAME + std::to_string(mapID) + ".yaml";
 
   if(!fileExists(mapFile)){
     std::cout<<"[SERVER] Unable to create match with map ID: "<<mapID<<std::endl;
     return nullptr;
   }
-    
+
 
   int lobbyID = this->matchesCreated + 1;
   this->matchesCreated++;

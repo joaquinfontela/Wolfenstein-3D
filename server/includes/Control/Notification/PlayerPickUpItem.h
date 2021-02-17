@@ -11,7 +11,7 @@ class PlayerPickupItem : public Notification {
  public:
   PlayerPickupItem(int uniqueId);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

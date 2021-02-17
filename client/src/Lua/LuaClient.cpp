@@ -5,6 +5,7 @@
 #include "luaexecuter.h"
 #include "luaraycaster.h"
 #include "../includes/playermap.h"
+#include "../../../common/includes/Socket/SocketWrapper.h"
 
 static bool fileExists(std::string& name){
   if (FILE *file = fopen(name.c_str(), "r")) {
@@ -23,34 +24,36 @@ void Client::connectToServer(std::string& host, std::string& port) {
 
 void Client::receiveAvailableMatch(){
 
+  SocketWrapper wrapper(this->socket);
   uint32_t amount = 0;
-  socket.receive(&amount, sizeof(amount));
+  wrapper.receive(&amount);
 
   for(uint32_t i = 0; i < amount; i++){
     uint32_t id = 0;
-    socket.receive(&id, sizeof(id));
+    wrapper.receive(&id);
   }
 
 }
 
 bool Client::joinMatch(uint32_t lobbyID) {
+  SocketWrapper wrapper(this->socket);
   uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
 
   // Connection Request
-  socket.send(&protocol, sizeof(protocol));
+  wrapper.send(protocol);
 
   receiveAvailableMatch(); // Compatibility with normal client only
-  socket.send(&lobbyID, sizeof(lobbyID));
+  wrapper.send(lobbyID);
 
   // Connection Response
-  socket.receive(&opcode, sizeof(opcode));
+  wrapper.receive(&opcode);
 
   if (opcode != CONNECTED_OK) return false;
 
-  socket.receive(&selfID, sizeof(selfID));
-  socket.receive(&mapID, sizeof(mapID));
+  wrapper.receive(&selfID);
+  wrapper.receive(&mapID);
   this->myPlayerID = selfID;
   Log::playerId = selfID;
 

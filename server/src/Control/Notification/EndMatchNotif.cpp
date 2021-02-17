@@ -5,10 +5,10 @@
 #include "../../../../common/includes/protocol.h"
 #include "../../../includes/Control/Notification/ScoreBoard.h"
 
-void EndMatchNotif::send(SocketCommunication& socket) {
+void EndMatchNotif::send(SocketWrapper& socket) {
   uint32_t opcode = ENDING_MATCH;
 
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
   this->scoreboard->send(socket);
   this->killScoreboard->send(socket);
   this->shotsScoreboard->send(socket);

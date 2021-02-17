@@ -8,13 +8,13 @@ DoorMoving::DoorMoving(int x, int y) {
   this->y = y;
 }
 
-void DoorMoving::send(SocketCommunication& socket) {
+void DoorMoving::send(SocketWrapper& socket) {
   uint32_t opcode = OPEN_DOOR;
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t x = this->x;
   uint32_t y = this->y;
 
-  socket.send(&x, sizeof(x));
-  socket.send(&y, sizeof(y));
+  socket.send(x);
+  socket.send(y);
 }

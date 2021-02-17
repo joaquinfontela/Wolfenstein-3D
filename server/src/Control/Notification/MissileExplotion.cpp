@@ -5,11 +5,11 @@ MissileExplotion::MissileExplotion(int uniqueId) {
   this->uniqueId = uniqueId;
 }
 
-void MissileExplotion::send(SocketCommunication& socket) {
+void MissileExplotion::send(SocketWrapper& socket) {
   uint32_t opcode = MISSILE_EXPLOTION;
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t id = this->uniqueId;
-  socket.send(&id, sizeof(id));
+  socket.send(id);
 
 }

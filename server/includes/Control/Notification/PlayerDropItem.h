@@ -10,7 +10,7 @@ class PlayerDropItem : public Notification {
 
  public:
   PlayerDropItem(double x, double y, int itemId, int uniqueId);
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

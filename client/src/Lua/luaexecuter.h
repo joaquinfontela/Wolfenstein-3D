@@ -8,6 +8,7 @@
 
 #include "../../../common/includes/Map/Map.h"
 #include "../../../common/includes/Socket/SocketCommunication.h"
+#include "../../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../../common/includes/Socket/SocketException.h"
 #include "../../../common/includes/Thread/Thread.h"
@@ -49,7 +50,7 @@ class CommandExecuter : public Thread {
   void pickUpItem();
   void dropItem(SocketWrapper& infogetter);
   void switchElementPosition(SocketWrapper& infogetter);
-  SocketCommunication& socket;
+  SocketWrapper socket;
   std::atomic<bool>& alive;
   Lua::GameState& gameState;
   std::vector<Drawable*>& sprites;
