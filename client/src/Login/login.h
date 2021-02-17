@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QMainWindow>
+#include <atomic>
 
 #include "../../../common/includes/Socket/SocketCommunication.h"
 #include "../../../common/includes/Socket/SocketException.h"
@@ -29,7 +30,8 @@ class Login : public QMainWindow {
    * @param ip Ip to connect to.
    * @param game_id Match id.
    */
-  Login(int& player_id, int& map_id, SocketCommunication& socket);
+  Login(int& player_id, int& map_id, SocketCommunication& socket,
+        std::atomic<bool>& endingGame, std::atomic<bool>& restart);
   ~Login();
 
  private slots:
@@ -53,7 +55,8 @@ class Login : public QMainWindow {
   SocketCommunication& socket;
   int& player_id;
   int& map_id;
-
+  std::atomic<bool>& endingGame;
+  std::atomic<bool>& restart;
   bool connectToLobby(std::string& host, std::string& port);
   bool createLobby();
   bool joinLobby();

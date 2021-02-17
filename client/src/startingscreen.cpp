@@ -5,7 +5,6 @@
 #include <iostream>
 
 void StartingScreen::stopDrawing() {
-  std::cout << "a\n";
   this->drawing = false;
 }
 

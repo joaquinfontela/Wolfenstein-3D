@@ -2,6 +2,7 @@
 
 #include <QPixmap>
 #include <algorithm>
+#include <atomic>
 
 #include "../../../common/includes/Socket/SocketWrapper.h"
 #include "./Login_autogen/include/ui_login.h"
@@ -18,11 +19,14 @@
   "* { background-color: rgba(0, 0, 0, 200); color: #ffffff}"
 #define WHITESPACE ' '
 
-Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
+Login::Login(int& player_id, int& map_id, SocketCommunication& socket,
+             std::atomic<bool>& endingGame, std::atomic<bool>& restart)
     : QMainWindow(nullptr),
       ui(new Ui::Login),
       player_id(player_id),
       map_id(map_id),
+      endingGame(endingGame),
+      restart(restart),
       socket(socket) {
   ui->setupUi(this);
   QPixmap bkgnd("../media/loginscreen.png");
@@ -40,8 +44,7 @@ Login::Login(int& player_id, int& map_id, SocketCommunication& socket)
 
 Login::~Login() { delete ui; }
 
-bool Login::connectToLobby(std::string& host, std::string& port){
-
+bool Login::connectToLobby(std::string& host, std::string& port) {
   try{
     this->socket.connect(host, port);
     return true;
@@ -121,7 +124,10 @@ void Login::on_button_join_clicked() {
     if(!joinLobby()){
       std::cout<<"[LOGIN] Failure to join lobby"<<std::endl;
       this->player_id = -1;
+      restart = true;
     }
+
+    endingGame = false;
 
     QApplication::quit();
   }
@@ -184,6 +190,7 @@ void Login::on_button_create_clicked() {
       std::cout<<"[LOGIN] Failure creating lobby"<<std::endl;
       this->player_id = -1;
     }
+    endingGame = false;
 
     QApplication::quit();
   }

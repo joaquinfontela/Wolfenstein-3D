@@ -1,3 +1,4 @@
+#include <atomic>
 #include <QApplication>
 
 #include "../includes/client.h"
@@ -6,19 +7,30 @@
 #include "./Login/login.h"
 
 int main(int argc, char** argv) {
-  int map_id;
-  int player_id;
-  SocketCommunication socket;
 
-  QApplication a(argc, argv);
-  Login w(player_id, map_id, socket);
-  w.show();
-  a.exec();
-  w.hide();
+  std::atomic<bool> endingGame;
+  std::atomic<bool> restart;
 
-  Client client(socket, player_id);
-  std::string mapFile = "../../common/src/YAML/Maps/map";
-  mapFile = mapFile + std::to_string(map_id) + ".yaml";
+  while (true) {
+    endingGame = true;
+    restart = false;
+    int map_id;
+    int player_id;
+    SocketCommunication socket;
 
-  return client.run(mapFile);
+    QApplication a(argc, argv);
+    Login w(player_id, map_id, socket, endingGame, restart);
+    w.show();
+    a.exec();
+    w.hide();
+
+    if (restart) continue;
+    if (endingGame) break;
+
+    Client client(socket, player_id);
+    std::string mapFile = "../../common/src/YAML/Maps/map";
+    mapFile = mapFile + std::to_string(map_id) + ".yaml";
+
+    client.run(mapFile);
+  }
 }
