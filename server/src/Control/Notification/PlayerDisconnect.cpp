@@ -4,10 +4,10 @@
 #include "../../../../common/includes/protocol.h"
 PlayerDisconnect::PlayerDisconnect(int playerID) { this->playerID = playerID; }
 
-void PlayerDisconnect::send(SocketCommunication& socket) {
+void PlayerDisconnect::send(SocketWrapper& socket) {
   uint32_t opcode = PLAYER_DISCONNECT;
   uint32_t playerID = this->playerID;
 
-  socket.send(&opcode, sizeof(opcode));
-  socket.send(&playerID, sizeof(playerID));
+  socket.send(opcode);
+  socket.send(playerID);
 }

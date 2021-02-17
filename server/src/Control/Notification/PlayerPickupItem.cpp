@@ -5,11 +5,11 @@ PlayerPickupItem::PlayerPickupItem(int uniqueId) {
   this->uniqueId = uniqueId;
 }
 
-void PlayerPickupItem::send(SocketCommunication& socket) {
+void PlayerPickupItem::send(SocketWrapper& socket) {
   uint32_t opcode = PLAYER_PICKUP_ITEM;
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t id = this->uniqueId;
-  socket.send(&id, sizeof(id));
+  socket.send(id);
 
 }

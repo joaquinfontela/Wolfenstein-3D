@@ -11,7 +11,7 @@ class ElementSwitchPosition : public Notification {
  public:
   ElementSwitchPosition(int uniqueId, double x, double y);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

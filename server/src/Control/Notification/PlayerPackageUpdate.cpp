@@ -8,14 +8,12 @@ PlayerPackageUpdate::PlayerPackageUpdate(int playerID, PlayerData data) {
   this->data = data;
 }
 
-void PlayerPackageUpdate::send(SocketCommunication& socket) {
+void PlayerPackageUpdate::send(SocketWrapper& socket) {
   uint32_t opcode = PLAYER_UPDATE_PACKAGE;
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
-  socket.send((uint32_t*)(&this->playerID), sizeof(this->playerID));
+  socket.send(uint32_t(this->playerID));
 
-  SocketWrapper wrapper(socket);
-
-  wrapper.send(this->data);
+  socket.send(this->data);
 
 }

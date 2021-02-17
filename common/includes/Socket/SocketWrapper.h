@@ -10,9 +10,12 @@ class SocketWrapper {
  public:
   SocketWrapper(SocketCommunication& socket) : socket(socket) {}
   void send(double value);
-  double receiveDouble();
+  void send(uint32_t value);
+  void receive(double* value);
+  void receive(uint32_t* value);
   void send(PlayerData& value);
   void receivePlayerData(PlayerData& value);
+  SocketCommunication& getSocket();
 };
 
 #endif  // SOCKETWRAPPER_H_

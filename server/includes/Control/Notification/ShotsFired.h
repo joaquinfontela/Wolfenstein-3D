@@ -11,7 +11,7 @@ private:
 
 public:
   ShotsFired(int playerID);
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 
 };
 

@@ -3,6 +3,7 @@
 
 #include <atomic>
 
+#include "../../common/includes/Socket/SocketWrapper.h"
 #include "../../common/includes/Socket/SocketCommunication.h"
 #include "../../common/includes/Thread/Thread.h"
 #include "scoreboard.h"
@@ -15,7 +16,7 @@
 class CommandManager : public Thread {
  protected:
   ScoreBoard* scoreboard;
-  SocketCommunication& socket;
+  SocketWrapper socket;
   std::atomic<bool>& alive;
 
  public:

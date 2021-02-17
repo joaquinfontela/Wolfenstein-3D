@@ -3,6 +3,7 @@
 #include <QPixmap>
 #include <algorithm>
 
+#include "../../../common/includes/Socket/SocketWrapper.h"
 #include "./Login_autogen/include/ui_login.h"
 #include "QFont"
 #include "QFontDatabase"
@@ -54,13 +55,14 @@ bool Login::connectToLobby(std::string& host, std::string& port){
 }
 
 bool Login::joinLobby(){
+  SocketWrapper wrapper(this->socket);
   uint32_t protocol = JOIN_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
   uint32_t mapID;
 
   // Connection Request
-  socket.send(&protocol, sizeof(protocol));
+  wrapper.send(protocol);
   if(!receiveAvailableMatches()){
       QMessageBox messageBox;
       messageBox.critical(0, "Error", "No Matches Available.");
@@ -76,14 +78,14 @@ bool Login::joinLobby(){
 
   uint32_t lobbyID = jw.get_match_id();
 
-  socket.send(&lobbyID, sizeof(lobbyID));
-  socket.receive(&opcode, sizeof(opcode));
+  wrapper.send(lobbyID);
+  wrapper.receive(&opcode);
   if (opcode != CONNECTED_OK) {
     return false;
   }
 
-  socket.receive(&selfID, sizeof(selfID));
-  socket.receive(&mapID, sizeof(mapID));
+  wrapper.receive(&selfID);
+  wrapper.receive(&mapID);
 
   this->player_id = selfID;
   this->map_id = mapID;
@@ -127,26 +129,27 @@ void Login::on_button_join_clicked() {
 
 bool Login::createLobby(){
 
+  SocketWrapper wrapper(this->socket);
   uint32_t protocol = CREATE_LOBBY;
   uint32_t opcode;
   uint32_t selfID;
   uint32_t map_ID;
 
-  socket.send(&protocol, sizeof(protocol));
+  wrapper.send(protocol);
 
   create_window cw(this);
   cw.setModal(true);
   cw.exec();
   map_ID = cw.get_map_id();
 
-  socket.send(&map_ID, sizeof(map_ID));
-  socket.receive(&opcode, sizeof(opcode));
+  wrapper.send(map_ID);
+  wrapper.receive(&opcode);
 
   if (opcode != CONNECTED_OK) {
     return false;
   }
 
-  socket.receive(&selfID, sizeof(selfID));
+  wrapper.receive(&selfID);
   this->player_id = selfID;
   this->map_id = map_ID;
 
@@ -188,14 +191,15 @@ void Login::on_button_create_clicked() {
 
 bool Login::receiveAvailableMatches() {
   uint32_t amountOfMatches = 0;
-  this->socket.receive(&amountOfMatches, sizeof(amountOfMatches));
+  SocketWrapper wrapper(this->socket);
+  wrapper.receive(&amountOfMatches);
 
   if(amountOfMatches == 0)
     return false;
 
   for (uint32_t i = 0; i < amountOfMatches; i++) {
     uint32_t matchID;
-    this->socket.receive(&matchID, sizeof(matchID));
+    wrapper.receive(&matchID);
     this->availableMatches.push_back(matchID);
   }
 

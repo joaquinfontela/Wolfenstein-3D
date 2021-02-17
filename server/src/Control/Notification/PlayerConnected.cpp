@@ -9,17 +9,17 @@ PlayerConnected::PlayerConnected(int playerID, int x, int y) {
   this->y = y;
 }
 
-void PlayerConnected::send(SocketCommunication& socket) {
+void PlayerConnected::send(SocketWrapper& socket) {
   uint32_t opcode = CONNECTED_OK;
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t ID = this->playerID;
 
-  socket.send(&ID, sizeof(ID));
+  socket.send(ID);
 
   uint32_t x = this->x;
   uint32_t y = this->y;
 
-  socket.send(&x, sizeof(x));
-  socket.send(&y, sizeof(y));
+  socket.send(x);
+  socket.send(y);
 }

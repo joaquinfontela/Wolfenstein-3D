@@ -9,7 +9,7 @@ class PlayerDied : public Notification {
 
  public:
   PlayerDied(int playerID);
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

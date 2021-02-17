@@ -10,7 +10,7 @@ class DoorMoving : public Notification {
  public:
   DoorMoving(int x, int y);
 
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif

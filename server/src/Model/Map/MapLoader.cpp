@@ -73,7 +73,6 @@ void MapLoader::addDoorsToMap(Map* map) {
 
 void MapLoader::addWallsToMap(Map* map) {
   int currentId;
-  WallFactory wallFactory;
   DoorFactory df;
   for (currentId = this->wallIdStart; currentId <= wallIdEnd; currentId++) {
     if (!idIsInItemCoordinateMap(currentId)) continue;

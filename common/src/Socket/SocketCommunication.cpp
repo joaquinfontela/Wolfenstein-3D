@@ -78,7 +78,7 @@ void SocketCommunication::connect(const std::string& hostname,
   return;
 }
 
-int SocketCommunication::send(const uint32_t* message,
+int SocketCommunication::send(const char* message,
                               unsigned int messageLength) {
   if (!message) {
     return 0;
@@ -104,7 +104,7 @@ int SocketCommunication::send(const uint32_t* message,
   return bytesSent;
 }
 
-int SocketCommunication::receive(uint32_t* buffer, unsigned int bufLength) {
+int SocketCommunication::receive(char* buffer, unsigned int bufLength) {
   if (bufLength == 0) {
     return 0;
   }

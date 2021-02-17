@@ -5,10 +5,10 @@
 
 PlayerDied::PlayerDied(int playerID) { this->playerID = playerID; }
 
-void PlayerDied::send(SocketCommunication& socket) {
+void PlayerDied::send(SocketWrapper& socket) {
   uint32_t opcode = PLAYER_DIED;
   uint32_t playerID = this->playerID;
 
-  socket.send(&opcode, sizeof(opcode));
-  socket.send(&playerID, sizeof(playerID));
+  socket.send(opcode);
+  socket.send(playerID);
 }

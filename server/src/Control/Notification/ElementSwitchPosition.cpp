@@ -9,13 +9,13 @@ ElementSwitchPosition::ElementSwitchPosition(int uniqueId, double x, double y) {
   this->newY = y;
 }
 
-void ElementSwitchPosition::send(SocketCommunication& socket) {
+void ElementSwitchPosition::send(SocketWrapper& socket) {
   uint32_t opcode = ELEMENT_SWITCH_POSITION;
 
-  socket.send(&opcode, sizeof(opcode));
+  socket.send(opcode);
 
   uint32_t uniqueId = this->uniqueId;
-  socket.send(&uniqueId, sizeof(uniqueId));
+  socket.send(uniqueId);
 
   SocketWrapper wrapper(socket);
   wrapper.send(this->newX);

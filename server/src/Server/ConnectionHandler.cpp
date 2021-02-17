@@ -3,6 +3,7 @@
 #include <thread>
 
 #include "../../../common/includes/Socket/SocketException.h"
+#include "../../../common/includes/Socket/SocketWrapper.h"
 #include "../../../common/includes/protocol.h"
 #include "../../includes/Control/Command/PlayerMove.h"
 #include "../../includes/Control/Command/PlayerDisconnected.h"
@@ -19,7 +20,7 @@
 #include "../../includes/Control/Command/PlayerSwitchWeapon.h"
 #include "../../includes/Control/Command/StartGame.h"
 
-ConnectionHandler::ConnectionHandler(SocketCommunication& sock,
+ConnectionHandler::ConnectionHandler(SocketWrapper& sock,
                                      WaitingQueue<Command*>& com, int playerID)
     : socket(sock), commands(com), ID(playerID) {}
 
@@ -33,7 +34,7 @@ void ConnectionHandler::receiveCommands() {
   while (true) {
     try {
       uint32_t opcode;
-      this->socket.receive(&opcode, sizeof(opcode));
+      this->socket.receive(&opcode);
 
       switch (opcode){
         case KEY_A_DOWN:{

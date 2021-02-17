@@ -18,7 +18,7 @@ CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
     : CommandManager(scoreboard, s, alive), player(player) {}
 
 void CommandSender::update(uint32_t keyType) {
-  socket.send(&keyType, UINT32_SIZE);
+  socket.send(keyType);
 }
 
 void CommandSender::run() {
@@ -33,10 +33,10 @@ void CommandSender::run() {
       SDL_WaitEvent(&event);
       if (event.type == SDL_QUIT) {
         uint32_t opcode = PLAYER_DISCONNECT;
-        socket.send(&opcode, UINT32_SIZE);
-        socket.readShutdown();
-        socket.writeShutdown();
-        socket.close();
+        socket.send(opcode);
+        socket.getSocket().readShutdown();
+        socket.getSocket().writeShutdown();
+        socket.getSocket().close();
         alive = false;
         this->scoreboard->stop();
         break;

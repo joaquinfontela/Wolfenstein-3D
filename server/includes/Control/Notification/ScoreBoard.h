@@ -13,7 +13,7 @@ class ScoreBoard : public Notification {
  public:
   ScoreBoard(int numberOfPlayers, std::vector<uint32_t> players, std::vector<uint32_t> scores) :
              numberOfPlayers(numberOfPlayers), players(players), scores(scores) {}
-  void send(SocketCommunication& socket);
+  void send(SocketWrapper& socket);
 };
 
 #endif
