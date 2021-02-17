@@ -5,6 +5,8 @@
 
 #include "SocketCommunication.h"
 
+class SocketCommunication;
+
 class SocketListener {
  private:
   int fd;
@@ -16,7 +18,7 @@ class SocketListener {
 
   // Acepta un cliente y devuelve un socket con el fd correspondiente al cliente
   // aceptado.
-  SocketCommunication accept();
+  int _accept();
 
   // Cierra el servidor
   void close();

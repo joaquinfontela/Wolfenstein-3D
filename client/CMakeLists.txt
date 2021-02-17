@@ -113,7 +113,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
-  src/mainwall.cpp
+  src/main.cpp
   src/Login/create_window.cpp
   src/Login/create_window.h
   src/Login/create_window.ui
@@ -156,6 +156,7 @@ set(PROJECT_SOURCES
   src/configReader.cpp
   ../common/src/Map/Map.cpp
   ../common/src/Socket/SocketCommunication.cpp
+  ../common/src/Socket/SocketListener.cpp
   ../common/src/Socket/SocketWrapper.cpp
   ../common/src/Thread/Thread.cpp
   ../common/src/Map/Map.cpp
@@ -213,6 +214,7 @@ add_library(sdldemo
   src/commandsender.cpp
   src/commandexecuter.cpp
   ../common/src/Map/Map.cpp
+  ../common/src/Socket/SocketListener.cpp
   ../common/src/Socket/SocketCommunication.cpp
   ../common/src/Socket/SocketWrapper.cpp
   ../common/src/Thread/Thread.cpp

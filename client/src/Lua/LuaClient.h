@@ -31,7 +31,7 @@ class Client {
   void connectToServer(std::string& host, std::string& port);
 
  public:
-  Client() : socket(-1) {}
+  Client() : socket() {}
   int run(std::string& host, std::string& port, uint32_t lobbyID, std::string& scriptName);
 };
 }  // namespace Lua
