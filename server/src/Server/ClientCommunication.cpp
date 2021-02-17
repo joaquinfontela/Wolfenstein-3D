@@ -46,6 +46,8 @@ bool ClientCommunication::connectToLobby() {
 
       std::vector<int> availableMatches = this->matchList.getAvailableMatches();
       sendAvailableMatchData(availableMatches);
+      if(availableMatches.size() == 0)
+        return false;
 
       uint32_t lobbyID = -1;
       this->wrapper.receive(&lobbyID);
