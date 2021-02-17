@@ -104,59 +104,7 @@ int SocketCommunication::send(const uint32_t* message,
   return bytesSent;
 }
 
-int SocketCommunication::sendDouble(const double* message,
-                              unsigned int messageLength) {
-  if (!message) {
-    return 0;
-  }
-
-  unsigned int bytesSent = 0;
-  int bytesPending = messageLength;
-
-  while (bytesSent < messageLength) {
-    int sent =
-        ::send(this->fd, &message[bytesSent], bytesPending, MSG_NOSIGNAL);
-
-    if (sent == -1) {
-      throw SocketException();
-    } else if (sent == 0) {
-      break;
-    }
-
-    bytesSent += sent;
-    bytesPending -= sent;
-  }
-
-  return bytesSent;
-}
-
 int SocketCommunication::receive(uint32_t* buffer, unsigned int bufLength) {
-  if (bufLength == 0) {
-    return 0;
-  }
-
-  int bytesAvailable = bufLength;
-  int bytesReceived = 0;
-
-  while (bytesReceived < bufLength) {
-    int bytes = recv(this->fd, &buffer[bytesReceived], bytesAvailable, 0);
-
-    if (bytes == -1) {
-      throw SocketException();
-    }
-
-    if (bytes == 0) {
-      throw SocketException();
-    }
-
-    bytesReceived += bytes;
-    bytesAvailable -= bytes;
-  }
-
-  return bytesReceived;
-}
-
-int SocketCommunication::receiveDouble(double* buffer, unsigned int bufLength) {
   if (bufLength == 0) {
     return 0;
   }

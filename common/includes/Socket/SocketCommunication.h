@@ -25,10 +25,6 @@ class SocketCommunication {
   // leidos.
   int receive(uint32_t* buffer, unsigned int bufLength);
 
-  int sendDouble(const double* message, unsigned int messageLength);
-
-  int receiveDouble(double* buffer, unsigned int bufLength);
-
   // Cierra el canal de escritura del socket.
   void writeShutdown();
 
