@@ -7,7 +7,7 @@ class Coordinate {
  private:
   int x;
   int y;
-
+  std::vector<int> vec;
  public:
   /**
    * @brief   Returns a coordinate at (x,y).
@@ -27,7 +27,7 @@ class Coordinate {
    * @brief   Returns a vector with two elements, where the first is the X
    * component of  the coordinate, and the second is the Y component.
    */
-  std::vector<int> getVector();
+  const std::vector<int>& getVector();
 };
 
 #endif

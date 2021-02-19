@@ -114,6 +114,9 @@ Player* Map::traceAttackFrom(Player* attacker, int range) {
     int mapX = (int)rayPosX;
     int mapY = (int)rayPosY;
 
+    if(!withinMap(mapX, mapY))
+      return nullptr;
+
     if (this->tileMatrix.at(mapX).at(mapY).checkWall())
       return nullptr;
 
@@ -165,6 +168,9 @@ bool Map::moveTo(double fromX, double fromY, double toX, double toY, Player* p,
   int x = (int)toX;
   int y = (int)toY;
 
+  if(!withinMap(x, y))
+    return false;
+
   if (this->tileMatrix.at(x).at(y).allowMovement(toX, toY, p, notis)) {
     if ((int)fromX != x || (int)fromY != y) {
       this->tileMatrix.at((int)fromX).at((int)fromY).removePlayerFromTile(p);
@@ -209,6 +215,9 @@ std::tuple<int, int> Map::moveDoor(Player* p) {
 
   int mapX = (int)rayPosX;
   int mapY = (int)rayPosY;
+
+  if(!withinMap(mapX, mapY))
+    return std::make_tuple(-1, -1);
 
   while (mapX == float(initialX) && mapY == float(initialY)) {
     rayPosX = (initialX + i * dirX);

@@ -3,6 +3,8 @@
 Coordinate::Coordinate(int x, int y) {
   this->x = x;
   this->y = y;
+  this->vec.push_back(x);
+  this->vec.push_back(y);
 }
 
 Coordinate::Coordinate() {
@@ -20,9 +22,6 @@ int Coordinate::getX() { return this->x; }
 
 int Coordinate::getY() { return this->y; }
 
-std::vector<int> Coordinate::getVector() {
-  std::vector<int> vec;
-  vec.push_back(this->x);
-  vec.push_back(this->y);
+const std::vector<int>& Coordinate::getVector() {
   return vec;
 }

@@ -7,7 +7,7 @@ WeaponInventory::WeaponInventory(PlayerConfig& config, int playerID) : config(co
   this->ammo = config.AMMO_AT_START;
   this->shotsFired = 0;
 
-  // Puedo inicializar estas armas con un -1 como ID de esa unidad dado que, al ser cuchillo y pistola, nunca van a ser dropeados.
+  // Puedo inicializar estas armas con un -1 como ID de esa unidad dado que cuchillos y pistolas no se encuentran en el piso.
   this->weapons.push_back(weaponFactory.getWeapon(1, -1));
   this->weapons.push_back(weaponFactory.getWeapon(2, -1));
 
@@ -82,7 +82,6 @@ int WeaponInventory::attack(float timeElapsed, WaitingQueue<Notification*>& noti
   this->ammo = ammo;
 
   if(damageDealt != -1){ // Efectivamente se efectuó un disparo.
-    std::cout<<"Pushing Noti"<<std::endl;
     ShotsFired* noti = new ShotsFired(this->playerID);
     notis.push(noti);
   }
