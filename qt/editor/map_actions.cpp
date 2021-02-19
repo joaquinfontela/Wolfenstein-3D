@@ -58,12 +58,18 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
   int COL = this->editor->mc->cant_col;
   int ROW = this->editor->mc->cant_row;
   int tile_size = this->editor->actual_tile_size();
+  float shift_x = (this->editor->ui->graphics_map_container->width() - COL*tile_size) / 2;
+  float shift_y = (this->editor->ui->graphics_map_container->height() - ROW*tile_size) / 2;
+
 
   QScrollBar* vertical_bar = this->editor->ui->graphics_map_container->verticalScrollBar();
   QScrollBar* horizontal_bar = this->editor->ui->graphics_map_container->horizontalScrollBar();
 
   for (int i = 1; i <= COL; i++) {
     float newColLine = i * tile_size - horizontal_bar->value();
+    if(shift_x > 0 ){
+        newColLine+=shift_x;
+    }
     if (x < newColLine) {
       coordinates.push_back(i);
       break;
@@ -71,10 +77,19 @@ std::vector<int> map_actions::get_coordinate(int x, int y) {
   }
   for (int i = 1; i <= ROW; i++) {
     float newRowLine = i * tile_size - vertical_bar->value();
+    if(shift_y > 0 ){
+        newRowLine+=shift_y;
+    }
     if (y < newRowLine) {
       coordinates.push_back(i);
       break;
     }
   }
+
+  if(coordinates.size() != 2 || x < shift_x || y < shift_y){
+      return {-1,-1};
+  }
+
   return coordinates;
 }
+
