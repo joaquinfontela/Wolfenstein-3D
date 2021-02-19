@@ -49,6 +49,9 @@ map_canvas::map_canvas(TileMatrix* tile_matrix) {
 bool map_canvas::add_tile(std::vector<int> coordinates, tile_item* new_tile) {
   int col = coordinates[0] - 1;
   int row = coordinates[1] - 1;
+  if(col > this->cant_col || row > this->cant_row || col < 0){
+      return false;
+  }
   std::vector<tile_item*> vector_selected = this->grilla.at(row).at(col);
 
   if (vector_selected.empty() || (this->grilla.at(row).at(col).at(0)->accept_tile(new_tile) &&
