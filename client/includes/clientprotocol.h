@@ -51,9 +51,9 @@
 #define CHAINGUN 4
 #define ROCKETLAUNCHER 5
 
-#define AUDIO_PATH "../audio/"
-#define FONT_PATH "../media/"
-#define IMG_PATH "../media/"
+#define AUDIO_PATH "/usr/local/share/Wolfenstein/audio/"
+#define FONT_PATH "/usr/local/share/Wolfenstein/media/"
+#define IMG_PATH "/usr/local/share/Wolfenstein/media/"
 #define GAME_FONT "wolfenstein.ttf"
 #define GAME_LOGO "wolfensteinlogo.jpg"
 #define GAME_TITLE "Wolfenstein"

@@ -29,7 +29,7 @@ Login::Login(int& player_id, int& map_id, SocketCommunication& socket,
       restart(restart),
       socket(socket) {
   ui->setupUi(this);
-  QPixmap bkgnd("../media/loginscreen.png");
+  QPixmap bkgnd("/usr/local/share/Wolfenstein/media/loginscreen.png");
   bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
   QPalette palette;
   palette.setBrush(QPalette::Background, bkgnd);

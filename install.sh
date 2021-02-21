@@ -24,6 +24,7 @@ echo -e "\x1b[1m\x1b[32m \n [Compiling Server] \x1b[0m\n"
 cd ../../../../
 cmake .
 make
+sudo mv ServerMain /usr/local/bin
 
 echo -e "\x1b[1m\x1b[32m \n [Compiling Editor] \x1b[0m\n"
 cd qt/editor/
@@ -35,5 +36,8 @@ echo -e "\x1b[1m\x1b[32m \n [Compiling Client] \x1b[0m\n"
 cd client/executable
 cmake ..
 make
+sudo mv Wolfen3D /usr/local/bin
+cd ..
+sudo cp -r Wolfenstein /usr/local/share
 
 echo -e "\x1b[1m\x1b[32m \n [Install finished] \x1b[0m\n"

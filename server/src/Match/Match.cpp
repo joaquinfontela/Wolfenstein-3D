@@ -2,8 +2,8 @@
 
 #include "../../includes/Server/ClientCommunication.h"
 
-#define MAP_YAML_FILE_NAME "./common/src/YAML/map.yaml"
-#define CONFIG_YAML_FILE_NAME "./common/src/YAML/config.yaml"
+#define MAP_YAML_FILE_NAME "/usr/local/share/Wolfenstein/YAML/map1.yaml"
+#define CONFIG_YAML_FILE_NAME "/usr/local/share/Wolfenstein/YAML/config.yaml"
 
 Match::Match(int lobbyID)
     : ID(lobbyID),

@@ -13,7 +13,7 @@
 #include "../../../includes/Model/Item/Kit.h"
 
 ItemFactory::ItemFactory()
-    : yamlConfigReader(std::string("common/src/YAML/config.yaml")) {}
+    : yamlConfigReader(std::string("/usr/local/share/Wolfenstein/YAML/config.yaml")) {}
 
 ItemFactory::ItemFactory(std::string& configFileName)
     : yamlConfigReader(configFileName) {}

@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     if (endingGame) break;
 
     Client client(socket, player_id);
-    std::string mapFile = "../../common/src/YAML/Maps/map";
+    std::string mapFile = "/usr/local/share/Wolfenstein/YAML/Maps/map";
     mapFile = mapFile + std::to_string(map_id) + ".yaml";
 
     client.run(mapFile);

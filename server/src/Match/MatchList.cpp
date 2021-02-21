@@ -5,7 +5,7 @@
 
 #include "../../includes/Match/Match.h"
 #include "../../includes/Server/ClientCommunication.h"
-#define MAP_YAML_FILE_NAME "./common/src/YAML/Maps/map"
+#define MAP_YAML_FILE_NAME "/usr/local/share/Wolfenstein/YAML/Maps/map"
 
 static bool fileExists(std::string& name){
   if (FILE *file = fopen(name.c_str(), "r")) {
@@ -56,7 +56,7 @@ ConnectionHandler* MatchList::create(ClientCommunication* player, int mapID){
   std::string mapFile = MAP_YAML_FILE_NAME + std::to_string(mapID) + ".yaml";
 
   if(!fileExists(mapFile)){
-    std::cout<<"[SERVER] Unable to create match with map ID: "<<mapID<<std::endl;
+    std::cout<<"[SERVER] Unable to create match with map: "<<mapFile<<std::endl;
     return nullptr;
   }
 

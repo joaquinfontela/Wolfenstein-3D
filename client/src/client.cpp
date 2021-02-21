@@ -30,7 +30,7 @@ void Client::connectToServer(std::string& ip, std::string& port) {
 }
 
 void Client::buildWindow() {
-  ConfigReader config("../YAMLConfig/screenDimensions.yaml");
+  ConfigReader config("/usr/local/share/Wolfenstein/YAML/screenDimensions.yaml");
   int height = config.getHeight();
   int width = config.getWidth();
 

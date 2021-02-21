@@ -11,7 +11,7 @@
 #include "../../../../includes/Model/Item/Weapon/Shootable/RocketLauncher.h"
 
 WeaponFactory::WeaponFactory()
-    : yamlConfigReader(std::string("common/src/YAML/config.yaml")) {}
+    : yamlConfigReader(std::string("/usr/local/share/Wolfenstein/YAML/config.yaml")) {}
 
 WeaponFactory::WeaponFactory(std::string& configFileName)
     : yamlConfigReader(configFileName) {}

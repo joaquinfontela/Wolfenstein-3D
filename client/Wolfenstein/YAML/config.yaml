@@ -1,0 +1,41 @@
+MATCH_LENGTH: 400.0
+BULLET_AMOUNT_AT_START: 80
+BULLET_DROP_WHEN_DEATH: 10
+MAX_BULLETS: 100
+POINTS_PER_KILL: 50
+AMMO_PICK_UP: 5
+MAX_HEALTH: 100
+MAX_REVIVE: 2
+MAX_HEALTH_TO_PICK_UP_BLOOD: 10
+HEALTH_SUM_WHEN_PICK_UP_ITEM:
+  102: 1
+  107: 10
+  109: 20
+POINTS_SUM_WHEN_PICK_UP_ITEM:
+  103: 100
+  104: 10
+  105: 200
+  106: 50
+DAMAGE_PER_BULLET_MIN: 1
+DAMAGE_PER_BULLET_MAX: 10
+BLAST_FREQ: #blast=rafaga
+  3: 0.3
+  4: 0.1
+SHOTS_PER_BLAST:
+  2: 1
+  3: 5
+  4: 1
+  5: 1
+AMMO_LOST_PER_SHOT:
+  2: 1
+  3: 1
+  4: 1
+  5: 5
+PRECISION:
+  2: 1
+  3: 1
+  4: 1 #por ahora
+
+
+# 1: knife, 2: pistol: 3: machine gun, 4: minigun, 5: rocket launcher
+# 101: ammo, 102: blood, 103: chest, 104: cross, 105: crown, 106: cup, 107: food, 108: key, 109: kit
