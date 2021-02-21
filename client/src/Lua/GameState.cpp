@@ -30,8 +30,8 @@ bool GameState::itemInSight() {
 bool GameState::facingWall() {
   std::unique_lock<std::mutex> lock(this->lock);
 
-  double playerX = int(this->player->x);
-  double playerY = int(this->player->y);
+  double playerX = this->player->x;
+  double playerY = this->player->y;
   double dirX = this->player->dirX;
   double dirY = this->player->dirY;
 

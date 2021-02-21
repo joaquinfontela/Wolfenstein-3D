@@ -6,7 +6,7 @@
 
 typedef union Floating {
   double d;
-  char c[8];
+  uint32_t u[2];
 } floating_t;
 
 typedef union b32 {
@@ -21,26 +21,14 @@ SocketCommunication& SocketWrapper::getSocket() {
 void SocketWrapper::send(double value) {
   floating_t sendable;
   sendable.d = value;
-  this->socket.send(&sendable.c[0], BYTESIZE);
-  this->socket.send(&sendable.c[1], BYTESIZE);
-  this->socket.send(&sendable.c[2], BYTESIZE);
-  this->socket.send(&sendable.c[3], BYTESIZE);
-  this->socket.send(&sendable.c[4], BYTESIZE);
-  this->socket.send(&sendable.c[5], BYTESIZE);
-  this->socket.send(&sendable.c[6], BYTESIZE);
-  this->socket.send(&sendable.c[7], BYTESIZE);
+  this->send(sendable.u[0]);
+  this->send(sendable.u[1]);
 }
 
 void SocketWrapper::receive(double* value) {
   floating_t receivable = {0};
-  this->socket.receive(&receivable.c[0], BYTESIZE);
-  this->socket.receive(&receivable.c[1], BYTESIZE);
-  this->socket.receive(&receivable.c[2], BYTESIZE);
-  this->socket.receive(&receivable.c[3], BYTESIZE);
-  this->socket.receive(&receivable.c[4], BYTESIZE);
-  this->socket.receive(&receivable.c[5], BYTESIZE);
-  this->socket.receive(&receivable.c[6], BYTESIZE);
-  this->socket.receive(&receivable.c[7], BYTESIZE);
+  this->receive(&receivable.u[0]);
+  this->receive(&receivable.u[1]);
   *value = receivable.d;
 }
 
