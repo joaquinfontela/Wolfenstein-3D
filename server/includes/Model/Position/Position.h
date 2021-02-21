@@ -44,6 +44,15 @@ public:
      */
     void respawn(Map& map, WaitingQueue<Notification*>& notis);
 
+    /*
+     * @brief Updates the current position of the player.
+     *
+     * @param Map on which to move.
+     * @param Time elapsed since last update.
+     * @param Notification Queue on which to notify of changes.
+     *
+     * @return True if movement occured, false otherwise.
+     */
     bool update(Map& map, float timeElapsed, WaitingQueue<Notification*>& notis);
 
     /*
