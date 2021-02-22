@@ -69,10 +69,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="Game_8h_source.html">Game.h</a>&gt;</code></p>
+<p>Runs and coordinates all the main classes that execute the game.  
+ <a href="classGame.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="client_2includes_2Game_8h_source.html">Game.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa8e9a72f84a9dc3938483305e1a7b4cd"><td class="memItemLeft" align="right" valign="top"><a id="aa8e9a72f84a9dc3938483305e1a7b4cd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Game</b> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;socket, <a class="el" href="classSdlWindow.html">SdlWindow</a> *window, uint32_t myPlayerID, std::string &amp;mapFile)</td></tr>
+<tr class="separator:aa8e9a72f84a9dc3938483305e1a7b4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6e55bd6f4c2d966b8e9a35f7a0d421"><td class="memItemLeft" align="right" valign="top"><a id="a7c6e55bd6f4c2d966b8e9a35f7a0d421"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a7c6e55bd6f4c2d966b8e9a35f7a0d421">start</a> ()</td></tr>
+<tr class="memdesc:a7c6e55bd6f4c2d966b8e9a35f7a0d421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it's loader), audio and texture managers, sprite list and raycaster engine, among others. <br /></td></tr>
+<tr class="separator:a7c6e55bd6f4c2d966b8e9a35f7a0d421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91567669fe85a7bdb64188ce579fe211"><td class="memItemLeft" align="right" valign="top"><a id="a91567669fe85a7bdb64188ce579fe211"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Game</b> (std::string mapFile, std::string configFile)</td></tr>
 <tr class="separator:a91567669fe85a7bdb64188ce579fe211"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,13 +119,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (int pl
 <tr class="separator:a94d61d9fb3bbefee092d8599233c141e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a382ac135c4eea51254ec2d0d2b2da61d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a382ac135c4eea51254ec2d0d2b2da61d">hasStarted</a> ()</td></tr>
 <tr class="separator:a382ac135c4eea51254ec2d0d2b2da61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a08709bec3114eb5fb62375c1cc7864"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a4a08709bec3114eb5fb62375c1cc7864">start</a> (int playerID)</td></tr>
-<tr class="separator:a4a08709bec3114eb5fb62375c1cc7864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70622855aa1e12463c044d9e820d06d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a70622855aa1e12463c044d9e820d06d5">start</a> (int playerID, <a class="el" href="classWaitingQueue.html">WaitingQueue</a>&lt; <a class="el" href="classNotification.html">Notification</a> * &gt; &amp;notif)</td></tr>
+<tr class="separator:a70622855aa1e12463c044d9e820d06d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0699964b0741a119db7b4770d8ec8540"><td class="memItemLeft" align="right" valign="top"><a id="a0699964b0741a119db7b4770d8ec8540"></a>
+<a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>generateKillScoreboard</b> (std::vector&lt; <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players)</td></tr>
+<tr class="separator:a0699964b0741a119db7b4770d8ec8540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4955ec8b83ca57554807fa068fe218"><td class="memItemLeft" align="right" valign="top"><a id="adb4955ec8b83ca57554807fa068fe218"></a>
+<a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>generateScoreboard</b> (std::vector&lt; <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players)</td></tr>
+<tr class="separator:adb4955ec8b83ca57554807fa068fe218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694e13eafe3cef605abade830f496d8c"><td class="memItemLeft" align="right" valign="top"><a id="a694e13eafe3cef605abade830f496d8c"></a>
+<a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>generateShotsFiredScoreBoard</b> (std::vector&lt; <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players)</td></tr>
+<tr class="separator:a694e13eafe3cef605abade830f496d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea18869eba885a774384ca597918bce4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aea18869eba885a774384ca597918bce4">end</a> (<a class="el" href="classWaitingQueue.html">WaitingQueue</a>&lt; <a class="el" href="classNotification.html">Notification</a> * &gt; &amp;queue)</td></tr>
 <tr class="separator:aea18869eba885a774384ca597918bce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h1><a class="anchor" id="DESCRIPTION"></a>
+<div class="textblock"><p>Runs and coordinates all the main classes that execute the game. </p>
+<h1><a class="anchor" id="DESCRIPTION"></a>
 &lt;br&gt;</h1>
 <p>Class that represents the game as a whole. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -504,8 +524,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (int pl
 
 </div>
 </div>
-<a id="a4a08709bec3114eb5fb62375c1cc7864"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a08709bec3114eb5fb62375c1cc7864">&#9670;&nbsp;</a></span>start()</h2>
+<a id="a70622855aa1e12463c044d9e820d06d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70622855aa1e12463c044d9e820d06d5">&#9670;&nbsp;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,8 +534,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (int pl
           <td class="memname">void Game::start </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>playerID</em></td><td>)</td>
+          <td class="paramname"><em>playerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classWaitingQueue.html">WaitingQueue</a>&lt; <a class="el" href="classNotification.html">Notification</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>notif</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -523,6 +553,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (int pl
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="classPlayer.html" title="[CLIENT SIDE] Player class. Holds important information about each player and is able to raycast it i...">Player</a></td><td>ID of the intended player. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classNotification.html">Notification</a></td><td>Queue to notify of changes. </td></tr>
   </table>
   </dd>
 </dl>
@@ -674,7 +705,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addPlayer</b> (int pl
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>server/includes/Model/Game/<a class="el" href="Game_8h_source.html">Game.h</a></li>
+<li>client/includes/<a class="el" href="client_2includes_2Game_8h_source.html">Game.h</a></li>
+<li>server/includes/Model/Game/<a class="el" href="server_2includes_2Model_2Game_2Game_8h_source.html">Game.h</a></li>
+<li>client/src/Game.cpp</li>
 <li>server/src/Model/Game/Game.cpp</li>
 </ul>
 </div><!-- contents -->

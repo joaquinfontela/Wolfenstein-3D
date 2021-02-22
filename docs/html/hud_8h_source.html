@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;area.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;audiomanager.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;player.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;sdlanimation.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;HudAnimations.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;texturemanager.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classHud.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHud.html">Hud</a> {</div>
@@ -84,9 +84,9 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classPlayer.html">Player</a>* player;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classAudioManager.html">AudioManager</a>&amp; audiomanager;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classSdlAnimation.html">SdlAnimation</a>* hudgun;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classSdlAnimation.html">SdlAnimation</a>* bjface;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classSdlAnimation.html">SdlAnimation</a>* gun;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classHudAnimations.html">HudAnimations</a> hudgun;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classHudAnimations.html">HudAnimations</a> bjface;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classHudAnimations.html">HudAnimations</a> gun;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">short</span> animationStatus;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">short</span> movementStatus;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">int</span> fps;</div>
@@ -134,23 +134,20 @@ $(function() {
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classHud.html#af9ec2f89bcc54651d2413aeb5cbc53b3">update</a>();</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <a class="code" href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">~Hud</a>();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <a class="code" href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud</a>(<a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classAudioManager.html">AudioManager</a>&amp; audiomanager);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// HUD_H_</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <a class="code" href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud</a>(<a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classAudioManager.html">AudioManager</a>&amp; audiomanager);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;};</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// HUD_H_</span></div>
 <div class="ttc" id="aclassArea_html"><div class="ttname"><a href="classArea.html">Area</a></div><div class="ttdoc">Represents a rectangle, where the (x,y) coordinates show where the top left corner of the rectangle b...</div><div class="ttdef"><b>Definition:</b> area.h:9</div></div>
-<div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdoc">Class used to organize the audio files and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> audiomanager.h:13</div></div>
+<div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdoc">Class used to organize the audio files and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> audiomanager.h:15</div></div>
+<div class="ttc" id="aclassHudAnimations_html"><div class="ttname"><a href="classHudAnimations.html">HudAnimations</a></div><div class="ttdoc">RAII Wrapper for the SldAnimation.</div><div class="ttdef"><b>Definition:</b> HudAnimations.h:11</div></div>
 <div class="ttc" id="aclassHud_html"><div class="ttname"><a href="classHud.html">Hud</a></div><div class="ttdoc">Renders all the images that appear in the hud.</div><div class="ttdef"><b>Definition:</b> hud.h:14</div></div>
-<div class="ttc" id="aclassHud_html_a224d3aeaa160cbbbc92e6d36887250a7"><div class="ttname"><a href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">Hud::updateFpsCounter</a></div><div class="ttdeci">void updateFpsCounter(int fps)</div><div class="ttdoc">Updates the fps counter.</div><div class="ttdef"><b>Definition:</b> hud.cpp:245</div></div>
-<div class="ttc" id="aclassHud_html_a2fbb662bbc70f646e081f9206a879b66"><div class="ttname"><a href="classHud.html#a2fbb662bbc70f646e081f9206a879b66">Hud::~Hud</a></div><div class="ttdeci">~Hud()</div><div class="ttdoc">Destroy the Hud object, the face, hud and gun animations.</div><div class="ttdef"><b>Definition:</b> hud.cpp:280</div></div>
-<div class="ttc" id="aclassHud_html_a696c30bca39bd8f12a39c18f51a252f0"><div class="ttname"><a href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">Hud::updateHudGun</a></div><div class="ttdeci">void updateHudGun()</div><div class="ttdoc">Updates the gun frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:203</div></div>
-<div class="ttc" id="aclassHud_html_ab0d224dd277601a5ed7d9d14b13a03c4"><div class="ttname"><a href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud::Hud</a></div><div class="ttdeci">Hud(Player *player, TextureManager &amp;manager, AudioManager &amp;audiomanager)</div><div class="ttdoc">Construct a new Hud object.</div><div class="ttdef"><b>Definition:</b> hud.cpp:219</div></div>
-<div class="ttc" id="aclassHud_html_addccafb1bede2fdf11db2be61c3df8e8"><div class="ttname"><a href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">Hud::updateBjFace</a></div><div class="ttdeci">void updateBjFace()</div><div class="ttdoc">Updates hud's player frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:217</div></div>
+<div class="ttc" id="aclassHud_html_a224d3aeaa160cbbbc92e6d36887250a7"><div class="ttname"><a href="classHud.html#a224d3aeaa160cbbbc92e6d36887250a7">Hud::updateFpsCounter</a></div><div class="ttdeci">void updateFpsCounter(int fps)</div><div class="ttdoc">Updates the fps counter.</div><div class="ttdef"><b>Definition:</b> hud.cpp:244</div></div>
+<div class="ttc" id="aclassHud_html_a696c30bca39bd8f12a39c18f51a252f0"><div class="ttname"><a href="classHud.html#a696c30bca39bd8f12a39c18f51a252f0">Hud::updateHudGun</a></div><div class="ttdeci">void updateHudGun()</div><div class="ttdoc">Updates the gun frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:202</div></div>
+<div class="ttc" id="aclassHud_html_ab0d224dd277601a5ed7d9d14b13a03c4"><div class="ttname"><a href="classHud.html#ab0d224dd277601a5ed7d9d14b13a03c4">Hud::Hud</a></div><div class="ttdeci">Hud(Player *player, TextureManager &amp;manager, AudioManager &amp;audiomanager)</div><div class="ttdoc">Construct a new Hud object.</div><div class="ttdef"><b>Definition:</b> hud.cpp:218</div></div>
+<div class="ttc" id="aclassHud_html_addccafb1bede2fdf11db2be61c3df8e8"><div class="ttname"><a href="classHud.html#addccafb1bede2fdf11db2be61c3df8e8">Hud::updateBjFace</a></div><div class="ttdeci">void updateBjFace()</div><div class="ttdoc">Updates hud's player frame about to be played.</div><div class="ttdef"><b>Definition:</b> hud.cpp:216</div></div>
 <div class="ttc" id="aclassHud_html_af9ec2f89bcc54651d2413aeb5cbc53b3"><div class="ttname"><a href="classHud.html#af9ec2f89bcc54651d2413aeb5cbc53b3">Hud::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Calls the drawing methods.</div><div class="ttdef"><b>Definition:</b> hud.cpp:21</div></div>
 <div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">[CLIENT SIDE] Player class. Holds important information about each player and is able to raycast it i...</div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
-<div class="ttc" id="aclassSdlAnimation_html"><div class="ttname"><a href="classSdlAnimation.html">SdlAnimation</a></div><div class="ttdoc">This class represents a non-raycasted which can be played at any time.</div><div class="ttdef"><b>Definition:</b> sdlanimation.h:12</div></div>
 <div class="ttc" id="aclassTextureManager_html"><div class="ttname"><a href="classTextureManager.html">TextureManager</a></div><div class="ttdoc">Class used to organize the textures and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> texturemanager.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

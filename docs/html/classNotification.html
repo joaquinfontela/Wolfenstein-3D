@@ -89,21 +89,22 @@ Inheritance diagram for Notification:</div>
 <area href="classPlayerUpdatePosition.html" alt="PlayerUpdatePosition" shape="rect" coords="147,616,284,640"/>
 <area href="classScoreBoard.html" title="Stores the data for the leaderboards and draws it." alt="ScoreBoard" shape="rect" coords="147,672,284,696"/>
 <area href="classShotsFired.html" alt="ShotsFired" shape="rect" coords="147,728,284,752"/>
+<area href="classStartingMatch.html" alt="StartingMatch" shape="rect" coords="147,784,284,808"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a22bf713a268683529596ebc90e96e51d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotification.html#a22bf713a268683529596ebc90e96e51d">send</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;socket)=0</td></tr>
-<tr class="separator:a22bf713a268683529596ebc90e96e51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2778bbf12abe8261721be24a88156a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotification.html#ac2778bbf12abe8261721be24a88156a3">send</a> (<a class="el" href="classSocketWrapper.html">SocketWrapper</a> &amp;socket)=0</td></tr>
+<tr class="separator:ac2778bbf12abe8261721be24a88156a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h1><a class="anchor" id="DESCRIPTION"></a>
 &lt;br&gt;</h1>
 <p>The class that represents a notifiable event to be sent to the clients. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a22bf713a268683529596ebc90e96e51d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22bf713a268683529596ebc90e96e51d">&#9670;&nbsp;</a></span>send()</h2>
+<a id="ac2778bbf12abe8261721be24a88156a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2778bbf12abe8261721be24a88156a3">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,7 +115,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Notification::send </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classSocketWrapper.html">SocketWrapper</a> &amp;&#160;</td>
           <td class="paramname"><em>socket</em></td><td>)</td>
           <td></td>
         </tr>
@@ -133,7 +134,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classDoorMoving.html#a2641057cd8d5afe5640dd9f2f3de9f66">DoorMoving</a>, <a class="el" href="classElementSwitchPosition.html#a9152cd3f5560ce4c389a2b3f23a49869">ElementSwitchPosition</a>, <a class="el" href="classEndMatchNotif.html#ad392d3fc1948fc417301748cbe132f40">EndMatchNotif</a>, <a class="el" href="classMissileExplotion.html#a48e6bb27acccf01f3e67f20e8d91f4f4">MissileExplotion</a>, <a class="el" href="classPlayerConnected.html#a4a6fc0f6d5ba9857a7e2b0116323c56f">PlayerConnected</a>, <a class="el" href="classPlayerDied.html#ac29d2ecc007fceb5168767472bc0b81f">PlayerDied</a>, <a class="el" href="classPlayerDisconnect.html#a62cc0a144ca32b3ece5ec49e990093be">PlayerDisconnect</a>, <a class="el" href="classPlayerDropItem.html#a349b3c187a087e9184272dc53f5c4326">PlayerDropItem</a>, <a class="el" href="classPlayerPackageUpdate.html#a009fc4f74831be04f33bb7ef3fc26d6a">PlayerPackageUpdate</a>, <a class="el" href="classPlayerPickupItem.html#a2c0edf75502241b7cd48bb9e4207a353">PlayerPickupItem</a>, <a class="el" href="classPlayerUpdatePosition.html#af4769f2f4d4d42a9391074ee8ae0dc20">PlayerUpdatePosition</a>, <a class="el" href="classScoreBoard.html#ac72b9f87233caf5c0063e476b5c21369">ScoreBoard</a>, and <a class="el" href="classShotsFired.html#a947a24275fc0f977153b398f9d860cb3">ShotsFired</a>.</p>
+<p>Implemented in <a class="el" href="classDoorMoving.html#a1a39f7e6a3f39f8c94f8ea76ad5f330e">DoorMoving</a>, <a class="el" href="classElementSwitchPosition.html#a4057e8b4585e15fdf945f56b88c48e73">ElementSwitchPosition</a>, <a class="el" href="classEndMatchNotif.html#a5fc76370e143a562ad441acc0946d84e">EndMatchNotif</a>, <a class="el" href="classMissileExplotion.html#afcb4fed821835928cef4271302f7c9fd">MissileExplotion</a>, <a class="el" href="classPlayerConnected.html#a3f1f1c6dc85653a0de719f08c64a86de">PlayerConnected</a>, <a class="el" href="classPlayerDied.html#a174c9278ef1e475ebc93e2c9bee4c09b">PlayerDied</a>, <a class="el" href="classPlayerDisconnect.html#a4361d4500fce4dd87c01a18d606da967">PlayerDisconnect</a>, <a class="el" href="classPlayerDropItem.html#a0a632aa9eb63ed971645c56c74a55f01">PlayerDropItem</a>, <a class="el" href="classPlayerPackageUpdate.html#a9b1975797e685f86bc6721018094a63d">PlayerPackageUpdate</a>, <a class="el" href="classPlayerPickupItem.html#af3ea2107244c3431d5b46e02faf538fd">PlayerPickupItem</a>, <a class="el" href="classPlayerUpdatePosition.html#ae70af085e37613ff6510deaf39db9117">PlayerUpdatePosition</a>, <a class="el" href="classScoreBoard.html#ac07567a623b602f100c3d5614e25b866">ScoreBoard</a>, <a class="el" href="classShotsFired.html#ad213f8b906ba1014a86af60395be6c10">ShotsFired</a>, and <a class="el" href="classStartingMatch.html#a27735320de284fffc74e6339f60d7458">StartingMatch</a>.</p>
 
 </div>
 </div>

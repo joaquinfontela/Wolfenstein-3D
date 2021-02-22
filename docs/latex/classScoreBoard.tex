@@ -38,7 +38,7 @@ void \mbox{\hyperlink{classScoreBoard_a82498eb6ec3d8976d1d3e3cc8168cc52}{draw}} 
 \mbox{\Hypertarget{classScoreBoard_aa4e7901e89161657012af286ee461372}\label{classScoreBoard_aa4e7901e89161657012af286ee461372}} 
 {\bfseries Score\+Board} (int number\+Of\+Players, std\+::vector$<$ uint32\+\_\+t $>$ players, std\+::vector$<$ uint32\+\_\+t $>$ scores)
 \item 
-void \mbox{\hyperlink{classScoreBoard_ac72b9f87233caf5c0063e476b5c21369}{send}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket)
+void \mbox{\hyperlink{classScoreBoard_ac07567a623b602f100c3d5614e25b866}{send}} (\mbox{\hyperlink{classSocketWrapper}{Socket\+Wrapper}} \&socket)
 \end{DoxyCompactItemize}
 
 
@@ -106,11 +106,11 @@ Pushes the value sent from the server to be drawn on the leaderboards.
 {\em value} & It\textquotesingle{}s a $<$id, shots fired$>$ tuple \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classScoreBoard_ac72b9f87233caf5c0063e476b5c21369}\label{classScoreBoard_ac72b9f87233caf5c0063e476b5c21369}} 
+\mbox{\Hypertarget{classScoreBoard_ac07567a623b602f100c3d5614e25b866}\label{classScoreBoard_ac07567a623b602f100c3d5614e25b866}} 
 \index{ScoreBoard@{ScoreBoard}!send@{send}}
 \index{send@{send}!ScoreBoard@{ScoreBoard}}
 \doxysubsubsection{\texorpdfstring{send()}{send()}}
-{\footnotesize\ttfamily void Score\+Board\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Score\+Board\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketWrapper}{Socket\+Wrapper}} \&}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 $<$Sends the notification through the specified socket.$>$
 
@@ -121,7 +121,7 @@ $<$Sends the notification through the specified socket.$>$
 \end{DoxyParams}
 
 
-Implements \mbox{\hyperlink{classNotification_a22bf713a268683529596ebc90e96e51d}{Notification}}.
+Implements \mbox{\hyperlink{classNotification_ac2778bbf12abe8261721be24a88156a3}{Notification}}.
 
 
 

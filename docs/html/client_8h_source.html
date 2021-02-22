@@ -99,23 +99,25 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  uint32_t myPlayerID = -1;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">bool</span> joinMatch(uint32_t lobbyID);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> connectToServer(std::string&amp; host, std::string&amp; port);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">void</span> gargabeCollector(std::vector&lt;Drawable*&gt;&amp; sprites);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classClient.html">Client</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket) : socket(socket) {}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classSdlWindow.html">SdlWindow</a>* window;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> connectToServer(std::string&amp; host, std::string&amp; port);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> buildWindow();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  ~<a class="code" href="classClient.html">Client</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classClient.html">Client</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket, <span class="keywordtype">int</span> myPlayerID);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classClient.html#a0a8fc8e9fbf277e18cc96844d8316d59">run</a>(std::string&amp; mapFile);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">run</a>(<span class="keywordtype">int</span> myPlayerID, std::string&amp; mapFile);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassClient_html"><div class="ttname"><a href="classClient.html">Client</a></div><div class="ttdoc">Runs and coordinates all the main classes that execute the game.</div><div class="ttdef"><b>Definition:</b> client.h:31</div></div>
-<div class="ttc" id="aclassClient_html_aeb89d40cce27fcb5f52958c3db4dc95a"><div class="ttname"><a href="classClient.html#aeb89d40cce27fcb5f52958c3db4dc95a">Client::run</a></div><div class="ttdeci">int run(int myPlayerID, std::string &amp;mapFile)</div><div class="ttdoc">Starts, runs and deletes all the objects involving the game. Creates and deletes the window,...</div><div class="ttdef"><b>Definition:</b> client.cpp:56</div></div>
-<div class="ttc" id="aclassSocketCommunication_html"><div class="ttname"><a href="classSocketCommunication.html">SocketCommunication</a></div><div class="ttdef"><b>Definition:</b> SocketCommunication.h:5</div></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassClient_html"><div class="ttname"><a href="classClient.html">Client</a></div><div class="ttdoc">Creates SDL Window and instantiates Game object. Checks if received data is valid.</div><div class="ttdef"><b>Definition:</b> client.h:31</div></div>
+<div class="ttc" id="aclassClient_html_a0a8fc8e9fbf277e18cc96844d8316d59"><div class="ttname"><a href="classClient.html#a0a8fc8e9fbf277e18cc96844d8316d59">Client::run</a></div><div class="ttdeci">int run(std::string &amp;mapFile)</div><div class="ttdoc">Starts the game object.</div><div class="ttdef"><b>Definition:</b> client.cpp:62</div></div>
+<div class="ttc" id="aclassSdlWindow_html"><div class="ttname"><a href="classSdlWindow.html">SdlWindow</a></div><div class="ttdoc">Inits the key functions to open audio and video. Manages rendering calls. Keeps the reference to the ...</div><div class="ttdef"><b>Definition:</b> sdlwindow.h:17</div></div>
+<div class="ttc" id="aclassSocketCommunication_html"><div class="ttname"><a href="classSocketCommunication.html">SocketCommunication</a></div><div class="ttdef"><b>Definition:</b> SocketCommunication.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

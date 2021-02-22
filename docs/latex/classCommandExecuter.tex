@@ -18,7 +18,7 @@ Inheritance diagram for Command\+Executer\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classCommandExecuter_a41cc70e9aa0bcc120bbc035bfd43ac24}{Command\+Executer}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, \mbox{\hyperlink{classDrawableVector}{Drawable\+Vector}} \&sprites, std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players, int self\+Id, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager, \mbox{\hyperlink{classMap}{Map}} \&matrix, \mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&loader, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard)
+\mbox{\hyperlink{classCommandExecuter_ae22ea175023f9ad259ea8f93aa3aad61}{Command\+Executer}} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&s, std\+::atomic$<$ bool $>$ \&alive, \mbox{\hyperlink{classDrawableVector}{Drawable\+Vector}} \&sprites, \mbox{\hyperlink{classPlayerMap}{Player\+Map}} \&players, int self\+Id, \mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&audiomanager, \mbox{\hyperlink{classMap}{Map}} \&matrix, \mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&loader, \mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard, \mbox{\hyperlink{classStartingScreen}{Starting\+Screen}} \&startingscreen)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classCommand}{Command}} Executer object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}\label{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}} 
 void \mbox{\hyperlink{classCommandExecuter_ac7690eaa1b9c7033f1c239629460c161}{run}} ()
@@ -35,11 +35,11 @@ void \mbox{\hyperlink{classCommandExecuter_aaf3d525e76e8cdff567ee95f8ffb5b1e}{pl
 Receives the data from the server and calls the other object to keep the game running. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classCommandExecuter_a41cc70e9aa0bcc120bbc035bfd43ac24}\label{classCommandExecuter_a41cc70e9aa0bcc120bbc035bfd43ac24}} 
+\mbox{\Hypertarget{classCommandExecuter_ae22ea175023f9ad259ea8f93aa3aad61}\label{classCommandExecuter_ae22ea175023f9ad259ea8f93aa3aad61}} 
 \index{CommandExecuter@{CommandExecuter}!CommandExecuter@{CommandExecuter}}
 \index{CommandExecuter@{CommandExecuter}!CommandExecuter@{CommandExecuter}}
 \doxysubsubsection{\texorpdfstring{CommandExecuter()}{CommandExecuter()}}
-{\footnotesize\ttfamily Command\+Executer\+::\+Command\+Executer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{s,  }\item[{std\+::atomic$<$ bool $>$ \&}]{alive,  }\item[{\mbox{\hyperlink{classDrawableVector}{Drawable\+Vector}} \&}]{sprites,  }\item[{std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&}]{players,  }\item[{int}]{self\+Id,  }\item[{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&}]{audiomanager,  }\item[{\mbox{\hyperlink{classMap}{Map}} \&}]{matrix,  }\item[{\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&}]{loader,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$}]{scoreboard }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Command\+Executer\+::\+Command\+Executer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&}]{s,  }\item[{std\+::atomic$<$ bool $>$ \&}]{alive,  }\item[{\mbox{\hyperlink{classDrawableVector}{Drawable\+Vector}} \&}]{sprites,  }\item[{\mbox{\hyperlink{classPlayerMap}{Player\+Map}} \&}]{players,  }\item[{int}]{self\+Id,  }\item[{\mbox{\hyperlink{classAudioManager}{Audio\+Manager}} \&}]{audiomanager,  }\item[{\mbox{\hyperlink{classMap}{Map}} \&}]{matrix,  }\item[{\mbox{\hyperlink{classClientMapLoader}{Client\+Map\+Loader}} \&}]{loader,  }\item[{\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$}]{scoreboard,  }\item[{\mbox{\hyperlink{classStartingScreen}{Starting\+Screen}} \&}]{startingscreen }\end{DoxyParamCaption})}
 
 
 

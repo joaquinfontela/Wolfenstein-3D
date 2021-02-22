@@ -81,13 +81,16 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classSocketWrapper.html">SocketWrapper</a>(<a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; socket) : socket(socket) {}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">void</span> send(<span class="keywordtype">double</span> value);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">double</span> receiveDouble();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> send(<a class="code" href="structPlayerData.html">PlayerData</a>&amp; value);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> receivePlayerData(<a class="code" href="structPlayerData.html">PlayerData</a>&amp; value);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// SOCKETWRAPPER_H_</span></div>
-<div class="ttc" id="aclassSocketCommunication_html"><div class="ttname"><a href="classSocketCommunication.html">SocketCommunication</a></div><div class="ttdef"><b>Definition:</b> SocketCommunication.h:5</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> send(uint32_t value);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> receive(<span class="keywordtype">double</span>* value);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> receive(uint32_t* value);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> send(<a class="code" href="structPlayerData.html">PlayerData</a>&amp; value);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> receivePlayerData(<a class="code" href="structPlayerData.html">PlayerData</a>&amp; value);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classSocketCommunication.html">SocketCommunication</a>&amp; getSocket();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// SOCKETWRAPPER_H_</span></div>
+<div class="ttc" id="aclassSocketCommunication_html"><div class="ttname"><a href="classSocketCommunication.html">SocketCommunication</a></div><div class="ttdef"><b>Definition:</b> SocketCommunication.h:8</div></div>
 <div class="ttc" id="aclassSocketWrapper_html"><div class="ttname"><a href="classSocketWrapper.html">SocketWrapper</a></div><div class="ttdef"><b>Definition:</b> SocketWrapper.h:7</div></div>
 <div class="ttc" id="astructPlayerData_html"><div class="ttname"><a href="structPlayerData.html">PlayerData</a></div><div class="ttdef"><b>Definition:</b> PlayerData.h:4</div></div>
 </div><!-- fragment --></div><!-- contents -->

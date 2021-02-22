@@ -78,7 +78,7 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordtype">int</span> x;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordtype">int</span> y;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  std::vector&lt;int&gt; vec;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classCoordinate.html">Coordinate</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
@@ -87,12 +87,12 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">int</span> getX();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">int</span> getY();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  std::vector&lt;int&gt; <a class="code" href="classCoordinate.html#a51556086b370fdb5632b21c86cb6bfdb">getVector</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">const</span> std::vector&lt;int&gt;&amp; <a class="code" href="classCoordinate.html#ae3036e535420a338de051009d0e72677">getVector</a>();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassCoordinate_html"><div class="ttname"><a href="classCoordinate.html">Coordinate</a></div><div class="ttdef"><b>Definition:</b> Coordinate.h:6</div></div>
-<div class="ttc" id="aclassCoordinate_html_a51556086b370fdb5632b21c86cb6bfdb"><div class="ttname"><a href="classCoordinate.html#a51556086b370fdb5632b21c86cb6bfdb">Coordinate::getVector</a></div><div class="ttdeci">std::vector&lt; int &gt; getVector()</div><div class="ttdoc">Returns a vector with two elements, where the first is the X component of the coordinate,...</div><div class="ttdef"><b>Definition:</b> Coordinate.cpp:23</div></div>
+<div class="ttc" id="aclassCoordinate_html_ae3036e535420a338de051009d0e72677"><div class="ttname"><a href="classCoordinate.html#ae3036e535420a338de051009d0e72677">Coordinate::getVector</a></div><div class="ttdeci">const std::vector&lt; int &gt; &amp; getVector()</div><div class="ttdoc">Returns a vector with two elements, where the first is the X component of the coordinate,...</div><div class="ttdef"><b>Definition:</b> Coordinate.cpp:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

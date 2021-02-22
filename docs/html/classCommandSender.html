@@ -87,9 +87,9 @@ Inheritance diagram for CommandSender:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a918dc494a61eb71967948e023a00cf35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandSender.html#a918dc494a61eb71967948e023a00cf35">CommandSender</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, <a class="el" href="classScoreBoard.html">ScoreBoard</a> *scoreboard, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
-<tr class="memdesc:a918dc494a61eb71967948e023a00cf35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classCommand.html">Command</a> Sender object.  <a href="classCommandSender.html#a918dc494a61eb71967948e023a00cf35">More...</a><br /></td></tr>
-<tr class="separator:a918dc494a61eb71967948e023a00cf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee68e59d56dd007ab385ad820eb2c59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandSender.html#a1ee68e59d56dd007ab385ad820eb2c59">CommandSender</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, <a class="el" href="classScoreBoard.html">ScoreBoard</a> *scoreboard, <a class="el" href="classPlayer.html">Player</a> *player, <a class="el" href="classStartingScreen.html">StartingScreen</a> *startingscreen)</td></tr>
+<tr class="memdesc:a1ee68e59d56dd007ab385ad820eb2c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classCommand.html">Command</a> Sender object.  <a href="classCommandSender.html#a1ee68e59d56dd007ab385ad820eb2c59">More...</a><br /></td></tr>
+<tr class="separator:a1ee68e59d56dd007ab385ad820eb2c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a243a6ea4022234982ab20441cc11300b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandSender.html#a243a6ea4022234982ab20441cc11300b">update</a> (uint32_t keyType)</td></tr>
 <tr class="memdesc:a243a6ea4022234982ab20441cc11300b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends through the socket the user input encoded on a uint32_t.  <a href="classCommandSender.html#a243a6ea4022234982ab20441cc11300b">More...</a><br /></td></tr>
 <tr class="separator:a243a6ea4022234982ab20441cc11300b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,9 +127,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a2cb6d904e58e2edba0848a725a59fc94 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a2cb6d904e58e2edba0848a725a59fc94"></a>
 <a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scoreboard</b></td></tr>
 <tr class="separator:a2cb6d904e58e2edba0848a725a59fc94 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d843ac4072ffbdb09fe750892c3ba5 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a16d843ac4072ffbdb09fe750892c3ba5"></a>
-<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
-<tr class="separator:a16d843ac4072ffbdb09fe750892c3ba5 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3904bf4bc5c15199cf20538c14a08549 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a3904bf4bc5c15199cf20538c14a08549"></a>
+<a class="el" href="classSocketWrapper.html">SocketWrapper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
+<tr class="separator:a3904bf4bc5c15199cf20538c14a08549 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd3799c7616260fe8aa282362eeee54 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a3fd3799c7616260fe8aa282362eeee54"></a>
 std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>alive</b></td></tr>
 <tr class="separator:a3fd3799c7616260fe8aa282362eeee54 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,8 +137,8 @@ std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="botto
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that takes the user input and sends it to the server. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a918dc494a61eb71967948e023a00cf35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a918dc494a61eb71967948e023a00cf35">&#9670;&nbsp;</a></span>CommandSender()</h2>
+<a id="a1ee68e59d56dd007ab385ad820eb2c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee68e59d56dd007ab385ad820eb2c59">&#9670;&nbsp;</a></span>CommandSender()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +165,13 @@ std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="botto
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
-          <td class="paramname"><em>player</em>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classStartingScreen.html">StartingScreen</a> *&#160;</td>
+          <td class="paramname"><em>startingscreen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

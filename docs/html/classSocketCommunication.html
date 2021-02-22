@@ -71,9 +71,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a51a3f5afea77601911960592343299bf"><td class="memItemLeft" align="right" valign="top"><a id="a51a3f5afea77601911960592343299bf"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SocketCommunication</b> (int fd)</td></tr>
-<tr class="separator:a51a3f5afea77601911960592343299bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa53a2396f071bf670c9044e5d51ba5"><td class="memItemLeft" align="right" valign="top"><a id="adaa53a2396f071bf670c9044e5d51ba5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SocketCommunication</b> (<a class="el" href="classSocketListener.html">SocketListener</a> &amp;listener)</td></tr>
+<tr class="separator:adaa53a2396f071bf670c9044e5d51ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f7607e14382f53c8684c897f34d853c"><td class="memItemLeft" align="right" valign="top"><a id="a6f7607e14382f53c8684c897f34d853c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SocketCommunication</b> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&amp;other)</td></tr>
 <tr class="separator:a6f7607e14382f53c8684c897f34d853c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -83,18 +83,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6aa21bcca5bf7775551ffa03947b3ccb"><td class="memItemLeft" align="right" valign="top"><a id="a6aa21bcca5bf7775551ffa03947b3ccb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const std::string &amp;hostname, const std::string &amp;port)</td></tr>
 <tr class="separator:a6aa21bcca5bf7775551ffa03947b3ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3490b9af93fd3074beef5483f72d8f59"><td class="memItemLeft" align="right" valign="top"><a id="a3490b9af93fd3074beef5483f72d8f59"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (const uint32_t *message, unsigned int messageLength)</td></tr>
-<tr class="separator:a3490b9af93fd3074beef5483f72d8f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2d1bd828e9704625bfb306112f7ee25"><td class="memItemLeft" align="right" valign="top"><a id="af2d1bd828e9704625bfb306112f7ee25"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> (uint32_t *buffer, unsigned int bufLength)</td></tr>
-<tr class="separator:af2d1bd828e9704625bfb306112f7ee25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54fd322337e56d83b05fa37d455f34ea"><td class="memItemLeft" align="right" valign="top"><a id="a54fd322337e56d83b05fa37d455f34ea"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>sendDouble</b> (const double *message, unsigned int messageLength)</td></tr>
-<tr class="separator:a54fd322337e56d83b05fa37d455f34ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab56927c052a6ce6526eb452a8e72439e"><td class="memItemLeft" align="right" valign="top"><a id="ab56927c052a6ce6526eb452a8e72439e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>receiveDouble</b> (double *buffer, unsigned int bufLength)</td></tr>
-<tr class="separator:ab56927c052a6ce6526eb452a8e72439e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa906969001de7ea3bc879478716febb"><td class="memItemLeft" align="right" valign="top"><a id="aaa906969001de7ea3bc879478716febb"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (const char *message, unsigned int messageLength)</td></tr>
+<tr class="separator:aaa906969001de7ea3bc879478716febb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca07df4b0fb270ce87c6d4654a49df2"><td class="memItemLeft" align="right" valign="top"><a id="a3ca07df4b0fb270ce87c6d4654a49df2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> (char *buffer, unsigned int bufLength)</td></tr>
+<tr class="separator:a3ca07df4b0fb270ce87c6d4654a49df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25cc02834b929a1891d031b33f312c64"><td class="memItemLeft" align="right" valign="top"><a id="a25cc02834b929a1891d031b33f312c64"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>writeShutdown</b> ()</td></tr>
 <tr class="separator:a25cc02834b929a1891d031b33f312c64"><td class="memSeparator" colspan="2">&#160;</td></tr>

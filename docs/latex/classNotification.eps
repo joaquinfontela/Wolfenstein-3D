@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 965.517212
+%%BoundingBox: 0 0 500 1034.482788
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 0.517857 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 0.483333 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 14 def
+/rows 15 def
 /cols 2 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -187,6 +187,7 @@ boxfont setfont
 (PlayerUpdatePosition) cw
 (ScoreBoard) cw
 (ShotsFired) cw
+(StartingMatch) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -198,25 +199,28 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (Notification) 0.000000 13.000000 box
- (DoorMoving) 1.000000 12.000000 box
- (ElementSwitchPosition) 1.000000 11.000000 box
- (EndMatchNotif) 1.000000 10.000000 box
- (MissileExplotion) 1.000000 9.000000 box
- (PlayerConnected) 1.000000 8.000000 box
- (PlayerDied) 1.000000 7.000000 box
- (PlayerDisconnect) 1.000000 6.000000 box
- (PlayerDropItem) 1.000000 5.000000 box
- (PlayerPackageUpdate) 1.000000 4.000000 box
- (PlayerPickupItem) 1.000000 3.000000 box
- (PlayerUpdatePosition) 1.000000 2.000000 box
- (ScoreBoard) 1.000000 1.000000 box
- (ShotsFired) 1.000000 0.000000 box
+ (Notification) 0.000000 14.000000 box
+ (DoorMoving) 1.000000 13.000000 box
+ (ElementSwitchPosition) 1.000000 12.000000 box
+ (EndMatchNotif) 1.000000 11.000000 box
+ (MissileExplotion) 1.000000 10.000000 box
+ (PlayerConnected) 1.000000 9.000000 box
+ (PlayerDied) 1.000000 8.000000 box
+ (PlayerDisconnect) 1.000000 7.000000 box
+ (PlayerDropItem) 1.000000 6.000000 box
+ (PlayerPackageUpdate) 1.000000 5.000000 box
+ (PlayerPickupItem) 1.000000 4.000000 box
+ (PlayerUpdatePosition) 1.000000 3.000000 box
+ (ScoreBoard) 1.000000 2.000000 box
+ (ShotsFired) 1.000000 1.000000 box
+ (StartingMatch) 1.000000 0.000000 box
 
 % ----- relations -----
 
 solid
-1 0.000000 12.250000 out
+1 0.000000 13.250000 out
+solid
+0 0.000000 13.500000 hedge
 solid
 0 0.000000 12.500000 hedge
 solid
@@ -244,4 +248,4 @@ solid
 solid
 0 0.000000 0.500000 hedge
 solid
-0.000000 13.000000 0.500000 vedge
+0.000000 14.000000 0.500000 vedge

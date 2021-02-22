@@ -2,11 +2,22 @@
 \label{classGame}\index{Game@{Game}}
 
 
+Runs and coordinates all the main classes that execute the game.  
+
+
+
+
 {\ttfamily \#include $<$Game.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classGame_aa8e9a72f84a9dc3938483305e1a7b4cd}\label{classGame_aa8e9a72f84a9dc3938483305e1a7b4cd}} 
+{\bfseries Game} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket, \mbox{\hyperlink{classSdlWindow}{Sdl\+Window}} $\ast$window, uint32\+\_\+t my\+Player\+ID, std\+::string \&map\+File)
+\item 
+\mbox{\Hypertarget{classGame_a7c6e55bd6f4c2d966b8e9a35f7a0d421}\label{classGame_a7c6e55bd6f4c2d966b8e9a35f7a0d421}} 
+int \mbox{\hyperlink{classGame_a7c6e55bd6f4c2d966b8e9a35f7a0d421}{start}} ()
+\begin{DoxyCompactList}\small\item\em Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classGame_a91567669fe85a7bdb64188ce579fe211}\label{classGame_a91567669fe85a7bdb64188ce579fe211}} 
 {\bfseries Game} (std\+::string map\+File, std\+::string config\+File)
 \item 
@@ -43,13 +54,24 @@ std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{classGame_a94d61d9fb3bbefee092d859
 \item 
 bool \mbox{\hyperlink{classGame_a382ac135c4eea51254ec2d0d2b2da61d}{has\+Started}} ()
 \item 
-void \mbox{\hyperlink{classGame_a4a08709bec3114eb5fb62375c1cc7864}{start}} (int player\+ID)
+void \mbox{\hyperlink{classGame_a70622855aa1e12463c044d9e820d06d5}{start}} (int player\+ID, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notif)
+\item 
+\mbox{\Hypertarget{classGame_a0699964b0741a119db7b4770d8ec8540}\label{classGame_a0699964b0741a119db7b4770d8ec8540}} 
+\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries generate\+Kill\+Scoreboard} (std\+::vector$<$ \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players)
+\item 
+\mbox{\Hypertarget{classGame_adb4955ec8b83ca57554807fa068fe218}\label{classGame_adb4955ec8b83ca57554807fa068fe218}} 
+\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries generate\+Scoreboard} (std\+::vector$<$ \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players)
+\item 
+\mbox{\Hypertarget{classGame_a694e13eafe3cef605abade830f496d8c}\label{classGame_a694e13eafe3cef605abade830f496d8c}} 
+\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries generate\+Shots\+Fired\+Score\+Board} (std\+::vector$<$ \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ \&players)
 \item 
 void \mbox{\hyperlink{classGame_aea18869eba885a774384ca597918bce4}{end}} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&queue)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Runs and coordinates all the main classes that execute the game. 
+
 \hypertarget{classUpdatable_DESCRIPTION}{}\doxysubsection{$<$br$>$}\label{classUpdatable_DESCRIPTION}
 Class that represents the game as a whole. 
 
@@ -230,17 +252,19 @@ $<$\+Sets the status of a given player as shooting$>$
 {\em The} & status to set the player. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classGame_a4a08709bec3114eb5fb62375c1cc7864}\label{classGame_a4a08709bec3114eb5fb62375c1cc7864}} 
+\mbox{\Hypertarget{classGame_a70622855aa1e12463c044d9e820d06d5}\label{classGame_a70622855aa1e12463c044d9e820d06d5}} 
 \index{Game@{Game}!start@{start}}
 \index{start@{start}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
-{\footnotesize\ttfamily void Game\+::start (\begin{DoxyParamCaption}\item[{int}]{player\+ID }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Game\+::start (\begin{DoxyParamCaption}\item[{int}]{player\+ID,  }\item[{\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&}]{notif }\end{DoxyParamCaption})}
 
 $<$Starts the game, if possible. Only the first player to connect is given admin rights$>$
 
 
 \begin{DoxyParams}{Parameters}
 {\em \mbox{\hyperlink{classPlayer}{Player}}} & ID of the intended player. \\
+\hline
+{\em \mbox{\hyperlink{classNotification}{Notification}}} & Queue to notify of changes. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classGame_abba8664decbad577ff7fd2f293cf4cad}\label{classGame_abba8664decbad577ff7fd2f293cf4cad}} 
@@ -307,5 +331,7 @@ $<$\+Updates the position of all players through time$>$
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+client/includes/Game.\+h\item 
 server/includes/\+Model/\+Game/Game.\+h\item 
+client/src/Game.\+cpp\item 
 server/src/\+Model/\+Game/Game.\+cpp\end{DoxyCompactItemize}
