@@ -7,6 +7,7 @@
 #include "../../common/includes/Socket/SocketException.h"
 #include "commandmanager.h"
 #include "scoreboard.h"
+#include "startingscreen.h"
 #include "player.h"
 
 /**
@@ -23,7 +24,7 @@ class CommandSender : public CommandManager {
    * @param scoreboard Reference to the scoreboard drawer.
    */
   CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
-                ScoreBoard* scoreboard, Player* player);
+                ScoreBoard* scoreboard, Player* player, StartingScreen* startingscreen);
 
   /**
    * @brief Sends through the socket the user input encoded on a uint32_t.
@@ -43,6 +44,7 @@ class CommandSender : public CommandManager {
 
  private:
   Player* player;
+  StartingScreen* startingscreen;
 };
 
 #endif  // COMMANDSENDER_H_

@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-void StartingScreen::stopDrawing() {
+void StartingScreen::stop() {
   this->drawing = false;
 }
 

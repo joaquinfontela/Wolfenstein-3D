@@ -20,7 +20,7 @@ int Game::start(){
   Map matrix(loader);
 
   Raycaster caster(manager, matrix, alive, players.getSelf(), spriteVector, hud, starting);
-  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, players.getSelf());
+  CommandSender* sender = new CommandSender(socket, alive, &scoreboard, players.getSelf(), &starting);
   CommandExecuter* worker = new CommandExecuter(socket, alive, spriteVector, players, myPlayerID, audios, matrix, loader, &scoreboard, starting);
   int exitcode = 0;
 

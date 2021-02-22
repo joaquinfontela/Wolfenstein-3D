@@ -8,14 +8,15 @@
 
 #include "../../common/includes/protocol.h"
 #include "../includes/clientprotocol.h"
+#include "../includes/startingscreen.h"
 #include "../includes/scoreboard.h"
 #include "../includes/player.h"
 
 #define UINT32_SIZE sizeof(uint32_t)
 
 CommandSender::CommandSender(SocketCommunication& s, std::atomic<bool>& alive,
-                             ScoreBoard* scoreboard, Player* player)
-    : CommandManager(scoreboard, s, alive), player(player) {}
+                             ScoreBoard* scoreboard, Player* player, StartingScreen* startingscreen)
+    : CommandManager(scoreboard, s, alive), player(player), startingscreen(startingscreen) {}
 
 void CommandSender::update(uint32_t keyType) {
   socket.send(keyType);
@@ -39,6 +40,7 @@ void CommandSender::run() {
         socket.getSocket().close();
         alive = false;
         this->scoreboard->stop();
+        this->startingscreen->stop();
         break;
       }
       if (event.type == SDL_KEYDOWN && alive) {
