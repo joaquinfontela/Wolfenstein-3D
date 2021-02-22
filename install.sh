@@ -34,7 +34,7 @@ cd ../../
 
 echo -e "\x1b[1m\x1b[32m \n [Compiling Client] \x1b[0m\n"
 cd client/executable
-cmake ..
+cmake .
 make
 sudo mv Wolfen3D /usr/local/bin
 cd ..
