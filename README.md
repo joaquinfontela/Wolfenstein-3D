@@ -44,9 +44,10 @@ sudo apt-get install libsdl2-image-dev -y &&
 sudo apt-get install libsdl2-mixer-dev -y &&
 sudo apt-get install libsdl2-ttf-dev -y &&
 sudo apt-get install qt5-default
+sudo apt-get install subversion (To download maps from this repository)
 ```
 ## Configuración, compilación e instalacion de librerias YAML
-Una vez instaladas las dependencias previas, se debe de utilizar el script install.sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere.
+Una vez instaladas las dependencias previas, se debe de utilizar el script install.sh brindado en el repositorio para la instalación de la libreria de parsing de YAML y para compilar el trabajo. Dicho script se puede correr utilizando el siguiente comando. Cabe recalcar que se necesitan de derechos de administrador dado que la instalacion de la libreria YAML lo requiere. El instalador deja los recursos del juego en /usr/local/share/Wolfenstein, y los ejecutables en /usr/local/bin.
 
 ```
 chmod +x install.sh
@@ -56,26 +57,36 @@ chmod +x install.sh
 ## Forma de Uso
 
 ### Servidor
-Dentro de la carpeta principal del repositorio, se encontrara el ejecutable del servidor, al cual se lo debe llamar utilizando el siguiente comando
+Para ejecutar el servidor, luego de correr el instalador, basta con el comando
 
 ```
-./ServerMain <PORT> 
+ServerMain <PORT> 
 ```
 
-Siendo PORT el puerto a utlizar y configFilePath el path al archivo de configuracion que utiliza el juego para balancear las constantes numericas.
+Siendo PORT el puerto a utlizar.
 
 ### Cliente
-Para correr el cliente, se debe entrar a la carpeta client/executable. Desde la carpeta principal del repositorio basta con hacer cd client/executable para posicionarse dentro de la misma. Para correr el ejecutable, debe de usarse el siguiente comando
+Para correr el cliente, tras correr el instalador, basta con utilizar el comando
 
 ```
-./Wolfen3D
+Wolfen3D
 ```
+### Editor
+Para correr el editor, tras correr el instalador, hay que posicionarse en la carpeta qt/editor y ejecutar el siguiente comando
+```
+./editor
+```
+Para mover los mapas a la carpeta de los recursos del juego se brinda un script que nos automatiza el proceso, ademas descargando todos los mapas necesarios que se ubiquen en este repositorio. Para ejecutar el script hay que utilizar los siguientes comandos
 
+```
+chmod +x fetchmaps.sh
+./fetchmaps.sh
+```
 # Tutorial de Uso
 
 ## Login
 
-Para acceder al login del juego debemos correr `./Wolfen3D` en la carpeta `client/executable`. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
+Para acceder al login del juego debemos correr `Wolfen3D` en la terminal. El mismo posee dos cajas de texto donde se puede ingresar el host y port.
 
 <br><p align="center"><img src="./docs/screenshots/Login.png"/></p>
 
