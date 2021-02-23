@@ -75,6 +75,13 @@ Para correr el editor, tras correr el instalador, hay que posicionarse en la car
 ```
 ./editor
 ```
+Para mover los mapas a la carpeta de los recursos del juego se brinda un script que nos automatiza el proceso, ademas descargando todos los mapas necesarios que se ubiquen en este repositorio. Para ejecutar el script hay que utilizar los siguientes comandos
+
+Para correr el editor, tras correr el instalador, hay que posicionarse en la carpeta qt/editor y ejecutar el siguiente comando
+```
+chmod +x fetchmaps.sh
+./fetchmaps.sh
+```
 # Tutorial de Uso
 
 ## Login
