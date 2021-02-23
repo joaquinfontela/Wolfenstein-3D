@@ -45,8 +45,11 @@ SocketCommunication::SocketCommunication(SocketListener& listener) {
 }
 
 SocketCommunication::SocketCommunication(SocketCommunication&& other) {
-  this->fd = other.fd;
-  other.fd = -1;
+  if (this != &other) {
+    this->fd = other.fd;
+    other.fd = -1;
+    // Nos lo olvidamos para el tag del release
+  }
 }
 
 SocketCommunication::SocketCommunication() : fd(-1) {}
