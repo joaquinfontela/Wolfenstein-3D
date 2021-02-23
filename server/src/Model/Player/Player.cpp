@@ -59,7 +59,7 @@ bool Player::collidesWith(double x, double y) {
 }
 
 int Player::processFinalDeath(WaitingQueue<Notification*>& notis){
-  this->map.removePlayer(int(this->position->getX()), int(this->position->getX()), this);
+  this->map.removePlayer(int(this->position->getX()), int(this->position->getY()), this);
 
   PlayerDisconnect* disconnect = new PlayerDisconnect(this->playerID);
   notis.push(disconnect);
@@ -78,7 +78,7 @@ int Player::handleDeath(WaitingQueue<Notification*>& notis) {
     map.addKeyDropAt(this->position->getY() + 1, this->position->getX() + 1, notis);
   }
 
-  if (this->lifeRemaining == 0) {
+  if (this->lifeRemaining <= 0) {
     return this->processFinalDeath(notis);
   }
 
@@ -180,6 +180,7 @@ void Player::shoot(float timeElapsed, WaitingQueue<Notification*>& notis, std::l
     if((receiverHealth == 0) || (receiverHealth == -1)){
       this->addPoints(config.POINTS_PER_KILL);
       this->kills += 1;
+      std::cout<<"Adding Kill + 1"<<std::endl;
     }
   }
 
