@@ -1,5 +1,14 @@
 \hypertarget{classConfigReader}{}\doxysection{Config\+Reader Class Reference}
 \label{classConfigReader}\index{ConfigReader@{ConfigReader}}
+
+
+Reads the configuration file for the client and gets all the needed data.  
+
+
+
+
+{\ttfamily \#include $<$config\+Reader.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -7,12 +16,18 @@
 {\bfseries Config\+Reader} (std\+::string file\+Name)
 \item 
 \mbox{\Hypertarget{classConfigReader_a6b61ca315dfb7b4ab89973de8355e763}\label{classConfigReader_a6b61ca315dfb7b4ab89973de8355e763}} 
-int {\bfseries get\+Width} ()
-\item 
+int \mbox{\hyperlink{classConfigReader_a6b61ca315dfb7b4ab89973de8355e763}{get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Reads and returns the screen width. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classConfigReader_a9c1b7b94439f9136f1a46a68e21b1515}\label{classConfigReader_a9c1b7b94439f9136f1a46a68e21b1515}} 
-int {\bfseries get\+Height} ()
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{classConfigReader_a9c1b7b94439f9136f1a46a68e21b1515}{get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Reads and returns the screen height. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConfigReader_aed40546b1187e2bee2cb91500100ed94}\label{classConfigReader_aed40546b1187e2bee2cb91500100ed94}} 
+bool \mbox{\hyperlink{classConfigReader_aed40546b1187e2bee2cb91500100ed94}{full\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the window is fullscreen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Reads the configuration file for the client and gets all the needed data. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

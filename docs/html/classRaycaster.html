@@ -69,16 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classGame.html">Game</a> engine. Draws the game using the raycasting algorithm.  
+<p><a class="el" href="classGame.html" title="Runs and coordinates all the main classes that execute the game.">Game</a> engine. Draws the game using the raycasting algorithm.  
  <a href="classRaycaster.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="raycaster_8h_source.html">raycaster.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8e266eee1adc27c011e376bc19a729ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#a8e266eee1adc27c011e376bc19a729ad">Raycaster</a> (<a class="el" href="classTextureManager.html">TextureManager</a> &amp;manager, <a class="el" href="classMap.html">Map</a> &amp;m, std::atomic&lt; bool &gt; &amp;b, <a class="el" href="classPlayer.html">Player</a> *player, <a class="el" href="classDrawableVector.html">DrawableVector</a> &amp;sprites, <a class="el" href="classHud.html">Hud</a> &amp;hud)</td></tr>
-<tr class="memdesc:a8e266eee1adc27c011e376bc19a729ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classRaycaster.html" title="Game engine. Draws the game using the raycasting algorithm.">Raycaster</a> object.  <a href="classRaycaster.html#a8e266eee1adc27c011e376bc19a729ad">More...</a><br /></td></tr>
-<tr class="separator:a8e266eee1adc27c011e376bc19a729ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1474a30de1958281f5225585ee6665d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#ac1474a30de1958281f5225585ee6665d">Raycaster</a> (<a class="el" href="classTextureManager.html">TextureManager</a> &amp;manager, <a class="el" href="classMap.html">Map</a> &amp;m, std::atomic&lt; bool &gt; &amp;b, <a class="el" href="classPlayer.html">Player</a> *player, <a class="el" href="classDrawableVector.html">DrawableVector</a> &amp;sprites, <a class="el" href="classHud.html">Hud</a> &amp;hud, <a class="el" href="classStartingScreen.html">StartingScreen</a> &amp;startingscreen)</td></tr>
+<tr class="memdesc:ac1474a30de1958281f5225585ee6665d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classRaycaster.html" title="Game engine. Draws the game using the raycasting algorithm.">Raycaster</a> object.  <a href="classRaycaster.html#ac1474a30de1958281f5225585ee6665d">More...</a><br /></td></tr>
+<tr class="separator:ac1474a30de1958281f5225585ee6665d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0426a17e941d90eadb656fc7574e1759"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">hitDoor</a> (const int &amp;matrixXCoord, const int &amp;matrixYCoord)</td></tr>
 <tr class="memdesc:a0426a17e941d90eadb656fc7574e1759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies if the given coordinates are from a door.  <a href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">More...</a><br /></td></tr>
 <tr class="separator:a0426a17e941d90eadb656fc7574e1759"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,10 +88,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a684354950b046a0954231a1706f1cc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classGame.html">Game</a> engine. Draws the game using the raycasting algorithm. </p>
+<div class="textblock"><p><a class="el" href="classGame.html" title="Runs and coordinates all the main classes that execute the game.">Game</a> engine. Draws the game using the raycasting algorithm. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8e266eee1adc27c011e376bc19a729ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e266eee1adc27c011e376bc19a729ad">&#9670;&nbsp;</a></span>Raycaster()</h2>
+<a id="ac1474a30de1958281f5225585ee6665d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1474a30de1958281f5225585ee6665d">&#9670;&nbsp;</a></span>Raycaster()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,7 +133,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classHud.html">Hud</a> &amp;&#160;</td>
-          <td class="paramname"><em>hud</em>&#160;</td>
+          <td class="paramname"><em>hud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classStartingScreen.html">StartingScreen</a> &amp;&#160;</td>
+          <td class="paramname"><em>startingscreen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

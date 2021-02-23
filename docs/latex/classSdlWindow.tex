@@ -17,6 +17,8 @@ Inits the key functions to open audio and video. Manages rendering calls. Keeps 
 \mbox{\Hypertarget{classSdlWindow_a1d165b038a44aa75acf09c042d49253d}\label{classSdlWindow_a1d165b038a44aa75acf09c042d49253d}} 
 \mbox{\hyperlink{classSdlWindow_a1d165b038a44aa75acf09c042d49253d}{$\sim$\+Sdl\+Window}} ()
 \begin{DoxyCompactList}\small\item\em Destroy the Sdl Window object. Returns the allocated resources from the renderer, window and audio system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSdlWindow_a62d3f11fa64e7b05dc3cd947501c7ff1}{go\+Full\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em When summoned, switches the window to fullscreen mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSdlWindow_a604d46e5ade95143c07870c7bcb3a68b}{fill}} (int r, int g, int b, int alpha)
 \begin{DoxyCompactList}\small\item\em Sets renderer rgb and alpha values. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classSdlWindow_a5b2e089a18f8fc4f752cdc22a4bf921c}\label{classSdlWindow_a5b2e089a18f8fc4f752cdc22a4bf921c}} 
@@ -114,6 +116,19 @@ Stores the windows witdh and height on the given pointers.
 {\em h} & Screen height in pixels. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classSdlWindow_a62d3f11fa64e7b05dc3cd947501c7ff1}\label{classSdlWindow_a62d3f11fa64e7b05dc3cd947501c7ff1}} 
+\index{SdlWindow@{SdlWindow}!goFullScreen@{goFullScreen}}
+\index{goFullScreen@{goFullScreen}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{goFullScreen()}{goFullScreen()}}
+{\footnotesize\ttfamily int Sdl\+Window\+::go\+Full\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+When summoned, switches the window to fullscreen mode. 
+
+\begin{DoxyReturn}{Returns}
+int sdl full\+Screen return code. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classSdlWindow_a134377ce1d55d1820701c4129a395a74}\label{classSdlWindow_a134377ce1d55d1820701c4129a395a74}} 
 \index{SdlWindow@{SdlWindow}!renderText@{renderText}}
 \index{renderText@{renderText}!SdlWindow@{SdlWindow}}

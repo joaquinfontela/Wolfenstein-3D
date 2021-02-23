@@ -3,8 +3,8 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSocketCommunication_a51a3f5afea77601911960592343299bf}\label{classSocketCommunication_a51a3f5afea77601911960592343299bf}} 
-{\bfseries Socket\+Communication} (int fd)
+\mbox{\Hypertarget{classSocketCommunication_adaa53a2396f071bf670c9044e5d51ba5}\label{classSocketCommunication_adaa53a2396f071bf670c9044e5d51ba5}} 
+{\bfseries Socket\+Communication} (\mbox{\hyperlink{classSocketListener}{Socket\+Listener}} \&listener)
 \item 
 \mbox{\Hypertarget{classSocketCommunication_a6f7607e14382f53c8684c897f34d853c}\label{classSocketCommunication_a6f7607e14382f53c8684c897f34d853c}} 
 {\bfseries Socket\+Communication} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&\&other)
@@ -15,17 +15,11 @@
 \mbox{\Hypertarget{classSocketCommunication_a6aa21bcca5bf7775551ffa03947b3ccb}\label{classSocketCommunication_a6aa21bcca5bf7775551ffa03947b3ccb}} 
 void {\bfseries connect} (const std\+::string \&hostname, const std\+::string \&port)
 \item 
-\mbox{\Hypertarget{classSocketCommunication_a3490b9af93fd3074beef5483f72d8f59}\label{classSocketCommunication_a3490b9af93fd3074beef5483f72d8f59}} 
-int {\bfseries send} (const uint32\+\_\+t $\ast$message, unsigned int message\+Length)
+\mbox{\Hypertarget{classSocketCommunication_aaa906969001de7ea3bc879478716febb}\label{classSocketCommunication_aaa906969001de7ea3bc879478716febb}} 
+int {\bfseries send} (const char $\ast$message, unsigned int message\+Length)
 \item 
-\mbox{\Hypertarget{classSocketCommunication_af2d1bd828e9704625bfb306112f7ee25}\label{classSocketCommunication_af2d1bd828e9704625bfb306112f7ee25}} 
-int {\bfseries receive} (uint32\+\_\+t $\ast$buffer, unsigned int buf\+Length)
-\item 
-\mbox{\Hypertarget{classSocketCommunication_a54fd322337e56d83b05fa37d455f34ea}\label{classSocketCommunication_a54fd322337e56d83b05fa37d455f34ea}} 
-int {\bfseries send\+Double} (const double $\ast$message, unsigned int message\+Length)
-\item 
-\mbox{\Hypertarget{classSocketCommunication_ab56927c052a6ce6526eb452a8e72439e}\label{classSocketCommunication_ab56927c052a6ce6526eb452a8e72439e}} 
-int {\bfseries receive\+Double} (double $\ast$buffer, unsigned int buf\+Length)
+\mbox{\Hypertarget{classSocketCommunication_a3ca07df4b0fb270ce87c6d4654a49df2}\label{classSocketCommunication_a3ca07df4b0fb270ce87c6d4654a49df2}} 
+int {\bfseries receive} (char $\ast$buffer, unsigned int buf\+Length)
 \item 
 \mbox{\Hypertarget{classSocketCommunication_a25cc02834b929a1891d031b33f312c64}\label{classSocketCommunication_a25cc02834b929a1891d031b33f312c64}} 
 void {\bfseries write\+Shutdown} ()

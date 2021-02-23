@@ -10,7 +10,7 @@ class StartingScreen {
  public:
   StartingScreen(TextureManager& manager) : manager(manager), drawing(true) {}
   void draw();
-  void stopDrawing();
+  void stop();
 };
 
 #endif  // STARTINGSCREEN_H_

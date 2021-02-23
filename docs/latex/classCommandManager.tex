@@ -20,6 +20,9 @@ Inheritance diagram for Command\+Manager\+:\begin{figure}[H]
 \item 
 \mbox{\Hypertarget{classCommandManager_a26f0443c7b77fc482c9cc62ff55da298}\label{classCommandManager_a26f0443c7b77fc482c9cc62ff55da298}} 
 {\bfseries Command\+Manager} (\mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$scoreboard, \mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket, std\+::atomic$<$ bool $>$ \&alive)
+\item 
+\mbox{\Hypertarget{classCommandManager_a2a700789e849b736f036d3ff28002ed0}\label{classCommandManager_a2a700789e849b736f036d3ff28002ed0}} 
+virtual void {\bfseries run} ()=0
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -27,8 +30,8 @@ Inheritance diagram for Command\+Manager\+:\begin{figure}[H]
 \mbox{\Hypertarget{classCommandManager_a2cb6d904e58e2edba0848a725a59fc94}\label{classCommandManager_a2cb6d904e58e2edba0848a725a59fc94}} 
 \mbox{\hyperlink{classScoreBoard}{Score\+Board}} $\ast$ {\bfseries scoreboard}
 \item 
-\mbox{\Hypertarget{classCommandManager_a16d843ac4072ffbdb09fe750892c3ba5}\label{classCommandManager_a16d843ac4072ffbdb09fe750892c3ba5}} 
-\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \& {\bfseries socket}
+\mbox{\Hypertarget{classCommandManager_a3904bf4bc5c15199cf20538c14a08549}\label{classCommandManager_a3904bf4bc5c15199cf20538c14a08549}} 
+\mbox{\hyperlink{classSocketWrapper}{Socket\+Wrapper}} {\bfseries socket}
 \item 
 \mbox{\Hypertarget{classCommandManager_a3fd3799c7616260fe8aa282362eeee54}\label{classCommandManager_a3fd3799c7616260fe8aa282362eeee54}} 
 std\+::atomic$<$ bool $>$ \& {\bfseries alive}

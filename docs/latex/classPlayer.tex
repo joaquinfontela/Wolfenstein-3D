@@ -56,9 +56,6 @@ bool \mbox{\hyperlink{classPlayer_a0f129d04ab8675e894e8beca4323ad1b}{has\+Key}} 
 \mbox{\Hypertarget{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}\label{classPlayer_ae9c46734f520f69924c4eead33f5d3d6}} 
 {\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader, \mbox{\hyperlink{classMap}{Map}} \&map, unsigned int player\+ID)
 \item 
-\mbox{\Hypertarget{classPlayer_a1e71588574873e1ae01834a3a59a55ae}\label{classPlayer_a1e71588574873e1ae01834a3a59a55ae}} 
-{\bfseries Player} (\mbox{\hyperlink{classYAMLConfigReader}{YAMLConfig\+Reader}} yaml\+Config\+Reader)
-\item 
 \mbox{\Hypertarget{classPlayer_a739389cfd7bc6e8a162c3dc4edc5a952}\label{classPlayer_a739389cfd7bc6e8a162c3dc4edc5a952}} 
 void {\bfseries set\+Shooting} (bool state)
 \item 
@@ -82,6 +79,12 @@ double {\bfseries get\+DirX} ()
 \item 
 \mbox{\Hypertarget{classPlayer_a6aad5c676ea31112265d884862a2e712}\label{classPlayer_a6aad5c676ea31112265d884862a2e712}} 
 double {\bfseries get\+DirY} ()
+\item 
+\mbox{\Hypertarget{classPlayer_a1b52a7615a82d9741baa62db452d2abb}\label{classPlayer_a1b52a7615a82d9741baa62db452d2abb}} 
+double {\bfseries get\+PlaneX} ()
+\item 
+\mbox{\Hypertarget{classPlayer_ac36b5ffccc41c9980c9d13d533d10418}\label{classPlayer_ac36b5ffccc41c9980c9d13d533d10418}} 
+double {\bfseries get\+PlaneY} ()
 \item 
 \mbox{\Hypertarget{classPlayer_ab6da4a036a3b5535ecdb59d712ac387e}\label{classPlayer_ab6da4a036a3b5535ecdb59d712ac387e}} 
 int {\bfseries get\+Kills} ()
@@ -107,14 +110,14 @@ void {\bfseries add\+Weapon} (\mbox{\hyperlink{classWeapon}{Weapon}} $\ast$weapo
 \mbox{\Hypertarget{classPlayer_a247870b14c6fb74994231320baccbb0d}\label{classPlayer_a247870b14c6fb74994231320baccbb0d}} 
 bool {\bfseries has\+Gun\+With\+Id} (int unique\+Id)
 \item 
-\mbox{\Hypertarget{classPlayer_a782ae5f3931b33bbfc248855665ae82b}\label{classPlayer_a782ae5f3931b33bbfc248855665ae82b}} 
-void {\bfseries respawn} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
+\mbox{\Hypertarget{classPlayer_a8a3fee82701f370d0e5d3aa6f41143ac}\label{classPlayer_a8a3fee82701f370d0e5d3aa6f41143ac}} 
+int {\bfseries process\+Final\+Death} (\mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis)
 \item 
 \mbox{\Hypertarget{classPlayer_a08992558301f3194c132eca92d231610}\label{classPlayer_a08992558301f3194c132eca92d231610}} 
 void {\bfseries fill\+Player\+Data} (\mbox{\hyperlink{structPlayerData}{Player\+Data}} \&data)
 \item 
-\mbox{\Hypertarget{classPlayer_a3cabeade87c04cba05c7dc1dfabc5e5f}\label{classPlayer_a3cabeade87c04cba05c7dc1dfabc5e5f}} 
-int {\bfseries attack} (float time\+Elapsed)
+\mbox{\Hypertarget{classPlayer_ac52e6ebd61acc89a6bfe699a41dfc7b2}\label{classPlayer_ac52e6ebd61acc89a6bfe699a41dfc7b2}} 
+int {\bfseries attack} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&noti)
 \item 
 \mbox{\Hypertarget{classPlayer_a6b32ee55911d8133cbc00c392bd5d66c}\label{classPlayer_a6b32ee55911d8133cbc00c392bd5d66c}} 
 void {\bfseries shoot} (float time\+Elapsed, \mbox{\hyperlink{classWaitingQueue}{Waiting\+Queue}}$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \&notis, std\+::list$<$ \mbox{\hyperlink{classUpdatable}{Updatable}} $\ast$ $>$ \&updatables)
@@ -127,9 +130,6 @@ void {\bfseries update\+Move\+Speed} (double mov\+Speed)
 \item 
 \mbox{\Hypertarget{classPlayer_a150d6e81445911e7ff1e6952641d75fc}\label{classPlayer_a150d6e81445911e7ff1e6952641d75fc}} 
 void {\bfseries update\+Rotation\+Speed} (double rot\+Speed)
-\item 
-\mbox{\Hypertarget{classPlayer_a2c24f0c340fcc975b900c7c85da1c118}\label{classPlayer_a2c24f0c340fcc975b900c7c85da1c118}} 
-void {\bfseries move\+To} (double x, double y)
 \item 
 \mbox{\Hypertarget{classPlayer_abf3822307de18d4ec32755b013141910}\label{classPlayer_abf3822307de18d4ec32755b013141910}} 
 int {\bfseries get\+Range} ()

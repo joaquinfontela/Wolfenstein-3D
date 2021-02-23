@@ -1,0 +1,70 @@
+\hypertarget{classPlayerMap}{}\doxysection{Player\+Map Class Reference}
+\label{classPlayerMap}\index{PlayerMap@{PlayerMap}}
+
+
+Dictionary with all the players, mapped by their id\textquotesingle{}s.  
+
+
+
+
+{\ttfamily \#include $<$playermap.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlayerMap_a86746611b4d40f4448b38512f491ba03}\label{classPlayerMap_a86746611b4d40f4448b38512f491ba03}} 
+{\bfseries Player\+Map} (uint32\+\_\+t self\+Id)
+\item 
+bool \mbox{\hyperlink{classPlayerMap_af08cdde26fa0ed2137a08e67f8251f3c}{is\+Contained}} (uint32\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Verifies if the given player is included in the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classPlayerMap_a0b07f66bd742c177615b0eb9b537b6bf}{get\+Self}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the one\textquotesingle{}s player. Must not be deleted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlayerMap_adc24798e5a9b95c7e796a97277f8e8ae}\label{classPlayerMap_adc24798e5a9b95c7e796a97277f8e8ae}} 
+std\+::map$<$ uint32\+\_\+t, \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ {\bfseries dict}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dictionary with all the players, mapped by their id\textquotesingle{}s. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayerMap_a0b07f66bd742c177615b0eb9b537b6bf}\label{classPlayerMap_a0b07f66bd742c177615b0eb9b537b6bf}} 
+\index{PlayerMap@{PlayerMap}!getSelf@{getSelf}}
+\index{getSelf@{getSelf}!PlayerMap@{PlayerMap}}
+\doxysubsubsection{\texorpdfstring{getSelf()}{getSelf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlayer}{Player}} $\ast$ Player\+Map\+::get\+Self (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the one\textquotesingle{}s player. Must not be deleted. 
+
+\begin{DoxyReturn}{Returns}
+player Reference to one\textquotesingle{}s player. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayerMap_af08cdde26fa0ed2137a08e67f8251f3c}\label{classPlayerMap_af08cdde26fa0ed2137a08e67f8251f3c}} 
+\index{PlayerMap@{PlayerMap}!isContained@{isContained}}
+\index{isContained@{isContained}!PlayerMap@{PlayerMap}}
+\doxysubsubsection{\texorpdfstring{isContained()}{isContained()}}
+{\footnotesize\ttfamily bool Player\+Map\+::is\+Contained (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+Verifies if the given player is included in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \mbox{\hyperlink{classPlayer}{Player}} id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the given player is in the map. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client/includes/playermap.\+h\item 
+client/src/playermap.\+cpp\end{DoxyCompactItemize}

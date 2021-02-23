@@ -86,9 +86,9 @@ Inheritance diagram for CommandExecuter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a41cc70e9aa0bcc120bbc035bfd43ac24"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#a41cc70e9aa0bcc120bbc035bfd43ac24">CommandExecuter</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, <a class="el" href="classDrawableVector.html">DrawableVector</a> &amp;sprites, std::map&lt; uint32_t, <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;players, int selfId, <a class="el" href="classAudioManager.html">AudioManager</a> &amp;audiomanager, <a class="el" href="classMap.html">Map</a> &amp;matrix, <a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;loader, <a class="el" href="classScoreBoard.html">ScoreBoard</a> *scoreboard)</td></tr>
-<tr class="memdesc:a41cc70e9aa0bcc120bbc035bfd43ac24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classCommand.html">Command</a> Executer object.  <a href="classCommandExecuter.html#a41cc70e9aa0bcc120bbc035bfd43ac24">More...</a><br /></td></tr>
-<tr class="separator:a41cc70e9aa0bcc120bbc035bfd43ac24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22ea175023f9ad259ea8f93aa3aad61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#ae22ea175023f9ad259ea8f93aa3aad61">CommandExecuter</a> (<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;s, std::atomic&lt; bool &gt; &amp;alive, <a class="el" href="classDrawableVector.html">DrawableVector</a> &amp;sprites, <a class="el" href="classPlayerMap.html">PlayerMap</a> &amp;players, int selfId, <a class="el" href="classAudioManager.html">AudioManager</a> &amp;audiomanager, <a class="el" href="classMap.html">Map</a> &amp;matrix, <a class="el" href="classClientMapLoader.html">ClientMapLoader</a> &amp;loader, <a class="el" href="classScoreBoard.html">ScoreBoard</a> *scoreboard, <a class="el" href="classStartingScreen.html">StartingScreen</a> &amp;startingscreen)</td></tr>
+<tr class="memdesc:ae22ea175023f9ad259ea8f93aa3aad61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classCommand.html">Command</a> Executer object.  <a href="classCommandExecuter.html#ae22ea175023f9ad259ea8f93aa3aad61">More...</a><br /></td></tr>
+<tr class="separator:ae22ea175023f9ad259ea8f93aa3aad61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7690eaa1b9c7033f1c239629460c161"><td class="memItemLeft" align="right" valign="top"><a id="ac7690eaa1b9c7033f1c239629460c161"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommandExecuter.html#ac7690eaa1b9c7033f1c239629460c161">run</a> ()</td></tr>
 <tr class="memdesc:ac7690eaa1b9c7033f1c239629460c161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the music and receives data from the server while the game is being played. <br /></td></tr>
@@ -130,9 +130,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a2cb6d904e58e2edba0848a725a59fc94 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a2cb6d904e58e2edba0848a725a59fc94"></a>
 <a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scoreboard</b></td></tr>
 <tr class="separator:a2cb6d904e58e2edba0848a725a59fc94 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d843ac4072ffbdb09fe750892c3ba5 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a16d843ac4072ffbdb09fe750892c3ba5"></a>
-<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
-<tr class="separator:a16d843ac4072ffbdb09fe750892c3ba5 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3904bf4bc5c15199cf20538c14a08549 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a3904bf4bc5c15199cf20538c14a08549"></a>
+<a class="el" href="classSocketWrapper.html">SocketWrapper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
+<tr class="separator:a3904bf4bc5c15199cf20538c14a08549 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd3799c7616260fe8aa282362eeee54 inherit pro_attribs_classCommandManager"><td class="memItemLeft" align="right" valign="top"><a id="a3fd3799c7616260fe8aa282362eeee54"></a>
 std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>alive</b></td></tr>
 <tr class="separator:a3fd3799c7616260fe8aa282362eeee54 inherit pro_attribs_classCommandManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,8 +140,8 @@ std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="botto
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Receives the data from the server and calls the other object to keep the game running. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a41cc70e9aa0bcc120bbc035bfd43ac24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41cc70e9aa0bcc120bbc035bfd43ac24">&#9670;&nbsp;</a></span>CommandExecuter()</h2>
+<a id="ae22ea175023f9ad259ea8f93aa3aad61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae22ea175023f9ad259ea8f93aa3aad61">&#9670;&nbsp;</a></span>CommandExecuter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +167,7 @@ std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="botto
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::map&lt; uint32_t, <a class="el" href="classPlayer.html">Player</a> * &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classPlayerMap.html">PlayerMap</a> &amp;&#160;</td>
           <td class="paramname"><em>players</em>, </td>
         </tr>
         <tr>
@@ -198,7 +198,13 @@ std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="botto
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td>
-          <td class="paramname"><em>scoreboard</em>&#160;</td>
+          <td class="paramname"><em>scoreboard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classStartingScreen.html">StartingScreen</a> &amp;&#160;</td>
+          <td class="paramname"><em>startingscreen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

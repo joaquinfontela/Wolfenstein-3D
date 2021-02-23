@@ -85,53 +85,75 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;drawablevector.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;hud.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;player.h&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;texturemanager.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define MAX_NUMBER_OF_DOORS_PER_FRAME 10</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classRaycaster.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRaycaster.html">Raycaster</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classRaycaster.html#a8e266eee1adc27c011e376bc19a729ad">   37</a></span>&#160;  <a class="code" href="classRaycaster.html#a8e266eee1adc27c011e376bc19a729ad">Raycaster</a>(<a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classMap.html">Map</a>&amp; m, std::atomic&lt;bool&gt;&amp; b,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classDrawableVector.html">DrawableVector</a>&amp; sprites, <a class="code" href="classHud.html">Hud</a>&amp; hud)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      : alive(b),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        manager(manager),</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        matrix(m),</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        player(player),</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        sprites(sprites),</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        hud(hud) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    manager.<a class="code" href="classTextureManager.html#afdb9f26c51133d6259c5c44af3483d9e">getWindowSize</a>(&amp;this-&gt;width, &amp;this-&gt;height);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    this-&gt;doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">hitDoor</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; matrixXCoord, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; matrixYCoord);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classRaycaster.html#a684354950b046a0954231a1706f1cc96">run</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classArea.html">Area</a> destArea;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classArea.html">Area</a> srcArea;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::atomic&lt;bool&gt;&amp; alive;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classMap.html">Map</a>&amp; matrix;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classPlayer.html">Player</a>* player;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classDrawableVector.html">DrawableVector</a>&amp; sprites;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classHud.html">Hud</a>&amp; hud;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">int</span> width, height;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::vector&lt;Door&gt; doors;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// RAYCASTER_H_</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;startingscreen.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;texturemanager.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define MAX_NUMBER_OF_DOORS_PER_FRAME 10</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classRaycaster.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRaycaster.html">Raycaster</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classRaycaster.html#ac1474a30de1958281f5225585ee6665d">   38</a></span>&#160;  <a class="code" href="classRaycaster.html#ac1474a30de1958281f5225585ee6665d">Raycaster</a>(<a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager, <a class="code" href="classMap.html">Map</a>&amp; m, std::atomic&lt;bool&gt;&amp; b,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="classPlayer.html">Player</a>* player, <a class="code" href="classDrawableVector.html">DrawableVector</a>&amp; sprites, <a class="code" href="classHud.html">Hud</a>&amp; hud,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="classStartingScreen.html">StartingScreen</a>&amp; startingscreen)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      : alive(b),</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        manager(manager),</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        matrix(m),</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        player(player),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        sprites(sprites),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        hud(hud),</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        startingscreen(startingscreen) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    manager.<a class="code" href="classTextureManager.html#afdb9f26c51133d6259c5c44af3483d9e">getWindowSize</a>(&amp;this-&gt;width, &amp;this-&gt;height);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    this-&gt;doors.reserve(MAX_NUMBER_OF_DOORS_PER_FRAME);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">hitDoor</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; matrixXCoord, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; matrixYCoord);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classRaycaster.html#a684354950b046a0954231a1706f1cc96">run</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classArea.html">Area</a> destArea;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classArea.html">Area</a> srcArea;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classStartingScreen.html">StartingScreen</a>&amp; startingscreen;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  std::atomic&lt;bool&gt;&amp; alive;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classTextureManager.html">TextureManager</a>&amp; manager;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classMap.html">Map</a>&amp; matrix;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classPlayer.html">Player</a>* player;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classDrawableVector.html">DrawableVector</a>&amp; sprites;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classHud.html">Hud</a>&amp; hud;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">int</span> width, height;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::vector&lt;Door&gt; doors;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">double</span> dirX, dirY, x, y, planeX, planeY;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> sleep(<span class="keywordtype">float</span> diff);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> getPlayerData();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">void</span> rayCastGame(<span class="keywordtype">double</span>* distanceBuffer);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> DDA(<span class="keywordtype">int</span>&amp; side, <span class="keywordtype">int</span>&amp; texNum, <span class="keywordtype">int</span>&amp; i, <span class="keywordtype">int</span>&amp; dx, <span class="keywordtype">int</span>&amp; dy, <span class="keywordtype">int</span>&amp; matrixXCoord,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          <span class="keywordtype">int</span>&amp; matrixYCoord, <span class="keywordtype">double</span>&amp; sideDistX, <span class="keywordtype">double</span>&amp; sideDistY,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          <span class="keywordtype">double</span>&amp; deltaDistanceX, <span class="keywordtype">double</span>&amp; deltaDistanceY, <span class="keywordtype">double</span>&amp; cameraXCoord);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;   <span class="keywordtype">void</span> drawDoors(<span class="keywordtype">double</span>* distanceBuffer);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;   <span class="keywordtype">void</span> drawWalls(<span class="keywordtype">int</span>&amp; side, <span class="keywordtype">int</span>&amp; texNum, <span class="keywordtype">int</span>&amp; i, <span class="keywordtype">int</span>&amp; dx, <span class="keywordtype">int</span>&amp; dy,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordtype">double</span>* distanceBuffer, <span class="keywordtype">int</span>&amp; matrixXCoord, <span class="keywordtype">int</span>&amp; matrixYCoord,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordtype">double</span> rayDirX, <span class="keywordtype">double</span> rayDirY);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;};</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// RAYCASTER_H_</span></div>
 <div class="ttc" id="aclassArea_html"><div class="ttname"><a href="classArea.html">Area</a></div><div class="ttdoc">Represents a rectangle, where the (x,y) coordinates show where the top left corner of the rectangle b...</div><div class="ttdef"><b>Definition:</b> area.h:9</div></div>
 <div class="ttc" id="aclassDrawableVector_html"><div class="ttname"><a href="classDrawableVector.html">DrawableVector</a></div><div class="ttdoc">Holds the vector of drawable sprites and a lock, since this is a shared attribute in many threads.</div><div class="ttdef"><b>Definition:</b> drawablevector.h:14</div></div>
 <div class="ttc" id="aclassHud_html"><div class="ttname"><a href="classHud.html">Hud</a></div><div class="ttdoc">Renders all the images that appear in the hud.</div><div class="ttdef"><b>Definition:</b> hud.h:14</div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">[CLIENT SIDE] Knows where are all the doors and walls.</div><div class="ttdef"><b>Definition:</b> Map.h:15</div></div>
 <div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">[CLIENT SIDE] Player class. Holds important information about each player and is able to raycast it i...</div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
-<div class="ttc" id="aclassRaycaster_html"><div class="ttname"><a href="classRaycaster.html">Raycaster</a></div><div class="ttdoc">Game engine. Draws the game using the raycasting algorithm.</div><div class="ttdef"><b>Definition:</b> raycaster.h:25</div></div>
+<div class="ttc" id="aclassRaycaster_html"><div class="ttname"><a href="classRaycaster.html">Raycaster</a></div><div class="ttdoc">Game engine. Draws the game using the raycasting algorithm.</div><div class="ttdef"><b>Definition:</b> raycaster.h:26</div></div>
 <div class="ttc" id="aclassRaycaster_html_a0426a17e941d90eadb656fc7574e1759"><div class="ttname"><a href="classRaycaster.html#a0426a17e941d90eadb656fc7574e1759">Raycaster::hitDoor</a></div><div class="ttdeci">bool hitDoor(const int &amp;matrixXCoord, const int &amp;matrixYCoord)</div><div class="ttdoc">Verifies if the given coordinates are from a door.</div><div class="ttdef"><b>Definition:</b> raycaster.cpp:16</div></div>
-<div class="ttc" id="aclassRaycaster_html_a684354950b046a0954231a1706f1cc96"><div class="ttname"><a href="classRaycaster.html#a684354950b046a0954231a1706f1cc96">Raycaster::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Runs the game engine. Draws the environment and updates the time for all the objects that need it.</div><div class="ttdef"><b>Definition:</b> raycaster.cpp:25</div></div>
-<div class="ttc" id="aclassRaycaster_html_a8e266eee1adc27c011e376bc19a729ad"><div class="ttname"><a href="classRaycaster.html#a8e266eee1adc27c011e376bc19a729ad">Raycaster::Raycaster</a></div><div class="ttdeci">Raycaster(TextureManager &amp;manager, Map &amp;m, std::atomic&lt; bool &gt; &amp;b, Player *player, DrawableVector &amp;sprites, Hud &amp;hud)</div><div class="ttdoc">Construct a new Raycaster object.</div><div class="ttdef"><b>Definition:</b> raycaster.h:37</div></div>
+<div class="ttc" id="aclassRaycaster_html_a684354950b046a0954231a1706f1cc96"><div class="ttname"><a href="classRaycaster.html#a684354950b046a0954231a1706f1cc96">Raycaster::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Runs the game engine. Draws the environment and updates the time for all the objects that need it.</div><div class="ttdef"><b>Definition:</b> raycaster.cpp:146</div></div>
+<div class="ttc" id="aclassRaycaster_html_ac1474a30de1958281f5225585ee6665d"><div class="ttname"><a href="classRaycaster.html#ac1474a30de1958281f5225585ee6665d">Raycaster::Raycaster</a></div><div class="ttdeci">Raycaster(TextureManager &amp;manager, Map &amp;m, std::atomic&lt; bool &gt; &amp;b, Player *player, DrawableVector &amp;sprites, Hud &amp;hud, StartingScreen &amp;startingscreen)</div><div class="ttdoc">Construct a new Raycaster object.</div><div class="ttdef"><b>Definition:</b> raycaster.h:38</div></div>
+<div class="ttc" id="aclassStartingScreen_html"><div class="ttname"><a href="classStartingScreen.html">StartingScreen</a></div><div class="ttdef"><b>Definition:</b> startingscreen.h:6</div></div>
 <div class="ttc" id="aclassTextureManager_html"><div class="ttname"><a href="classTextureManager.html">TextureManager</a></div><div class="ttdoc">Class used to organize the textures and stop duplicates from existing.</div><div class="ttdef"><b>Definition:</b> texturemanager.h:17</div></div>
-<div class="ttc" id="aclassTextureManager_html_afdb9f26c51133d6259c5c44af3483d9e"><div class="ttname"><a href="classTextureManager.html#afdb9f26c51133d6259c5c44af3483d9e">TextureManager::getWindowSize</a></div><div class="ttdeci">void getWindowSize(int *w, int *h)</div><div class="ttdoc">Stores the window size. Throws an Exception if it fails.</div><div class="ttdef"><b>Definition:</b> texturemanager.cpp:31</div></div>
+<div class="ttc" id="aclassTextureManager_html_afdb9f26c51133d6259c5c44af3483d9e"><div class="ttname"><a href="classTextureManager.html#afdb9f26c51133d6259c5c44af3483d9e">TextureManager::getWindowSize</a></div><div class="ttdeci">void getWindowSize(int *w, int *h)</div><div class="ttdoc">Stores the window size. Throws an Exception if it fails.</div><div class="ttdef"><b>Definition:</b> texturemanager.cpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

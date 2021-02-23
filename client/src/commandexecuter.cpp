@@ -202,7 +202,7 @@ void CommandExecuter::run() {
       } else if (opcode == PLAYER_DISCONNECT) {
         this->disconnectPlayer();
       } else if (opcode == STARTING_MATCH) {
-        this->startingscreen.stopDrawing();
+        this->startingscreen.stop();
       } else if (opcode == SHOTS_FIRED) {
         this->shotsFired();
       } else if (opcode == OPEN_DOOR) {

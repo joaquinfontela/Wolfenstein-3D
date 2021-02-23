@@ -74,7 +74,7 @@ void Tile::addKeyDrop(int uniqueId) {
 }
 
 void Tile::addKeyDrop(int x, int y, WaitingQueue<Notification*>& notis, int uniqueId) {
-  
+
   this->items.push_back(new Key(108, uniqueId));
   PlayerDropItem* noti = new PlayerDropItem(x, y, 108, uniqueId);
   notis.push(noti);
@@ -230,8 +230,8 @@ bool Tile::moveDoor(Player* p) {
   return this->door->unlock(p->hasKey());
 }
 
-bool Tile::hasPlayers() { 
-  return ((!this->players.empty()) && (this->wall == nullptr) && (this->door == nullptr)); 
+bool Tile::hasPlayers() {
+  return ((!this->players.empty()) && (this->wall == nullptr) && (this->door == nullptr));
   }
 
 Tile::~Tile() {

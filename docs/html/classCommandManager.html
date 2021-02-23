@@ -66,7 +66,7 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classCommandManager-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CommandManager Class Reference</div>  </div>
+<div class="title">CommandManager Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -92,6 +92,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a26f0443c7b77fc482c9cc62ff55da298"><td class="memItemLeft" align="right" valign="top"><a id="a26f0443c7b77fc482c9cc62ff55da298"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CommandManager</b> (<a class="el" href="classScoreBoard.html">ScoreBoard</a> *scoreboard, <a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;socket, std::atomic&lt; bool &gt; &amp;alive)</td></tr>
 <tr class="separator:a26f0443c7b77fc482c9cc62ff55da298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a700789e849b736f036d3ff28002ed0"><td class="memItemLeft" align="right" valign="top"><a id="a2a700789e849b736f036d3ff28002ed0"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()=0</td></tr>
+<tr class="separator:a2a700789e849b736f036d3ff28002ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classThread"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classThread')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classThread.html">Thread</a></td></tr>
 <tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a1f53ee62bd30a7924186ef26150ce262"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
@@ -99,9 +102,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr
 <tr class="memitem:a4d9d788e98388a3217831a9046709deb inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a4d9d788e98388a3217831a9046709deb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>join</b> ()</td></tr>
 <tr class="separator:a4d9d788e98388a3217831a9046709deb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae90dfabab3e1776cf01a26e7ee3a620 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="aae90dfabab3e1776cf01a26e7ee3a620"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()=0</td></tr>
-<tr class="separator:aae90dfabab3e1776cf01a26e7ee3a620 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f851fb8932d09fec18e1e00378fd353 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a3f851fb8932d09fec18e1e00378fd353"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Thread</b> (const <a class="el" href="classThread.html">Thread</a> &amp;other)=delete</td></tr>
 <tr class="separator:a3f851fb8932d09fec18e1e00378fd353 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,9 +120,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a2cb6d904e58e2edba0848a725a59fc94"><td class="memItemLeft" align="right" valign="top"><a id="a2cb6d904e58e2edba0848a725a59fc94"></a>
 <a class="el" href="classScoreBoard.html">ScoreBoard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scoreboard</b></td></tr>
 <tr class="separator:a2cb6d904e58e2edba0848a725a59fc94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d843ac4072ffbdb09fe750892c3ba5"><td class="memItemLeft" align="right" valign="top"><a id="a16d843ac4072ffbdb09fe750892c3ba5"></a>
-<a class="el" href="classSocketCommunication.html">SocketCommunication</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
-<tr class="separator:a16d843ac4072ffbdb09fe750892c3ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3904bf4bc5c15199cf20538c14a08549"><td class="memItemLeft" align="right" valign="top"><a id="a3904bf4bc5c15199cf20538c14a08549"></a>
+<a class="el" href="classSocketWrapper.html">SocketWrapper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
+<tr class="separator:a3904bf4bc5c15199cf20538c14a08549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd3799c7616260fe8aa282362eeee54"><td class="memItemLeft" align="right" valign="top"><a id="a3fd3799c7616260fe8aa282362eeee54"></a>
 std::atomic&lt; bool &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>alive</b></td></tr>
 <tr class="separator:a3fd3799c7616260fe8aa282362eeee54"><td class="memSeparator" colspan="2">&#160;</td></tr>

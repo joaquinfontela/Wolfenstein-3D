@@ -2,7 +2,7 @@
 \label{classClient}\index{Client@{Client}}
 
 
-Runs and coordinates all the main classes that execute the game.  
+Creates SDL Window and instantiates \mbox{\hyperlink{classGame}{Game}} object. Checks if received data is valid.  
 
 
 
@@ -12,42 +12,16 @@ Runs and coordinates all the main classes that execute the game.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classClient_af29a83cfd8dff516e5d8a9df8c5464bd}\label{classClient_af29a83cfd8dff516e5d8a9df8c5464bd}} 
-{\bfseries Client} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket)
+\mbox{\Hypertarget{classClient_a1ba8927bf2ff448a49a9073e06d7ba7f}\label{classClient_a1ba8927bf2ff448a49a9073e06d7ba7f}} 
+{\bfseries Client} (\mbox{\hyperlink{classSocketCommunication}{Socket\+Communication}} \&socket, int my\+Player\+ID)
 \item 
-int \mbox{\hyperlink{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}{run}} (int my\+Player\+ID, std\+::string \&map\+File)
-\begin{DoxyCompactList}\small\item\em Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classClient_a0a8fc8e9fbf277e18cc96844d8316d59}\label{classClient_a0a8fc8e9fbf277e18cc96844d8316d59}} 
+int \mbox{\hyperlink{classClient_a0a8fc8e9fbf277e18cc96844d8316d59}{run}} (std\+::string \&map\+File)
+\begin{DoxyCompactList}\small\item\em Starts the game object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Runs and coordinates all the main classes that execute the game. 
-
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}\label{classClient_aeb89d40cce27fcb5f52958c3db4dc95a}} 
-\index{Client@{Client}!run@{run}}
-\index{run@{run}!Client@{Client}}
-\doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily int Client\+::run (\begin{DoxyParamCaption}\item[{int}]{my\+Player\+ID,  }\item[{std\+::string \&}]{map\+File }\end{DoxyParamCaption})}
-
-
-
-Starts, runs and deletes all the objects involving the game. Creates and deletes the window, map (and it\textquotesingle{}s loader), audio and texture managers, sprite list and raycaster engine, among others. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em host} & \\
-\hline
-{\em port} & \\
-\hline
-{\em lobby\+ID} & \\
-\hline
-{\em map\+File} & \mbox{\hyperlink{classMap}{Map}} yaml file name. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-int -\/1 on error and 0 on success. 
-\end{DoxyReturn}
-
+Creates SDL Window and instantiates \mbox{\hyperlink{classGame}{Game}} object. Checks if received data is valid. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
