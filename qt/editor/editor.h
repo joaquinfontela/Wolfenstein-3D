@@ -27,6 +27,7 @@ class Editor : public QMainWindow {
   map_scene* my_map_scene;
   tiles_container* tiles_container_scene;
   bool eraser_on;
+  bool only_view_mode;
 
   Editor(QWidget* parent = nullptr);
   /**
@@ -136,7 +137,7 @@ class Editor : public QMainWindow {
    */
   void on_actionSave_as_triggered();
 
-private:
+ private:
   /**
    * @brief Return an empty matrix with mapDimensions dimensions.
    */
