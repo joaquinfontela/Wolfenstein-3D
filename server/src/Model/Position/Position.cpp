@@ -6,6 +6,8 @@ Position::Position(Player* player, Map& map) : player(player) {
 
   this->dirX = -1;
   this->dirY = 0;
+  this->moveSpeed = 0;
+  this->rotSpeed = 0;
 
   std::tie(this->x, this->y) = map.handleRespawn();
   map.addPlayer(this->x, this->y, this->player);
