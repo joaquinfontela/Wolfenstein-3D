@@ -161,10 +161,10 @@ void Hud::playMyShootingSound() {
 }
 
 int Hud::getGunFrame() {
-  bool minigunShooting = (this->player->isShooting() && weaponId == CHAINGUN);
+  /*bool minigunShooting = (this->player->isShooting() && weaponId == CHAINGUN);
   if (minigunShooting && animationStatus == 4 && this->player->minigunShooting) {
     animationStatus = 2;
-  }
+  }*/
   if (animationStatus == 2) this->playMyShootingSound();
   return ((this->weaponId - 1) * (GUN_SLICES) + animationStatus);
 }
