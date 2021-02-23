@@ -80,8 +80,21 @@ Para mover los mapas a la carpeta de los recursos del juego se brinda un script 
 
 ```
 chmod +x fetchmaps.sh
-./fetchmaps.sh
+
+Para descargar mapas oficiales y mover los creados por el usuario a la carpeta de mapas:
+./fetchmaps.sh -a
+
+Para descargar unicamente mapas oficiales:
+./fetchmaps.sh -d
+
+Para mover unicamente los mapas creados por el usuario a la carpeta de mapas
+./fetchmaps.sh -m 
+
+Para ayudas:
+./fetchmaps.sh -h
+
 ```
+
 # Tutorial de Uso
 
 ## Login
