@@ -8,6 +8,8 @@
 | 104348 | Joaquin Betz Rivera       |
 | 104429 | Thiago Kovnat             |
 
+Calificación: 10 (diez)
+
 **Tabla de Contenidos** 
 
 - [Guia de Instalacion](#guia-de-instalación)
