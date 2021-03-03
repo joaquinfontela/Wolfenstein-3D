@@ -10,7 +10,7 @@
 
 **Calificación: 10 (diez)**
 
-<div align="center"> <iframe style="border: 5px solid #000; width: 60vw; height: 33.75vw;" src="https://www.youtube.com/embed/ciMsFS47LoA"> </iframe> </div>
+[Trailer](https://www.youtube.com/embed/ciMsFS47LoA)
 
 # Tabla de Contenidos
 
